@@ -7,15 +7,16 @@
     <title>BMT Micro Developers Center</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
 
-    <div class="container" style="padding-top: 7rem; padding-bottom: 7rem;">
+    <div class="container" style="padding-top: 7rem; padding-bottom: 5rem;">
 
-      <div class="row text-center justify-content-center" style="margin-bottom: 15px;">
+      <div class="row text-center justify-content-center" style="margin-bottom: 20px;">
         <div class="col-lg-10">
-          <img src="images/bmtmicro_logo2.png" alt="BMT Micro, Inc. logo" height="70" style="margin-bottom: 15px;">
+          <img src="images/bmtmicro_logo2.png" alt="BMT Micro, Inc. logo" height="70" style="margin-bottom: 20px;">
           <h5 style="color: #707070; letter-spacing: .5px;">Developer's Control Panel</h5>
         </div>
       </div>
@@ -36,11 +37,21 @@
             </div>
 
             <div class="forgot-password">
-              <a href="#">Forgot Password?</a>
+              <a href="https://vendors.bmtmicro.com/login_lostpasswordstart.html">Forgot Password?</a>
             </div>
 
             <div class="login-btn text-center">
+              <input type="hidden" name="NEXT_PAGE" value="https://vendors.bmtmicro.com/main.html">
+              <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/login_error.html">
+              <input type="hidden" name="BADLOGIN_PAGE" value="https://vendors.bmtmicro.com/login_bad.html">
+              <input type="hidden" name="LOCKOUT_PAGE" value="https://vendors.bmtmicro.com/login_lockout.html">
+              <input type="hidden" name="EXPIRED_PAGE" value="https://vendors.bmtmicro.com/login_expired.html">
+              <input type="hidden" name="SIGNUP_PAGE" value="https://vendors.bmtmicro.com/login_signupstart.html">
               <button type="button" name="button">Login</button>
+            </div>
+
+            <div class="signup text-center">
+              <a href="https://vendors.bmtmicro.com/NewSignup/new_developer-signup.html">Sign Up</a>
             </div>
 
           </div>
