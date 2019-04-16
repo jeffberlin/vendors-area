@@ -24,36 +24,39 @@
       <div class="row justify-content-center">
         <div class="col-lg-5">
           <div class="vendor-login-box">
-            <h4 class="text-center" style="color: #ef9a00; letter-spacing: .5px; margin-bottom: 20px;">Vendor Log In</h4>
+            <form action="https://vendors.bmtmicro.com/servlets/Vendors.Login" method="post">
 
-            <div class="username">
-              <label for="" style="text-align: left; color: #707070; letter-spacing: .5px;">Login:</label>
-              <input type="text" name="" value="" class="vendor-input">
-            </div>
+              <h4 class="text-center" style="color: #ef9a00; letter-spacing: .5px; margin-bottom: 20px;">Vendor Log In</h4>
 
-            <div class="password">
-              <label for="" style="text-align: left; color: #707070; letter-spacing: .5px;">Password:</label>
-              <input type="text" name="" value="" class="vendor-input">
-            </div>
+              <div class="username">
+                <label for="" style="text-align: left; color: #707070; letter-spacing: .5px;">Login:</label>
+                <input type="text" name="" value="" class="vendor-input">
+              </div>
 
-            <div class="forgot-password">
-              <a href="https://vendors.bmtmicro.com/login_lostpasswordstart.html">Forgot Password?</a>
-            </div>
+              <div class="password">
+                <label for="" style="text-align: left; color: #707070; letter-spacing: .5px;">Password:</label>
+                <input type="text" name="" value="" class="vendor-input">
+              </div>
 
-            <div class="login-btn text-center">
-              <input type="hidden" name="NEXT_PAGE" value="https://vendors.bmtmicro.com/main.html">
-              <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/login_error.html">
-              <input type="hidden" name="BADLOGIN_PAGE" value="https://vendors.bmtmicro.com/login_bad.html">
-              <input type="hidden" name="LOCKOUT_PAGE" value="https://vendors.bmtmicro.com/login_lockout.html">
-              <input type="hidden" name="EXPIRED_PAGE" value="https://vendors.bmtmicro.com/login_expired.html">
-              <input type="hidden" name="SIGNUP_PAGE" value="https://vendors.bmtmicro.com/login_signupstart.html">
-              <button type="button" name="button">Login</button>
-            </div>
+              <div class="forgot-password">
+                <a href="https://vendors.bmtmicro.com/login_lostpasswordstart.html">Forgot Password?</a>
+              </div>
 
-            <div class="signup text-center">
-              <a href="https://vendors.bmtmicro.com/NewSignup/new_developer-signup.html">Sign Up</a>
-            </div>
+              <div class="login-btn text-center">
+                <input type="hidden" name="NEXT_PAGE" value="https://vendors.bmtmicro.com/main.html">
+                <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/login_error.html">
+                <input type="hidden" name="BADLOGIN_PAGE" value="https://vendors.bmtmicro.com/login_bad.html">
+                <input type="hidden" name="LOCKOUT_PAGE" value="https://vendors.bmtmicro.com/login_lockout.html">
+                <input type="hidden" name="EXPIRED_PAGE" value="https://vendors.bmtmicro.com/login_expired.html">
+                <input type="hidden" name="SIGNUP_PAGE" value="https://vendors.bmtmicro.com/login_signupstart.html">
+                <button type="submit" value="Login" autocomplete="off">Login</button>
+              </div>
 
+              <div class="signup text-center">
+                <a href="https://vendors.bmtmicro.com/NewSignup/new_developer-signup.html">Sign Up</a>
+              </div>
+
+            </form>
           </div>
         </div>
       </div>
