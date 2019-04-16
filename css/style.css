@@ -3,11 +3,63 @@ html, body {
   width: 100%;
 }
 
+input, button:focus {
+  outline: none !important;
+}
+
+a {
+  text-decoration: none;
+}
+
 .vendor-login-box {
   -webkit-box-shadow: 0px 2px 7px 2px rgba(0,0,0,0.1);
   -moz-box-shadow: 0px 2px 7px 2px rgba(0,0,0,0.1);
   box-shadow: 0px 2px 7px 2px rgba(0,0,0,0.1);
   border-radius: 6px;
-  padding: 10px;
+  padding: 35px 110px;
   /* max-width: 500px; */
+}
+
+.vendor-input {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.25);
+  padding: 2px 5px;
+  color: #707070;
+  letter-spacing: .5px;
+}
+
+.vendor-input:focus {
+  border-color: #195a7c;
+}
+
+.username, .password {
+  margin-bottom: 15px;
+}
+
+.forgot-password, .login-btn {
+  margin-bottom: 10px;
+}
+
+.forgot-password a {
+  font-size: .85rem;
+  letter-spacing: .4px;
+  color: #195a7c;
+}
+
+.login-btn button{
+  background: #ef9a00;
+  border: none;
+  padding: 5px 0px;
+  border-radius: 8px;
+  color: #ffffff;
+  width: 105px;
+  letter-spacing: .5px;
+}
+
+.login-btn button:active {
+  transform: translateY(2px);
+  transition: .3s ease;
+  border: none;
+  outline: none;
 }
