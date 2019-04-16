@@ -28,9 +28,9 @@ label {
   width: 100%;
   border-radius: 6px;
   border: 1px solid rgba(0,0,0,0.25);
-  padding: 2px 5px;
-  color: #707070;
+  padding: 4px 7px;
   letter-spacing: .5px;
+  font-size: .9rem;
 }
 
 .vendor-input:focus {
