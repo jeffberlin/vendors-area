@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<htm lang="en">
+<html lang="en">
   <head>
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -12,65 +12,69 @@
   <body>
 
     <div class="container" style="padding-top: 110px;">
+      <div class="content-area">
 
-      <div class="row text-center justify-content-center" style="margin-bottom: 20px;">
-        <div class="col-lg-10">
-          <img src="images/bmtmicro_logo2.png" alt="BMT Micro, Inc. logo" height="70" style="margin-bottom: 20px;">
-          <h5 style="color: #707070; letter-spacing: .5px;">Developer's Control Panel</h5>
-        </div>
-      </div>
-
-      <div class="row justify-content-center">
-        <div class="col-lg-5">
-          <div class="vendor-login-box">
-            <form action="https://vendors.bmtmicro.com/servlets/Vendors.Login" method="post">
-
-              <h4 class="text-center" style="color: #ef9a00; letter-spacing: .5px; margin-bottom: 20px;">Vendor Log In</h4>
-
-              <div class="username">
-                <label for="" style="text-align: left; color: #707070; letter-spacing: .5px;">Login:</label>
-                <input type="text" name="" value="" class="vendor-input">
-              </div>
-
-              <div class="password">
-                <label for="" style="text-align: left; color: #707070; letter-spacing: .5px;">Password:</label>
-                <input type="text" name="" value="" class="vendor-input">
-              </div>
-
-              <div class="forgot-password">
-                <a href="https://vendors.bmtmicro.com/login_lostpasswordstart.html">Forgot Password?</a>
-              </div>
-
-              <div class="login-btn text-center">
-                <input type="hidden" name="NEXT_PAGE" value="https://vendors.bmtmicro.com/main.html">
-                <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/login_error.html">
-                <input type="hidden" name="BADLOGIN_PAGE" value="https://vendors.bmtmicro.com/login_bad.html">
-                <input type="hidden" name="LOCKOUT_PAGE" value="https://vendors.bmtmicro.com/login_lockout.html">
-                <input type="hidden" name="EXPIRED_PAGE" value="https://vendors.bmtmicro.com/login_expired.html">
-                <input type="hidden" name="SIGNUP_PAGE" value="https://vendors.bmtmicro.com/login_signupstart.html">
-                <button type="submit" value="Login" autocomplete="off">Login</button>
-              </div>
-
-              <div class="signup text-center">
-                <a href="https://vendors.bmtmicro.com/NewSignup/new_developer-signup.html">Sign Up</a>
-              </div>
-
-            </form>
+        <div class="row text-center justify-content-center" style="margin-bottom: 20px;">
+          <div class="col-lg-10">
+            <img src="images/bmtmicro_logo2.png" alt="BMT Micro, Inc. logo" height="70" style="margin-bottom: 20px;">
+            <h5 style="color: #707070; letter-spacing: .5px;">Developer's Control Panel</h5>
           </div>
         </div>
+
+        <div class="row justify-content-center">
+          <div style="max-width: 445px;">
+            <div class="vendor-login-box">
+              <form action="https://vendors.bmtmicro.com/servlets/Vendors.Login" method="post">
+
+                <h4 class="text-center" style="color: #ef9a00; letter-spacing: .5px; margin-bottom: 20px;">Vendor Log In</h4>
+
+                <div class="username">
+                  <label for="" style="text-align: left; color: #707070; letter-spacing: .5px;">Login:</label>
+                  <input id="LOGINNAME" name="LOGINNAME" value="" maxlength="50" autocomplete="off" class="vendor-input">
+                </div>
+
+                <div class="password">
+                  <label for="" style="text-align: left; color: #707070; letter-spacing: .5px;">Password:</label>
+                  <input id="PASSWORD" name="PASSWORD" value="" type="password" maxlength="50" autocomplete="off" class="vendor-input">
+                </div>
+
+                <div class="forgot-password">
+                  <a href="https://vendors.bmtmicro.com/login_lostpasswordstart.html">Forgot Password?</a>
+                </div>
+
+                <div class="login-btn text-center">
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors.bmtmicro.com/main.html">
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/login_error.html">
+                  <input type="hidden" name="BADLOGIN_PAGE" value="https://vendors.bmtmicro.com/login_bad.html">
+                  <input type="hidden" name="LOCKOUT_PAGE" value="https://vendors.bmtmicro.com/login_lockout.html">
+                  <input type="hidden" name="EXPIRED_PAGE" value="https://vendors.bmtmicro.com/login_expired.html">
+                  <input type="hidden" name="SIGNUP_PAGE" value="https://vendors.bmtmicro.com/login_signupstart.html">
+                  <button type="submit" value="Login" autocomplete="off">Login</button>
+                </div>
+
+                <div class="signup text-center">
+                  <a href="https://vendors.bmtmicro.com/NewSignup/new_developer-signup.html">Sign Up</a>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <footer class="footer">
+      <footer class="footer row">
         <div class="container">
           <div class="bottom-footer-content">
             <div class="copyright text-center">
-              <span>BMT Micro, Inc. Copyright © 1992 - <script type="text/JavaScript"> document.write(new Date().getFullYear()); </script></span>
+              BMT Micro, Inc. Copyright © 1992 - <script type="text/JavaScript"> document.write(new Date().getFullYear()); </script>
             </div>
           </div>
         </div>
       </footer>
 
     </div>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
