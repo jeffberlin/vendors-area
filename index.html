@@ -11,30 +11,33 @@
   </head>
   <body>
 
-    <div class="container" style="padding-top: 110px;">
+    <div class="container-fluid" style="padding-top: 110px; height: 100%;">
+      <div class="main">
+
+      </div>
       <div class="content-area">
 
         <div class="row text-center justify-content-center" style="margin-bottom: 20px;">
           <div class="col-lg-10">
-            <img src="images/bmtmicro_logo2.png" alt="BMT Micro, Inc. logo" height="70" style="margin-bottom: 20px;">
-            <h5 style="color: #707070; letter-spacing: .5px;">Developer's Control Panel</h5>
+            <img src="images/bmtmicro_logo.png" alt="BMT Micro, Inc. logo" height="70" style="margin-bottom: 20px;">
+            <h5 style="color: #ffffff; letter-spacing: .5px;text-shadow: 2px 1px 1px rgba(0,0,0,0.4);">Developer's Control Panel</h5>
           </div>
         </div>
 
         <div class="row justify-content-center">
           <div style="max-width: 445px;">
-            <div class="vendor-login-box">
-              <form action="https://vendors.bmtmicro.com/servlets/Vendors.Login" method="post">
+            <div class="vendor-login-box" style="background-color: rgba(255,255,255,0.3);">
+              <!-- <form action="https://vendors.bmtmicro.com/servlets/Vendors.Login" method="post"> -->
 
-                <h4 class="text-center" style="color: #ef9a00; letter-spacing: .5px; margin-bottom: 20px;">Vendor Log In</h4>
+                <h4 class="text-center" style="color: #195a7c; letter-spacing: .5px; margin-bottom: 20px;">Vendor Log In</h4>
 
                 <div class="username">
-                  <label for="" style="text-align: left; color: #707070; letter-spacing: .5px;">Login:</label>
+                  <label for="" style="text-align: left; color: #555555; letter-spacing: .5px;">Login:</label>
                   <input id="LOGINNAME" name="LOGINNAME" value="" maxlength="50" autocomplete="off" class="vendor-input">
                 </div>
 
                 <div class="password">
-                  <label for="" style="text-align: left; color: #707070; letter-spacing: .5px;">Password:</label>
+                  <label for="" style="text-align: left; color: #555555; letter-spacing: .5px;">Password:</label>
                   <input id="PASSWORD" name="PASSWORD" value="" type="password" maxlength="50" autocomplete="off" class="vendor-input">
                 </div>
 
@@ -43,34 +46,35 @@
                 </div>
 
                 <div class="login-btn text-center">
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors.bmtmicro.com/main.html">
+                  <!-- <input type="hidden" name="NEXT_PAGE" value="https://vendors.bmtmicro.com/main.html">
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/login_error.html">
                   <input type="hidden" name="BADLOGIN_PAGE" value="https://vendors.bmtmicro.com/login_bad.html">
                   <input type="hidden" name="LOCKOUT_PAGE" value="https://vendors.bmtmicro.com/login_lockout.html">
                   <input type="hidden" name="EXPIRED_PAGE" value="https://vendors.bmtmicro.com/login_expired.html">
                   <input type="hidden" name="SIGNUP_PAGE" value="https://vendors.bmtmicro.com/login_signupstart.html">
-                  <button type="submit" value="Login" autocomplete="off">Login</button>
+                  <button type="submit" value="Login" autocomplete="off">Login</button> -->
+                  <a href="main.html"><button type="" name="button">Login</button></a>
                 </div>
 
                 <div class="signup text-center">
                   <a href="https://vendors.bmtmicro.com/NewSignup/new_developer-signup.html">Sign Up</a>
                 </div>
 
-              </form>
+              <!-- </form>  -->
             </div>
           </div>
         </div>
 
       </div>
 
-      <footer class="footer row">
-        <div class="container">
-          <div class="bottom-footer-content">
-            <div class="copyright text-center">
-              BMT Micro, Inc. Copyright © 1992 - <script type="text/JavaScript"> document.write(new Date().getFullYear()); </script>
+      <footer class="footer container-fluid">
+        <!-- <div class="container"> -->
+          <div class="bottom-footer-content row text-center align-items-center">
+            <div class="copyright col">
+              <p>BMT Micro, Inc. Copyright © 1992 - <script type="text/JavaScript"> document.write(new Date().getFullYear()); </script></p>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
       </footer>
 
     </div>
