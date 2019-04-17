@@ -1,5 +1,6 @@
 .content-area {
-  height: calc( 100% - 50px );
+  height: 80vh;
+  min-height: 600px;
 }
 
 .vendor-login-box {
