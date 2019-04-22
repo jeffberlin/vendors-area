@@ -21,7 +21,7 @@
 .balance-text, .balance-amount, .vendor-name {
   font-weight: 700;
   letter-spacing: .5px;
-  font-size: 1.1rem;
+  font-size: .9rem;
 }
 
 .balance-text,.vendor-name {
