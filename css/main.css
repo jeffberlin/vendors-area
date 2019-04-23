@@ -51,20 +51,26 @@
   letter-spacing: .5px;
 }
 
+/* Handles the sidebar menu position */
 .sidebar-options {
   transform: translate3d(120px, 15px, 0px) !important;
 }
 
+/* Handles the caret transition */
 .open:hover .dropdown-toggle::after {
   transform: rotate(180deg);
 }
+
 .dropdown-toggle[aria-expanded="true"]:after {
   transform: rotate(180deg);
 }
+
 .dropdown-toggle::after {
   transition: .5s;
 }
+/*  */
 
+/* Handles the styling of the sidebar menu caret */
 .dropright .dropdown-toggle::after {
   border-top: .3em solid;
   border-right: .3em solid transparent;
@@ -72,3 +78,4 @@
   border-left: .3em solid transparent;
   vertical-align: .255em;
 }
+/*  */
