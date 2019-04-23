@@ -51,9 +51,13 @@
   letter-spacing: .5px;
 }
 
+.dropright {
+  padding-bottom: .5rem;
+}
+
 /* Handles the sidebar menu position */
 .sidebar-options {
-  transform: translate3d(120px, 15px, 0px) !important;
+  margin-top: 12px !important;
 }
 
 /* Handles the caret transition */
