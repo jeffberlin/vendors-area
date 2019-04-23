@@ -51,6 +51,11 @@
   letter-spacing: .5px;
 }
 
+.sidebar-group:hover, .sidebar-group:focus {
+  color: #195a7c;
+
+}
+
 .dropright {
   padding-bottom: .5rem;
 }
@@ -61,11 +66,7 @@
 }
 
 /* Handles the caret transition */
-.open:hover .dropdown-toggle::after {
-  transform: rotate(180deg);
-}
-
-.dropdown-toggle[aria-expanded="true"]:after {
+.open:hover .dropdown-toggle::after, .dropdown-toggle[aria-expanded="true"]:after {
   transform: rotate(180deg);
 }
 
