@@ -13,5 +13,5 @@ input, button:focus {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }

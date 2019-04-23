@@ -33,7 +33,6 @@
 }
 
 .vendor-name:hover {
-  text-decoration: none;
   color: #195a7c;
   transition: .3s ease-in-out;
   -webkit-transition: .3s ease-in-out;
@@ -44,4 +43,32 @@
   color: #707070;
   font-size: .8rem;
   letter-spacing: .4px;
+}
+
+.sidebar-group {
+  color: #195a7c;
+  font-weight: 600;
+  letter-spacing: .5px;
+}
+
+.sidebar-options {
+  transform: translate3d(120px, 15px, 0px) !important;
+}
+
+.open:hover .dropdown-toggle::after {
+  transform: rotate(180deg);
+}
+.dropdown-toggle[aria-expanded="true"]:after {
+  transform: rotate(180deg);
+}
+.dropdown-toggle::after {
+  transition: .5s;
+}
+
+.dropright .dropdown-toggle::after {
+  border-top: .3em solid;
+  border-right: .3em solid transparent;
+  border-bottom: 0;
+  border-left: .3em solid transparent;
+  vertical-align: .255em;
 }
