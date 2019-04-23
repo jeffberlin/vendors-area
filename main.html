@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/menuSidebar.css">
   </head>
   <body>
 
@@ -16,95 +18,96 @@
 
   <!-- Start of content area -->
     <div class="main-raised">
-      <div class="content">
-        <div class="container-fluid">
-          <div class="row justify-content-between">
-            <!-- <div class="col-4"> -->
-              <img src="images/bmtmicro_logo.png" alt="BMT Micro, Inc. logo" height="60" style="margin-bottom: 20px;">
-            <!-- </div> -->
-            <div class="col-6">
-              <p class="balance-text">Balance: <span class="balance-amount">0.00</span></p>
+      <div class="container-fluid">
+        <div class="row justify-content-between">
+          <div class="col-2">
+            <img src="images/bmtmicro_logo.png" alt="BMT Micro, Inc. logo" height="60" style="margin-bottom: 20px;">
+          </div>
+          <div class="col-6">
+            <p class="balance-text">Balance: <span class="balance-amount">0.00</span></p>
+          </div>
+          <div class="col-4">
+            <div class="dropdown text-right">
+              <a class="dropdown-toggle vendor-name" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Michael Smith, BMT Micro, Inc.</a>
+              <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">My Account</a>
+                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="#">User Management</a>
+                <a class="dropdown-item" href="#">Log Out</a>
+              </div>
             </div>
-            <div class="col-4">
-              <!-- <p class="vendor-name text-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Michael Smith, BMT Micro, Inc.</p> -->
-              <div class="dropdown text-right">
-                <a class="dropdown-toggle vendor-name" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Michael Smith, BMT Micro, Inc.</a>
-                <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">My Account</a>
-                  <a class="dropdown-item" href="#">Settings</a>
-                  <a class="dropdown-item" href="#">User Management</a>
-                  <a class="dropdown-item" href="#">Log Out</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2">
+            <aside class="sidebar" role="complementary">
+              <div class="dropright">
+                <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Sales</a>
+                <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Sales Graphs</a>
+                  <a class="dropdown-item" href="#">Sales Summary</a>
+                  <a class="dropdown-item" href="#">Detailed Summary</a>
+                  <a class="dropdown-item" href="#">EU Sales Summary</a>
+                  <a class="dropdown-item" href="#">Sales Details</a>
+                  <a class="dropdown-item" href="#">View Statistics</a>
+                  <a class="dropdown-item" href="#">Pending Sales</a>
+                  <a class="dropdown-item" href="#">Account Transactions</a>
+                  <a class="dropdown-item" href="#">Manage Transfers</a>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                <aside class="sidebar" role="complementary">
-                  <div class="dropright">
-                    <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Sales</a>
-                    <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Sales Graphs</a>
-                      <a class="dropdown-item" href="#">Sales Summary</a>
-                      <a class="dropdown-item" href="#">Detailed Summary</a>
-                      <a class="dropdown-item" href="#">EU Sales Summary</a>
-                      <a class="dropdown-item" href="#">Sales Details</a>
-                      <a class="dropdown-item" href="#">View Statistics</a>
-                      <a class="dropdown-item" href="#">Pending Sales</a>
-                      <a class="dropdown-item" href="#">Account Transactions</a>
-                      <a class="dropdown-item" href="#">Manage Transfers</a>
-                    </div>
-                  </div>
-                  <div class="dropright">
-                    <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Products</a>
-                    <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Manage Products</a>
-                      <a class="dropdown-item" href="#">Manage Files</a>
-                      <a class="dropdown-item" href="#">Activation Code Table</a>
-                      <a class="dropdown-item" href="#">Discount Schemes</a>
-                      <a class="dropdown-item" href="#">Manage Pricing Tiers</a>
-                      <a class="dropdown-item" href="#">Manage Splits</a>
-                      <a class="dropdown-item" href="#">Split Sales Report</a>
-                    </div>
-                  </div>
-                  <div class="dropright">
-                    <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Customers</a>
-                    <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Customer Search</a>
-                      <a class="dropdown-item" href="#">Customer Comments</a>
-                      <a class="dropdown-item" href="#">Manage Download Passwords</a>
-                      <a class="dropdown-item" href="#">Manage Subscriptions</a>
-                      <a class="dropdown-item" href="#">Manage Tickets</a>
-                      <a class="dropdown-item" href="#">Authorize Sales</a>
-                    </div>
-                  </div>
-                  <div class="dropright">
-                    <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Affiliates</a>
-                    <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Program Information</a>
-                      <a class="dropdown-item" href="#">Terms & Conditions</a>
-                      <a class="dropdown-item" href="#">Affiliate Sales</a>
-                      <a class="dropdown-item" href="#">Manage Affiliates</a>
-                      <a class="dropdown-item" href="#">Email All Affiliates</a>
-                    </div>
-                  </div>
-                  <div class="dropright">
-                    <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Payoneer Payments</a>
-                    <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Get paid via Pre-paid</a>
-                      <a class="dropdown-item" href="#">Mastercard</a>
-                    </div>
-                  </div>
-                  <div class="dropright">
-                    <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Contact Us</a>
-                    <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Suggestions</a>
-                      <a class="dropdown-item" href="#">Comments</a>
-                      <a class="dropdown-item" href="#">Contact BMT Micro</a>
-                    </div>
-                  </div>
-                </aside>
+              <div class="dropright">
+                <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Products</a>
+                <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Manage Products</a>
+                  <a class="dropdown-item" href="#">Manage Files</a>
+                  <a class="dropdown-item" href="#">Activation Code Table</a>
+                  <a class="dropdown-item" href="#">Discount Schemes</a>
+                  <a class="dropdown-item" href="#">Manage Pricing Tiers</a>
+                  <a class="dropdown-item" href="#">Manage Splits</a>
+                  <a class="dropdown-item" href="#">Split Sales Report</a>
+                </div>
               </div>
-            </div>
+              <div class="dropright">
+                <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Customers</a>
+                <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Customer Search</a>
+                  <a class="dropdown-item" href="#">Customer Comments</a>
+                  <a class="dropdown-item" href="#">Manage Download Passwords</a>
+                  <a class="dropdown-item" href="#">Manage Subscriptions</a>
+                  <a class="dropdown-item" href="#">Manage Tickets</a>
+                  <a class="dropdown-item" href="#">Authorize Sales</a>
+                </div>
+              </div>
+              <div class="dropright">
+                <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Affiliates</a>
+                <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Program Information</a>
+                  <a class="dropdown-item" href="#">Terms & Conditions</a>
+                  <a class="dropdown-item" href="#">Affiliate Sales</a>
+                  <a class="dropdown-item" href="#">Manage Affiliates</a>
+                  <a class="dropdown-item" href="#">Email All Affiliates</a>
+                </div>
+              </div>
+              <div class="dropright">
+                <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Payoneer Payments</a>
+                <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Get paid via Pre-paid</a>
+                  <a class="dropdown-item" href="#">Mastercard</a>
+                </div>
+              </div>
+              <div class="dropright">
+                <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Contact Us</a>
+                <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Suggestions</a>
+                  <a class="dropdown-item" href="#">Comments</a>
+                  <a class="dropdown-item" href="#">Contact BMT Micro</a>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <div class="col-8 news-feed">
+            <h4>News Feed</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
         </div>
       </div>

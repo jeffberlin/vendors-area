@@ -1,0 +1,20 @@
+.balance-text, .balance-amount, .vendor-name {
+  font-weight: 700;
+  letter-spacing: .5px;
+  font-size: .8rem;
+}
+
+.balance-text,.vendor-name {
+  color: #707070;
+}
+
+.balance-amount {
+  color: #ef9a00;
+}
+
+.vendor-name:hover {
+  color: #195a7c;
+  transition: .3s ease-in-out;
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+}
