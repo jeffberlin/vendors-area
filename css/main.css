@@ -31,3 +31,17 @@
 .balance-amount {
   color: #ef9a00;
 }
+
+.vendor-name:hover {
+  text-decoration: none;
+  color: #195a7c;
+  transition: .3s ease-in-out;
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+}
+
+.dropdown-item {
+  color: #707070;
+  font-size: .8rem;
+  letter-spacing: .4px;
+}
