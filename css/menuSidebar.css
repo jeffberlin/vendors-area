@@ -6,6 +6,7 @@
 
 .sidebar-group:hover, .sidebar-group:focus {
   color: #195a7c;
+  border-bottom: 1px solid #ef9a00;
 }
 
 .dropright {
