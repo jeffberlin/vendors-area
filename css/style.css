@@ -45,7 +45,7 @@ a {
 
 /* Handles the caret transition */
 .open:hover .dropdown-toggle::after, .dropdown-toggle[aria-expanded="true"]:after {
-  transform: rotate(180deg);
+  transform: rotate(-180deg);
 }
 
 .dropdown-toggle::after {

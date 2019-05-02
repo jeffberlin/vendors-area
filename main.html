@@ -1,3 +1,20 @@
+<!-- <!DOCTYPE HTML>
+<html>
+<head>
+   <meta http-equiv="Pragma" content="no-cache">
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>BMT Micro Developer Information Center</title>
+</head>
+<frameset cols="*,0.1%" rows="100%" frameborder="no">
+   <frame src="https://vendors-new.bmtmicro.com/mainstart.html" name="bmtmain" id="bmtmain" frameborder="no" />
+   <noframes>
+      <body>
+         <p>Your browser must support frames to log in to the BMT Micro Developer Center. If you need assistance, please email <a href="mailto:webmaster@bmtmicro.com">webmaster@bmtmicro.com</a>.</p>
+      </body>
+   </noframes>
+</frameset>
+</html> -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,12 +23,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>BMT Micro Developers Center</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/menuSidebar.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/main.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
+    <script type="text/javascript" src="https://vendors.bmtmicro.com/js/vhelp.js"></script>
+    <script language="javascript" type="text/javascript">
+     <!--
+      function submitForm (form) {
+         form.DATEFROM.value = fromDate ();
+         form.DATETO.value = makeDate ();
+         form.submit ();
+         }
+      function initForm () {
+         submitForm (document.productpiestart);
+         submitForm (document.productlinestart);
+         submitForm (document.productcolumnstart);
+         submitForm (document.countrylinestart);
+         }
+     //-->
+   </script>
   </head>
   <body>
+  <script language="javascript" type="text/javascript">
+  	<!--
+  	// Redirect to login page if this page is accessed and the vendor is not logged in
+	if (getCookieValue ("BMTMicro.Vendors.VendorID") == null) {
+   	    window.location = "https://vendors-new.bmtmicro.com/login.html";
+   	}
+	// Function for pulling name and company when available
+	function getVendorName () {
+   	    var n = getCookieValue ("BMTMicro.Vendors.Name");
+   	    var c = getCookieValue ("BMTMicro.Vendors.Company");
+   	    return (((c == null) || (c == "")) ? n : (n + "</br>" + c));
+   	}
+  	// -->
+  </script>
+
+    <div style="visibility:hidden;">
+       <form name="logout" method="post" action="https://vendors.bmtmicro.com/servlets/Vendors.Logout">
+         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
+         <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
+       </form>
+       <form name="payoneer" method="post" action="https://vendors.bmtmicro.com/servlets/Vendors.Payoneer">
+          <input type="hidden" name="NEXT_PAGE" value="https://vendors.bmtmicro.com/mainstart.html">
+          <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
+       </form>
+    </div>
 
   <!-- Blue background header -->
     <div class="blue-bg"></div>
@@ -19,27 +78,32 @@
   <!-- Start of content area -->
     <div class="main-raised">
       <div class="container-fluid">
-        <div class="row justify-content-between">
-          <div class="col-2">
-            <img src="images/bmtmicro_logo.png" alt="BMT Micro, Inc. logo" height="60" style="margin-bottom: 20px;">
-          </div>
-          <div class="col-6">
-            <p class="balance-text">Balance: <span class="balance-amount">0.00</span></p>
-          </div>
-          <div class="col-4">
-            <div class="dropdown text-right">
-              <a class="dropdown-toggle vendor-name" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">##Vendor Name##, ##Company Name##</a>
-              <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">My Account</a>
-                <a class="dropdown-item" href="#">Settings</a>
-                <a class="dropdown-item" href="#">User Management</a>
-                <a class="dropdown-item" href="#">Log Out</a>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="row">
           <div class="col-2">
+            <img src="https://vendors-new.bmtmicro.com/images-2/bmt-micro-logo.png" alt="BMT Micro, Inc. logo" height="60" style="margin-bottom: 20px;">
+          </div>
+        </div> <!-- ending .row -->
+        <div class="row">
+
+          <div class="col-2">
+            <div class="dropdown">
+              <a class="dropdown-toggle vendor-name" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+              	<script language="javascript" type="text/javascript">
+            		  <!--
+            		  document.write(getVendorName());
+            		  //-->
+            	   </script>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="https://vendors.bmtmicro.com/accountstart.html">My Account</a>
+                <a class="dropdown-item" href="https://vendors.bmtmicro.com/settingsstart.html">Settings</a>
+                <a class="dropdown-item" href="https://vendors.bmtmicro.com/usersstart.html">User Management</a>
+                <a class="dropdown-item" href="javascript:document.logout.submit();">Log Out</a>
+              </div>
+            </div>
+            <div class="" onload="document.balancestart.submit ();">
+              <iframe src="https://vendors-new.bmtmicro.com/balancestart.html" name="balance" id="balance" frameborder="0" style="max-height: 35px;"></iframe>
+            </div>
             <aside class="sidebar" role="complementary">
               <div class="dropright">
                 <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Sales</a>
@@ -105,91 +169,90 @@
               </div>
             </aside>
           </div>
-          <div class="col-10">
-            <div class="news-feed">
-              <h4>News Feed</h4>
-              <div class="col-10">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              </div>
+        <div class="col-10">
+          <div class="news-feed">
+           <h4>News Feed</h4>
+            <div class="col-12">
+              <iframe src="https://vendors-new.bmtmicro.com/tweetstart.html" name="ceotweet" id="ceotweet" frameBorder="0"></iframe>
+            </div>
+          </div>
+          <div class="row charts">
+
+            <!-- <div class="royalty-chart col-5">
+              <h6>Vendor Royalty from 2019-04-18 through 2019-04-24 by Product</h6>
+              <div id="chartContainer" style="height: 350px; width: 100%;"></div>
+            </div> -->
+            <div class="royalty-chart col-5">
+              <h6>Vendor Royalty from 2019-04-18 through 2019-04-24 by Product</h6>
+              <div id="chartdiv"></div>
+              <script type="text/javascript" src="https://vendors-new.bmtmicro.com/amcharts.js"></script>
+              <script type="text/javascript">
+               // var chartData = ##CHARTDATA##;
+               var chartData = {names:["Vendor Royalty"],data:[{date:"2019-04-23",value:"0.00"},{date:"2019-04-24",value:"0.00"},{date:"2019-04-26",value:"0.00"},{date:"2019-04-27",value:"0.00"},{date:"2019-04-28",value:"0.00"}]};
+                if (chartData.data.length == 0) {
+                   var d = document.getElementById ("chartdiv");
+                   d.innerHTML="<strong>No sales data from ##DATEFROM## through ##DATETO##</strong>";
+                   }
+                else {
+                   AmCharts.ready(function () {
+                       // SERIAL CHART
+                       chart = new AmCharts.AmSerialChart();
+                       chart.dataProvider = chartData.data;
+                       chart.categoryField = "date";
+                       // this single line makes the chart a bar chart,
+                       // try to set it to false - your bars will turn to columns
+                       chart.rotate = false;
+                       // the following two lines makes chart 3D
+                       chart.depth3D = 20;
+                       chart.angle = 30;
+                       chart.fontSize = 8;
+
+                       // AXES
+                       // Category
+                       var categoryAxis = chart.categoryAxis;
+                       categoryAxis.gridPosition = "start";
+                       categoryAxis.axisColor = "#DADADA";
+                       categoryAxis.fillAlpha = 1;
+                       categoryAxis.gridAlpha = 0;
+                       categoryAxis.fillColor = "#FAFAFA";
+
+                       // value
+                       var valueAxis = new AmCharts.ValueAxis();
+                       valueAxis.axisColor = "#DADADA";
+                       valueAxis.title = chartData.names[0];
+                       valueAxis.gridAlpha = 0.1;
+                       chart.addValueAxis(valueAxis);
+
+                       // GRAPH
+                       var graph = new AmCharts.AmGraph();
+                       graph.title = "Royalty";
+                       graph.valueField = "value";
+                       graph.type = "column";
+                       graph.balloonText = chartData.names[0] + " for [[category]] is [[value]]";
+                       graph.lineAlpha = 0;
+                       graph.fillColors = "#2256AA";
+                       graph.fillAlphas = 1;
+                       chart.addGraph(graph);
+
+                       // WRITE
+                       chart.write("chartdiv");
+                       });
+
+                   }
+
+              </script>
             </div>
 
-            <div class="row charts">
+            <div class="circle-graph col-5">
+              <h6>Units Sold from 2019-04-18 through 2019-04-24 by Product</h6>
+            </div>
 
-              <!-- <div class="royalty-chart col-5">
-                <h6>Vendor Royalty from 2019-04-18 through 2019-04-24 by Product</h6>
-                <div id="chartContainer" style="height: 350px; width: 100%;"></div>
-              </div> -->
-              <div class="royalty-chart col-5">
-                <h6>Vendor Royalty from 2019-04-18 through 2019-04-24 by Product</h6>
-                <script type="text/javascript" src="https://vendors-new.bmtmicro.com/amcharts.js"></script>
-                <script type="text/javascript">
-                  var chartData = ##CHARTDATA##;
-                  if (chartData.data.length == 0) {
-                     var d = document.getElementById ("chartdiv");
-                     d.innerHTML="<strong>No sales data from ##DATEFROM## through ##DATETO##</strong>";
-                     }
-                  else {
-                     AmCharts.ready(function () {
-                         // SERIAL CHART
-                         chart = new AmCharts.AmSerialChart();
-                         chart.dataProvider = chartData.data;
-                         chart.categoryField = "date";
-                         // this single line makes the chart a bar chart,
-                         // try to set it to false - your bars will turn to columns
-                         chart.rotate = false;
-                         // the following two lines makes chart 3D
-                         chart.depth3D = 20;
-                         chart.angle = 30;
-                         chart.fontSize = 8;
+            <div class="product-chart col-5">
+              <h6>Vendor Royalty from 2019-04-18 through 2019-04-24 by Product</h6>
+            </div>
 
-                         // AXES
-                         // Category
-                         var categoryAxis = chart.categoryAxis;
-                         categoryAxis.gridPosition = "start";
-                         categoryAxis.axisColor = "#DADADA";
-                         categoryAxis.fillAlpha = 1;
-                         categoryAxis.gridAlpha = 0;
-                         categoryAxis.fillColor = "#FAFAFA";
-
-                         // value
-                         var valueAxis = new AmCharts.ValueAxis();
-                         valueAxis.axisColor = "#DADADA";
-                         valueAxis.title = chartData.names[0];
-                         valueAxis.gridAlpha = 0.1;
-                         chart.addValueAxis(valueAxis);
-
-                         // GRAPH
-                         var graph = new AmCharts.AmGraph();
-                         graph.title = "Royalty";
-                         graph.valueField = "value";
-                         graph.type = "column";
-                         graph.balloonText = chartData.names[0] + " for [[category]] is [[value]]";
-                         graph.lineAlpha = 0;
-                         graph.fillColors = "#2256AA";
-                         graph.fillAlphas = 1;
-                         chart.addGraph(graph);
-
-                         // WRITE
-                         chart.write("chartdiv");
-                         });
-
-                     }
-
-                </script>
-              </div>
-
-              <div class="circle-graph col-5">
-                <h6>Units Sold from 2019-04-18 through 2019-04-24 by Product</h6>
-              </div>
-
-              <div class="product-chart col-5">
-                <h6>Vendor Royalty from 2019-04-18 through 2019-04-24 by Product</h6>
-              </div>
-
-              <div class="country-graph col-5">
-                <h6>Units Sold from 2019-04-18 through 2019-04-24 by Product</h6>
-              </div>
-
+            <div class="country-graph col-5">
+              <h6>Units Sold from 2019-04-18 through 2019-04-24 by Product</h6>
             </div>
 
           </div>
@@ -200,7 +263,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script type="text/javascript" src="js/charts.js"></script>
+    <!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript" src="js/charts.js"></script> -->
   </body>
 </html>
