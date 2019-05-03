@@ -1,30 +1,29 @@
 .news-feed h4 {
   color: #ef9a00;
-}
+  }
 
-.news-feed p {
-  /* padding-left: 10px; */
+.tweet-feed {
   color: #707070;
-}
+  }
 
-.news-feed p, .news-feed h4 {
+.tweet-feed, .news-feed h4 {
   letter-spacing: .5px;
-}
+  }
 
 .open {
   transition: .5s;
-}
+  }
 
 .charts {
   padding-left: 15px;
   padding-right: 15px;
-}
+  }
 
-.charts h6 {
+.chart-title {
   color: #ef9a00;
   font-size: .95rem;
   letter-spacing: .3px;
-}
+  }
 
 .royalty-chart, .circle-graph, .product-chart, .country-graph {
   -webkit-box-shadow: 0px 2px 7px 2px rgba(0,0,0,0.1);
@@ -32,16 +31,26 @@
   box-shadow: 0px 2px 7px 2px rgba(0,0,0,0.1);
   border-radius: 3px;
   padding: 1rem;
-}
+  }
 
 .royalty-chart, .circle-graph {
   margin-bottom: 30px;
-}
+  }
 
 .royalty-chart, .product-chart {
   margin-right: 15px;
-}
+  }
+
+.new-graph {
+  color: #195a7c;
+  font-size: .8rem;
+  }
+
+.new-graph:hover {
+  border-bottom: 1px solid #ef9a00;
+  color: #195a7c;
+  }
 
 .canvasjs-chart-credit {
   display: none !important;
-}
+  }
