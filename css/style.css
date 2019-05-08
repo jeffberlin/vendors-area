@@ -56,10 +56,10 @@ a {
   color: #ef9a00;
 }
 
-.page-title h4, .page-text p {
+.page-title h4, .page-title p {
   letter-spacing: .5px;
 }
 
-.page-text p {
+.page-title p {
   color: #707070;
 }

@@ -9,27 +9,15 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
     <!-- <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/main.css"> -->
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/salessummary.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
   </head>
   <body>
-    <script language="javascript" type="text/javascript">
-  	<!--
-  	// Redirect to login page if this page is accessed and the vendor is not logged in
-	if (getCookieValue ("BMTMicro.Vendors.VendorID") == null) {
-   	    window.location = "https://vendors-new.bmtmicro.com/login.html";
-   	}
-	// Function for pulling name and company when available
-	//function getVendorName () {
-   	    var n = getCookieValue ("BMTMicro.Vendors.Name");
-   	    var c = getCookieValue ("BMTMicro.Vendors.Company");
-   	    //return (((c == null) || (c == "")) ? n : (n + "</br>" + c ));
-   	//}
-  	// -->
-  </script>
 
     <div style="visibility:hidden;">
        <form name="logout" method="post" action="https://vendors.bmtmicro.com/servlets/Vendors.Logout">
@@ -83,12 +71,12 @@
               </div>
             </div>
             <div class="vendor-company">
-             <span>
+              <span>
               	<script language="javascript" type="text/javascript">
                   <!--
-            	  document.write(c);
+              	  document.write(c);
                   //-->
-            	</script>
+              	</script>
               </span>
             </div>
             <div class="" onload="document.balancestart.submit ();">
@@ -160,60 +148,65 @@
             </aside>
           </div>
           <div class="col-10">
-          <div class="page-title">
-            <h4>Sales Summary</h4>
-            <div class="col-12 page-text">
+            <div class="page-title">
+              <h4>Sales Summary</h4>
               <p>Below is a summary of your sales from ##DATEFROM## through ##DATETO##.</p>
-              <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesSummary" method="post" onsubmit="return (CheckDateRange(this));">
-            <object>
-               <table cellpadding="0" cellspacing="0" class="grid sortable" id="selection">
-                  <col style="width: auto;" />
-                  <col style="width: 100px" />
-                  <col style="width: 70px" />
-                  <caption>
-                     <h5>
-                        <span>
-                           From:&nbsp;
-                           <input id="DATEFROM" name="DATEFROM" value="##DATEFROM##" />&nbsp;
-                           <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
-                        </span>
-                        <span>
-                           To:&nbsp;
-                           <input id="DATETO" name="DATETO" value="##DATETO##" />&nbsp;
-                           <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
-                        </span>
-                        <span>
-                           <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
-                           <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/salessummary.html" />
-                           <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-                           <button class="dark" value="Get Sales Summary">Get Sales Summary</button>
-                        </span>
-                     </h5>
-                     <br>
-                  </caption>
-                  <thead>
-                     <tr>
-                        <th class="sortable" text>Product</th>
-                        <th class="sortable" number>Units Sold</th>
-                        <th class="sortable-currency" money>Total to Vendor</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     ##TABLEDATA##
-                  </tbody>
-                  <tfoot>
-                     <tr>
-                        <th align="right"><strong>Total</strong></th>
-                        <td number><strong>##TOTALQUANTITY##</strong></td>
-                        <td money><strong>##TOTALAMOUNT##</strong></td>
-                     </tr>
-                  </tfoot>
-               </table>
-            </object>
-         </form>
+
+              <div class="select-table">
+                <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesSummary" method="post" onsubmit="return (CheckDateRange(this));">
+                  <div class="date-selection">
+                    <span>From: <input id="DATEFROM" name="DATEFROM" value="##DATEFROM##" />&nbsp;
+                      <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';"
+                      />
+                    </span>
+                    <span>
+                    To:&nbsp;
+                      <input id="DATETO" name="DATETO" value="##DATETO##" />&nbsp;
+                        <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';"
+                      />
+                    </span>
+                  </div>
+
+                  <object>
+                    <table cellpadding="0" cellspacing="0" class="grid sortable" id="selection">
+                      <col style="width: auto;" />
+                      <col style="width: 100px" />
+                      <col style="width: 70px" />
+                      <caption>
+                        <h5>
+
+                          <span>
+                            <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
+                            <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/salessummary.html" />
+                            <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+                            <button class="dark" value="Get Sales Summary">Get Sales Summary</button>
+                          </span>
+                        </h5>
+                        <br>
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th class="sortable" text>Product</th>
+                          <th class="sortable" number>Units Sold</th>
+                          <th class="sortable-currency" money>Total to Vendor</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                         ##TABLEDATA##
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <th align="right"><strong>Total</strong></th>
+                          <td number><strong>##TOTALQUANTITY##</strong></td>
+                          <td money><strong>##TOTALAMOUNT##</strong></td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </object>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
 
         </div>
       </div>
@@ -239,8 +232,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script type="text/javascript" src="js/charts.js"></script> -->
+    <!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
 
     <script type="text/javascript">
       /* Anything that gets to the document will hide the dropdown */
