@@ -51,3 +51,15 @@ a {
   transition: .5s;
   }
 /*  */
+
+.page-title h4 {
+  color: #ef9a00;
+}
+
+.page-title h4, .page-text p {
+  letter-spacing: .5px;
+}
+
+.page-text p {
+  color: #707070;
+}
