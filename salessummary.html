@@ -1,20 +1,3 @@
-<!-- <!DOCTYPE HTML>
-<html>
-<head>
-   <meta http-equiv="Pragma" content="no-cache">
-   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <title>BMT Micro Developer Information Center</title>
-</head>
-<frameset cols="*,0.1%" rows="100%" frameborder="no">
-   <frame src="https://vendors-new.bmtmicro.com/mainstart.html" name="bmtmain" id="bmtmain" frameborder="no" />
-   <noframes>
-      <body>
-         <p>Your browser must support frames to log in to the BMT Micro Developer Center. If you need assistance, please email <a href="mailto:webmaster@bmtmicro.com">webmaster@bmtmicro.com</a>.</p>
-      </body>
-   </noframes>
-</frameset>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,30 +7,16 @@
     <title>BMT Micro Developers Center</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/main.css">
+    <!-- <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/main.css"> -->
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
-    <script type="text/javascript" src="https://vendors.bmtmicro.com/js/vhelp.js"></script>
-    <script language="javascript" type="text/javascript">
-     <!--
-      function submitForm (form) {
-         form.DATEFROM.value = fromDate ();
-         form.DATETO.value = makeDate ();
-         form.submit ();
-         }
-      function initForm () {
-         submitForm (document.productpiestart);
-         submitForm (document.productlinestart);
-         submitForm (document.productcolumnstart);
-         submitForm (document.countrylinestart);
-         }
-     //-->
-   </script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
   </head>
   <body>
-  <script language="javascript" type="text/javascript">
+    <script language="javascript" type="text/javascript">
   	<!--
   	// Redirect to login page if this page is accessed and the vendor is not logged in
 	if (getCookieValue ("BMTMicro.Vendors.VendorID") == null) {
@@ -61,6 +30,17 @@
    	//}
   	// -->
   </script>
+
+    <div style="visibility:hidden;">
+       <form name="logout" method="post" action="https://vendors.bmtmicro.com/servlets/Vendors.Logout">
+         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
+         <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
+       </form>
+       <form name="payoneer" method="post" action="https://vendors.bmtmicro.com/servlets/Vendors.Payoneer">
+          <input type="hidden" name="NEXT_PAGE" value="https://vendors.bmtmicro.com/mainstart.html">
+          <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
+       </form>
+    </div>
 
     <div style="visibility:hidden;">
        <form name="logout" method="post" action="https://vendors.bmtmicro.com/servlets/Vendors.Logout">
@@ -118,8 +98,8 @@
               <div class="dropright">
                 <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Sales</a>
                 <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="main.html" style="color: #ef9a00;">Sales Graphs</a>
-                  <a class="dropdown-item" href="salessummary.html">Sales Summary</a>
+                  <a class="dropdown-item" href="main.html">Sales Graphs</a>
+                  <a class="dropdown-item" href="#" style="color: #ef9a00;">Sales Summary</a>
                   <a class="dropdown-item" href="#">Detailed Summary</a>
                   <a class="dropdown-item" href="#">EU Sales Summary</a>
                   <a class="dropdown-item" href="#">Sales Details</a>
@@ -180,30 +160,58 @@
             </aside>
           </div>
           <div class="col-10">
-          <div class="news-feed">
-            <h4>News Feed</h4>
-            <div class="col-12">
-              <iframe src="https://vendors-new.bmtmicro.com/tweetstart.html" name="ceotweet" id="ceotweet" frameBorder="0" style="min-width: 85%;"></iframe>
+          <div class="page-title">
+            <h4>Sales Summary</h4>
+            <div class="col-12 page-text">
+              <p>Below is a summary of your sales from ##DATEFROM## through ##DATETO##.</p>
+              <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesSummary" method="post" onsubmit="return (CheckDateRange(this));">
+            <object>
+               <table cellpadding="0" cellspacing="0" class="grid sortable" id="selection">
+                  <col style="width: auto;" />
+                  <col style="width: 100px" />
+                  <col style="width: 70px" />
+                  <caption>
+                     <h5>
+                        <span>
+                           From:&nbsp;
+                           <input id="DATEFROM" name="DATEFROM" value="##DATEFROM##" />&nbsp;
+                           <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
+                        </span>
+                        <span>
+                           To:&nbsp;
+                           <input id="DATETO" name="DATETO" value="##DATETO##" />&nbsp;
+                           <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
+                        </span>
+                        <span>
+                           <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
+                           <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/salessummary.html" />
+                           <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+                           <button class="dark" value="Get Sales Summary">Get Sales Summary</button>
+                        </span>
+                     </h5>
+                     <br>
+                  </caption>
+                  <thead>
+                     <tr>
+                        <th class="sortable" text>Product</th>
+                        <th class="sortable" number>Units Sold</th>
+                        <th class="sortable-currency" money>Total to Vendor</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     ##TABLEDATA##
+                  </tbody>
+                  <tfoot>
+                     <tr>
+                        <th align="right"><strong>Total</strong></th>
+                        <td number><strong>##TOTALQUANTITY##</strong></td>
+                        <td money><strong>##TOTALAMOUNT##</strong></td>
+                     </tr>
+                  </tfoot>
+               </table>
+            </object>
+         </form>
             </div>
-          </div>
-          <div class="row charts">
-
-            <div class="royalty-chart col-5">
-              <iframe src="https://vendors-new.bmtmicro.com/charts.html" name="columnchart" id="columnchart" frameborder="0" border="0" cellspacing="0" style="width: 100%; height: 360px;"></iframe>
-            </div>
-
-            <div class="circle-graph col-5">
-              <iframe src="https://vendors-new.bmtmicro.com/charts.html" name="piechart" id="piechart" frameborder="0" border="0" cellspacing="0" style="width: 100%; height: 360px;"></iframe>
-            </div>
-
-            <div class="product-chart col-5">
-              <iframe src="https://vendors-new.bmtmicro.com/charts.html" name="linechart" id="linechart" frameborder="0" border="0" cellspacing="0" style="width: 100%; height: 360px;"></iframe>
-            </div>
-
-            <div class="country-graph col-5">
-              <iframe src="https://vendors-new.bmtmicro.com/charts.html" name="linebycountry" id="linebycountry" frameborder="0" border="0" cellspacing="0" style="width: 100%; height: 360px;"></iframe>
-            </div>
-
           </div>
         </div>
 
