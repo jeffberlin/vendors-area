@@ -7,7 +7,6 @@
     <title>BMT Micro Developers Center</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
-    <!-- <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/main.css"> -->
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/salessummary.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
@@ -25,18 +24,7 @@
       // -->
     </script>
   </head>
-  <body onload="initForm (document.start);">
-
-    <div style="visibility:hidden;">
-       <form name="logout" method="post" action="https://vendors.bmtmicro.com/servlets/Vendors.Logout">
-         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
-         <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
-       </form>
-       <form name="payoneer" method="post" action="https://vendors.bmtmicro.com/servlets/Vendors.Payoneer">
-          <input type="hidden" name="NEXT_PAGE" value="https://vendors.bmtmicro.com/mainstart.html">
-          <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
-       </form>
-    </div>
+  <body>
 
     <div style="visibility:hidden;">
        <form name="logout" method="post" action="https://vendors.bmtmicro.com/servlets/Vendors.Logout">
@@ -211,6 +199,7 @@
                       </tfoot>
                     </table>
                   </object>
+
                 </form>
               </div>
             </div>
