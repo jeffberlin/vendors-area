@@ -16,8 +16,16 @@
     <script type="text/javascript" src="js/main.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function initForm (form) {
+        getVendorDateRange (form);
+        form.submit ();
+      }
+      // -->
+    </script>
   </head>
-  <body>
+  <body onload="initForm (document.start);">
 
     <div style="visibility:hidden;">
        <form name="logout" method="post" action="https://vendors.bmtmicro.com/servlets/Vendors.Logout">
