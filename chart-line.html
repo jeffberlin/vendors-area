@@ -8,174 +8,135 @@
    <link rel="stylesheet" type="text/css" href="https://vendors-new.bmtmicro.com/css-2/main.css">
 </head>
 <body style="background-color:#FFFFFF">
-   <!-- <dl>
-      <dd>
-         <table cellspacing="0" cellpadding="0" class="stats"> -->
-            <script language="javascript" type="text/javascript">
-            <!--
-               document.write('<h6 class="chart-title">');
-               switch (##GROUPTYPE##) {
-                  default:
-                  case 0:
-                     document.write ('Units Sold from ##DATEFROM## through ##DATETO##');
-                     break;
-                  case 1:
-                     document.write ('Vendor Royalty from ##DATEFROM## through ##DATETO##');
-                     break;
-                  }
-               switch (##GROUPBY##) {
-                  default:
-                  case 0:
-                     document.write (' by Product');
-                     break;
-                  case 1:
-                     document.write (' by Country');
-                     break;
-                  case 2:
-                     document.write (' by Affiliate');
-                     break;
-                  }
-               document.write('</h6>');
-            //-->
-            </script>
-            <!-- <tbody>
-               <tr>
-                  <td full valign="middle"> -->
-                     <div id="chartdiv" style="width: 100%; height: 285px;">
-                        <noscript><strong>You need to enable JavaScript</strong></noscript>
-                     </div>
-                     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/amcharts.js"></script>
-                     <script type="text/javascript">
-                        var chartData = ##CHARTDATA##;
-                        if (chartData.data.length == 0) {
-                           var d = document.getElementById ("chartdiv");
-                           d.innerHTML="<strong>No sales data from ##DATEFROM## through ##DATETO##</strong>";
-                           }
-                        else {
-                            AmCharts.ready(function () {
-                                  var title;
-                                  switch (##GROUPTYPE##) {
-                                      default:
-                                      case 0:
-                                         title = "Units Sold";
-                                         break;
-                                      case 1:
-                                         title = "Vendor Royalty";
-                                         break;
-                                     }
+  <div class="stats">
+    <script language="javascript" type="text/javascript">
+      <!--
+      document.write('<h6 class="chart-title">');
+      switch (##GROUPTYPE##) {
+        default:
+          case 0:
+            document.write ('Units Sold from ##DATEFROM## through ##DATETO##');
+          break;
+          case 1:
+            document.write ('Vendor Royalty from ##DATEFROM## through ##DATETO##');
+          break;
+      }
+      switch (##GROUPBY##) {
+        default:
+          case 0:
+          document.write (' by Product');
+          break;
+          case 1:
+            document.write (' by Country');
+          break;
+          case 2:
+            document.write (' by Affiliate');
+          break;
+      }
+      document.write('</h6>');
+      //-->
+    </script>
+    <div id="chartdiv" style="width: 100%; height: 285px;">
+      <noscript><strong>You need to enable JavaScript</strong></noscript>
+    </div>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/amcharts.js"></script>
+    <script type="text/javascript">
+      var chartData = ##CHARTDATA##;
+      if (chartData.data.length == 0) {
+        var d = document.getElementById ("chartdiv");
+        d.innerHTML="<strong>No sales data from ##DATEFROM## through ##DATETO##</strong>";
+      } else {
+        AmCharts.ready(function () {
+          var title;
+          switch (##GROUPTYPE##) {
+            default:
+              case 0:
+                title = "Units Sold";
+              break;
+              case 1:
+                title = "Vendor Royalty";
+              break;
+          }
 
-                                  // SERIAL CHART
-                                  var chart = new AmCharts.AmSerialChart();
-                                  chart.dataProvider = chartData.data;
-                                  chart.categoryField = "date";
-                                  chart.colors = [ "#0000FF" ];
-                                  chart.marginRight = 35;
+          // SERIAL CHART
+          var chart = new AmCharts.AmSerialChart();
+          chart.dataProvider = chartData.data;
+          chart.categoryField = "date";
+          chart.colors = [ "#0000FF" ];
+          chart.marginRight = 35;
 
-                                  // AXES
-                                  // Category
-                                  var categoryAxis = chart.categoryAxis;
-                                  categoryAxis.gridAlpha = 0.07;
-                                  categoryAxis.axisColor = "#DADADA";
-                                  categoryAxis.startOnAxis = true;
+          // AXES
+          // Category
+          var categoryAxis = chart.categoryAxis;
+          categoryAxis.gridAlpha = 0.07;
+          categoryAxis.axisColor = "#DADADA";
+          categoryAxis.startOnAxis = true;
 
-                                  // Value
-                                  var valueAxis = new AmCharts.ValueAxis();
-                                  valueAxis.gridAlpha = 0.07;
-                                  valueAxis.title = title;
-                                  chart.addValueAxis(valueAxis);
+          // Value
+          var valueAxis = new AmCharts.ValueAxis();
+          valueAxis.gridAlpha = 0.07;
+          valueAxis.title = title;
+          chart.addValueAxis(valueAxis);
 
-                                  // GRAPHS
-                                  if (chartData.names.length > 1) {
-                                     for (i = 0; i < chartData.names.length; i++) {
-                                        var graph = new AmCharts.AmGraph();
-                                        graph.type = "line";
-                                        graph.title = chartData.names[i];
-                                        graph.valueField = "value" + i;
-                                        graph.lineThickness = 1;
-                                        graph.lineAlpha = 1;
-                                        chart.addGraph(graph);
-                                        }
-                                     var legend = new AmCharts.AmLegend();
-                                     legend.valueText = "";
-                                     legend.position = "bottom";
-                                     chart.addLegend(legend);
-                                     }
-                                  else {
-                                     var graph = new AmCharts.AmGraph();
-                                     graph.type = "line";
-                                     graph.title = chartData.names[0];
-                                     graph.valueField = "value";
-                                     graph.lineThickness = 4;
-                                     graph.lineAlpha = 1;
-                                     graph.fillAlphas = 0.1;
-                                     chart.addGraph(graph);
-                                     }
+          // GRAPHS
+          if (chartData.names.length > 1) {
+            for (i = 0; i < chartData.names.length; i++) {
+              var graph = new AmCharts.AmGraph();
+              graph.type = "line";
+              graph.title = chartData.names[i];
+              graph.valueField = "value" + i;
+              graph.lineThickness = 1;
+              graph.lineAlpha = 1;
+              chart.addGraph(graph);
+            }
+            var legend = new AmCharts.AmLegend();
+            legend.valueText = "";
+            legend.position = "bottom";
+            chart.addLegend(legend);
+          } else {
+            var graph = new AmCharts.AmGraph();
+            graph.type = "line";
+            graph.title = chartData.names[0];
+            graph.valueField = "value";
+            graph.lineThickness = 4;
+            graph.lineAlpha = 1;
+            graph.fillAlphas = 0.1;
+            chart.addGraph(graph);
+          }
 
-                                  // CURSOR
-                                  var chartCursor = new AmCharts.ChartCursor();
-                                  chartCursor.cursorAlpha = 1;
-                                  chartCursor.cursorColor = "#869EB2";
-                                  chart.addChartCursor(chartCursor);
+          // CURSOR
+          var chartCursor = new AmCharts.ChartCursor();
+          chartCursor.cursorAlpha = 1;
+          chartCursor.cursorColor = "#869EB2";
+          chart.addChartCursor(chartCursor);
 
-                                  // WRITE
-                                  chart.write("chartdiv");
-                              });
-                           }
+          // WRITE
+          chart.write("chartdiv");
+        });
+      }
+    </script>
 
-                     </script>
+    </br>
+    <a href="javascript:document.newgraph.submit();" class="new-graph">Get new graph</a>
+  </div>
+  <form name="newgraph" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesGraph">
+    <input type="hidden" name="ACTION" value="-1">
+    <input type="hidden" name="CHARTTYPE"  value="##CHARTTYPE##" />
+    <input type="hidden" name="BULLETSIZE" value="##BULLETSIZE##" />
+    <input type="hidden" name="DATEFROM"   value="##DATEFROM##" />
+    <input type="hidden" name="DATETO"     value="##DATETO##" />
+    <input type="hidden" name="GROUPBY"    value="##GROUPBY##" />
+    <input type="hidden" name="GROUPTYPE"  value="##GROUPTYPE##" />
+    <input type="hidden" name="MAXLEGENDS" value="##MAXLEGENDS##" />
+    <input type="hidden" name="FREQUENCY"  value="##FREQUENCY##" />
+    <input type="hidden" name="SELECTEDPRODUCTS" value="##SELECTEDPRODUCTS##" />
+    <input type="hidden" name="CHARTPAGE"  value="https://vendors-new.bmtmicro.com/charts_line.html" />
+    <input type="hidden" name="NEXT_PAGE"  value="https://vendors-new.bmtmicro.com/charts_newdata.html">
+    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
+  </form>
 
-                     <!-- ampie script-->
-                     <!--
-                     <div id="flashcontent3">
-                        <strong>You need to upgrade your Flash Player</strong>
-                     </div>
-                     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/charts/swfobject.js"></script>
-                     <script language="javascript" type="text/javascript">
-                     // <![CDATA[
-                        var so = new SWFObject("https://vendors-new.bmtmicro.com/charts/amline.swf", "ampie", "100%", "350px", "8", "#FFFFFF");
-                        so.addVariable("path", "https://vendors-new.bmtmicro.com/charts/");
-                        so.addVariable("settings_file", "https://vendors-new.bmtmicro.com/charts/default_line_settings.xml");       // you can set two or more different settings files here (separated by commas)
-                        so.addParam('wmode', 'transparent');
-                        so.addVariable("data_file", "https://vendors-new.bmtmicro.com/chartxml/##CHARTXMLFILENAME##");
-                        so.addVariable("preloader_color", "#999999");
-                        so.write("flashcontent3");
-                     // ]]>
-                     </script>
-                     -->
-                     <!-- end of ampie script -->
-                     <br clear="all" />
-                  <!-- </td>
-               </tr>
-            </tbody> -->
-            <!-- <tfoot>
-               <tr>
-                  <td> -->
-                    <a href="javascript:document.newgraph.submit();" class="new-graph">Get new graph</a>
-                  <!-- </td>
-               </tr>
-            </tfoot> -->
-          </div>
-         <!-- </table>
-      </dd>
-   </dl> -->
-   <form name="newgraph" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesGraph">
-      <input type="hidden" name="ACTION" value="-1">
-      <input type="hidden" name="CHARTTYPE"  value="##CHARTTYPE##" />
-      <input type="hidden" name="BULLETSIZE" value="##BULLETSIZE##" />
-      <input type="hidden" name="DATEFROM"   value="##DATEFROM##" />
-      <input type="hidden" name="DATETO"     value="##DATETO##" />
-      <input type="hidden" name="GROUPBY"    value="##GROUPBY##" />
-      <input type="hidden" name="GROUPTYPE"  value="##GROUPTYPE##" />
-      <input type="hidden" name="MAXLEGENDS" value="##MAXLEGENDS##" />
-      <input type="hidden" name="FREQUENCY"  value="##FREQUENCY##" />
-      <input type="hidden" name="SELECTEDPRODUCTS" value="##SELECTEDPRODUCTS##" />
-      <input type="hidden" name="CHARTPAGE"  value="https://vendors-new.bmtmicro.com/charts_line.html" />
-      <input type="hidden" name="NEXT_PAGE"  value="https://vendors-new.bmtmicro.com/charts_newdata.html">
-      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
-   </form>
-
-   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
