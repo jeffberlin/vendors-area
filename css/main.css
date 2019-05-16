@@ -10,6 +10,10 @@
   letter-spacing: .5px;
   }
 
+#ceotweet {
+  min-width: 85%;
+  }
+
 .open {
   transition: .5s;
   }
@@ -50,3 +54,9 @@
   border-bottom: 1px solid #ef9a00;
   color: #195a7c;
   }
+
+@media (max-width: 1200px) {
+  #ceotweet {
+    min-width: 100%;
+  }
+}
