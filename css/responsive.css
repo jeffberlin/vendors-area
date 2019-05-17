@@ -4,9 +4,15 @@
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
   #ceotweet {
     min-width: 100%;
+  }
+}
+
+@media (max-width: 842px) {
+  .tweet-feed {
+    font-size: .8rem;
   }
 }
 
