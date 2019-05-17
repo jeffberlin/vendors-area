@@ -12,9 +12,10 @@
     <title>BMT Micro Developers Center</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/salessummary.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
@@ -30,130 +31,124 @@
     </script>
   </head>
   <body>
-
     <div style="visibility:hidden;">
        <form name="logout" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Logout">
          <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
-         <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
+         <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
        </form>
        <form name="payoneer" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Payoneer">
           <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/main.html">
-          <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
+          <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
        </form>
     </div>
 
-  <!-- Blue background header -->
+    <!-- Blue background header -->
     <div class="blue-bg"></div>
 
-  <!-- Start of content area -->
+    <!-- Start of body content -->
     <div class="main-raised">
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-2">
-            <img src="https://vendors-new.bmtmicro.com/images-2/bmt-micro-logo.png" alt="BMT Micro, Inc. logo" height="60" style="margin-bottom: 20px;">
-          </div>
-        </div> <!-- ending .row -->
-        <div class="row">
-
-          <div class="col-2">
-            <div class="dropright" style="padding-bottom: 0px;">
-              <a class="dropdown-toggle vendor-name" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-              	<script language="javascript" type="text/javascript">
-            		  <!--
-            		  document.write(n);
-            		  //-->
-            	   </script>
-              </a>
-              <div class="dropdown-menu  dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="https://vendors.bmtmicro.com/accountstart.html">My Account</a>
-                <a class="dropdown-item" href="https://vendors.bmtmicro.com/settingsstart.html">Settings</a>
-                <a class="dropdown-item" href="https://vendors.bmtmicro.com/usersstart.html">User Management</a>
-                <a class="dropdown-item" href="javascript:document.logout.submit();">Log Out</a>
-              </div>
-            </div>
-            <div class="vendor-company">
-              <span>
-              	<script language="javascript" type="text/javascript">
-                  <!--
-              	  document.write(c);
-                  //-->
-              	</script>
-              </span>
-            </div>
-            <div class="" onload="document.balancestart.submit ();">
-              <iframe src="https://vendors-new.bmtmicro.com/balancestart.html" name="balance" id="balance" frameborder="0" style="max-height: 35px;"></iframe>
-            </div>
-            <aside class="sidebar" role="complementary">
-              <div class="dropright">
-                <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Sales</a>
-                <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/main.html">Sales Graphs</a>
-                  <a class="dropdown-item" href="#" style="color: #ef9a00;">Sales Summary</a>
-                  <a class="dropdown-item" href="#">Detailed Summary</a>
-                  <a class="dropdown-item" href="#">EU Sales Summary</a>
-                  <a class="dropdown-item" href="#">Sales Details</a>
-                  <a class="dropdown-item" href="#">View Statistics</a>
-                  <a class="dropdown-item" href="#">Pending Sales</a>
-                  <a class="dropdown-item" href="#">Account Transactions</a>
-                  <a class="dropdown-item" href="#">Manage Transfers</a>
+        <article class="section">
+          <div class="row justify-content-start">
+            <div class="col-12" style="padding-top: 2.2rem;">
+              <img src="https://vendors-new.bmtmicro.com/images-2/bmt-micro-logo.png" alt="BMT Micro, Inc. logo" height="60" style="margin-bottom: 20px;">
+            </div> <!-- end .col-12 -->
+            <div class="col-lg-2">
+              <aside class="sidebar" role="complementary">
+                <div class="dropright" style="padding-bottom: 0px;">
+                  <a class="dropdown-toggle vendor-name" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                    <script language="javascript" type="text/javascript">
+                      <!--
+                      document.write(n);
+                      //-->
+                    </script>
+                  </a>
+                  <div class="dropdown-menu  dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="https://vendors.bmtmicro.com/accountstart.html">My Account</a>
+                    <a class="dropdown-item" href="https://vendors.bmtmicro.com/settingsstart.html">Settings</a>
+                    <a class="dropdown-item" href="https://vendors.bmtmicro.com/usersstart.html">User Management</a>
+                    <a class="dropdown-item" href="javascript:document.logout.submit();">Log Out</a>
+                  </div>
+                </div> <!-- end .dropright -->
+                <div class="vendor-company">
+                  <span>
+                    <script type="text/javascript">
+                      <!--
+                      document.write(c);
+                      //-->
+                    </script>
+                  </span>
+                </div> <!-- end .vendor-company -->
+                <div class="vendor-balance" onload="document.balancestart.submit ();">
+                  <iframe src="https://vendors-new.bmtmicro.com/balancestart.html" name="balance" id="balance" frameborder="0" style="max-height: 35px;"></iframe>
                 </div>
-              </div>
-              <div class="dropright">
-                <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Products</a>
-                <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Manage Products</a>
-                  <a class="dropdown-item" href="#">Manage Files</a>
-                  <a class="dropdown-item" href="#">Activation Code Table</a>
-                  <a class="dropdown-item" href="#">Discount Schemes</a>
-                  <a class="dropdown-item" href="#">Manage Pricing Tiers</a>
-                  <a class="dropdown-item" href="#">Manage Splits</a>
-                  <a class="dropdown-item" href="#">Split Sales Report</a>
-                </div>
-              </div>
-              <div class="dropright">
-                <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Customers</a>
-                <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Customer Search</a>
-                  <a class="dropdown-item" href="#">Customer Comments</a>
-                  <a class="dropdown-item" href="#">Manage Download Passwords</a>
-                  <a class="dropdown-item" href="#">Manage Subscriptions</a>
-                  <a class="dropdown-item" href="#">Manage Tickets</a>
-                  <a class="dropdown-item" href="#">Authorize Sales</a>
-                </div>
-              </div>
-              <div class="dropright">
-                <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Affiliates</a>
-                <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Program Information</a>
-                  <a class="dropdown-item" href="#">Terms & Conditions</a>
-                  <a class="dropdown-item" href="#">Affiliate Sales</a>
-                  <a class="dropdown-item" href="#">Manage Affiliates</a>
-                  <a class="dropdown-item" href="#">Email All Affiliates</a>
-                </div>
-              </div>
-              <div class="dropright">
-                <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Payoneer Payments</a>
-                <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Get paid via Pre-paid</a>
-                  <a class="dropdown-item" href="#">Mastercard</a>
-                </div>
-              </div>
-              <div class="dropright">
-                <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Contact Us</a>
-                <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Suggestions</a>
-                  <a class="dropdown-item" href="#">Comments</a>
-                  <a class="dropdown-item" href="#">Contact BMT Micro</a>
-                </div>
-              </div>
-            </aside>
-          </div>
-          <div class="col-10">
-
-            <div class="page-title">
+                <div class="dropright">
+                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Sales</a>
+                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="main.html" style="color: #ef9a00;">Sales Graphs</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/salessummarystart.html">Sales Summary</a>
+                    <a class="dropdown-item" href="#">Detailed Summary</a>
+                    <a class="dropdown-item" href="#">EU Sales Summary</a>
+                    <a class="dropdown-item" href="#">Sales Details</a>
+                    <a class="dropdown-item" href="#">View Statistics</a>
+                    <a class="dropdown-item" href="#">Pending Sales</a>
+                    <a class="dropdown-item" href="#">Account Transactions</a>
+                    <a class="dropdown-item" href="#">Manage Transfers</a>
+                  </div>
+                </div> <!-- end .dropright -->
+                <div class="dropright">
+                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Products</a>
+                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Manage Products</a>
+                    <a class="dropdown-item" href="#">Manage Files</a>
+                    <a class="dropdown-item" href="#">Activation Code Table</a>
+                    <a class="dropdown-item" href="#">Discount Schemes</a>
+                    <a class="dropdown-item" href="#">Manage Pricing Tiers</a>
+                    <a class="dropdown-item" href="#">Manage Splits</a>
+                    <a class="dropdown-item" href="#">Split Sales Report</a>
+                  </div>
+                </div> <!-- end .dropright -->
+                <div class="dropright">
+                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Customers</a>
+                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Customer Search</a>
+                    <a class="dropdown-item" href="#">Customer Comments</a>
+                    <a class="dropdown-item" href="#">Manage Download Passwords</a>
+                    <a class="dropdown-item" href="#">Manage Subscriptions</a>
+                    <a class="dropdown-item" href="#">Manage Tickets</a>
+                    <a class="dropdown-item" href="#">Authorize Sales</a>
+                  </div>
+                </div> <!-- end .dropright -->
+                <div class="dropright">
+                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Affiliates</a>
+                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Program Information</a>
+                    <a class="dropdown-item" href="#">Terms & Conditions</a>
+                    <a class="dropdown-item" href="#">Affiliate Sales</a>
+                    <a class="dropdown-item" href="#">Manage Affiliates</a>
+                    <a class="dropdown-item" href="#">Email All Affiliates</a>
+                  </div>
+                </div> <!-- end .dropright -->
+                <div class="dropright">
+                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Payoneer</a>
+                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Get paid via Pre-paid</a>
+                    <a class="dropdown-item" href="#">Mastercard</a>
+                  </div>
+                </div> <!-- end .dropright -->
+                <div class="dropright">
+                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Contact Us</a>
+                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Suggestions</a>
+                    <a class="dropdown-item" href="#">Comments</a>
+                    <a class="dropdown-item" href="#">Contact BMT Micro</a>
+                  </div>
+                </div> <!-- end .dropright -->
+              </aside>
+            </div> <!-- end .col-lg-2 -->
+            <div class="col-lg-10 col-md-12">
               <h4>Sales Summary</h4>
               <p>Below is a summary of your sales from ##DATEFROM## through ##DATETO##.</p>
-
               <div class="select-table">
                 <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesSummary" onsubmit="return (CheckDateRange(this));">
                   <div class="date-selection">
@@ -213,13 +208,11 @@
                   </object>
 
                 </form>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
+              </div> <!-- end .select-table -->
+            </div> <!-- end .col-lg-10 -->
+          </div> <!-- end first .row -->
+        </article>
+      </div> <!-- end .container-fluid -->
       <footer class="row footer footer-big">
         <div class="container">
           <div class="bottom-footer-content text-center">
@@ -227,7 +220,7 @@
               <a href="https://www.facebook.com/bmt.micro" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/facebook-logo-white.png" width="25" alt="Facebook" title="Like us on Facebook"></a>
               <a href="https://www.linkedin.com/company/bmt-micro-wilmington-nc-usa/" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/linkedin-logo-white.png" width="25" alt="LinkedIn" title="Follow us on LinkedIn"></a>
               <a href="https://twitter.com/BMTMicro" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/twitter-logo-white.png" width="25" alt="Twitter" title="Follow us on Twitter"></a>
-              <a href="https://www.instagram.com/bmtmicro/" target="_blank"><img src="images-2/instagram-logo-white.png" width="25" alt="Instagram" title="Follow us on Instagram"></a>
+              <a href="https://www.instagram.com/bmtmicro/" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/instagram-logo-white.png" width="25" alt="Instagram" title="Follow us on Instagram"></a>
               <a href="https://www.pinterest.com/bmtmicro/" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/pinterest-logo-white.png" width="25" alt="Pinterest" title="See us on Pinterest"></a>
             </div>
             <div class="copyright">
@@ -236,8 +229,7 @@
           </div>
         </div>
       </footer>
-
-    </div>
+    </div> <!-- end .main-raised -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -248,6 +240,6 @@
       $(window).click(function(){
         $(".dropright").removeClass('show');
       });
-  </script>
+    </script>
   </body>
 </html>
