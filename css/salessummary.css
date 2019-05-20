@@ -49,7 +49,7 @@
   }
 
 .table-category {
-  background: #d7d7d7;
+  background: #d3d3d3;
   }
 
 .table {
@@ -64,17 +64,42 @@
   border-top: none;
   }
 
+.table td {
+  border-top: 1px solid #d3d3d3;
+  }
+
 th {
   color: #195a7c;
   margin: 0px;
   }
 
 .sort-column {
-  border-right: 1px solid red;
+  border-right: 1px solid #a9a9a9;
   letter-spacing: .5px;
   font-weight: 400;
   }
 
 .sort-column:last-child {
   border-right: none;
+  }
+
+td[text], td[number], td[money] {
+  font-size: .8rem;
+  letter-spacing: .5px;
+  }
+
+td[text], td[number] {
+  border-right: 1px solid #a9a9a9;
+  }
+td[number] {
+  text-align: center;
+  }
+
+td[money] {
+  text-align: right;
+  }
+
+.table-total th {
+  font-weight: 500;
+  letter-spacing: .5px;
   }
