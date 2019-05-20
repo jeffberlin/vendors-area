@@ -169,49 +169,17 @@
                       <button class="get-btn" value="Get New Summary">Update Summary</button>
                     </span>
                   </div>
-                  <div class="display-header row" style="margin-left: auto; margin-right: auto;">
-                    <ul style="list-style: none; padding-left: 0px; padding-right: 0px; margin-bottom: 0px;">
-                      <li class="col-6">Product</li>
-                      <li class="col-3 text-center">Units Sold</li>
-                      <li class="col-3 text-right">Total to Vendor</li>
-                    </ul>
-                    <!-- <div class="col-6">
-                      <span text>Product</span>
-                    </div>
-                    <div class="col-3 text-center">
-                      <span number>Units Sold</span>
-                    </div>
-                    <div class="col-3 text-right">
-                      <span money>Total to Vendor</span>
-                    </div> -->
-                  </div>
-
-                  <object>
-                    <table cellpadding="0" cellspacing="0" class="grid sortable" id="selection">
-                      <col style="width: auto;" />
-                      <col style="width: 100px" />
-                      <col style="width: 70px" />
-
+                  <div class="row" style="margin-left: auto; margin-right: auto;">
+                    <table class="table table-striped">
                       <thead>
-                        <tr>
-                          <th class="sortable" text>Product</th>
-                          <th class="sortable" number>Units Sold</th>
-                          <th class="sortable-currency" money>Total to Vendor</th>
+                        <tr class="table-category">
+                          <th scope="col" class="sort-column text-left">Product</th>
+                          <th scope="col" class="sort-column text-center">Units Sold</th>
+                          <th scope="col" class="sort-column text-right">Total to Vendor</th>
                         </tr>
                       </thead>
-                      <tbody>
-                         ##TABLEDATA##
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <th align="right"><strong>Total</strong></th>
-                          <td number><strong>##TOTALQUANTITY##</strong></td>
-                          <td money><strong>##TOTALAMOUNT##</strong></td>
-                        </tr>
-                      </tfoot>
                     </table>
-                  </object>
-
+                  </div> <!-- end .row -->
                 </form>
               </div> <!-- end .select-table -->
             </div> <!-- end .col-lg-10 -->

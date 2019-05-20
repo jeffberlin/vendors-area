@@ -48,8 +48,33 @@
   transition: .3s ease;
   }
 
-.display-header {
+.table-category {
   background: #d7d7d7;
-  padding: .5rem 1rem;
+  }
+
+.table {
+  margin-bottom: 0rem;
+  }
+
+.table thead th {
+  border-bottom: none;
+  }
+
+.table th {
+  border-top: none;
+  }
+
+th {
   color: #195a7c;
+  margin: 0px;
+  }
+
+.sort-column {
+  border-right: 1px solid red;
+  letter-spacing: .5px;
+  font-weight: 400;
+  }
+
+.sort-column:last-child {
+  border-right: none;
   }
