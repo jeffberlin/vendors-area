@@ -65,13 +65,21 @@
   }
 
 .table td {
-  border-top: 1px solid #d3d3d3;
+  border-top: 1px solid #dddddd;
   }
 
 th {
-  color: #195a7c;
   margin: 0px;
   }
+
+th a {
+  color: #195a7c;
+}
+
+th a:hover {
+  border-bottom: 1px solid #ef9a00;
+  color: #195a7c;
+}
 
 .sort-column {
   border-right: 1px solid #a9a9a9;
@@ -99,7 +107,10 @@ td[money] {
   text-align: right;
   }
 
-.table-total th {
+tfoot {
+  background-color: #dddddd;
+  border: 1px solid #a9a9a9;
   font-weight: 500;
   letter-spacing: .5px;
-  }
+  color: #195a7c;
+}
