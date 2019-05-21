@@ -1,0 +1,12 @@
+td[text], td[number], td[money] {
+  border-right: 1px solid #a9a9a9;
+  }
+
+td[number], td[money] {
+  text-align: center;
+  }
+
+td[money]:last-child {
+  border-right: none;
+  text-align: right;
+  }

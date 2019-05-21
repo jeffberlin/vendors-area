@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/summaryTable.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/salessummary.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
@@ -22,6 +21,14 @@
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
+    <style media="screen" type="text/css">
+      td[text] {
+        border-right: 1px solid #a9a9a9;
+      }
+      td[money] {
+        text-align: right;
+      }
+    </style>
   </head>
   <body>
     <div style="visibility:hidden;">
@@ -79,9 +86,9 @@
                   <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Sales</a>
                   <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/main.html">Sales Graphs</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/salessummarystart.html" style="color: #ef9a00;">Sales Summary</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/salessummarystart.html">Sales Summary</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/detailedsummarystart.html">Detailed Summary</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/eusummarystart.html">EU Sales Summary</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/eusummarystart.html" style="color: #ef9a00;">EU Sales Summary</a>
                     <a class="dropdown-item" href="#">Sales Details</a>
                     <a class="dropdown-item" href="#">View Statistics</a>
                     <a class="dropdown-item" href="#">Pending Sales</a>
@@ -140,8 +147,8 @@
               </aside>
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
-              <h4>Sales Summary</h4>
-              <p>Below is a summary of your sales from ##DATEFROM## through ##DATETO##.</p>
+              <h4>EU Sales Summary</h4>
+              <p>Below is a summary of sales to the European Union.</p>
               <div class="select-table">
                 <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesSummary" onsubmit="return (CheckDateRange(this));">
                   <div class="date-selection">
@@ -166,11 +173,8 @@
                           <th scope="col" class="sort-column text-left sortable fd-column-0">
                             <a href="#" class="fdTableSortTrigger" title="Sort on 'Product'">Product</a>
                           </th>
-                          <th scope="col" class="sort-column text-center sortable fd-column-1">
-                            <a href="#" class="fdTableSortTrigger" title="Sort on 'Units Sold'">Units Sold</a>
-                          </th>
-                          <th scope="col" class="sort-column text-right sortable-currency fd-column-2">
-                            <a href="#" class="fdTableSortTrigger" title="Sort on 'Total to Vendor'">Total to Vendor</a>
+                          <th scope="col" class="sort-column text-right sortable fd-column-1">
+                            <a href="#" class="fdTableSortTrigger" title="Sort on 'Total Sales'">Total Sales</a>
                           </th>
                         </tr>
                       </thead>
@@ -182,7 +186,6 @@
                       <tfoot>
                         <tr class="table-total">
                           <th scope="row">Total</th>
-                          <th scope="row" class="text-center" number>##TOTALQUANTITY##</th>
                           <th scope="row" class="text-right" money>##TOTALAMOUNT##</th>
                         </tr>
                       </tfoot>
