@@ -96,12 +96,15 @@
       .currentSelected {
         letter-spacing: .5px;
         font-size: .9rem;
-        margin-bottom: .2rem;
+        margin-bottom: .3rem;
       }
 
       .move {
         margin-bottom: 10px;
-        padding-left: 2px;
+      }
+
+      #SELECTEDLIST {
+        margin-bottom: .4rem;
       }
 
       button {
@@ -123,6 +126,14 @@
 
       .fa-angle-double-right {
         color: #195a7c;
+      }
+
+      .controlbuttons {
+        margin-bottom: 1rem;
+      }
+
+      .controlbuttons, .move {
+        padding-left: 2px;
       }
 
     </style>
@@ -209,11 +220,12 @@
          <input type="hidden" name="NEXT_PAGE" value="##CHARTPAGE##" />
          <input type="hidden" name="SELECTEDPRODUCTS" />
          <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-         <button type="button" class="dark" onclick="return (submitForm (chartform));">Get Graph</button>
+         <button type="button" class="dark" onclick="return (submitForm (chartform));" style="margin-right: .6rem;">Get Graph</button>
+         <button type="button" name="button" onclick="closeWin();">Cancel</button>
       </div>
     </form>
 
-    <button type="button" name="button" onclick="closeWin();">Cancel</button>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
