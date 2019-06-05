@@ -101,13 +101,20 @@
 
       .move {
         margin-bottom: 10px;
+        padding-left: 2px;
       }
 
       button {
         font-size: .8rem;
         letter-spacing: .5px;
-        border: 1px solid #a9a9a9;
+        /* border: 1px solid #a9a9a9; */
+        border: 1px solid rgba(17,22,26,.08);
         border-radius: 3px;
+        box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
+        -webkit-box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
+        background: #ffffff;
+        color: #195a7c;
+        padding: .2rem .75rem;
       }
 
       button:hover {
@@ -186,9 +193,9 @@
       <div class="move">
        <!-- we hardcode the style here since the classes are not visible. We can add class="content" to the "dd" tag to
             make the styles work, but then this will add whitespace on the sides which is not desired... -->
-        <button type="button" name="add" value="Add&nbsp;&gt;&gt;" onclick="addProduct (chartform);">Add&nbsp;<i class="fas fa-angle-down"></i></button>
-        <button type="button" name="remove" value="&lt;&lt;&nbsp;Remove" onclick="removeProduct (chartform);"><i class="fas fa-angle-up"></i>&nbsp;Remove</button>
-        <button type="button" name="addall" value="Add&nbsp;&gt;&gt;" onclick="addAllProducts (chartform);">Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i></button>
+        <button style="margin-right: .2rem;" type="button" name="add" value="Add&nbsp;&gt;&gt;" onclick="addProduct (chartform);">Add&nbsp;<i class="fas fa-angle-down"></i></button>
+        <button style="margin-right: .6rem;" type="button" name="remove" value="&lt;&lt;&nbsp;Remove" onclick="removeProduct (chartform);"><i class="fas fa-angle-up"></i>&nbsp;Remove</button>
+        <button style="margin-right: .2rem;" type="button" name="addall" value="Add&nbsp;&gt;&gt;" onclick="addAllProducts (chartform);">Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i></button>
         <button type="button" name="removeall" value="&lt;&lt;&nbsp;Remove" onclick="removeAllProducts (chartform);"><i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All</button>
       </div>
 
