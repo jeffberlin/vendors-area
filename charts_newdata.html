@@ -11,6 +11,7 @@
     <![endif]-->
     <title>BMT Micro Developers Center</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/main.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/newChart.css">
@@ -39,6 +40,10 @@
         form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues (form.SELECTEDLIST);
         form.submit ();
         return (true);
+      }
+
+      function closeWin() {
+        window.close();   // Closes the new window
       }
       //-->
     </script>
@@ -78,6 +83,39 @@
 
       input:focus, select:focus {
         border: 1px solid #195a7c;
+      }
+
+      #PRODUCTLIST {
+        margin-bottom: .2rem;
+      }
+
+      #PRODUCTLIST option {
+        font-size: .8rem;
+      }
+
+      .currentSelected {
+        letter-spacing: .5px;
+        font-size: .9rem;
+        margin-bottom: .2rem;
+      }
+
+      .move {
+        margin-bottom: 10px;
+      }
+
+      button {
+        font-size: .8rem;
+        letter-spacing: .5px;
+        border: 1px solid #a9a9a9;
+        border-radius: 3px;
+      }
+
+      button:hover {
+        border: 1px solid #195a7c;
+      }
+
+      .fa-angle-double-right {
+        color: #195a7c;
       }
 
     </style>
@@ -134,40 +172,41 @@
         </select>
       </span>
       <br>
-      <table width="100%" border="0" class="products" style="background-color:#FFFFFF">
-         <!-- <col class="listing" />
-         <col class="move" />
-         <col class="listing" /> -->
-         <tr>
-            <td colspan="3" style="font-size: .85rem;">Choose Products for this report: </td>
-         </tr>
-         <tr>
-            <td width="25%">
-               <select id="PRODUCTLIST" name="PRODUCTLIST" style="height:135px;" multiple="multiple" ondblclick="addProduct (chartform);" onchange="showSelection (this, 'currentsel');">
-                  ##PRODUCTLIST##
-               </select>
-            </td>
-            <td class="move">
-               <!-- we hardcode the style here since the classes are not visible. We can add class="content" to the "dd" tag to
-                    make the styles work, but then this will add whitespace on the sides which is not desired... -->
-               <button style="border: 1px solid #a9a9a9; border-radius: 3px; margin-bottom: .2rem;" type="button" name="add" value="Add&nbsp;&gt;&gt;" onclick="addProduct (chartform);">Add&nbsp;&gt;&gt;</button><br>
-               <button style="border: 1px solid #a9a9a9; border-radius: 3px; margin-bottom: 1rem;" type="button" name="remove" value="&lt;&lt;&nbsp;Remove" onclick="removeProduct (chartform);">&lt;&lt;&nbsp;Remove</button><br>
-               <button style="border: 1px solid #a9a9a9; border-radius: 3px; margin-bottom: .2rem;" type="button" name="addall" value="Add&nbsp;&gt;&gt;" onclick="addAllProducts (chartform);">Add&nbsp;All&nbsp;&gt;&gt;</button><br>
-               <button style="border: 1px solid #a9a9a9; border-radius: 3px;" type="button" name="removeall" value="&lt;&lt;&nbsp;Remove" onclick="removeAllProducts (chartform);">&lt;&lt;&nbsp;Remove&nbsp;All</button>
-            </td>
-            <td width="25%">
-               <select id="SELECTEDLIST" name="SELECTEDLIST" style="height:135px" multiple="multiple" ondblclick="removeProduct (chartform);" onchange="showSelection (this, 'currentsel');">
-                  ##SELECTEDPRODUCTS##
-               </select>
-            </td>
-         </tr>
-         <tr>
-            <td colspan="3">
-               <div id="currentsel">&nbsp;</div>
-            </td>
-         </tr>
-      </table>
+
+      <span style="font-size: .9rem;">Choose Products for this report:&nbsp;</span>
+      <br>
+      <select id="PRODUCTLIST" name="PRODUCTLIST" multiple="multiple" style="width: 85%;" ondblclick="addProduct (chartform);" onchange="showSelection (this, 'currentsel');">
+        ##PRODUCTLIST##
+      </select>
+
+      <div class="currentSelected">
+        <i class="fas fa-angle-double-right"></i>&nbsp;<span id="currentsel"></span>
+      </div>
+
+      <div class="move">
+       <!-- we hardcode the style here since the classes are not visible. We can add class="content" to the "dd" tag to
+            make the styles work, but then this will add whitespace on the sides which is not desired... -->
+        <button type="button" name="add" value="Add&nbsp;&gt;&gt;" onclick="addProduct (chartform);">Add&nbsp;<i class="fas fa-angle-down"></i></button>
+        <button type="button" name="remove" value="&lt;&lt;&nbsp;Remove" onclick="removeProduct (chartform);"><i class="fas fa-angle-up"></i>&nbsp;Remove</button>
+        <button type="button" name="addall" value="Add&nbsp;&gt;&gt;" onclick="addAllProducts (chartform);">Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i></button>
+        <button type="button" name="removeall" value="&lt;&lt;&nbsp;Remove" onclick="removeAllProducts (chartform);"><i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All</button>
+      </div>
+
+      <select id="SELECTEDLIST" name="SELECTEDLIST" style="width: 85%;" multiple="multiple" ondblclick="removeProduct (chartform);" onchange="showSelection (this, 'currentsel');">
+       ##SELECTEDPRODUCTS##
+      </select>
+
+      <div class="controlbuttons">
+         <input type="hidden" name="CHARTTYPE" value="##CHARTTYPE##" />
+         <input type="hidden" name="BULLETSIZE" value="##BULLETSIZE##" />
+         <input type="hidden" name="NEXT_PAGE" value="##CHARTPAGE##" />
+         <input type="hidden" name="SELECTEDPRODUCTS" />
+         <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+         <button type="button" class="dark" onclick="return (submitForm (chartform));">Get Graph</button>
+      </div>
     </form>
+
+    <button type="button" name="button" onclick="closeWin();">Cancel</button>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
