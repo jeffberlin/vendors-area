@@ -23,8 +23,14 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
-      td[text], td[number], td[date] {
+      td[text], td[number], td[date], td[info] {
         border-right: 1px solid #a9a9a9;
+      }
+      td[text]:last-child {
+        border-right: none;
+      }
+      .table thead th {
+        vertical-align: middle;
       }
     </style>
     <script language="javascript" type="text/javascript">
