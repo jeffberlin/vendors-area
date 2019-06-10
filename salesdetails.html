@@ -22,76 +22,82 @@
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
+    <style media="screen" type="text/css">
+      td[text], td[number], td[date] {
+        border-right: 1px solid #a9a9a9;
+      }
+    </style>
     <script language="javascript" type="text/javascript">
     <!--
       function initForm (form){
-      initField (form, "EXACTMATCH",  "##EXACTMATCH##");
+        initField (form, "EXACTMATCH",  "##EXACTMATCH##");
       }
       function exactMatch (form) {
-      setCookieValue ("BMTMicro.Vendors.SalesDetails.ExactMatch", queryField (form, "EXACTMATCH"), 1000);
+        setCookieValue ("BMTMicro.Vendors.SalesDetails.ExactMatch", queryField (form, "EXACTMATCH"), 1000);
       }
       function invoice (orderid) {
-      var form = document.invoice;
-      //   window.open("", "InvoicePopUp","scrollbars=yes,menubar=1,location=no,resizable=yes").focus();
-      form.ORDERID.value = orderid;
-      form.submit();
+        var form = document.invoice;
+        //   window.open("", "InvoicePopUp","scrollbars=yes,menubar=1,location=no,resizable=yes").focus();
+        form.ORDERID.value = orderid;
+        form.submit();
       }
       function tabledata () {
-      var colTypes = [ ##COLTYPELIST## ];
-      var colTypeNames = [
-      "text",   // 0 - Text
-      "number", // 1 - Number
-      "money",  // 2 - Amount
-      "money",  // 3 - Currency
-      "date",   // 4 - Date
-      "info",   // 5 - EMail
-      "number"  // 6 - Order ID
-      ];
+        var colTypes = [ ##COLTYPELIST## ];
+        var colTypeNames = [
+          "text",   // 0 - Text
+          "number", // 1 - Number
+          "money",  // 2 - Amount
+          "money",  // 3 - Currency
+          "date",   // 4 - Date
+          "info",   // 5 - EMail
+          "number"  // 6 - Order ID
+        ];
 
-      var colHdrs = [ ##COLHDRLIST## ];
-      var s = "<thead><tr>";
-      for (var i = 0; i < colHdrs.length; i++) {
-      s += "<th class=\"sortable\" " + colTypeNames[colTypes[i]] + ">" + colHdrs[i] + "<\/th>";
-      }
-      s += "<\/tr><\/thead><tbody><tr>";
-      var colFlts = [ ##COLFLTLIST## ];
-      for (var i = 0; i < colFlts.length; i++) {
-      s += "<th " + colTypeNames[colTypes[i]] + "><input type=\"text\" name=\"FILTER\" value=\"" + colFlts[i] + "\" style=\"width: 100%\"/><\/th>";
-      }
-      s += "<\/tr>";
+        var colHdrs = [ ##COLHDRLIST## ];
+        var s = "<thead><tr class=\"table-category\">";
+        for (var i = 0; i < colHdrs.length; i++) {
+          s += "<th class=\"sortable sort-column text-center\" " + colTypeNames[colTypes[i]] + ">" + colHdrs[i] + "<\/th>";
+        }
+        s += "<\/tr><\/thead><tbody><tr>";
+        var colFlts = [ ##COLFLTLIST## ];
+        for (var i = 0; i < colFlts.length; i++) {
+          s += "<th " + colTypeNames[colTypes[i]] + "><input type=\"text\" name=\"FILTER\" value=\"" + colFlts[i] + "\" style=\"width: 100%\"/><\/th>";
+        }
+        s += "<\/tr>";
 
-      var colData = [ ##COLDATALIST## ];
-      for (var j = 0; j < colData.length; ) {
-      s += "<tr>";
-      for (var i = 0; i < colTypes.length; i++, j++) {
-         var d = colData[j];
-         switch (colTypes[i]) {
-            case 3: // Currency
-               d = "<b>" + d + "<\/b>";
-               break;
-            case 5: // EMail
-               d = "<a href=mailto:" + d + ">" + d + "<\/a>";
-               break;
-            case 6:    //Order ID with invoice link
-               d = "<a href=\"javascript:invoice(" + d + ");\">" + d + "<\/a>";
-               break;
-            }
-         s += "<td " + colTypeNames[colTypes[i]] + ">" + d + "<\/td>";
-         }
-      s += "<\/tr>";
-      }
+        var colData = [ ##COLDATALIST## ];
+        for (var j = 0; j < colData.length; ) {
+          s += "<tr>";
+          for (var i = 0; i < colTypes.length; i++, j++) {
+            var d = colData[j];
+              switch (colTypes[i]) {
+                case 3: // Currency
+                  d = "<b>" + d + "<\/b>";
+                break;
+                case 5: // EMail
+                  d = "<a href=mailto:" + d + ">" + d + "<\/a>";
+                break;
+                case 6:    //Order ID with invoice link
+                  d = "<a href=\"javascript:invoice(" + d + ");\">" + d + "<\/a>";
+                break;
+              }
+            s += "<td " + colTypeNames[colTypes[i]] + ">" + d + "<\/td>";
+          }
+        s += "<\/tr>";
+        }
 
-      var colTotal = [ ##COLTOTALLIST## ];
-      s += "<\/tbody><tfoot><tr>";
-      for (var i = 0; i < colTotal.length; i++) {
-      s += "<td " + colTypeNames[colTypes[i]] + "><strong>" + colTotal[i] + "<\/strong><\/td>";
-      }
-      s += "<\/tr><\/tfoot>";
+        var colTotal = [ ##COLTOTALLIST## ];
+        s += "<\/tbody><tfoot><tr class=\"table-total\">";
+        for (var i = 0; i < colTotal.length; i++) {
+          s += "<td " + colTypeNames[colTypes[i]] + "><strong>" + colTotal[i] + "<\/strong><\/td>";
+        }
+        s += "<\/tr><\/tfoot>";
 
-      return (s);
+        return (s);
       }
       //-->
     </script>
+
   </head>
   <body onload="initForm (document.salesdetails);">
     <div style="visibility:hidden;">
@@ -107,6 +113,177 @@
 
     <!-- Blue background header -->
     <div class="blue-bg"></div>
+
+    <!-- Start of body content -->
+    <div class="main-raised">
+      <div class="container-fluid">
+        <article class="section">
+          <div class="row justify-content-start">
+            <div class="col-12" style="padding-top: 2.2rem;">
+              <img src="https://vendors-new.bmtmicro.com/images-2/bmt-micro-logo.png" alt="BMT Micro, Inc. logo" height="60" style="margin-bottom: 20px;">
+            </div> <!-- end .col-12 -->
+            <div class="col-lg-2">
+              <aside class="sidebar" role="complementary">
+                <div class="dropright" style="padding-bottom: 0px;">
+                  <a class="dropdown-toggle vendor-name" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                    <script language="javascript" type="text/javascript">
+                      <!--
+                      document.write(n);
+                      //-->
+                    </script>
+                  </a>
+                  <div class="dropdown-menu  dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="https://vendors.bmtmicro.com/accountstart.html">My Account</a>
+                    <a class="dropdown-item" href="https://vendors.bmtmicro.com/settingsstart.html">Settings</a>
+                    <a class="dropdown-item" href="https://vendors.bmtmicro.com/usersstart.html">User Management</a>
+                    <a class="dropdown-item" href="javascript:document.logout.submit();">Log Out</a>
+                  </div>
+                </div> <!-- end .dropright -->
+                <div class="vendor-company">
+                  <span>
+                    <script type="text/javascript">
+                      <!--
+                      document.write(c);
+                      //-->
+                    </script>
+                  </span>
+                </div> <!-- end .vendor-company -->
+                <div class="vendor-balance" onload="document.balancestart.submit ();">
+                  <iframe src="https://vendors-new.bmtmicro.com/balancestart.html" name="balance" id="balance" frameborder="0" style="max-height: 35px;"></iframe>
+                </div>
+                <div class="dropright">
+                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Sales</a>
+                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/main.html">Sales Graphs</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/salessummarystart.html">Sales Summary</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/detailedsummarystart.html">Detailed Summary</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/eusummarystart.html">EU Sales Summary</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/salesdetailsstart.html" style="color: #ef9a00;">Sales Details</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/statisticsstart.html">View Statistics</a>
+                    <a class="dropdown-item" href="https://vendors.bmtmicro.com/pendingsalesstart.html">Pending Sales</a>
+                    <a class="dropdown-item" href="https://vendors.bmtmicro.com/transactionsstart.html">Account Transactions</a>
+                    <a class="dropdown-item" href="https://vendors.bmtmicro.com/v2vstart.html">Manage Transfers</a>
+                  </div>
+                </div> <!-- end .dropright -->
+                <div class="dropright">
+                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Products</a>
+                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Manage Products</a>
+                    <a class="dropdown-item" href="#">Manage Files</a>
+                    <a class="dropdown-item" href="#">Activation Code Table</a>
+                    <a class="dropdown-item" href="#">Discount Schemes</a>
+                    <a class="dropdown-item" href="#">Manage Pricing Tiers</a>
+                    <a class="dropdown-item" href="#">Manage Splits</a>
+                    <a class="dropdown-item" href="#">Split Sales Report</a>
+                  </div>
+                </div> <!-- end .dropright -->
+                <div class="dropright">
+                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Customers</a>
+                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Customer Search</a>
+                    <a class="dropdown-item" href="#">Customer Comments</a>
+                    <a class="dropdown-item" href="#">Manage Download Passwords</a>
+                    <a class="dropdown-item" href="#">Manage Subscriptions</a>
+                    <a class="dropdown-item" href="#">Manage Tickets</a>
+                    <a class="dropdown-item" href="#">Authorize Sales</a>
+                  </div>
+                </div> <!-- end .dropright -->
+                <div class="dropright">
+                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Affiliates</a>
+                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Program Information</a>
+                    <a class="dropdown-item" href="#">Terms & Conditions</a>
+                    <a class="dropdown-item" href="#">Affiliate Sales</a>
+                    <a class="dropdown-item" href="#">Manage Affiliates</a>
+                    <a class="dropdown-item" href="#">Email All Affiliates</a>
+                  </div>
+                </div> <!-- end .dropright -->
+                <div class="dropright">
+                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Payoneer</a>
+                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Get paid via Pre-paid</a>
+                    <a class="dropdown-item" href="#">Mastercard</a>
+                  </div>
+                </div> <!-- end .dropright -->
+                <div class="dropright">
+                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Contact Us</a>
+                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Suggestions</a>
+                    <a class="dropdown-item" href="#">Comments</a>
+                    <a class="dropdown-item" href="#">Contact BMT Micro</a>
+                  </div>
+                </div> <!-- end .dropright -->
+              </aside>
+            </div> <!-- end .col-lg-2 -->
+            <div class="col-lg-10 col-md-12 page-title">
+              <h4>Sales Detail Report</h4>
+              <p>Filter Details using the input fields. Fields can be added or removed using the Settings link at the top right of this page.</p>
+              <div class="select-table">
+                <form name="salesdetails" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetails" method="post" onsubmit="return (CheckDateRange(this));">
+                  <div class="date-selection">
+                    <span>From:&nbsp;
+                      <input id="DATEFROM" name="DATEFROM" value="##DATEFROM##" />&nbsp;
+                      <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
+                    </span>
+                    <span>To:&nbsp;
+                      <input id="DATETO" name="DATETO" value="##DATETO##" />&nbsp;
+                      <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
+                    </span>
+                    <span>
+                      <input type="checkbox" name="EXACTMATCH" value="-1" onclick="exactMatch(salesdetails);">&nbsp;Use exact match when filtering
+                      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/salesdetails.html" />
+                      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+                    </span>
+                    <span>
+                      <select name="FORMAT">
+                        <option value="0" selected="selected">HTML</option>
+                        <option value="1">CSV</option>
+                        <option value="2">XML</option>
+                        <option value="3">PDF</option>
+                      </select>
+                    </span>
+                    <span>
+                      <button class="get-btn" value="Get Report">Get Sales Details</button>
+                    </span>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <script language="javascript" type="text/javascript">
+                        <!--
+                          document.write (tabledata ());
+                        //-->
+                      </script>
+                    </table>
+                  </div>
+                </form>
+                <div style="visibility:hidden;">
+                  <form name="invoice" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Invoice" method="post" target="_blank">
+                    <input name="ORDERID" type="hidden" value="0">
+                    <input name="VENDORID" type="hidden" value="##VENDORID##">
+                  </form>
+                </div>
+              </div>
+            </div> <!-- end .col-lg-10 col-md-12 page-title -->
+          </div> <!-- end first .row -->
+        </article>
+      </div> <!-- end .container-fluid -->
+      <footer class="row footer footer-big">
+        <div class="container">
+          <div class="bottom-footer-content text-center">
+            <div class="social-links">
+              <a href="https://www.facebook.com/bmt.micro" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/facebook-logo-white.png" width="25" alt="Facebook" title="Like us on Facebook"></a>
+              <a href="https://www.linkedin.com/company/bmt-micro-wilmington-nc-usa/" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/linkedin-logo-white.png" width="25" alt="LinkedIn" title="Follow us on LinkedIn"></a>
+              <a href="https://twitter.com/BMTMicro" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/twitter-logo-white.png" width="25" alt="Twitter" title="Follow us on Twitter"></a>
+              <a href="https://www.instagram.com/bmtmicro/" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/instagram-logo-white.png" width="25" alt="Instagram" title="Follow us on Instagram"></a>
+              <a href="https://www.pinterest.com/bmtmicro/" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/pinterest-logo-white.png" width="25" alt="Pinterest" title="See us on Pinterest"></a>
+            </div>
+            <div class="copyright">
+              BMT Micro, Inc. Copyright © 1992 - <script type="text/JavaScript"> document.write(new Date().getFullYear()); </script>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div> <!-- end .main-raised -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
