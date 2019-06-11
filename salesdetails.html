@@ -23,10 +23,10 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
-      td[text], td[number], td[date], td[info], td[money] {
+      td[text], td[number], td[date], td[info], td[money], th {
         border-right: 1px solid #a9a9a9;
       }
-      td[text]:last-child {
+      td[text]:last-child, th:last-child {
         border-right: none;
       }
       .table thead th {
@@ -245,9 +245,10 @@
                       <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
                     </span>
                     <span>To:&nbsp;
-                      <input id="DATETO" name="DATETO" value="##DATETO##" />&nbsp;
+                      <input id="DATETO" name="DATETO" value="##DATETO##" style="margin-bottom: 1rem;"/>&nbsp;
                       <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
                     </span>
+                    <br>
                     <span>
                       <input type="checkbox" name="EXACTMATCH" value="-1" onclick="exactMatch(salesdetails);">&nbsp;Use exact match when filtering
                       <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/salesdetails.html" />
