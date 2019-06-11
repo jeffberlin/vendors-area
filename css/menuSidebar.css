@@ -1,43 +1,46 @@
 .balance-text, .balance-amount, .vendor-name {
   font-weight: 700;
-  letter-spacing: .5px;
   font-size: .8rem;
-}
+  }
 
-.balance-text,.vendor-name {
+.balance-text, .balance-amount, .vendor-name, .sidebar-group {
+  letter-spacing: .5px;
+  }
+
+.balance-text, .vendor-name {
   color: #707070;
+  }
+
+.vendor-name:hover, .sidebar-group, .sidebar-group:hover, .sidebar-group:focus {
+  color: #195a7c;
 }
 
 .balance-amount {
   color: #ef9a00;
-}
+  }
 
 .vendor-name:hover {
-  color: #195a7c;
   transition: .3s ease-in-out;
   -webkit-transition: .3s ease-in-out;
   -moz-transition: .3s ease-in-out;
-}
+  }
 
 .sidebar-group {
-  color: #195a7c;
   font-weight: 600;
-  letter-spacing: .5px;
-}
+  }
 
 .sidebar-group:hover, .sidebar-group:focus {
-  color: #195a7c;
   border-bottom: 1px solid #ef9a00;
-}
+  }
 
 .dropright {
   padding-bottom: .5rem;
-}
+  }
 
 /* Handles the sidebar menu position */
 .sidebar-options {
   margin-top: 12px !important;
-}
+  }
 /*  */
 
 /* Handles the styling of the sidebar menu caret */
@@ -47,5 +50,5 @@
   border-bottom: 0;
   border-left: .3em solid transparent;
   vertical-align: .255em;
-}
+  }
 /*  */

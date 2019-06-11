@@ -1,71 +1,61 @@
-.section {
+.section, .currentSelected, .move, #SELECTEDLIST {
   margin-bottom: .4rem;
-}
+  }
 
 label, span {
   color: #000000;
-}
+  }
 
 label, select, .currentSelected, button {
   letter-spacing: .5px;
-}
+  }
 
 select, .currentSelected {
   font-size: .9rem;
+  }
+
+input, select {
+  border: 1px solid #a9a9a9;
 }
 
 input {
   border-radius: 3px;
-  border: 1px solid #a9a9a9;
   padding: 0 .4rem 0 .4rem;
   color: #707070;
   margin: 0rem .2rem;
   min-width: 115px;
-}
+  }
 
 span {
-  margin-right: 15px;
-}
+  margin-right: .4rem;
+  }
 
 select {
-  border: 1px solid #a9a9a9;
   border-radius: 3px;
   padding: .2rem;
   outline: none;
   background: #ffffff;
-}
+  }
 
 select:hover {
   cursor: pointer;
-}
+  }
 
-.dropdown-select select {
+.dropdown-select select, button {
   color: #195a7c;
-}
+  }
 
-input:focus, select:focus {
+input:focus, select:focus, button:hover {
   border: 1px solid #195a7c;
-}
+  }
 
 #PRODUCTLIST {
   margin-bottom: .3rem;
-}
+  }
 
 #PRODUCTLIST option, button {
   font-size: .8rem;
-}
-
-.currentSelected {
-  margin-bottom: .4rem;
-}
-
-.move {
-  margin-bottom: 10px;
-}
-
-#SELECTEDLIST {
-  margin-bottom: .4rem;
-}
+  }
 
 button {
   border: 1px solid rgba(17,22,26,.04);
@@ -73,22 +63,17 @@ button {
   box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
   -webkit-box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
   background: #ffffff;
-  color: #195a7c;
   padding: .3rem .75rem;
-}
-
-button:hover {
-  border: 1px solid #195a7c;
-}
+  }
 
 .fa-angle-double-right {
   color: #ef9a00;
-}
+  }
 
 .controlbuttons {
   margin-bottom: 1rem;
-}
+  }
 
 .controlbuttons, .move {
   padding-left: 2px;
-}
+  }
