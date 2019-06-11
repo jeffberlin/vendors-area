@@ -53,6 +53,10 @@
   margin-bottom: 0rem;
   }
 
+.table td {
+  vertical-align: middle;
+  }
+
 thead {
   border-bottom: 1px solid #a9a9a9;
   }
