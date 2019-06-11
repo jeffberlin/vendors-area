@@ -6,23 +6,25 @@
   filter: blur(15px);
   opacity: .5;
   height: 100%;
-  width: 100%;
   z-index: -1;
   top: 0;
   left: 0;
   position: fixed;
+  }
 
-}
+.main, .vendor-input, .footer {
+  width: 100%;
+  }
 
 .content-area {
   height: 95vh;
   min-height: 600px;
   padding-top: 100px;
-}
+  }
 
 .box-style {
   max-width: 445px;
-}
+  }
 
 .vendor-login-box {
   -webkit-box-shadow: 0px 2px 7px 2px rgba(0,0,0,0.1);
@@ -30,72 +32,69 @@
   box-shadow: 0px 2px 7px 2px rgba(0,0,0,0.1);
   border-radius: 6px;
   padding: 35px 110px;
-  /* margin-bottom: 6rem; */
-  /* max-width: 500px; */
-}
+  }
 
 input {
   background: rgba(255,255,255,0.4);
-}
+  }
 
 .vendor-input {
-  width: 100%;
   border-radius: 6px;
   border: 1px solid rgba(0,0,0,0.25);
   padding: 4px 7px;
-  letter-spacing: .5px;
+  }
+
+.vendor-input, .copyright {
   font-size: .9rem;
-}
+  }
+
+.vendor-input, .login-btn button, .signup a {
+  letter-spacing: .5px;
+  }
 
 .vendor-input:focus {
   border-color: #195a7c;
-}
+  }
 
 .username, .password {
   margin-bottom: 15px;
-}
+  }
 
 .forgot-password, .login-btn {
   margin-bottom: 10px;
-}
+  }
 
 .forgot-password a {
   font-size: .85rem;
   letter-spacing: .4px;
   color: #195a7c;
-}
+  }
 
-.login-btn button{
+.login-btn button {
   background: #ef9a00;
-  border: none;
   padding: 5px 0px;
   border-radius: 8px;
   color: #ffffff;
   width: 105px;
-  letter-spacing: .5px;
+  }
+
+.login-btn button, .login-btn button:active {
+  border: none;
 }
 
 .login-btn button:active {
   transform: translateY(2px);
   transition: .3s ease;
-  border: none;
   outline: none;
-}
+  }
 
-.signup a {
+.signup a, .copyright {
   color: #555555;
-  letter-spacing: .5px;
-}
+  }
 
 .footer {
   height: 25px;
-  width: 100%;
-}
-
-.copyright {
-  color: #555555;
-  font-size: .9rem;
-}
+  }
 
 /* RWD */
 @media (max-width: 530px) {
