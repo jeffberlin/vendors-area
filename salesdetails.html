@@ -26,14 +26,8 @@
       td[text], td[number], td[date], td[info], td[money], th {
         border-right: 1px solid #a9a9a9;
       }
-      td {
-        text-align: center;
-      }
       td:last-child, th:last-child {
         border-right: none;
-      }
-      .table thead th {
-        vertical-align: middle;
       }
       th {
         min-width: 150px;
@@ -95,7 +89,7 @@
         for (var i = 0; i < colHdrs.length; i++) {
           s += "<th class=\"sortable sort-column text-center\" " + colTypeNames[colTypes[i]] + ">" + colHdrs[i] + "<\/th>";
         }
-        s += "<\/tr><\/thead><tbody><tr>";
+        s += "<\/tr><\/thead><tbody class=\"text-center\"><tr>";
         var colFlts = [ ##COLFLTLIST## ];
         for (var i = 0; i < colFlts.length; i++) {
           s += "<th " + colTypeNames[colTypes[i]] + "><input class=\"input-search\" type=\"text\" name=\"FILTER\" placeholder=\"Search\" value=\"" + colFlts[i] + "\" style=\"width: 100%\"/><\/th>";
@@ -124,7 +118,7 @@
         }
 
         var colTotal = [ ##COLTOTALLIST## ];
-        s += "<\/tbody><tfoot><tr class=\"table-total\">";
+        s += "<\/tbody><tfoot><tr class=\"table-total text-center\">";
         for (var i = 0; i < colTotal.length; i++) {
           s += "<td " + colTypeNames[colTypes[i]] + "><strong>" + colTotal[i] + "<\/strong><\/td>";
         }

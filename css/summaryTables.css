@@ -56,7 +56,7 @@ th a, th a:hover, tfoot {
   margin-bottom: 0rem;
   }
 
-.table td {
+.table td, .table thead th {
   vertical-align: middle;
   }
 
@@ -94,7 +94,7 @@ th a:hover, .sort-column:hover {
   border-right: none;
   }
 
-td[text], td[number], td[money], .get-btn {
+td[text], td[number], td[money], td[info], td[date], .get-btn {
   font-size: .8rem;
   }
 
