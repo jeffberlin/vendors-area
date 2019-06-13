@@ -13,7 +13,7 @@
   border-radius: 3px 3px 0px 0px;
   }
 
-.date-selection span, .date-selection input, .get-btn, .display-header, .sort-column, td[text], td[number], td[money], tfoot {
+.date-selection span, .date-selection input, .get-btn, .display-header, .sort-column, td, tfoot {
   letter-spacing: .5px;
   }
 
@@ -94,7 +94,7 @@ th a:hover, .sort-column:hover {
   border-right: none;
   }
 
-td[text], td[number], td[money], td[info], td[date], .get-btn {
+td, .get-btn {
   font-size: .8rem;
   }
 
