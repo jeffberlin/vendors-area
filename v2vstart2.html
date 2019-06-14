@@ -70,7 +70,7 @@
       }
     </script>
   </head>
-  <body>
+  <body onload="document.start.submit();">
     <div style="visibility:hidden;">
        <form name="logout" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Logout">
          <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
@@ -189,64 +189,21 @@
               <h4>Manage&nbsp;Transfers</h4>
               <p>Transfers will be completed on vendor paydays.&nbsp;You may add or cancel transfers up until that date.</p>
               <div class="select-table">
-                <form name="transactions" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Transactions" target="">
-                  <div class="date-selection">
-                    <span>From:&nbsp;<input id="DATEFROM" name="DATEFROM" value="##DATEFROM##" />
-                      <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
-                    </span>
-                    <span>To:&nbsp;
-                      <input id="DATETO" name="DATETO" value="##DATETO##" style="margin-bottom: 1rem;" />
-                      <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
-                    </span>
-                    <br>
+                <iframe src="" name="tableframe" id="tableframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 450px;padding: 0px; margin:0px;" >
+                   [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
+                </iframe>
+                <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 400px;padding: 0px; margin:0px;" >
+                   [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
+                </iframe>
 
-                    <span>
-                      <select name="FORMAT">
-                        <option value="-1" selected="selected">HTML (refresh)</option>
-                        <option value="0">HTML (printable)</option>
-                        <option value="1">CSV</option>
-                        <option value="2">XML</option>
-                        <option value="3">PDF</option>
-                      </select>
-                    </span>
-                    <span>
-                      <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
-                      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/transactions.html">
-                      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
-                      <button type="button" class="get-btn" value="Get Report" onclick="submitForm (transactions);" />Get Account Transactions</button>
-                    </span>
-                  </div>
-                  <div class="row" style="margin-left: auto; margin-right: auto;">
-                    <table class="table">
-                      <thead>
-                        <tr class="table-category">
-                          <th scope="col" class="sort-column text-left sortable-date-ymd" date>
-                            <a href="#" class="fdTableSortTrigger">Date</a>
-                          </th>
-                          <th scope="col" class="sort-column text-center sortable">
-                            <a href="#" class="fdTableSortTrigger">Description</a>
-                          </th>
-                          <th scope="col" class="sort-column text-center sortable-currency" money>
-                            <a href="#" class="fdTableSortTrigger">Amount</a>
-                          </th>
-                          <th scope="col" class="sort-column text-center sortable" info>
-                            <a href="#" class="fdTableSortTrigger">Notes</a>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        ##TABLEDATA##
-                      </tbody>
-                      <tfoot>
-                        <tr class="table-total">
-                          <th scope="row" colspan="2">Total:</th>
-                          <th scope="row" class="text-center">##TOTALAMOUNT##</th>
-                          <th scope="row"></th>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div> <!-- end .row -->
+                <form name="start" method=post action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer" target="tableframe">
+                   <input type="hidden" name="ACTION" value="-1" />
+                   <input type="hidden" name="MAXAMOUNT" value="" />
+                   <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/v2v_tablerow.html" />
+                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/v2vtransfers.html">
+                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html">
                 </form>
+
               </div> <!-- end .select-table -->
             </div> <!-- end .col-lg-12 -->
           </div> <!-- end first .row -->

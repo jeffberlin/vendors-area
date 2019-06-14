@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/summaryTable.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
+    <style media="screen" type="text/css">
+      td {
+        border-right: 1px solid #a9a9a9;
+      }
+      td:last-child {
+        border-right: none;
+      }
+      td[date], td[money], td[option] {
+        text-align: center;
+      }
+    </style>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function submitForm(action, target, nextpage, transferid) {
+        var form = document.splits;
+        form.ACTION.value = action;
+        form.target = target;
+        form.NEXT_PAGE.value = nextpage;
+        form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.html" : "https://vendors-new.bmtmicro.com/error_frame.html";
+        form.TRANSFERID.value = transferid;
+        form.submit ();
+      }
+
+      function addVendorTransfer() {
+        if (##PAYDAY## == -1) {
+          alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
+          return;
+        }
+        if (allowChanges("You do not have permission to add vendor transfers.")) {
+          submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/v2v_add.html");
+        }
+      }
+
+      function addAffiliateTransfer() {
+        if (##PAYDAY## == -1) {
+          alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
+          return;
+        }
+        if (allowChanges("You do not have permission to add affiliate transfers.")) {
+          submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/v2a_add.html");
+        }
+      }
+
+      function editTransfer(transferid, toaffiliateid) {
+        submitForm (1, "resultframe", (toaffiliateid == 0) ? "https://vendors-new.bmtmicro.com/v2v_edit.html" : "https://vendors-new.bmtmicro.com/v2a_edit.html", transferid);
+      }
+
+      function cancelTransfer(transferid) {
+        if (##PAYDAY## == -1) {
+          alert ("Transfers cannot be deleted on a pay day. Please try again tomorrow.");
+          return;
+        }
+        if (allowChanges("You do not have permission to cancel vendor transfers.")) {
+          submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/v2v_delete.html", transferid);
+        }
+      }
+
+      function viewTransfer(transferid) {
+        submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/v2v_view.html", transferid);
+      }
+      //-->
+    </script>
+  </head>
+  <body>
+    <form name="splits" action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer" method="post" target="resultframe">
+      <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/v2vtransfers.html" />
+      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
+      <input type="hidden" name="ACTION" value="" />
+      <input type="hidden" name="TRANSFERID" value="" />
+      <input type="hidden" name="PAYDAY" value="##PAYDAY##" />
+      <div class="date-selection">
+        <button type="button" class="get-btn" onclick="addAffiliateTransfer ();" >Add Affiliate Transfer</button>
+        <button type="button" class="get-btn" onclick="addVendorTransfer ();" >Add Vendor Transfer</button>
+      </div>
+      <div class="row" style="margin-left: auto; margin-right: auto;">
+        <table class="table">
+          <thead>
+            <tr class="table-category text-center">
+              <th scope="col" class="sort-column sortable" title="Sort on 'Date'" date>
+                <a href="#" class="fdTableSortTrigger">Transfer Date</a>
+              </th>
+              <th scope="col" class="sort-column sortable" title="Sort" text>
+                <a href="#" class="fdTableSortTrigger">Description</a>
+              </th>
+              <th scope="col" class="sort-column sortable" title="Sort on 'Amount'" money>
+                <a href="#" class="fdTableSortTrigger">Amount</a>
+              </th>
+              <th scope="col" class="sort-column sortable" title="Sort" option>
+                <a href="#" class="fdTableSortTrigger"></a>
+              </th>
+              <th scope="col" class="sort-column sortable" title="Sort on 'Status'" option>
+                <a href="#" class="fdTableSortTrigger">Status</a>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            ##TABLEDATA##
+          </tbody>
+        </table>
+      </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+  </html>
