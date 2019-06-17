@@ -75,7 +75,7 @@
         <h5>Add New Vendor Transfer</h5>
         <span>
           <label>Beneficiary Vendor ID:</label>
-          <input name="TOVENDORID" maxlength="5" size="5" value="##TOVENDORID##"  title=" This should be the vendor ID receiving this transfer. " style="margin-bottom: .8rem;"/>
+          <input name="TOVENDORID" maxlength="5" size="5" value="##TOVENDORID##" title=" This should be the vendor ID receiving this transfer. " style="margin-bottom: .8rem;"/>
         </span>
         ##SELECT(MULTICURRENCY, -1,
         <span>
@@ -91,13 +91,19 @@
         <br clear="all" />
         <span>
           <label>Amount:</label>
-          <input name="AMOUNT" value="##AMOUNT##" size="10"  title=" Enter the amount in the text field. Numbers only, decimals are allowed. " style="margin-bottom: .8rem;" />
+          <input name="AMOUNT" value="##AMOUNT##" size="10" title=" Enter the amount in the text field. Numbers only, decimals are allowed. " style="margin-bottom: .8rem;" />
         </span>
         <br clear="all">
         <span>
           <label style="vertical-align: top;">Notes:</label>
           <textarea name="NOTES" rows="5" cols="60"></textarea>
         </span>
+        <span>
+          <button type="button" class="dark" onclick="submitForm (transfers);">Save</button>
+          <button type="button" class="dark" onclick="document.close.submit ();">Close</button>
+        </span>
+      </form>
+      <form name="close" action="https://vendors-new.bmtmicro.com/v2vstart.html" method="get" target="_parent">
       </form>
 
     </div> <!-- end .v2v-section -->
