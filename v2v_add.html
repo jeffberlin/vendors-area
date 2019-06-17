@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/summaryTable.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addTransfer.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function initForm(form) {
+        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+        // field is not present. (An unchecked checkbox constitutes a non-existent field).
+        initField(form, "CURRENCY", "##CURRENCY##");
+      }
+
+      function submitForm(form) {
+        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+        // field is not present. (An unchecked checkbox constitutes a non-existent field).
+        if (##PAYDAY## == -1) {
+          alert("Transfers cannot be made on a vendor pay day. Please try again tomorrow.");
+          return (false);
+        }
+        if (!allowChanges("You do not have permission to make vendor transfers.")) {
+          return (false);
+        }
+        if (isBlank(form.AMOUNT.value) || !isValidDollarAmount(form.AMOUNT.value)) {
+          alert("You must specify an amount");
+          form.AMOUNT.focus();
+          return (false);
+        }
+        if (form.AMOUNT.value <= 0) {
+          alert("Value out of range. (Must not be negative or zero)");
+          form.AMOUNT.focus();
+          return (false);
+        }
+        if (isBlank(form.TOVENDORID.value)) {
+           alert("You must specify a vendor ID");
+           form.TOVENDORID.focus();
+           return (false);
+         }
+         if (form.TOVENDORID.value < 1) {
+            alert("You must specify a valid vendor ID");
+            form.TOVENDORID.focus();
+            return (false);
+          }
+          // form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues(form.SELECTEDLIST);
+          form.submit();
+          return (true);
+      }
+      -->
+    </script>
+  </head>
+  <body onload="initForm (document.transfers);">
+    <div class="v2v-section">
+      <form method="post" name="transfers" action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer" target="_parent">
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/v2vstart.html" />
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+        <input type="hidden" name="TRANSFERID" value="##TRANSFERID##" />
+        <input type="hidden" name="ACTION" value="10" />
+        <h5>Add New Vendor Transfer</h5>
+        <span>
+          <label>Beneficiary Vendor ID:</label>
+          <input name="TOVENDORID" maxlength="5" size="5" value="##TOVENDORID##"  title=" This should be the vendor ID receiving this transfer. " style="margin-bottom: .8rem;"/>
+        </span>
+        ##SELECT(MULTICURRENCY, -1,
+        <span>
+          <label>Currency:</label>
+          <select name="CURRENCY">
+            <option value="" selected>All Currencies</option>
+            <option value="USD">USD</option>
+            <option value="GBP">GBP</option>
+            <option value="EUR">EUR</option>
+          </select>
+        </span>,
+        <input type="hidden" name="CURRENCY" value="%%CURRENCY%%">)##
+        <br clear="all" />
+        <span>
+          <label>Amount:</label>
+          <input name="AMOUNT" value="##AMOUNT##" size="10"  title=" Enter the amount in the text field. Numbers only, decimals are allowed. " style="margin-bottom: .8rem;" />
+        </span>
+        <br clear="all">
+        <span>
+          <label style="vertical-align: top;">Notes:</label>
+          <textarea name="NOTES" rows="5" cols="60"></textarea>
+        </span>
+      </form>
+
+    </div> <!-- end .v2v-section -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+      /* Anything that gets to the document will hide the dropdown */
+      $(window).click(function(){
+        $(".dropright").removeClass('show');
+      });
+    </script>
+  </body>
+  </html>

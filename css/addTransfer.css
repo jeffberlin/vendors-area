@@ -1,0 +1,16 @@
+.v2v-section {
+  padding: 1rem;
+}
+
+h5 {
+  color: #efa900;
+}
+
+label {
+  color: #707070;
+  font-size: .9rem;
+}
+
+h5, label, input {
+  letter-spacing: .5px;
+}
