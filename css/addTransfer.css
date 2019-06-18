@@ -1,4 +1,4 @@
-.v2v-section {
+.transfer-section {
   padding: 1rem;
 }
 
@@ -10,7 +10,7 @@ label {
   color: #707070;
 }
 
-h5, label, input, textarea, select {
+h5, label, input, textarea, select, button {
   letter-spacing: .5px;
 }
 
@@ -35,8 +35,25 @@ select {
   padding: .2rem;
   outline: none;
   background: #ffffff;
-  color: #195a7c;
 }
 select:hover {
   cursor: pointer;
+}
+
+select, button {
+  color: #195a7c;
+}
+
+button {
+  border: 1px solid rgba(17,22,26,.04);
+  border-radius: 3px;
+  box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
+  -webkit-box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
+  background: #ffffff;
+  padding: .3rem .75rem;
+  font-size: .8rem;
+}
+
+button:hover {
+  border: 1px solid #195a7c;
 }

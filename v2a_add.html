@@ -35,44 +35,50 @@
           alert("Transfers cannot be made on a vendor pay day. Please try again tomorrow.");
           return (false);
         }
-        if (!allowChanges("You do not have permission to make vendor transfers.")) {
+
+        if (!allowChanges("You do not have permission to make affiliate transfers.")) {
           return (false);
         }
-        if (isBlank(form.AMOUNT.value) || !isValidDollarAmount(form.AMOUNT.value)) {
+
+        if (isBlank (form.AMOUNT.value) || !isValidDollarAmount (form.AMOUNT.value)) {
           alert("You must specify an amount");
           form.AMOUNT.focus();
           return (false);
         }
+
         if (form.AMOUNT.value <= 0) {
           alert("Value out of range. (Must not be negative or zero)");
           form.AMOUNT.focus();
           return (false);
         }
-        if (isBlank(form.TOVENDORID.value)) {
-          alert("You must specify a vendor ID");
-          form.TOVENDORID.focus();
+
+        if (isBlank(form.TOAFFILIATEID.value)) {
+          alert("You must specify an affiliate ID");
+          form.TOAFFILIATEID.focus();
           return (false);
         }
-        if (form.TOVENDORID.value < 1) {
-          alert("You must specify a valid vendor ID");
-          form.TOVENDORID.focus();
+
+        if (form.TOAFFILIATEID.value < 100000) {
+          alert("You must specify a valid affiliate ID");
+          form.TOAFFILIATEID.focus();
           return (false);
         }
-        // form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues(form.SELECTEDLIST);
-        form.submit();
+        // form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues (form.SELECTEDLIST);
+        form.submit ();
         return (true);
       }
-      -->
+      //-->
     </script>
   </head>
   <body onload="initForm (document.transfers);">
+
     <div class="transfer-section">
       <form method="post" name="transfers" action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer" target="_parent">
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/v2vstart.html" />
         <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
         <input type="hidden" name="TRANSFERID" value="##TRANSFERID##" />
         <input type="hidden" name="ACTION" value="10" />
-        <h5>Add New Vendor Transfer</h5>
+        <h5>Add New Affiliate Transfer</h5>
         <span>
           <label>Beneficiary Vendor ID:</label>
           <input name="TOVENDORID" maxlength="5" size="5" value="##TOVENDORID##" title=" This should be the vendor ID receiving this transfer. " style="margin-bottom: .8rem;"/>
