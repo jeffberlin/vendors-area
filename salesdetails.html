@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Pragma" content="no-cache">
@@ -87,7 +86,7 @@
         var colHdrs = [ ##COLHDRLIST## ];
         var s = "<thead><tr class=\"table-category\">";
         for (var i = 0; i < colHdrs.length; i++) {
-          s += "<th class=\"sortable sort-column text-center\" " + colTypeNames[colTypes[i]] + ">" + colHdrs[i] + "<\/th>";
+          s += "<th class=\"sortable sort-column text-center sort\" " + colTypeNames[colTypes[i]] + ">" + colHdrs[i] + "<\/th>";
         }
         s += "<\/tr><\/thead><tbody class=\"text-center\"><tr>";
         var colFlts = [ ##COLFLTLIST## ];
@@ -128,7 +127,6 @@
       }
       //-->
     </script>
-
   </head>
   <body onload="initForm (document.salesdetails);">
     <div style="visibility:hidden;">
