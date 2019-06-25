@@ -21,8 +21,14 @@
       .date-selection input {
         font-size: .9rem;
       }
-      .date-selection input, .td-button button {
+      .date-selection input, .td-button button, .option-btn {
         letter-spacing: .5px;
+      }
+      .option-btn {
+        border-radius: 8px;
+        font-size: .8rem;
+        border: 1px solid #000000;
+        padding: .2rem .4rem;
       }
       td {
         border-right: 1px solid #a9a9a9;
@@ -38,19 +44,17 @@
         border: none;
         padding: .3rem .75rem;
         border-radius: 3px;
-      }
-      .dark {
-        background-color: #195a7c;
-        color: #efa900;
-      }
-      .light {
-        background-color: #efa900;
+        background-color: #ffffff;
+        border: 1px solid #195a7c;
         color: #195a7c;
       }
       .td-button button:hover {
         box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
         -webkit-box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
         -moz-box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
+        border: 1px solid #efa900;
+        color: #efa900;
+        transition: ease-in-out .2s;
       }
       .td-button:focus {
         outline: none;
@@ -159,11 +163,11 @@
           <button type="button" name="FILTERBUTTON" class="get-btn" onClick="filterChanged ();" />Apply</button>
         </span>
         <br clear="all" />
-        <button type="button" class="get-btn" onclick="editDefaultCustomerEMail ();">Edit Global Customer Email</button>
+        <button type="button" class="option-btn" onclick="editDefaultCustomerEMail ();">Edit Global Customer Email</button>
         &nbsp;&nbsp;
-        <button type="button" class="get-btn" onclick="editDefaultVendorEMail ();">Edit Global Vendor Email</button>
+        <button type="button" class="option-btn" onclick="editDefaultVendorEMail ();">Edit Global Vendor Email</button>
         &nbsp;&nbsp;
-        <button type="button" class="get-btn" onclick="addProduct ();" >Add New Product</button>
+        <button type="button" class="option-btn" onclick="addProduct ();" >Add New Product</button>
       </div> <!-- end .date-selection -->
       <div class="row" style="margin-left: auto; margin-right: auto;">
         <table class="table">
