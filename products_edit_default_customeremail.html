@@ -24,7 +24,14 @@
       .text-section {
         color: #707070;
         letter-spacing: .5px;
-        /* margin-bottom: .2rem; */
+        font-size: .9rem;
+      }
+      .token-list {
+        display: none;
+        position: absolute;
+      }
+      .dropdown:hover .token-list {
+        display: block;
       }
     </style>
     <script language="javascript" type="text/javascript">
@@ -67,7 +74,7 @@
 
       function submitForm(form) {
         if (isBlank(form.DEFAULTCUSTOMEREMAILTEMPLATE.value)) {
-          alert("Cannot leave default template blank!  It must at least have the Standard Message token.");
+          alert("Cannot leave default template blank! It must at least have the Standard Message token.");
           form.DEFAULTCUSTOMEREMAILTEMPLATE.value = "\#\#STDMESSAGE\#\#";
           form.DEFAULTCUSTOMEREMAILTEMPLATE.focus();
           return (false);
@@ -90,7 +97,15 @@
           Please read <a href="https://help.bmtmicro.com/vendors/edit-customer-email-notifications" target="_blank">help
           files</a> for a full explanation on standard messages and token usage.
         </p>
-        <textarea style="width:100%;height:275px;" id="emailtemplate" name="DEFAULTCUSTOMEREMAILTEMPLATE">##DEFAULTCUSTOMEREMAILTEMPLATE##</textarea>
+        <div class="toolbar token dropdown">
+          <button class="dropbtn">User&nbsp;Token&nbsp;List</button>
+          <div class="token-list">
+            <a title="DATE" onmouseover="return (fixTitle (this));" onclick="addToken (this);">Date</a>
+            <div title="ORDERDATE" onmouseover="return (fixTitle (this));" onclick="addToken (this);">Order date</div>
+          </div>
+        </div>
+        <textarea style="width: 50%; height: 190px; margin-bottom: .5rem;" id="emailtemplate" name="DEFAULTCUSTOMEREMAILTEMPLATE" placeholder="Type a message">##DEFAULTCUSTOMEREMAILTEMPLATE##</textarea>
+        <br>
         <input type="hidden" name="PRODUCTID" value="##PRODUCTID##" />
         <input type="hidden" name="ACTION" value="15" />
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/productsstart.html" />
