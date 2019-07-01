@@ -69,27 +69,21 @@
       }
 
       function addToken(div) {
-        insertAtCursor(document.getElementById ("emailtemplate"), makeToken(div.title));
+        insertAtCursor(document.getElementById ("emailtemplate"), makeToken (div.title));
       }
 
       function fixTitle(div) {
-        div.title = makeToken(div.title);
+        div.title = makeToken (div.title);
         return (false);
       }
 
       function showPreview(form) {
         var tgtform = document.previewform;
-        tgtform.PREVIEWTEXT.value = form.DEFAULTCUSTOMEREMAILTEMPLATE.value;
+        tgtform.PREVIEWTEXT.value = form.DEFAULTVENDOREMAILTEMPLATE.value;
         tgtform.submit();
       }
 
       function submitForm(form) {
-        if (isBlank(form.DEFAULTCUSTOMEREMAILTEMPLATE.value)) {
-          alert("Cannot leave default template blank! It must at least have the Standard Message token.");
-          form.DEFAULTCUSTOMEREMAILTEMPLATE.value = "\#\#STDMESSAGE\#\#";
-          form.DEFAULTCUSTOMEREMAILTEMPLATE.focus();
-          return (false);
-        }
         if (allowChanges("You do not have permission to edit email templates.")) {
           form.submit();
         }
@@ -101,12 +95,12 @@
 
     <div class="transfer-section">
       <form method="post" name="emailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="_parent">
-        <h5>Default Customer Email template</h5>
+        <h5>Default&nbsp;Vendor&nbsp;Email&nbsp;template</h5>
         <p class="text-section" style="margin-bottom: .5rem;">
           This template will be used by all products that do not have a custom specific table set.
           <br \>
-          Please read <a href="https://help.bmtmicro.com/vendors/edit-customer-email-notifications" target="_blank">help
-          files</a> for a full explanation on standard messages and token usage.
+          Please read <a href="javascript:vHelp('https://help.bmtmicro.com/vendors/edit-vendor-email-notifications/')" target="_blank">help
+          files</a>&nbsp;for a full explanation on standard messages and token usage.
         </p>
         <div class="toolbar">
           <div class="dropdown">
@@ -182,7 +176,7 @@
           </div>
         </div>
 
-        <textarea style="width: 50%; height: 190px; margin: .5rem 0;" id="emailtemplate" name="DEFAULTCUSTOMEREMAILTEMPLATE" placeholder="Type a message">##DEFAULTCUSTOMEREMAILTEMPLATE##</textarea>
+        <textarea style="width: 50%; height: 190px; margin: .5rem 0;" id="emailtemplate" name="DEFAULTVENDOREMAILTEMPLATE" placeholder="Type a message">##DEFAULTVENDOREMAILTEMPLATE##</textarea>
         <br>
         <input type="hidden" name="PRODUCTID" value="##PRODUCTID##" />
         <input type="hidden" name="ACTION" value="15" />
