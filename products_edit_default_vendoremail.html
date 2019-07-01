@@ -185,6 +185,13 @@
         <button type="button" onclick="showPreview (emailform);" style="margin-right: .5rem;">Preview</button>
         <button type="button" onclick="submitForm (emailform);">Save</button>
       </form>
+      <form method="post" name="previewform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);" >
+        <input type="hidden" name="ACTION" value="21" />
+        <input type="hidden" name="PRODUCTID" value="##PRODUCTID##" />
+        <input type="hidden" name="PREVIEWTEXT" value="" />
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/previewtext.html" />
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+      </form>
 
     </div> <!-- end .transfer-section -->
 
