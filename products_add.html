@@ -23,21 +23,23 @@
       .select-table {
         padding: 1rem;
       }
-      label, input {
+      span, label {
+        color: #707070;
+      }
+      span, label, input, textarea {
         letter-spacing: .5px;
       }
-      label {
-        color: #707070;
-        font-size: .9rem;
-      }
-      input {
+      input, textarea {
         border: 1px solid #a9a9a9;
         padding: .25rem .5rem;
         font-size: .8rem;
         border-radius: 3px;
       }
-      input:focus{
+      input:focus, textarea:focus {
         border: 1px solid #195a7c;
+      }
+      textarea {
+        outline: none;
       }
     </style>
     <script language="javascript" type="text/javascript">
@@ -485,7 +487,7 @@
                   <input type="hidden" name="VENDORID" value="##VENDORID##" />
                   <span>
                     <label>Product&nbsp;Name:</label>
-                    <input type="text" name="PRODUCTNAME" value="##PRODUCTNAME##" style="margin-right: .5rem;">
+                    <input type="text" name="PRODUCTNAME" value="##PRODUCTNAME##" style="margin-right: .5rem; margin-bottom: .5rem;">
                   </span>
                   <span>
                     <label>Product&nbsp;Price:</label>
@@ -502,14 +504,17 @@
                     <input type="hidden" name="PRICE_CAD" />
                     <input type="hidden" name="PRICE_AUD" />
                   </span>
-                  <span>
+                  <span style="margin-right: .5rem;">
                     <input type="hidden" name="PRICEINCLUDESVAT" value="##PRICEINCLUDESVAT##" />
                     <input type="checkbox" name="PRICEINCLUDESVAT_CHK" value="-1" />&nbsp;The price includes VAT
                   </span>
                   <span>
-                    <input type="hidden" name="PRICEINCLUDESGST" value="##PRICEINCLUDESGST##" /><input type="checkbox" name="PRICEINCLUDESGST_CHK" value="-1" />&nbsp;The price includes GST
+                    <input type="hidden" name="PRICEINCLUDESGST" value="##PRICEINCLUDESGST##" />
+                    <input type="checkbox" name="PRICEINCLUDESGST_CHK" value="-1" />&nbsp;The price includes GST
                   </span>
+                  <br clear="all">
                   <span>
+      <!-- FINISH SHIPPING SECTION -->
                     <div id="shipping" style="display: none;">
                       <label>Shipping&nbsp;Cost&nbsp;Scheme:</label>
                       <select name="SHIPPINGCOSTSCHEMEID">
@@ -517,6 +522,24 @@
                       </select>
                     </div>
                   </span>
+                  <span>
+                    <label style="margin-bottom: .2rem;">Short&nbsp;Description:</label>
+                    <br>
+                    <textarea name="DESCRIPTION" id="DESCRIPTION" onkeydown="textLimiterAndCounter(this.form.DESCRIPTION,this.form.CHARSREMAINING,1024);" onkeyup="textLimiterAndCounter(this.form.DESCRIPTION,this.form.CHARSREMAINING,1024);" cols="50" rows="4" placeholder="Type a message">##DESCRIPTION##</textarea>
+                  </span>
+                  <br clear="all">
+                  <span>
+                    <label style="font-size: .8rem;">Characters&nbsp;remaining:</label>
+                    <input type="text" name="CHARSREMAINING" value="" size="4" readonly="readonly" style="border: none; padding: .25rem 0rem; color: red; margin-bottom: .5rem;" />
+                  </span>
+                  <br clear="all">
+                  <span>
+                    <label>Keywords:</label>
+                    <input id="KEYWORDS" name="KEYWORDS" size="30" value="##KEYWORDS##" title=" Provide any keywords for your product (Limit 50 characters)" placeholder="Limit 50 characters" />
+                  </span>
+                  <br clear="all">
+                  <h4>Product&nbsp;Category</h4>
+                  <p>Please select the category that most fits your product.</p>
                 </form>
               </div> <!-- end .select-table -->
             </div> <!-- end .col-lg-12 -->
