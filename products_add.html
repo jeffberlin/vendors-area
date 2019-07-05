@@ -41,6 +41,9 @@
       textarea {
         outline: none;
       }
+      h5 {
+        color: #efa900;
+      }
     </style>
     <script language="javascript" type="text/javascript">
       <!--
@@ -153,7 +156,7 @@
           field.focus();
           return (false);
         }
-        window.open(url)
+        window.open(url);
         return (true);
       }
 
@@ -477,9 +480,10 @@
               </aside>
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
-              <h4>Add&nbsp;Product&nbsp;-&nbsp;Primary&nbsp;Info</h4>
-              <p>Enter basic product info in fields below.</p>
+              <h4>Add&nbsp;Product</h4>
               <div class="select-table">
+                <h5>Primary&nbsp;Info</h5>
+                <p>Enter basic product info in fields below.</p>
                 <form name="productform" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
                   <input type="hidden" name="ACTION" value="10" />
@@ -535,11 +539,75 @@
                   <br clear="all">
                   <span>
                     <label>Keywords:</label>
-                    <input id="KEYWORDS" name="KEYWORDS" size="30" value="##KEYWORDS##" title=" Provide any keywords for your product (Limit 50 characters)" placeholder="Limit 50 characters" />
+                    <input id="KEYWORDS" name="KEYWORDS" size="30" value="##KEYWORDS##" title=" Provide any keywords for your product (Limit 50 characters)" placeholder="Limit 50 characters" style="margin-bottom: 1.2rem;" />
                   </span>
                   <br clear="all">
-                  <h4>Product&nbsp;Category</h4>
-                  <p>Please select the category that most fits your product.</p>
+                  <div class="row" style="margin-bottom: 1.2rem;">
+                    <div class="col-6">
+                      <h5>Product&nbsp;Category</h5>
+                      <p>Please select the category that most fits your product.</p>
+                      <span>
+                        <label>Category:</label>
+                        <select name="CATEGORY"></select>
+                      </span>
+                    </div>
+                    <div class="col-6">
+                      <h5>Product&nbsp;Platform</h5>
+                      <p>For products installed on electronical devices.</p>
+                      <span>
+                        <label>Platform:</label>
+                        <select name="PLATFORM">
+                          <option value="N/A" selected="selected">Not Applicable</option>
+                          <option value="OS/2">OS/2</option>
+                          <option value="Windows">Windows</option>
+                          <option value="OS/2 &amp; Win">OS/2 &amp;Win</option>
+                          <option value="Win 3.x">Win 3.x</option>
+                          <option value="Windows 95/NT">Windows 95/NT</option>
+                          <option value="Windows 9x/Me">Windows 9x/Me</option>
+                          <option value="Windows NT/2000/XP/Vista">Windows NT/2000/XP/Vista</option>
+                          <option value="Windows CE">Windows CE</option>
+                          <option value="Palm OS">Palm OS</option>
+                          <option value="Handheld">Handheld</option>
+                          <option value="Macintosh">Macintosh</option>
+                          <option value="Unix">Unix</option>
+                          <option value="Linux">Linux</option>
+                          <option value="Sun Solaris">Sun Solaris</option>
+                          <option value="BeOS">BeOS</option>
+                          <option value="Symbian">Symbian OS</option>
+                          <option value="DOS">DOS</option>
+                          <option value="Java">Java</option>
+                          <option value="Embedded">Embedded</option>
+                          <option value="Other">Other</option>
+                          <option value="Windows &amp; Linux">Windows &amp; Linux</option>
+                          <option value="Windows &amp; Mac">Windows &amp; Mac</option>
+                          <option value="Linux &amp; Mac">Linux &amp; Mac</option>
+                          <option value="Linux &amp; OS/2">Linux &amp; OS/2</option>
+                          <option value="Win Lin Mac">Windows Linux &amp; Mac</option>
+                          <option value="Win Lin OS2">Windows Linux &amp; OS/2</option>
+                          <option value="Windows &amp; FreeBSD">Windows &amp; FreeBSD</option>
+                          <option value="Windows &amp; Symbian">Windows &amp; Symbian</option>
+                          <option value="Mac &amp; Symbian">Mac &amp; Symbian</option>
+                        </select>
+                      </span>
+                    </div>
+                  </div> <!-- end .row -->
+                  <h5>Shopping&nbsp;Cart&nbsp;Options</h5>
+                  <p style="margin-bottom: .1rem;">Unchecking the boxes will hide these options in your shopping cart.</p>
+                  <p style="font-size: .9rem; font-style: italic;">Note that the account settings have additional shopping cart options.</p>
+                  <span>
+                    <input type="hidden" name="SHOWCDOPTION" value="##SHOWCDOPTION##" />
+                    <input type="checkbox" name="SHOWCDOPTION_CHK" value="-1" />&nbsp;Show Backup CD option <br />
+                    <p style="font-size: .9rem; font-style: italic;">(Backup CD will be created by BMT Micro and sent to the customer)</p>
+                  </span>
+                  <span>
+                    <input type="hidden" name="SHOWDISCOUNTFIELD" value="##SHOWDISCOUNTFIELD##" />
+                    <input type="checkbox" name="SHOWDISCOUNTFIELD_CHK" value="-1" />&nbsp;Show Discount/Gift Certificate field
+                  </span>
+                  <span>
+                    <input type="hidden" name="SHIPPED" value="##SHIPPED##" />
+                    <input type="checkbox" name="SHIPPED_CHK" onchange="setFieldVisible ('shipping', this.checked);" />&nbsp;Product is shipped <br />
+                    <p style="font-size: .9rem; font-style: italic;">This option ensures that shipping information is available (some payment methods do not require customer to enter address).</p>
+                  </span>
                 </form>
               </div> <!-- end .select-table -->
             </div> <!-- end .col-lg-12 -->
