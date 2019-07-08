@@ -26,7 +26,7 @@
       span, label {
         color: #707070;
       }
-      span, label, input, textarea {
+      span, label, input, textarea, select {
         letter-spacing: .5px;
       }
       input, textarea {
@@ -43,6 +43,23 @@
       }
       h5 {
         color: #efa900;
+      }
+      select {
+        border: 1px solid #a9a9a9;
+        border-radius: 3px;
+        padding: .2rem;
+        outline: none;
+        background: #ffffff;
+      }
+      select:hover {
+        cursor: pointer;
+      }
+      select:focus {
+        border: 1px solid #195a7c;
+        outline: none;
+      }
+      select, h6 {
+        color: #195a7c;
       }
     </style>
     <script language="javascript" type="text/javascript">
@@ -542,8 +559,8 @@
                     <input id="KEYWORDS" name="KEYWORDS" size="30" value="##KEYWORDS##" title=" Provide any keywords for your product (Limit 50 characters)" placeholder="Limit 50 characters" style="margin-bottom: 1.2rem;" />
                   </span>
                   <br clear="all">
-                  <div class="row" style="margin-bottom: 1.2rem;">
-                    <div class="col-6">
+                  <div class="row">
+                    <div class="col-6" style="padding-left: 0rem; margin-bottom: 1.2rem;">
                       <h5>Product&nbsp;Category</h5>
                       <p>Please select the category that most fits your product.</p>
                       <span>
@@ -590,24 +607,88 @@
                         </select>
                       </span>
                     </div>
+                    <div class="col-6" style="padding-left: 0rem;">
+                      <h5>Shopping&nbsp;Cart&nbsp;Options</h5>
+                      <p style="margin-bottom: .1rem;">Unchecking the boxes will hide these options in your shopping cart.</p>
+                      <p style="font-size: .9rem; font-style: italic;">Note that the account settings have additional shopping cart options.</p>
+                      <span>
+                        <input type="hidden" name="SHOWCDOPTION" value="##SHOWCDOPTION##" />
+                        <input type="checkbox" name="SHOWCDOPTION_CHK" value="-1" />&nbsp;Show Backup CD option<br />
+                        <p style="font-size: .9rem; font-style: italic;">(Backup CD will be created by BMT Micro and sent to the customer)</p>
+                      </span>
+                      <p><input type="hidden" name="SHOWDISCOUNTFIELD" value="##SHOWDISCOUNTFIELD##" />
+                      <input type="checkbox" name="SHOWDISCOUNTFIELD_CHK" value="-1" />&nbsp;Show Discount/Gift Certificate field</p>
+                      <span>
+                        <input type="hidden" name="SHIPPED" value="##SHIPPED##" />
+                        <input type="checkbox" name="SHIPPED_CHK" onchange="setFieldVisible ('shipping', this.checked);" />&nbsp;Product is shipped
+                        <br />
+                        <p style="font-size: .9rem; font-style: italic;">This option ensures that shipping information is available (some payment methods do not require customer to enter address).</p>
+                      </span>
+                      <h6>Fields for allowing gift purchases.</h6>
+                      <span>
+                        <input type="hidden" name="SHOWREGNAMEFIELD" value="##SHOWREGNAMEFIELD##" />
+                        <input type="checkbox" name="SHOWREGNAMEFIELD_CHK" value="-1" />&nbsp;Show Registername field
+                        <br />
+                        <p style="font-size: .9rem; font-style: italic;">Allow buyer to purchase for third party (gift for friend/colleague/etc).</p>
+                      </span>
+                      <span>
+                        <input type="hidden" name="SHOWEMAILFIELD" value="##SHOWEMAILFIELD##" />
+                        <input type="checkbox" name="SHOWEMAILFIELD_CHK" value="-1" />&nbsp;Show Delivery Email field
+                        <br />
+                        <p style="font-size: .9rem; font-style: italic;">Allow product information email to be sent to third party (gift for friend/colleague/etc).</p>
+                      </span>
+                      <h6>Cart parameter checks.</h6>
+                      <span>
+                        <input type="hidden" name="QUANTITYFIXED" value="##QUANTITYFIXED##" />
+                        <input type="checkbox" name="QUANTITYFIXED_CHK" value="-1" />&nbsp;Quantity is fixed
+                        <br />
+                        <p style="font-size: .9rem; font-style: italic;">Enabling this option will prevent the customer from changing the quantity in the shopping cart.</p>
+                      </span>
+                      <span>
+                        <input type="hidden" name="NEEDSORDERPARAMETERS" value="##NEEDSORDERPARAMETERS##" />
+                        <input type="checkbox" name="NEEDSORDERPARAMETERS_CHK" value="-1" />&nbsp;Order Parameters must not be blank
+                        <br />
+                        <p style="font-size: .9rem; font-style: italic;">Enabling this option will prevent the customer from completing an order if the ORDERPARAMETERS value is missing in the shopping cart.</p>
+                      </span>
+                    </div> <!-- end .col-6 -->
+                    <div class="col-6">
+                      <h5>Product Format List</h5>
+                      <p>Here you can add several different format/size/type/color for a same product.</p>
+                      <span>
+                        <label>Format&nbsp;List:</label>
+                        <input name="FILEFORMATS" size="40" maxlength="80" value="##FILEFORMATS##" />
+                        <!--<button class="green">Add to >></button> <select name="FILEFORMATS"><option value="1">X-Large</option><option value="2">XX-Large</option></select> <button>Reset List</button>//-->
+                        <p style="font-size: .9rem; font-style: italic; color: red; margin-bottom: .5rem;">If product purchase does not require a format/size/type/color choice, please leave this field blank.</p>
+                        <p style="font-size: .9rem; font-style: italic;">Listing formats here will add a selection box in the shopping cart that lets the customer choose format when purchasing. Use the Format List when the customer needs to pick a format, size, type, color, etc. For example, if you're selling a T-shirt, you may want to specify "S,M,L,XL" here. If you sell a program for several platforms and want to do it all under the same product setup, you can specify "Windows,Linux,Mac" for example. If doing it this way, you can associate an index file (.idx) as download file in order to deliver different download files depening on format purchased.</p>
+                      </span>
+                    </div> <!-- end .col-6 -->
+                    <div class="col-10" style="padding-left: 0rem;">
+                      <h5>Secondary&nbsp;Info</h5>
+                      <p>Please take some time to review if you need to add support with any of the following, if you do not want any more options added, simply click Save (you can always add those options later).</p>
+                      <h6>Associate&nbsp;Download&nbsp;File</h6>
+                      <p style="margin-bottom: .5rem;">If order should be fulfilled via secure download from BMT&nbsp;Micro, use selector below to associate a file already uploaded using the Manage Files interface.</p>
+                      <!--<button type="button" class="orange" onclick="toggleField('uploadfile');">Upload a New File</button>&nbsp;-->
+                      <button type="button" class="option-btn" onclick="toggleField('downloadfile');">
+                        Choose&nbsp;File
+                      </button>
+                      <span id="downloadfile">
+                        <h6 style="color: #efa900;">Choose&nbsp;File</h6>
+                        <div id="fileFields"></div>
+                        <label>Download password should expire in:</label>
+                        <select name="DOWNLOADEXPDAYS">
+                          <option value="31" selected>31 Days</option>
+                          <option value="60">60 Days</option>
+                          <option value="90">90 Days</option>
+                          <option value="180">180 Days</option>
+                          <option value="365">365 Days</option>
+                          <option value="-1">Never Expires</option>
+                        </select>
+                      </span>
+
+
+
+                    </div> <!-- end .col-8 -->
                   </div> <!-- end .row -->
-                  <h5>Shopping&nbsp;Cart&nbsp;Options</h5>
-                  <p style="margin-bottom: .1rem;">Unchecking the boxes will hide these options in your shopping cart.</p>
-                  <p style="font-size: .9rem; font-style: italic;">Note that the account settings have additional shopping cart options.</p>
-                  <span>
-                    <input type="hidden" name="SHOWCDOPTION" value="##SHOWCDOPTION##" />
-                    <input type="checkbox" name="SHOWCDOPTION_CHK" value="-1" />&nbsp;Show Backup CD option <br />
-                    <p style="font-size: .9rem; font-style: italic;">(Backup CD will be created by BMT Micro and sent to the customer)</p>
-                  </span>
-                  <span>
-                    <input type="hidden" name="SHOWDISCOUNTFIELD" value="##SHOWDISCOUNTFIELD##" />
-                    <input type="checkbox" name="SHOWDISCOUNTFIELD_CHK" value="-1" />&nbsp;Show Discount/Gift Certificate field
-                  </span>
-                  <span>
-                    <input type="hidden" name="SHIPPED" value="##SHIPPED##" />
-                    <input type="checkbox" name="SHIPPED_CHK" onchange="setFieldVisible ('shipping', this.checked);" />&nbsp;Product is shipped <br />
-                    <p style="font-size: .9rem; font-style: italic;">This option ensures that shipping information is available (some payment methods do not require customer to enter address).</p>
-                  </span>
                 </form>
               </div> <!-- end .select-table -->
             </div> <!-- end .col-lg-12 -->

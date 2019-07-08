@@ -60,10 +60,22 @@ a {
   color: #ef9a00;
   }
 
-.page-title h4, .page-title p {
+.page-title h4, .page-title p, .option-btn {
   letter-spacing: .5px;
   }
 
 .page-title p {
   color: #707070;
+  }
+
+.option-btn {
+  border-radius: 8px;
+  font-size: .8rem;
+  border: 1px solid #000000;
+  padding: .2rem .4rem;
+  }
+
+.option-btn:hover {
+  background-color: #a9a9a9;
+  transition: ease .2s;
   }
