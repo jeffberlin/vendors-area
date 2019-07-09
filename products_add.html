@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <style media="screen" type="text/css">
       .select-table {
@@ -668,22 +668,26 @@
                       <h6>Associate&nbsp;Download&nbsp;File</h6>
                       <p style="margin-bottom: .5rem;">If order should be fulfilled via secure download from BMT&nbsp;Micro, use selector below to associate a file already uploaded using the Manage Files interface.</p>
                       <!--<button type="button" class="orange" onclick="toggleField('uploadfile');">Upload a New File</button>&nbsp;-->
-                      <button type="button" class="option-btn" onclick="toggleField('downloadfile');">
+                      <button type="button" class="option-btn" onclick="toggleField('downloadfile');" style="margin-bottom: .7rem;">
                         Choose&nbsp;File
                       </button>
-                      <span id="downloadfile">
-                        <h6 style="color: #efa900;">Choose&nbsp;File</h6>
+                      <div id="downloadfile">
+                        <h6 style="color: #efa900; margin-bottom: .3rem;">Choose&nbsp;File</h6>
                         <div id="fileFields"></div>
-                        <label>Download password should expire in:</label>
-                        <select name="DOWNLOADEXPDAYS">
-                          <option value="31" selected>31 Days</option>
-                          <option value="60">60 Days</option>
-                          <option value="90">90 Days</option>
-                          <option value="180">180 Days</option>
-                          <option value="365">365 Days</option>
-                          <option value="-1">Never Expires</option>
-                        </select>
-                      </span>
+                        <br clear="all">
+                        <span>
+
+                          <label>Download password should expire in:</label>
+                          <select name="DOWNLOADEXPDAYS">
+                            <option value="31" selected>31 Days</option>
+                            <option value="60">60 Days</option>
+                            <option value="90">90 Days</option>
+                            <option value="180">180 Days</option>
+                            <option value="365">365 Days</option>
+                            <option value="-1">Never Expires</option>
+                          </select>
+                        </span>
+                      </div>
 
 
 
