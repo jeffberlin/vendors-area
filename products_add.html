@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
+    <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
@@ -60,6 +61,14 @@
       }
       select, h6 {
         color: #195a7c;
+      }
+      .fa-plus-circle {
+        color: #195a7c;
+        font-size: 18px;
+      }
+      .fa-plus-circle:hover {
+        color: #efa900;
+        transition: ease-in-out .3s;
       }
     </style>
     <script language="javascript" type="text/javascript">
@@ -673,12 +682,14 @@
                       </button>
                       <div id="downloadfile">
                         <h6 style="color: #efa900; margin-bottom: .3rem;">Choose&nbsp;File</h6>
-                        <div id="fileFields"></div>
+                        <div id="fileFields">
+
+                        </div>
                         <br clear="all">
                         <span>
 
                           <label>Download password should expire in:</label>
-                          <select name="DOWNLOADEXPDAYS">
+                          <select name="DOWNLOADEXPDAYS" style="margin-right: .5rem;">
                             <option value="31" selected>31 Days</option>
                             <option value="60">60 Days</option>
                             <option value="90">90 Days</option>
@@ -687,10 +698,16 @@
                             <option value="-1">Never Expires</option>
                           </select>
                         </span>
+                        <span>
+                          <label>Add&nbsp;Another&nbsp;File:</label>
+                          <button type="button" onclick="addFileField();" style="border: none; background: none; padding: .1rem; vertical-align: middle;"><i class="fas fa-plus-circle"></i></button>
+                        </span>
                       </div>
-
-
-
+                      <!--
+                      NOTE: It is possible provide several download files for one purchase and let the customer choose what to download. This can be done by setting up an index file and a HTML file for selection.
+                      Please contact&nbsp;<a href="mailto:webmaster@bmtmicro.com">webmaster@bmtmicro.com</a>&nbsp;for information on how to use this feature.
+                            <br><br>
+                      -->
                     </div> <!-- end .col-8 -->
                   </div> <!-- end .row -->
                 </form>
