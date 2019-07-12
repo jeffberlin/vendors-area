@@ -64,11 +64,11 @@
       }
       .fa-plus-circle {
         color: #195a7c;
-        font-size: 18px;
+        font-size: 1.5rem;
       }
       .fa-plus-circle:hover {
         color: #efa900;
-        transition: ease-in-out .3s;
+        transition: ease-in-out .25s;
       }
     </style>
     <script language="javascript" type="text/javascript">
@@ -164,12 +164,12 @@
       }
 
       function toggleField(field) {
-        var e = document.getElementById (field);
+        var e = document.getElementById(field);
         if (e.style.display == '') {
           e.style.display = 'none';
         } else {
           e.style.display = '';
-          e.focus ();
+          e.focus();
         }
       }
 
@@ -374,7 +374,7 @@
           form.PRICE_USD.value = "";
           break;
         }
-        if ((form.RECURDELAY.value < 0) || (form.RECURDELAY.value > 45)) {
+        if ((form.RECURDELAY.value <a 0) || (form.RECURDELAY.value > 45)) {
           setFieldVisible('subscriptionhandling');
           alert("Subscriptions must start billing within 45 days!");
           form.RECURDELAY.focus();
@@ -550,6 +550,7 @@
                       <select name="SHIPPINGCOSTSCHEMEID">
                         ##SHIPPINGSCHEMEIDLIST##
                       </select>
+                      <p style="font-size: .9rem; font-style: italic;">If shipping is free or included in product price, please leave this field blank!&nbsp;Click&nbsp;<a href="https://vendors-new.bmtmicro.com/shippingstart.html">here</a>&nbsp;to set up or configure shipping schemes and regions.</p>
                     </div>
                   </span>
                   <span>
@@ -646,7 +647,7 @@
                         <br />
                         <p style="font-size: .9rem; font-style: italic;">Allow product information email to be sent to third party (gift for friend/colleague/etc).</p>
                       </span>
-                      <h6>Cart parameter checks.</h6>
+                      <h6>Cart&nbsp;parameter&nbsp;checks.</h6>
                       <span>
                         <input type="hidden" name="QUANTITYFIXED" value="##QUANTITYFIXED##" />
                         <input type="checkbox" name="QUANTITYFIXED_CHK" value="-1" />&nbsp;Quantity is fixed
@@ -680,7 +681,7 @@
                       <button type="button" class="option-btn" onclick="toggleField('downloadfile');" style="margin-bottom: .7rem;">
                         Choose&nbsp;File
                       </button>
-                      <div id="downloadfile">
+                      <div id="downloadfile" style="display: none;">
                         <h6 style="color: #efa900; margin-bottom: .3rem;">Choose&nbsp;File</h6>
                         <div id="fileFields">
 
@@ -702,12 +703,12 @@
                           <label>Add&nbsp;Another&nbsp;File:</label>
                           <button type="button" onclick="addFileField();" style="border: none; background: none; padding: .1rem; vertical-align: middle;"><i class="fas fa-plus-circle"></i></button>
                         </span>
-                      </div>
                       <!--
                       NOTE: It is possible provide several download files for one purchase and let the customer choose what to download. This can be done by setting up an index file and a HTML file for selection.
                       Please contact&nbsp;<a href="mailto:webmaster@bmtmicro.com">webmaster@bmtmicro.com</a>&nbsp;for information on how to use this feature.
                             <br><br>
                       -->
+                      </div>
                     </div> <!-- end .col-8 -->
                   </div> <!-- end .row -->
                 </form>

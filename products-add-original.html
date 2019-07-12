@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="https://vendors-new.bmtmicro.com/main.css">
+   <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+   <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+   <script language="javascript" type="text/javascript">
+   <!--
+      var vendorFileList = ##VENDORDFL##;
+      var productFileList = ##PRODUCTDFL##;
+
+      function createFileField (index, selectedFileID, description) {
+         var fieldID = "fileField" + (index + 1);
+         var spanElem = document.createElement ("span");
+         spanElem.setAttribute ("id", fieldID);
+         var labelElem = document.createElement ("label");
+         labelElem.appendChild (document.createTextNode ("File " + (index + 1) + ":"));
+         spanElem.appendChild (labelElem);
+         var selectElem = document.createElement ("select");
+         selectElem.setAttribute ("id", "DOWNLOADFILEID");
+         selectElem.setAttribute ("name", "DOWNLOADFILEID");
+         spanElem.appendChild (selectElem);
+         var optionElem = document.createElement ("option");
+         optionElem.setAttribute ("value", "0");
+         selectElem.appendChild (optionElem);
+         for (var i = 0; i < vendorFileList.length; i++) {
+            var f = vendorFileList[i];
+            optionElem = document.createElement ("option");
+            optionElem.setAttribute ("value", f.id);
+            if (f.id == selectedFileID) {
+             optionElem.setAttribute ("selected", "selected");
+           }
+          optionElem.appendChild (document.createTextNode (f.name));
+          selectElem.appendChild (optionElem);
+          }
+         labelElem = document.createElement ("label");
+         labelElem.appendChild (document.createTextNode ("Description"));
+         spanElem.appendChild (labelElem);
+         var textElem = document.createElement ("input");
+         textElem.setAttribute ("type", "text");
+         textElem.setAttribute ("id", "DOWNLOADFILEDESCRIPTION");
+         textElem.setAttribute ("name", "DOWNLOADFILEDESCRIPTION");
+         textElem.setAttribute ("value", (description == null) ? "" : description);
+         spanElem.appendChild (textElem);
+         var buttonElem = document.createElement ("button");
+         buttonElem.setAttribute ("class", "remove");
+         buttonElem.setAttribute ("type", "button");
+         buttonElem.setAttribute ("onclick", "removeFileField (\"" + fieldID + "\");");
+         buttonElem.appendChild (document.createTextNode ("X"));
+         spanElem.appendChild (buttonElem);
+         spanElem.style.clear = "left";
+         return (spanElem);
+         }
+
+      function addFileField () {
+         var fieldsDiv = document.getElementById ("fileFields");
+         fieldsDiv.appendChild (createFileField (fieldsDiv.getElementsByTagName ("select").length, 0));
+         }
+
+      function relabelFileFields () {
+         var spanElems = document.getElementById ("fileFields").getElementsByTagName ("span");
+         for (var i = 0; i < spanElems.length; i++) {
+            var labelElems = spanElems[i].getElementsByTagName ("label");
+            labelElems[0].childNodes[0].nodeValue = "File " + (i + 1) + ":";
+            }
+         }
+
+      function removeFileField (id) {
+         var spanElem = document.getElementById (id);
+         spanElem.parentNode.removeChild (spanElem);
+         relabelFileFields ();
+         var spanElems = document.getElementById ("fileFields").getElementsByTagName ("span");
+         if (spanElems.length == 0) {
+            addFileField ();
+            setFieldVisible ("downloadfile", false);
+            }
+         }
+
+      function initFileFields () {
+         var docFragment = document.createDocumentFragment ();
+         if (productFileList.length == 0) {
+            docFragment.appendChild (createFileField (0, 0));
+            }
+         for (var i = 0; i < productFileList.length; i++) {
+            docFragment.appendChild (createFileField (i, productFileList[i].id, productFileList[i].desc));
+            }
+         var divID = "fileFields";
+         var oldDivElem = document.getElementById (divID);
+         var newDivElem = document.createElement ("div");
+         newDivElem.id = divID;
+         newDivElem.appendChild (docFragment);
+         oldDivElem.parentNode.replaceChild (newDivElem, oldDivElem);
+         }
+
+
+      function enableButton (buttonid, enabled) {
+         document.getElementById (buttonid).disabled = (enabled === false);
+         }
+
+      function toggleField (field) {
+         var e = document.getElementById (field);
+         if (e.style.display == '') {
+            e.style.display = 'none';
+            }
+         else {
+            e.style.display = '';
+            e.focus ();
+            }
+         }
+
+      function testURL (field, url) {
+         if (isBlank (url)) {
+            url = field.value;
+            }
+         if (isBlank (url) || !isValidURL (url)) {
+            alert ("Please enter a full URL starting with \"http://\" or \"https://\"");
+            field.focus ();
+            return (false);
+            }
+         window.open (url)
+         return (true);
+         }
+
+      function initForm (form) {
+         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+         // field is not present. (An unchecked checkbox constitutes a non-existent field).
+         initField (form, "SHOWCDOPTION_CHK",        "##SHOWCDOPTION##");
+         initField (form, "SHOWDISCOUNTFIELD_CHK",   "##SHOWDISCOUNTFIELD##");
+         initField (form, "SHOWREGNAMEFIELD_CHK",    "##SHOWREGNAMEFIELD##");
+         initField (form, "SHOWEMAILFIELD_CHK",      "##SHOWEMAILFIELD##");
+         initField (form, "QUANTITYFIXED_CHK",       "##QUANTITYFIXED##");
+         initField (form, "NEEDSORDERPARAMETERS_CHK","##NEEDSORDERPARAMETERS##");
+         initField (form, "NOTIFYVENDOR_CHK",        "##NOTIFYVENDOR##");
+         //initField (form, "ACTIVE_CHK",              "##ACTIVE##");
+         initField (form, "SHIPPED_CHK",             "##SHIPPED##");
+         initField (form, "USEONEKEY_CHK",           "##USEONEKEY##");
+         initField (form, "USEONEKEY_CHK2",          "##USEONEKEY##");
+         initField (form, "INCLUDEONAPLIST_CHK",     "##INCLUDEONAPLIST##");
+         initField (form, "USEPRODUCTAIDCOOKIE_CHK", "##USEPRODUCTAIDCOOKIE##");
+         initField (form, "TICKETCHOICE_CHK",        "##TICKETCHOICE##");
+         initField (form, "RECURAFFILIATE_CHK",      "##RECURAFFILIATE##");
+         initField (form, "PRICEINCLUDESVAT_CHK",    "##PRICEINCLUDESVAT##");
+         initField (form, "PRICEINCLUDESGST_CHK",    "##PRICEINCLUDESGST##");
+         initField (form, "PLATFORM",                "##PLATFORM##");
+         initField (form, "CATEGORY",                "##CATEGORY##");
+         initField (form, "KEYTABLEID",              "##KEYTABLEID##");
+         initField (form, "DISCOUNTSCHEMEID",        "##DISCOUNTSCHEMEID##");
+         initField (form, "DOWNLOADEXPDAYS",         "##DOWNLOADEXPDAYS##");
+         initField (form, "KEYGENCHARSET",           "##KEYGENCHARSET##");
+         initField (form, "RECURFREQUENCY",          "##RECURFREQUENCY##");
+         initField (form, "RECURDELAY",              "##RECURDELAY##");
+         initField (form, "SHIPPINGCOSTSCHEMEID",    "##SHIPPINGCOSTSCHEMEID##");
+         setFieldVisible ("shipping", ("##SHIPPED##" != 0));
+         setFieldVisible ("downloadfile",  productFileList.length != 0);
+         setFieldVisible ("keygenerator",  !isBlank ("##KEYGENERATOR##"));
+         setFieldVisible ("regkeytable",   !isBlank ("##KEYTABLEID##"));
+         setFieldVisible ("discounts",     !isBlank ("##DISCOUNTSCHEMEID##"));
+         setFieldVisible ("affiliateinfo", !isBlank ("##AFFILIATEPERCENTAGE## ##VENDORPRODUCTURL## ##SECUREORDERURL## ##DEMOURL##"));
+         setFieldVisible ("ordernotifications", !isBlank ("##NOTIFICATIONEMAILS## ##NOTIFICATIONURL##"));
+         setFieldVisible ("subscriptionhandling", ("##RECURFREQUENCY##" != "0") || ("##TICKETCHOICE##" != "0") || ("##RECURDELAY##" != "0"));
+         enableButton    ("update");
+         if (isBlank (form.SECUREORDERURL.value)) {
+            form.SECUREORDERURL.value = "Use default";
+            }
+
+         var idx = 1;
+         if ("##CATEGORY##" == "22") {
+            form.CATEGORY.options[idx++] = new Option ("XXX-Adult Software", "22");
+            }
+         else {
+            form.CATEGORY.options[idx++] = new Option ("AutoCad", "1");
+            form.CATEGORY.options[idx++] = new Option ("Business", "2");
+            form.CATEGORY.options[idx++] = new Option ("Communications", "3");
+            form.CATEGORY.options[idx++] = new Option ("Desktop Enhancements", "4");
+            form.CATEGORY.options[idx++] = new Option ("Editors and Viewers", "5");
+            form.CATEGORY.options[idx++] = new Option ("Educational Software", "6");
+            form.CATEGORY.options[idx++] = new Option ("Encryption and Archiving", "7");
+            form.CATEGORY.options[idx++] = new Option ("File and Disk Utilities", "8");
+            form.CATEGORY.options[idx++] = new Option ("Games and Diversions", "9");
+            form.CATEGORY.options[idx++] = new Option ("Internet Software", "10");
+            form.CATEGORY.options[idx++] = new Option ("Merchandise", "11");
+            form.CATEGORY.options[idx++] = new Option ("Multimedia Software", "12");
+            form.CATEGORY.options[idx++] = new Option ("OS/2", "14");
+            form.CATEGORY.options[idx++] = new Option ("Organisers, Databases, PIM's", "15");
+            form.CATEGORY.options[idx++] = new Option ("Philosophy and Religon", "17");
+            form.CATEGORY.options[idx++] = new Option ("Service or Membership", "18");
+            form.CATEGORY.options[idx++] = new Option ("Sewing Products", "19");
+            form.CATEGORY.options[idx++] = new Option ("Software Development Tools", "20");
+            form.CATEGORY.options[idx++] = new Option ("System Tools", "21");
+            form.CATEGORY.options[idx++] = new Option ("Other", "16");
+            }
+         initField (form, "CATEGORY", "##CATEGORY##");
+         initFileFields ();
+         }
+
+      function submitForm (form) {
+         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+         // field is not present. (An unchecked checkbox constitutes a non-existent field).
+         copyField (form, "SHOWCDOPTION",        "SHOWCDOPTION_CHK");
+         copyField (form, "SHOWDISCOUNTFIELD",   "SHOWDISCOUNTFIELD_CHK");
+         copyField (form, "SHOWREGNAMEFIELD",    "SHOWREGNAMEFIELD_CHK");
+         copyField (form, "SHOWEMAILFIELD",      "SHOWEMAILFIELD_CHK");
+         copyField (form, "QUANTITYFIXED",       "QUANTITYFIXED_CHK");
+         copyField (form, "NEEDSORDERPARAMETERS","NEEDSORDERPARAMETERS_CHK");
+         //copyField (form, "ACTIVE",              "ACTIVE_CHK");
+         copyField (form, "SHIPPED",             "SHIPPED_CHK");
+         copyField (form, "NOTIFYVENDOR",        "NOTIFYVENDOR_CHK");
+         copyField (form, "USEONEKEY",           "USEONEKEY_CHK");
+         copyField (form, "INCLUDEONAPLIST",     "INCLUDEONAPLIST_CHK");
+         copyField (form, "USEPRODUCTAIDCOOKIE", "USEPRODUCTAIDCOOKIE_CHK");
+         copyField (form, "TICKETCHOICE",        "TICKETCHOICE_CHK");
+         copyField (form, "RECURAFFILIATE",      "RECURAFFILIATE_CHK");
+         copyField (form, "PRICEINCLUDESVAT",     "PRICEINCLUDESVAT_CHK");
+         copyField (form, "PRICEINCLUDESGST",     "PRICEINCLUDESGST_CHK");
+
+         if ("##DATEDISCONTINUED##" != "") {
+            alert ("This product has been closed.  Please contact vendors@bmtmicro.com");
+            return (false);
+            }
+         if (isBlank (form.PRODUCTNAME.value)) {
+            alert ("You must provide a Product Name!");
+            form.PRODUCTNAME.focus ();
+            return (false);
+            }
+         if ((form.AFFILIATEPERCENTAGE.value < 0) || (form.AFFILIATEPERCENTAGE.value > 100)) {
+            setFieldVisible ('affiliateinfo');
+            alert ("Invalid Percentage, please correct");
+            form.AFFILIATEPERCENTAGE.focus ();
+            return (false);
+            }
+         if (!isBlank (form.SECUREORDERURL.value) && (form.SECUREORDERURL.value != "Use default") && !isValidURL (form.SECUREORDERURL.value)) {
+            setFieldVisible ('affiliateinfo');
+            alert ("Please enter a full URL starting with \"http://\" or \"https://\"");
+            form.SECUREORDERURL.focus ();
+            return (false);
+            }
+         if (!isBlank (form.DEMOURL.value) && !isValidURL (form.DEMOURL.value)) {
+            setFieldVisible ('affiliateinfo');
+            alert ("Please enter a full URL starting with \"http://\" or \"https://\"");
+            form.DEMOURL.focus ();
+            return (false);
+            }
+         if (!isBlank (form.VENDORPRODUCTURL.value) && !isValidURL (form.VENDORPRODUCTURL.value)) {
+            setFieldVisible ('affiliateinfo');
+            alert ("Please enter a full URL starting with \"http://\" or \"https://\"");
+            form.VENDORPRODUCTURL.focus ();
+            return (false);
+            }
+         if (!isBlank (form.NOTIFICATIONURL.value) && !isValidURL (form.NOTIFICATIONURL.value)) {
+            setFieldVisible ('ordernotifications');
+            alert ("Please enter a full URL starting with \"http://\" or \"https://\"");
+            form.NOTIFICATIONURL.focus ();
+            return (false);
+            }
+         if (form.NOTIFICATIONEMAILS.value.indexOf (",") != -1) {
+            setFieldVisible ('ordernotifications');
+            alert ("Notification e-mail addresses should be separated with a space, not a comma!");
+            form.NOTIFICATIONEMAILS.focus ();
+            return (false);
+            }
+         if (!isBlank (form.NOTIFICATIONEMAILS.value) && !isValidEmailList (form.NOTIFICATIONEMAILS.value)) {
+            setFieldVisible ('ordernotifications');
+            alert ("You must provide a VALID e-mail address!");
+            form.NOTIFICATIONEMAILS.focus ();
+            return (false);
+            }
+         if (isBlank (form.PRICE_USD.value)) {
+            alert ("Please enter a price for your product!");
+            form.PRICE_USD.focus ();
+            return (false);
+            }
+         if (!isValidDollarAmount (form.PRICE_USD.value)) {
+            alert ("Please do not include $ in product price. The price must be specified with numbers only, e.g. 15.25 for fifteen dollars twentyfive cents");
+            form.PRICE_USD.focus ();
+            return (false);
+            }
+         switch (form.CURRENCY.value) {
+            case "USD":
+               form.PRICE_EUR.value = "";
+               form.PRICE_GBP.value = "";
+               form.PRICE_CAD.value = "";
+               form.PRICE_AUD.value = "";
+               break;
+            case "EUR":
+               form.PRICE_EUR.value = form.PRICE_USD.value;
+               form.PRICE_GBP.value = "";
+               form.PRICE_CAD.value = "";
+               form.PRICE_AUD.value = "";
+               form.PRICE_USD.value = "";
+               break;
+            case "GBP":
+               form.PRICE_EUR.value = "";
+               form.PRICE_GBP.value = form.PRICE_USD.value;
+               form.PRICE_CAD.value = "";
+               form.PRICE_AUD.value = "";
+               form.PRICE_USD.value = "";
+               break;
+            case "CAD":
+               form.PRICE_EUR.value = "";
+               form.PRICE_GBP.value = "";
+               form.PRICE_CAD.value = form.PRICE_USD.value;
+               form.PRICE_AUD.value = "";
+               form.PRICE_USD.value = "";
+               break;
+            case "AUD":
+               form.PRICE_GBP.value = "";
+               form.PRICE_EUR.value = "";
+               form.PRICE_CAD.value = "";
+               form.PRICE_AUD.value = form.PRICE_USD.value;
+               form.PRICE_USD.value = "";
+               break;
+            }
+         if ((form.RECURDELAY.value < 0) || (form.RECURDELAY.value > 45)) {
+            setFieldVisible ('subscriptionhandling');
+            alert ("Subscriptions must start billing within 45 days!");
+            form.RECURDELAY.focus ();
+            return (false);
+            }
+         if ((form.SECUREORDERURL.value == "Use default") || (form.SECUREORDERURL.value == "##DEFAULTSECUREURL##")) {
+            form.SECUREORDERURL.value = "";
+            }
+         form.submit ();
+         return (true);
+         }
+
+   //-->
+   </script>
+
+</head>
+<body onload="initForm (document.productform);">
+   ##IMPORT("https://vendors-new.bmtmicro.com/imports/Import.Header")##
+   <form name="productform" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" />
+      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+      <input type="hidden" name="ACTION" value="10" />
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/productsstart.html" />
+      <input type="hidden" name="VENDORID" value="##VENDORID##" />
+      <dl>
+         <dt>
+            <h2>Add Product - Primary Info</h2>
+            <h4>Enter basic product info in fields below.</h4>
+         </dt>
+         <dt>
+            <span>
+               <label>Product Name:</label>
+               <input id="PRODUCTNAME" name="PRODUCTNAME" value="##PRODUCTNAME##" type="text">
+            </span>
+            <span>
+               <label>Product Price:</label>
+               <input name="PRICE_USD" size="8" />
+               <select name="CURRENCY" onmousewheel="return false;" >
+                  <option value="USD" selected >USD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="GBP">GBP</option>
+                  <option value="CAD">CAD</option>
+                  <option value="AUD">AUD</option>
+               </select>
+               <input type="hidden" name="PRICE_EUR" />
+               <input type="hidden" name="PRICE_GBP" />
+               <input type="hidden" name="PRICE_CAD" />
+               <input type="hidden" name="PRICE_AUD" />
+            </span>
+            <span>
+               <br />
+               <input type="hidden" name="PRICEINCLUDESVAT" value="##PRICEINCLUDESVAT##" /><input type="checkbox" name="PRICEINCLUDESVAT_CHK" value="-1" /> The price includes VAT
+            </span>
+            <span>
+               <br />
+               <input type="hidden" name="PRICEINCLUDESGST" value="##PRICEINCLUDESGST##" /><input type="checkbox" name="PRICEINCLUDESGST_CHK" value="-1" /> The price includes GST
+            </span>
+            <span>
+               <div id="shipping" style="display:none">
+                  <label>Shipping Cost Scheme:</label>
+                  <select name="SHIPPINGCOSTSCHEMEID">##SHIPPINGSCHEMEIDLIST##</select><br>
+                  If shipping is free or included in product price, please leave this field blank!<br>
+                  <em>Click <a href="https://vendors-new.bmtmicro.com/shippingstart.html">here</a> to set up or configure shipping schemes and regions.</em>
+               </div>
+            </span>
+            <br clear="all">
+            <span>
+               <label>Short Description:</label>
+               <textarea id="DESCRIPTION" name="DESCRIPTION" onkeydown="textLimiterAndCounter(this.form.DESCRIPTION,this.form.CHARSREMAINING,1024);" onkeyup="textLimiterAndCounter(this.form.DESCRIPTION,this.form.CHARSREMAINING,1024);">##DESCRIPTION##</textarea>
+            </span>
+            <span>
+               <label>Characters left:</label>
+               <input readonly="readonly" type="text" name="CHARSREMAINING" size="4" value="" />
+            </span>
+            <br clear="all">
+            <span>
+               <label>Keywords:</label>
+               <input id="KEYWORDS" name="KEYWORDS" size="30" value="##KEYWORDS##" title=" Provide any keywords for your product (Limit 50 characters) " />
+            </span>
+            <br clear="all">
+         </dt>
+         <dd>
+            <h2>Product Category</h2>
+            <h4>Please select the category that most fits your product.</h4>
+         </dd>
+         <dd>
+            <h2>Product Platform</h2>
+            <h4>For products installed on electronical devices.</h4>
+         </dd>
+         <dd>
+            <span>
+               <label>Category:</label>
+               <select name="CATEGORY"></select>
+            </span>
+         </dd>
+         <dd>
+            <span>
+               <label>Platform:</label>
+               <select name="PLATFORM">
+                  <option value="N/A" selected="selected">Not Applicable</option>
+                  <option value="OS/2">OS/2</option>
+                  <option value="Windows">Windows</option>
+                  <option value="OS/2 &amp; Win">OS/2 &amp;Win</option>
+                  <option value="Win 3.x">Win 3.x</option>
+                  <option value="Windows 95/NT">Windows 95/NT</option>
+                  <option value="Windows 9x/Me">Windows 9x/Me</option>
+                  <option value="Windows NT/2000/XP/Vista">Windows NT/2000/XP/Vista</option>
+                  <option value="Windows CE">Windows CE</option>
+                  <option value="Palm OS">Palm OS</option>
+                  <option value="Handheld">Handheld</option>
+                  <option value="Macintosh">Macintosh</option>
+                  <option value="Unix">Unix</option>
+                  <option value="Linux">Linux</option>
+                  <option value="Sun Solaris">Sun Solaris</option>
+                  <option value="BeOS">BeOS</option>
+                  <option value="Symbian">Symbian OS</option>
+                  <option value="DOS">DOS</option>
+                  <option value="Java">Java</option>
+                  <option value="Embedded">Embedded</option>
+                  <option value="Other">Other</option>
+                  <option value="Windows &amp; Linux">Windows &amp; Linux</option>
+                  <option value="Windows &amp; Mac">Windows &amp; Mac</option>
+                  <option value="Linux &amp; Mac">Linux &amp; Mac</option>
+                  <option value="Linux &amp; OS/2">Linux &amp; OS/2</option>
+                  <option value="Win Lin Mac">Windows Linux &amp; Mac</option>
+                  <option value="Win Lin OS2">Windows Linux &amp; OS/2</option>
+                  <option value="Windows &amp; FreeBSD">Windows &amp; FreeBSD</option>
+                  <option value="Windows &amp; Symbian">Windows &amp; Symbian</option>
+                  <option value="Mac &amp; Symbian">Mac &amp; Symbian</option>
+               </select>
+            </span>
+            <br clear="all"><br>
+         </dd>
+         <dd>
+            <h2>Shopping Cart Options</h2>
+            <h4>Unchecking the boxes will hide these options in your shopping cart.</h4>
+            <em>Note that the account settings have additional shopping cart options.</em>
+         </dd>
+         <dd>
+            <h2>Product Format List</h2>
+            <h4>Here you can add several different format/size/type/color for a same product.</h4>
+         </dd>
+         <dd>
+            <span>
+               <input type="hidden" name="SHOWCDOPTION" value="##SHOWCDOPTION##" /><input type="checkbox" name="SHOWCDOPTION_CHK" value="-1" /> Show Backup CD option <br /><em>(Backup CD will be created by BMT Micro and sent to the customer)</em>
+            </span>
+          <br clear="all">
+          <span>
+             <input type="hidden" name="SHOWDISCOUNTFIELD" value="##SHOWDISCOUNTFIELD##" /><input type="checkbox" name="SHOWDISCOUNTFIELD_CHK" value="-1" /> Show Discount/Gift Certificate field
+          </span>
+          <br clear="all">
+           <span>
+          <input type="hidden" name="SHIPPED" value="##SHIPPED##" /><input type="checkbox" name="SHIPPED_CHK" onchange="setFieldVisible ('shipping', this.checked);" /> Product is shipped <br /><em>This option ensures that shipping information is available. (Some payment methods do not require customer to enter address).</em>
+            </span>
+         <br clear="all">
+            <h4>Fields for allowing gift purchases.</h4>
+            <span>
+               <input type="hidden" name="SHOWREGNAMEFIELD" value="##SHOWREGNAMEFIELD##" /><input type="checkbox" name="SHOWREGNAMEFIELD_CHK" value="-1" /> Show Registername field <br /><em>Allow buyer to purchase for third party (gift for friend/colleague/etc)</em>
+            </span>
+            <br clear="all">
+            <span>
+               <input type="hidden" name="SHOWEMAILFIELD" value="##SHOWEMAILFIELD##" /><input type="checkbox" name="SHOWEMAILFIELD_CHK" value="-1" /> Show Delivery Email field <br /><em>Allow product information email to be sent to third party (gift for friend/colleague/etc)</em>
+            </span>
+            <br clear="all">
+            <h4>Cart parameter checks.</h4>
+            <span>
+               <input type="hidden" name="QUANTITYFIXED" value="##QUANTITYFIXED##" /><input type="checkbox" name="QUANTITYFIXED_CHK" value="-1" /> Quantity is fixed <br /><em>Enabling this option will prevent the customer from changing the quantity in the shopping cart</em>
+            </span>
+            <br clear="all">
+            <span>
+               <input type="hidden" name="NEEDSORDERPARAMETERS" value="##NEEDSORDERPARAMETERS##" /><input type="checkbox" name="NEEDSORDERPARAMETERS_CHK" value="-1" /> Order Parameters must not be blank<br /><em>Enabling this option will prevent the customer from completing an order if the ORDERPARAMETERS value is missing in the shopping cart</em>
+            </span>
+            <br clear="all">
+         </dd>
+         <dd>
+             <span>
+               <label>Format List:</label>
+               <input name="FILEFORMATS" size="40" maxlength="80" value="##FILEFORMATS##" />
+               <!--<button class="green">Add to >></button> <select name="FILEFORMATS"><option value="1">X-Large</option><option value="2">XX-Large</option></select> <button>Reset List</button>//-->
+            </span>
+            <br clear="all">
+            <span style="color:red;">If product purchase does not require a format/size/type/color choice, please leave this field blank!</span>
+            <em>Listing formats here will add a selection box in the shopping cart that lets the customer choose format when purchasing. Use the Format List when the customer needs to pick a format, size, type, color, etc. For example, if you're selling a T-shirt, you may want to specify "S,M,L,XL" here. If you sell a program for several platforms and want to do it all
+               under the same product setup, you can specify "Windows,Linux,Mac" for example. If doing it this way, you can associate an index file (.idx) as download file in order to deliver different download files depening on format purchased.</em>
+            <br clear="all">
+         </dd>
+      </dl>
+      <dl>
+         <dt>
+            <h2>Secondary Info</h2>
+            <h4>Please take some time to review if you need to add support with any of the following, if you do not want any more options added, simply click Save. (You can always add those options later)</h4>
+         </dt>
+         <dt>
+            <br clear="all"><br>
+            <h3>Associate Download File</h3>
+            If order should be fulfilled via secure download from BMT&nbsp;Micro, use selector below to associate a file already uploaded using the Manage Files interface.
+            <br>
+            <!--<button type="button" class="orange" onclick="toggleField('uploadfile');">Upload a New File</button>&nbsp;--><button type="button" class="green" onclick="toggleField('downloadfile');">Choose File</button>
+            <br clear="all"><br>
+            <dl id="downloadfile" style="display:none">
+               <dt>
+                  <h2>Choose File</h2>
+               </dt>
+               <dt>
+                  <div id="fileFields"></div>
+                  <br clear="all">
+                  <span>
+                     <label>Download password should expire in:</label>
+                     <select name="DOWNLOADEXPDAYS">
+                        <option value="31" selected>31 Days</option>
+                        <option value="60">60 Days</option>
+                        <option value="90">90 Days</option>
+                        <option value="180">180 Days</option>
+                        <option value="365">365 Days</option>
+                        <option value="-1">Never Expires</option>
+                     </select>
+                  </span>
+                  <span>
+                     <label>Add Another File:</label>
+                     <button class="add" type="button" onclick="addFileField ();">+</button>
+                  </span>
+                  <br clear="all">
+            <!--
+            NOTE: It is possible provide several download files for one purchase and let the customer choose what to download. This can be done by setting up an index file and a HTML file for selection.
+            Please contact <a href="mailto:webmaster@bmtmicro.com">webmaster@bmtmicro.com</a> for information on how to use this feature.
+                  <br><br>
+            -->
+               </dt>
+            </dl>
+            <h3>Generate Codes/Gift Certificates/Subscription Credits</h3>
+            If you would like to add pre-generated Activation Codes to your product select the Choose Activation Code Table button.  If activation code, gift certificate or subscription credit should be generated on the fly, select Add Code Generator Information.  To generate promotional discount code for customers use on their next purchase Click Choose Discount Scheme.
+            <br>
+            <!--<button class="blue">Add New Activation Codes</button>--><button type="button" class="green" onclick="toggleField('regkeytable');">Choose Activation Code Table</button> <button type="button" class="orange" onclick="toggleField('keygenerator');">Add Code Generator Information</button> <button type="button" class="green" onclick="toggleField('discounts');">Choose a Discount Scheme</button>
+            <br clear="all"><br>
+            <dl id="regkeytable" style="display:none">
+               <dt>
+                  <h2>Include Activation Code from Table</h2>
+                  <h4>Select activation code table to associate with this product.<br /><br />Our system will retrieve a code from this table for each customer.</h4>
+               </dt>
+               <dt>
+                  <span>
+                     <label>Choose Activation Codes:</label>
+                     <select name="KEYTABLEID">##KEYTABLEIDLIST##</select>
+                  </span>
+                  <br clear="all"><br>
+                  <span>
+                     <input type="hidden" name="USEONEKEY" value="##USEONEKEY##" />
+                    <input type="checkbox" name="USEONEKEY_CHK" value="-1" size="12" onclick="document.productform.USEONEKEY_CHK2.checked = this.checked;" />&nbsp;Use only one code for quantity purchases.
+                  </span>
+                  <br clear="all"><br>
+               </dt>
+            </dl>
+            <dl id="keygenerator" style="display:none">
+               <dt>
+                  <h2>Include Activation Code Generated On-the-Fly</h2>
+                  <h4>Add code generation information for this product below.<br /><br />Our system will post this information with each successful order.</h4>
+               </dt>
+               <dt>
+                  <span>
+                     <label>Generate Activation Codes/Gift Certificate/Subscription Credit</label>
+                     <input name="KEYGENERATOR" maxlength="256" value="##KEYGENERATOR##" size="100" />
+                  </span>
+                  <span>
+                     <label>Character Set</label>
+                     <select name="KEYGENCHARSET">
+                        <option value="0">US ASCII (7-bit)</option>
+                        <option value="1">UTF-8</option>
+                        <option value="2">Windows-1252</option>
+                        <option value="3">ISO 8859-1</option>
+                     </select>
+                  </span>
+               <br clear="all"><br>
+                  <span>
+
+                    <input type="checkbox" name="USEONEKEY_CHK2" value="-1" size="12" onclick="document.productform.USEONEKEY_CHK.checked = this.checked;" />&nbsp;Generate only one code for quantity purchases.
+                  </span>
+
+
+          <script language="javascript" type="text/javascript">
+            <!--
+               if (!isBlank ("##KEYVALIDATOR##")) {
+                  document.write ('<br clear="all"><br>  ');
+                  document.write ('<span><label>Validate Generated Activation Codes</label>   ');
+                  document.write ('<input name="KEYVALIDATOR" maxlength="256" value="##KEYVALIDATOR##" size="100" /></span>  ');
+            }
+            // -->
+            </script>
+
+
+                  <br clear="all"><br>
+               </dt>
+            </dl>
+            <dl id="discounts" style="display:none;">
+               <dt>
+                  <h2>Include Discount Code</h2>
+                  <h4>If you would like to send the customer a discount code for their next purchase, please select discount scheme below.</h4>
+               </dt>
+               <dt>
+                  <span>
+                     <label>Choose Discount Scheme:</label>
+                     <select name="DISCOUNTSCHEMEID">##DISCOUNTSCHEMEIDLIST##</select>
+                  </span>
+                  <br clear="all"><br>
+               </dt>
+            </dl>
+            <h3>Add Affiliate Information</h3>
+            Let your affiliates do the marketing for you. Adding your product to the affiliate program is easy to do. Follow our simple steps by clicking this button below.
+            <br>
+            <button type="button" class="green" onclick="toggleField('affiliateinfo');">Make available for affiliate sales</button>
+            <br clear="all"><br><br>
+            <dl id="affiliateinfo" style="display:none;">
+               <dt>
+                  <h2>Affiliate Sales Info</h2>
+                  <h4>If you would like to accept affiliate sales for this product, fill in information below.</h4>
+               </dt>
+               <dt>
+                  <span>
+                     <label>Affiliate Percentage:</label>
+                     <input type="text" maxlength="100" name="AFFILIATEPERCENTAGE" value="##AFFILIATEPERCENTAGE##" />
+                  </span>
+                  <br clear="all" />
+                  <span>
+                     <label>Full Description URL:</label>
+                     <input type="text" maxlength="100" name="VENDORPRODUCTURL"  size="100" value="##VENDORPRODUCTURL##" />&nbsp;<button class="red" type="button" onclick="testURL (form.VENDORPRODUCTURL)">Test</button>
+                  </span>
+                  <br clear="all" />
+                  <span>
+                     <label>Secure Order URL:</label>
+                     <input type="text" maxlength="100" name="SECUREORDERURL"  size="100" value="##SECUREORDERURL##" />&nbsp;<button class="red" type="button" onclick="testURL (form.SECUREORDERURL, (form.SECUREORDERURL.value == 'Use default') ? '##DEFAULT_SECUREORDERURL##' : '')">Test</button>
+                  </span>
+                  <br clear="all" />
+                  <span>
+                     <label>Demo/Product Info URL:</label>
+                     <input type="text" maxlength="100" name="DEMOURL"  size="100" value="##DEMOURL##" />&nbsp;<button class="red" type="button" onclick="testURL (form.DEMOURL)">Test</button>
+                  </span>
+                  <br clear="all" />
+                  <span>
+                     <input type="hidden" name="INCLUDEONAPLIST" value="##INCLUDEONAPLIST##" /><input type="checkbox" name="INCLUDEONAPLIST_CHK" value="-1" />&nbsp;Include in All Affiliates List
+                  </span>
+                  <span>
+                     <input type="hidden" name="USEPRODUCTAIDCOOKIE" value="##USEPRODUCTAIDCOOKIE##" /><input type="checkbox" name="USEPRODUCTAIDCOOKIE_CHK" value="-1" />&nbsp;Use Product Specific Cookie
+                  </span>
+                  <br clear="all"><br>
+               </dt>
+            </dl>
+            <h3>Order Notifications/Subscription Handling</h3>
+            Click button below to add an additional notification email address, XML notification URL, recurring billing information and allow ticket use.
+            <br>
+            <button type="button" class="orange" onclick="toggleField('ordernotifications');">Order Notifications</button>&nbsp;<button type="button" class="green" onclick="toggleField('subscriptionhandling');">Subscription Handling</button>
+            <br clear="all"><br>
+            <dl id="ordernotifications" style="display:none">
+               <dt>
+                  <h2>Order Notifications</h2>
+                  <h4>By default order notifications are sent via email to the notification email address listed under 'My Account'.<br />To stop order notifications, add a different email address or receive notification via XML, fill in appropriate fields below.</h4>
+               </dt>
+               <dt>
+                  <span>
+                     <input type="hidden" name="NOTIFYVENDOR" value="##NOTIFYVENDOR##" /><input type="checkbox" name="NOTIFYVENDOR_CHK" value="-1" /> Send to Vendor Notification email
+                  </span>
+                  <br clear="all">
+                  <span>
+                     <label>Send&nbsp;Order&nbsp;Notification to&nbsp;other&nbsp;email&nbsp;address:</label>
+                     <input name="NOTIFICATIONEMAILS" size="50" value="##NOTIFICATIONEMAILS##" maxlength="200" /><input type="hidden" name="NOTIFYPRODUCT" />
+                  </span>
+                  <br clear="all">
+                  <span>
+                     <label>Send&nbsp;XML&nbsp;Notification to&nbsp;remote&nbsp;system (full&nbsp;URL):</label>
+                     <input name="NOTIFICATIONURL" size="100" value="##NOTIFICATIONURL##" maxlength="256" />
+                  </span>
+                  <br clear="all"><br>
+               </dt>
+            </dl>
+            <dl id="subscriptionhandling" style="display:none">
+               <dt>
+                  <h2>Subscription Handling</h2>
+                  <h4>If this is product should be rebilled automatically, select frequency below.<br /><br />Your website must inform your customers that they are purchasing a subscription product.</h4>
+               </dt>
+               <dt>
+                  <span>
+                     <label>Recurring Billing Frequency:</label>
+                     <select name="RECURFREQUENCY" />
+                        <option value="0" selected>None</option>
+                        <option value="1">Every Month</option>
+                        <option value="3">Every 3 Months</option>
+                        <option value="4">Every 4 Months</option>
+                        <option value="6">Every 6 Months</option>
+                        <option value="12">Every 12 Months</option>
+                     </select>
+                  </span>
+                  <br clear="all"><br />
+                   <span>
+                      <h4>To offer trial subscriptions, enter number of days for the trial period below.</h4>
+                       <label>Recurring Billing Delay:</label>
+                         <input name="RECURDELAY" size="10" value="##RECURDELAY##" />
+                    </span>
+                    <br clear="all"><br />
+                  <h4>To allow customer to purchase this product using a credit from subscription product purchase, check box below.</h4>
+                  <span>
+                     <input type="hidden" name="TICKETCHOICE" value="##TICKETCHOICE##" /><input type="checkbox" name="TICKETCHOICE_CHK" value="-1" /> Allow purchase with Ticket
+                  </span>
+                  <br clear="all"><br>
+                  <h4>To give affiliates credit for recurring billings, check box below. If unchecked, affiliates will only get credit for the initial sale.</h4>
+                  <span>
+                     <input type="hidden" name="RECURAFFILIATE" value="##RECURAFFILIATE##" /><input type="checkbox" name="RECURAFFILIATE_CHK" value="-1" /> Credit affiliate when rebilling
+                  </span>
+                  <br clear="all"><br>
+               </dt>
+            </dl>
+            Click Save button to add the new product.
+            <br>
+            <button id="update" class="dark" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
+         </dt>
+      </dl>
+   </form>
+   ##IMPORT("https://vendors-new.bmtmicro.com/imports/Import.Footer")##
+</body>
+</html>
