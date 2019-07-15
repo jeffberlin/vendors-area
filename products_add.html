@@ -377,7 +377,7 @@
           form.PRICE_USD.value = "";
           break;
         }
-        if ((form.RECURDELAY.value <a 0) || (form.RECURDELAY.value > 45)) {
+        if ((form.RECURDELAY.value < 0) || (form.RECURDELAY.value > 45)) {
           setFieldVisible('subscriptionhandling');
           alert("Subscriptions must start billing within 45 days!");
           form.RECURDELAY.focus();
@@ -520,7 +520,7 @@
                   <input type="hidden" name="VENDORID" value="##VENDORID##" />
                   <span>
                     <label>Product&nbsp;Name:</label>
-                    <input type="text" name="PRODUCTNAME" value="##PRODUCTNAME##" style="margin-right: .5rem; margin-bottom: .5rem;">
+                    <input type="text" name="PRODUCTNAME" value="##PRODUCTNAME##" style="margin-right: .5rem; margin-bottom: 1rem;">
                   </span>
                   <span>
                     <label>Product&nbsp;Price:</label>
@@ -686,12 +686,9 @@
                       </button>
                       <div id="downloadfile" style="display: none;">
                         <h6 style="color: #efa900; margin-bottom: .3rem;">Choose&nbsp;File</h6>
-                        <div id="fileFields">
-
-                        </div>
+                        <div id="fileFields"></div>
                         <br clear="all">
                         <span>
-
                           <label>Download password should expire in:</label>
                           <select name="DOWNLOADEXPDAYS" style="margin-right: .5rem;">
                             <option value="31" selected>31 Days</option>
@@ -712,6 +709,8 @@
                             <br><br>
                       -->
                       </div>
+                      <h6>Generate&nbsp;Codes/Gift&nbsp;Certificates/Subscription&nbsp;Credits</h6>
+                      <p>If you would like to add pre-generated Activation Codes to your product select the Choose Activation Code Table button.  If activation code, gift certificate or subscription credit should be generated on the fly, select Add Code Generator Information. To generate promotional discount code for customers use on their next purchase Click Choose Discount Scheme.</p>
                     </div> <!-- end .col-8 -->
                   </div> <!-- end .row -->
                 </form>
