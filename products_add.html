@@ -79,266 +79,266 @@
       var vendorFileList = ##VENDORDFL##;
       var productFileList = ##PRODUCTDFL##;
 
-      function createFileField(index, selectedFileID, description) {
+      function createFileField (index, selectedFileID, description) {
         var fieldID = "fileField" + (index + 1);
-        var spanElem = document.createElement("span");
-        spanElem.setAttribute("id", fieldID);
-        var labelElem = document.createElement("label");
-        labelElem.appendChild(document.createTextNode("File " + (index + 1) + ":"));
-        spanElem.appendChild(labelElem);
-        var selectElem = document.createElement("select");
-        selectElem.setAttribute("id", "DOWNLOADFILEID");
-        selectElem.setAttribute("name", "DOWNLOADFILEID");
-        spanElem.appendChild(selectElem);
-        var optionElem = document.createElement("option");
-        optionElem.setAttribute("value", "0");
-        selectElem.appendChild(optionElem);
+        var spanElem = document.createElement ("span");
+        spanElem.setAttribute ("id", fieldID);
+        var labelElem = document.createElement ("label");
+        labelElem.appendChild (document.createTextNode ("File " + (index + 1) + ":"));
+        spanElem.appendChild (labelElem);
+        var selectElem = document.createElement ("select");
+        selectElem.setAttribute ("id", "DOWNLOADFILEID");
+        selectElem.setAttribute ("name", "DOWNLOADFILEID");
+        spanElem.appendChild (selectElem);
+        var optionElem = document.createElement ("option");
+        optionElem.setAttribute ("value", "0");
+        selectElem.appendChild (optionElem);
         for (var i = 0; i < vendorFileList.length; i++) {
           var f = vendorFileList[i];
-          optionElem = document.createElement("option");
-          optionElem.setAttribute("value", f.id);
+          optionElem = document.createElement ("option");
+          optionElem.setAttribute ("value", f.id);
           if (f.id == selectedFileID) {
-            optionElem.setAttribute("selected", "selected");
+            optionElem.setAttribute ("selected", "selected");
           }
-          optionElem.appendChild(document.createTextNode(f.name));
-          selectElem.appendChild(optionElem);
+          optionElem.appendChild (document.createTextNode (f.name));
+          selectElem.appendChild (optionElem);
         }
-        labelElem = document.createElement("label");
-        labelElem.appendChild(document.createTextNode("Description"));
-        spanElem.appendChild(labelElem);
-        var textElem = document.createElement("input");
-        textElem.setAttribute("type", "text");
-        textElem.setAttribute("id", "DOWNLOADFILEDESCRIPTION");
-        textElem.setAttribute("name", "DOWNLOADFILEDESCRIPTION");
-        textElem.setAttribute("value", (description == null) ? "" : description);
-        spanElem.appendChild(textElem);
-        var buttonElem = document.createElement("button");
-        buttonElem.setAttribute("class", "remove");
-        buttonElem.setAttribute("type", "button");
-        buttonElem.setAttribute("onclick", "removeFileField (\"" + fieldID + "\");");
-        buttonElem.appendChild(document.createTextNode("X"));
-        spanElem.appendChild(buttonElem);
+        labelElem = document.createElement ("label");
+        labelElem.appendChild (document.createTextNode ("Description"));
+        spanElem.appendChild (labelElem);
+        var textElem = document.createElement ("input");
+        textElem.setAttribute ("type", "text");
+        textElem.setAttribute ("id", "DOWNLOADFILEDESCRIPTION");
+        textElem.setAttribute ("name", "DOWNLOADFILEDESCRIPTION");
+        textElem.setAttribute ("value", (description == null) ? "" : description);
+        spanElem.appendChild (textElem);
+        var buttonElem = document.createElement ("button");
+        buttonElem.setAttribute ("class", "remove");
+        buttonElem.setAttribute ("type", "button");
+        buttonElem.setAttribute ("onclick", "removeFileField (\"" + fieldID + "\");");
+        buttonElem.appendChild (document.createTextNode ("X"));
+        spanElem.appendChild (buttonElem);
         spanElem.style.clear = "left";
         return (spanElem);
       }
 
-      function addFileField() {
-        var fieldsDiv = document.getElementById("fileFields");
-        fieldsDiv.appendChild(createFileField(fieldsDiv.getElementsByTagName("select").length, 0));
+      function addFileField () {
+        var fieldsDiv = document.getElementById ("fileFields");
+        fieldsDiv.appendChild (createFileField (fieldsDiv.getElementsByTagName ("select").length, 0));
       }
 
-      function relabelFileFields() {
-        var spanElems = document.getElementById("fileFields").getElementsByTagName("span");
+      function relabelFileFields () {
+        var spanElems = document.getElementById ("fileFields").getElementsByTagName ("span");
         for (var i = 0; i < spanElems.length; i++) {
-          var labelElems = spanElems[i].getElementsByTagName("label");
+          var labelElems = spanElems[i].getElementsByTagName ("label");
           labelElems[0].childNodes[0].nodeValue = "File " + (i + 1) + ":";
         }
       }
 
-      function removeFileField(id) {
-        var spanElem = document.getElementById(id);
-        spanElem.parentNode.removeChild(spanElem);
-        relabelFileFields();
-        var spanElems = document.getElementById("fileFields").getElementsByTagName("span");
+      function removeFileField (id) {
+        var spanElem = document.getElementById (id);
+        spanElem.parentNode.removeChild (spanElem);
+        relabelFileFields ();
+        var spanElems = document.getElementById ("fileFields").getElementsByTagName ("span");
         if (spanElems.length == 0) {
-          addFileField();
-          setFieldVisible("downloadfile", false);
+          addFileField ();
+          setFieldVisible ("downloadfile", false);
         }
       }
 
-      function initFileFields() {
-        var docFragment = document.createDocumentFragment();
+      function initFileFields () {
+        var docFragment = document.createDocumentFragment ();
         if (productFileList.length == 0) {
-          docFragment.appendChild(createFileField(0, 0));
+          docFragment.appendChild (createFileField (0, 0));
         }
-        for(var i = 0; i < productFileList.length; i++) {
-          docFragment.appendChild(createFileField(i, productFileList[i].id, productFileList[i].desc));
+        for (var i = 0; i < productFileList.length; i++) {
+          docFragment.appendChild (createFileField (i, productFileList[i].id, productFileList[i].desc));
         }
         var divID = "fileFields";
-        var oldDivElem = document.getElementById(divID);
-        var newDivElem = document.createElement("div");
+        var oldDivElem = document.getElementById (divID);
+        var newDivElem = document.createElement ("div");
         newDivElem.id = divID;
-        newDivElem.appendChild(docFragment);
-        oldDivElem.parentNode.replaceChild(newDivElem, oldDivElem);
+        newDivElem.appendChild (docFragment);
+        oldDivElem.parentNode.replaceChild (newDivElem, oldDivElem);
       }
 
-      function enableButton(buttonid, enabled) {
-        document.getElementById(buttonid).disabled = (enabled === false);
+      function enableButton (buttonid, enabled) {
+        document.getElementById (buttonid).disabled = (enabled === false);
       }
 
-      function toggleField(field) {
-        var e = document.getElementById(field);
+      function toggleField (field) {
+        var e = document.getElementById (field);
         if (e.style.display == '') {
           e.style.display = 'none';
         } else {
           e.style.display = '';
-          e.focus();
+          e.focus ();
         }
       }
 
-      function testURL(field, url) {
-        if (isBlank(url)) {
+      function testURL (field, url) {
+        if (isBlank (url)) {
           url = field.value;
         }
-        if (isBlank(url) || !isValidURL(url)) {
-          alert("Please enter a full URL starting with \"http://\" or \"https://\"");
-          field.focus();
+        if (isBlank (url) || !isValidURL (url)) {
+          alert ("Please enter a full URL starting with \"http://\" or \"https://\"");
+          field.focus ();
           return (false);
         }
-        window.open(url);
+        window.open (url)
         return (true);
       }
 
-      function initForm(form) {
+      function initForm (form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        initField(form, "SHOWCDOPTION_CHK", "##SHOWCDOPTION##");
-        initField(form, "SHOWDISCOUNTFIELD_CHK", "##SHOWDISCOUNTFIELD##");
-        initField(form, "SHOWREGNAMEFIELD_CHK", "##SHOWREGNAMEFIELD##");
-        initField(form, "SHOWEMAILFIELD_CHK", "##SHOWEMAILFIELD##");
-        initField(form, "QUANTITYFIXED_CHK", "##QUANTITYFIXED##");
-        initField(form, "NEEDSORDERPARAMETERS_CHK","##NEEDSORDERPARAMETERS##");
-        initField(form, "NOTIFYVENDOR_CHK", "##NOTIFYVENDOR##");
-        //initField(form, "ACTIVE_CHK", "##ACTIVE##");
-        initField(form, "SHIPPED_CHK", "##SHIPPED##");
-        initField(form, "USEONEKEY_CHK", "##USEONEKEY##");
-        initField(form, "USEONEKEY_CHK2", "##USEONEKEY##");
-        initField(form, "INCLUDEONAPLIST_CHK", "##INCLUDEONAPLIST##");
-        initField(form, "USEPRODUCTAIDCOOKIE_CHK", "##USEPRODUCTAIDCOOKIE##");
-        initField(form, "TICKETCHOICE_CHK", "##TICKETCHOICE##");
-        initField(form, "RECURAFFILIATE_CHK", "##RECURAFFILIATE##");
-        initField(form, "PRICEINCLUDESVAT_CHK", "##PRICEINCLUDESVAT##");
-        initField(form, "PRICEINCLUDESGST_CHK", "##PRICEINCLUDESGST##");
-        initField(form, "PLATFORM", "##PLATFORM##");
-        initField(form, "CATEGORY", "##CATEGORY##");
-        initField(form, "KEYTABLEID", "##KEYTABLEID##");
-        initField(form, "DISCOUNTSCHEMEID", "##DISCOUNTSCHEMEID##");
-        initField(form, "DOWNLOADEXPDAYS", "##DOWNLOADEXPDAYS##");
-        initField(form, "KEYGENCHARSET", "##KEYGENCHARSET##");
-        initField(form, "RECURFREQUENCY", "##RECURFREQUENCY##");
-        initField(form, "RECURDELAY", "##RECURDELAY##");
-        initField(form, "SHIPPINGCOSTSCHEMEID", "##SHIPPINGCOSTSCHEMEID##");
-        setFieldVisible("shipping", ("##SHIPPED##" != 0));
-        setFieldVisible("downloadfile", productFileList.length != 0);
-        setFieldVisible("keygenerator", !isBlank("##KEYGENERATOR##"));
-        setFieldVisible("regkeytable", !isBlank("##KEYTABLEID##"));
-        setFieldVisible("discounts", !isBlank("##DISCOUNTSCHEMEID##"));
-        setFieldVisible("affiliateinfo", !isBlank("##AFFILIATEPERCENTAGE## ##VENDORPRODUCTURL## ##SECUREORDERURL## ##DEMOURL##"));
-        setFieldVisible("ordernotifications", !isBlank ("##NOTIFICATIONEMAILS## ##NOTIFICATIONURL##"));
-        setFieldVisible("subscriptionhandling", ("##RECURFREQUENCY##" != "0") || ("##TICKETCHOICE##" != "0") || ("##RECURDELAY##" != "0"));
-        enableButton("update");
-        if (isBlank(form.SECUREORDERURL.value)) {
+        initField (form, "SHOWCDOPTION_CHK",        "##SHOWCDOPTION##");
+        initField (form, "SHOWDISCOUNTFIELD_CHK",   "##SHOWDISCOUNTFIELD##");
+        initField (form, "SHOWREGNAMEFIELD_CHK",    "##SHOWREGNAMEFIELD##");
+        initField (form, "SHOWEMAILFIELD_CHK",      "##SHOWEMAILFIELD##");
+        initField (form, "QUANTITYFIXED_CHK",       "##QUANTITYFIXED##");
+        initField (form, "NEEDSORDERPARAMETERS_CHK","##NEEDSORDERPARAMETERS##");
+        initField (form, "NOTIFYVENDOR_CHK",        "##NOTIFYVENDOR##");
+        //initField (form, "ACTIVE_CHK",              "##ACTIVE##");
+        initField (form, "SHIPPED_CHK",             "##SHIPPED##");
+        initField (form, "USEONEKEY_CHK",           "##USEONEKEY##");
+        initField (form, "USEONEKEY_CHK2",          "##USEONEKEY##");
+        initField (form, "INCLUDEONAPLIST_CHK",     "##INCLUDEONAPLIST##");
+        initField (form, "USEPRODUCTAIDCOOKIE_CHK", "##USEPRODUCTAIDCOOKIE##");
+        initField (form, "TICKETCHOICE_CHK",        "##TICKETCHOICE##");
+        initField (form, "RECURAFFILIATE_CHK",      "##RECURAFFILIATE##");
+        initField (form, "PRICEINCLUDESVAT_CHK",    "##PRICEINCLUDESVAT##");
+        initField (form, "PRICEINCLUDESGST_CHK",    "##PRICEINCLUDESGST##");
+        initField (form, "PLATFORM",                "##PLATFORM##");
+        initField (form, "CATEGORY",                "##CATEGORY##");
+        initField (form, "KEYTABLEID",              "##KEYTABLEID##");
+        initField (form, "DISCOUNTSCHEMEID",        "##DISCOUNTSCHEMEID##");
+        initField (form, "DOWNLOADEXPDAYS",         "##DOWNLOADEXPDAYS##");
+        initField (form, "KEYGENCHARSET",           "##KEYGENCHARSET##");
+        initField (form, "RECURFREQUENCY",          "##RECURFREQUENCY##");
+        initField (form, "RECURDELAY",              "##RECURDELAY##");
+        initField (form, "SHIPPINGCOSTSCHEMEID",    "##SHIPPINGCOSTSCHEMEID##");
+        setFieldVisible ("shipping", ("##SHIPPED##" != 0));
+        setFieldVisible ("downloadfile",  productFileList.length != 0);
+        setFieldVisible ("keygenerator",  !isBlank ("##KEYGENERATOR##"));
+        setFieldVisible ("regkeytable",   !isBlank ("##KEYTABLEID##"));
+        setFieldVisible ("discounts",     !isBlank ("##DISCOUNTSCHEMEID##"));
+        setFieldVisible ("affiliateinfo", !isBlank ("##AFFILIATEPERCENTAGE## ##VENDORPRODUCTURL## ##SECUREORDERURL## ##DEMOURL##"));
+        setFieldVisible ("ordernotifications", !isBlank ("##NOTIFICATIONEMAILS## ##NOTIFICATIONURL##"));
+        setFieldVisible ("subscriptionhandling", ("##RECURFREQUENCY##" != "0") || ("##TICKETCHOICE##" != "0") || ("##RECURDELAY##" != "0"));
+        enableButton    ("update");
+        if (isBlank (form.SECUREORDERURL.value)) {
           form.SECUREORDERURL.value = "Use default";
         }
 
         var idx = 1;
         if ("##CATEGORY##" == "22") {
-          form.CATEGORY.options[idx++] = new Option("XXX-Adult Software", "22");
+          form.CATEGORY.options[idx++] = new Option ("XXX-Adult Software", "22");
         } else {
-          form.CATEGORY.options[idx++] = new Option("AutoCad", "1");
-          form.CATEGORY.options[idx++] = new Option("Business", "2");
-          form.CATEGORY.options[idx++] = new Option("Communications", "3");
-          form.CATEGORY.options[idx++] = new Option("Desktop Enhancements", "4");
-          form.CATEGORY.options[idx++] = new Option("Editors and Viewers", "5");
-          form.CATEGORY.options[idx++] = new Option("Educational Software", "6");
-          form.CATEGORY.options[idx++] = new Option("Encryption and Archiving", "7");
-          form.CATEGORY.options[idx++] = new Option("File and Disk Utilities", "8");
-          form.CATEGORY.options[idx++] = new Option("Games and Diversions", "9");
-          form.CATEGORY.options[idx++] = new Option("Internet Software", "10");
-          form.CATEGORY.options[idx++] = new Option("Merchandise", "11");
-          form.CATEGORY.options[idx++] = new Option("Multimedia Software", "12");
-          form.CATEGORY.options[idx++] = new Option("OS/2", "14");
-          form.CATEGORY.options[idx++] = new Option("Organisers, Databases, PIM's", "15");
-          form.CATEGORY.options[idx++] = new Option("Philosophy and Religon", "17");
-          form.CATEGORY.options[idx++] = new Option("Service or Membership", "18");
-          form.CATEGORY.options[idx++] = new Option("Sewing Products", "19");
-          form.CATEGORY.options[idx++] = new Option("Software Development Tools", "20");
-          form.CATEGORY.options[idx++] = new Option("System Tools", "21");
-          form.CATEGORY.options[idx++] = new Option("Other", "16");
+          form.CATEGORY.options[idx++] = new Option ("AutoCad", "1");
+          form.CATEGORY.options[idx++] = new Option ("Business", "2");
+          form.CATEGORY.options[idx++] = new Option ("Communications", "3");
+          form.CATEGORY.options[idx++] = new Option ("Desktop Enhancements", "4");
+          form.CATEGORY.options[idx++] = new Option ("Editors and Viewers", "5");
+          form.CATEGORY.options[idx++] = new Option ("Educational Software", "6");
+          form.CATEGORY.options[idx++] = new Option ("Encryption and Archiving", "7");
+          form.CATEGORY.options[idx++] = new Option ("File and Disk Utilities", "8");
+          form.CATEGORY.options[idx++] = new Option ("Games and Diversions", "9");
+          form.CATEGORY.options[idx++] = new Option ("Internet Software", "10");
+          form.CATEGORY.options[idx++] = new Option ("Merchandise", "11");
+          form.CATEGORY.options[idx++] = new Option ("Multimedia Software", "12");
+          form.CATEGORY.options[idx++] = new Option ("OS/2", "14");
+          form.CATEGORY.options[idx++] = new Option ("Organisers, Databases, PIM's", "15");
+          form.CATEGORY.options[idx++] = new Option ("Philosophy and Religon", "17");
+          form.CATEGORY.options[idx++] = new Option ("Service or Membership", "18");
+          form.CATEGORY.options[idx++] = new Option ("Sewing Products", "19");
+          form.CATEGORY.options[idx++] = new Option ("Software Development Tools", "20");
+          form.CATEGORY.options[idx++] = new Option ("System Tools", "21");
+          form.CATEGORY.options[idx++] = new Option ("Other", "16");
         }
-        initField(form, "CATEGORY", "##CATEGORY##");
-        initFileFields();
+        initField (form, "CATEGORY", "##CATEGORY##");
+        initFileFields ();
       }
 
-      function submitForm(form) {
+      function submitForm (form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        copyField(form, "SHOWCDOPTION", "SHOWCDOPTION_CHK");
-        copyField(form, "SHOWDISCOUNTFIELD", "SHOWDISCOUNTFIELD_CHK");
-        copyField(form, "SHOWREGNAMEFIELD", "SHOWREGNAMEFIELD_CHK");
-        copyField(form, "SHOWEMAILFIELD", "SHOWEMAILFIELD_CHK");
-        copyField(form, "QUANTITYFIXED", "QUANTITYFIXED_CHK");
-        copyField(form, "NEEDSORDERPARAMETERS","NEEDSORDERPARAMETERS_CHK");
-        //copyField(form, "ACTIVE", "ACTIVE_CHK");
-        copyField(form, "SHIPPED", "SHIPPED_CHK");
-        copyField(form, "NOTIFYVENDOR", "NOTIFYVENDOR_CHK");
-        copyField(form, "USEONEKEY", "USEONEKEY_CHK");
-        copyField(form, "INCLUDEONAPLIST", "INCLUDEONAPLIST_CHK");
-        copyField(form, "USEPRODUCTAIDCOOKIE", "USEPRODUCTAIDCOOKIE_CHK");
-        copyField(form, "TICKETCHOICE", "TICKETCHOICE_CHK");
-        copyField(form, "RECURAFFILIATE", "RECURAFFILIATE_CHK");
-        copyField(form, "PRICEINCLUDESVAT", "PRICEINCLUDESVAT_CHK");
-        copyField(form, "PRICEINCLUDESGST", "PRICEINCLUDESGST_CHK");
+        copyField (form, "SHOWCDOPTION",        "SHOWCDOPTION_CHK");
+        copyField (form, "SHOWDISCOUNTFIELD",   "SHOWDISCOUNTFIELD_CHK");
+        copyField (form, "SHOWREGNAMEFIELD",    "SHOWREGNAMEFIELD_CHK");
+        copyField (form, "SHOWEMAILFIELD",      "SHOWEMAILFIELD_CHK");
+        copyField (form, "QUANTITYFIXED",       "QUANTITYFIXED_CHK");
+        copyField (form, "NEEDSORDERPARAMETERS","NEEDSORDERPARAMETERS_CHK");
+        //copyField (form, "ACTIVE",              "ACTIVE_CHK");
+        copyField (form, "SHIPPED",             "SHIPPED_CHK");
+        copyField (form, "NOTIFYVENDOR",        "NOTIFYVENDOR_CHK");
+        copyField (form, "USEONEKEY",           "USEONEKEY_CHK");
+        copyField (form, "INCLUDEONAPLIST",     "INCLUDEONAPLIST_CHK");
+        copyField (form, "USEPRODUCTAIDCOOKIE", "USEPRODUCTAIDCOOKIE_CHK");
+        copyField (form, "TICKETCHOICE",        "TICKETCHOICE_CHK");
+        copyField (form, "RECURAFFILIATE",      "RECURAFFILIATE_CHK");
+        copyField (form, "PRICEINCLUDESVAT",     "PRICEINCLUDESVAT_CHK");
+        copyField (form, "PRICEINCLUDESGST",     "PRICEINCLUDESGST_CHK");
 
         if ("##DATEDISCONTINUED##" != "") {
-          alert("This product has been closed.  Please contact vendors@bmtmicro.com");
+          alert ("This product has been closed.  Please contact vendors@bmtmicro.com");
           return (false);
         }
-        if (isBlank(form.PRODUCTNAME.value)) {
-          alert("You must provide a Product Name!");
-          form.PRODUCTNAME.focus();
+        if (isBlank (form.PRODUCTNAME.value)) {
+          alert ("You must provide a Product Name!");
+          form.PRODUCTNAME.focus ();
           return (false);
         }
         if ((form.AFFILIATEPERCENTAGE.value < 0) || (form.AFFILIATEPERCENTAGE.value > 100)) {
-          setFieldVisible('affiliateinfo');
-          alert("Invalid Percentage, please correct");
-          form.AFFILIATEPERCENTAGE.focus();
+          setFieldVisible ('affiliateinfo');
+          alert ("Invalid Percentage, please correct");
+          form.AFFILIATEPERCENTAGE.focus ();
           return (false);
         }
-        if (!isBlank(form.SECUREORDERURL.value) && (form.SECUREORDERURL.value != "Use default") && !isValidURL(form.SECUREORDERURL.value)) {
-          setFieldVisible('affiliateinfo');
-          alert("Please enter a full URL starting with \"http://\" or \"https://\"");
-          form.SECUREORDERURL.focus();
+        if (!isBlank (form.SECUREORDERURL.value) && (form.SECUREORDERURL.value != "Use default") && !isValidURL (form.SECUREORDERURL.value)) {
+          setFieldVisible ('affiliateinfo');
+          alert ("Please enter a full URL starting with \"http://\" or \"https://\"");
+          form.SECUREORDERURL.focus ();
           return (false);
         }
-        if (!isBlank(form.DEMOURL.value) && !isValidURL(form.DEMOURL.value)) {
-          setFieldVisible('affiliateinfo');
-          alert("Please enter a full URL starting with \"http://\" or \"https://\"");
-          form.DEMOURL.focus();
+        if (!isBlank (form.DEMOURL.value) && !isValidURL (form.DEMOURL.value)) {
+          setFieldVisible ('affiliateinfo');
+          alert ("Please enter a full URL starting with \"http://\" or \"https://\"");
+          form.DEMOURL.focus ();
           return (false);
         }
-        if (!isBlank(form.VENDORPRODUCTURL.value) && !isValidURL(form.VENDORPRODUCTURL.value)) {
-          setFieldVisible('affiliateinfo');
-          alert("Please enter a full URL starting with \"http://\" or \"https://\"");
-          form.VENDORPRODUCTURL.focus();
+        if (!isBlank (form.VENDORPRODUCTURL.value) && !isValidURL (form.VENDORPRODUCTURL.value)) {
+          setFieldVisible ('affiliateinfo');
+          alert ("Please enter a full URL starting with \"http://\" or \"https://\"");
+          form.VENDORPRODUCTURL.focus ();
           return (false);
         }
-        if (!isBlank(form.NOTIFICATIONURL.value) && !isValidURL(form.NOTIFICATIONURL.value)) {
-          setFieldVisible('ordernotifications');
-          alert("Please enter a full URL starting with \"http://\" or \"https://\"");
-          form.NOTIFICATIONURL.focus();
+        if (!isBlank (form.NOTIFICATIONURL.value) && !isValidURL (form.NOTIFICATIONURL.value)) {
+          setFieldVisible ('ordernotifications');
+          alert ("Please enter a full URL starting with \"http://\" or \"https://\"");
+          form.NOTIFICATIONURL.focus ();
           return (false);
         }
-        if (form.NOTIFICATIONEMAILS.value.indexOf(",") != -1) {
-          setFieldVisible('ordernotifications');
-          alert("Notification e-mail addresses should be separated with a space, not a comma!");
-          form.NOTIFICATIONEMAILS.focus();
+        if (form.NOTIFICATIONEMAILS.value.indexOf (",") != -1) {
+          setFieldVisible ('ordernotifications');
+          alert ("Notification e-mail addresses should be separated with a space, not a comma!");
+          form.NOTIFICATIONEMAILS.focus ();
           return (false);
         }
-        if (!isBlank(form.NOTIFICATIONEMAILS.value) && !isValidEmailList(form.NOTIFICATIONEMAILS.value)) {
-          setFieldVisible('ordernotifications');
-          alert("You must provide a VALID e-mail address!");
-          form.NOTIFICATIONEMAILS.focus();
+        if (!isBlank (form.NOTIFICATIONEMAILS.value) && !isValidEmailList (form.NOTIFICATIONEMAILS.value)) {
+          setFieldVisible ('ordernotifications');
+          alert ("You must provide a VALID e-mail address!");
+          form.NOTIFICATIONEMAILS.focus ();
           return (false);
         }
-        if (isBlank(form.PRICE_USD.value)) {
-          alert("Please enter a price for your product!");
-          form.PRICE_USD.focus();
+        if (isBlank (form.PRICE_USD.value)) {
+          alert ("Please enter a price for your product!");
+          form.PRICE_USD.focus ();
           return (false);
         }
-        if (!isValidDollarAmount(form.PRICE_USD.value)) {
-          alert("Please do not include $ in product price. The price must be specified with numbers only, e.g. 15.25 for fifteen dollars twentyfive cents");
-          form.PRICE_USD.focus();
+        if (!isValidDollarAmount (form.PRICE_USD.value)) {
+          alert ("Please do not include $ in product price. The price must be specified with numbers only, e.g. 15.25 for fifteen dollars twentyfive cents");
+          form.PRICE_USD.focus ();
           return (false);
         }
         switch (form.CURRENCY.value) {
@@ -378,15 +378,15 @@
           break;
         }
         if ((form.RECURDELAY.value < 0) || (form.RECURDELAY.value > 45)) {
-          setFieldVisible('subscriptionhandling');
-          alert("Subscriptions must start billing within 45 days!");
-          form.RECURDELAY.focus();
+          setFieldVisible ('subscriptionhandling');
+          alert ("Subscriptions must start billing within 45 days!");
+          form.RECURDELAY.focus ();
           return (false);
         }
         if ((form.SECUREORDERURL.value == "Use default") || (form.SECUREORDERURL.value == "##DEFAULTSECUREURL##")) {
           form.SECUREORDERURL.value = "";
         }
-        form.submit();
+        form.submit ();
         return (true);
       }
 
@@ -711,6 +711,9 @@
                       </div>
                       <h6>Generate&nbsp;Codes/Gift&nbsp;Certificates/Subscription&nbsp;Credits</h6>
                       <p>If you would like to add pre-generated Activation Codes to your product select the Choose Activation Code Table button.  If activation code, gift certificate or subscription credit should be generated on the fly, select Add Code Generator Information. To generate promotional discount code for customers use on their next purchase Click Choose Discount Scheme.</p>
+                      <!--<button class="blue">Add New Activation Codes</button>-->
+                      <button type="button" class="option-btn" onclick="toggleField('regkeytable');">Choose&nbsp;Activation&nbsp;Code&nbsp;Table</button>
+                      <button type="button" class="option-btn" onclick="toggleField('keygenerator');">Add&nbsp;Code&nbsp;Generator&nbsp;Information</button>
                     </div> <!-- end .col-8 -->
                   </div> <!-- end .row -->
                 </form>
@@ -748,4 +751,4 @@
       });
     </script>
   </body>
-  </html>
+</html>
