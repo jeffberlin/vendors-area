@@ -27,51 +27,66 @@
       span, label {
         color: #707070;
       }
-      span, label, input, textarea, select {
+      span, label, input, textarea, select, .save-btn {
         letter-spacing: .5px;
       }
       input, textarea {
-        border: 1px solid #a9a9a9;
         padding: .25rem .5rem;
         font-size: .8rem;
+      }
+      input, textarea, select {
+        border: 1px solid #a9a9a9;
         border-radius: 3px;
       }
-      input:focus, textarea:focus {
+      input:focus, textarea:focus, .select:focus, .save-btn {
         border: 1px solid #195a7c;
       }
-      textarea {
+      textarea, select, select:focus {
         outline: none;
       }
-      h5 {
+      h5, .fa-plus-circle:hover, .toggle-section h6, .save-btn:hover {
         color: #efa900;
       }
       select {
-        border: 1px solid #a9a9a9;
-        border-radius: 3px;
         padding: .2rem;
-        outline: none;
         background: #ffffff;
       }
       select:hover {
         cursor: pointer;
       }
-      select:focus {
-        border: 1px solid #195a7c;
-        outline: none;
-      }
-      select, h6 {
+      select, h6, .fa-plus-circle, .save-btn {
         color: #195a7c;
       }
       h6 {
         font-size: 1.15rem;
       }
+      .toggle-section {
+         margin-bottom: 1rem;
+         padding-left: 10px;
+      }
+      .toggle-section h6 {
+         margin-bottom: .3rem;
+      }
       .fa-plus-circle {
-        color: #195a7c;
         font-size: 1.5rem;
       }
       .fa-plus-circle:hover {
-        color: #efa900;
         transition: ease-in-out .25s;
+      }
+      .save-btn {
+        /* border: 1px solid rgba(17,22,26,.04); */
+        border-radius: 3px;
+        box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
+        -webkit-box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
+        background: #ffffff;
+        padding: .3rem .75rem;
+        font-size: .8rem;
+      }
+      .save-btn:hover {
+        box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
+        -webkit-box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
+        -moz-box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
+        border: 1px solid #efa900;
       }
     </style>
     <script language="javascript" type="text/javascript">
@@ -548,7 +563,7 @@
                   <br clear="all">
                   <span>
       <!-- FINISH SHIPPING SECTION -->
-                    <div id="shipping" style="display: none;">
+                    <div id="shipping" class="toggle-section" style="display: none;">
                       <label>Shipping&nbsp;Cost&nbsp;Scheme:</label>
                       <select name="SHIPPINGCOSTSCHEMEID">
                         ##SHIPPINGSCHEMEIDLIST##
@@ -684,8 +699,8 @@
                       <button type="button" class="option-btn" onclick="toggleField('downloadfile');" style="margin-bottom: .7rem;">
                         Choose&nbsp;File
                       </button>
-                      <div id="downloadfile" style="display: none;">
-                        <h6 style="color: #efa900; margin-bottom: .3rem;">Choose&nbsp;File</h6>
+                      <div id="downloadfile"  class="toggle-section" style="display: none;">
+                        <h6>Choose&nbsp;File</h6>
                         <div id="fileFields"></div>
                         <br clear="all">
                         <span>
@@ -714,6 +729,152 @@
                       <!--<button class="blue">Add New Activation Codes</button>-->
                       <button type="button" class="option-btn" onclick="toggleField('regkeytable');">Choose&nbsp;Activation&nbsp;Code&nbsp;Table</button>
                       <button type="button" class="option-btn" onclick="toggleField('keygenerator');">Add&nbsp;Code&nbsp;Generator&nbsp;Information</button>
+                      <button type="button" class="option-btn" onclick="toggleField('discounts');" style="margin-bottom: .7rem;">Choose&nbsp;a&nbsp;Discount&nbsp;Scheme</button>
+                      <div id="regkeytable" class="toggle-section" style="display: none;">
+                        <h6>Include&nbsp;Activation&nbsp;Code&nbsp;from&nbsp;Table</h6>
+                        <p>Select activation code table to associate with this product.&nbsp;Our system will retrieve a code from this table for each customer.</p>
+                        <span>
+                          <input type="hidden" name="USEONEKEY" value="##USEONEKEY##" />
+                          <input type="checkbox" name="USEONEKEY_CHK" value="-1" size="12" onclick="document.productform.USEONEKEY_CHK2.checked = this.checked;" />&nbsp;Use only one code for quantity purchases.
+                        </span>
+                      </div>
+                      <div id="keygenerator" class="toggle-section" style="display: none;">
+                        <h6>Include&nbsp;Activation&nbsp;Code&nbsp;Generated&nbsp;On-the-Fly</h6>
+                        <p>Add code generation information for this product below.&nbsp;Our system will post this information with each successful order.</p>
+                        <span>
+                          <label>Generate&nbsp;Activation&nbsp;Codes/Gift&nbsp;Certificate/Subscription&nbsp;Credit:</label>
+                          <input name="KEYGENERATOR" maxlength="256" value="##KEYGENERATOR##" size="75" />
+                        </span>
+                        <br>
+                        <span>
+                          <label>Character&nbsp;Set:</label>
+                          <select name="KEYGENCHARSET">
+                            <option value="0">US&nbsp;ASCII&nbsp;(7-bit)</option>
+                            <option value="1">UTF-8</option>
+                            <option value="2">Windows-1252</option>
+                            <option value="3">ISO&nbsp;8859-1</option>
+                          </select>
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <input type="checkbox" name="USEONEKEY_CHK2" value="-1" size="12" onclick="document.productform.USEONEKEY_CHK.checked = this.checked;" />&nbsp;Generate only one code for quantity purchases.
+                        </span>
+                        <script language="javascript" type="text/javascript">
+                          <!--
+                          if (!isBlank("##KEYVALIDATOR##")) {
+                            document.write('<br clear="all"><br>  ');
+                            document.write('<span><label>Validate Generated Activation Codes</label>  ');
+                            document.write('<input name="KEYVALIDATOR" maxlength="256" value="##KEYVALIDATOR##" size="75" /></span> ');
+                          }
+                          // -->
+                        </script>
+                      </div> <!-- end .toggle-section -->
+                      <div id="discounts" class="toggle-section" style="display: none;">
+                        <h6>Include&nbsp;Discount&nbsp;Code</h6>
+                        <p>If you would like to send the customer a discount code for their next purchase, please select discount scheme below.</p>
+                        <span>
+                          <label>Choose&nbsp;Discount&nbsp;Scheme:</label>
+                          <select name="DISCOUNTSCHEMEID">
+                            <option value="" selected>Select</option>
+                            ##DISCOUNTSCHEMEIDLIST##
+                          </select>
+                        </span>
+                      </div> <!-- end .toggle-section -->
+                      <h6>Add&nbsp;Affiliate&nbsp;Information</h6>
+                      <p>Let your affiliates do the marketing for you. Adding your product to the affiliate program is easy to do. Follow our simple steps by clicking the button below.</p>
+                      <button type="button" class="option-btn" onclick="toggleField('affiliateinfo');" style="margin-bottom: .7rem;">Make available for affiliate sales</button>
+                      <div id="affiliateinfo" class="toggle-section" style="display: none;">
+                        <h6>Affiliate&nbsp;Sales&nbsp;Info</h6>
+                        <p>If you would like to accept affiliate sales for this product, fill in information below.</p>
+                        <span>
+                          <label>Affiliate&nbsp;Percentage:</label>
+                          <input type="text" maxlength="100" name="AFFILIATEPERCENTAGE" value="##AFFILIATEPERCENTAGE##" style="margin-bottom: .5rem;" />
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <label>Full&nbsp;Description&nbsp;URL:</label>
+                          <input type="text" maxlength="100" name="VENDORPRODUCTURL"  size="75" value="##VENDORPRODUCTURL##" style="margin-bottom: .5rem;" />&nbsp;<button class="option-btn" type="button" onclick="testURL (form.VENDORPRODUCTURL)">Test</button>
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <label>Secure&nbsp;Order&nbsp;URL:</label>
+                          <input type="text" maxlength="100" name="SECUREORDERURL"  size="75" value="##SECUREORDERURL##" style="margin-bottom: .5rem;" />&nbsp;<button class="option-btn" type="button" onclick="testURL (form.SECUREORDERURL, (form.SECUREORDERURL.value == 'Use default') ? '##DEFAULT_SECUREORDERURL##' : '')">Test</button>
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <label>Demo/Product&nbsp;Info&nbsp;URL:</label>
+                          <input type="text" maxlength="100" name="DEMOURL" size="75" value="##DEMOURL##" style="margin-bottom: .5rem;" />&nbsp;<button class="option-btn" type="button" onclick="testURL (form.DEMOURL)">Test</button>
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <input type="hidden" name="INCLUDEONAPLIST" value="##INCLUDEONAPLIST##" />
+                          <input type="checkbox" name="INCLUDEONAPLIST_CHK" value="-1" style="margin-bottom: .5rem;" />&nbsp;Include in All Affiliates List
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <input type="hidden" name="USEPRODUCTAIDCOOKIE" value="##USEPRODUCTAIDCOOKIE##" />
+                          <input type="checkbox" name="USEPRODUCTAIDCOOKIE_CHK" value="-1" />&nbsp;Use Product Specific Cookie
+                        </span>
+                      </div> <!-- end .toggle-section -->
+                      <h6>Order&nbsp;Notifications/Subscription&nbsp;Handling</h6>
+                      <p>Click button below to add an additional notification email address, XML notification URL, recurring billing information and allow ticket use.</p>
+                      <button type="button" class="option-btn" onclick="toggleField('ordernotifications');">Order&nbsp;Notifications</button>
+                      <button type="button" class="option-btn" onclick="toggleField('subscriptionhandling');" style="margin-bottom: .7rem;">Subscription&nbsp;Handling</button>
+                      <div id="ordernotifications" class="toggle-section" style="display: none;">
+                        <h6>Order&nbsp;Notifications</h6>
+                        <p>By default order notifications are sent via email to the notification email address listed under 'My Account'.&nbsp;To stop order notifications, add a different email address or receive notification via XML, fill in appropriate fields below.</p>
+                        <span>
+                          <input type="hidden" name="NOTIFYVENDOR" value="##NOTIFYVENDOR##" />
+                          <input type="checkbox" name="NOTIFYVENDOR_CHK" value="-1" style="margin-bottom: .5rem;"/>&nbsp;Send to Vendor Notification email
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <label>Send&nbsp;Order&nbsp;Notification&nbsp;to&nbsp;other&nbsp;email&nbsp;address:</label>
+                          <input name="NOTIFICATIONEMAILS" size="50" value="##NOTIFICATIONEMAILS##" maxlength="200" placeholder="example@domain.com" style="margin-bottom: .5rem;"/>
+                          <input type="hidden" name="NOTIFYPRODUCT" />
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <label>Send&nbsp;XML&nbsp;Notification&nbsp;to&nbsp;remote&nbsp;system&nbsp;(full&nbsp;URL):</label>
+                          <input name="NOTIFICATIONURL" size="75" value="##NOTIFICATIONURL##" maxlength="256" />
+                        </span>
+                      </div> <!-- end .toggle-section -->
+                      <div id="subscriptionhandling" class="toggle-section" style="display: none;">
+                        <h6>Subscription&nbsp;Handling</h6>
+                        <p>If this is product should be rebilled automatically, select frequency below.</p>
+                        <span>
+                          <p style="margin-bottom: .3rem;">Your website must inform your customers that they are purchasing a subscription product.</p>
+                          <label>Recurring&nbsp;Billing&nbsp;Frequency:</label>
+                          <select name="RECURFREQUENCY" style="margin-bottom: 1rem;" />
+                            <option value="0" selected>None</option>
+                            <option value="1">Every&nbsp;Month</option>
+                            <option value="3">Every&nbsp;3&nbsp;Months</option>
+                            <option value="4">Every&nbsp;4&nbsp;Months</option>
+                            <option value="6">Every&nbsp;6&nbsp;Months</option>
+                            <option value="12">Every&nbsp;12&nbsp;Months</option>
+                          </select>
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <p style="margin-bottom: .3rem;">To offer trial subscriptions, enter the number of days for the trial period below.</p>
+                          <label>Recurring&nbsp;Billing&nbsp;Delay:</label>
+                          <input name="RECURDELAY" size="10" value="##RECURDELAY##" style="margin-bottom: 1rem;" />
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <p style="margin-bottom: .3rem;">To allow customer to purchase this product using a credit from subscription product purchase, check the box below.</p>
+                          <input type="hidden" name="TICKETCHOICE" value="##TICKETCHOICE##" />
+                          <input type="checkbox" name="TICKETCHOICE_CHK" value="-1" style="margin-bottom: 1rem;" />&nbsp;Allow purchase with Ticket
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <p style="margin-bottom: .3rem;">To give affiliates credit for recurring billings, check box below. If unchecked, affiliates will only get credit for the initial sale.</p>
+                          <input type="hidden" name="RECURAFFILIATE" value="##RECURAFFILIATE##" />
+                          <input type="checkbox" name="RECURAFFILIATE_CHK" value="-1" style="margin-bottom: 1rem;" /> Credit affiliate when rebilling
+                        </span>
+                      </div> <!-- end .toggle-section -->
+                      <p style="margin-top: 2rem; margin-bottom: .3rem;">Click 'Save' button to add the new product.</p>
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
                     </div> <!-- end .col-8 -->
                   </div> <!-- end .row -->
                 </form>

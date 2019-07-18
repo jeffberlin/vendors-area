@@ -73,6 +73,7 @@ a {
   font-size: .8rem;
   border: 1px solid #000000;
   padding: .2rem .4rem;
+  background-color: #dddddd;
   }
 
 .option-btn:hover {
