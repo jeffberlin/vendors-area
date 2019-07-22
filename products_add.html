@@ -70,11 +70,10 @@
       .fa-plus-circle {
         font-size: 1.5rem;
       }
-      .fa-plus-circle:hover {
+      .fa-plus-circle:hover, .remove:hover {
         transition: ease-in-out .25s;
       }
       .save-btn {
-        /* border: 1px solid rgba(17,22,26,.04); */
         border-radius: 3px;
         box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
         -webkit-box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
@@ -87,6 +86,27 @@
         -webkit-box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
         -moz-box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
         border: 1px solid #efa900;
+      }
+      #fileFields label {
+        margin-right: .3rem;
+      }
+      #DOWNLOADFILEID, #DOWNLOADFILEDESCRIPTION {
+        margin-right: .5rem;
+      }
+      .remove {
+        background: url('/images-2/times-circle-red.png') no-repeat center center;
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+        vertical-align: middle;
+        border: none;
+      }
+      .remove:hover {
+        filter: brightness(.75);
+      }
+      #fileFields span::after {
+        content: '\A';
+        white-space: pre;
       }
     </style>
     <script language="javascript" type="text/javascript">
@@ -119,7 +139,7 @@
           selectElem.appendChild (optionElem);
         }
         labelElem = document.createElement ("label");
-        labelElem.appendChild (document.createTextNode ("Description"));
+        labelElem.appendChild (document.createTextNode ("Description:"));
         spanElem.appendChild (labelElem);
         var textElem = document.createElement ("input");
         textElem.setAttribute ("type", "text");
@@ -131,7 +151,7 @@
         buttonElem.setAttribute ("class", "remove");
         buttonElem.setAttribute ("type", "button");
         buttonElem.setAttribute ("onclick", "removeFileField (\"" + fieldID + "\");");
-        buttonElem.appendChild (document.createTextNode ("X"));
+        // buttonElem.appendChild (document.createTextNode ("X"));
         spanElem.appendChild (buttonElem);
         spanElem.style.clear = "left";
         return (spanElem);
@@ -296,7 +316,7 @@
         copyField (form, "PRICEINCLUDESGST",     "PRICEINCLUDESGST_CHK");
 
         if ("##DATEDISCONTINUED##" != "") {
-          alert ("This product has been closed.  Please contact vendors@bmtmicro.com");
+          alert ("This product has been closed. Please contact vendors@bmtmicro.com");
           return (false);
         }
         if (isBlank (form.PRODUCTNAME.value)) {
@@ -699,7 +719,7 @@
                       <button type="button" class="option-btn" onclick="toggleField('downloadfile');" style="margin-bottom: .7rem;">
                         Choose&nbsp;File
                       </button>
-                      <div id="downloadfile"  class="toggle-section" style="display: none;">
+                      <div id="downloadfile" class="toggle-section" style="display: none;">
                         <h6>Choose&nbsp;File</h6>
                         <div id="fileFields"></div>
                         <br clear="all">
@@ -873,7 +893,7 @@
                           <input type="checkbox" name="RECURAFFILIATE_CHK" value="-1" style="margin-bottom: 1rem;" /> Credit affiliate when rebilling
                         </span>
                       </div> <!-- end .toggle-section -->
-                      <p style="margin-top: 2rem; margin-bottom: .3rem;">Click 'Save' button to add the new product.</p>
+                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to add the new product.</p>
                       <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
                     </div> <!-- end .col-8 -->
                   </div> <!-- end .row -->
