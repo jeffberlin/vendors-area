@@ -13,7 +13,7 @@
   border-radius: 3px 3px 0px 0px;
   }
 
-.table-header span, .table-header input, .get-btn, .display-header, .sort-column, td, tfoot {
+.table-header span, .table-header input, .get-btn, .display-header, .sort-column, td, tfoot, .td-button button {
   letter-spacing: .5px;
   }
 
@@ -106,4 +106,42 @@ tfoot {
   background-color: #dddddd;
   border: 1px solid #a9a9a9;
   font-weight: 500;
+  }
+
+.td-button {
+  text-align: center;
+  }
+
+.td-button button {
+  border: none;
+  padding: .3rem .75rem;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: 1px solid #195a7c;
+  color: #195a7c;
+  }
+
+.td-button button:hover {
+  box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
+  -webkit-box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
+  -moz-box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
+  border: 1px solid #efa900;
+  color: #efa900;
+  transition: ease-in-out 0.2s;
+  }
+
+.td-button:focus {
+  outline: none;
+  }
+
+.remove {
+  background: url('../images-2/times-circle-red.png') no-repeat center center;
+  background-size: cover;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  border: none;
+  }
+.remove:hover {
+  filter: brightness(.75);
   }
