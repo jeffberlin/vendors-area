@@ -143,5 +143,5 @@ tfoot {
   border: none;
   }
 .remove:hover {
-  filter: brightness(.75);
+  filter: brightness(.7);
   }
