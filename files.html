@@ -12,7 +12,7 @@
     <title>BMT Micro Developers Center</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/summaryTable.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
@@ -34,7 +34,7 @@
         border-right: none;
       }
       /* Class for td button */
-      .td-button {
+      .td-button, td[option], td[mnumber] {
         text-align: center;
       }
       .td-button button {
@@ -172,8 +172,25 @@
               </th>
             </tr>
           </thead>
+          <tbody>
+            ##TABLEDATA##
+          </tbody>
+          <tfoot>
+            <tr class="table-total">
+              <th scope="row" colspan="8">
+                <div id="pageselector">
+                  &nbsp;
+                </div>
+              </th>
+            </tr>
+          </tfoot>
         </table>
       </div>
+    </form>
+
+    <form name="upload" method=post action="https://vendors-new.bmtmicro.com/servlets/CustomForms.CustomForm" target="_parent">
+       <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/files_upload.html">
+       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
     </form>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
