@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>BMT Micro Developers Center</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/summaryTable.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <style media="screen" type="text/css">
+      .table-header input {
+        font-size: .9rem;
+      }
+      .table-header input, .td-button button {
+        letter-spacing: .5px;
+      }
+      .td-button button:hover {
+        transition: ease-in-out 0.2s;
+      }
+      td {
+        border-right: 1px solid #a9a9a9;
+      }
+      td:last-child {
+        border-right: none;
+      }
+      /* Class for td button */
+      .td-button {
+        text-align: center;
+      }
+      .td-button button {
+        border: none;
+        padding: .3rem .75rem;
+        border-radius: 3px;
+        background-color: #ffffff;
+        border: 1px solid #195a7c;
+        color: #195a7c;
+      }
+      .td-button button:hover {
+        box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
+        -webkit-box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
+        -moz-box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
+        border: 1px solid #efa900;
+        color: #efa900;
+      }
+      .td-button:focus {
+        outline: none;
+      }
+    </style>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function submitForm (action, target, nextpage, downloadfileid) {
+        var form = document.files;
+        form.ACTION.value = action;
+        form.target = target;
+        form.NEXT_PAGE.value = nextpage;
+        form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.html" : "https://vendors-new.bmtmicro.com/error_frame.html";
+        form.DOWNLOADFILEID.value = downloadfileid;
+        form.submit ();
+      }
+
+      function uploadFile () {
+        if (allowChanges ("You do not have permission to upload files.")) {
+          document.upload.submit ();
+        }
+      }
+
+      function downloadFile (downloadfileid) {
+        if (allowChanges ("You do not have permission to download files.")) {
+          submitForm (1, "", "https://vendors-new.bmtmicro.com/files.html", downloadfileid);
+        }
+      }
+
+      function showDemoURL (downloadfileid) {
+        submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/files_viewdemourl.html", downloadfileid);
+      }
+
+      function viewFile (downloadfileid) {
+        submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/files_viewproducts.html", downloadfileid);
+      }
+
+      function deleteFile (downloadfileid) {
+        if (allowChanges ("You do not have permission to delete files.")) {
+          submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/files_delete.html", downloadfileid);
+        }
+      }
+
+      function toggleDemo (downloadfileid) {
+        submitForm (14, "", "https://vendors-new.bmtmicro.com/files.html", downloadfileid);
+      }
+
+      function filterChanged () {
+        submitForm (-1, "", "https://vendors-new.bmtmicro.com/files.html");
+      }
+
+      function selectPage (p) {
+        document.files.PAGE.value = p;
+        submitForm (-1, "", "https://vendors-new.bmtmicro.com/files.html");
+      }
+
+      function initForm (form) {
+        if (##PAGECOUNT## > 1) {
+          var s = "Pages:&nbsp;";
+          for (var p = 1; p <= ##PAGECOUNT##; p++) {
+            s += "<a href=\"javascript:selectPage(" + p + ");\">" + p  + "</a>&nbsp;&nbsp;";
+          }
+          document.getElementById ("pageselector").innerHTML = s;
+        }
+        catchEnter (form.FILTER, filterChanged);
+      }
+      //-->
+    </script>
+  </head>
+  <body onload="initForm (document.files);">
+    <form name="files" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadFiles" method="post" target="resultframe">
+      <input type="hidden" name="ACTION" value="" />
+      <input type="hidden" name="DOWNLOADFILEID" value="" />
+      <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
+      <input type="hidden" name="ROWSPERPAGE" value="##ROWSPERPAGE##" />
+      <input type="hidden" name="PAGE" value="##PAGE##" />
+      <input type="hidden" name="PAGECOUNT" value="##PAGECOUNT##" />
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/files.html" />
+      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
+      <div class="table-header">
+        <span>
+          Filter&nbsp;by&nbsp;File&nbsp;Name:
+          <input type="text" name="FILTER" value="##FILTER##" style="margin-bottom: 1rem;" />&nbsp;
+          <button type="button" name="FILTERBUTTON" value="Refresh" class="get-btn" onClick="filterChanged ();" />Apply</button>
+        </span>
+        <span>
+          &nbsp;&nbsp;Total&nbsp;number&nbsp;of&nbsp;files:&nbsp;##TOTALCOUNT##&nbsp;&nbsp;Total&nbsp;size:&nbsp;##TOTALSIZE##
+        </span>
+        <br clear="all" />
+        <button type="button" class="option-btn" onclick="uploadFile ();">Upload File</button>
+      </div> <!-- end .table-header -->
+      <div class="row" style="margin-left: auto; margin-right: auto;">
+        <table class="table">
+          <thead>
+            <tr class="table-category text-center">
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'File Name'" text>
+                <a href="#" class="fdTableSortTrigger">File&nbsp;Name</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'Size'"  data-sorttype="number">
+                <a href="#" class="fdTableSortTrigger">Size</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'Date'" date>
+                <a href="#" class="fdTableSortTrigger">Date</a>
+              </th>
+              <th scope="col" class="sort-column number sortable sort" data-sorttype="number" title="Sort on 'Date'" date>
+                <a href="#" class="fdTableSortTrigger">Download&nbsp;Count</a>
+              </th>
+              <th scope="col" class="sort-column" option>
+                <a href="#" style="cursor: default;">Share&nbsp;File</a>
+              </th>
+              <th scope="col" class="sort-column" option>
+                <a href="#" style="cursor: default;"></a>
+              </th>
+              <th scope="col" class="sort-column" option>
+                <a href="#" style="cursor: default;"></a>
+              </th>
+              <th scope="col" class="sort-column" option>
+                <a href="#" style="cursor: default;">Delete&nbsp;File</a>
+              </th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

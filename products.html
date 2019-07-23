@@ -18,10 +18,10 @@
     <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <style media="screen" type="text/css">
-      .date-selection input {
+      .table-header input {
         font-size: .9rem;
       }
-      .date-selection input, .td-button button {
+      .table-header input, .td-button button {
         letter-spacing: .5px;
       }
       .td-button button:hover {
@@ -151,7 +151,7 @@
       <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products.html" />
       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
       <input type="hidden" name="PRODUCTID" value="" />
-      <div class="date-selection">
+      <div class="table-header">
         <input type="checkbox" name="SHOWINACTIVE" value="-1" onClick="showInactiveChanged ();" /> <span>Show inactive products</span>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <span>Filter by Product ID/Name:
@@ -164,7 +164,7 @@
         <button type="button" class="option-btn" onclick="editDefaultVendorEMail ();">Edit Global Vendor Email</button>
         &nbsp;&nbsp;
         <button type="button" class="option-btn" onclick="addProduct ();" >Add New Product</button>
-      </div> <!-- end .date-selection -->
+      </div> <!-- end .table-header -->
       <div class="row" style="margin-left: auto; margin-right: auto;">
         <table class="table">
           <thead>

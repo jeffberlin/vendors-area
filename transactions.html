@@ -190,7 +190,7 @@
               <p>Vendor payments are made on the first of each month.</p>
               <div class="select-table">
                 <form name="transactions" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Transactions" target="">
-                  <div class="date-selection">
+                  <div class="table-header">
                     <span>From:&nbsp;<input id="DATEFROM" name="DATEFROM" value="##DATEFROM##" />
                       <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
                     </span>
@@ -214,7 +214,7 @@
                       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
                       <button type="button" class="get-btn" value="Get Report" onclick="submitForm (transactions);" />Get Account Transactions</button>
                     </span>
-                  </div>
+                  </div> <!-- end .table-header -->
                   <div class="row" style="margin-left: auto; margin-right: auto;">
                     <table class="table">
                       <thead>

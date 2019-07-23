@@ -248,7 +248,7 @@
               <p>Filter Details using the input fields. Fields can be added or removed using the Settings link under your name.</p>
               <div class="select-table">
                 <form name="salesdetails" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetails" method="post" onsubmit="return (CheckDateRange(this));">
-                  <div class="date-selection">
+                  <div class="table-header">
                     <span>From:&nbsp;
                       <input id="DATEFROM" name="DATEFROM" value="##DATEFROM##" />&nbsp;
                       <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
@@ -274,7 +274,7 @@
                     <span>
                       <button class="get-btn" value="Get Report">Get Sales Details</button>
                     </span>
-                  </div>
+                  </div> <!-- end .table-header -->
                   <div class="table-responsive">
                     <table class="table">
                       <script language="javascript" type="text/javascript">
