@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/smoothness/jquery-ui.min.css" media="screen" />
+    <link type="text/css" rel="stylesheet" href="https://vendors-new.bmtmicro.com/plupload-2.3.6R/js/jquery.ui.plupload/css/jquery.ui.plupload.css" media="screen" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/plupload-2.3.6R/js/plupload.full.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/plupload-2.3.6R/js/plupload.dev.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/plupload-2.3.6R/js/jquery.ui.plupload/jquery.ui.plupload.min.js" charset="UTF-8"></script>
+  </head>
+  <body>
+    <div id="uploader">
+      <p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
+    </div>
+
+    <script type="text/javascript">
+      function generateUUID () {
+        var d = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = (d + Math.random()*16)%16 | 0;
+          d = Math.floor(d/16);
+          return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+        });
+        return (uuid);
+      }
+
+      var uploadSessionID = generateUUID ();
+
+      function refreshUploadResult (completed) {
+        document.uploadresult.SESSIONID.value = uploadSessionID;
+        document.uploadresult.COMPLETED.value = completed ? -1 : 0;
+        document.uploadresult.submit ();
+      }
+
+      // Initialize the widget when the DOM is ready
+      $(function () {
+        $("#uploader").plupload ({
+          // General settings
+          runtimes : 'html5,flash,silverlight,html4',
+          url : 'https://vendors-new.bmtmicro.com/servlets/Vendors.FileUpload',
+
+          chunk_size: '16777216',
+          max_retries: 3,
+
+          prevent_duplicates: true,  // Do not let duplicate files into the queue
+          rename: true,              // Rename files by clicking on their titles
+          sortable: true,            // Sort Enablefiles
+          dragdrop: true,            // Enable ability to drag'n'drop files onto the widget (currently only HTML5 supports that)
+
+          // Views to activate
+          views: {
+            list: true,
+            thumbs: true, // Show thumbs
+            default: 'list',
+            remember: true
+          },
+          flash_swf_url : 'https://vendors-new.bmtmicro.com/plupload-2.3.6R/js/Moxie.swf',       // Flash settings
+          silverlight_xap_url : 'https://vendors-new.bmtmicro.com/plupload-2.3.6R/js/Moxie.xap', // Silverlight settings
+
+          // PreInit events, bound before any internal events
+          preinit : {
+            Init: function(up, info) {
+              refreshUploadResult (false);
+            },
+            UploadFile: function(up, file) {
+              var d = new Date (file.lastModifiedDate); // The file object returns the date in string format
+              up.setOption ('multipart_params', {fileName : file.name, fileLength : file.size, lastModified : d.getTime() });
+            }
+          },
+          // Post init events, bound after the internal events
+          init : {
+            FileUploaded: function(up, file, info) {
+              // Called when file has finished uploading
+              refreshUploadResult (false);
+            },
+            UploadComplete: function(up, files) {
+              // Called when all files are either uploaded or failed
+              refreshUploadResult (true);
+              var iDone = 0;
+              var iFailed = 0;
+              for (var i = 0; i < files.length; i++) {
+                switch (files[i].status) {
+                  case 4:
+                    iFailed++;
+                  break;
+                  case 5:
+                    iDone++;
+                  break;
+                }
+              }
+              if (iFailed != 0) {
+                alert (iFailed + " file(s) failed to upload");
+              }
+            }
+          }
+        });
+      });
+    </script>
+
+    <form name="uploadresult" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.FileUpload" target="resultframe">
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/files_uploadresult.html" />
+      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+      <input type="hidden" name="SESSIONID" value="" />
+      <input type="hidden" name="COMPLETED" value="" />
+      <span style='font: 12px/18px "Segoe UI", "Tahoma", "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana;'>
+        <label>
+          <input type="checkbox" name="PRESERVEFILETIME" value="-1" onclick="preserveFileTimeChanged (uploadresult);" />&nbsp;Preserve original time &amp; date of uploaded files.
+        </label>
+      </span>
+    </form>
+  </body>
+</html>

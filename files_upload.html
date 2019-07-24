@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -19,116 +19,17 @@
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
-      td[text], td[number], td[date], td[info], td[money], th {
-        border-right: 1px solid #a9a9a9;
-      }
-      td:last-child, th:last-child {
-        border-right: none;
-      }
-      th {
-        min-width: 150px;
-      }
-      .input-search, select {
-        border: 1px solid #a9a9a9;
-        border-radius: 3px;
-      }
-      .input-search {
-        font-size: .8rem;
-        padding: .25rem;
-        color: #707070;
-      }
-      .input-search:focus {
-        border: 1px solid #195a7c;
-      }
-      select {
-        letter-spacing: .5px;
-        padding: .2rem;
-        outline: none;
-        background: #ffffff;
+      .email-link {
         color: #195a7c;
       }
-      select:hover {
-        cursor: pointer;
-      }
-      select:focus {
-        border: 1px solid #195a7c;
+      .email-link:hover {
+        transition: ease .2s;
+        color: #efa900;
       }
     </style>
-    <script language="javascript" type="text/javascript">
-    <!--
-      function initForm (form){
-        initField (form, "EXACTMATCH",  "##EXACTMATCH##");
-      }
-      function exactMatch (form) {
-        setCookieValue ("BMTMicro.Vendors.SalesDetails.ExactMatch", queryField (form, "EXACTMATCH"), 1000);
-      }
-      function invoice (orderid) {
-        var form = document.invoice;
-        //   window.open("", "InvoicePopUp","scrollbars=yes,menubar=1,location=no,resizable=yes").focus();
-        form.ORDERID.value = orderid;
-        form.submit();
-      }
-      function tabledata () {
-        var colTypes = [ ##COLTYPELIST## ];
-        var colTypeNames = [
-          "text",   // 0 - Text
-          "number", // 1 - Number
-          "money",  // 2 - Amount
-          "money",  // 3 - Currency
-          "date",   // 4 - Date
-          "info",   // 5 - EMail
-          "number"  // 6 - Order ID
-        ];
-
-        var colHdrs = [ ##COLHDRLIST## ];
-        var s = "<thead><tr class=\"table-category\">";
-        for (var i = 0; i < colHdrs.length; i++) {
-          s += "<th class=\"sortable sort-column text-center sort\" " + colTypeNames[colTypes[i]] + ">" + colHdrs[i] + "<\/th>";
-        }
-        s += "<\/tr><\/thead><tbody class=\"text-center\"><tr>";
-        var colFlts = [ ##COLFLTLIST## ];
-        for (var i = 0; i < colFlts.length; i++) {
-          s += "<th " + colTypeNames[colTypes[i]] + "><input class=\"input-search\" type=\"text\" name=\"FILTER\" placeholder=\"Search\" value=\"" + colFlts[i] + "\" style=\"width: 100%\"/><\/th>";
-        }
-        s += "<\/tr>";
-
-        var colData = [ ##COLDATALIST## ];
-        for (var j = 0; j < colData.length; ) {
-          s += "<tr>";
-          for (var i = 0; i < colTypes.length; i++, j++) {
-            var d = colData[j];
-              switch (colTypes[i]) {
-                case 3: // Currency
-                  d = "<b>" + d + "<\/b>";
-                break;
-                case 5: // EMail
-                  d = "<a href=mailto:" + d + ">" + d + "<\/a>";
-                break;
-                case 6:    //Order ID with invoice link
-                  d = "<a href=\"javascript:invoice(" + d + ");\">" + d + "<\/a>";
-                break;
-              }
-            s += "<td " + colTypeNames[colTypes[i]] + ">" + d + "<\/td>";
-          }
-        s += "<\/tr>";
-        }
-
-        var colTotal = [ ##COLTOTALLIST## ];
-        s += "<\/tbody><tfoot><tr class=\"table-total text-center\">";
-        for (var i = 0; i < colTotal.length; i++) {
-          s += "<td " + colTypeNames[colTypes[i]] + "><strong>" + colTotal[i] + "<\/strong><\/td>";
-        }
-        s += "<\/tr><\/tfoot>";
-
-        return (s);
-      }
-      //-->
-    </script>
   </head>
-  <body onload="initForm (document.salesdetails);">
+  <body>
     <div style="visibility:hidden;">
       <form name="logout" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Logout">
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
@@ -161,7 +62,7 @@
                       //-->
                     </script>
                   </a>
-                  <div class="dropdown-menu  dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
+                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="https://vendors.bmtmicro.com/accountstart.html">My Account</a>
                     <a class="dropdown-item" href="https://vendors.bmtmicro.com/settingsstart.html">Settings</a>
                     <a class="dropdown-item" href="https://vendors.bmtmicro.com/usersstart.html">User Management</a>
@@ -187,7 +88,7 @@
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/salessummarystart.html">Sales Summary</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/detailedsummarystart.html">Detailed Summary</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/eusummarystart.html">EU Sales Summary</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/salesdetailsstart.html" style="color: #ef9a00;">Sales Details</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/salesdetailsstart.html">Sales Details</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/statisticsstart.html">View Statistics</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/pendingsalesstart.html">Pending Sales</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/transactionsstart.html">Account Transactions</a>
@@ -198,7 +99,7 @@
                   <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Products</a>
                   <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/productsstart.html">Manage Products</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/filesstart.html">Manage Files</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/filesstart.html" style="color: #efa900;">Manage Files</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/keytablesstart.html">Activation Code Table</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/discountsstart.html">Discount Schemes</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/tiersstart.html">Manage Pricing Tiers</a>
@@ -244,58 +145,22 @@
               </aside>
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
-              <h4>Sales Detail Report</h4>
-              <p>Filter Details using the input fields. Fields can be added or removed using the Settings link under your name.</p>
-              <div class="content-box">
-                <form name="salesdetails" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetails" method="post" onsubmit="return (CheckDateRange(this));">
-                  <div class="table-header">
-                    <span>From:&nbsp;
-                      <input id="DATEFROM" name="DATEFROM" value="##DATEFROM##" />&nbsp;
-                      <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
-                    </span>
-                    <span>To:&nbsp;
-                      <input id="DATETO" name="DATETO" value="##DATETO##" style="margin-bottom: 1rem;"/>&nbsp;
-                      <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
-                    </span>
-                    <br>
-                    <span>
-                      <input type="checkbox" name="EXACTMATCH" value="-1" onclick="exactMatch(salesdetails);">&nbsp;Use exact match when filtering
-                      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/salesdetails.html" />
-                      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-                    </span>
-                    <span>
-                      <select name="FORMAT">
-                        <option value="0" selected="selected">HTML</option>
-                        <option value="1">CSV</option>
-                        <option value="2">XML</option>
-                        <option value="3">PDF</option>
-                      </select>
-                    </span>
-                    <span>
-                      <button class="get-btn" value="Get Report">Get Sales Details</button>
-                    </span>
-                  </div> <!-- end .table-header -->
-                  <div class="table-responsive">
-                    <table class="table">
-                      <script language="javascript" type="text/javascript">
-                        <!--
-                          document.write (tabledata ());
-                        //-->
-                      </script>
-                    </table>
-                  </div>
-                </form>
-                <div style="visibility:hidden;">
-                  <form name="invoice" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Invoice" method="post" target="_blank">
-                    <input name="ORDERID" type="hidden" value="0">
-                    <input name="VENDORID" type="hidden" value="##VENDORID##">
-                  </form>
-                </div>
+              <h4>Upload&nbsp;Files</h4>
+              <div class="content-box" style="padding: 1rem;">
+                <iframe src="https://vendors-new.bmtmicro.com/files_uploader236R.html" name="uploader" id="uploader" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%;height: 350px;padding: 0px; margin: 0px; background: #FFFFFF;" >
+                   [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
+                </iframe>
+                <h5 style="color: #efa900; letter-spacing: .5px;">File&nbsp;Upload&nbsp;Result</h5>
+                <p>File Scan results are displayed below.   If there is a problem with your file, please email us at <a href="mailto:vendors@bmtmicro.com" class="email-link">vendors@bmtmicro.com</a>.</p>
+                <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; height: 470px; padding: 0px; margin: 0px; background: #FFFFFF;" >
+                   [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
+                </iframe>
               </div>
-            </div> <!-- end .col-lg-10 col-md-12 page-title -->
-          </div> <!-- end first .row -->
-        </article>
+            </div>
+          </div> <!-- end .row justify-content-start -->
+        </article> <!-- end .section -->
       </div> <!-- end .container-fluid -->
+
       <footer class="row footer footer-big">
         <div class="container">
           <div class="bottom-footer-content text-center">
@@ -317,12 +182,5 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-    <script type="text/javascript">
-      /* Anything that gets to the document will hide the dropdown */
-      $(window).click(function(){
-        $(".dropright").removeClass('show');
-      });
-    </script>
   </body>
 </html>
