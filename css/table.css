@@ -21,7 +21,7 @@
   color: #ffffff;
   }
 
-th a, th a:hover, tfoot {
+th a, th a:hover, .td-button button, tfoot {
   color: #195a7c;
   }
 
@@ -29,9 +29,12 @@ th a, th a:hover, tfoot {
   margin-right: 15px;
   }
 
+.table-header input, .get-btn, .td-button button, .remove {
+  border: none;
+}
+
 .table-header input {
   border-radius: 3px;
-  border: none;
   padding-left: .4rem;
   color: #707070;
   margin: 0rem .2rem;
@@ -39,7 +42,6 @@ th a, th a:hover, tfoot {
 
 .get-btn {
   color: #ef9a00;
-  border: none;
   border-bottom: 1px solid #ef9a00;
   padding: 0px;
   background: none;
@@ -56,7 +58,7 @@ th a, th a:hover, tfoot {
   margin-bottom: 0rem;
   }
 
-.table td, .table thead th {
+.table td, .table thead th, .remove {
   vertical-align: middle;
   }
 
@@ -113,12 +115,10 @@ tfoot {
   }
 
 .td-button button {
-  border: none;
   padding: .3rem .75rem;
   border-radius: 3px;
   background-color: #ffffff;
   border: 1px solid #195a7c;
-  color: #195a7c;
   }
 
 .td-button button:hover {
@@ -139,8 +139,6 @@ tfoot {
   background-size: cover;
   width: 1.5rem;
   height: 1.5rem;
-  vertical-align: middle;
-  border: none;
   }
 .remove:hover {
   filter: brightness(.7);
