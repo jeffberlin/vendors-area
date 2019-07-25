@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addTransfer.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function initForm (form){
+        initField (form, "KEYPARTS", "##KEYPARTS##");
+        initField (form, "SEPARATOR", "##SEPARATOR##");
+      }
+
+      function submitForm (form) {
+        form.NAME.value = trim (form.NAME.value);
+        if (isBlank (form.NAME.value)) {
+          alert ("You must name the table!");
+          form.NAME.focus ();
+          return (false);
+        }
+        if ("##NAMELIST##".split ("\t").indexOf (form.NAME.value) != -1) {
+          alert ("A table with that name already exists!");
+          form.NAME.focus ();
+          return (false);
+        }
+        if (!isBlank (form.LOWKEYEMAIL.value) && !isValidEmail (form.LOWKEYEMAIL.value)) {
+          alert ("You must use a valid email address!");
+          form.LOWKEYEMAIL.focus ();
+          return (false);
+        }
+        form.submit ();
+        return (true);
+      }
+      //-->
+    </script>
+  </head>
+  <body onload="initForm (document.keytables);">
+    <div class="transfer-section">
+      <form method="post" name="keytables" action="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys" target="_parent">
+        <h5>Add&nbsp;Activation&nbsp;Code&nbsp;Table</h5>
+        <span>
+          <label>Table&nbsp;Name:</label>
+          <input type="text" name="NAME" maxlength="80" style="margin-bottom: 1rem;" />
+        </span>
+        <br clear="all">
+        <span>
+          <label>Number&nbsp;of&nbsp;Key&nbsp;Parts:</label>
+          <select name="KEYPARTS" style="margin-bottom: 1rem;">
+            <option value="1" selected="selected">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <!-- <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option> -->
+          </select>
+        </span>
+        <br clear="all">
+        <span>
+          <label>Separator&nbsp;Character:</label>
+          <select name="SEPARATOR" style="margin-bottom: 1rem;">
+            <option value=" ">White Space ( )</option>
+            <option value=",">Comma (,)</option>
+            <option value=";">Semi-Colon (;)</option>
+          </select>
+          <span style="font-size: .8rem; color: #707070;">(only needed if you have keys with more than one part)</span>
+        </span>
+        <br clear="all">
+        <span>
+          <label>Low&nbsp;Key&nbsp;Warning&nbsp;Threshold:</label>
+          <input type="text" name="LOWKEYTHRESHOLD" value="##LOWKEYTHRESHOLD##" style="margin-bottom: 1rem;" />
+        </span>
+        <br clear="all">
+        <span>
+          <label>Low&nbsp;Key&nbsp;Warning&nbsp;Email:</label>
+          <input type="text" name="LOWKEYEMAIL" maxlength="80" value="##LOWKEYEMAIL##" style="margin-bottom: 1rem;" />
+        </span>
+        <br clear="all">
+        <button type="button" class="dark" onclick="submitForm (keytables);">Save</button>
+
+        <input type="hidden" name="ACTION" value="10" />
+        <input type="hidden" name="KEYTABLEID" value="##KEYTABLEID##" />
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/keytablesstart.html" />
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+      </form>
+    </div> <!-- end .transfer-section -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
