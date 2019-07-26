@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="https://vendors-new.bmtmicro.com/main.css">
+   <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+   <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+   <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
+   <script language="javascript" type="text/javascript">
+   <!--
+
+      function setFieldVisible (field, visible) {
+         document.getElementById (field).style.display = (visible === false) ? 'none' : '';
+         }
+
+      function CheckDateRangeAndAllowBlankDates (form) {
+         if (isBlank (form.DATEFROM.value)) {
+            return (isBlank (form.DATETO.value) || checkDate (form.DATETO));
+            }
+         if (isBlank (form.DATETO.value)) {
+            return (isBlank (form.DATEFROM.value) || checkDate (form.DATEFROM));
+            }
+         return (CheckDateRange (form));
+         }
+
+      function initForm (form){
+         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+         // field is not present. (An unchecked checkbox constitutes a non-existent field).
+         initField (form, "ACTIVE_CHK",     "##ACTIVE##");
+         initField (form, "STOPORDER_CHK",  "##STOPORDER##");
+         initField (form, "FIRSTONLY_CHK",  "##FIRSTONLY##");
+         initField (form, "FREESHIPPING_CHK","##FREESHIPPING##");
+         initField (form, "ROUNDING",       "##ROUNDING##");
+         initField (form, "DISCOUNTTYPE",   "##DISCOUNTTYPE##");
+         initField (form, "QUALIFYINGTYPE", "##QUALIFYINGTYPE##");
+         initField (form, "CURRENCY",       "##CURRENCY##");
+         initField (form, "SCHEMETYPE",     "##SCHEMETYPE##");
+         if (parseInt (form.MAXUSECOUNT.value) == 0) {
+            form.MAXUSECOUNT.value = "";
+            }
+         setFieldVisible ("expiration", ##SCHEMETYPE## == 0);
+         setFieldVisible ("expirationdays", ##SCHEMETYPE## != 1);
+         }
+
+      function submitForm (form) {
+         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+         // field is not present. (An unchecked checkbox constitutes a non-existent field).
+         copyField (form, "ACTIVE", "ACTIVE_CHK");
+         copyField (form, "STOPORDER", "STOPORDER_CHK");
+         copyField (form, "FIRSTONLY", "FIRSTONLY_CHK");
+         copyField (form, "FREESHIPPING", "FREESHIPPING_CHK");
+         form.NAME.value = trim (form.NAME.value);
+
+         if (isBlank (form.NAME.value)) {
+            alert ("You must name the discount scheme!");
+            form.NAME.focus ();
+            return (false);
+            }
+         if ((form.NAME.value != "##NAME##") && ("##NAMELIST##".split ("\t").indexOf (form.NAME.value) != -1)) {
+            alert ("A discount scheme with that name already exists!");
+            form.NAME.focus ();
+            return (false);
+            }
+         if (queryField (form, "SCHEMETYPE") == "1"){
+            form.EXPIRATIONDAYS.value = "";
+            }
+         else if (!isBlank (form.EXPIRATIONDAYS.value)) {
+            var days = parseInt (form.EXPIRATIONDAYS.value);
+            if ((days < 1) || (days > 999)) {
+               alert ("Please enter a valid number of days (1-999) or leave this field blank.");
+               form.EXPIRATIONDAYS.focus ();
+               return (false);
+               }
+            }
+         if (!CheckDateRangeAndAllowBlankDates (form)) {
+            return (false);
+            }
+         switch (parseInt (queryField (form, "DISCOUNTTYPE"))) {
+            case 0: // Percent off
+            case 3: // Percent off full price
+               if (form.AMOUNT.value > 100) {
+                  alert ("Percentage out of range. (Must be between 0 and 100%)");
+                  form.AMOUNT.focus ();
+                  return (false);
+                  }
+               break;
+            }
+         if (form.AMOUNT.value < 0) {
+            alert ("Value out of range. (Must not be negative)");
+            form.AMOUNT.focus ();
+            return (false);
+            }
+         if (form.QUALIFYINGQUANTITY.value <= 0) {
+            alert ("Value out of range. (Must not be smaller than one)");
+            form.QUALIFYINGQUANTITY.focus ();
+            return (false);
+            }
+         if (form.MAXUSECOUNT.value < 0) {
+            alert ("Value out of range. (Must not be negative)");
+            form.QUALIFYINGQUANTITY.focus ();
+            return (false);
+            }
+         form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues (form.SELECTEDLIST);
+         form.submit ();
+         return (true);
+         }
+
+   //-->
+   </script>
+</head>
+<body onload="initForm (document.discform);">
+   ##IMPORT("https://vendors-new.bmtmicro.com/imports/Import.Header")##
+   <form method="post" name="discform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes">
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/discountsstart.html" />
+      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+      <input type="hidden" name="SCHEMEID" value="##SCHEMEID##" />
+      <input type="hidden" name="ACTION" value="10" />
+      <dl>
+         <dt>
+            <h2>Discount Settings</h2>
+            <h4>Discount scheme name will not be seen by your customers.</h4>
+         </dt>
+         <dt>
+            <span>
+               <label>Name:</label>
+               <input id="NAME" name="NAME" maxlength="80" value="##NAME##" type="text">
+               <input type="hidden" name="ACTIVE" value="##ACTIVE##" />
+               <input name="ACTIVE_CHK" value="-1" type="checkbox"> Active
+            </span>
+            <br clear="all">
+         </dt>
+      </dl>
+      <dl>
+         <dd>
+            <h2>Discount Type</h2>
+            <h4>Choose the discount type.</h4>
+         </dd>
+         <dd>
+            <h2>Amount</h2>
+            <h4>Set amount off or percentage below.</h4>
+         </dd>
+         <dd>
+            <span>
+               <dl class="listing">
+                  <dt>
+                     <input type="radio" name="SCHEMETYPE" value="0" onclick="setFieldVisible('expiration',true); setFieldVisible('expirationdays',true);"> Codes required (customer needs to enter a discount code)
+                  </dt>
+                  <div id="expiration" style="display:none;">
+                     <dd>
+                        <a href="#" onclick="setFieldVisible('maxuse',true);">Limit number of uses</a>&nbsp;
+                        <div id=maxuse style="display:none">
+                           <span>This code can be used
+                              <input name="MAXUSECOUNT" size="3" value="##MAXUSECOUNT##" /> times
+                           </span>
+                        </div>
+                     </dd>
+                     <dd>
+                        <input type="hidden" name="STOPORDER" value="##STOPORDER##" />
+                        <input type="checkbox" name="STOPORDER_CHK" value="-1"> Stop order if code cannot be used
+                     </dd>
+                  </div>
+                  <dt>
+                     <input type="radio" name="SCHEMETYPE" value="1" onclick="setFieldVisible('expiration',false); setFieldVisible('expirationdays',false);"> Automatic discount (no codes required, all customers will get the discount)
+                  </dt>
+                  <dt>
+                     <input type="radio" name="SCHEMETYPE" value="2" onclick="setFieldVisible('expiration', false); setFieldVisible('expirationdays',true);"> Recurring billing (automatic discount on subscriptions)
+                  </dt>
+               </dl>
+            </span>
+            <br clear="all">
+         </dd>
+         <dd>
+            <span>
+               <label>Amount:</label>
+               <input id="AMOUNT" name="AMOUNT" type="text" value="##AMOUNT##" />
+            </span>
+            <span>
+               <label>Method:</label>
+               <select name="DISCOUNTTYPE">
+                  <option value="0" selected="selected">Percent Off</option>
+                  <option value="1">Amount Off</option>
+                  <option value="2">Set New Price</option>
+                  <option value="3">Percent Off Full Price</option>
+                  <option value="4">Amount Off Full Price</option>
+               </select>
+            </span>
+            <br clear="all">
+            <span>
+               <label>Currency:</label>
+               <select name="CURRENCY">
+                  <option value="" selected>All Currencies</option>
+                  <option value="USD">USD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="GBP">GBP</option>
+                  <option value="CAD">CAD</option>
+                  <option value="AUD">AUD</option>
+               </select>
+            </span>
+            <span>
+               <label>Rounding:</label>
+               <select name="ROUNDING">
+                  <option value="-1.00">Round discount to nearest 1.00</option>
+                  <option value="-0.50">Round discount to nearest 0.50</option>
+                  <option value="-0.25">Round discount to nearest 0.25</option>
+                  <option value="-0.10">Round discount to nearest 0.10</option>
+                  <option value="-0.05">Round discount to nearest 0.05</option>
+                  <option value="0.00" selected="selected">No Rounding</option>
+                  <option value="0.05">Round price to nearest 0.05</option>
+                  <option value="0.10">Round price to nearest 0.10</option>
+                  <option value="0.25">Round price to nearest 0.25</option>
+                  <option value="0.50">Round price to nearest 0.50</option>
+                  <option value="1.00">Round price to nearest 1.00</option>
+               </select>
+            </span>
+            <br clear="all">
+            <span>
+                <input type="hidden" name="FREESHIPPING" value="##FREESHIPPING##" />
+                <input type="checkbox" name="FREESHIPPING_CHK" value="-1"> Free shipping
+            </span>
+            <br clear="all">
+         </dd>
+      </dl>
+      <dl>
+         <dd>
+            <h2>Expiration Settings</h2>
+            <h4>Set date range for scheme to apply, or leave blank for no automatic expiration.</h4>
+         </dd>
+         <dd>
+            <h2>Quantity</h2>
+            <h4>Set minimum quantity required before discount applied. If none, leave blank</h4>
+         </dd>
+         <dd>
+            <span>
+               <label>Date Start:</label>
+               <input id="DATEFROM" name="DATEFROM" value="##DATEFROM##" type="text">
+               <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
+            </span>
+            <span>
+               <label>Date End:</label>
+               <input id="DATETO" name="DATETO" value="##DATETO##" type="text">
+               <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
+            </span>
+            <br clear="all">
+            <div id="expirationdays" style="display:none;">
+               <span>
+                  Discount ends <input name="EXPIRATIONDAYS" size="3" value="##EXPIRATIONDAYS##" maxlength="3" /> days from date of issue.
+               </span>
+               <br clear="all">
+               <span>
+                  <em>
+                     The date of issue is the date when the code was manually generated, or the originating order date in case of automatically issued codes or recurring billing.
+                  </em>
+               </span>
+            </div>
+            <br clear="all">
+         </dd>
+         <dd>
+            <span>
+               <label>Minimum Quantity:</label>
+               <input id="QUALIFYINGQUANTITY" name="QUALIFYINGQUANTITY" value="##QUALIFYINGQUANTITY##" type="text">
+               <select name="QUALIFYINGTYPE">
+                  <option value="0">Items</option>
+                  <option value="1">Amount</option>
+                  <option value="2">Unique Items</option>
+               </select>
+            </span>
+            <br clear="all">
+            <span>
+               <em>
+                  Discount amounts are applied to <strong>each item</strong>, not the order total. Checking the box below will limit the discount to one item in the order only. However, note that this setting has no effect on the Free shipping option. When Free shipping is enabled, all items will get free shipping regardless of this setting.
+               </em>
+            </span>
+            <br clear="all">
+            <span>
+               <input type="hidden" name="FIRSTONLY" value="##FIRSTONLY##" />
+               <input type="checkbox" name="FIRSTONLY_CHK" value="-1" checked> Discount allowed on one item only
+            </span>
+            <br clear="all">
+         </dd>
+      </dl>
+      <dl>
+         <dt>
+            <h2>Discounted Products</h2>
+            <h4>Select products eligible for discount under this discount scheme. Selected products are listed on the right.</h4>
+         </dt>
+         <dt>
+            <table class="products" cellspacing="0" cellpadding="0">
+               <col class="listing" />
+               <col class="move" />
+               <col class="listing" />
+               <tr>
+                  <td>
+                     <select id="PRODUCTLIST" name="PRODUCTLIST" multiple="multiple" ondblclick="addProduct (discform);return (false);" >
+                        ##PRODUCTLIST##
+                     </select>
+                  </td>
+                  <td class="move">
+                     <button type="button" name="add" value="Add&nbsp;&gt;&gt;"  onclick="addProduct (discform);">Add&nbsp;&gt;&gt;</button><br>
+                     <button type="button" name="remove" value="&lt;&lt;&nbsp;Remove" onclick="removeProduct (discform);">&lt;&lt;&nbsp;Remove</button><br><br>
+                     <button type="button" name="addall" value="Add&nbsp;&gt;&gt;" onclick="addAllProducts (discform);">Add&nbsp;All&nbsp;&gt;&gt;</button><br>
+                     <button type="button" name="removeall" value="&lt;&lt;&nbsp;Remove" onclick="removeAllProducts (discform);">&lt;&lt;&nbsp;Remove&nbsp;All</button>
+                  </td>
+                  <td>
+                     <select id="SELECTEDLIST" name="SELECTEDLIST" multiple="multiple" ondblclick="removeProduct (discform);return (false);" >
+                        ##SELECTEDPRODUCTS##
+                     </select>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="3">
+                     <input type="hidden" name="SELECTEDPRODUCTS" value="" />
+                  </td>
+               </tr>
+            </table>
+         </dt>
+         <dt>
+            <div class="controlbuttons">
+               <button type="button" onclick="return (submitForm (discform));">Save</button>
+            </div>
+         </dt>
+      </dl>
+   </form>
+   ##IMPORT("https://vendors-new.bmtmicro.com/imports/Import.Footer")##
+</body>
+</html>
