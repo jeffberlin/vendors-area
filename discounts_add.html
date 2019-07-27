@@ -20,6 +20,34 @@
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <style media="screen" type="text/css">
+      .content-box {
+        padding: 1rem;
+      }
+      span {
+        color: #707070;
+      }
+      span, input, h5 {
+        letter-spacing: .5px;
+      }
+      input {
+        padding: .25rem .5rem;
+        border: 1px solid #a9a9a9;
+        border-radius: 3px;
+      }
+      input:focus {
+        border: 1px solid #195a7c;
+      }
+      h5, #expiration a:hover {
+        color: #efa900;
+      }
+      #expiration a {
+        color: #195a7c;
+        margin-left: 20px;
+        margin-bottom: 1rem;
+        text-decoration: underline !important;;
+      }
+    </style>
     <script language="javascript" type="text/javascript">
       <!--
         function setFieldVisible (field, visible) {
@@ -246,10 +274,31 @@
                 <div class="content-box">
                   <span>
                     <label>Name:&nbsp;</label>
-                    <input id="NAME" name="NAME" maxlength="80" value="##NAME##" type="text">
+                    <input id="NAME" name="NAME" maxlength="80" value="##NAME##" type="text" style="margin-bottom: 1.2rem;">
+                    &nbsp;&nbsp;
                     <input type="hidden" name="ACTIVE" value="##ACTIVE##" />
                     <input name="ACTIVE_CHK" value="-1" type="checkbox">&nbsp;Active
                   </span>
+                  <div class="row">
+                    <div class="col-6" style="padding-left: 0rem; margin-bottom: 1.2rem;">
+                      <h5>Discount&nbsp;Type</h5>
+                      <p>Choose&nbsp;discount&nbsp;type.</p>
+                      <input type="radio" name="SCHEMETYPE" value="0" onclick="setFieldVisible('expiration',true); setFieldVisible('expirationdays',true);" style="margin-bottom: 1rem;">&nbsp;Codes required (customer needs to enter a discount code)
+                      <br>
+                      <div id="expiration" style="display: none;">
+                        <a href="#" onclick="setFieldVisible('maxuse', true);">Limit number of uses</a>&nbsp;
+                        <div id="maxuse" style="display: none;">
+                          <span>
+                            This code can be used
+                            <input name="MAXUSECOUNT" size="3" value="##MAXUSECOUNT##" />&nbsp;times
+                          </span>
+                        </div>
+                        <br>
+                        <input type="hidden" name="STOPORDER" value="##STOPORDER##" />
+                        <input type="checkbox" name="STOPORDER_CHK" value="-1">&nbsp;Stop order if code cannot be used
+                      </div>
+                    </div> <!-- end .col-6 -->
+                  </div>
                 </div>
               </form>
             </div> <!-- end .col-lg-10 -->
