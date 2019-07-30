@@ -28,7 +28,7 @@
       span, label {
         color: #707070;
       }
-      span, input, h5, select {
+      span, input, h5, select, .move button, .controlbuttons button {
         letter-spacing: .5px;
       }
       select, input {
@@ -37,9 +37,11 @@
       }
       input {
         padding: .25rem .5rem;
+      }
+      .move button, .controlbuttons button {
         font-size: .8rem;
       }
-      input:focus, select:focus {
+      input:focus, select:focus, .move button:hover, .controlbuttons button:hover {
         border: 1px solid #195a7c;
       }
       textarea, select, select:focus {
@@ -53,7 +55,7 @@
       select:hover {
         cursor: pointer;
       }
-      select, #expiration a {
+      select, #expiration a, .move button, .controlbuttons button {
         color: #195a7c;
       }
       select {
@@ -67,6 +69,23 @@
         margin-bottom: 1rem;
         text-decoration: underline !important;;
       }
+      .fa-angle-double-right {
+        color: #ef9a00;
+        }
+      .move button, .controlbuttons button {
+        border: 1px solid rgba(17,22,26,.04);
+        border-radius: 3px;
+        box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
+        -webkit-box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
+        background: #ffffff;
+        padding: .3rem .75rem;
+        }
+        .move, .controlbuttons {
+          padding-left: 2px;
+        }
+        #PRODUCTLIST, #SELECTEDLIST, .move {
+          margin-bottom: 1rem;
+        }
     </style>
     <script language="javascript" type="text/javascript">
       <!--
@@ -381,7 +400,7 @@
                         <input type="checkbox" name="FREESHIPPING_CHK" value="-1">&nbsp;Free shipping
                       </span>
                     </div> <!-- end .col-6 -->
-                    <div class="col-6" style="padding: 0;">
+                    <div class="col-6" style="padding-left: 0;">
                       <h5>Expiration&nbsp;Settings</h5>
                       <p>Set date range for scheme to apply, or leave blank for no automatic expiration.</p>
                       <span>
@@ -426,11 +445,28 @@
                         <input type="checkbox" name="FIRSTONLY_CHK" value="-1" checked>&nbsp;Discount allowed on one item only
                       </span>
                     </div> <!-- end .col-6 -->
-                    <div class="col-6" style="padding: 0; margin-bottom: 1.2rem;">
+                    <div class="col-6" style="padding-left: 0; margin-bottom: 1.2rem;">
                       <h5>Discounted&nbsp;Products</h5>
                       <p>Select products eligible for discount under this discount scheme. Selected products are listed on the right.</p>
+                      <select id="PRODUCTLIST" name="PRODUCTLIST" multiple="multiple" ondblclick="addProduct (discform);return (false);" style="width: 85%;" >
+                         ##PRODUCTLIST##
+                      </select>
+                      <br>
+                      <div class="move">
+                        <button style="margin-right: 5px;" type="button" name="add" value="Add&nbsp;&gt;&gt;"  onclick="addProduct (discform);">Add&nbsp;<i class="fas fa-angle-down"></i></button>
+                        <button style="margin-right: 25px;" type="button" name="remove" value="&lt;&lt;&nbsp;Remove" onclick="removeProduct (discform);"><i class="fas fa-angle-up"></i>&nbsp;Remove</button>
+                        <button style="margin-right: 5px;" type="button" name="addall" value="Add&nbsp;&gt;&gt;" onclick="addAllProducts (discform);">Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i></button>
+                        <button type="button" name="removeall" value="&lt;&lt;&nbsp;Remove" onclick="removeAllProducts (discform);"><i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All</button>
+                      </div>
+                      <select id="SELECTEDLIST" name="SELECTEDLIST" multiple="multiple" ondblclick="removeProduct (discform);return (false);" style="width: 85%;" >
+                         ##SELECTEDPRODUCTS##
+                      </select>
+                      <input type="hidden" name="SELECTEDPRODUCTS" value="" />
+                      <div class="controlbuttons">
+                        <button type="button" onclick="return (submitForm (discform));">Save</button>
+                      </div>
                     </div> <!-- end .col-6 -->
-                  </div>
+                  </div><!-- end .row -->
                 </div>
               </form>
             </div> <!-- end .col-lg-10 -->
