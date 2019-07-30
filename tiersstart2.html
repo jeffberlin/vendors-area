@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="utf-8">
+    <title></title>
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,18 +18,18 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <script language="javascript" type="text/javascript">
       <!--
-        function initForm(form) {
-          var showinactive = getCookieValue("BMTMicro.Vendors.Discounts.ShowInactive");
-          if (showinactive != null) {
-            form.SHOWINACTIVE.value = showinactive;
-          }
-          form.submit();
+      function initForm(form) {
+        var showinactive = getCookieValue("BMTMicro.Vendors.Tiers.ShowInactive");
+        if (showinactive != null) {
+          form.SHOWINACTIVE.value = showinactive;
         }
+        form.submit();
+      }
       //-->
     </script>
   </head>
@@ -103,8 +105,8 @@
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/productsstart.html">Manage Products</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/filesstart.html">Manage Files</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/keytablesstart.html">Activation Code Table</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/discountsstart.html" style="color: #efa900;">Discount Schemes</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/tiersstart.html">Manage Pricing Tiers</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/discountsstart.html">Discount Schemes</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/tiersstart.html" style="color: #efa900;">Manage Pricing Tiers</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/splitsstart.html">Manage Splits</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/splitsalesreportstart.html">Split Sales Report</a>
                   </div>
@@ -147,25 +149,25 @@
               </aside>
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
-              <h4>Manage&nbsp;Discount&nbsp;Schemes</h4>
-              <p>Click on Discount Scheme Name to edit discount schemes.</p>
+              <h4>Manage&nbsp;Pricing&nbsp;Tiers</h4>
+              <p>Edit existing pricing tiers by clicking on the tier name.</p>
               <div class="content-box">
-                <form name="start" method=post action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes" target="tableframe">
-                  <input type="hidden" name="ACTION" value="-1" />
-                  <input type="hidden" name="SHOWINACTIVE" value="0" />
-                  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/discounts_tablerow.html" />
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/discounts.html">
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html">
-                </form>
                 <iframe src="" name="tableframe" id="tableframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; height: 450px; padding: 0px; margin: 0px;">
                   [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
                 </iframe>
               </div> <!-- end .content-box -->
-              <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 250px;padding: 0px; margin:0px;">
-                [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
+              <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 250px;padding: 0px; margin:0px;" >
+                 [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
               </iframe>
-            </div> <!-- end .col-lg-10 page-title -->
-          </div> <!-- end first .row justify-content-start -->
+              <form name="start" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.TieredPricing" target="tableframe">
+                <input type="hidden" name="ACTION" value="-1" />
+                <input type="hidden" name="SHOWINACTIVE" value="0" />
+                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/tiers.html" />
+                <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/tiers_tablerow.html" />
+                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
+              </form>
+            </div> <!-- end .col-lg-10 col-md-12 page-title -->
+          </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
 
