@@ -20,6 +20,11 @@
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <style media="screen" type="text/css">
+      #PRODUCTLIST, #SELECTEDLIST {
+        margin-bottom: 1rem;
+      }
+    </style>
     <script language="javascript" type="text/javascript">
       <!--
       function addQualifyingProduct (form) {
@@ -241,7 +246,146 @@
                   <span>
                     <label>Name:&nbsp;</label>
                     <input type="text" id="NAME" name="NAME" maxlength="80" value="##NAME##" style="margin-bottom: 1.2rem;"/>
+                    &nbsp;&nbsp;
+                    <input type="hidden" name="ACTIVE" value="##ACTIVE##" />
+                    <input name="ACTIVE_CHK" value="-1" type="checkbox">&nbsp;Active
+                    &nbsp;&nbsp;
+                    <input type="hidden" name="SHOWINCART" value="##SHOWINCART##" />
+                    <input type="checkbox" name="SHOWINCART_CHK" value="-1" />&nbsp;Show in Cart
                   </span>
+                  <div class="row">
+                    <div class="col-6" style="padding-left: 0rem; margin-bottom: 1.2rem;">
+                      <h5>Amount</h5>
+                      <p>Set amount or percentage off of full or discounted price.</p>
+                      <span>
+                        <label>Amount:&nbsp;</label>
+                        <input id="AMOUNT" name="AMOUNT" type="text" value="##AMOUNT##" style="margin-bottom: 1rem;"/>
+                      </span>
+                      <br>
+                      <span>
+                        <label>Method:&nbsp;</label>
+                        <select name="DISCOUNTTYPE" style="margin-bottom: 1rem;">
+                          <option value="0">Percent Off</option>
+                          <option value="1">Amount Off</option>
+                          <option value="2">Set New Price</option>
+                          <option value="3">Percent Off Full Price</option>
+                          <option value="4">Amount Off Full Price</option>
+                        </select>
+                      </span>
+                      <br clear="all">
+                      <span>
+                        <label>Currency:&nbsp;</label>
+                        <select name="CURRENCY" style="margin-bottom: 1rem;">
+                          <option value="" selected>All Currencies</option>
+                          <option value="USD">USD</option>
+                          <option value="EUR">EUR</option>
+                          <option value="GBP">GBP</option>
+                          <option value="CAD">CAD</option>
+                          <option value="AUD">AUD</option>
+                        </select>
+                      </span>
+                      <br>
+                      <span>
+                        <label>Rounding:&nbsp;</label>
+                        <select name="ROUNDING">
+                          <option value="-1.00">Round discount</option>
+                          <option value="1.00">Round price</option>
+                          <option value="0.00" selected="selected">No Rounding</option>
+                        </select>
+                        &nbsp;to nearest&nbsp;
+                        <select name="ROUNDING">
+                          <option value="0.05">0.05</option>
+                          <option value="0.10">0.10</option>
+                          <option value="0.25">0.25</option>
+                          <option value="0.50">0.50</option>
+                          <option value="1.00">1.00</option>
+                        </select>
+                      </span>
+                    </div> <!-- end .col-6 -->
+                    <div class="col-6">
+                      <h5>Quantity</h5>
+                      <p>To apply to all but 1 enter -1 in the discounted quantity field.</p>
+                      <span>
+                        <label>Minimum&nbsp;purchase:&nbsp;</label>
+                        <input type="text" id="QUALIFYINGQUANTITY" name="QUALIFYINGQUANTITY" value="##QUALIFYINGQUANTITY##"  style="max-width: 75px; margin-bottom: 1rem;" />
+                        <select name="QUALIFYINGTYPE">
+                          <option value="0">Items</option>
+                          <option value="1">Amount</option>
+                          <option value="2">Unique Items</option>
+                        </select>
+                      </span>
+                      <br>
+                      <span>
+                        <label>Discounted&nbsp;Quantity:&nbsp;</label>
+                        <input type="text" id="DISCOUNTQUANTITY" name="DISCOUNTQUANTITY" value="##DISCOUNTQUANTITY##" style="margin-bottom: 1rem;"/>
+                        <select name="APPLYTYPE">
+                          <option value="0">Items</option>
+                          <option value="2">Unique Items</option>
+                        </select>
+                      </span>
+                      <br>
+                      <span>
+                        <label>Apply&nbsp;Order:&nbsp;</label>
+                        <select name="APPLYORDER" style="margin-bottom: 1rem;">
+                          <option value="0">By Row Number</option>
+                          <option value="1" selected>By Lowest Price</option>
+                          <option value="2">By Highest Price</option>
+                        </select>
+                      </span>
+                      <br>
+                      <span>
+                        <label>Tier&nbsp;Level:&nbsp;</label>
+                        <select name="RUNLEVEL">
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                        </select>
+                      </span>
+                    </div> <!-- end .col-6 -->
+                    <div class="col-6" style="padding-left: 0;">
+                      <h5>Qualifying&nbsp;products</h5>
+                      <p>Choose Qualifying products necessary to apply this tier.</p>
+                      <select id="PRODUCTLIST" name="QUALIFYINGPRODUCTLIST" multiple="multiple" ondblclick="addQualifyingProduct(tierform);return (false);"  style="width: 85%;">
+                         ##QUALIFYINGPRODUCTLIST##
+                      </select>
+                      <br>
+                      <div class="move">
+                        <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addQualifyingProduct(tierform);return (false);">Add&nbsp;<i class="fas fa-angle-down"></i></button>
+                        <button style="margin-right: 25px;" name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeQualifyingProduct(tierform);return (false);"><i class="fas fa-angle-up"></i>&nbsp;Remove</button>
+                        <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addAllQualifyingProducts(tierform);return (false);">Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i></button>
+                        <button name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeAllQualifyingProducts(tierform);return (false);"><i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All</button>
+                      </div> <!-- end .move -->
+                      <select id="SELECTEDLIST" name="QUALIFYINGSELECTEDLIST" multiple="multiple" ondblclick="removeQualifyingProduct (tierform);return (false);" style="width: 85%;" >
+                         ##QUALIFYINGPRODUCTS##
+                      </select>
+                      <input type="hidden" name="QUALIFYINGPRODUCTS" />
+                    </div> <!-- end .col-6 -->
+                    <div class="col-6">
+                      <h5>Discounted&nbsp;Products</h5>
+                      <p>Choose Products to which discount will be applied.</p>
+                      <select id="PRODUCTLIST" name="DISCOUNTPRODUCTLIST" multiple="multiple" ondblclick="addDiscountProduct(tierform);return (false);" style="width: 85%;" >
+                         ##DISCOUNTPRODUCTLIST##
+                      </select>
+                      <div class="move">
+                        <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addDiscountProduct (tierform);return (false);">Add&nbsp;<i class="fas fa-angle-down"></i></button>
+                        <button style="margin-right: 25px;" name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeDiscountProduct (tierform);return (false);"><i class="fas fa-angle-up"></i>&nbsp;Remove</button>
+                        <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addAllDiscountProducts (tierform);return (false);">Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i></button>
+                        <button name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeAllDiscountProducts (tierform);return (false);"><i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All</button>
+                      </div>
+                      <select id="SELECTEDLIST" name="DISCOUNTSELECTEDLIST" multiple="multiple" ondblclick="removeDiscountProduct (tierform);return (false);" style="width: 85%;">
+                         ##DISCOUNTPRODUCTS##
+                      </select>
+                      <input type="hidden" name="DISCOUNTPRODUCTS" />
+                    </div> <!-- end .col-6 -->
+                    <div class="col-6" style="padding-left: 0;">
+                      <div class="controlbuttons">
+                        <button class="save-btn" type="button" onclick="submitForm (tierform);" value="Save" style="margin-right: .5rem;">Save</button>
+                        <button class="save-btn" type="reset" onclick="history.back ();" value="Reset">Reset</button>
+                      </div>
+                    </div> <!-- end .col-6 -->
+                  </div> <!-- end .row -->
                 </div> <!-- end .content-box -->
               </form>
             </div> <!-- end .col-lg-10 -->

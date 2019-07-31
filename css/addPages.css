@@ -53,7 +53,7 @@ h5, .save-btn:hover {
   color: #efa900;
 }
 
-.move button, {
+.move button {
   border: 1px solid rgba(17,22,26,.04);
   border-radius: 3px;
   box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
@@ -64,6 +64,10 @@ h5, .save-btn:hover {
 
 .move, .controlbuttons {
   padding-left: 2px;
+}
+
+.move {
+  margin-bottom: 1rem;
 }
 
 .save-btn {
