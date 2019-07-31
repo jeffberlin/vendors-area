@@ -22,7 +22,7 @@ th a, th a:hover, .td-button button, tfoot {
   margin-right: 15px;
   }
 
-.table-header input, .get-btn, .td-button button, .remove {
+.table-header input, .get-btn, .td-button button {
   border: none;
 }
 
@@ -51,7 +51,7 @@ th a, th a:hover, .td-button button, tfoot {
   margin-bottom: 0rem;
   }
 
-.table td, .table thead th, .remove {
+.table td, .table thead th {
   vertical-align: middle;
   }
 
@@ -128,14 +128,4 @@ tfoot {
 
 .td-button:focus {
   outline: none;
-  }
-
-.remove {
-  background: url('../images-2/times-circle-red.png') no-repeat center center;
-  background-size: cover;
-  width: 1.5rem;
-  height: 1.5rem;
-  }
-.remove:hover {
-  filter: brightness(.7);
   }

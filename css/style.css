@@ -87,3 +87,17 @@ a {
   background-color: #a9a9a9;
   transition: ease-in-out .2s;
   }
+
+.remove {
+  background: url('../images-2/times-circle-red.png') no-repeat center center;
+  background-size: cover;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  border: none;
+  }
+
+.remove:hover {
+  filter: brightness(.7);
+  transition: ease-in-out .25s;
+  }
