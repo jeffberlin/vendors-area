@@ -81,11 +81,14 @@ th a, th a:hover {
   }
 
 .sort-column {
-  border-right: 1px solid #a9a9a9;
   font-weight: 400;
   }
 
-.sort-column:last-child {
+td, .sort-column {
+  border-right: 1px solid #a9a9a9;
+  }
+
+.sort-column:last-child, td:last-child {
   border-right: none;
   }
 
@@ -93,7 +96,7 @@ td, .get-btn {
   font-size: .8rem;
   }
 
-.table-total {
+.table-total, .table-header input {
   font-size: .9rem;
   }
 

@@ -18,7 +18,9 @@
     <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <style media="screen" type="text/css">
-
+      td[option] {
+        text-align: center;
+      }
     </style>
     <script language="javascript" type="text/javascript">
       <!--
@@ -71,6 +73,25 @@
         <span>
           Show inactive tiers
         </span>
+        <br>
+        <button type="button" class="option-btn" onclick="addTier ();">Add&nbsp;New&nbsp;Tier</button>
+      </div> <!-- end .table-header -->
+      <div class="row" style="margin-left: auto; margin-right: auto;">
+        <table class="table">
+          <thead>
+            <tr class="table-category text-center">
+              <th scope="col" class="sort-column" text>
+                <a href="#" style="cursor: default;" onclick="return false;">Name</a>
+              </th>
+              <th scope="col" class="sort-column" option>
+                <a href="#" style="cursor: default;" onclick="return false;">Remove</a>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            ##TABLEDATA##
+          </tbody>
+        </table>
       </div>
     </form>
 
