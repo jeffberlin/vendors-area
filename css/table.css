@@ -41,10 +41,13 @@ th a, th a:hover, .td-button button, tfoot {
   font-weight: 600;
   }
 
+.get-btn, .td-button button {
+  transition: all .2s ease;
+}
+
 .get-btn:hover {
   color: #f3f3f3;
   border-bottom: 1px solid #f3f3f3;
-  transition: .3s ease;
   }
 
 .table {
@@ -123,7 +126,6 @@ tfoot {
   -moz-box-shadow: 0 2px 16px 2px rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 8px 14px 0 rgba(17,22,26,.08);
   border: 1px solid #efa900;
   color: #efa900;
-  transition: ease-in-out 0.2s;
   }
 
 .td-button:focus {
