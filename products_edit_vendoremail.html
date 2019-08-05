@@ -20,11 +20,11 @@
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <script language="javascript" type="text/javascript">
       <!--
-      function insertAtCursor(myField, myValue) {
+      function insertAtCursor (myField, myValue) {
         //IE support
         if (document.selection) {
           myField.focus();
-          sel = document.selection.createRange();
+          sel = document.selection.createRange ();
           sel.text = myValue;
         }
         //MOZILLA/NETSCAPE support
@@ -37,49 +37,59 @@
         }
       }
 
-      function makeToken(s) {
+      function makeToken (s) {
         return ((s.charAt (0) == "#") ? s : ("##" + s + "##"));
       }
 
-      function addToken(div) {
-        insertAtCursor(document.getElementById ("emailtemplate"), makeToken(div.title));
+      function addToken (div) {
+        insertAtCursor (document.getElementById ("emailtemplate"), makeToken (div.title));
       }
 
-      function fixTitle(div) {
-        div.title = makeToken(div.title);
+      function fixTitle (div) {
+        div.title = makeToken (div.title);
         return (false);
       }
 
-      function showPreview(form) {
+      function showPreview (form) {
         var tgtform = document.previewform;
-        tgtform.PREVIEWTEXT.value = form.DEFAULTCUSTOMEREMAILTEMPLATE.value;
-        tgtform.submit();
+        tgtform.PREVIEWTEXT.value = form.VENDOREMAILTEMPLATE.value;
+        tgtform.submit ();
       }
 
-      function submitForm(form) {
-        if (isBlank(form.DEFAULTCUSTOMEREMAILTEMPLATE.value)) {
-          alert("Cannot leave default template blank! It must at least have the Standard Message token.");
-          form.DEFAULTCUSTOMEREMAILTEMPLATE.value = "\#\#STDMESSAGE\#\#";
-          form.DEFAULTCUSTOMEREMAILTEMPLATE.focus();
-          return (false);
+      function useDefaultChanged (form) {
+        if (form.USEDEFAULTTEMPLATE.checked) {
+          form.VENDOREMAILTEMPLATE.value = form.DEFAULTVENDOREMAILTEMPLATE.value;
         }
-        if (allowChanges("You do not have permission to edit email templates.")) {
-          form.submit();
+        form.VENDOREMAILTEMPLATE.disabled = form.USEDEFAULTTEMPLATE.checked;
+      }
+
+      function initForm (form){
+        if (isBlank(form.VENDOREMAILTEMPLATE.value)){
+          form.VENDOREMAILTEMPLATE.value = form.DEFAULTVENDOREMAILTEMPLATE.value;
+          form.VENDOREMAILTEMPLATE.disabled = true;
+          form.USEDEFAULTTEMPLATE.checked = true;
+        }
+      }
+
+      function submitForm (form) {
+        if (allowChanges ("You do not have permission to make changes.")) {
+          form.submit ();
         }
       }
       //-->
     </script>
   </head>
-  <body>
-
+  <body onLoad="initForm (document.emailform);">
     <div class="transfer-section">
       <form method="post" name="emailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="_parent">
-        <h5>Default Customer Email template</h5>
+        <h5>Vendor&nbsp;Email&nbsp;template&nbsp;for&nbsp;##PRODUCTNAME##</h5>
         <p class="text-section" style="margin-bottom: .5rem;">
-          This template will be used by all products that do not have a custom specific table set.
-          <br \>
-          Please read <a href="https://help.bmtmicro.com/vendors/edit-customer-email-notifications" target="_blank">help
-          files</a> for a full explanation on standard messages and token usage.
+          The template specified below will be used to override the global email template.
+          <br>
+          When possible, please consider using the global e-mail template since this makes it easier to manage future updates.
+          <br>
+          Please read&nbsp;<a href="https://help.bmtmicro.com/vendors/edit-vendor-email-notifications/" target="_blank">help
+          files</a>&nbsp;for a full explanation on standard messages and token usage.
         </p>
         <div class="toolbar">
           <div class="dropdown">
@@ -153,24 +163,28 @@
               <a class="dropdown-item" title="DPWEXPIRATIONDATE" onmouseover="return (fixTitle (this));" onclick="addToken (this);">Password&nbsp;expiration&nbsp;date</a>
             </div>
           </div>
-        </div>
-        <textarea style="margin: .5rem 0;" id="emailtemplate" name="DEFAULTCUSTOMEREMAILTEMPLATE" rows="8" cols="80" placeholder="Type a message">##DEFAULTCUSTOMEREMAILTEMPLATE##</textarea>
+        </div> <!-- end .toolbar -->
+        <textarea style="margin: .5rem 0;" rows="8" cols="100" id="emailtemplate" name="VENDOREMAILTEMPLATE">##VENDOREMAILTEMPLATE##</textarea>
         <br>
+        <span>
+          <input type="checkbox" name="USEDEFAULTTEMPLATE" onClick="useDefaultChanged (emailform);" style="margin-bottom: 1.2rem;"/>&nbsp;Use default/global template
+        </span>
+        <br>
+        <textarea style="margin: .5rem 0; position:absolute;visibility:hidden;" rows="8" cols="100" name="DEFAULTVENDOREMAILTEMPLATE">##DEFAULTVENDOREMAILTEMPLATE##</textarea>
         <input type="hidden" name="PRODUCTID" value="##PRODUCTID##" />
-        <input type="hidden" name="ACTION" value="15" />
+        <input type="hidden" name="ACTION" value="13" />
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/productsstart.html" />
         <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-        <button type="button" onclick="showPreview (emailform);" style="margin-right: .5rem;">Preview</button>
+        <button type="button" style="margin-right: .5rem;" onclick="showPreview (emailform);">Preview</button>
         <button type="button" onclick="submitForm (emailform);">Save</button>
       </form>
-      <form method="post" name="previewform" action="https://vendors.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);">
-        <input type="hidden" name="ACTION" value="20">
-        <input type="hidden" name="PRODUCTID" value="##PRODUCTID##">
-        <input type="hidden" name="PREVIEWTEXT" value="">
-        <input type="hidden" name="NEXT_PAGE" value="https://vendors.bmtmicro.com/previewtext.html">
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
+      <form method="post" name="previewform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);" >
+        <input type="hidden" name="ACTION" value="21" />
+        <input type="hidden" name="PRODUCTID" value="##PRODUCTID##" />
+        <input type="hidden" name="PREVIEWTEXT" value="" />
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/previewtext.html" />
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
       </form>
-
     </div> <!-- end .transfer-section -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -183,4 +197,4 @@
       });
     </script>
   </body>
-  </html>
+</html>
