@@ -10,7 +10,7 @@ label, .text-section, .dropdown-item, span, p {
   color: #707070 !important;
 }
 
-h5, label, input, textarea, select, button, .text-section, span, p {
+h5, label, input, textarea, select, .light-btn, .text-section, span, p {
   letter-spacing: .5px;
 }
 
@@ -31,7 +31,7 @@ input:focus, textarea:focus, select:focus, select {
   outline: none;
 }
 
-input:focus, textarea:focus, select:focus, button:hover {
+input:focus, textarea:focus, select:focus, .light-btn:hover {
   border: 1px solid #195a7c;
 }
 
@@ -43,16 +43,16 @@ select:hover {
   cursor: pointer;
 }
 
-select, button, .dropdown-toggle {
+select, .light-btn, .dropdown-toggle {
   color: #195a7c;
 }
 
-select, button {
+select, .light-btn {
   background: #ffffff;
   border-radius: 3px;
 }
 
-button {
+.light-btn {
   border: 1px solid rgba(17,22,26,.04);
   box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
   -webkit-box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
