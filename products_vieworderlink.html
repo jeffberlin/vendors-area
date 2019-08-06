@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>BMT Micro Developers Center</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addTransfer.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function insertAtCursor (myField, myValue) {
+        //IE support
+        if (document.selection) {
+          myField.focus();
+          sel = document.selection.createRange ();
+          sel.text = myValue;
+        }
+        //MOZILLA/NETSCAPE support
+        else if (myField.selectionStart || myField.selectionStart == '0') {
+          var startPos = myField.selectionStart;
+          var endPos = myField.selectionEnd;
+          myField.value = myField.value.substring(0, startPos) + myValue + myField.value.substring(endPos, myField.value.length);
+        } else {
+          myField.value += myValue;
+        }
+      }
+
+      function makeToken (s) {
+        return ((s.charAt (0) == "#") ? s : ("##" + s + "##"));
+      }
+
+      function addToken (div) {
+        insertAtCursor (document.getElementById ("emailtemplate"), makeToken (div.title));
+      }
+
+      function fixTitle (div) {
+        div.title = makeToken (div.title);
+        return (false);
+      }
+
+      function showPreview (form) {
+        var tgtform = document.previewform;
+        tgtform.PREVIEWTEXT.value = form.CUSTOMEREMAILTEMPLATE.value;
+        tgtform.submit ();
+      }
+
+      function checkSyntax (form) {
+        var text = form.CUSTOMEREMAILTEMPLATE.value.toUpperCase ();
+        if (text.indexOf ("#\#STDMESSAGE#\#") != -1) {
+          return (true);
+        }
+        if ((text.indexOf ("#\#IMPORTFILE") != -1) && confirm ("If you are certain you have the correct tokens in the message, click 'OK' to continue. Otherwise, click 'Cancel' and contact us for further assistance.\n\n****IMPORTANT*****\n\nPlease note that clicking 'OK' will bypass checks that ensure the message is using the proper tokens.\n\n")) {
+          return (true);
+        }
+        if (##DOWNLOADFILE## == -1) {
+          if ((text.indexOf ("#\#DOWNLOADINSTRUCTIONS#\#") == -1) && ((text.indexOf ("#\#PRODUCTID#\#") == -1) || (text.indexOf ("#\#DOWNLOADPASSWORD#\#") == -1))) {
+            alert ("Download instructions are required. Please make sure that the message contains the #\#DOWNLOADINSTRUCTIONS#\# token.");
+            return (false);
+          }
+        }
+        if (##PULLKEY## == -1) {
+          if (##KEYPARTS## == 1) {
+            if ((text.indexOf ("#\#STDREGINFO#\#") == -1) && (text.indexOf ("#\#REGKEY1#\#") == -1) && (text.indexOf ("#\#REGKEYINFO#\#") == -1) && (text.indexOf ("#\#REGKEYLIST#\#") == -1)) {
+              alert ("Activation Code information is required. Please make sure that the message contains the #\#STDREGINFO#\# token.");
+              return (false);
+            }
+          } else {
+            if (text.indexOf ("#\#STDREGINFO#\#") != -1) {
+              alert ("This product uses multi-part keys. Because of this, the #\#STDREGINFO#\# token should not be used. Use #\#REGKEY1#\#, #\#REGKEY2#\#, #\#REGKEY3#\# and #\#REGKEY4#\# instead.");
+              return (false);
+            }
+            if ((text.indexOf ("#\#REGKEY1#\#") != -1) || (text.indexOf ("#\#REGKEY2#\#") != -1) || (text.indexOf ("#\#REGKEY3#\#") != -1) || (text.indexOf ("#\#REGKEY4#\#") != -1))  {
+              if (text.indexOf ("#\#REGKEY1#\#") == -1) {
+                alert ("Please make sure that the message contains the #\#REGKEY1#\# token.");
+                return (false);
+              }
+              if ((##KEYPARTS## >= 2) && (text.indexOf ("#\#REGKEY2#\#") == -1)) {
+                alert ("Please make sure that the message contains the #\#REGKEY2#\# token.");
+                return (false);
+              }
+              if ((##KEYPARTS## >= 3) && (text.indexOf ("#\#REGKEY3#\#") == -1)) {
+                alert ("Please make sure that the message contains the #\#REGKEY3#\# token.");
+                return (false);
+              }
+              if ((##KEYPARTS## >= 4) && (text.indexOf ("#\#REGKEY4#\#") == -1)) {
+                alert ("Please make sure that the message contains the #\#REGKEY4#\# token.");
+                return (false);
+              }
+            } else if ((text.indexOf ("#\#REGKEYINFO#\#") == -1) && (text.indexOf ("#\#REGKEYKLIST#\#") == -1)) {
+              alert ("Activation Code information is required. Please make sure that the message contains the #\#REGKEY1#\# token.");
+              return (false);
+            }
+          }
+        }
+        if (##GENERATEKEY## == -1) {
+          if ((text.indexOf ("#\#STDREGINFO#\#") == -1) && (text.indexOf ("#\#REGKEY1#\#") == -1) && (text.indexOf ("#\#REGKEYINFO#\#") == -1) && (text.indexOf ("#\#GIFTCERTIFICATES#\#") == -1) && (text.indexOf ("#\#REGKEYLIST#\#") == -1) &&
+          ("#\#KEYGENERATOR#\#".indexOf ("ticket ") != 0))  {
+            alert ("Activation Code or Gift Certificate information is required. Please make sure that the message contains the #\#STDREGINFO#\# or #\#GIFTCERTIFICATES#\# token.");
+            return (false);
+          }
+        }
+        if (##KEYLIST## == -1) {
+          if ((text.indexOf ("#\#REGKEYINFO#\#") == -1) && (text.indexOf ("#\#GIFTCERTIFICATES#\#") == -1) && (text.indexOf ("#\#REGKEYLIST#\#") == -1)) {
+            alert ("This product is configured to send out more than one key. Because of this, a key list is required. Please make sure that the message contains the #\#REGKEYINFO#\# or #\#GIFTCERTIFICATES#\# token.");
+            return (false);
+          }
+        }
+
+        return (true);
+      }
+
+      function useDefaultChanged (form) {
+        if (form.USEDEFAULTTEMPLATE.checked) {
+          form.CUSTOMEREMAILTEMPLATE.value = form.DEFAULTCUSTOMEREMAILTEMPLATE.value;
+        }
+        form.CUSTOMEREMAILTEMPLATE.disabled = form.USEDEFAULTTEMPLATE.checked;
+      }
+
+      function initForm (form) {
+        if (isBlank (form.CUSTOMEREMAILTEMPLATE.value)){
+          form.CUSTOMEREMAILTEMPLATE.value = form.DEFAULTCUSTOMEREMAILTEMPLATE.value;
+          form.CUSTOMEREMAILTEMPLATE.disabled = true;
+          form.USEDEFAULTTEMPLATE.checked = true;
+        }
+      }
+
+      function submitForm (form) {
+        if (allowChanges ("You do not have permission to make changes.")) {
+          if (checkSyntax (form)) {
+            form.submit ();
+          }
+        }
+      }
+      //-->
+    </script>
+  </head>
+  <body onload="init (document.short);">
+    <div class="transfer-section">
+      <h5>The&nbsp;secure&nbsp;order&nbsp;link&nbsp;for&nbsp;##PRODUCTNAME##</h5>
+      <p class="text-section" style="margin-bottom: .5rem;">
+        https://secure.bmtmicro.com/cart?CID=##VENDORID##&amp;PRODUCTID=##PRODUCTID##
+      </p>
+      <p style="font-size: .9rem; font-style: italic; color: #707070; letter-spacing: .5px;">
+        <strong>Please&nbsp;note:</strong>
+        <br>
+        Our shopping cart system uses secure P3P signed cookies to remember products for 60 days if not purchased.
+        <br>
+        This is necessary for affiliates to receive credit for referred sales that are purchased at a later date.
+        <br>
+        If you are testing your cart other tested products may appear in a single shopping cart link.
+        <br>
+        To clear all products from the shopping cart each time,add a <b>CLR=0</b> parameter to the link, like this:
+      </p>
+      <p>
+        https://secure.bmtmicro.com/cart?CID=##VENDORID##&amp;CLR=0&amp;PRODUCTID=##PRODUCTID##
+      </p>
+      <form action="https://vendors-new.bmtmicro.com/productstart.html" method="get" target="_parent">
+        <button type="submit" name="Refresh" value="submit" class="grey-btn">Close</button>
+      </form>
+    </div> <!-- end .transfer-section -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -67,7 +67,7 @@ a {
   color: #ef9a00;
   }
 
-.page-title h4, .page-title p, .option-btn {
+.page-title h4, .page-title p, .grey-btn {
   letter-spacing: .5px;
   }
 
@@ -75,7 +75,7 @@ a {
   color: #707070;
   }
 
-.option-btn {
+.grey-btn {
   border-radius: 8px;
   font-size: .8rem;
   border: 1px solid #000000;
@@ -83,11 +83,11 @@ a {
   background-color: #dddddd;
   }
 
-.option-btn:hover {
+.grey-btn:hover {
   background-color: #a9a9a9;
   }
 
-.option-btn, .remove {
+.grey-btn, .remove {
   transition: all .2s ease;
 }
 

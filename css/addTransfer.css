@@ -6,11 +6,11 @@ h5, .dropdown-toggle:hover, .dropdown-toggle:active {
   color: #efa900;
 }
 
-label, .text-section, .dropdown-item, span {
+label, .text-section, .dropdown-item, span, p {
   color: #707070 !important;
 }
 
-h5, label, input, textarea, select, button, .text-section, span {
+h5, label, input, textarea, select, button, .text-section, span, p {
   letter-spacing: .5px;
 }
 
@@ -38,6 +38,7 @@ input:focus, textarea:focus, select:focus, button:hover {
 select {
   padding: .2rem;
 }
+
 select:hover {
   cursor: pointer;
 }
