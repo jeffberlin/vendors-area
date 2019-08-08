@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>BMT Micro Developers Center</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addTransfer.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <style media="screen" type="text/css">
+      #keyinfo {
+        color: #707070;
+        margin-bottom: 1rem;
+        font-size: .9rem;
+      }
+      #keyinfo, h6 {
+        letter-spacing: .5px;
+      }
+      h6 {
+        color: #195a7c;
+        font-size: 1.15rem;
+      }
+    </style>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function checkKeyParts (str,parts,separator) {
+        var i = 0;
+        var l = str.length;
+        var lineNumber = 0;
+        var keyCount = 0;
+        while (i < l) {
+          var next;
+          var lf = str.indexOf ("\r\n", i);
+          if (lf != -1) {
+            next = lf + 2;
+          } else if ((lf = str.indexOf ("\n", i)) != -1) {
+            next = lf + 1;
+          } else {
+            next = lf = l;
+          }
+          var line = str.substring (i, lf);
+          lineNumber++;
+          i = next;
+
+          if (isBlank (line)) {
+            if (!confirm ("Warning: Line " + lineNumber + "  will be ignored because it is blank")) {
+              return (false);
+            }
+          continue;
+          }
+
+          var keyparts = ["","","",""];
+          if (parts == 1) {
+            keyparts[0] = line.substring (j);
+          } else {
+            var part = 0;
+            var j = 0;
+            for (;;) {
+              var s = line.indexOf (separator, j);
+              if (s == -1) {
+                break;
+              }
+              keyparts[part++] = line.substring (j, s);
+              j = s + 1;
+              if (part == parts) {
+                alert ("Error on line " + lineNumber + ". Found more than " + parts + " parts.\nThis table should only have " + parts + " parts per code");
+                return (false);
+              }
+            }
+            keyparts[part++] = line.substring (j);
+            if (part < parts) {
+              alert ("Error on line " + lineNumber + ". Could only find " + part + " parts.\nThis table needs " + parts + " parts per code");
+              return (false);
+            }
+          }
+
+          for (var k = 0; k < part; k++) {
+            if (keyparts[k].length > 80) {
+              alert ("Error on line " + lineNumber + ". The length of the code (part " + k + ") exceeds the maximum length of 80 characters.");
+              return (false);
+            }
+          }
+
+          keyCount++;
+        }
+        return (confirm (keyCount + " codes will be added to the database."));
+      }
+
+      function initForm (form) {
+        var info = "Each row contains one code."
+        if (##KEYPARTS## == 1) {
+          info += " (The codes are single-part. The separator character is not used.)";
+        } else {
+          info += " Each code should have ##KEYPARTS## parts. Each part should be separated by ";
+          switch ('##SEPARATOR##') {
+            case ' ':
+              info += " a space character ('&nbsp;').";
+            break;
+            case ',':
+              info += " a comma (',').";
+            break;
+            case ';':
+              info += " a semicolon (';').";
+            break;
+            default:
+              info += "the character '##SEPARATOR##'";
+            break;
+          }
+        }
+        document.getElementById ("keyinfo").innerHTML = info;
+      }
+
+      function submitForm (form) {
+        if (isBlank (form.KEYLIST.value)) {
+          alert ("No codes provided!");
+          form.KEYLIST.focus ();
+          return (false);
+        }
+        if (!checkKeyParts (form.KEYLIST.value, form.KEYPARTS.value, form.SEPARATOR.value)) {
+          form.KEYLIST.focus ();
+          return (false);
+        }
+        setFieldVisible ("main", false);
+        setFieldVisible ("progress", true);
+        form.submit ();
+        return (true);
+      }
+      //-->
+    </script>
+  </head>
+  <body onload="initForm (document.keytables);">
+    <div class="transfer-section">
+      <form method="post" name="keytables" action="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys" target="resultframe">
+        <h5>Add&nbsp;Activation&nbsp;Codes&nbsp;to&nbsp;##NAME##</h5>
+        <span>
+          <input type="checkbox" name="REPLACEKEYS" value="-1"  style="margin-bottom: 1rem;"/>&nbsp;Replace&nbsp;existing&nbsp;codes
+        </span>
+        <br>
+        <span>
+          <label>Insert&nbsp;codes&nbsp;below:</label>
+          <br clear="all">
+          <textarea name="KEYLIST" rows="8" cols="70"></textarea>
+        </span>
+        <br>
+        <div id="keyinfo"></div>
+        <span>
+          <button type="button" class="light-btn" onclick="submitForm (keytables);" style="margin-bottom: 1rem;">Add Codes</button>
+        </span>
+        <input type="hidden" name="ACTION" value="13" />
+        <input type="hidden" name="KEYPARTS" value="##KEYPARTS##" />
+        <input type="hidden" name="SEPARATOR" value="##SEPARATOR##" />
+        <input type="hidden" name="KEYTABLEID" value="##KEYTABLEID##" />
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/keytables_add_keys_progress.html" />
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
+      </form>
+      <div id="progress" style="display: none;">
+        <h6>Add&nbsp;Activation&nbsp;Codes</h6>
+        <p style="margin-bottom: .2rem;">Please wait, adding codes.</p>
+        <p style="margin-bottom: .2rem;">This process can take several minutes depending on the number of codes you are inserting.</p>
+        <p style="margin-bottom: .2rem;">No codes have been added so far.</p>
+        <p style="color: #FF0000;">Please do not exit this window until complete as this will stop the insertion process.</p>
+      </div>
+    </div> <!-- end .transfer-section -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
