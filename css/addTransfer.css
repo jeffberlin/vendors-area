@@ -6,7 +6,7 @@ h5, .dropdown-toggle:hover, .dropdown-toggle:active {
   color: #efa900;
 }
 
-label, .text-section, .dropdown-item, span, p {
+label, .text-section, .dropdown-item, span {
   color: #707070 !important;
 }
 
