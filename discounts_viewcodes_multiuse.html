@@ -24,15 +24,22 @@
   </head>
   <body>
     <div class="transfer-section">
-      <h5>Delete Activation Code Table - ##NAME##</h5>
-      <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys" target="_parent">
-        <input type="hidden" name="ACTION" value="12" />
-        <input type="hidden" name="KEYTABLEID" value="##KEYTABLEID##" />
-        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/keytablesstart.html" />
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-        <p style="margin-bottom: .2rem;">Please confirm deletion of the&nbsp;<strong>##NAME##</strong>&nbsp;table.</p>
-        <p>This table is not used by any products and can be deleted.</p>
-        <button type="submit" class="grey-btn">Delete</button>
+      <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes"  target="resultframe">
+        <h5>View Discount Codes for ##NAME##</h5>
+        <p>The number of uses is limited to ##MAXUSECOUNT## purchases per code.</p>
+        <select name="VIEWTYPE" style="margin-bottom: 1rem;">
+          <option value="0">View All Codes</option>
+          <option value="1">View Completely Used Codes</option>
+          <option value="2">View Partially Used Codes</option>
+          <option value="3">View Unused Codes</option></select>
+        </select>
+        <br>
+        <button type="submit" class="light-btn">View Codes</button>
+        <input type="hidden" name="ACTION" value="14" />
+        <input type="hidden" name="SCHEMEID" value="##SCHEMEID##" />
+        <input type="hidden" name="NAME" value="##NAME##" />
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/discounts_viewcodes_viewcodes.html" />
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
       </form>
     </div> <!-- end .transfer-section -->
 

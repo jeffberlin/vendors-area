@@ -17,23 +17,28 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <style media="screen" type="text/css">
-      p {
-        color: #707070;
+      th {
+        font-size: .9rem;
+        color: #195a7c;
+        text-decoration: underline;
+        text-decoration-color: #efa900;
       }
     </style>
   </head>
   <body>
-    <div class="transfer-section">
-      <h5>Delete Activation Code Table - ##NAME##</h5>
-      <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys" target="_parent">
-        <input type="hidden" name="ACTION" value="12" />
-        <input type="hidden" name="KEYTABLEID" value="##KEYTABLEID##" />
-        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/keytablesstart.html" />
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-        <p style="margin-bottom: .2rem;">Please confirm deletion of the&nbsp;<strong>##NAME##</strong>&nbsp;table.</p>
-        <p>This table is not used by any products and can be deleted.</p>
-        <button type="submit" class="grey-btn">Delete</button>
-      </form>
+    <div class="transfer-section" id="main">
+      <h5>View Products Using Activation Code Table - ##NAME##</h5>
+      <table class="table" style="margin-bottom: 1rem; width: 70%; border: 1px solid #a9a9a9;">
+        <thead>
+          <tr class="table-category text-center">
+            <th class="sort-column">Product&nbsp;ID</th>
+            <th class="sort-column">Product&nbsp;Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          ##TABLEDATA##
+        </tbody>
+      </table>
     </div> <!-- end .transfer-section -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

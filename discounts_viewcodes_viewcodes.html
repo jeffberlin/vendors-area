@@ -16,23 +16,21 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addTransfer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
-    <style media="screen" type="text/css">
-      p {
-        color: #707070;
+    <style media="screen" type="text/css">tr:last-child {
+        border-bottom: 1px solid #dddddd;
       }
     </style>
   </head>
   <body>
     <div class="transfer-section">
-      <h5>Delete Activation Code Table - ##NAME##</h5>
-      <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys" target="_parent">
-        <input type="hidden" name="ACTION" value="12" />
-        <input type="hidden" name="KEYTABLEID" value="##KEYTABLEID##" />
-        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/keytablesstart.html" />
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-        <p style="margin-bottom: .2rem;">Please confirm deletion of the&nbsp;<strong>##NAME##</strong>&nbsp;table.</p>
-        <p>This table is not used by any products and can be deleted.</p>
-        <button type="submit" class="grey-btn">Delete</button>
+      <h5>Discount&nbsp;Codes</h5>
+      <table class="table" style="margin-bottom: 1rem;">
+        <tbody>
+          ##CODETABLE##
+        </tbody>
+      </table>
+      <form method="get" action="https://vendors-new.bmtmicro.com/discountsstart.html"  target="_parent" >
+        <button type="submit" class="grey-btn" >Ok</button>
       </form>
     </div> <!-- end .transfer-section -->
 
