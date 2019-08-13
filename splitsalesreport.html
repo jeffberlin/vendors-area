@@ -22,20 +22,14 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <style media="screen" type="text/css">
-      select {
-        letter-spacing: .5px;
-        border: 1px solid #a9a9a9;
-        border-radius: 3px;
-        padding: .2rem;
-        outline: none;
-        background: #ffffff;
-        color: #195a7c;
+      .input-tr th {
+        border-right: 1px solid #a9a9a9;
       }
-      select:hover {
-        cursor: pointer;
+      .input-tr th:last-child {
+        border-right: none;
       }
-      select:focus {
-        border: 1px solid #195a7c;
+      .input-tr th, td[number], td[money] {
+        text-align: center;
       }
     </style>
   </head>
@@ -158,8 +152,8 @@
               <h4>Split&nbsp;Sales&nbsp;Report</h4>
               <p>Report should be run based on the Account Transactions dates.</p>
               <div class="content-box">
-                <div class="table-header">
-                  <form name="splitsalesreport" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SplitSalesReport" method="post" onsubmit="return (CheckDateRange (this));">
+                <form name="splitsalesreport" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SplitSalesReport" method="post" onsubmit="return (CheckDateRange (this));">
+                  <div class="table-header">
                     <span>
                       From:&nbsp;
                       <input id="DATEFROM" name="DATEFROM" value="##DATEFROM##" />
@@ -186,56 +180,77 @@
                       </span>
                       <button class="get-btn" value="Get Split Sales Summary" onclick="submitForm (splitsalesreport);" >Get Split Sales Summary</button>
                     </span>
-                </div> <!-- end .table-header -->
+                  </div> <!-- end .table-header -->
                   <div class="row" style="margin-left: auto; margin-right: auto;">
-                    
                     <table class="table">
-
-                        <thead>
-                          <tr class="table-category">
-                            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Vendor ID'" number>
-                              <a href="#" class="fdTableSortTrigger">Split&nbsp;Vendor&nbsp;ID</a>
-                            </th>
-                            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Name'" text>
-                              <a href="#" class="fdTableSortTrigger">Name</a>
-                            </th>
-                            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Product Name'" text>
-                              <a href="#" class="fdTableSortTrigger">Product&nbsp;Name</a>
-                            </th>
-                            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Units Sold'" number>
-                              <a href="#" class="fdTableSortTrigger">Units&nbsp;Sold</a>
-                            </th>
-                            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Amount per Unit'" money>
-                              <a href="#" class="fdTableSortTrigger">Amount&nbsp;per&nbsp;Unit</a>
-                            </th>
-                            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Total Amount'" money>
-                              <a href="#" class="fdTableSortTrigger">Total&nbsp;Amount</a>
-                            </th>
-                            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Percentage/Amount'" number>
-                              <a href="#" class="fdTableSortTrigger">Percentage/Amount</a>
-                            </th>
-                            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Percentage/Amount'" money>
-                              <a href="#" class="fdTableSortTrigger">Split</a>
-                            </th>
-                          </tr>
-                        </thead>
-                        <tr>
-                          <th style="text-align: left; color: #707070; letter-spacing: .5px; font-size: .9rem; font-weight: 300;">Filter results using the fields below.
+                      <thead>
+                        <tr class="table-category">
+                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Vendor ID'" number>
+                            <a href="#" class="fdTableSortTrigger">Split&nbsp;Vendor&nbsp;ID</a>
+                          </th>
+                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Name'" text>
+                            <a href="#" class="fdTableSortTrigger">Name</a>
+                          </th>
+                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Product Name'" text>
+                            <a href="#" class="fdTableSortTrigger">Product&nbsp;Name</a>
+                          </th>
+                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Units Sold'" number>
+                            <a href="#" class="fdTableSortTrigger">Units&nbsp;Sold</a>
+                          </th>
+                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Amount per Unit'" money>
+                            <a href="#" class="fdTableSortTrigger">Amount&nbsp;per&nbsp;Unit</a>
+                          </th>
+                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Total Amount'" money>
+                            <a href="#" class="fdTableSortTrigger">Total&nbsp;Amount</a>
+                          </th>
+                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Percentage/Amount'" number>
+                            <a href="#" class="fdTableSortTrigger">Percentage/Amount</a>
+                          </th>
+                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Percentage/Amount'" money>
+                            <a href="#" class="fdTableSortTrigger">Split</a>
                           </th>
                         </tr>
+                      </thead>
+                      <tr>
+                        <th style="text-align: left; color: #707070; letter-spacing: .5px; font-size: .9rem; font-weight: 300; border-bottom: 1px solid #dddddd;" colspan="10">Filter results using the fields below.
+                        </th>
+                      </tr>
+                      <tr class="input-tr">
+                        <th number>
+                          <input class="input-search" type="text" name="FLT_SPLITVENDORID" value="" placeholder="Search">
+                        </th>
+                        <th text>
+                          <input class="input-search" type="text" name="FLT_NAME" value="" placeholder="Search">
+                        </th>
+                        <th text>
+                          <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="" placeholder="Search">
+                        </th>
+                        <th number></th>
+                        <th money></th>
+                        <th money></th>
+                        <th number>
+                          <input class="input-search" type="text" name="FLT_PERCENTAGE" value="" placeholder="Search">
+                        </th>
+                        <th text></th>
+                      </tr>
+                      <tbody>
                         <tr>
-                          <th number><input type="text" name="FLT_SPLITVENDORID" value=""> </th>
-                          <th text><input type="text" name="FLT_NAME" value=""> </th>
-                          <th text><input type="text" name="FLT_PRODUCTNAME" value=""> </th>
-                          <th number></th>
-                          <th money></th>
-                          <th money></th>
-                          <th number><input type="text" name="FLT_PERCENTAGE" value=""> </th>
-                          <th text></th>
+                          ##TABLEDATA##
                         </tr>
-                      </form>
+                      </tbody>
+                      <tfoot>
+                        <tr class="table-total">
+                          <th scope="row" colspan="3">Total</th>
+                          <th scope="row" class="text-center" number>##TOTALQUANTITY##</th>
+                          <th></th>
+                          <th scope="row" class="text-center" money>##TOTALVENDORROYALTY##</th>
+                          <th></th>
+                          <th scope="row" class="text-center" style="border-right: 1px solid #a9a9a9;" money>##TOTALSPLITROYALTY##</th>
+                        </tr>
+                      </tfoot>
                     </table>
-                </div> <!-- end .row -->
+                  </div> <!-- end .row -->
+                </form>
               </div> <!-- end .content-box -->
             </div>
           </div> <!-- end .row justify-content-start -->

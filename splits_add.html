@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addTransfer.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addPages.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
+    <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <style media="screen" type="text/css">
+      em {
+        font-size: .8rem;
+      }
+      h6 {
+        letter-spacing: .5px;
+        font-size: 1.15rem;
+        color: #195a7c;
+      }
+      #PRODUCTLIST, #SELECTEDLIST {
+        margin-bottom: 1rem;
+      }
+    </style>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function initForm (form){
+        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+        // field is not present. (An unchecked checkbox constitutes a non-existent field).
+        initField (form, "ALLPRODUCTS_CHK", "##ALLPRODUCTS##");
+      }
+
+      function submitForm (form) {
+        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+        // field is not present. (An unchecked checkbox constitutes a non-existent field).
+        copyField (form, "ALLPRODUCTS", "ALLPRODUCTS_CHK");
+        form.NAME.value = trim (form.NAME.value);
+        if (isBlank (form.NAME.value)) {
+          alert ("You must name the vendor split scheme!");
+          form.NAME.focus ();
+          return (false);
+        }
+        if ((form.NAME.value != "##NAME##") && ("##NAMELIST##".split ("\t").indexOf (form.NAME.value) != -1)) {
+          alert ("A vendor split scheme with that name already exists!");
+          form.NAME.focus ();
+          return (false);
+        }
+        if ((isBlank (form.PERCENTAGE.value)) && (isBlank (form.AMOUNT.value))) {
+          alert ("You must specify a percentage or a fixed amount!");
+          form.PERCENTAGE.focus ();
+          return (false);
+        }
+        if ((form.PERCENTAGE.value < 0) || (form.PERCENTAGE.value > 100)) {
+          alert ("Value out of range. (Must not be negative)");
+          form.PERCENTAGE.focus ();
+          return (false);
+        }
+        if (isBlank (form.SPLITVENDORID.value)) {
+          alert ("You must specify a vendor ID");
+          form.SPLITVENDORID.focus ();
+          return (false);
+        }
+        if (form.SPLITVENDORID.value < 1) {
+          alert ("You must specify a valid vendor ID");
+          form.SPLITVENDORID.focus ();
+          return (false);
+        }
+        form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues (form.SELECTEDLIST);
+        form.submit ();
+        return (true);
+      }
+      //-->
+    </script>
+  </head>
+  <body onload="initForm (document.splits);">
+    <div class="transfer-section">
+      <form method="post" name="splits" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SplitSchemes" target="_parent">
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/splitsstart.html" />
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+        <input type="hidden" name="SCHEMEID" value="##SCHEMEID##" />
+        <input type="hidden" name="ACTION" value="10" />
+        <h5>Add&nbsp;New&nbsp;Vendor&nbsp;Split</h5>
+        <span>
+          <label>Split&nbsp;Name:&nbsp;</label>
+          <input name="NAME" maxlength="80" value="##NAME##"  title=" This is the descriptive name for the Vendor Split. maximum 80 characters." style="margin-bottom: 1rem;"/>
+        </span>
+        <br clear="all">
+        <span>
+          <label>Percentage:&nbsp;</label>
+          <input name="PERCENTAGE" value="##PERCENTAGE##" size="10"  title=" Enter the percentage amount in the text field. Numbers only, decimals are allowed." style="margin-bottom: 1rem;"/>
+        </span>
+        <br clear="all">
+        <span>
+          <label>Fixed&nbsp;Amount:&nbsp;</label>
+          <input name="AMOUNT" value="##AMOUNT##" size="10"  title=" Enter the fixed amount in the text field. Numbers only, decimals are allowed. Leave blank for no fixed amount." style="margin-bottom: 1rem;"/>
+          <em>&nbsp;(Fixed amount for each unit sold)</em>
+        </span>
+        <br clear="all">
+        <span>
+          <label>Maximum&nbsp;Amount:&nbsp;</label>
+          <input name="MAXAMOUNT" value="##MAXAMOUNT##" size="10"  title=" Enter the maximum amount in the text field. Numbers only, decimals are allowed. Leave blank for no maximum amount." style="margin-bottom: 1rem;"/>
+          <em>&nbsp;(Leave blank to split all sales)</em>
+        </span>
+        <br clear="all">
+        <span>
+          <label>Beneficiary&nbsp;Vendor&nbsp;ID:&nbsp;</label>
+          <input name="SPLITVENDORID" maxlength="5" size="5" value="##SPLITVENDORID##"  title=" This should be the vendor ID credited with a percentage of your sales." style="margin-bottom: 1rem;"/>
+        </span>
+        <h6>Choose Products for this Vendor Split</h6>
+        <span>
+          <input type="hidden" name="ALLPRODUCTS" value="##ALLPRODUCTS##" />
+          <input type="checkbox" name="ALLPRODUCTS_CHK" value="-1"  title=" Includes all products for this vendor, including products added in the future." style="margin-bottom: 1rem;"/>&nbsp;Apply to all products
+        </span>
+        <br>
+        <select id="PRODUCTLIST" name="PRODUCTLIST" multiple="multiple" ondblclick="addProduct (splits);" style="width:50%;height:100px">
+           ##PRODUCTLIST##
+        </select>
+        <div class="move">
+          <!-- we hardcode the style here since the classes are not visible. We can add class="content" to the "dd" tag to make the styles work, but then this will add whitespace on the sides which is not desired... -->
+          <button style="margin-right: 5px;" type="button" name="add" value="Add&nbsp;&gt;&gt;" onclick="addProduct (splits);">
+            Add&nbsp;<i class="fas fa-angle-down"></i>
+          </button>
+          <button style="margin-right: 25px;" type="button" name="remove" value="&lt;&lt;&nbsp;Remove" onclick="removeProduct (splits);">
+            <i class="fas fa-angle-up"></i>&nbsp;Remove
+          </button>
+          <button style="margin-right: 5px;" type="button" name="addall" value="Add&nbsp;&gt;&gt;" onclick="addAllProducts (splits);">
+            Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i>
+          </button>
+          <button type="button" name="removeall" value="&lt;&lt;&nbsp;Remove" onclick="removeAllProducts (splits);">
+            <i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All
+          </button>
+        </div>
+        <select id="SELECTEDLIST" name="SELECTEDLIST" multiple="multiple" ondblclick="removeProduct (splits);" style="width:50%;height:100px">
+           ##SELECTEDPRODUCTS##
+        </select>
+        <input type="hidden" name="SELECTEDPRODUCTS" />
+        <br>
+        <button type="button" class="light-btn" onclick="submitForm (splits);" style="margin-right: 10px;">Save</button>
+        <button type="button" class="light-btn" onclick="document.close.submit ();">Close</button>
+      </form>
+      <form name="close" action="https://vendors-new.bmtmicro.com/splitsstart.html" method="get" target="_parent">
+      </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

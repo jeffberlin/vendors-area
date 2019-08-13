@@ -6,7 +6,7 @@
   border-radius: 3px 3px 0px 0px;
   }
 
-.table-header span, .table-header input, .get-btn, .display-header, .sort-column, td, tfoot, .td-button button {
+.table-header span, input, .get-btn, .display-header, .sort-column, td, tfoot, .td-button button, select {
   letter-spacing: .5px;
   }
 
@@ -14,7 +14,7 @@
   color: #ffffff;
   }
 
-th a, th a:hover, .td-button button, tfoot {
+th a, th a:hover, .td-button button, tfoot, select {
   color: #195a7c;
   }
 
@@ -24,13 +24,19 @@ th a, th a:hover, .td-button button, tfoot {
 
 .table-header input, .get-btn, .td-button button {
   border: none;
-}
+  }
 
 .table-header input {
-  border-radius: 3px;
   padding-left: .4rem;
-  color: #707070;
   margin: 0rem .2rem;
+  }
+
+.table-header input, .input-search, select {
+  border-radius: 3px;
+  }
+
+.table-header input, .input-search {
+  color: #707070;
   }
 
 .get-btn {
@@ -43,7 +49,7 @@ th a, th a:hover, .td-button button, tfoot {
 
 .get-btn, .td-button button {
   transition: all .2s ease;
-}
+  }
 
 .get-btn:hover {
   color: #f3f3f3;
@@ -83,6 +89,10 @@ th a, th a:hover {
   cursor: pointer;
   }
 
+.sort:hover, select:hover {
+  cursor: pointer;
+  }
+
 .sort-column {
   font-weight: 400;
   }
@@ -95,7 +105,7 @@ td, .sort-column {
   border-right: none;
   }
 
-td, .get-btn {
+td, .get-btn, .input-search {
   font-size: .8rem;
   }
 
@@ -117,7 +127,6 @@ tfoot {
   padding: .3rem .75rem;
   border-radius: 3px;
   background-color: #ffffff;
-  border: 1px solid #195a7c;
   }
 
 .td-button button:hover {
@@ -128,6 +137,23 @@ tfoot {
   color: #efa900;
   }
 
-.td-button:focus {
+.td-button:focus, select {
   outline: none;
+  }
+
+.td-button button, select:focus, .input-search:focus {
+  border: 1px solid #195a7c;
+  }
+
+.input-search, select {
+  border: 1px solid #a9a9a9;
+  }
+
+.input-search {
+  padding: .25rem;
+  }
+
+select {
+  padding: .2rem;
+  background: #ffffff;
   }
