@@ -16,24 +16,11 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
-    <style media="screen" type="text/css">
-      .input-tr th {
-        border-right: 1px solid #a9a9a9;
-      }
-      .input-tr th:last-child {
-        border-right: none;
-      }
-      .input-tr th, td[number], td[money] {
-        text-align: center;
-      }
-    </style>
   </head>
-  <body onload="initForm (document.splitsalesreport);">
+  <body onload="document.start.submit ();">
     <div style="visibility:hidden;">
       <form name="logout" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Logout">
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
@@ -108,13 +95,13 @@
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/discountsstart.html">Discount Schemes</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/tiersstart.html">Manage Pricing Tiers</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/splitsstart.html">Manage Splits</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/splitsalesreportstart.html" style="color: #efa900;">Split Sales Report</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/splitsalesreportstart.html">Split Sales Report</a>
                   </div>
                 </div> <!-- end .dropright -->
                 <div class="dropright">
                   <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Customers</a>
                   <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/customersearchstart.html">Customer Search</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/customersearchstart.html" style="color: #efa900;">Customer Search</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/customercommentsstart.html">Customer Comments</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/downloadpasswordsstart.html">Manage Download Passwords</a>
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/subscriptionsstart.html">Manage Subscriptions</a>
@@ -149,110 +136,27 @@
               </aside>
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
-              <h4>Split&nbsp;Sales&nbsp;Report</h4>
-              <p>Report should be run based on the Account Transactions dates.</p>
+              <h4>Customer&nbsp;Search</h4>
+              <p>Use fields below to enter search criteria.&nbsp;If email information has not changed since purchase you can resend the customer's email using the button provided.<br>You will be able to review the email before it is sent.</p>
               <div class="content-box">
-                <form name="splitsalesreport" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SplitSalesReport" method="post" onsubmit="return (CheckDateRange (this));">
-                  <div class="table-header">
-                    <span>
-                      From:&nbsp;
-                      <input id="DATEFROM" name="DATEFROM" value="##DATEFROM##" />
-                      <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
-                    </span>
-                    <span>
-                      To:&nbsp;
-                      <input id="DATETO" name="DATETO" value="##DATETO##" style="margin-bottom: 1rem;" />
-                      <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATETO'); return (false);" onmouseover="this.style.cursor='pointer';" />
-                    </span>
-                    <br clear="all">
-                    <span>
-                      <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
-                      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/splitsalesreport.html" />
-                      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-                      <span>
-                        <select name="FORMAT">
-                          <option value="-1" selected="selected">HTML (refresh)</option>
-                          <option value="0">HTML (printable)</option>
-                          <option value="1">CSV</option>
-                          <option value="2">XML</option>
-                          <option value="3">PDF</option>
-                        </select>
-                      </span>
-                      <button class="get-btn" value="Get Split Sales Summary" onclick="submitForm (splitsalesreport);" >Get Split Sales Summary</button>
-                    </span>
-                  </div> <!-- end .table-header -->
-                  <div class="row" style="margin-left: auto; margin-right: auto;">
-                    <table class="table">
-                      <thead>
-                        <tr class="table-category">
-                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Vendor ID'" number>
-                            <a href="#" class="fdTableSortTrigger">Split&nbsp;Vendor&nbsp;ID</a>
-                          </th>
-                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Name'" text>
-                            <a href="#" class="fdTableSortTrigger">Name</a>
-                          </th>
-                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Product Name'" text>
-                            <a href="#" class="fdTableSortTrigger">Product&nbsp;Name</a>
-                          </th>
-                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Units Sold'" number>
-                            <a href="#" class="fdTableSortTrigger">Units&nbsp;Sold</a>
-                          </th>
-                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Amount per Unit'" money>
-                            <a href="#" class="fdTableSortTrigger">Amount&nbsp;per&nbsp;Unit</a>
-                          </th>
-                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Total Amount'" money>
-                            <a href="#" class="fdTableSortTrigger">Total&nbsp;Amount</a>
-                          </th>
-                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Percentage/Amount'" number>
-                            <a href="#" class="fdTableSortTrigger">Percentage/Amount</a>
-                          </th>
-                          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Percentage/Amount'" money>
-                            <a href="#" class="fdTableSortTrigger">Split</a>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tr>
-                        <th style="text-align: left; color: #707070; letter-spacing: .5px; font-size: .9rem; font-weight: 300; border-bottom: 1px solid #dddddd;" colspan="10">Filter results using the fields below.
-                        </th>
-                      </tr>
-                      <tr class="input-tr">
-                        <th number>
-                          <input class="input-search" type="text" name="FLT_SPLITVENDORID" value="" placeholder="Search">
-                        </th>
-                        <th text>
-                          <input class="input-search" type="text" name="FLT_NAME" value="" placeholder="Search">
-                        </th>
-                        <th text>
-                          <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="" placeholder="Search">
-                        </th>
-                        <th number></th>
-                        <th money></th>
-                        <th money></th>
-                        <th number>
-                          <input class="input-search" type="text" name="FLT_PERCENTAGE" value="" placeholder="Search">
-                        </th>
-                        <th text></th>
-                      </tr>
-                      <tbody>
-                        <tr>
-                          ##TABLEDATA##
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr class="table-total">
-                          <th scope="row" colspan="3">Total</th>
-                          <th scope="row" class="text-center" number>##TOTALQUANTITY##</th>
-                          <th></th>
-                          <th scope="row" class="text-center" money>##TOTALVENDORROYALTY##</th>
-                          <th></th>
-                          <th scope="row" class="text-center" style="border-right: 1px solid #a9a9a9;" money>##TOTALSPLITROYALTY##</th>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div> <!-- end .row -->
-                </form>
+                <iframe src="" name="tableframe" id="tableframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 450px;padding: 0px; margin:0px;" >
+                   [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
+                </iframe>
               </div> <!-- end .content-box -->
-            </div>
+              <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 350px;padding: 0px; margin:0px;" >
+                 [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
+              </iframe>
+              <form name="start" method=post action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" target="tableframe">
+                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customersearch.html">
+                <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customersearch_tablerow.html" />
+                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html">
+                <input type="hidden" name="FLT_ORDERID" value="">
+                <input type="hidden" name="FLT_PRODUCTNAME" value="">
+                <input type="hidden" name="FLT_NAME" value="">
+                <input type="hidden" name="FLT_ADDRESS" value="">
+                <input type="hidden" name="FLT_EMAIL" value="">
+              </form>
+            </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
