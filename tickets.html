@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>BMT Micro Developers Center</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function initForm (form) {
+        initField (form, "FLT_PRODUCTNAME",     "##FLT_PRODUCTNAME##");
+        initField (form, "FLT_NAME",            "##FLT_NAME##");
+        initField (form, "FLT_EMAIL",           "##FLT_EMAIL##");
+        initField (form, "SHOWDETAILS",         "##SHOWDETAILS##");
+        if (##PAGECOUNT## > 1) {
+          var s = "Pages:&nbsp;";
+          for (var p = 1; p <= ##PAGECOUNT##; p++) {
+            s += "<a href=\"javascript:selectPage(" + p + ");\">" + p  + "</a>&nbsp;&nbsp;";
+          }
+          document.getElementById ("pageselector").innerHTML = s;
+        }
+      }
+
+      function submitForm (action, target, nextpage, ticketid) {
+        var form = document.tickets;
+        form.ACTION.value = action;
+        form.target = target;
+        form.NEXT_PAGE.value = nextpage;
+        form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.html" : "https://vendors-new.bmtmicro.com/error_frame.html";
+        form.TICKETID.value = ticketid;
+        form.submit ();
+      }
+
+      function showDetailsChanged () {
+        var form = document.tickets;
+        var value = queryField (form, "SHOWDETAILS");
+        setCookieValue ("BMTMicro.Vendors.Tickets.ShowDetails", value, 1000);
+        form.ROWTEMPLATEURL.value = (value == -1) ? "https://vendors-new.bmtmicro.com/tickets_tablerow_details.html" : "https://vendors-new.bmtmicro.com/tickets_tablerow.html";
+        submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/tickets.html");
+      }
+
+      function selectPage (p) {
+        document.tickets.PAGE.value = p;
+        submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/tickets.html");
+      }
+
+      function filter () {
+        submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/tickets.html");
+      }
+
+      function expireTicket (ticketid) {
+        if (allowResend ("You do not have permission to expire tickets.")) {
+          submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/tickets_expire.html", ticketid);
+        }
+      }
+
+      function addTicket (ticketid) {
+        if (allowResend ("You do not have permission to grant new tickets.")) {
+          submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/tickets_add.html", ticketid);
+        }
+      }
+      //-->
+    </script>
+  </head>
+  <body onload="initForm (document.tickets);">
+    <form name="tickets" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Tickets" method="post" target="">
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/tickets.html" />
+      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+      <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
+      <input type="hidden" name="ROWSPERPAGE" value="##ROWSPERPAGE##" />
+      <input type="hidden" name="PAGE" value="##PAGE##" />
+      <input type="hidden" name="PAGECOUNT" value="##PAGECOUNT##" />
+      <input type="hidden" name="ACTION" value="" />
+      <input type="hidden" name="TICKETID" value="">
+      <div class="table-header">
+        <span>
+          <input type="checkbox" name="SHOWDETAILS" value="-1" onClick="showDetailsChanged ();" style="margin-bottom: 1rem;" />&nbsp;Show details
+        </span>
+        <br>
+        <button type="button" class="get-btn" onclick="filter ();">Show Tickets</button>
+      </div> <!-- end .table-header -->
+      <div class="row" style="margin-left: auto; margin-right: auto;">
+        <table class="table">
+          <thead>
+            <tr class="table-category text-center">
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'Email'" info>
+                <a href="#" class="fdTableSortTrigger">Email</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'Company/Name'" text>
+                <a href="#" class="fdTableSortTrigger">Company/Name</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'Product Name'" text>
+                <a href="#" class="fdTableSortTrigger">Product&nbsp;Name</a>
+              </th>
+              ##SELECT(SHOWDETAILS, -1, ,<th scope="col" class="sort-column sortable sort" title="Sort on 'Granted'" number><a href="#" class="fdTableSortTrigger">Granted</a></th>)##
+              ##SELECT(SHOWDETAILS, -1, ,<th scope="col" class="sort-column sortable sort" title="Sort on 'Redeemed'" number><a href="#" class="fdTableSortTrigger">Redeemed</a></th>)##
+              ##SELECT(SHOWDETAILS, -1, ,<th scope="col" class="sort-column sortable sort" title="Sort on 'Available'" number><a href="#" class="fdTableSortTrigger">Available</a></th>)##
+              ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort" title="Sort on 'Order ID'" number><a href="#" class="fdTableSortTrigger">Order ID</th>)##
+              ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort" title="Sort on 'Expires'" date><a href="#" class="fdTableSortTrigger">Expires</a></th>)##
+              ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort" title="Sort on 'Status'" text><a href="#" class="fdTableSortTrigger">Status</a></th>)##
+              ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort" title="Sort on 'Status'" option></th>)##
+            </tr>
+          </thead>
+          <tr>
+            <th style="text-align: left; color: #707070; letter-spacing: .5px; font-size: .9rem; font-weight: 300; border-bottom: 1px solid #dddddd;" colspan="10">
+              Filter results using the fields below or leave all fields blank to retrieve all tickets.
+            </th>
+          </tr>
+          <tr class="input-tr">
+            <th info>
+              <input class="input-search" type="text" name="FLT_EMAIL" value="" size="20" placeholder="Search">
+            </th>
+            <th text>
+               <input class="input-search" type="text" name="FLT_NAME" value="" size="20" placeholder="Search">
+            </th>
+            <th text>
+               <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="" size="20" placeholder="Search">
+            </th>
+            ##SELECT(SHOWDETAILS, -1, ,<th number></th>)##
+            ##SELECT(SHOWDETAILS, -1, ,<th number></th>)##
+            ##SELECT(SHOWDETAILS, -1, ,<th number></th>)##
+
+            ##SELECT(SHOWDETAILS, -1, <th number></th>)##
+            ##SELECT(SHOWDETAILS, -1, <th date></th>)##
+            ##SELECT(SHOWDETAILS, -1, <th text></th>)##
+            ##SELECT(SHOWDETAILS, -1, <th option></th>)##
+          </tr>
+        </table>
+      </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
