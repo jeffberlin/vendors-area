@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>BMT Micro Developers Center</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function initForm (form) {
+        initField (form, "SHOWEXPIRED",         "##SHOWEXPIRED##");
+        initField (form, "FLT_SUBSCRIPTIONID",  "##FLT_SUBSCRIPTIONID##");
+        initField (form, "FLT_PRODUCTNAME",     "##FLT_PRODUCTNAME##");
+        initField (form, "FLT_NAME",            "##FLT_NAME##");
+        initField (form, "FLT_EMAIL",           "##FLT_EMAIL##");
+        if (##PAGECOUNT## > 1) {
+          var s = "Pages:&nbsp;";
+          for (var p = 1; p <= ##PAGECOUNT##; p++) {
+            s += "<a href=\"javascript:selectPage(" + p + ");\">" + p  + "</a>&nbsp;&nbsp;";
+          }
+          document.getElementById ("pageselector").innerHTML = s;
+        }
+      }
+
+      function submitForm (action, target, nextpage, subscriptionid) {
+        var form = document.subscriptions;
+        form.ACTION.value     = action;
+        form.target           = target;
+        form.NEXT_PAGE.value  = nextpage;
+        form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.html" : "https://vendors-new.bmtmicro.com/error_frame.html";
+        form.SUBSCRIPTIONID.value = subscriptionid;
+        form.submit ();
+      }
+
+      function showExpiredChanged () {
+        setCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired", queryField (document.subscriptions, "SHOWEXPIRED"), 1000);
+        submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/subscriptions.html");
+      }
+
+      function selectPage (p) {
+        document.subscriptions.PAGE.value = p;
+        submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/subscriptions.html");
+      }
+
+      function filter () {
+        submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/subscriptions.html");
+      }
+
+      function cancelSubscription (subscriptionid) {
+        if (allowResend ("You do not have permission to cancel subscriptions.")) {
+          submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/subscriptions_cancel.html", subscriptionid);
+        }
+      }
+      //-->
+    </script>
+  </head>
+  <body onload="initForm (document.subscriptions);">
+    <form name="subscriptions" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Subscriptions" method="post" target="">
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/subscriptions.html" />
+      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+      <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
+      <input type="hidden" name="ROWSPERPAGE" value="##ROWSPERPAGE##" />
+      <input type="hidden" name="PAGE" value="##PAGE##" />
+      <input type="hidden" name="PAGECOUNT" value="##PAGECOUNT##" />
+      <input type="hidden" name="ACTION" value="" />
+      <input type="hidden" name="SUBSCRIPTIONID" value="">
+      <div class="table-header">
+        <span>
+          <input type="checkbox" name="SHOWINACTIVE" value="-1" onClick="showInactiveChanged ();" style="margin-bottom: 1rem;" />&nbsp;Show inactive tiers
+        </span>
+        <br>
+        <button type="button" class="get-btn" onclick="filter ();">Show Subscriptions</button>
+      </div> <!-- end .table-header -->
+      <div class="row" style="margin-left: auto; margin-right: auto;">
+        <table class="table">
+          <thead>
+            <tr class="table-category text-center">
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'Subscription ID'" number>
+                <a href="#" class="fdTableSortTrigger">Subscription&nbsp;ID</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'Email'" info>
+                <a href="#" class="fdTableSortTrigger">Email</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'Company/Name'" text>
+                <a href="#" class="fdTableSortTrigger">Company/Name</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'Product Name'" text>
+                <a href="#" class="fdTableSortTrigger">Product&nbsp;Name</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'Price'" money>
+                <a href="#" class="fdTableSortTrigger">Price</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'Effective Date'" date>
+                <a href="#" class="fdTableSortTrigger">Effective&nbsp;Date</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'Expiration Date'" date>
+                <a href="#" class="fdTableSortTrigger">Expiration&nbsp;Date</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'Billing Date'" date>
+                <a href="#" class="fdTableSortTrigger">Billing&nbsp;Date</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort" title="Sort on 'Cancel'" option>
+                <a href="#" class="fdTableSortTrigger">Cancel</a>
+              </th>
+            </tr>
+          </thead>
+          <tr>
+            <th style="text-align: left; color: #707070; letter-spacing: .5px; font-size: .9rem; font-weight: 300; border-bottom: 1px solid #dddddd;" colspan="10">Filter results using the fields below or leave all fields blank to retrieve all subscriptions.</th>
+          </tr>
+          <tr class="input-tr">
+            <th number>
+              <input class="input-search" type="text" name="FLT_SUBSCRIPTIONID" value="" size="10" style="min-width: 80px"  placeholder="Search">
+            </th>
+            <th info>
+              <input class="input-search" type="text" name="FLT_EMAIL" value="" size="16"  placeholder="Search">
+            </th>
+            <th text>
+               <input class="input-search" type="text" name="FLT_NAME" value="" size="16"  placeholder="Search">
+            </th>
+            <th text>
+               <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="" size="16"  placeholder="Search">
+            </th>
+            <th money></th>
+            <th date></th>
+            <th date></th>
+            <th date></th>
+            <th option></th>
+          </tr>
+          <tbody>
+            <tr>
+              ##TABLEDATA##
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="table-total">
+              <th scope="row" colspan="9">
+                <div id="pageselector"></div>
+              </th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

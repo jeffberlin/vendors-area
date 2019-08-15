@@ -101,7 +101,7 @@ td, .sort-column {
   border-right: 1px solid #a9a9a9;
   }
 
-.sort-column:last-child, td:last-child {
+.sort-column:last-child, td:last-child, .input-tr th:last-child {
   border-right: none;
   }
 
@@ -119,7 +119,7 @@ tfoot {
   font-weight: 500;
   }
 
-.td-button {
+.td-button, .input-tr th {
   text-align: center;
   }
 
@@ -157,3 +157,7 @@ select {
   padding: .2rem;
   background: #ffffff;
   }
+
+.input-tr th {
+  border-right: 1px solid #a9a9a9;
+}
