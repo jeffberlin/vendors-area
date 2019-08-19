@@ -1,4 +1,4 @@
-.news-feed h4 {
+.news-feed h4, .chart-title {
   color: #ef9a00;
   }
 
@@ -29,7 +29,6 @@
   }
 
 .chart-title {
-  color: #ef9a00;
   font-size: .95rem;
   letter-spacing: .3px;
   }
@@ -51,11 +50,13 @@
   }
 
 .new-graph {
-  color: #195a7c;
   font-size: .8rem;
+  }
+
+.new-graph, .new-graph:hover {
+  color: #195a7c;
   }
 
 .new-graph:hover {
   border-bottom: 1px solid #ef9a00;
-  color: #195a7c;
   }
