@@ -41,9 +41,11 @@
           if (isBlank (affiliateid) || isNaN (affiliateid) || (parseInt (affiliateid) < 1)) {
             alert ("Please specify an Affiliate ID!");
             document.affiliates.AFFILIATEID_ADD.focus ();
-            return;
+            // return false;
+            window.top.location.reload();
+          } else {
+            submitForm (10, "_parent", "https://vendors-new.bmtmicro.com/affiliateinfostart.html", affiliateid);
           }
-          submitForm (10, "_parent", "https://vendors-new.bmtmicro.com/affiliateinfostart.html", affiliateid);
         }
       }
 
@@ -71,7 +73,7 @@
           Affiliate ID:&nbsp;
           <input type="text" name="AFFILIATEID_ADD" value=""/>
         </span>
-        <button class="get-btn" onclick="addAffiliate (affiliates.AFFILIATEID_ADD.value);" >Add New Affiliate</button>
+        <button class="get-btn" id="affiliate-btn" onclick="addAffiliate (affiliates.AFFILIATEID_ADD.value);" >Add New Affiliate</button>
       </div> <!-- end .table-header -->
       <div class="row" style="margin-left: auto; margin-right: auto;">
         <table class="table">
