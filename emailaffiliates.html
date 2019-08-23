@@ -14,11 +14,31 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addPages.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <style media="screen" type="text/css">
+      .text-area {
+        padding: 1rem;
+      }
+
+      textarea {
+        width: 100%;
+        padding: .4rem;
+        letter-spacing: .5px;
+        font-size: .9rem;
+        border-radius: 3px;
+        margin-bottom: 1rem;
+      }
+
+      textarea:focus {
+        outline: none;
+        border: 1px solid #195a7c;
+      }
+    </style>
     <script language="javascript" type="text/javascript">
       <!--
       function submitForm (form) {
@@ -182,12 +202,17 @@
                     <br>
                     <span>
                       Subject:&nbsp;
-                      <input name="SUBJECT" style="margin-bottom: 1rem;" />
+                      <input name="SUBJECT" />
                     </span>
                   </div> <!-- end .table-header -->
-                  <table class="table">
-                    <textarea id="BODY" name="BODY" rows="25" cols="100" style="width:100%"></textarea>
-                  </table>
+                  <div class="row justify-content-center">
+                    <div class="text-area col-lg-8">
+                      <textarea id="BODY" name="BODY" rows="25" placeholder="Type your message"></textarea>
+                      <div class="text-right">
+                        <button class="save-btn" type="button" name="Save" onclick="submitForm (form);">Send</button>
+                      </div>
+                    </div>
+                  </div>
                 </div> <!-- end .content-box -->
               </form>
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
