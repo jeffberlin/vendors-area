@@ -42,14 +42,16 @@
       }
     </style>
     <script language="javascript" type="text/javascript">
-       function showInvoice (orderid) {
-          var form = document.invoice;
-          form.ORDERID.value = orderid;
-          form.submit();
-          }
-       function initForm () {
-          document.getElementById ("lastupdate").innerHTML = "Last update: " + new Date().toString ();
-          }
+      <!--
+      function showInvoice (orderid) {
+        var form = document.invoice;
+        form.ORDERID.value = orderid;
+        form.submit();
+      }
+      function initForm () {
+        document.getElementById ("lastupdate").innerHTML = "Last update: " + new Date().toString ();
+      }
+      //-->
     </script>
   </head>
   <body onload="initForm ();">
@@ -238,7 +240,11 @@
                       </tbody>
                       <tfoot>
                         <tr class="table-total">
-                          <th colspan="100%">Total Number of Units pending: <b>##TOTALQUANTITY##</b>, Total Amount Due Vendor pending: <b>##TOTALAMOUNT##</b></th>
+                          <th colspan="100%">
+                            Total Number of Units pending: ##TOTALQUANTITY##
+                            <br>
+                            Total Amount Due Vendor pending: ##TOTALAMOUNT##
+                          </th>
                         </tr>
                       </tfoot>
                     </table>

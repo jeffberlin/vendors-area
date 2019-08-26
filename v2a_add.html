@@ -83,18 +83,7 @@
           <label>Beneficiary Affiliate ID:</label>
           <input name="TOVENDORID" maxlength="5" size="5" value="##TOVENDORID##" title=" This should be the vendor ID receiving this transfer. " style="margin-bottom: .8rem;"/>
         </span>
-        ##SELECT(MULTICURRENCY, -1,
-        <br clear="all" />
-        <span>
-          <label>Currency:</label>
-          <select name="CURRENCY" style="margin-bottom: .8rem;">
-            <option value="" selected>All Currencies</option>
-            <option value="USD">USD</option>
-            <option value="GBP">GBP</option>
-            <option value="EUR">EUR</option>
-          </select>
-        </span>,
-        <input type="hidden" name="CURRENCY" value="%%CURRENCY%%">)##
+        ##SELECT(MULTICURRENCY, -1,<br clear="all" /><span><label>Currency:</label><select name="CURRENCY" style="margin-bottom: .8rem;"><option value="" selected>All Currencies</option><option value="USD">USD</option><option value="GBP">GBP</option><option value="EUR">EUR</option></select></span>,<input type="hidden" name="CURRENCY" value="%%CURRENCY%%">)##
         <br clear="all" />
         <span>
           <label>Amount:</label>
