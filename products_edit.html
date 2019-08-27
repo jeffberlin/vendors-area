@@ -21,6 +21,39 @@
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/upsellutil.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <style media="screen" type="text/css">
+      .fa-plus-circle:hover, .toggle-section h6  {
+        color: #efa900;
+      }
+      h6, .fa-plus-circle {
+        color: #195a7c;
+      }
+      h6 {
+        font-size: 1.15rem;
+        letter-spacing: .5px;
+      }
+      .toggle-section {
+         margin-bottom: 1rem;
+         padding-left: 10px;
+      }
+      .toggle-section h6 {
+         margin-bottom: .3rem;
+      }
+      .fa-plus-circle {
+        font-size: 1.5rem;
+        transition: all .2s ease;
+      }
+      #fileFields label {
+        margin-right: .3rem;
+      }
+      #DOWNLOADFILEID, #DOWNLOADFILEDESCRIPTION {
+        margin-right: .5rem;
+      }
+      #fileFields span::after {
+        content: '\A';
+        white-space: pre;
+      }
+    </style>
     <script language="javascript" type="text/javascript">
       <!--
       var vendorFileList = ##VENDORDFL##;
@@ -493,40 +526,8 @@
                       <br clear="all">
                       <span>
                         <label>Keywords:&nbsp;</label>
-                        <input id="KEYWORDS" name="KEYWORDS" size="30"  value="##KEYWORDS##" title=" Provide any keywords for your product (Limit 50 characters)" placeholder="Limit 50 characters"/>
+                        <input id="KEYWORDS" name="KEYWORDS" size="30"  value="##KEYWORDS##" title=" Provide any keywords for your product (Limit 50 characters)" placeholder="Limit 50 characters" style="margin-bottom: 1.2rem;"/>
                       </span>
-                    </div> <!-- end .col-6 -->
-                    <div class="col-6">
-                      <h5>Price&nbsp;Info</h5>
-                      <p>Below are the current values for this product.</p>
-                      <span>
-                        <label>Product&nbsp;ID:&nbsp;</label>
-                        <input type="hidden" name="PRODUCTID" value="##PRODUCTID##" /> <span style="color: #000000;">##PRODUCTID##</span>
-                        <input type="hidden" name="PRICEINCLUDESGST" value="##PRICEINCLUDESGST##" />
-                      </span>
-                      <br>
-                      <span>
-                        <label>Product&nbsp;Price:&nbsp;</label>
-                        <span style="color: #000000;">
-                          ##SELECT(PRICE_USD,,,USD&nbsp;&nbsp;%%PRICE_USD%%&nbsp;&nbsp;&nbsp;<br>)##
-                          ##SELECT(PRICE_EUR,,,EUR&nbsp;&nbsp;%%PRICE_EUR%%&nbsp;&nbsp;&nbsp;<br>)##
-                          ##SELECT(PRICE_GBP,,,GBP&nbsp;&nbsp;%%PRICE_GBP%%&nbsp;&nbsp;&nbsp;<br>)##
-                          ##SELECT(PRICE_CAD,,,CAD&nbsp;&nbsp;%%PRICE_CAD%%&nbsp;&nbsp;&nbsp;<br>)##
-                          ##SELECT(PRICE_AUD,,,AUD&nbsp;&nbsp;%%PRICE_AUD%%&nbsp;&nbsp;&nbsp;<br>)##
-                        </span>
-                      </span>
-                      <!-- <br> -->
-                      <span>
-                        <label>BMT&nbsp;Royalties:&nbsp;</label>
-                        <span style="color: #000000;">##BMTROYALTYAMOUNT##</span>
-                      </span>
-                      <br>
-                      <span>
-                        <label>Amount&nbsp;to&nbsp;Vendor:&nbsp;</label>
-                        <span style="color: #000000;">##VENDORAMOUNT##</span>
-                      </span>
-                    </div> <!-- end .col-6 -->
-                    <div class="col-6" style="padding-left: 0; margin-bottom: 1.2rem;">
                       <h5>Product&nbsp;Category</h5>
                       <p>Please select the category that most fits your product.</p>
                       <span>
@@ -538,7 +539,7 @@
                       <p>For products installed on electronical devices.</p>
                       <span>
                         <label>Platform:&nbsp;</label>
-                        <select name="PLATFORM">
+                        <select name="PLATFORM" style="margin-bottom: 1.2rem;">
                           <option value="N/A" selected="selected">Not Applicable</option>
                           <option value="OS/2">OS/2</option>
                           <option value="Windows">Windows</option>
@@ -571,8 +572,84 @@
                           <option value="Mac &amp; Symbian">Mac &amp; Symbian</option>
                         </select>
                       </span>
-                    </div>
+                      <h5>Shopping&nbsp;Cart&nbsp;Options</h5>
+                      <p style="margin-bottom: .2rem;">Unchecking the boxes will hide these options in your shopping cart.</p>
+                      <p style="font-size: .9rem; font-style: italic;">Note that the account settings have additional shopping cart options.</p>
+                      <span>
+                        <input type="hidden" name="SHOWCDOPTION" value="##SHOWCDOPTION##" />
+                        <input type="checkbox" name="SHOWCDOPTION_CHK" value="-1" / style="margin-bottom: .1rem;">&nbsp;Show Backup CD option
+                        <p style="font-size: .9rem; font-style: italic;">(Backup CD will be created by BMT Micro and sent to the customer).</p>
+                      </span>
+                      <p>
+                        <input type="hidden" name="SHOWDISCOUNTFIELD" value="##SHOWDISCOUNTFIELD##" />
+                        <input type="checkbox" name="SHOWDISCOUNTFIELD_CHK" value="-1"/>&nbsp;Show Discount/Gift Certificate field
+                      </p>
+                      <span>
+                        <input type="hidden" name="SHIPPED" value="##SHIPPED##" />
+                        <input type="checkbox" name="SHIPPED_CHK" onchange="setFieldVisible ('shipping', this.checked);" />&nbsp;Product is shipped
+                        <p style="font-size: .9rem; font-style: italic;">This option ensures that shipping information is available (some payment methods do not require customer to enter address).</p>
+                      </span>
+                      <div id="shipping" style="display: none;">
+                        <h5>Shipping&nbsp;Cost</h5>
+                        <p>Select a shipping scheme if shipping should be charged for this product.</p>
+                        <label>Shipping&nbsp;Cost&nbsp;Scheme:&nbsp;</label>
+                        <select name="SHIPPINGCOSTSCHEMEID">##SHIPPINGSCHEMEIDLIST##</select>
+                        <p style="font-size: .9rem; font-style: italic; margin-bottom: .2rem;">If shipping is free or included in product price, please leave this field blank!</p>
+                        <p style="font-size: .9rem; font-style: italic;">Click&nbsp;<a href="https://vendors-new.bmtmicro.com/shippingstart.html">here</a>&nbsp;to set up or configure shipping schemes and regions.</p>
+                      </div>
+                      <h6>Fields for allowing gift purchases</h6>
+                      <span>
+                        <input type="hidden" name="SHOWREGNAMEFIELD" value="##SHOWREGNAMEFIELD##" />
+                        <input type="checkbox" name="SHOWREGNAMEFIELD_CHK" value="-1" />&nbsp;Show Registername field
+                        <p style="font-size: .9rem; font-style: italic;">Allow buyer to purchase for third party (gift for friend/colleague/etc).</p>
+                      </span>
+                      <span>
+                        <input type="hidden" name="SHOWEMAILFIELD" value="##SHOWEMAILFIELD##" />
+                        <input type="checkbox" name="SHOWEMAILFIELD_CHK" value="-1" />&nbsp;Show Delivery Email field
+                        <p style="font-size: .9rem; font-style: italic;">Allow product information email to be sent to third party (gift for friend/colleague/etc).</p>
+                      </span>
+                      <h6>Cart&nbsp;parameter&nbsp;checks</h6>
+                      <span>
+                        <input type="hidden" name="QUANTITYFIXED" value="##QUANTITYFIXED##" />
+                        <input type="checkbox" name="QUANTITYFIXED_CHK" value="-1" />&nbsp;Quantity is fixed
+                        <p style="font-size: .9rem; font-style: italic;">Enabling this option will prevent the customer from changing the quantity in the shopping cart.</p>
+                      </span>
+                      <span>
+                        <input type="hidden" name="NEEDSORDERPARAMETERS" value="##NEEDSORDERPARAMETERS##" />
+                        <input type="checkbox" name="NEEDSORDERPARAMETERS_CHK" value="-1" />&nbsp;Order Parameters must not be blank
+                        <p style="font-size: .9rem; font-style: italic; margin-bottom: 0;">Enabling this option will prevent the customer from completing an order if the ORDERPARAMETERS value is missing in the shopping cart.</p>
+                      </span>
+                    </div> <!-- end .col-6 -->
+
                     <div class="col-6">
+                      <h5>Price&nbsp;Info</h5>
+                      <p>Below are the current values for this product.</p>
+                      <span>
+                        <label>Product&nbsp;ID:&nbsp;</label>
+                        <input type="hidden" name="PRODUCTID" value="##PRODUCTID##" /> <span style="color: #000000;">##PRODUCTID##</span>
+                        <input type="hidden" name="PRICEINCLUDESGST" value="##PRICEINCLUDESGST##" />
+                      </span>
+                      <br>
+                      <span>
+                        <label>Product&nbsp;Price:&nbsp;</label>
+                        <span style="color: #000000;">
+                          ##SELECT(PRICE_USD,,,USD&nbsp;&nbsp;%%PRICE_USD%%&nbsp;&nbsp;&nbsp;<br>)##
+                          ##SELECT(PRICE_EUR,,,EUR&nbsp;&nbsp;%%PRICE_EUR%%&nbsp;&nbsp;&nbsp;<br>)##
+                          ##SELECT(PRICE_GBP,,,GBP&nbsp;&nbsp;%%PRICE_GBP%%&nbsp;&nbsp;&nbsp;<br>)##
+                          ##SELECT(PRICE_CAD,,,CAD&nbsp;&nbsp;%%PRICE_CAD%%&nbsp;&nbsp;&nbsp;<br>)##
+                          ##SELECT(PRICE_AUD,,,AUD&nbsp;&nbsp;%%PRICE_AUD%%&nbsp;&nbsp;&nbsp;<br>)##
+                        </span>
+                      </span>
+                      <!-- <br> -->
+                      <span>
+                        <label>BMT&nbsp;Royalties:&nbsp;</label>
+                        <span style="color: #000000;">##BMTROYALTYAMOUNT##</span>
+                      </span>
+                      <br>
+                      <span>
+                        <label style="margin-bottom: 1.2rem;">Amount&nbsp;to&nbsp;Vendor:&nbsp;</label>
+                        <span style="color: #000000;">##VENDORAMOUNT##</span>
+                      </span>
                       <script language="javascript" type="text/javascript">
                         <!--
                         if (isBlank ("##ROYALTYFIXED## ##ROYALTYPERCENTAGE##")) {
@@ -590,9 +667,50 @@
                       <span>
                         <input type="hidden" name="PRICEINCLUDESVAT" value="##PRICEINCLUDESVAT##" /><input type="checkbox" name="PRICEINCLUDESVAT_CHK" value="-1" />&nbsp;The price includes VAT&nbsp;&nbsp;&nbsp;&nbsp;
                         <input type="hidden" name="PRICEINCLUDESGST" value="##PRICEINCLUDESGST##" /><input type="checkbox" name="PRICEINCLUDESGST_CHK" value="-1" style="margin-bottom: .5rem;" />&nbsp;The price includes GST
-                        <p style="font-size: .9rem; font-style: italic;">Check the respective checkbox to indicate that the price includes European Union VAT and/or Australian GST. When checked, the customer will pay the prices listed above and any tax due is deducted from the sales royalty. When not checked, the customer will see tax added to the price specified above if applicable.</p>
+                        <p style="font-size: .9rem; font-style: italic; margin-bottom: 1.2rem;">Check the respective checkbox to indicate that the price includes European Union VAT and/or Australian GST. When checked, the customer will pay the prices listed above and any tax due is deducted from the sales royalty. When not checked, the customer will see tax added to the price specified above if applicable.</p>
                       </span>
-                    </div>
+                      <h5>Product&nbsp;Format&nbsp;List</h5>
+                      <p>Here you can add several different format/size/type/color for a same product.</p>
+                      <span>
+                        <label>Format&nbsp;List:&nbsp;</label>
+                        <input name="FILEFORMATS" size="40" maxlength="80" value="##FILEFORMATS##" style="margin-bottom: .1rem;"/>
+                        <p style="font-size: .9rem; font-style: italic; color: red; margin-bottom: .5rem">If product purchase does not require a format/size/type/color choice, please leave this field blank.</p>
+                        <p style="font-size: .9rem; font-style: italic;">Listing formats here will add a selection box in the shopping cart that lets the customer choose format when purchasing. Use the Format List when the customer needs to pick a format, size, type, color, etc. For example, if you're selling a T-shirt, you may want to specify "S,M,L,XL" here. If you sell a program for several platforms and want to do it all under the same product setup, you can specify "Windows,Linux,Mac" for example. If doing it this way, you can associate an index file (.idx) as download file in order to deliver different download files depening on format purchased.</p>
+                      </span>
+                    </div> <!-- end .col-6 -->
+                    <div class="col-10" style="padding-left: 0;">
+                      <h5>Secondary&nbsp;Info</h5>
+                      <p>Please take some time to review if you need to add support with any of the following, if you do not want any more options added, simply click Done (you can always add those options later).</p>
+                      <h6>Associate&nbsp;Download&nbsp;File</h6>
+                      <p style="margin-bottom: .5rem;">If order should be fulfilled via secure download from BMT&nbsp;Micro, use selector below to associate a file already uploaded using the Manage Files interface.</p>
+                      <button type="button" class="grey-btn" onclick="toggleField('downloadfile');" style="margin-bottom: .7rem;">Choose File</button>
+                      <div id="downloadfile" class="toggle-section" style="display: none;">
+                        <h6>Choose&nbsp;File</h6>
+                        <div id="fileFields"></div>
+                        <span>
+                          <label>Download password should expire in:</label>
+                          <select name="DOWNLOADEXPDAYS" style="margin-right: .5rem;">
+                            <option value="31" selected>31 Days</option>
+                            <option value="60">60 Days</option>
+                            <option value="90">90 Days</option>
+                            <option value="180">180 Days</option>
+                            <option value="365">365 Days</option>
+                            <option value="-1">Never Expires</option>
+                          </select>
+                        </span>
+                        <span>
+                          <label>Add&nbsp;Another&nbsp;File:</label>
+                          <button type="button" onclick="addFileField ();" style="border: none; background: none; padding: .1rem; vertical-align: middle;"><i class="fas fa-plus-circle"></i></button>
+                        </span>
+                        <!--
+                        NOTE: It is possible provide several download files for one purchase and let the customer choose what to download. This can be done by setting up an index file and a HTML file for selection.
+                        Please contact <a href="mailto:webmaster@bmtmicro.com">webmaster@bmtmicro.com</a> for information on how to use this feature.
+                              <br><br>
+                        -->
+                      </div>
+                      <h6>Generate&nbsp;Codes/Gift&nbsp;Certificates/Subscription&nbsp;Credits</h6>
+                      <p>If you would like to add pre-generated Activation Codes to your product select the Choose Activation Code Table button. If activation code, gift certificate or subscription credit should be generated on the fly, select Add Code Generator Information. To generate promotional discount code for customers use on their next purchase Click Choose Discount Scheme.</p>
+                    </div> <!-- end .col-10 -->
                   </div> <!-- end .row -->
                 </div> <!-- end .content-box -->
               </form>

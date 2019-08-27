@@ -609,15 +609,17 @@
                         <input type="checkbox" name="SHOWCDOPTION_CHK" value="-1" />&nbsp;Show Backup CD option<br />
                         <p style="font-size: .9rem; font-style: italic;">(Backup CD will be created by BMT Micro and sent to the customer)</p>
                       </span>
-                      <p><input type="hidden" name="SHOWDISCOUNTFIELD" value="##SHOWDISCOUNTFIELD##" />
-                      <input type="checkbox" name="SHOWDISCOUNTFIELD_CHK" value="-1" />&nbsp;Show Discount/Gift Certificate field</p>
+                      <p>
+                        <input type="hidden" name="SHOWDISCOUNTFIELD" value="##SHOWDISCOUNTFIELD##" />
+                        <input type="checkbox" name="SHOWDISCOUNTFIELD_CHK" value="-1" />&nbsp;Show Discount/Gift Certificate field
+                      </p>
                       <span>
                         <input type="hidden" name="SHIPPED" value="##SHIPPED##" />
                         <input type="checkbox" name="SHIPPED_CHK" onchange="setFieldVisible ('shipping', this.checked);" />&nbsp;Product is shipped
                         <br />
                         <p style="font-size: .9rem; font-style: italic;">This option ensures that shipping information is available (some payment methods do not require customer to enter address).</p>
                       </span>
-                      <h6>Fields for allowing gift purchases.</h6>
+                      <h6>Fields for allowing gift purchases</h6>
                       <span>
                         <input type="hidden" name="SHOWREGNAMEFIELD" value="##SHOWREGNAMEFIELD##" />
                         <input type="checkbox" name="SHOWREGNAMEFIELD_CHK" value="-1" />&nbsp;Show Registername field
@@ -630,7 +632,7 @@
                         <br />
                         <p style="font-size: .9rem; font-style: italic;">Allow product information email to be sent to third party (gift for friend/colleague/etc).</p>
                       </span>
-                      <h6>Cart&nbsp;parameter&nbsp;checks.</h6>
+                      <h6>Cart&nbsp;parameter&nbsp;checks</h6>
                       <span>
                         <input type="hidden" name="QUANTITYFIXED" value="##QUANTITYFIXED##" />
                         <input type="checkbox" name="QUANTITYFIXED_CHK" value="-1" />&nbsp;Quantity is fixed
