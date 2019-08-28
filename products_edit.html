@@ -96,7 +96,7 @@
         buttonElem.setAttribute ("class", "remove");
         buttonElem.setAttribute ("type", "button");
         buttonElem.setAttribute ("onclick", "removeFileField (\"" + fieldID + "\");");
-        buttonElem.appendChild (document.createTextNode ("X"));
+        // buttonElem.appendChild (document.createTextNode ("X"));
         spanElem.appendChild (buttonElem);
         spanElem.style.clear = "left";
         return (spanElem);
@@ -710,6 +710,9 @@
                       </div>
                       <h6>Generate&nbsp;Codes/Gift&nbsp;Certificates/Subscription&nbsp;Credits</h6>
                       <p>If you would like to add pre-generated Activation Codes to your product select the Choose Activation Code Table button. If activation code, gift certificate or subscription credit should be generated on the fly, select Add Code Generator Information. To generate promotional discount code for customers use on their next purchase Click Choose Discount Scheme.</p>
+                      <button type="button" class="grey-btn" onclick="toggleField('regkeytable');">Choose&nbsp;Activation&nbsp;Code&nbsp;Table</button>
+                      <button type="button" class="grey-btn" onclick="toggleField('keygenerator',true);">Add&nbsp;Code&nbsp;Generator&nbsp;Information</button>
+                      <button type="button" class="grey-btn" onclick="toggleField('discounts');" style="margin-bottom: .7rem;">Choose&nbsp;Discount&nbsp;Scheme</button>
                     </div> <!-- end .col-10 -->
                   </div> <!-- end .row -->
                 </div> <!-- end .content-box -->
