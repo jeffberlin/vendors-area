@@ -526,16 +526,7 @@
                     <input type="checkbox" name="PRICEINCLUDESGST_CHK" value="-1" />&nbsp;The price includes GST
                   </span>
                   <br clear="all">
-                  <span>
-      <!-- FINISH SHIPPING SECTION -->
-                    <div id="shipping" class="toggle-section" style="display: none;">
-                      <label>Shipping&nbsp;Cost&nbsp;Scheme:</label>
-                      <select name="SHIPPINGCOSTSCHEMEID">
-                        ##SHIPPINGSCHEMEIDLIST##
-                      </select>
-                      <p style="font-size: .9rem; font-style: italic;">If shipping is free or included in product price, please leave this field blank!&nbsp;Click&nbsp;<a href="https://vendors-new.bmtmicro.com/shippingstart.html">here</a>&nbsp;to set up or configure shipping schemes and regions.</p>
-                    </div>
-                  </span>
+
                   <span>
                     <label style="margin-bottom: .2rem;">Short&nbsp;Description:</label>
                     <br>
@@ -619,6 +610,14 @@
                         <br />
                         <p style="font-size: .9rem; font-style: italic;">This option ensures that shipping information is available (some payment methods do not require customer to enter address).</p>
                       </span>
+                      <div id="shipping" class="toggle-section" style="display: none;">
+                        <label>Shipping&nbsp;Cost&nbsp;Scheme:</label>
+                        <select name="SHIPPINGCOSTSCHEMEID">
+                          ##SHIPPINGSCHEMEIDLIST##
+                        </select>
+                        <p style="font-size: .9rem; font-style: italic; margin-bottom: .2rem;">If shipping is free or included in product price, please leave this field blank!</p>
+                        <p style="font-size: .9rem; font-style: italic;">Click&nbsp;<a href="https://vendors-new.bmtmicro.com/shippingstart.html">here</a>&nbsp;to set up or configure shipping schemes and regions.</p>
+                      </div>
                       <h6>Fields for allowing gift purchases</h6>
                       <span>
                         <input type="hidden" name="SHOWREGNAMEFIELD" value="##SHOWREGNAMEFIELD##" />
@@ -663,7 +662,7 @@
                       <h6>Associate&nbsp;Download&nbsp;File</h6>
                       <p style="margin-bottom: .5rem;">If order should be fulfilled via secure download from BMT&nbsp;Micro, use selector below to associate a file already uploaded using the Manage Files interface.</p>
                       <!--<button type="button" class="orange" onclick="toggleField('uploadfile');">Upload a New File</button>&nbsp;-->
-                      <button type="button" class="grey-btn" onclick="toggleField('downloadfile');" style="margin-bottom: .7rem;">
+                      <button type="button" class="grey-btn" onclick="toggleField('downloadfile');" style="margin-bottom: 1rem;">
                         Choose&nbsp;File
                       </button>
                       <div id="downloadfile" class="toggle-section" style="display: none;">
@@ -696,7 +695,7 @@
                       <!--<button class="blue">Add New Activation Codes</button>-->
                       <button type="button" class="grey-btn" onclick="toggleField('regkeytable');">Choose&nbsp;Activation&nbsp;Code&nbsp;Table</button>
                       <button type="button" class="grey-btn" onclick="toggleField('keygenerator');">Add&nbsp;Code&nbsp;Generator&nbsp;Information</button>
-                      <button type="button" class="grey-btn" onclick="toggleField('discounts');" style="margin-bottom: .7rem;">Choose&nbsp;a&nbsp;Discount&nbsp;Scheme</button>
+                      <button type="button" class="grey-btn" onclick="toggleField('discounts');" style="margin-bottom: 1rem;">Choose&nbsp;a&nbsp;Discount&nbsp;Scheme</button>
                       <div id="regkeytable" class="toggle-section" style="display: none;">
                         <h6>Include&nbsp;Activation&nbsp;Code&nbsp;from&nbsp;Table</h6>
                         <p>Select activation code table to associate with this product.&nbsp;Our system will retrieve a code from this table for each customer.</p>
@@ -749,7 +748,7 @@
                       </div> <!-- end .toggle-section -->
                       <h6>Add&nbsp;Affiliate&nbsp;Information</h6>
                       <p>Let your affiliates do the marketing for you. Adding your product to the affiliate program is easy to do. Follow our simple steps by clicking the button below.</p>
-                      <button type="button" class="grey-btn" onclick="toggleField('affiliateinfo');" style="margin-bottom: .7rem;">Make available for affiliate sales</button>
+                      <button type="button" class="grey-btn" onclick="toggleField('affiliateinfo');" style="margin-bottom: 1rem;">Make available for affiliate sales</button>
                       <div id="affiliateinfo" class="toggle-section" style="display: none;">
                         <h6>Affiliate&nbsp;Sales&nbsp;Info</h6>
                         <p>If you would like to accept affiliate sales for this product, fill in information below.</p>
@@ -786,7 +785,7 @@
                       <h6>Order&nbsp;Notifications/Subscription&nbsp;Handling</h6>
                       <p>Click button below to add an additional notification email address, XML notification URL, recurring billing information and allow ticket use.</p>
                       <button type="button" class="grey-btn" onclick="toggleField('ordernotifications');">Order&nbsp;Notifications</button>
-                      <button type="button" class="grey-btn" onclick="toggleField('subscriptionhandling');" style="margin-bottom: .7rem;">Subscription&nbsp;Handling</button>
+                      <button type="button" class="grey-btn" onclick="toggleField('subscriptionhandling');" style="margin-bottom: 1rem;">Subscription&nbsp;Handling</button>
                       <div id="ordernotifications" class="toggle-section" style="display: none;">
                         <h6>Order&nbsp;Notifications</h6>
                         <p>By default order notifications are sent via email to the notification email address listed under 'My Account'.&nbsp;To stop order notifications, add a different email address or receive notification via XML, fill in appropriate fields below.</p>
