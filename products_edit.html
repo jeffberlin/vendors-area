@@ -683,7 +683,7 @@
                       <p>Please take some time to review if you need to add support with any of the following, if you do not want any more options added, simply click Done (you can always add those options later).</p>
                       <h6>Associate&nbsp;Download&nbsp;File</h6>
                       <p style="margin-bottom: .5rem;">If order should be fulfilled via secure download from BMT&nbsp;Micro, use selector below to associate a file already uploaded using the Manage Files interface.</p>
-                      <button type="button" class="grey-btn" onclick="toggleField('downloadfile');" style="margin-bottom: .7rem;">Choose File</button>
+                      <button type="button" class="grey-btn" onclick="toggleField('downloadfile');" style="margin-bottom: 1rem;">Choose File</button>
                       <div id="downloadfile" class="toggle-section" style="display: none;">
                         <h6>Choose&nbsp;File</h6>
                         <div id="fileFields"></div>
@@ -709,10 +709,151 @@
                         -->
                       </div>
                       <h6>Generate&nbsp;Codes/Gift&nbsp;Certificates/Subscription&nbsp;Credits</h6>
-                      <p>If you would like to add pre-generated Activation Codes to your product select the Choose Activation Code Table button. If activation code, gift certificate or subscription credit should be generated on the fly, select Add Code Generator Information. To generate promotional discount code for customers use on their next purchase Click Choose Discount Scheme.</p>
+                      <p style="margin-bottom: .5rem;">If you would like to add pre-generated Activation Codes to your product select the Choose Activation Code Table button. If activation code, gift certificate or subscription credit should be generated on the fly, select Add Code Generator Information. To generate promotional discount code for customers use on their next purchase Click Choose Discount Scheme.</p>
                       <button type="button" class="grey-btn" onclick="toggleField('regkeytable');">Choose&nbsp;Activation&nbsp;Code&nbsp;Table</button>
                       <button type="button" class="grey-btn" onclick="toggleField('keygenerator',true);">Add&nbsp;Code&nbsp;Generator&nbsp;Information</button>
-                      <button type="button" class="grey-btn" onclick="toggleField('discounts');" style="margin-bottom: .7rem;">Choose&nbsp;Discount&nbsp;Scheme</button>
+                      <button type="button" class="grey-btn" onclick="toggleField('discounts');" style="margin-bottom: 1rem;">Choose&nbsp;Discount&nbsp;Scheme</button>
+                      <div id="regkeytable" class="toggle-section" style="display: none;">
+                        <h6>Include&nbsp;Activation&nbsp;Code&nbsp;from&nbsp;Table</h6>
+                        <p>Select activation code table to associate with this product.&nbsp;Our system will retrieve a code from this table for each customer.</p>
+                        <span>
+                          <label style="margin-bottom: 1rem;">Choose Activation Codes:&nbsp;</label>
+                          <select name="KEYTABLEID">##KEYTABLEIDLIST##</select>
+                          <br clear="all">
+                          <input type="hidden" name="USEONEKEY" value="##USEONEKEY##" />
+                          <input type="checkbox" name="USEONEKEY_CHK" value="-1" size="12" onclick="document.productform.USEONEKEY_CHK2.checked = this.checked;"/>&nbsp;Use only one code for quantity purchases.
+                        </span>
+                      </div>
+                      <div id="keygenerator" class="toggle-section" style="display: none;">
+                        <h6>Include&nbsp;Activation&nbsp;Code&nbsp;Generated&nbsp;On-the-Fly</h6>
+                        <p>Add code generation information for this product below.&nbsp;Our system will post this information with each successful order.</p>
+                        <span>
+                          <label>Generate&nbsp;Activation&nbsp;Codes/Gift Certificate/Subscription&nbsp;Credit:&nbsp;</label>
+                          <input name="KEYGENERATOR" maxlength="256" value="##KEYGENERATOR##" size="75"  style="margin-bottom: 1rem;"/>
+                        </span>
+                        <br>
+                        <span>
+                          <label>Character&nbsp;Set:&nbsp;</label>
+                          <select name="KEYGENCHARSET" style="margin-bottom: 1rem;">
+                            <option value="0">US ASCII (7-bit)</option>
+                            <option value="1">UTF-8</option>
+                            <option value="2">Windows-1252</option>
+                            <option value="3">ISO 8859-1</option>
+                          </select>
+                        </span>
+                        <br>
+                        <span>
+                          <input type="checkbox" name="USEONEKEY_CHK2" value="-1" size="12" onclick="document.productform.USEONEKEY_CHK.checked = this.checked;" />&nbsp;Generate only one code for quantity purchases.
+                        </span>
+                        <script language="javascript" type="text/javascript">
+                          <!--
+                          if (!isBlank ("##KEYVALIDATOR##")) {
+                            document.write ('<br clear="all"><br>  ');
+                            document.write ('<span><label>Validate Generated Activation Codes</label>   ');
+                            document.write ('<input name="KEYVALIDATOR" maxlength="256" value="##KEYVALIDATOR##" size="75" /></span>  ');
+                          }
+                          // -->
+                        </script>
+                      </div>
+                      <div id="discounts" class="toggle-section" style="display: none;">
+                        <h6>Include&nbsp;Discount&nbsp;Code</h6>
+                        <p>If you would like to send the customer a discount code for their next purchase, please select discount scheme below.</p>
+                        <span>
+                          <label>Choose&nbsp;Discount&nbsp;Scheme:&nbsp;</label>
+                          <select name="DISCOUNTSCHEMEID">##DISCOUNTSCHEMEIDLIST##</select>
+                        </span>
+                      </div>
+                      <h6>Add&nbsp;Affiliate&nbsp;Information</h6>
+                      <p style="margin-bottom: .5rem;">Let your affiliates do the marketing for you. Adding your product to the affiliate program is easy to do. Follow our simple steps by clicking this button below.</p>
+                      <button type="button" class="grey-btn" onclick="toggleField('affiliateinfo');" style="margin-bottom: 1rem;">Make available for affiliate sales</button>
+                      <div id="affiliateinfo" class="toggle-section" style="display: none;">
+                        <h6>Affiliate&nbsp;Sales&nbsp;Info</h6>
+                        <p>If you would like to accept affiliate sales for this product, fill in information below.</p>
+                        <span>
+                          <label>Affiliate&nbsp;Percentage:&nbsp;</label>
+                          <input type="text" maxlength="100" name="AFFILIATEPERCENTAGE" value="##AFFILIATEPERCENTAGE##" style="margin-bottom: 1rem;"/>
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <label>Full&nbsp;Description&nbsp;URL:&nbsp;</label>
+                          <input type="text" maxlength="100" name="VENDORPRODUCTURL"  size="75" value="##VENDORPRODUCTURL##" style="margin-bottom: 1rem;"/>&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.VENDORPRODUCTURL)">Test</button>
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <label>Secure&nbsp;Order&nbsp;URL:&nbsp;</label>
+                          <input type="text" maxlength="100" name="SECUREORDERURL"  size="75" value="##SECUREORDERURL##" style="margin-bottom: 1rem;"/>&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.SECUREORDERURL, (form.SECUREORDERURL.value == 'Use default') ? '##DEFAULT_SECUREORDERURL##' : '')">Test</button>
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <label>Demo/Product&nbsp;Info&nbsp;URL:&nbsp;</label>
+                          <input type="text" maxlength="100" name="DEMOURL"  size="75" value="##DEMOURL##" style="margin-bottom: 1rem;"/>&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.DEMOURL)">Test</button>
+                        </span>
+                        <br clear="all">
+                        <span style="margin-right: 2rem;">
+                          <input type="hidden" name="INCLUDEONAPLIST" value="##INCLUDEONAPLIST##" />
+                          <input type="checkbox" name="INCLUDEONAPLIST_CHK" value="-1" />&nbsp;Include in All Affiliates List
+                        </span>
+                        <span>
+                          <input type="hidden" name="USEPRODUCTAIDCOOKIE" value="##USEPRODUCTAIDCOOKIE##" />
+                          <input type="checkbox" name="USEPRODUCTAIDCOOKIE_CHK" value="-1" />&nbsp;Use Product Specific Cookie
+                        </span>
+                      </div>
+                      <h6>Order&nbsp;Notifications/Subscription&nbsp;Handling</h6>
+                      <p style="margin-bottom: .5rem;">Click button below to add an additional notification email address, XML notification URL, recurring billing information and allow ticket use.</p>
+                      <button type="button" class="grey-btn" onclick="toggleField('ordernotifications');">Order&nbsp;Notifications</button>
+                      <button type="button" class="grey-btn" onclick="toggleField('subscriptionhandling');" style="margin-bottom: 1rem;">Subscription&nbsp;Handling</button>
+                      <div id="ordernotifications" class="toggle-section" style="display: none;">
+                        <h6>Order&nbsp;Notifications</h6>
+                        <p>By default order notifications are sent via email to the notification email address listed under 'My Account'.<br />To stop order notifications, add a different email address or receive notification via XML, fill in appropriate fields below.</p>
+                        <span>
+                          <input type="hidden" name="NOTIFYVENDOR" value="##NOTIFYVENDOR##" />
+                          <input type="checkbox" name="NOTIFYVENDOR_CHK" value="-1" style="margin-bottom: 1rem;" />&nbsp;Send to Vendor Notification email
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <label>Send&nbsp;Order&nbsp;Notification to&nbsp;other&nbsp;email&nbsp;address:&nbsp;</label>
+                          <input name="NOTIFICATIONEMAILS" size="50" value="##NOTIFICATIONEMAILS##" maxlength="200" style="margin-bottom: 1rem;"/>
+                          <input type="hidden" name="NOTIFYPRODUCT" />
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <label>Send&nbsp;XML&nbsp;Notification to&nbsp;remote&nbsp;system (full&nbsp;URL):&nbsp;</label>
+                          <input name="NOTIFICATIONURL" size="75" value="##NOTIFICATIONURL##" maxlength="256" />
+                        </span>
+                      </div>
+                      <div id="subscriptionhandling" class="toggle-section" style="display: none;">
+                        <h6>Subscription&nbsp;Handling</h6>
+                        <p>If this is product should be rebilled automatically, select frequency below.&nbsp;Your website must inform your customers that they are purchasing a subscription product.</p>
+                        <label>Recurring&nbsp;Billing&nbsp;Frequency:&nbsp;</label>
+                        <select name="RECURFREQUENCY" style="margin-bottom: 1rem;"/>
+                          <option value="0" selected>None</option>
+                          <option value="1">Every Month</option>
+                          <option value="3">Every 3 Months</option>
+                          <option value="4">Every 4 Months</option>
+                          <option value="6">Every 6 Months</option>
+                          <option value="12">Every 12 Months</option>
+                        </select>
+                        <br clear="all">
+                        <span>
+                          <p style="margin-bottom: .2rem;">To offer trial subscriptions, enter number of days for the trial period below.</p>
+                          <label>Recurring&nbsp;Billing&nbsp;Delay:&nbsp;</label>
+                          <input name="RECURDELAY" size="10" value="##RECURDELAY##" style="margin-bottom: 1rem;"/>
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <p style="margin-bottom: .2rem;">To allow customer to purchase this product using a credit from subscription product purchase, check box below.</p>
+                          <input type="hidden" name="TICKETCHOICE" value="##TICKETCHOICE##" />
+                          <input type="checkbox" name="TICKETCHOICE_CHK" value="-1" style="margin-bottom: 1rem;"/>&nbsp;Allow purchase with Ticket
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <p style="margin-bottom: .2rem;">To give affiliates credit for recurring billings, check box below.&nbsp;If unchecked, affiliates will only get credit for the initial sale.</p>
+                          <input type="hidden" name="RECURAFFILIATE" value="##RECURAFFILIATE##" />
+                          <input type="checkbox" name="RECURAFFILIATE_CHK" value="-1" style="margin-bottom: 1rem;"/>&nbsp;Credit affiliate when rebilling
+                        </span>
+                      </div>
+                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
                     </div> <!-- end .col-10 -->
                   </div> <!-- end .row -->
                 </div> <!-- end .content-box -->
