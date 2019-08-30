@@ -517,7 +517,7 @@
                     <input type="hidden" name="PRICE_CAD" />
                     <input type="hidden" name="PRICE_AUD" />
                   </span>
-                  <span style="margin-right: .5rem;">
+                  <span style="margin-right: .7rem;">
                     <input type="hidden" name="PRICEINCLUDESVAT" value="##PRICEINCLUDESVAT##" />
                     <input type="checkbox" name="PRICEINCLUDESVAT_CHK" value="-1" />&nbsp;The price includes VAT
                   </span>
@@ -709,12 +709,12 @@
                         <p>Add code generation information for this product below.&nbsp;Our system will post this information with each successful order.</p>
                         <span>
                           <label>Generate&nbsp;Activation&nbsp;Codes/Gift&nbsp;Certificate/Subscription&nbsp;Credit:</label>
-                          <input name="KEYGENERATOR" maxlength="256" value="##KEYGENERATOR##" size="75" />
+                          <input name="KEYGENERATOR" maxlength="256" value="##KEYGENERATOR##" size="75" style="margin-bottom: 1rem;"/>
                         </span>
                         <br>
                         <span>
                           <label>Character&nbsp;Set:</label>
-                          <select name="KEYGENCHARSET">
+                          <select name="KEYGENCHARSET" style="margin-bottom: 1rem;">
                             <option value="0">US&nbsp;ASCII&nbsp;(7-bit)</option>
                             <option value="1">UTF-8</option>
                             <option value="2">Windows-1252</option>
@@ -759,17 +759,17 @@
                         <br clear="all">
                         <span>
                           <label>Full&nbsp;Description&nbsp;URL:</label>
-                          <input type="text" maxlength="100" name="VENDORPRODUCTURL"  size="75" value="##VENDORPRODUCTURL##" style="margin-bottom: .5rem;" />&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.VENDORPRODUCTURL)">Test</button>
+                          <input type="text" maxlength="100" name="VENDORPRODUCTURL"  size="75" value="##VENDORPRODUCTURL##" style="margin-bottom: 1rem;" />&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.VENDORPRODUCTURL)">Test</button>
                         </span>
                         <br clear="all">
                         <span>
                           <label>Secure&nbsp;Order&nbsp;URL:</label>
-                          <input type="text" maxlength="100" name="SECUREORDERURL"  size="75" value="##SECUREORDERURL##" style="margin-bottom: .5rem;" />&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.SECUREORDERURL, (form.SECUREORDERURL.value == 'Use default') ? '##DEFAULT_SECUREORDERURL##' : '')">Test</button>
+                          <input type="text" maxlength="100" name="SECUREORDERURL"  size="75" value="##SECUREORDERURL##" style="margin-bottom: 1rem;" />&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.SECUREORDERURL, (form.SECUREORDERURL.value == 'Use default') ? '##DEFAULT_SECUREORDERURL##' : '')">Test</button>
                         </span>
                         <br clear="all">
                         <span>
                           <label>Demo/Product&nbsp;Info&nbsp;URL:</label>
-                          <input type="text" maxlength="100" name="DEMOURL" size="75" value="##DEMOURL##" style="margin-bottom: .5rem;" />&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.DEMOURL)">Test</button>
+                          <input type="text" maxlength="100" name="DEMOURL" size="75" value="##DEMOURL##" style="margin-bottom: 1rem;" />&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.DEMOURL)">Test</button>
                         </span>
                         <br clear="all">
                         <span>
@@ -791,17 +791,17 @@
                         <p>By default order notifications are sent via email to the notification email address listed under 'My Account'.&nbsp;To stop order notifications, add a different email address or receive notification via XML, fill in appropriate fields below.</p>
                         <span>
                           <input type="hidden" name="NOTIFYVENDOR" value="##NOTIFYVENDOR##" />
-                          <input type="checkbox" name="NOTIFYVENDOR_CHK" value="-1" style="margin-bottom: .5rem;"/>&nbsp;Send to Vendor Notification email
+                          <input type="checkbox" name="NOTIFYVENDOR_CHK" value="-1" style="margin-bottom: 1rem;"/>&nbsp;Send to Vendor Notification email
                         </span>
                         <br clear="all">
                         <span>
-                          <label>Send&nbsp;Order&nbsp;Notification&nbsp;to&nbsp;other&nbsp;email&nbsp;address:</label>
-                          <input name="NOTIFICATIONEMAILS" size="50" value="##NOTIFICATIONEMAILS##" maxlength="200" placeholder="example@domain.com" style="margin-bottom: .5rem;"/>
+                          <label>Send&nbsp;Order&nbsp;Notification&nbsp;to&nbsp;other&nbsp;email&nbsp;address:&nbsp;</label>
+                          <input name="NOTIFICATIONEMAILS" size="50" value="##NOTIFICATIONEMAILS##" maxlength="200" placeholder="example@domain.com" style="margin-bottom: 1rem;"/>
                           <input type="hidden" name="NOTIFYPRODUCT" />
                         </span>
                         <br clear="all">
                         <span>
-                          <label>Send&nbsp;XML&nbsp;Notification&nbsp;to&nbsp;remote&nbsp;system&nbsp;(full&nbsp;URL):</label>
+                          <label>Send&nbsp;XML&nbsp;Notification&nbsp;to&nbsp;remote&nbsp;system&nbsp;(full&nbsp;URL):&nbsp;</label>
                           <input name="NOTIFICATIONURL" size="75" value="##NOTIFICATIONURL##" maxlength="256" />
                         </span>
                       </div> <!-- end .toggle-section -->
