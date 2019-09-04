@@ -82,6 +82,7 @@ a {
   border: 1px solid #000000;
   padding: .2rem .4rem;
   background-color: #dddddd;
+  margin-right: .2rem;
   }
 
 .grey-btn:hover {
