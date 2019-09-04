@@ -20,6 +20,11 @@
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <style media="screen" type="text/css">
+      .shrinkText {
+        font-size: .9rem;
+      }
+    </style>
     <script language="javascript" type="text/javascript">
       <!--
       function initForm (form) {
@@ -82,163 +87,117 @@
    </script>
   </head>
   <body onload="initForm (document.account);">
-    <div style="visibility:hidden;">
-      <form name="logout" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Logout">
-        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
-      </form>
-      <form name="payoneer" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Payoneer">
-        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/main.html">
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
-      </form>
-    </div>
-
-    <!-- Blue background header -->
-    <div class="blue-bg"></div>
-
-    <!-- Start of body content -->
-    <div class="main-raised">
-      <div class="container-fluid">
-        <article class="section">
-          <div class="row justify-content-start">
-            <div class="col-12" style="padding-top: 2.2rem;">
-              <img src="https://vendors-new.bmtmicro.com/images-2/bmt-micro-logo.png" alt="BMT Micro, Inc. logo" height="60" style="margin-bottom: 20px;">
-            </div> <!-- end .col-12 -->
-            <div class="col-lg-2">
-              <aside class="sidebar" role="complementary">
-                <div class="dropright" style="padding-bottom: 0px;">
-                  <a class="dropdown-toggle vendor-name" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-                    <script language="javascript" type="text/javascript">
-                      <!--
-                      document.write(n);
-                      //-->
-                    </script>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="https://vendors.bmtmicro.com/accountstart.html">My Account</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/settingsstart.html" style="color: #efa900;">Settings</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/usersstart.html">User Management</a>
-                    <a class="dropdown-item" href="javascript:document.logout.submit();">Log Out</a>
-                  </div>
-                </div> <!-- end .dropright -->
-                <div class="vendor-company">
-                  <span>
-                    <script type="text/javascript">
-                      <!--
-                      document.write(c);
-                      //-->
-                    </script>
-                  </span>
-                </div> <!-- end .vendor-company -->
-                <div class="vendor-balance" onload="document.balancestart.submit ();">
-                  <iframe src="https://vendors-new.bmtmicro.com/balancestart.html" name="balance" id="balance" frameborder="0" style="max-height: 35px;"></iframe>
-                </div>
-                <div class="dropright">
-                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Sales</a>
-                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/main.html">Sales Graphs</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/salessummarystart.html">Sales Summary</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/detailedsummarystart.html">Detailed Summary</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/eusummarystart.html">EU Sales Summary</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/salesdetailsstart.html">Sales Details</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/statisticsstart.html">View Statistics</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/pendingsalesstart.html">Pending Sales</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/transactionsstart.html">Account Transactions</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/v2vstart.html">Manage Transfers</a>
-                  </div>
-                </div> <!-- end .dropright -->
-                <div class="dropright">
-                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Products</a>
-                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/productsstart.html">Manage Products</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/filesstart.html">Manage Files</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/keytablesstart.html">Activation Code Table</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/discountsstart.html">Discount Schemes</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/tiersstart.html">Manage Pricing Tiers</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/splitsstart.html">Manage Splits</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/splitsalesreportstart.html">Split Sales Report</a>
-                  </div>
-                </div> <!-- end .dropright -->
-                <div class="dropright">
-                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Customers</a>
-                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/customersearchstart.html">Customer Search</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/customercommentsstart.html">Customer Comments</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/downloadpasswordsstart.html">Manage Download Passwords</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/subscriptionsstart.html">Manage Subscriptions</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/ticketsstart.html">Manage Tickets</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/authorizesales.html">Authorize Sales</a>
-                  </div>
-                </div> <!-- end .dropright -->
-                <div class="dropright">
-                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Affiliates</a>
-                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/affiliateprogramstart.html">Program Information</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/affiliatetermsstart.html">Terms & Conditions</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/affiliatesalesstart.html">Affiliate Sales</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/affiliateinfostart.html">Manage Affiliates</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/emailaffiliatesstart.html">Email All Affiliates</a>
-                  </div>
-                </div> <!-- end .dropright -->
-                <div class="dropright">
-                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Payoneer</a>
-                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href onclick="document.payoneer.submit(); return (false);">Get paid via Pre-paid Mastercard</a>
-                  </div>
-                </div> <!-- end .dropright -->
-                <div class="dropright">
-                  <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Contact Us</a>
-                  <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="https://help.bmtmicro.com/vendors/" target="_blank">FAQ/Help</a>
-                    <a class="dropdown-item" href="mailto:vendors@bmtmicro.com?subject=Suggestion for BMT Micro">Suggestions</a>
-                    <a class="dropdown-item" href="mailto:vendors@bmtmicro.com?subject=Comment about new Developer Control Panel">Comments</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/contactbmtstart.html">Contact BMT Micro</a>
-                  </div>
-                </div> <!-- end .dropright -->
-              </aside>
-            </div> <!-- end .col-lg-2 -->
-            <div class="col-lg-10 col-md-12 page-title">
-              <form name="account" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" target="accountsettings">
-                <input type="hidden" name="VENDORID" size="10" value="##VENDORID##" />
-                <input type="hidden" name="ACTION" value="11" />
-                <input type="hidden" name="NEXT_PAGE" value=" https://vendors-new.bmtmicro.com/settings_account.html" />
-                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-                <div class="content-box">
-                  <h5>Settings</h5>
-                  <span>
-                    <label>Download&nbsp;Restrictions:&nbsp;</label>
-                    <select name="IPENFORCEMENT" />
-                      <option value='0' /> No IP Restriction</option>
-                      <option value='1' /> No Country Mismatch Allowed</option>
-                      <option value='2' />No Region Mismatch Allowed (Default)</option>
-                      <option value='3' />Only Subnet Mismatch Allowed</option>
-                      <option value='4' />No IP Mismatch Allowed</option>
-                    </select>
-                  </span>
-                </div> <!-- end .content-box -->
-              </form>
-            </div> <!-- end .col-lg-10 col-md-12 page-title -->
-          </div> <!-- end .row justify-content-start -->
-        </article>
-      </div> <!-- end .container-fluid -->
-
-      <footer class="row footer footer-big">
-        <div class="container">
-          <div class="bottom-footer-content text-center">
-            <div class="social-links">
-              <a href="https://www.facebook.com/bmt.micro" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/facebook-logo-white.png" width="25" alt="Facebook" title="Like us on Facebook"></a>
-              <a href="https://www.linkedin.com/company/bmt-micro-wilmington-nc-usa/" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/linkedin-logo-white.png" width="25" alt="LinkedIn" title="Follow us on LinkedIn"></a>
-              <a href="https://twitter.com/BMTMicro" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/twitter-logo-white.png" width="25" alt="Twitter" title="Follow us on Twitter"></a>
-              <a href="https://www.instagram.com/bmtmicro/" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/instagram-logo-white.png" width="25" alt="Instagram" title="Follow us on Instagram"></a>
-              <a href="https://www.pinterest.com/bmtmicro/" target="_blank"><img src="https://vendors-new.bmtmicro.com/images-2/pinterest-logo-white.png" width="25" alt="Pinterest" title="See us on Pinterest"></a>
-            </div>
-            <div class="copyright">
-              BMT Micro, Inc. Copyright © 1992 - <script type="text/JavaScript"> document.write(new Date().getFullYear()); </script>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div> <!-- end .main-raised -->
+    <form name="account" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" target="accountsettings">
+      <input type="hidden" name="VENDORID" size="10" value="##VENDORID##" />
+      <input type="hidden" name="ACTION" value="11" />
+      <input type="hidden" name="NEXT_PAGE" value=" https://vendors-new.bmtmicro.com/settings_account.html" />
+      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+      <div class="row" style="margin-bottom: 1.2rem;">
+        <div class="col-6" style="padding: 0;">
+          <h5>Settings</h5>
+          <span>
+            <label>Download&nbsp;Restrictions:&nbsp;</label>
+            <select name="IPENFORCEMENT" style="margin-bottom: 1rem;" />
+              <option value='0' /> No IP Restriction</option>
+              <option value='1' /> No Country Mismatch Allowed</option>
+              <option value='2' />No Region Mismatch Allowed (Default)</option>
+              <option value='3' />Only Subnet Mismatch Allowed</option>
+              <option value='4' />No IP Mismatch Allowed</option>
+            </select>
+          </span>
+          <br>
+          <span>
+            <label>Fraud&nbsp;Check&nbsp;Level:&nbsp;</label>
+            <select name="FRAUDCHECKLEVEL" style="margin-bottom: 1rem;" /></select>
+          </span>
+          <br clear="all">
+          <span>
+            <input type="hidden" name="ALLOWANYAFFILIATE" value="##ALLOWANYAFFILIATE##" />
+            <input type="checkbox" name="ALLOWANYAFFILIATE_CHK" value="-1" style="margin-bottom: 1rem;" />&nbsp;Allow credit to unjoined affiliates
+          </span>
+          <br clear="all">
+          <span>
+            <input type="hidden" name="VENDORMAIL" value="##VENDOREMAIL##" />
+            <input type="checkbox" name="VENDORMAIL_CHK"  value="-1" style="margin-bottom: 1rem;" />&nbsp;Receive updates from BMT
+          </span>
+          <br clear="all">
+          <span>
+            <input type="hidden" name="FAILEDORDERNOTIFICATION" value="##FAILEDORDERNOTIFICATION##" />
+            <input type="checkbox" name="FAILEDORDERNOTIFICATION_CHK" value="-1" style="margin-bottom: 1rem;" />&nbsp;Receive Failed Order Emails
+          </span>
+          <br clear="all">
+          <span>
+            <input type="hidden" name="CREDITNOTIFICATION" value="##CREDITNOTIFICATION##" />
+            <input type="checkbox" name="CREDITNOTIFICATION_CHK" value="-1" style="margin-bottom: 1rem;" />&nbsp;Receive Credit Order Notifications
+          </span>
+          <br clear="all">
+          <span>
+            <input type="hidden" name="EXPIREDPWDNOTIFICATION" value="##EXPIREDPWDNOTIFICATION##" />
+            <input type="checkbox" name="EXPIREDPWDNOTIFICATION_CHK" value="-1" style="margin-bottom: 1rem;" />&nbsp;Receive Expired Password Emails
+          </span>
+          <br clear="all">
+          <span>
+            <input type="hidden" name="USETWOTIERAUTHENTICATION" value="##USETWOTIERAUTHENTICATION##" />
+            <input type="checkbox" name="USETWOTIERAUTHENTICATION_CHK" value="-1" style="margin-bottom: 1rem;" />&nbsp;Use two factor authentication
+          </span>
+        </div> <!-- end .col-6 -->
+        <div class="col-6" style="padding: 0;">
+          <h5>Shopping&nbsp;Cart&nbsp;Options</h5>
+          <p style="margin-bottom: .2rem;">Unchecking the boxes will hide these options in your shopping cart.</p>
+          <p class="shrinkText" style="font-style: italic;">Note that the product settings have additional shopping cart options.</p>
+          <span>
+            <input type="hidden" name="SHOWCOMMENTSFIELD" value="##SHOWCOMMENTSFIELD##" />
+            <input type="checkbox" name="SHOWCOMMENTSFIELD_CHK" value="-1" style="margin-bottom: 1rem;" />&nbsp;Show Comments field
+          </span>
+          <br clear="all">
+          <span>
+            <input type="hidden" name="SHOWCOMPANYFIELD" value="##SHOWCOMPANYFIELD##" />
+            <input type="checkbox" name="SHOWCOMPANYFIELD_CHK" value="-1" style="margin-bottom: 1rem;" />&nbsp;Show Company field
+          </span>
+          <br clear="all">
+          <span>
+            <input type="hidden" name="SHOWPHONEFIELD" value="##SHOWPHONEFIELD##" />
+            <input type="checkbox" name="SHOWPHONEFIELD_CHK" value="-1" ##SELECT(DISABLE_SHOWPHONEFIELD,-1,disabled)## style="margin-bottom: 1rem;" />&nbsp;Show Phone field <br />
+            ##SELECT(DISABLE_SHOWPHONEFIELD,-1,"<em>This setting cannot be changed at this time. The Phone Field must be displayed for new vendors and vendors under strong fraud check level.</em>")##
+          </span>
+          <span>
+            <input type="hidden" name="SHOWPONUMBERFIELD" value="##SHOWPONUMBERFIELD##" />
+            <input type="checkbox" name="SHOWPONUMBERFIELD_CHK" value="-1"  ##SELECT(DISABLE_SHOWPONUMBERFIELD,-1,disabled)## style="margin-bottom: 1rem;" /> Show Purchase Order Number field##SELECT(DISABLE_SHOWPONUMBERFIELD,-1,"<br /><em>Due to the vendor category on your account, this option is automatically disabled. The PO Number field will not be displayed.</em>")##
+          </span>
+          <br clear="all">
+          <span>
+            <input type="hidden" name="SHOWLOGINSECTION" value="##SHOWLOGINSECTION##" />
+            <input type="checkbox" name="SHOWLOGINSECTION_CHK" value="-1" style="margin-bottom: 1rem;" />&nbsp;Show Customer Login Section
+          </span>
+          <br clear="all">
+          <span>
+            <input type="hidden" name="SHOWSIDEBAR" value="##SHOWSIDEBAR##" />
+            <input type="checkbox" name="SHOWSIDEBAR_CHK" value="-1" style="margin-bottom: 1rem;" />&nbsp;Show Informational Side Bar
+          </span>
+          <br clear="all">
+          <span>
+            <input type="hidden" name="SHOWEMAILCONSENT" value="##SHOWEMAILCONSENT##" />
+            <input type="checkbox" name="SHOWEMAILCONSENT_CHK" value="-1" style="margin-bottom: .2rem;" />&nbsp;Show EMail Consent Checkbox
+            <p class="shrinkText" style="font-style: italic;">Checking this box will let the user opt in/out of receiving special offerings and updates related to the item(s) purchased. The response can be found in the sales details report.</p>
+          </span>
+        </div> <!-- end .col-6 -->
+      </div> <!-- end .row -->
+      <div class="row">
+        <div class="col-6">
+          <h5>Tracking</h5>
+          <p>Tracking IDs entered here will automatically add tracking code to your shopping cart.</p>
+          <span>
+            <label>BING Ads ID (UET tag - typically 8 digits):&nbsp;</label>
+            <input name="BINGADSID" maxlength="16" value="##BINGADSID##" size="20" style="margin-bottom: 1rem;" />
+          </span>
+          <br clear="all">
+          <span>
+            <label>Facebook Pixel ID (Typically 16 digits):&nbsp;</label>
+            <input name="FACEBOOKPIXELID" maxlength="16" value="##FACEBOOKPIXELID##" size="30" style="margin-bottom: 1rem;" />
+          </span>
+        </div> <!-- end .col-6 -->
+      </div> <!-- end .row -->
+    </form>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
