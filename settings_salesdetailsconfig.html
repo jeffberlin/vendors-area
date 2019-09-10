@@ -20,6 +20,34 @@
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <style media="screen" type="text/css">
+      .fa-plus-circle:hover {
+        color: #efa900;
+      }
+      .fa-plus-circle {
+        color: #195a7c;
+        font-size: 1.5rem;
+        transition: all .2s ease;
+      }
+      #fields, #fields label {
+        margin-right: .3rem;
+      }
+      #fields select {
+        margin-right: .5rem;
+      }
+      #fields select {
+        margin-bottom: 1rem;
+      }
+      #fields span {
+        white-space: nowrap;
+      }
+      .remove {
+        margin-right: 3rem;
+      }
+      .buttons {
+        margin-top: 1rem;
+      }
+    </style>
     <script language="javascript" type="text/javascript">
       <!--
       function createField (index, selectedindex) {
@@ -58,7 +86,7 @@
         buttonElem.setAttribute ("class", "remove");
         buttonElem.setAttribute ("type", "button");
         buttonElem.setAttribute ("onclick", "removeField (\"" + fieldID + "\");");
-        buttonElem.appendChild (document.createTextNode ("X"));
+        // buttonElem.appendChild (document.createTextNode ("X"));
         spanElem.appendChild (buttonElem);
         return (spanElem);
       }
@@ -121,7 +149,18 @@
     <form name="configdetail" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetailsConfig" method="post" target="salesdetailsconfig">
       <input type="hidden" name="NEXT_PAGE" value=" https://vendors-new.bmtmicro.com/settings_salesdetailsconfig.html" />
       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-
+      <div id="fields"></div>
+      <span>
+        <label>Add&nbsp;Field:&nbsp;</label>
+        <button class="add" type="button" onclick="addField ();" style="border: none; background: none; padding: .1rem; vertical-align: middle;"><i class="fas fa-plus-circle"></i></button>
+      </span>
+      <!-- <br clear="all"> -->
+      <div class="buttons">
+        <button type="submit" class="grey-btn">Save</button>
+        <button type="button" onclick="loadFields ();" class="grey-btn">Reset</button>
+        <button type="button" onclick="loadDefaults ();" class="grey-btn">Default</button>
+        <button type="button" onclick="clearFields ();" class="grey-btn">Clear all fields</button>
+      </div>
     </form>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
