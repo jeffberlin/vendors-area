@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addTransfer.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function initForm (form) {
+        setFieldVisible ("explanation1", (##FAILEDLOGINS## != 0));
+        for (var i = 0; i < 32; i++) {
+          var checkbox = form["FEATURE_CHK(" + i + ")"];
+          if (checkbox != null) {
+            checkbox.disabled = (form.FEATUREFLAGS.value == -1);     // make sure main user does not disable any feature
+            checkbox.checked = ((form.FEATUREFLAGS.value & (1 << i)) != 0);
+          }
+        }
+      }
+
+      function submitForm (form) {
+        form.LOGINNAME.value = trim (form.LOGINNAME.value);
+        if (isBlank (form.LOGINNAME.value)) {
+          alert ("You must include a Login Name!");
+          form.LOGINNAME.focus ();
+          return (false);
+        }
+        if ((form.LOGINNAME.value != "##LOGINNAME##") && ("##LOGINNAMELIST##".split ("\t").indexOf (form.LOGINNAME.value) != -1)) {
+          alert ("This login name already exists!");
+          form.NAME.focus ();
+          return (false);
+        }
+        if (form.LOGINNAME.value.length < 4) {
+          alert ("The Login Name must be at least 4 characters.");
+          form.LOGINNAME.focus ();
+          return (false);
+        }
+        if (isBlank (form.NAME.value)) {
+          alert ("You must include a real name associated with this login!");
+          form.NAME.focus ();
+          return (false);
+        }
+        if (isBlank (form.PASSWORD.value)) {
+          alert ("You must input a Password used to access the BMT Micro Affiliate Pages");
+          form.PASSWORD.focus ();
+          return (false);
+        }
+        if (form.PASSWORD.value.length < 4) {
+          alert ("The password must be at least 4 characters.");
+          form.PASSWORD.focus ();
+          return (false);
+        }
+        if (form.PASSWORDAGAIN.value.length > 15) {
+          alert ("The password must not be more than 15 characters.");
+          form.PASSWORD.focus ();
+          return (false);
+        }
+        if (form.PASSWORDAGAIN.value != form.PASSWORD.value) {
+          alert ("Your Password does not match the second Password field. Please retype your password and try again.");
+          form.PASSWORD.focus ();
+          return (false);
+        }
+        if (isBlank (form.EMAIL.value)) {
+          alert ("You must input an Email Address");
+          form.EMAIL.focus ();
+          return (false);
+        }
+        if (!isValidEmail (form.EMAIL.value)) {
+          alert ("You must input a valid Email Address");
+          form.EMAIL.focus ();
+          return (false);
+        }
+        for (i = 0; i < 32; i++) {
+          var checkbox = form["FEATURE_CHK(" + i + ")"];
+          if (checkbox != null) {
+            if (checkbox.checked) {
+              form.FEATUREFLAGS.value |= (1 << i);
+            } else {
+              form.FEATUREFLAGS.value &= ~(1 << i);
+            }
+          }
+        }
+        form.submit ();
+        return (true);
+      }
+      //-->
+    </script>
+  </head>
+  <body onload="initForm (document.users);">
+    <div class="transfer-section">
+      <form method="post" name="users" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Users" target="_parent">
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/users.html" />
+        <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/users_tablerow.html" />
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
+        <input type="hidden" name="FEATUREFLAGS" value="##FEATUREFLAGS##" />
+        <input type="hidden" name="ACTION" value="10" />
+        <input type="hidden" name="USERID" value="##USERID##" />
+        <h5>Add&nbsp;New&nbsp;User</h5>
+        <span>
+          <label>Name:&nbsp;</label>
+          <input id="NAME" name="NAME" value="##NAME##" style="margin-bottom: 1rem;" />
+        </span>
+        <br>
+        <span>
+          <label>Email:&nbsp;</label>
+          <input id="EMAIL" name="EMAIL" value="##EMAIL##" style="margin-bottom: 1rem;" />
+        </span>
+        <br clear="all">
+        <span>
+          <label>Login&nbsp;Name:&nbsp;</label>
+          <input id="LOGINNAME" name="LOGINNAME" maxlength="20" value="##LOGINNAME##" style="margin-bottom: 1rem;" />
+        </span>
+        <br clear="all">
+        <span>
+          <label>Password:&nbsp;</label>
+          <input id="PASSWORD" name="PASSWORD" type="password" value="##PASSWORD##" maxlength="16" autocomplete="off" style="margin-bottom: 1rem;" />
+        </span>
+        <br clear="all">
+        <span>
+          <label>Re-type&nbsp;Password:&nbsp;</label>
+          <input id="PASSWORDAGAIN" name="PASSWORDAGAIN" type="password" value="##PASSWORD##" autocomplete="off" style="margin-bottom: 1rem;" />
+        </span>
+        <br clear="all">
+        <span>
+          <input type="checkbox" name="FEATURE_CHK(0)" disabled />&nbsp;Allow Test Orders
+        </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span>
+          <input type="checkbox" name="FEATURE_CHK(1)" disabled />&nbsp;Allow Changes
+        </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span>
+          <input type="checkbox" name="FEATURE_CHK(2)" disabled />&nbsp;Allow Resend
+        </span>
+        <br clear="all">
+
+      </form>
+    </div> <!-- end .transfer-section -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

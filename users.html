@@ -15,28 +15,38 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addPages.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css">
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
-    <script type="text/javascript" language="javascript">
+    <script language="javascript" type="text/javascript">
       <!--
-      function initForm () {
-        document.editaccount.submit();
-        document.bmtconfig.submit();
+      function addUser () {
+        var form = document.users;
+        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/users_add.html";
+        form.ACTION.value = "0";
+        form.USERID.value = "";
+        form.submit ();
       }
-
-      function submitForm (form) {
-        if (allowChanges ("You do not have permission to make changes.")) {
-          form.submit ();
-          return (true);
-        }
-        return (false);
+      function editUser (userid) {
+        var form = document.users;
+        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/users_edit.html";
+        form.ACTION.value = "1";
+        form.USERID.value = userid;
+        form.submit ();
+      }
+      function deleteUser (userid) {
+        var form = document.users;
+        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/users_delete.html";
+        form.ACTION.value = "2";
+        form.USERID.value = userid;
+        form.submit ();
       }
       //-->
     </script>
   </head>
-  <body onload="initForm();">
+  <body>
     <div style="visibility:hidden;">
       <form name="logout" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Logout">
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
@@ -71,8 +81,8 @@
                   </a>
                   <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/accountstart.html">My Account</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/settingsstart.html" style="color: #efa900;">Settings</a>
-                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/usersstart.html">User Management</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/settingsstart.html">Settings</a>
+                    <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/usersstart.html" style="color: #efa900;">User Management</a>
                     <a class="dropdown-item" href="javascript:document.logout.submit();">Log Out</a>
                   </div>
                 </div> <!-- end .dropright -->
@@ -153,21 +163,52 @@
               </aside>
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
-              <form name="editaccount" method=post action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" target="accountsettings">
-                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/settings_account.html">
-                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
-                <input type="hidden" name="ACTION" value="1" />
-              </form>
-
-              <form name="bmtconfig" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetailsConfig" method="post" target="salesdetailsconfig">
-                <input type="hidden" name="NEXT_PAGE"  value="https://vendors-new.bmtmicro.com/settings_salesdetailsconfig.html" />
-                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-              </form>
+              <h5>Manage&nbsp;Users</h5>
+              <p>Use this interface to add or edit additional logins under your account.</p>
               <div class="content-box">
-                <iframe src="" name="accountsettings" id="accountsettings" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 775px;" id="settingsTopFrame" ></iframe>
+                <form name="users" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Users" method="post" target="userinfo">
+                  <input type="hidden" name="ACTION" value="" />
+                  <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/users.html" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
+                  <input type="hidden" name="USERID" value="" />
 
-                <iframe src="" name="salesdetailsconfig" id="salesdetailsconfig" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 500px;" ></iframe>
-              </div>
+                  <div class="table-header">
+                    <button type="button" class="grey-btn" onclick="addUser ();" >Add New User</button>
+                  </div> <!-- end .table-header -->
+                  <div class="row" style="margin-left: auto; margin-right: auto;">
+                    <table class="table">
+                      <thead>
+                        <tr class="table-category text-center">
+                          <th scope="col" class="sortable sort-column sort" title="Sort on 'Login'" text>
+                            <a href="#" class="fdTableSortTrigger">Login</a>
+                          </th>
+                          <th scope="col" class="sortable sort-column sort" title="Sort on 'Email'" text>
+                            <a href="#" class="fdTableSortTrigger">Email</a>
+                          </th>
+                          <th scope="col" class="sortable sort-column sort" title="Sort on 'Name'" text>
+                            <a href="#" class="fdTableSortTrigger">Name</a>
+                          </th>
+                          <th scope="col" class="sort-column">
+                            <a href="#" style="cursor: default;" onclick="return false;">Remove</a>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          ##TABLEDATA##
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr class="table-total">
+                          <th scope="row" colspan="6">&nbsp;</th>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div> <!-- end .row -->
+                </form>
+              </div> <!-- end .content-box -->
+              <iframe src="" name="userinfo" id="userinfo" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; height: 350px; padding: 0px; margin:0px;"></iframe>
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
