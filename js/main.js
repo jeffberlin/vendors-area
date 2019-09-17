@@ -8,8 +8,3 @@ if (getCookieValue ("BMTMicro.Vendors.VendorID") == null) {
   var c = getCookieValue ("BMTMicro.Vendors.Company");
   //return (((c == null) || (c == "")) ? n : (n + "</br>" + c ));
 //}
-
-// iframe sizing
-function sizeFrame(obj) {
-  obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px'
-}

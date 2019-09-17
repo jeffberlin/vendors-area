@@ -143,10 +143,21 @@
         </span>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <span>
-          <input type="checkbox" name="FEATURE_CHK(2)" disabled />&nbsp;Allow Resend
+          <input type="checkbox" name="FEATURE_CHK(2)" disabled style="margin-bottom: 1rem;" />&nbsp;Allow Resend
         </span>
         <br clear="all">
-
+        <span id="explanation1" style="color:red;display:none;">
+          This user has failed logins.&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="checkbox" name="FAILEDLOGINS" value="0">
+          Check here to reset.
+        </span>
+        <br clear="all">
+        <span>
+          <button type="button" class="save-btn" onclick="submitForm (users);" style="margin-top: 1rem; margin-right: .5rem;">Create&nbsp;User</button>
+          <button type="button" class="save-btn" onclick="document.close.submit ();" >Close without changing</button>
+        </span>
+      </form>
+      <form name="close" action="https://vendors-new.bmtmicro.com/usersstart.html" method="get" target="_parent">
       </form>
     </div> <!-- end .transfer-section -->
 
