@@ -127,3 +127,32 @@ a {
 .remove:hover {
   filter: brightness(.7);
   }
+
+#topcontrol {
+	background-color: #ef9a00;
+  padding: 8px;
+	z-index: 1000;
+	border-radius: 32px;
+	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+	background-clip: padding-box;
+	-webkit-animation: display 0.5s;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	opacity: 1;
+	cursor: pointer;
+  animation: display 0.5s;
+  display: none;
+}
+
+#topcontrol svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+  overflow: hidden;
+  fill: #195a7c;
+}
+
+#topcontrol:hover .scrollup-svg-icon {
+  fill: #ffffff;
+}
