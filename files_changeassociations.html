@@ -9,49 +9,35 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <title>BMT Micro Developers Center</title>
+    <title></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addTransfer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
-    <style media="screen" type="text/css">
-      th {
-        font-size: .9rem;
-        color: #195a7c;
-        text-decoration: underline;
-        text-decoration-color: #efa900;
-      }
-      p {
-        color: #707070;
-      }
-    </style>
   </head>
   <body>
     <div class="transfer-section">
       <form name="files" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadFiles" target="resultframe">
-        <input type="hidden" name="ACTION" value="-1" />
+        <input type="hidden" name="ACTION" value="13" />
         <input type="hidden" name="DOWNLOADFILEID" value="##DOWNLOADFILEID##" />
-        <input type="hidden" name="DOWNLOADFILENAME" value="##DOWNLOADFILENAME##" />
-        <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/files_changeassociations_tablerow.html" />
-        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/files_changeassociations.html" />
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/files_changeassociations_result.html" />
         <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
-        <p>The following products and files are currently using the <strong>##DOWNLOADFILENAME##</strong>&nbsp;file.</p>
-        <table class="table" style="margin-bottom: 1rem; width: 70%; border: 1px solid #a9a9a9;">
-          <thead>
-            ##SELECT(PRODUCTCOUNT,0,,"<tr class="table-category text-center"><th class="sort-column">Product&nbsp;ID</th><th class="sort-column">Product&nbsp;Name</th>")##
-              ##PRODUCTTABLEDATA##
-              ##SELECT(FILECOUNT,0,,"<td>Vendor&nbsp;ID</td><td>File&nbsp;Name</td>")##
-              ##FILETABLEDATA##
-            </tr>
-          </thead>
-        </table>
+        <span>
+          <label>Update all products using file <strong>##DOWNLOADFILENAME##</strong> to use the following file:&nbsp;</label>
+          <br>
+          <select name="NEWDOWNLOADFILEID" style="margin-bottom: 1rem;">
+            <option value="0">No file</option>
+            ##TABLEDATA##
+          </select>
+        </span>
       </form>
       <form action="https://vendors-new.bmtmicro.com/filesstart.html" method="get" target="_parent">
-        ##SELECT(PRODUCTCOUNT,0,,"<button type="button" class="light-btn" onclick="document.files.submit ();" style="margin-right: .4rem;">Change file association for the associated products</button>")##
-        <button type="submit" class="light-btn">Close</button>
+        <button type="button" class="save-btn" onclick="document.files.submit ();" style="margin-right: .5rem;" >Apply</button>
+        <button type="submit" class="save-btn" >Cancel</button>
       </form>
     </div> <!-- end .transfer-section -->
 
