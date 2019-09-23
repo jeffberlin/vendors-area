@@ -34,20 +34,26 @@
         <div class="row justify-content-center">
           <div class="box-style">
             <div class="vendor-login-box" style="background-color: rgba(255,255,255,0.3);">
+              <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.Login" method="post">
 
-              <h4 class="text-center" style="color: #195a7c; margin-bottom: 20px;">Error Logging In</h4>
+                <h4 class="text-center" style="color: #195a7c; margin-bottom: 20px;">Vendor Log In</h4>
 
-              <p>Your login and/or password is invalid.</p>
-              <div class="login-btn text-center">
-                <button>
-                  <a href="https://vendors-new.bmtmicro.com/">Try Again</a>
-                </button>
-              </div>
+                <p>A single use login code has been e-mailed to you. Please enter it in the field to the left.</p>
 
-              <div class="signup text-center">
-                <a href="https://vendors.bmtmicro.com/NewSignup/new_developer-signup.html">Sign Up</a>
-              </div>
+                <div class="username">
+                  <label>Login Code:</label>
+                  <input id="LOGINCODE" name="LOGINCODE" value="" maxlength="15" autocomplete="off" class="vendor-input" />
+                </div>
+                <div class="login-btn text-center">
+                  <button>
+                    <a href="https://vendors-new.bmtmicro.com/">Try Again</a>
+                  </button>
+                </div>
 
+                <div class="signup text-center">
+                  <a href="https://vendors.bmtmicro.com/NewSignup/new_developer-signup.html">Sign Up</a>
+                </div>
+              </form>
             </div>
           </div>
         </div>

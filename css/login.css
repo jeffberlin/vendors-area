@@ -48,7 +48,11 @@ input {
   font-size: .9rem;
   }
 
-.vendor-input, .login-btn button, .signup a {
+label {
+  color: #555555;
+}
+
+h4, p, label, .vendor-input, .login-btn button, .signup a {
   letter-spacing: .5px;
   }
 
