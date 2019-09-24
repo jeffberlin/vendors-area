@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css" type="text/css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/login.css" type="text/css">
+    <style media="screen" type="text/css">
+      button a, button a:hover {
+        color: #ffffff;
+      }
+    </style>
   </head>
   <body>
     <div class="container-fluid">
@@ -26,39 +31,14 @@
         <div class="row justify-content-center">
           <div class="box-style">
             <div class="vendor-login-box" style="background-color: rgba(255,255,255,0.3);">
-              <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.Login" method="post">
 
-                <h4 class="text-center">Vendor Log In</h4>
+              <h4 class="text-center">Error Logging In</h4>
 
-                <p>
-                  Check your e-mail for a single use login code.
-                  <br>
-                  Please enter it below.
-                </p>
+              <p>We are unable to complete your request at this time.</p>
+              <p>Please wait 60 minutes and try your report again.</p>
+              <p>If you continue to have difficulties, please contact <a href="mailto:webmaster@bmtmicro.com">webmaster@bmtmicro.com</a>
+              for assistance.</p>
 
-                <div class="username">
-                  <label>Login Code:</label>
-                  <input id="LOGINCODE" name="LOGINCODE" value="" maxlength="15" autocomplete="off" class="vendor-input" style="margin-bottom: 1rem;" />
-                  <span>
-                    <label>This device is trusted:</label>
-                    <input type="checkbox" name="TRUSTEDDEVICE" value="-1" style="margin-bottom: .2rem;" />
-                  </span>
-                  <p style="font-size: .8rem;">If this computer, tablet, phone, is trusted and password protected from public use, you may check the checkbox above to avoid repeatedly having to enter a new code.</p>
-                </div>
-
-
-
-                <div class="login-btn text-center">
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors.bmtmicro.com/main.html" />
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/login_error.html" />
-                  <input type="hidden" name="LOGINCODE_PAGE" value="https://vendors.bmtmicro.com/login_code.html" />
-                  <input type="hidden" name="BADLOGIN_PAGE" value="https://vendors.bmtmicro.com/login_bad.html" />
-                  <input type="hidden" name="LOCKOUT_PAGE" value="https://vendors.bmtmicro.com/login_lockout.html" />
-                  <input type="hidden" name="EXPIRED_PAGE" value="https://vendors.bmtmicro.com/login_expired.html" />
-                  <input type="hidden" name="SIGNUP_PAGE" VALUE="https://vendors.bmtmicro.com/login_signupstart.html">
-                  <button type="submit" value="Login" autocomplete="off">Login</button>
-                </div>
-              </form>
             </div>
           </div>
         </div>
