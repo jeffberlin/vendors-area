@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BMT Micro Developers Center</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css" type="text/css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/login.css" type="text/css">
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function submitForm (form) {
+        var isUSA = (queryField (form, "COUNTRY") == "US");
+        var isCanada = (queryField (form, "COUNTRY") == "CA");
+        if (isBlank (form.NAME.value)) {
+          alert ("You must provide a Contact Name.");
+          form.NAME.focus ();
+          return (false);
+        }
+        if (isBlank (form.ADDRESS1.value)) {
+          alert ("You must provide an address for payment purposes.");
+          form.ADDRESS1.focus ();
+          return (false);
+        }
+        if (isBlank (form.CITY.value)) {
+          alert ("You must provide an address for payment purposes. City is missing.");
+          form.CITY.focus ();
+          return (false);
+        }
+        if (isBlank (form.ZIP.value)) {
+          alert ("You must provide an address for payment purposes. Postal Code is missing.");
+          form.ZIP.focus ();
+          return (false);
+        }
+        if (isBlank (form.COUNTRY.value)) {
+          alert ("You must provide an address for payment purposes. Country is missing.");
+          form.COUNTRY.focus ();
+          return (false);
+        }
+        var state = queryField (form, "STATE");
+        if ((isUSA || isCanada) && isBlank (state)) {
+          alert ("You must provide an address for payment purposes. State/Province is missing.");
+          form.STATE.focus ();
+          return (false);
+        }
+        if (!isBlank (state)) {
+          var USStateList = "AL,AK,AR,AZ,CA,CO,CT,DE,DC,FL,GA,HI,ID,IL,IN,IA,KS,KY,LA,ME,MD,MA,MI,MN,MS,MO,MT,NE,NV,NH,NJ,NM,NY,NC,ND,OH,OK,OR,PA,PR,RI,SC,SD,TN,TX,UT,VA,VT,WA,WV,WI,WY,AE,AA,AE,AE,AE,AP";
+          if (USStateList.indexOf (state) != -1) {
+            if (!isUSA) {
+              alert ("You have selected a US state but the country is not set to USA.");
+              form.STATE.focus ();
+              return (false);
+            }
+          }
+          var CanadaProvinceList = "AB,BC,MB,NB,NF,NT,NS,NU,ON,PE,QC,SK,YT";
+          if (CanadaProvinceList.indexOf (state) != -1) {
+            if (!isCanada) {
+              alert ("You have selected a Canadian province but the country is not set to Canada.");
+              form.STATE.focus ();
+              return (false);
+            }
+          }
+        }
+        if (!isValidURL (form.WEB.value)) {
+          alert ("Please enter a full URL starting with \"http://\" or \"https://\"");
+          form.WEB.focus ();
+          return (false);
+        }
+        form.submit ();
+        return (true);
+      }
+      //-->
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+
+      <div class="main"></div>
+
+      <div class="content-area">
+
+        <div class="row text-center justify-content-center" style="margin-bottom: 20px;">
+          <div class="col-lg-10">
+            <img src="https://vendors-new.bmtmicro.com/images-2/bmt-micro-logo.png" alt="BMT Micro, Inc. logo" height="70" style="margin-bottom: 20px;">
+            <h5 style="color: #ffffff; letter-spacing: .5px;text-shadow: 1px 1px 3px rgba(0,0,0,0.7);">Developer's Control Panel</h5>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="box-style">
+            <div class="vendor-login-box" style="background-color: rgba(255,255,255,0.3);">
+              <form name="signup" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" />
+                <input type="hidden" name="VENDORID" value="##VENDORID##">
+                <input type="hidden" name="ACTION" value="11" />
+                <input type="hidden" name="NEXT_PAGE" VALUE="https://vendors-new.bmtmicro.com/main.html">
+                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/login_error.html" />
+
+                <h4 class="text-center">Please complete your registration (Vendor ##VENDORID##)</h4>
+
+                <div class="username">
+                  <label>New Password:</label>
+                  <input id="PASSWORD" name="PASSWORD" type="password" value="" maxlength="50" class="vendor-input" style="margin-bottom: 1rem;" />
+                  <span>
+                    <label>Re-type Password:</label>
+                    <input id="PASSWORDAGAIN" name="PASSWORDAGAIN" type="password" value="" maxlength="50" class="vendor-input" />
+                  </span>
+                </div>
+
+                <div class="login-btn text-center">
+                  <input type="hidden" name="NEXT_PAGE"  value="https://vendors-new.bmtmicro.com/login_resetpasswordsuccess.html">
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
+                  <input type="hidden" name="PWRID" value="##PWRID##">
+                  <button type="button" name="SET" value="Set Password" onclick="submitForm (resetform);">Set Password</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <footer class="footer container-fluid">
+        <!-- <div class="container"> -->
+          <div class="bottom-footer-content row text-center align-items-center">
+            <div class="copyright col">
+              <p>BMT Micro, Inc. Copyright © 1992 - <script type="text/JavaScript"> document.write(new Date().getFullYear()); </script></p>
+            </div>
+          </div>
+        <!-- </div> -->
+      </footer>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
