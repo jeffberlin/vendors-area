@@ -27,19 +27,15 @@
       }
     </style>
   </head>
-  <body onload="document.progress.submit ();">
+  <body>
     <div class="content">
-      <h6>Add&nbsp;Multiple&nbsp;Products</h6>
-      <p style="margin-bottom: .2rem;">Please wait, adding products.</p>
-      <p style="margin-bottom: .2rem;">This process can take several minutes depending on the number of products you are setting up.</p>
-      <p style="margin-bottom: .2rem;"><strong>##COUNT## products of ##TOTAL## have been set up so far.</strong></p>
-      <p style="color: #FF0000;">Please do not exit this window until complete as this will stop the setup process.</p>
-    </div> <!-- end .content -->
-    <form method="post" name="progress" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="resultframe">
-      <input type="hidden" name="ACTION" value="17" />
-      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products_add_multiple_progress.html" />
-      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
-    </form>
+      <h6>Add Multiple Products</h6>
+      <p>Processing Complete. ##COUNT## products were set up.</p>
+      <p>##MESSAGE##</p>
+      <form action="https://vendors-new.bmtmicro.com/productsstart.html" method="get" target="_parent">
+        <button type="submit" class="grey-btn">Ok</button>
+      </form>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
