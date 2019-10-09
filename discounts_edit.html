@@ -267,7 +267,7 @@
                      <input type="hidden" name="STOPORDER" value="##STOPORDER##" />
                      <input type="checkbox" name="STOPORDER_CHK" value="-1">&nbsp;Stop order if code cannot be used
                     </div> <!-- end .col-6 -->
-                    <div class="col-6">
+                    <div class="col-6" style="margin-bottom: 1.2rem;">
                       <h5>Amount</h5>
                       <p>Edit amount or percentage below.</p>
                       <span>
@@ -323,10 +323,45 @@
                       <p>Set date range for scheme to apply, or leave blank for no automatic expiration.</p>
                       <span>
                         <label>Date Start:&nbsp;</label>
-                        <input id="DATEFROM" name="DATEFROM" value="##DATEFROM##" type="text" placeholder="">
+                        <input id="DATEFROM" name="DATEFROM" value="##DATEFROM##" type="text" style="margin-bottom: 1rem;">
                         <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
                       </span>
+                      <br>
+                      <span>
+                        <label>Date End:&nbsp;</label>
+                        <input id="DATETO" name="DATETO" value="##DATETO##" type="text">
+                        <img src="https://vendors.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
+                      </span>
+                      <div id="expirationdays" style="display:none;">
+                        <span>
+                          Discount ends <input name="EXPIRATIONDAYS" size="3" value="##EXPIRATIONDAYS##" maxlength="3" /> days from date of issue
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <em>
+                            The date of issue is the date when the code was manually generated, or the originating order date in case of automatically issued codes or recurring billing.
+                          </em>
+                        </span>
+                      </div>
                     </div> <!-- end .col-6 -->
+                    <div class="col-6" style="padding-left: 0; margin-bottom: 1.2rem;">
+                      <h5>Quantity</h5>
+                      <p>Set minimum quantity required before discount applied. If none, leave blank.</p>
+                      <span>
+                        <label>Minimum&nbsp;Quantity:&nbsp;</label>
+                        <input id="QUALIFYINGQUANTITY" name="QUALIFYINGQUANTITY" value="##QUALIFYINGQUANTITY##" type="text" style="width: 100px;">
+                        <select name="QUALIFYINGTYPE" style="margin-bottom: .2rem;">
+                          <option value="0">Items</option>
+                          <option value="1">Amount</option>
+                          <option value="2">Unique Items</option>
+                        </select>
+                      </span>
+                      <p style="font-size: .9rem; font-style: italic;">Discount amounts are applied to <strong>each item</strong>, not the order total. Checking the box below will limit the discount to one item in the order only. However, note that this setting has no effect on the Free shipping option. When Free shipping is enabled, all items will get free shipping regardless of this setting.</p>
+                      <span>
+                        <input type="hidden" name="FIRSTONLY" value="##FIRSTONLY##" />
+                        <input type="checkbox" name="FIRSTONLY_CHK" value="-1" checked>&nbsp;Discount allowed on one item only
+                      </span>
+                    </div>
                   </div> <!-- end .row -->
                 </div> <!-- end .content-box -->
               </form>
