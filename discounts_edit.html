@@ -21,6 +21,11 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <style media="screen" type="text/css">
+      #PRODUCTLIST, #SELECTEDLIST {
+        margin-bottom: 1rem;
+      }
+    </style>
     <script language="javascript" type="text/javascript">
       <!--
       function setFieldVisible (field, visible) {
@@ -361,7 +366,35 @@
                         <input type="hidden" name="FIRSTONLY" value="##FIRSTONLY##" />
                         <input type="checkbox" name="FIRSTONLY_CHK" value="-1" checked>&nbsp;Discount allowed on one item only
                       </span>
-                    </div>
+                    </div> <!-- end .col-6 -->
+                    <div class="col-6" style="padding-left: 0;">
+                      <h5>Discounted Products</h5>
+                      <p>Select products eligible for discount under this discount scheme. Selected products are listed in the bottom text area.</p>
+                      <select id="PRODUCTLIST" name="PRODUCTLIST" multiple="multiple" ondblclick="addProduct (discform);return (false);" style="width: 85%;" >
+                         ##PRODUCTLIST##
+                      </select>
+                      <div class="move">
+                        <button style="margin-right: 5px;" type="button" name="add" value="Add&nbsp;&gt;&gt;"  onclick="addProduct (discform);">
+                          Add&nbsp;<i class="fas fa-angle-down"></i>
+                        </button>
+                        <button style="margin-right: 5px;" type="button" name="remove" value="&lt;&lt;&nbsp;Remove" onclick="removeProduct (discform);">
+                          <i class="fas fa-angle-up"></i>&nbsp;Remove
+                        </button>
+                        <button style="margin-right: 5px;" type="button" name="addall" value="Add&nbsp;&gt;&gt;" onclick="addAllProducts (discform);">
+                          Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i>
+                        </button>
+                        <button type="button" name="removeall" value="&lt;&lt;&nbsp;Remove" onclick="removeAllProducts (discform);">
+                          <i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All
+                        </button>
+                      </div> <!-- end .move -->
+                      <select id="SELECTEDLIST" name="SELECTEDLIST" multiple="multiple" ondblclick="removeProduct (discform);return (false);" style="width: 85%;" >
+                         ##SELECTEDPRODUCTS##
+                      </select>
+                      <input type="hidden" name="SELECTEDPRODUCTS" value="" />
+                      <div class="controlbuttons">
+                        <button class="save-btn" type="button" onclick="return (submitForm (discform));">Save</button>
+                      </div>
+                    </div> <!-- end .col-6 -->
                   </div> <!-- end .row -->
                 </div> <!-- end .content-box -->
               </form>
