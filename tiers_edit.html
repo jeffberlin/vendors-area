@@ -243,9 +243,100 @@
                 <p>Enter primary tier settings in fields below.</p>
                 <div class="content-box">
                   <span>
-                    <label>Name:</label>
-                    <input type="text" id="NAME" name="NAME" maxlength="80" value="##NAME##" />
+                    <label>Name:&nbsp;</label>
+                    <input type="text" id="NAME" name="NAME" maxlength="80" value="##NAME##" style="width: 275px; margin-bottom: 1.2rem;" />&nbsp;
+                    <input type="hidden" name="ACTIVE" value="##ACTIVE##" />
+                    <input name="ACTIVE_CHK" value="-1" type="checkbox">&nbsp;Active&nbsp;
+                    <input type="hidden" name="SHOWINCART" value="##SHOWINCART##" />
+                    <input type="checkbox" name="SHOWINCART_CHK" value="-1" />&nbsp;Show in Cart
                   </span>
+                  <br>
+                  <h5>Amount</h5>
+                  <p>Set amount or percentage off of full or discounted price.</p>
+                  <span>
+                    <label>Amount:&nbsp;</label>
+                    <input id="AMOUNT" name="AMOUNT" type="text" value="##AMOUNT##" style="margin-right: 1rem;" />
+                  </span>
+                  <span>
+                    <label>Method:&nbsp;</label>
+                    <select name="DISCOUNTTYPE" style="margin-bottom: 1rem;">
+                      <option value="0">Percent Off</option>
+                      <option value="1">Amount Off</option>
+                      <option value="2">Set New Price</option>
+                      <option value="3">Percent Off Full Price</option>
+                      <option value="4">Amount Off Full Price</option>
+                    </select>
+                  </span>
+                  <br>
+                  <span>
+                    <label>Currency:&nbsp;</label>
+                    <select name="CURRENCY" style="margin-right: 1rem;">
+                      <option value="" selected>All Currencies</option>
+                      <option value="USD">USD</option>
+                      <option value="EUR">EUR</option>
+                      <option value="GBP">GBP</option>
+                      <option value="CAD">CAD</option>
+                      <option value="AUD">AUD</option>
+                    </select>
+                  </span>
+                  <span>
+                    <label>Rounding:&nbsp;</label>
+                    <select name="ROUNDING" style="margin-bottom: 1.2rem;">
+                      <option value="-1.00">Round discount to nearest 1.00</option>
+                      <option value="-0.50">Round discount to nearest 0.50</option>
+                      <option value="-0.25">Round discount to nearest 0.25</option>
+                      <option value="-0.10">Round discount to nearest 0.10</option>
+                      <option value="-0.05">Round discount to nearest 0.05</option>
+                      <option value="0.00" selected="selected">No Rounding</option>
+                      <option value="0.05">Round price to nearest 0.05</option>
+                      <option value="0.10">Round price to nearest 0.10</option>
+                      <option value="0.25">Round price to nearest 0.25</option>
+                      <option value="0.50">Round price to nearest 0.50</option>
+                      <option value="1.00">Round price to nearest 1.00</option>
+                    </select>
+                  </span>
+                  <h5>Quantity</h5>
+                  <p>To apply to all but 1 enter -1 in the discounted quantity field.</p>
+                  <span>
+                    <label>Minimum purchase:&nbsp;</label>
+                    <input type="text" id="QUALIFYINGQUANTITY" name="QUALIFYINGQUANTITY" value="##QUALIFYINGQUANTITY##" style="margin-bottom: 1rem;" />
+                    <select name="QUALIFYINGTYPE">
+                      <option value="0">Items</option>
+                      <option value="1">Amount</option>
+                      <option value="2">Unique Items</option>
+                    </select>
+                  </span>
+                  <br>
+                  <span>
+                    <label>Discounted Quantity:&nbsp;</label>
+                    <input type="text" id="DISCOUNTQUANTITY" name="DISCOUNTQUANTITY" value="##DISCOUNTQUANTITY##" style="margin-bottom: 1rem;" />
+                    <select name="APPLYTYPE">
+                      <option value="0">Items</option>
+                      <option value="2">Unique Items</option>
+                    </select>
+                  </span>
+                  <br>
+                  <span>
+                    <label>Apply&nbsp;Order:&nbsp;</label>
+                    <select name="APPLYORDER" style="margin-bottom: 1rem;">
+                      <option value="0">By Row Number</option>
+                      <option value="1" selected>By Lowest Price</option>
+                      <option value="2">By Highest Price</option>
+                    </select>
+                  </span>
+                  <br>
+                  <span>
+                    <label>Tier&nbsp;Level:&nbsp;</label>
+                    <select name="RUNLEVEL" style="margin-bottom: 1.2rem;">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                    </select>
+                  </span>
+                  <h5>Qualifying products</h5>
+                  <p>Choose Qualifying products necessary to apply this tier.</p>
                 </div> <!-- end .content-box -->
               </form>
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
