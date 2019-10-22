@@ -21,6 +21,11 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <style media="screen" type="text/css">
+      #PRODUCTLIST, #SELECTEDLIST {
+        margin-bottom: 1rem;
+      }
+    </style>
     <script language="javascript" type="text/javascript">
       <!--
       function addQualifyingProduct (form) {
@@ -337,6 +342,54 @@
                   </span>
                   <h5>Qualifying products</h5>
                   <p>Choose Qualifying products necessary to apply this tier.</p>
+                  <select id="PRODUCTLIST" name="QUALIFYINGPRODUCTLIST" multiple="multiple" ondblclick="addQualifyingProduct(tierform);return (false);" style="width: 45%;">
+                     ##QUALIFYINGPRODUCTLIST##
+                  </select>
+                  <div class="move">
+                    <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addQualifyingProduct(tierform);return (false);">
+                      Add&nbsp;<i class="fas fa-angle-down"></i>
+                    </button>
+                    <button style="margin-right: 5px;" name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeQualifyingProduct(tierform);return (false);">
+                      <i class="fas fa-angle-up"></i>&nbsp;Remove
+                    </button>
+                    <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addAllQualifyingProducts(tierform);return (false);">
+                      Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i>
+                    </button>
+                    <button name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeAllQualifyingProducts(tierform);return (false);">
+                      <i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All
+                    </button>
+                  </div> <!-- end .move -->
+                  <select id="SELECTEDLIST" name="QUALIFYINGSELECTEDLIST" multiple="multiple" ondblclick="removeQualifyingProduct (tierform);return (false);" style="width: 45%; margin-bottom: 1.2rem;" >
+                     ##QUALIFYINGPRODUCTS##
+                  </select>
+                  <input type="hidden" name="QUALIFYINGPRODUCTS" />
+                  <h5>Discounted Products</h5>
+                  <p>Choose Products to which discount will be applied.</p>
+                  <select id="PRODUCTLIST" name="DISCOUNTPRODUCTLIST" multiple="multiple" ondblclick="addDiscountProduct(tierform);return (false);" style="width: 45%;" >
+                     ##DISCOUNTPRODUCTLIST##
+                  </select>
+                  <div class="move">
+                    <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addDiscountProduct (tierform);return (false);">
+                      Add&nbsp;<i class="fas fa-angle-down"></i>
+                    </button>
+                    <button style="margin-right: 5px;" name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeDiscountProduct (tierform);return (false);">
+                      <i class="fas fa-angle-up"></i>&nbsp;Remove
+                    </button>
+                    <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addAllDiscountProducts (tierform);return (false);">
+                      Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i>
+                    </button>
+                    <button name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeAllDiscountProducts (tierform);return (false);">
+                      <i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All
+                    </button>
+                  </div> <!-- end .move -->
+                  <select id="SELECTEDLIST" name="DISCOUNTSELECTEDLIST" multiple="multiple" ondblclick="removeDiscountProduct (tierform);return (false);" style="width: 45%; margin-bottom: 1.2rem;">
+                     ##DISCOUNTPRODUCTS##
+                  </select>
+                  <input type="hidden" name="DISCOUNTPRODUCTS" />
+                  <div class="controlbuttons">
+                    <button type="button" onclick="submitForm (tierform);" value="Save" class="save-btn" style="margin-right: .3rem;">Save</button>
+                    <button type="reset" onclick="history.back ();" value="Reset" class="save-btn">Reset</button>
+                  </div>
                 </div> <!-- end .content-box -->
               </form>
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
