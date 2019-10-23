@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addTransfer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
       th {
         font-size: .9rem;
@@ -25,30 +26,33 @@
         text-decoration-color: #efa900;
       }
     </style>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function submitForm (form) {
+        if (allowChanges ("You do not have permission to make changes.")) {
+          form.submit();
+        }
+      }
+      //-->
+    </script>
   </head>
   <body>
     <div class="transfer-section">
-      <form name="files" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadFiles" target="resultframe">
-        <input type="hidden" name="ACTION" value="-1" />
-        <input type="hidden" name="DOWNLOADFILEID" value="##DOWNLOADFILEID##" />
-        <input type="hidden" name="DOWNLOADFILENAME" value="##DOWNLOADFILENAME##" />
-        <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/files_changeassociations_tablerow.html" />
-        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/files_changeassociations.html" />
+      <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="post">
+        <input type="hidden" name="ACTION" value="11" />
+        <input type="hidden" name="AFFILIATEID" value="##AFFILIATEID##" />
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliateinfo_edited.html" />
         <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
-        <p>The following products and files are currently using the <strong>##DOWNLOADFILENAME##</strong>&nbsp;file.</p>
         <table class="table" style="margin-bottom: 1rem; width: 70%; border: 1px solid #a9a9a9;">
           <thead>
-            ##SELECT(PRODUCTCOUNT,0,,"<tr class="table-category text-center"><th class="sort-column">Product&nbsp;ID</th><th class="sort-column">Product&nbsp;Name</th>")##
-              ##PRODUCTTABLEDATA##
-              ##SELECT(FILECOUNT,0,,"<td>Vendor&nbsp;ID</td><td>File&nbsp;Name</td>")##
-              ##FILETABLEDATA##
+            <tr class="table-category text-center">
+              <th class="sort-column">Product&nbsp;Name</th>
+              <th class="sort-column">Default&nbsp;Percentage</th>
+              <th class="sort-column">Custom&nbsp;Percentage</th>
             </tr>
+            ##TABLEDATA##
           </thead>
         </table>
-      </form>
-      <form action="https://vendors-new.bmtmicro.com/filesstart.html" method="get" target="_parent">
-        ##SELECT(PRODUCTCOUNT,0,,"<button type="button" class="light-btn" onclick="document.files.submit ();" style="margin-right: .4rem;">Change file association for the associated products</button>")##
-        <button type="submit" class="light-btn">Close</button>
       </form>
     </div> <!-- end .transfer-section -->
 
