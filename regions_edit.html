@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>BMT Micro Developers Center</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addTransfer.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addPages.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
+    <script src="https://kit.fontawesome.com/35c40e6698.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <style media="screen" type="text/css">
+      h6 {
+        font-size: 1.15rem;
+        letter-spacing: .5px;
+        color: #195a7c;
+      }
+      #COUNTRYLIST, #SELECTEDLIST {
+        margin-bottom: 1rem;
+      }
+    </style>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function initForm (form){
+        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+        // field is not present. (An unchecked checkbox constitutes a non-existent field).
+      }
+
+      function submitForm (form) {
+        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+        // field is not present. (An unchecked checkbox constitutes a non-existent field).
+        form.NAME.value = trim (form.NAME.value);
+        if (!allowChanges ("You do not have permission to edit regions.")) {
+          return (false);
+        }
+        if (isBlank (form.NAME.value)) {
+          alert ("You must name the region!");
+          form.NAME.focus ();
+          return (false);
+        }
+        if ((form.NAME.value != "##NAME##") && ("##NAMELIST##".split ("\t").indexOf (form.NAME.value) != -1)) {
+          alert ("A region with that name already exists!");
+          form.NAME.focus ();
+          return (false);
+        }
+        form.SELECTEDCOUNTRIES.value = getCommaSeparatedSelectorValues (form.SELECTEDLIST);
+        form.submit ();
+        return (true);
+      }
+
+      function addCountry (form) {
+        moveSelectedListItems (form.SELECTEDLIST, form.COUNTRYLIST);
+      }
+
+      function removeCountry (form) {
+        moveSelectedListItems (form.COUNTRYLIST, form.SELECTEDLIST);
+      }
+
+      function addAllCountries (form) {
+        moveAllListItems (form.SELECTEDLIST, form.COUNTRYLIST);
+      }
+
+      function removeAllCountries (form) {
+        moveAllListItems (form.COUNTRYLIST, form.SELECTEDLIST);
+      }
+      //-->
+    </script>
+  </head>
+  <body onload="initForm (document.regions);">
+    <div class="transfer-section">
+      <form method="post" name="regions" action="https://vendors-new.bmtmicro.com/servlets/Vendors.WorldRegions" target="_parent">
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/regionsstart.html" />
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+        <input type="hidden" name="REGIONID" value="##REGIONID##" />
+        <input type="hidden" name="ACTION" value="11" />
+        <h5>Edit Region ##NAME##</h5>
+        <span>
+          <label>Region Name:&nbsp;</label>
+          <input name="NAME" maxlength="80" value="##NAME##" title="This is the descriptive name for the Region. maximum 80 characters." style="margin-bottom: 1rem;" />
+        </span>
+        <h6>Choose Countries in this Region</h6>
+        <select id="COUNTRYLIST" name="COUNTRYLIST" multiple="multiple" ondblclick="addCountry (regions);" style="width:400px;height:150px">
+           ##COUNTRYLIST##
+        </select>
+        <div class="move">
+          <!-- we hardcode the style here since the classes are not visible. We can add class="content" to the "dd" tag to
+               make the styles work, but then this will add whitespace on the sides which is not desired... -->
+          <button style="margin-right: 5px;" type="button" name="add"       value="Add&nbsp;&gt;&gt;"    onclick="addCountry (regions);">
+            Add&nbsp;<i class="fas fa-angle-down"></i>
+          </button>
+          <button style="margin-right: 5px;" type="button" name="remove"    value="&lt;&lt;&nbsp;Remove" onclick="removeCountry (regions);">
+            <i class="fas fa-angle-up"></i>&nbsp;Remove
+          </button>
+          <button style="margin-right: 5px;" type="button" name="addall"    value="Add&nbsp;&gt;&gt;"    onclick="addAllCountries (regions);">
+            Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i>
+          </button>
+          <button type="button" name="removeall" value="&lt;&lt;&nbsp;Remove" onclick="removeAllCountries (regions);">
+            <i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All
+          </button>
+        </div> <!-- end .move -->
+        <select id="SELECTEDLIST" name="SELECTEDLIST" multiple="multiple" ondblclick="removeCountry (regions);" style="width:400px;height:150px">
+           ##SELECTEDCOUNTRIES##
+        </select>
+        <input type="hidden" name="SELECTEDCOUNTRIES" />
+        <div class="controlbuttons">
+          <button type="button" class="save-btn" onclick="submitForm (regions);" style="margin-right: .3rem;">Save</button>
+          <button type="button" class="save-btn" onclick="document.close.submit ();">Close</button>
+        </div>
+      </form>
+      <form name="close" action="https://vendors-new.bmtmicro.com/regionsstart.html" method="get" target="_parent">
+      </form>
+    </div> <!-- end .transfer-section -->
+  </body>
+</html>
