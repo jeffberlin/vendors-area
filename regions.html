@@ -62,12 +62,12 @@
     </script>
   </head>
   <body>
-    <form name="shipping" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ShippingCost" method="post" target="resultframe">
+    <form name="regions" action="https://vendors-new.bmtmicro.com/servlets/Vendors.WorldRegions" method="post" target="resultframe">
       <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
-      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/shipping.html" />
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/regions.html" />
       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
       <input type="hidden" name="ACTION" value="" />
-      <input type="hidden" name="SCHEMEID" value="" />
+      <input type="hidden" name="REGIONID" value="" />
       <div class="table-header">
         <button type="button" class="grey-btn" onclick="addRegion ();" >Add New Region</button>
         <button type="button" class="grey-btn" onclick="shippingCosts ();" >Manage Shipping Schemes</button>
