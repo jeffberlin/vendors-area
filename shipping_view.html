@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addTransfer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addPages.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
-    <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
+    <script src="https://kit.fontawesome.com/35c40e6698.js" crossorigin="anonymous"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
@@ -42,9 +42,11 @@
           labelElem.appendChild (document.createTextNode ("First Item: " + regionFirstItem));
           spanElem.appendChild (labelElem);
           spanElem.appendChild (document.createTextNode (" \u00A0\u00A0 "));
+          spanElem.appendChild(document.createElement("br"));
           labelElem = document.createElement ("label");
           labelElem.appendChild (document.createTextNode ("Next Item: " + regionNextItem));
           labelElem.setAttribute ("width", "150px");
+          spanElem.appendChild(document.createElement("br"));
           spanElem.appendChild (labelElem);
           spanElem.appendChild (document.createTextNode ("\u00A0\u00A0"));
           labelElem = document.createElement ("label");
@@ -80,13 +82,17 @@
         <h6>Default Shipping Costs</h6>
         <span>
           <label>First Item:&nbsp;</label>
-          ##FIRSTITEM##&nbsp;&nbsp;
+          ##FIRSTITEM##
+          <br>
           <label>Next Item:&nbsp;</label>
-          ##NEXTITEM##&nbsp;&nbsp;
+          ##NEXTITEM##
+          <br>
           <label>Ship PID:&nbsp;</label>
           ##PRODUCTID##
         </span>
-
+        <br clear="all">
+        <h6>Region Dependent Shipping Costs</h6>
+        <div id="regions"></div>
       </form>
     </div> <!-- end .transfer-section -->
 
