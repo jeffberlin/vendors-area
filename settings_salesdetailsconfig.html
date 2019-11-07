@@ -29,23 +29,25 @@
         font-size: 1.5rem;
         transition: all .2s ease;
       }
-      #fields, #fields label {
+      #fields label {
         margin-right: .3rem;
       }
       #fields select {
         margin-right: .5rem;
-      }
-      #fields select {
         margin-bottom: 1rem;
       }
-      #fields span {
-        white-space: nowrap;
-      }
+      /* #fields span {
+        white-space: pre-line;
+      } */
       .remove {
         margin-right: 3rem;
       }
       .buttons {
         margin-top: 1rem;
+      }
+      #fields span:nth-child(4)::after {
+        content: "\A";
+        white-space: normal;
       }
     </style>
     <script language="javascript" type="text/javascript">
@@ -145,21 +147,23 @@
     </script>
   </head>
   <body onload="loadFields ();">
-    <h5>Personalize&nbsp;Sales&nbsp;Details&nbsp;Fields</h5>
-    <form name="configdetail" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetailsConfig" method="post" target="salesdetailsconfig">
-      <input type="hidden" name="NEXT_PAGE" value=" https://vendors-new.bmtmicro.com/settings_salesdetailsconfig.html" />
-      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-      <div id="fields"></div>
-      <span>
-        <label>Add&nbsp;Field:&nbsp;</label>
-        <button class="add" type="button" onclick="addField ();" style="border: none; background: none; padding: .1rem; vertical-align: middle;"><i class="fas fa-plus-circle"></i></button>
-      </span>
-      <!-- <br clear="all"> -->
-      <div class="buttons">
-        <button type="submit" class="grey-btn">Save</button>
-        <button type="button" onclick="loadFields ();" class="grey-btn">Reset</button>
-        <button type="button" onclick="loadDefaults ();" class="grey-btn">Default</button>
-        <button type="button" onclick="clearFields ();" class="grey-btn">Clear all fields</button>
+    <div class="row">
+      <h5>Personalize&nbsp;Sales&nbsp;Details&nbsp;Fields</h5>
+      <form name="configdetail" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetailsConfig" method="post" target="salesdetailsconfig">
+        <input type="hidden" name="NEXT_PAGE" value=" https://vendors-new.bmtmicro.com/settings_salesdetailsconfig.html" />
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+        <div id="fields"></div>
+        <span>
+          <label>Add&nbsp;Field:&nbsp;</label>
+          <button class="add" type="button" onclick="addField ();" style="border: none; background: none; padding: .1rem; vertical-align: middle;"><i class="fas fa-plus-circle"></i></button>
+        </span>
+        <!-- <br clear="all"> -->
+        <div class="buttons">
+          <button type="submit" class="grey-btn">Save</button>
+          <button type="button" onclick="loadFields ();" class="grey-btn">Reset</button>
+          <button type="button" onclick="loadDefaults ();" class="grey-btn">Default</button>
+          <button type="button" onclick="clearFields ();" class="grey-btn">Clear all fields</button>
+        </div>
       </div>
     </form>
 
