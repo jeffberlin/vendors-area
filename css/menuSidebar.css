@@ -1,13 +1,21 @@
 .balance-text, .balance-amount, .vendor-name {
-  font-weight: 700;
+  /* font-weight: 700; */
   font-size: .8rem;
   }
 
-.balance-text, .balance-amount, .vendor-name, .sidebar-group {
+.balance-text, .balance-amount, .vendor-name, .vendor-company {
+  font-weight: 700;
+}
+
+.vendor-company {
+  font-size: .9rem;
+  }
+
+.balance-text, .balance-amount, .vendor-name, .sidebar-group, .vendor-company {
   letter-spacing: .5px;
   }
 
-.balance-text, .vendor-name {
+.balance-text, .vendor-name, .vendor-company {
   color: #707070;
   }
 
