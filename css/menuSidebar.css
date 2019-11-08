@@ -31,6 +31,7 @@
 
 .sidebar-group:hover, .sidebar-group:focus {
   border-bottom: 1px solid #ef9a00;
+  outline: none;
   }
 
 .dropright {
