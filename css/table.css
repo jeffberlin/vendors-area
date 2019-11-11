@@ -164,7 +164,7 @@ select {
 
 table.table > tbody tr.selected td, table.table > tbody tr.selected td[sort] {
   background: #cbdce8;
-  border-left: #b3c4d0 solid 1px;
+  /* border-left: #b3c4d0 solid 1px; */
   border-top: #b3c4d0 solid 2px;
   border-bottom: #b3c4d0 solid 2px;
   }
