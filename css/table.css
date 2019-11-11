@@ -100,7 +100,7 @@ td, .sort-column {
   border-right: 1px solid #a9a9a9;
   }
 
-.sort-column:last-child, td:last-child, .input-tr th:last-child {
+.sort-column:last-child, td:last-child, #input-tr th:last-child {
   border-right: none;
   }
 
@@ -119,7 +119,7 @@ tfoot {
   font-weight: 500;
   }
 
-.td-button, .input-tr th {
+.td-button, #input-tr th {
   text-align: center;
   }
 
@@ -158,13 +158,13 @@ select {
   background: #ffffff;
   }
 
-.input-tr th {
+#input-tr th {
   border-right: 1px solid #a9a9a9;
   }
 
 table.table > tbody tr.selected td, table.table > tbody tr.selected td[sort] {
   background: #cbdce8;
-  border: #b3c4d0 solid 1px;
+  border-left: #b3c4d0 solid 1px;
   border-top: #b3c4d0 solid 2px;
   border-bottom: #b3c4d0 solid 2px;
   }
