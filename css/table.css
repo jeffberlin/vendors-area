@@ -114,7 +114,8 @@ td, .get-btn, .input-search {
 
 tfoot {
   background-color: #dddddd;
-  border: 1px solid #a9a9a9;
+  /* border: .5px solid #a9a9a9; */
+  border: none;
   font-weight: 500;
   }
 
@@ -159,4 +160,11 @@ select {
 
 .input-tr th {
   border-right: 1px solid #a9a9a9;
-}
+  }
+
+table.table > tbody tr.selected td, table.table > tbody tr.selected td[sort] {
+  background: #cbdce8;
+  border: #b3c4d0 solid 1px;
+  border-top: #b3c4d0 solid 2px;
+  border-bottom: #b3c4d0 solid 2px;
+  }

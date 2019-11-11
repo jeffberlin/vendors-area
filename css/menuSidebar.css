@@ -37,7 +37,7 @@
   font-weight: 600;
   }
 
-.sidebar-group:hover, .sidebar-group:focus {
+.sidebar-group:hover, .sidebar-group:focus, .vendor-name:hover, .vendor-name:focus {
   border-bottom: 1px solid #ef9a00;
   outline: none;
   }

@@ -28,12 +28,12 @@
       }
 
       td[number], td[money] {
-        text-align: center;
+        text-align: right;
       }
 
       td[money]:last-child {
         border-right: none;
-        text-align: right;
+        /* text-align: right; */
       }
 
     </style>
@@ -174,8 +174,8 @@
                       <button class="get-btn" value="Get New Summary">Update Summary</button>
                     </span>
                   </div> <!-- end .table-header -->
-                  <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
-                    <table class="table">
+                  <div class="row table-responsive-lg" style="margin-left: auto; margin-right: auto;">
+                    <table class="table" id="selection">
                       <thead>
                         <tr class="table-category">
                           <th scope="col" class="sort-column text-left sortable sort" title="Sort on 'Product'">
@@ -209,7 +209,7 @@
                       <tfoot>
                         <tr class="table-total">
                           <th scope="row" colspan="5">Total</th>
-                          <th scope="row" class="text-center" number>##TOTALQUANTITY##</th>
+                          <th scope="row" class="text-right" number>##TOTALQUANTITY##</th>
                           <th scope="row" class="text-right" money>##TOTALAMOUNT##</th>
                         </tr>
                       </tfoot>
