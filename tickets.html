@@ -93,25 +93,25 @@
         <button type="button" class="get-btn" onclick="filter ();">Show Tickets</button>
       </div> <!-- end .table-header -->
       <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
-        <table class="table">
+        <table class="table"id="selection">
           <thead>
-            <tr class="table-category text-center">
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'Email'" info>
+            <tr class="table-category">
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Email'" info>
                 <a href="#" class="fdTableSortTrigger">Email</a>
               </th>
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'Company/Name'" text>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Company/Name'" text>
                 <a href="#" class="fdTableSortTrigger">Company/Name</a>
               </th>
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'Product Name'" text>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Product Name'" text>
                 <a href="#" class="fdTableSortTrigger">Product&nbsp;Name</a>
               </th>
-              ##SELECT(SHOWDETAILS, -1, ,<th scope="col" class="sort-column sortable sort" title="Sort on 'Granted'" number><a href="#" class="fdTableSortTrigger">Granted</a></th>)##
-              ##SELECT(SHOWDETAILS, -1, ,<th scope="col" class="sort-column sortable sort" title="Sort on 'Redeemed'" number><a href="#" class="fdTableSortTrigger">Redeemed</a></th>)##
-              ##SELECT(SHOWDETAILS, -1, ,<th scope="col" class="sort-column sortable sort" title="Sort on 'Available'" number><a href="#" class="fdTableSortTrigger">Available</a></th>)##
-              ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort" title="Sort on 'Order ID'" number><a href="#" class="fdTableSortTrigger">Order ID</th>)##
-              ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort" title="Sort on 'Expires'" date><a href="#" class="fdTableSortTrigger">Expires</a></th>)##
-              ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort" title="Sort on 'Status'" text><a href="#" class="fdTableSortTrigger">Status</a></th>)##
-              ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort" title="Sort on 'Status'" option></th>)##
+              ##SELECT(SHOWDETAILS, -1, ,<th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Granted'" number><a href="#" class="fdTableSortTrigger">Granted</a></th>)##
+              ##SELECT(SHOWDETAILS, -1, ,<th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Redeemed'" number><a href="#" class="fdTableSortTrigger">Redeemed</a></th>)##
+              ##SELECT(SHOWDETAILS, -1, ,<th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Available'" number><a href="#" class="fdTableSortTrigger">Available</a></th>)##
+              ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Order ID'" number><a href="#" class="fdTableSortTrigger">Order ID</th>)##
+              ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Expires'" date><a href="#" class="fdTableSortTrigger">Expires</a></th>)##
+              ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Status'" text><a href="#" class="fdTableSortTrigger">Status</a></th>)##
+              ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Status'" option></th>)##
             </tr>
           </thead>
           <tr>
@@ -119,7 +119,7 @@
               Filter results using the fields below or leave all fields blank to retrieve all tickets.
             </th>
           </tr>
-          <tr class="input-tr">
+          <tr id="input-tr">
             <th info>
               <input class="input-search" type="text" name="FLT_EMAIL" value="" size="20" placeholder="Search">
             </th>

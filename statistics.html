@@ -204,22 +204,20 @@
                       <button class="get-btn" value="Get Sales Summary">Get Statistics</button>
                     </span>
                   </div> <!-- end .table-header -->
-                  <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
-                    <table class="table">
+                  <div class="row table-responsive-lg" style="margin-left: auto; margin-right: auto;">
+                    <table class="table" id="selection">
                       <thead>
                         <tr class="table-category">
-                          <th scope="col" class="sort-column text-left sortable sort" title="Sort on '##FIELDNAME##'">
+                          <th scope="col" class="sort-column text-center sortable sort" title="Sort on '##FIELDNAME##'">
                             <a href="#" class="fdTableSortTrigger">##FIELDNAME##</a>
                           </th>
-                          <th scope="col" class="sort-column text-right sortable sort" title="Sort on 'Occurrence'">
+                          <th scope="col" class="sort-column text-center sortable sort" title="Sort on 'Occurrence'">
                             <a href="#" class="fdTableSortTrigger">Occurrence</a>
                           </th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          ##TABLEDATA##
-                        </tr>
+                        ##TABLEDATA##
                       </tbody>
                       <tfoot>
                         <tr class="table-total">

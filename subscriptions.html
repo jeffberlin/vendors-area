@@ -85,34 +85,34 @@
         <button type="button" class="get-btn" onclick="filter ();">Show Subscriptions</button>
       </div> <!-- end .table-header -->
       <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
-        <table class="table">
+        <table class="table" id="selection">
           <thead>
-            <tr class="table-category text-center">
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'Subscription ID'" number>
+            <tr class="table-category">
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Subscription ID'" number>
                 <a href="#" class="fdTableSortTrigger">Subscription&nbsp;ID</a>
               </th>
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'Email'" info>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Email'" info>
                 <a href="#" class="fdTableSortTrigger">Email</a>
               </th>
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'Company/Name'" text>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Company/Name'" text>
                 <a href="#" class="fdTableSortTrigger">Company/Name</a>
               </th>
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'Product Name'" text>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Product Name'" text>
                 <a href="#" class="fdTableSortTrigger">Product&nbsp;Name</a>
               </th>
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'Price'" money>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Price'" money>
                 <a href="#" class="fdTableSortTrigger">Price</a>
               </th>
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'Effective Date'" date>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Effective Date'" date>
                 <a href="#" class="fdTableSortTrigger">Effective&nbsp;Date</a>
               </th>
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'Expiration Date'" date>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Expiration Date'" date>
                 <a href="#" class="fdTableSortTrigger">Expiration&nbsp;Date</a>
               </th>
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'Billing Date'" date>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Billing Date'" date>
                 <a href="#" class="fdTableSortTrigger">Billing&nbsp;Date</a>
               </th>
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'Cancel'" option>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Cancel'" option>
                 <a href="#" class="fdTableSortTrigger">Cancel</a>
               </th>
             </tr>
@@ -120,7 +120,7 @@
           <tr>
             <th style="text-align: left; color: #707070; letter-spacing: .5px; font-size: .9rem; font-weight: 300; border-bottom: 1px solid #dddddd;" colspan="10">Filter results using the fields below or leave all fields blank to retrieve all subscriptions.</th>
           </tr>
-          <tr class="input-tr">
+          <tr id="input-tr">
             <th number>
               <input class="input-search" type="text" name="FLT_SUBSCRIPTIONID" value="" size="10" style="min-width: 80px" placeholder="Search">
             </th>
@@ -140,9 +140,7 @@
             <th option></th>
           </tr>
           <tbody>
-            <tr>
-              ##TABLEDATA##
-            </tr>
+            ##TABLEDATA##
           </tbody>
           <tfoot>
             <tr class="table-total">
