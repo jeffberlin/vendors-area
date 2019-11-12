@@ -22,14 +22,9 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
-      td[text], td[number] {
-        border-right: 1px solid #a9a9a9;
-      }
-
       td[number] {
         text-align: center;
       }
-
       td[money] {
         text-align: right;
       }
@@ -172,16 +167,16 @@
                     </span>
                   </div> <!-- end .table-header -->
                   <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
-                    <table class="table">
+                    <table class="table" id="selection">
                       <thead>
                         <tr class="table-category">
-                          <th scope="col" class="sort-column text-left sortable sort" title="Sort on 'Product'">
+                          <th scope="col" class="sort-column text-center sortable sort" title="Sort on 'Product'">
                             <a href="#" class="fdTableSortTrigger">Product</a>
                           </th>
                           <th scope="col" class="sort-column text-center sortable sort" title="Sort on 'Units Sold'">
                             <a href="#" class="fdTableSortTrigger">Units Sold</a>
                           </th>
-                          <th scope="col" class="sort-column text-right sortable-currency sort" title="Sort on 'Total to Vendor'">
+                          <th scope="col" class="sort-column text-center sortable-currency sort" title="Sort on 'Total to Vendor'">
                             <a href="#" class="fdTableSortTrigger">Total to Vendor</a>
                           </th>
                         </tr>

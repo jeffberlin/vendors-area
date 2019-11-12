@@ -18,20 +18,8 @@
     <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <style media="screen" type="text/css">
-      .table-header input, p {
+      p {
         font-size: .9rem;
-      }
-      .table-header input, .td-button button, p {
-        letter-spacing: .5px;
-      }
-      .td-button button:hover {
-        transition: ease-in-out 0.2s;
-      }
-      td {
-        border-right: 1px solid #a9a9a9;
-      }
-      td:last-child {
-        border-right: none;
       }
       td[option], td[mnumber] {
         text-align: center;
@@ -128,22 +116,22 @@
         <button type="button" class="grey-btn" onclick="uploadFile ();">Upload File</button>
       </div> <!-- end .table-header -->
       <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
-        <table class="table">
+        <table class="table" id="selection">
           <thead>
-            <tr class="table-category text-center">
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'File Name'" text>
+            <tr class="table-category">
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'File Name'" text>
                 <a href="#" class="fdTableSortTrigger">File&nbsp;Name</a>
               </th>
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'Size'"  data-sorttype="number">
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Size'"  data-sorttype="number">
                 <a href="#" class="fdTableSortTrigger">Size</a>
               </th>
-              <th scope="col" class="sort-column sortable sort" title="Sort on 'Date'" date>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Date'" date>
                 <a href="#" class="fdTableSortTrigger">Date</a>
               </th>
-              <th scope="col" class="sort-column number sortable sort" data-sorttype="number" title="Sort by 'Download number'" date>
+              <th scope="col" class="sort-column number sortable sort text-center" data-sorttype="number" title="Sort by 'Download number'" date>
                 <a href="#" class="fdTableSortTrigger">Download&nbsp;Count</a>
               </th>
-              <th scope="col" class="sort-column" option>
+              <th scope="col" class="sort-column text-center" option>
                 <a href="#" style="cursor: default;" onclick="return false;">Share&nbsp;File</a>
               </th>
               <th scope="col" class="sort-column" option>
@@ -152,7 +140,7 @@
               <th scope="col" class="sort-column" option>
                 <a href="#" style="cursor: default;" onclick="return false;"></a>
               </th>
-              <th scope="col" class="sort-column" option>
+              <th scope="col" class="sort-column text-center" option>
                 <a href="#" style="cursor: default;" onclick="return false;">Delete&nbsp;File</a>
               </th>
             </tr>

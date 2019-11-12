@@ -19,12 +19,6 @@
     <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <style media="screen" type="text/css">
-      td {
-        border-right: 1px solid #a9a9a9;
-      }
-      td:last-child {
-        border-right: none;
-      }
       td[mnumber], td[info], td[option] {
         text-align: center;
       }
@@ -84,13 +78,13 @@
         <button type="button" class="grey-btn" onclick="addTable ();">Add&nbsp;New&nbsp;Table</button>
       </div> <!-- end .table-header -->
       <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
-        <table class="table">
+        <table class="table" id="selection">
           <thead>
-            <tr class="table-category text-center">
-              <th scope="col" class="sort-column" text>
+            <tr class="table-category">
+              <th scope="col" class="sort-column text-center" text>
                 <a href="#" style="cursor: default;" onclick="return false;">Code&nbsp;Table&nbsp;Name</a>
               </th>
-              <th scope="col" class="sort-column" number>
+              <th scope="col" class="sort-column text-center" number>
                 <a href="#" style="cursor: default;" onclick="return false;">Codes</a>
               </th>
               <th scope="col" class="sort-column" text>
@@ -99,7 +93,7 @@
               <th scope="col" class="sort-column" text>
                 <a href="#" style="cursor: default;" onclick="return false;"></a>
               </th>
-              <th scope="col" class="sort-column" option>
+              <th scope="col" class="sort-column text-center" option>
                 <a href="#" style="cursor: default;" onclick="return false;">Remove</a>
               </th>
             </tr>

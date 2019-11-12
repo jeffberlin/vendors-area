@@ -22,14 +22,14 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <style media="screen" type="text/css">
-      .input-tr th {
-        border-right: 1px solid #a9a9a9;
-      }
-      .input-tr th:last-child {
-        border-right: none;
-      }
-      .input-tr th, td[number], td[money] {
+      td[number] {
         text-align: center;
+      }
+      td[money] {
+        text-align: right;
+      }
+      td[number]:first-child {
+        text-align: left;
       }
     </style>
   </head>
@@ -162,10 +162,9 @@
                     </span>
                     <span>
                       To:&nbsp;
-                      <input id="DATETO" name="DATETO" value="##DATETO##" style="margin-bottom: 1rem;" />
+                      <input id="DATETO" name="DATETO" value="##DATETO##" />
                       <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATETO'); return (false);" onmouseover="this.style.cursor='pointer';" />
                     </span>
-                    <br clear="all">
                     <span>
                       <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
                       <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/splitsalesreport.html" />
@@ -182,8 +181,8 @@
                       <button class="get-btn" value="Get Split Sales Summary" onclick="submitForm (splitsalesreport);" >Get Split Sales Summary</button>
                     </span>
                   </div> <!-- end .table-header -->
-                  <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
-                    <table class="table">
+                  <div class="row table-responsive-lg" style="margin-left: auto; margin-right: auto;">
+                    <table class="table" id="selection">
                       <thead>
                         <tr class="table-category">
                           <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Vendor ID'" number>
@@ -216,9 +215,9 @@
                         <th style="text-align: left; color: #707070; letter-spacing: .5px; font-size: .9rem; font-weight: 300; border-bottom: 1px solid #dddddd;" colspan="10">Filter results using the fields below.
                         </th>
                       </tr>
-                      <tr class="input-tr">
+                      <tr id="input-tr">
                         <th number>
-                          <input class="input-search" type="text" name="FLT_SPLITVENDORID" value="" placeholder="Search">
+                          <input class="input-search" type="text" name="FLT_SPLITVENDORID" value="" placeholder="Search" size="12">
                         </th>
                         <th text>
                           <input class="input-search" type="text" name="FLT_NAME" value="" placeholder="Search">
@@ -230,23 +229,21 @@
                         <th money></th>
                         <th money></th>
                         <th number>
-                          <input class="input-search" type="text" name="FLT_PERCENTAGE" value="" placeholder="Search">
+                          <input class="input-search" type="text" name="FLT_PERCENTAGE" value="" placeholder="Search" size="14">
                         </th>
                         <th text></th>
                       </tr>
                       <tbody>
-                        <tr>
-                          ##TABLEDATA##
-                        </tr>
+                        ##TABLEDATA##
                       </tbody>
                       <tfoot>
                         <tr class="table-total">
                           <th scope="row" colspan="3">Total</th>
                           <th scope="row" class="text-center" number>##TOTALQUANTITY##</th>
                           <th></th>
-                          <th scope="row" class="text-center" money>##TOTALVENDORROYALTY##</th>
+                          <th scope="row" class="text-right" money>##TOTALVENDORROYALTY##</th>
                           <th></th>
-                          <th scope="row" class="text-center" style="border-right: 1px solid #a9a9a9;" money>##TOTALSPLITROYALTY##</th>
+                          <th scope="row" class="text-right" style="border-right: 1px solid #a9a9a9;" money>##TOTALSPLITROYALTY##</th>
                         </tr>
                       </tfoot>
                     </table>

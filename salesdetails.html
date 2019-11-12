@@ -25,11 +25,17 @@
       td[text], td[number], td[date], td[info], td[money], th {
         border-right: 1px solid #a9a9a9;
       }
-      td:last-child, th:last-child {
+      th:last-child {
         border-right: none;
       }
       th {
         min-width: 150px;
+      }
+      td[number]:first-child {
+        text-align: left;
+      }
+      td[money] {
+        text-align: right;
       }
     </style>
     <script language="javascript" type="text/javascript">
@@ -233,9 +239,9 @@
                       <input id="DATETO" name="DATETO" value="##DATETO##" style="margin-bottom: 1rem;"/>&nbsp;
                       <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
                     </span>
-                    <br>
+                    <!-- <br> -->
                     <span>
-                      <input type="checkbox" name="EXACTMATCH" value="-1" onclick="exactMatch(salesdetails);">&nbsp;Use exact match when filtering
+                      <input type="checkbox" name="EXACTMATCH" value="-1" onclick="exactMatch(salesdetails);" title="Check for exact matches">&nbsp;Use exact match when filtering
                       <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/salesdetails.html" />
                       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
                     </span>

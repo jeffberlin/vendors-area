@@ -6,7 +6,7 @@
   border-radius: 3px 3px 0px 0px;
   }
 
-.table-header span, input, .get-btn, .display-header, .sort-column, td, tfoot, .td-button button, select {
+.table-header span, .table-header input, input, .get-btn, .display-header, .sort-column, td, tfoot, .td-button button, select {
   letter-spacing: .5px;
   }
 
@@ -47,7 +47,7 @@ th a, th a:hover, .td-button button, tfoot, select {
   font-weight: 600;
   }
 
-.get-btn, .td-button button {
+.get-btn, .td-button button, .td-button button:hover {
   transition: all .2s ease;
   }
 
@@ -96,7 +96,7 @@ th a, th a:hover {
   font-weight: 400;
   }
 
-td, .sort-column {
+td, .sort-column, #input-tr th {
   border-right: 1px solid #a9a9a9;
   }
 
@@ -156,10 +156,6 @@ tfoot {
 select {
   padding: .2rem;
   background: #ffffff;
-  }
-
-#input-tr th {
-  border-right: 1px solid #a9a9a9;
   }
 
 table.table > tbody tr.selected td, table.table > tbody tr.selected td[sort] {
