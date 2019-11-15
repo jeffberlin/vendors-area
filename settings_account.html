@@ -45,6 +45,8 @@
         initField (form, "EXPIREDPWDNOTIFICATION_CHK",  "##EXPIREDPWDNOTIFICATION##");
         initField (form, "USETWOTIERAUTHENTICATION",    "##USETWOTIERAUTHENTICATION##");
         initField (form, "USETWOTIERAUTHENTICATION_CHK","##USETWOTIERAUTHENTICATION##");
+        initField (form, "HTMLEMAIL",                   "##HTMLEMAIL##");
+        initField (form, "HTMLEMAIL_CHK",               "##HTMLEMAIL##");
         initField (form, "IPENFORCEMENT",               "##IPENFORCEMENT##");
         initField (form, "FRAUDCHECKLEVEL",             "##FRAUDCHECKLEVEL##");
         initField (form, "SHOWCOMPANYFIELD_CHK",        "##SHOWCOMPANYFIELD##");
@@ -56,6 +58,7 @@
         initField (form, "SHOWSIDEBAR_CHK",             "##SHOWSIDEBAR##");
         initField (form, "SHOWCOMMENTSFIELD_CHK",       "##SHOWCOMMENTSFIELD##");
         initField (form, "SHOWEMAILCONSENT_CHK",        "##SHOWEMAILCONSENT##");
+        initField (form, "SHOWGIFTOPTION_CHK",          "##SHOWGIFTOPTION##");
       }
 
       function submitForm (form,action) {
@@ -65,6 +68,7 @@
         copyField (form, "CREDITNOTIFICATION",      "CREDITNOTIFICATION_CHK");
         copyField (form, "EXPIREDPWDNOTIFICATION",  "EXPIREDPWDNOTIFICATION_CHK");
         copyField (form, "USETWOTIERAUTHENTICATION","USETWOTIERAUTHENTICATION_CHK");
+        copyField (form, "HTMLEMAIL",               "HTMLEMAIL_CHK");
         copyField (form, "VENDORMAIL",              "VENDORMAIL_CHK");
         copyField (form, "ALLOWANYAFFILIATE",       "ALLOWANYAFFILIATE_CHK");
         copyField (form, "SHOWCOMPANYFIELD",        "SHOWCOMPANYFIELD_CHK");
@@ -76,6 +80,7 @@
         copyField (form, "SHOWSIDEBAR",             "SHOWSIDEBAR_CHK");
         copyField (form, "SHOWCOMMENTSFIELD",       "SHOWCOMMENTSFIELD_CHK");
         copyField (form, "SHOWEMAILCONSENT",        "SHOWEMAILCONSENT_CHK");
+        copyField (form, "SHOWGIFTOPTION",          "SHOWGIFTOPTION_CHK");
         form.ACTION.value = action;
         if (allowChanges ("You do not have permission to make changes.")) {
           form.submit ();
@@ -84,7 +89,7 @@
         return (false);
       }
       //-->
-   </script>
+    </script>
   </head>
   <body onload="initForm (document.account);">
     <form name="account" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" target="accountsettings">
@@ -139,6 +144,11 @@
           <span>
             <input type="hidden" name="USETWOTIERAUTHENTICATION" value="##USETWOTIERAUTHENTICATION##" />
             <input type="checkbox" name="USETWOTIERAUTHENTICATION_CHK" value="-1" style="margin-bottom: 1rem;" />&nbsp;Use two factor authentication
+          </span>
+          <br clear="all">
+          <span>
+            <input type="hidden" name="HTMLEMAIL" value="##HTMLEMAIL##" />
+            <input type="checkbox" name="HTMLEMAIL_CHK" value="-1" style="margin-bottom: 1rem;" />&nbsp;Send vendor Emails in HTML format
           </span>
         </div> <!-- end .col-6 -->
         <div class="col-6" style="padding: 0;">

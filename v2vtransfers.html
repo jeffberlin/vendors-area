@@ -20,12 +20,6 @@
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <style media="screen" type="text/css">
-      td {
-        border-right: 1px solid #a9a9a9;
-      }
-      td:last-child {
-        border-right: none;
-      }
       td[date], td[money], td[option] {
         text-align: center;
       }
@@ -95,7 +89,7 @@
         <button type="button" class="grey-btn" onclick="addVendorTransfer ();" >Add Vendor Transfer</button>
       </div> <!-- end .table-header -->
       <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
-        <table class="table">
+        <table class="table" id="selection">
           <thead>
             <tr class="table-category text-center">
               <th scope="col" class="sort-column sortable sort" title="Sort on 'Date'" date>
