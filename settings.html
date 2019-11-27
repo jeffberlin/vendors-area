@@ -16,16 +16,26 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addPages.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/settings.css">
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <style media="screen" type="text/css">
+      .shrinkText {
+        font-size: .9rem;
+      }
+    </style>
     <script type="text/javascript" language="javascript">
       <!--
       function initForm () {
         document.editaccount.submit();
+        // document.shoppingCartOptions.submit();
         document.bmtconfig.submit();
       }
-
+      //-->
+    </script>
+    <script type="text/javascript" language="javascript">
+      <!--
       function submitForm (form) {
         if (allowChanges ("You do not have permission to make changes.")) {
           form.submit ();
@@ -153,20 +163,65 @@
               </aside>
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
-              <form name="editaccount" method=post action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" target="accountsettings">
+              <!-- <form name="editaccount" method=post action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" target="accountsettings">
                 <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/settings_account.html">
                 <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
                 <input type="hidden" name="ACTION" value="1" />
+              </form> -->
+
+              <form name="editaccount" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" method="post" target="editsettings">
+                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/settings_settings.html">
+                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
+                <input type="hidden" name="ACTION" value="1" />
               </form>
+
+              <!-- <form name="editaccount" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" method="post" target="shoppingCart">
+                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/settings_shoppingCartOptions.html">
+                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
+                <input type="hidden" name="ACTION" value="1" />
+              </form> -->
 
               <form name="bmtconfig" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetailsConfig" method="post" target="salesdetailsconfig">
                 <input type="hidden" name="NEXT_PAGE"  value="https://vendors-new.bmtmicro.com/settings_salesdetailsconfig.html" />
                 <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
               </form>
-              <div class="content-box">
-                <iframe src="" name="accountsettings" id="accountsettings" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 975px;" id="settingsTopFrame" ></iframe>
 
-                <iframe src="" name="salesdetailsconfig" id="salesdetailsconfig" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 500px;" ></iframe>
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="true">Settings</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="shoppingCartOptions-tab" data-toggle="tab" href="#shoppingCartOptions" role="tab" aria-controls="shoppingCartOptions" aria-selected="true">Shopping Cart Options</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="tracking-tab" data-toggle="tab" href="#tracking" role="tab" aria-controls="tracking" aria-selected="false">Tracking</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="apiToken-tab" data-toggle="tab" href="#apiToken" role="tab" aria-controls="apiToken" aria-selected="false">API Token</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="fields-tab" data-toggle="tab" href="#fields" role="tab" aria-controls="fields" aria-selected="false">Sales Details Fields</a>
+                </li>
+              </ul>
+
+              <div class="content-box">
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                    <iframe src="" name="editsettings" id="editsettings" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 500px;"></iframe>
+                  </div>
+                  <div class="tab-pane fade" id="shoppingCartOptions" role="tabpanel" aria-labelledby="shoppingCartOptions-tab">
+                    <iframe src="" name="shoppingCart" id="shoppingCart" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 500px;"></iframe>
+                  </div>
+                  <div class="tab-pane fade" id="tracking" role="tabpanel" aria-labelledby="tracking-tab">...</div>
+                  <div class="tab-pane fade" id="apiToken" role="tabpanel" aria-labelledby="apiToken-tab">...</div>
+                  <div class="tab-pane fade" id="fields" role="tabpanel" aria-labelledby="fields-tab">
+                    <iframe src="" name="salesdetailsconfig" id="salesdetailsconfig" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 500px;" ></iframe>
+                  </div>
+                </div>
+
+                <!-- <iframe src="" name="accountsettings" id="accountsettings" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 975px;" id="settingsTopFrame" ></iframe>
+
+                <iframe src="" name="salesdetailsconfig" id="salesdetailsconfig" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 500px;" ></iframe> -->
               </div>
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
