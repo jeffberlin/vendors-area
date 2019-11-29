@@ -30,6 +30,8 @@
       function initForm () {
         document.editaccount.submit();
         document.editshopping.submit();
+        document.edittracking.submit();
+        document.editapiToken.submit();
         document.bmtconfig.submit();
       }
       //-->
@@ -181,6 +183,18 @@
                 <input type="hidden" name="ACTION" value="1" />
               </form>
 
+              <form name="edittracking" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" method="post" target="tracking">
+                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/settings_tracking.html">
+                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
+                <input type="hidden" name="ACTION" value="1" />
+              </form>
+
+              <form name="editapiToken" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" method="post" target="apiToken">
+                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/settings_apiToken.html">
+                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
+                <input type="hidden" name="ACTION" value="1" />
+              </form>
+
               <form name="bmtconfig" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetailsConfig" method="post" target="salesdetailsconfig">
                 <input type="hidden" name="NEXT_PAGE"  value="https://vendors-new.bmtmicro.com/settings_salesdetailsconfig.html" />
                 <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
@@ -212,8 +226,12 @@
                   <div class="tab-pane fade" id="shoppingCartOptions" role="tabpanel" aria-labelledby="shoppingCartOptions-tab">
                     <iframe src="" name="shoppingCart" id="shoppingCart" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 500px;"></iframe>
                   </div>
-                  <div class="tab-pane fade" id="tracking" role="tabpanel" aria-labelledby="tracking-tab">...</div>
-                  <div class="tab-pane fade" id="apiToken" role="tabpanel" aria-labelledby="apiToken-tab">...</div>
+                  <div class="tab-pane fade" id="tracking" role="tabpanel" aria-labelledby="tracking-tab">
+                    <iframe src="" name="tracking" id="tracking" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 500px;"></iframe>
+                  </div>
+                  <div class="tab-pane fade" id="apiToken" role="tabpanel" aria-labelledby="apiToken-tab">
+                    <iframe src="" name="apiToken" id="apiToken" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 500px;" ></iframe>
+                  </div>
                   <div class="tab-pane fade" id="fields" role="tabpanel" aria-labelledby="fields-tab">
                     <iframe src="" name="salesdetailsconfig" id="salesdetailsconfig" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 500px;" ></iframe>
                   </div>
