@@ -28,27 +28,6 @@
     <script language="javascript" type="text/javascript">
       <!--
       function initForm (form) {
-        var astLevelName = [ "Weak", "Loose", "Strict", "Review", "Undetermined" ];
-        for (var i = 0, l = ##FRAUDCHECKLEVEL##; l < astLevelName.length; l++) {
-          form.FRAUDCHECKLEVEL.options[i++] = new Option (astLevelName[l], l);
-        }
-        initField (form, "VENDORMAIL",                  "##VENDORMAIL##");
-        initField (form, "ALLOWANYAFFILIATE",           "##ALLOWANYAFFILIATE##");
-        initField (form, "ALLOWANYAFFILIATE_CHK",       "##ALLOWANYAFFILIATE##");
-        initField (form, "VENDORID",                    "##VENDORID##");
-        initField (form, "VENDORMAIL_CHK",              "##VENDORMAIL##");
-        initField (form, "FAILEDORDERNOTIFICATION",     "##FAILEDORDERNOTIFICATION##");
-        initField (form, "FAILEDORDERNOTIFICATION_CHK", "##FAILEDORDERNOTIFICATION##");
-        initField (form, "CREDITNOTIFICATION",          "##CREDITNOTIFICATION##");
-        initField (form, "CREDITNOTIFICATION_CHK",      "##CREDITNOTIFICATION##");
-        initField (form, "EXPIREDPWDNOTIFICATION",      "##EXPIREDPWDNOTIFICATION##");
-        initField (form, "EXPIREDPWDNOTIFICATION_CHK",  "##EXPIREDPWDNOTIFICATION##");
-        initField (form, "USETWOTIERAUTHENTICATION",    "##USETWOTIERAUTHENTICATION##");
-        initField (form, "USETWOTIERAUTHENTICATION_CHK","##USETWOTIERAUTHENTICATION##");
-        initField (form, "HTMLEMAIL",                   "##HTMLEMAIL##");
-        initField (form, "HTMLEMAIL_CHK",               "##HTMLEMAIL##");
-        initField (form, "IPENFORCEMENT",               "##IPENFORCEMENT##");
-        initField (form, "FRAUDCHECKLEVEL",             "##FRAUDCHECKLEVEL##");
         initField (form, "SHOWCOMPANYFIELD_CHK",        "##SHOWCOMPANYFIELD##");
         initField (form, "SHOWPHONEFIELD_CHK",          "##SHOWPHONEFIELD##");
         if (##DISABLE_SHOWPONUMBERFIELD## == 0) {
@@ -64,13 +43,6 @@
       function submitForm (form,action) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        copyField (form, "FAILEDORDERNOTIFICATION", "FAILEDORDERNOTIFICATION_CHK");
-        copyField (form, "CREDITNOTIFICATION",      "CREDITNOTIFICATION_CHK");
-        copyField (form, "EXPIREDPWDNOTIFICATION",  "EXPIREDPWDNOTIFICATION_CHK");
-        copyField (form, "USETWOTIERAUTHENTICATION","USETWOTIERAUTHENTICATION_CHK");
-        copyField (form, "HTMLEMAIL",               "HTMLEMAIL_CHK");
-        copyField (form, "VENDORMAIL",              "VENDORMAIL_CHK");
-        copyField (form, "ALLOWANYAFFILIATE",       "ALLOWANYAFFILIATE_CHK");
         copyField (form, "SHOWCOMPANYFIELD",        "SHOWCOMPANYFIELD_CHK");
         copyField (form, "SHOWPHONEFIELD",          "SHOWPHONEFIELD_CHK");
         if (##DISABLE_SHOWPONUMBERFIELD## == 0) {
