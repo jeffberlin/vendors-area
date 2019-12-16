@@ -14,11 +14,11 @@
 
 h4 {
   margin-bottom: 1.3rem;
-}
+  }
 
 h4, .forgot-password a {
   color: #195a7c;
-}
+  }
 
 .main, .vendor-input, .footer {
   width: 100%;
@@ -58,7 +58,7 @@ input {
 
 label {
   margin-bottom: .1rem;
-}
+  }
 
 h4, p, label, .vendor-input, .login-btn button, .signup a {
   letter-spacing: .5px;
@@ -91,7 +91,7 @@ h4, p, label, .vendor-input, .login-btn button, .signup a {
 
 .login-btn button, .login-btn button:active {
   border: none;
-}
+  }
 
 .login-btn button:active {
   transform: translateY(2px);
@@ -106,37 +106,3 @@ h4, p, label, .vendor-input, .login-btn button, .signup a {
 .footer {
   height: 25px;
   }
-
-/* RWD */
-@media (max-width: 530px) {
-
-  img {
-    height: 60px;
-  }
-
-  h5 {
-    font-size: 1.15rem;
-  }
-
-  .box-style {
-    width: 325px;
-  }
-
-  .vendor-login-box {
-    padding: 25px 45px;
-  }
-
-  .vendor-login-box h4 {
-    font-size: 1.25rem;
-  }
-
-  .username label, .password label {
-    font-size: .9rem;
-    margin-bottom: .3rem;
-  }
-
-  .copyright {
-    font-size: .8rem;
-  }
-
-}

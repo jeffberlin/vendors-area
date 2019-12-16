@@ -168,4 +168,4 @@ table.table > tbody tr.selected td, table.table > tbody tr.selected td[sort] {
 table.table > tbody tr[debit] {
   color: #808080;
   background: #E9FFE3;
-}
+  }

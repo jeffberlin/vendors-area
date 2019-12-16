@@ -25,7 +25,7 @@
 
 .vendor-name:hover, .sidebar-group, .sidebar-group:hover, .sidebar-group:focus {
   color: #195a7c;
-}
+  }
 
 .balance-amount {
   color: #ef9a00;

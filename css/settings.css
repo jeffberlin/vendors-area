@@ -2,12 +2,12 @@
   color: #efa900;
   letter-spacing: .5px;
   font-size: .9rem;
-}
+  }
 
 h5 {
   margin-bottom: 1rem;
-}
+  }
 
 .nav-tabs .nav-link.active, .nav-link:hover {
   color: #195a7c;
-}
+  }
