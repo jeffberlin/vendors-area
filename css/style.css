@@ -127,3 +127,7 @@ p {
 .remove:hover {
   filter: brightness(.7);
   }
+
+button:hover {
+  cursor: pointer;
+  }
