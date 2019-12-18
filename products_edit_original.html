@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addPages.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/tabOptions.css">
     <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/upsellutil.js"></script>
@@ -34,11 +33,11 @@
         letter-spacing: .5px;
       }
       .toggle-section {
-        margin-bottom: 1rem;
-        padding-left: 10px;
+         margin-bottom: 1rem;
+         padding-left: 10px;
       }
       .toggle-section h6 {
-        margin-bottom: .3rem;
+         margin-bottom: .3rem;
       }
       .fa-plus-circle {
         font-size: 1.5rem;
@@ -491,58 +490,17 @@
               </aside>
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
-              <h4>Edit&nbsp;Product</h4>
-              <p>Use the fields below to edit ##PRODUCTNAME## (##PRODUCTID##).</p>
-              <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" id="primaryInfo-tab" data-toggle="tab" href="#primaryInfo" role="tab" aria-controls="primary info" aria-selected="true">
-                    Primary Info
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="priceInfo-tab" data-toggle="tab" href="#priceInfo" role="tab" aria-controls="price info" aria-selected="true">
-                    Price Info
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="pricing-tab" data-toggle="tab" href="#pricing" role="tab" aria-controls="pricing" aria-selected="true">
-                    Pricing
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="productCategory-tab" data-toggle="tab" href="#productCategory" role="tab" aria-controls="product category" aria-selected="true">
-                    Product Category
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="productPlatform-tab" data-toggle="tab" href="#productPlatform" role="tab" aria-controls="product platform" aria-selected="true">
-                    Product Platform
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="productFormat-tab" data-toggle="tab" href="#productFormat" role="tab" aria-controls="product format" aria-selected="true">
-                    Product Format
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="options-tab" data-toggle="tab" href="#options" role="tab" aria-controls="shopping cart options" aria-selected="true">
-                    Shopping Cart Options
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="secondary-tab" data-toggle="tab" href="#secondary" role="tab" aria-controls="secondary info" aria-selected="true">
-                    Secondary Info
-                  </a>
-                </li>
-              </ul>
-              <div class="content-box">
-                <form name="productform" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-                  <input type="hidden" name="ACTION" value="11" />
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products_edit.html" />
-                  <input type="hidden" name="VENDORID" value="##VENDORID##" />
-                  <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="primaryInfo" role="tabpanel" aria-labelledby="primaryInfo-tab">
+              <form name="productform" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
+                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+                <input type="hidden" name="ACTION" value="11" />
+                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/productsstart.html" />
+                <input type="hidden" name="VENDORID" value="##VENDORID##" />
+
+                <h4>Edit&nbsp;Product</h4>
+                <p>Use the fields below to edit ##PRODUCTNAME## (##PRODUCTID##).</p>
+                <div class="content-box">
+                  <div class="row">
+                    <div class="col-6" style="padding-left: 0; margin-bottom: 1.2rem;">
                       <h5>Primary&nbsp;Info</h5>
                       <p>Name and description of the product.</p>
                       <span>
@@ -570,75 +528,13 @@
                         <label>Keywords:&nbsp;</label>
                         <input id="KEYWORDS" name="KEYWORDS" size="30"  value="##KEYWORDS##" title=" Provide any keywords for your product (Limit 50 characters)" placeholder="Limit 50 characters" style="margin-bottom: 1.2rem;"/>
                       </span>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" >Save</button>
-                    </div> <!-- end .tab-pane -->
-                    <div class="tab-pane fade" id="priceInfo" role="tabpanel" aria-labelledby="priceInfo-tab">
-                      <h5>Price&nbsp;Info</h5>
-                      <p>Below are the current values for this product.</p>
-                      <span>
-                        <label>Product&nbsp;ID:&nbsp;</label>
-                        <input type="hidden" name="PRODUCTID" value="##PRODUCTID##" /> <span style="color: #000000;">##PRODUCTID##</span>
-                        <input type="hidden" name="PRICEINCLUDESGST" value="##PRICEINCLUDESGST##" />
-                      </span>
-                      <br>
-                      <span>
-                        <label>Product&nbsp;Price:&nbsp;</label>
-                        <span style="color: #000000;">
-                          ##SELECT(PRICE_USD,,,USD&nbsp;&nbsp;%%PRICE_USD%%&nbsp;&nbsp;&nbsp;<br>)##
-                          ##SELECT(PRICE_EUR,,,EUR&nbsp;&nbsp;%%PRICE_EUR%%&nbsp;&nbsp;&nbsp;<br>)##
-                          ##SELECT(PRICE_GBP,,,GBP&nbsp;&nbsp;%%PRICE_GBP%%&nbsp;&nbsp;&nbsp;<br>)##
-                          ##SELECT(PRICE_CAD,,,CAD&nbsp;&nbsp;%%PRICE_CAD%%&nbsp;&nbsp;&nbsp;<br>)##
-                          ##SELECT(PRICE_AUD,,,AUD&nbsp;&nbsp;%%PRICE_AUD%%&nbsp;&nbsp;&nbsp;<br>)##
-                        </span>
-                      </span>
-                      <!-- <br> -->
-                      <span>
-                        <label>BMT&nbsp;Royalties:&nbsp;</label>
-                        <span style="color: #000000;">##BMTROYALTYAMOUNT##</span>
-                      </span>
-                      <br>
-                      <span>
-                        <label style="margin-bottom: 1.2rem;">Amount&nbsp;to&nbsp;Vendor:&nbsp;</label>
-                        <span style="color: #000000;">##VENDORAMOUNT##</span>
-                      </span>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" >Save</button>
-                    </div> <!-- end .tab-pane -->
-                    <div class="tab-pane fade" id="pricing" role="tabpanel" aria-labelledby="pricing-tab">
-                      <script language="javascript" type="text/javascript">
-                        <!--
-                        if (isBlank ("##ROYALTYFIXED## ##ROYALTYPERCENTAGE##")) {
-                          document.write ('<h5>Pricing</h5><p>Set the product price in one or more currencies.</p>');
-                          document.write ('<table style="background-color:transparent">');
-                          document.write ('<tr><td><label>Price (USD):&nbsp;</label></td><td><input name="PRICE_USD" SIZE="10" value="##PRICE_USD##"></td><td></td></tr>');
-                          document.write ('<tr><td><label>Price (EUR):&nbsp;</label></td><td><input name="PRICE_EUR" SIZE="10" value="##PRICE_EUR##" onchange="calcFX(this,##FXRATE_EUR##);"></td><td valign="middle"><div id="FXRATE_EUR"></div></td></tr>');
-                          document.write ('<tr><td><label>Price (GBP):&nbsp;</label></td><td><input name="PRICE_GBP" SIZE="10" value="##PRICE_GBP##" onchange="calcFX(this,##FXRATE_GBP##);"></td><td valign="middle"><div id="FXRATE_GBP"></div></td></tr>');
-                          document.write ('<tr><td><label>Price (CAD):&nbsp;</label></td><td><input name="PRICE_CAD" SIZE="10" value="##PRICE_CAD##" onchange="calcFX(this,##FXRATE_CAD##);"></td><td valign="middle"><div id="FXRATE_CAD"></div></td></tr>');
-                          document.write ('<tr><td><label>Price (AUD):&nbsp;</label></td><td><input name="PRICE_AUD" SIZE="10" value="##PRICE_AUD##" onchange="calcFX(this,##FXRATE_AUD##);" style="margin-bottom: 1rem;"></td><td valign="middle"><div id="FXRATE_AUD"></div></td></tr>');
-                          document.write ('</table>');
-                        }
-                        // -->
-                      </script>
-                      <span>
-                        <input type="hidden" name="PRICEINCLUDESVAT" value="##PRICEINCLUDESVAT##" /><input type="checkbox" name="PRICEINCLUDESVAT_CHK" value="-1" />&nbsp;The price includes VAT&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="hidden" name="PRICEINCLUDESGST" value="##PRICEINCLUDESGST##" /><input type="checkbox" name="PRICEINCLUDESGST_CHK" value="-1" style="margin-bottom: .5rem;" />&nbsp;The price includes GST
-                        <p style="font-size: .9rem; font-style: italic; margin-bottom: 1.2rem;">Check the respective checkbox to indicate that the price includes European Union VAT and/or Australian GST. When checked, the customer will pay the prices listed above and any tax due is deducted from the sales royalty. When not checked, the customer will see tax added to the price specified above if applicable.</p>
-                      </span>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" >Save</button>
-                    </div>
-                    <div class="tab-pane fade" id="productCategory" role="tabpanel" aria-labelledby="productCategory-tab">
                       <h5>Product&nbsp;Category</h5>
                       <p>Please select the category that most fits your product.</p>
                       <span>
                         <label>Category:&nbsp;</label>
                         <select name="CATEGORY" style="margin-bottom: 1.2rem;"></select>
                       </span>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" >Save</button>
-                    </div> <!-- end .tab-pane -->
-                    <div class="tab-pane fade" id="productPlatform" role="tabpanel" aria-labelledby="productPlatform-tab">
+                      <br>
                       <h5>Product&nbsp;Platform</h5>
                       <p>For products installed on electronical devices.</p>
                       <span>
@@ -676,22 +572,6 @@
                           <option value="Mac &amp; Symbian">Mac &amp; Symbian</option>
                         </select>
                       </span>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" >Save</button>
-                    </div> <!-- end .tab-pane -->
-                    <div class="tab-pane fade" id="productFormat" role="tabpanel" aria-labelledby="productFormat-tab">
-                      <h5>Product&nbsp;Format&nbsp;List</h5>
-                      <p>Here you can add several different format/size/type/color for a same product.</p>
-                      <span>
-                        <label>Format&nbsp;List:&nbsp;</label>
-                        <input name="FILEFORMATS" size="40" maxlength="80" value="##FILEFORMATS##" style="margin-bottom: .1rem;"/>
-                        <p style="font-size: .9rem; font-style: italic; color: red; margin-bottom: .5rem">If product purchase does not require a format/size/type/color choice, please leave this field blank.</p>
-                        <p style="font-size: .9rem; font-style: italic;">Listing formats here will add a selection box in the shopping cart that lets the customer choose format when purchasing. Use the Format List when the customer needs to pick a format, size, type, color, etc. For example, if you're selling a T-shirt, you may want to specify "S,M,L,XL" here. If you sell a program for several platforms and want to do it all under the same product setup, you can specify "Windows,Linux,Mac" for example. If doing it this way, you can associate an index file (.idx) as download file in order to deliver different download files depening on format purchased.</p>
-                      </span>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" >Save</button>
-                    </div> <!-- end .tab-pane -->
-                    <div class="tab-pane fade" id="options" role="tabpanel" aria-labelledby="options-tab">
                       <h5>Shopping&nbsp;Cart&nbsp;Options</h5>
                       <p style="margin-bottom: .2rem;">Unchecking the boxes will hide these options in your shopping cart.</p>
                       <p style="font-size: .9rem; font-style: italic;">Note that the account settings have additional shopping cart options.</p>
@@ -739,10 +619,66 @@
                         <input type="checkbox" name="NEEDSORDERPARAMETERS_CHK" value="-1" />&nbsp;Order Parameters must not be blank
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: 0;">Enabling this option will prevent the customer from completing an order if the ORDERPARAMETERS value is missing in the shopping cart.</p>
                       </span>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" >Save</button>
-                    </div> <!-- end .tab-pane -->
-                    <div class="tab-pane fade" id="secondary" role="tabpanel" aria-labelledby="secondary-tab">
+                    </div> <!-- end .col-6 -->
+
+                    <div class="col-6">
+                      <h5>Price&nbsp;Info</h5>
+                      <p>Below are the current values for this product.</p>
+                      <span>
+                        <label>Product&nbsp;ID:&nbsp;</label>
+                        <input type="hidden" name="PRODUCTID" value="##PRODUCTID##" /> <span style="color: #000000;">##PRODUCTID##</span>
+                        <input type="hidden" name="PRICEINCLUDESGST" value="##PRICEINCLUDESGST##" />
+                      </span>
+                      <br>
+                      <span>
+                        <label>Product&nbsp;Price:&nbsp;</label>
+                        <span style="color: #000000;">
+                          ##SELECT(PRICE_USD,,,USD&nbsp;&nbsp;%%PRICE_USD%%&nbsp;&nbsp;&nbsp;<br>)##
+                          ##SELECT(PRICE_EUR,,,EUR&nbsp;&nbsp;%%PRICE_EUR%%&nbsp;&nbsp;&nbsp;<br>)##
+                          ##SELECT(PRICE_GBP,,,GBP&nbsp;&nbsp;%%PRICE_GBP%%&nbsp;&nbsp;&nbsp;<br>)##
+                          ##SELECT(PRICE_CAD,,,CAD&nbsp;&nbsp;%%PRICE_CAD%%&nbsp;&nbsp;&nbsp;<br>)##
+                          ##SELECT(PRICE_AUD,,,AUD&nbsp;&nbsp;%%PRICE_AUD%%&nbsp;&nbsp;&nbsp;<br>)##
+                        </span>
+                      </span>
+                      <!-- <br> -->
+                      <span>
+                        <label>BMT&nbsp;Royalties:&nbsp;</label>
+                        <span style="color: #000000;">##BMTROYALTYAMOUNT##</span>
+                      </span>
+                      <br>
+                      <span>
+                        <label style="margin-bottom: 1.2rem;">Amount&nbsp;to&nbsp;Vendor:&nbsp;</label>
+                        <span style="color: #000000;">##VENDORAMOUNT##</span>
+                      </span>
+                      <script language="javascript" type="text/javascript">
+                        <!--
+                        if (isBlank ("##ROYALTYFIXED## ##ROYALTYPERCENTAGE##")) {
+                          document.write ('<h5>Pricing</h5><p>Set the product price in one or more currencies.</p>');
+                          document.write ('<table style="background-color:transparent">');
+                          document.write ('<tr><td><label>Price (USD):&nbsp;</label></td><td><input name="PRICE_USD" SIZE="10" value="##PRICE_USD##"></td><td></td></tr>');
+                          document.write ('<tr><td><label>Price (EUR):&nbsp;</label></td><td><input name="PRICE_EUR" SIZE="10" value="##PRICE_EUR##" onchange="calcFX(this,##FXRATE_EUR##);"></td><td valign="middle"><div id="FXRATE_EUR"></div></td></tr>');
+                          document.write ('<tr><td><label>Price (GBP):&nbsp;</label></td><td><input name="PRICE_GBP" SIZE="10" value="##PRICE_GBP##" onchange="calcFX(this,##FXRATE_GBP##);"></td><td valign="middle"><div id="FXRATE_GBP"></div></td></tr>');
+                          document.write ('<tr><td><label>Price (CAD):&nbsp;</label></td><td><input name="PRICE_CAD" SIZE="10" value="##PRICE_CAD##" onchange="calcFX(this,##FXRATE_CAD##);"></td><td valign="middle"><div id="FXRATE_CAD"></div></td></tr>');
+                          document.write ('<tr><td><label>Price (AUD):&nbsp;</label></td><td><input name="PRICE_AUD" SIZE="10" value="##PRICE_AUD##" onchange="calcFX(this,##FXRATE_AUD##);" style="margin-bottom: 1rem;"></td><td valign="middle"><div id="FXRATE_AUD"></div></td></tr>');
+                          document.write ('</table>');
+                        }
+                        // -->
+                      </script>
+                      <span>
+                        <input type="hidden" name="PRICEINCLUDESVAT" value="##PRICEINCLUDESVAT##" /><input type="checkbox" name="PRICEINCLUDESVAT_CHK" value="-1" />&nbsp;The price includes VAT&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="hidden" name="PRICEINCLUDESGST" value="##PRICEINCLUDESGST##" /><input type="checkbox" name="PRICEINCLUDESGST_CHK" value="-1" style="margin-bottom: .5rem;" />&nbsp;The price includes GST
+                        <p style="font-size: .9rem; font-style: italic; margin-bottom: 1.2rem;">Check the respective checkbox to indicate that the price includes European Union VAT and/or Australian GST. When checked, the customer will pay the prices listed above and any tax due is deducted from the sales royalty. When not checked, the customer will see tax added to the price specified above if applicable.</p>
+                      </span>
+                      <h5>Product&nbsp;Format&nbsp;List</h5>
+                      <p>Here you can add several different format/size/type/color for a same product.</p>
+                      <span>
+                        <label>Format&nbsp;List:&nbsp;</label>
+                        <input name="FILEFORMATS" size="40" maxlength="80" value="##FILEFORMATS##" style="margin-bottom: .1rem;"/>
+                        <p style="font-size: .9rem; font-style: italic; color: red; margin-bottom: .5rem">If product purchase does not require a format/size/type/color choice, please leave this field blank.</p>
+                        <p style="font-size: .9rem; font-style: italic;">Listing formats here will add a selection box in the shopping cart that lets the customer choose format when purchasing. Use the Format List when the customer needs to pick a format, size, type, color, etc. For example, if you're selling a T-shirt, you may want to specify "S,M,L,XL" here. If you sell a program for several platforms and want to do it all under the same product setup, you can specify "Windows,Linux,Mac" for example. If doing it this way, you can associate an index file (.idx) as download file in order to deliver different download files depening on format purchased.</p>
+                      </span>
+                    </div> <!-- end .col-6 -->
+                    <div class="col-10" style="padding-left: 0;">
                       <h5>Secondary&nbsp;Info</h5>
                       <p>Please take some time to review if you need to add support with any of the following, if you do not want any more options added, simply click Done (you can always add those options later).</p>
                       <h6>Associate&nbsp;Download&nbsp;File</h6>
@@ -918,11 +854,11 @@
                         </span>
                       </div>
                       <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
-                    </div> <!-- end .tab-pane -->
-                  </div> <!-- end .tab-content -->
-                </form>
-              </div> <!-- end .content-box -->
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
+                    </div> <!-- end .col-10 -->
+                  </div> <!-- end .row -->
+                </div> <!-- end .content-box -->
+              </form>
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
