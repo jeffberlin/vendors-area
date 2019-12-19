@@ -539,7 +539,7 @@
                 <form name="productform" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
                   <input type="hidden" name="ACTION" value="11" />
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products_edit.html" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/productsstart.html" />
                   <input type="hidden" name="VENDORID" value="##VENDORID##" />
                   <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="primaryInfo" role="tabpanel" aria-labelledby="primaryInfo-tab">
@@ -570,8 +570,9 @@
                         <label>Keywords:&nbsp;</label>
                         <input id="KEYWORDS" name="KEYWORDS" size="30"  value="##KEYWORDS##" title=" Provide any keywords for your product (Limit 50 characters)" placeholder="Limit 50 characters" style="margin-bottom: 1.2rem;"/>
                       </span>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" >Save</button>
+                      <br>
+                      <!-- <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p> -->
+                      <button id="toPriceInfo" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="priceInfo" role="tabpanel" aria-labelledby="priceInfo-tab">
                       <h5>Price&nbsp;Info</h5>
@@ -602,8 +603,9 @@
                         <label style="margin-bottom: 1.2rem;">Amount&nbsp;to&nbsp;Vendor:&nbsp;</label>
                         <span style="color: #000000;">##VENDORAMOUNT##</span>
                       </span>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" >Save</button>
+                      <br>
+                      <button id="backToPrimary" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="toPricing" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="pricing" role="tabpanel" aria-labelledby="pricing-tab">
                       <script language="javascript" type="text/javascript">
@@ -625,8 +627,9 @@
                         <input type="hidden" name="PRICEINCLUDESGST" value="##PRICEINCLUDESGST##" /><input type="checkbox" name="PRICEINCLUDESGST_CHK" value="-1" style="margin-bottom: .5rem;" />&nbsp;The price includes GST
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: 1.2rem;">Check the respective checkbox to indicate that the price includes European Union VAT and/or Australian GST. When checked, the customer will pay the prices listed above and any tax due is deducted from the sales royalty. When not checked, the customer will see tax added to the price specified above if applicable.</p>
                       </span>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" >Save</button>
+                      <br>
+                      <button id="backToPriceInfo" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="toProductCategory" class="save-btn" type="button">Next</button>
                     </div>
                     <div class="tab-pane fade" id="productCategory" role="tabpanel" aria-labelledby="productCategory-tab">
                       <h5>Product&nbsp;Category</h5>
@@ -635,8 +638,9 @@
                         <label>Category:&nbsp;</label>
                         <select name="CATEGORY" style="margin-bottom: 1.2rem;"></select>
                       </span>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" >Save</button>
+                      <br>
+                      <button id="backToPricing" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="toProductPlatform" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="productPlatform" role="tabpanel" aria-labelledby="productPlatform-tab">
                       <h5>Product&nbsp;Platform</h5>
@@ -676,8 +680,9 @@
                           <option value="Mac &amp; Symbian">Mac &amp; Symbian</option>
                         </select>
                       </span>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" >Save</button>
+                      <br>
+                      <button id="backToProductCategory" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="toProductFormat" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="productFormat" role="tabpanel" aria-labelledby="productFormat-tab">
                       <h5>Product&nbsp;Format&nbsp;List</h5>
@@ -688,8 +693,9 @@
                         <p style="font-size: .9rem; font-style: italic; color: red; margin-bottom: .5rem">If product purchase does not require a format/size/type/color choice, please leave this field blank.</p>
                         <p style="font-size: .9rem; font-style: italic;">Listing formats here will add a selection box in the shopping cart that lets the customer choose format when purchasing. Use the Format List when the customer needs to pick a format, size, type, color, etc. For example, if you're selling a T-shirt, you may want to specify "S,M,L,XL" here. If you sell a program for several platforms and want to do it all under the same product setup, you can specify "Windows,Linux,Mac" for example. If doing it this way, you can associate an index file (.idx) as download file in order to deliver different download files depening on format purchased.</p>
                       </span>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" >Save</button>
+                      <br>
+                      <button id="backToProductPlatform" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="toCartOptions" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="options" role="tabpanel" aria-labelledby="options-tab">
                       <h5>Shopping&nbsp;Cart&nbsp;Options</h5>
@@ -739,8 +745,9 @@
                         <input type="checkbox" name="NEEDSORDERPARAMETERS_CHK" value="-1" />&nbsp;Order Parameters must not be blank
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: 0;">Enabling this option will prevent the customer from completing an order if the ORDERPARAMETERS value is missing in the shopping cart.</p>
                       </span>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" >Save</button>
+                      <br>
+                      <button id="backToProductFormat" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="toSecondaryInfo" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="secondary" role="tabpanel" aria-labelledby="secondary-tab">
                       <h5>Secondary&nbsp;Info</h5>
@@ -917,8 +924,9 @@
                           <input type="checkbox" name="RECURAFFILIATE_CHK" value="-1" style="margin-bottom: 1rem;"/>&nbsp;Credit affiliate when rebilling
                         </span>
                       </div>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p>
-                      <button class="save-btn update" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
+                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes, or 'Previous' to go back.</p>
+                      <button id="backToCartOptions" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
                     </div> <!-- end .tab-pane -->
                   </div> <!-- end .tab-content -->
                 </form>
@@ -953,6 +961,92 @@
       /* Anything that gets to the document will hide the dropdown */
       $(window).click(function(){
         $(".dropright").removeClass('show');
+      });
+
+      // Handles the 'Next'/'Previous' buttons for tabs
+      // 'Next' to Price Info
+      $("#toPriceInfo").click(function(){
+        $("#priceInfo-tab").tab('show');
+        $("#priceInfo-tab").addClass('active');
+        $("#primaryInfo-tab").removeClass('active');
+      });
+      // 'Previous' to Primary Info
+      $("#backToPrimary").click(function(){
+        $("#primaryInfo-tab").tab('show');
+        $("#primaryInfo-tab").addClass('active');
+        $("#priceInfo-tab").removeClass('active');
+      });
+      // 'Next' to Pricing
+      $("#toPricing").click(function(){
+        $("#pricing-tab").tab('show');
+        $("#pricing-tab").addClass('active');
+        $("#priceInfo-tab").removeClass('active');
+      });
+      // 'Previous' to Price Info
+      $("#backToPriceInfo").click(function(){
+        $("#priceInfo-tab").tab('show');
+        $("#priceInfo-tab").addClass('active');
+        $("#pricing-tab").removeClass('active');
+      });
+      // 'Next' to Product Category
+      $("#toProductCategory").click(function(){
+        $("#productCategory-tab").tab('show');
+        $("#productCategory-tab").addClass('active');
+        $("#pricing-tab").removeClass('active');
+      });
+      // 'Previous' to Pricing
+      $("#backToPricing").click(function(){
+        $("#pricing-tab").tab('show');
+        $("#pricing-tab").addClass('active');
+        $("#productCategory-tab").removeClass('active');
+      });
+      // 'Next' to Product Platform
+      $("#toProductPlatform").click(function(){
+        $("#productPlatform-tab").tab('show');
+        $("#productPlatform-tab").addClass('active');
+        $("#productCategory-tab").removeClass('active');
+      });
+      // 'Previous' to Product Category
+      $("#backToProductCategory").click(function(){
+        $("#productCategory-tab").tab('show');
+        $("#productCategory-tab").addClass('active');
+        $("#productPlatform-tab").removeClass('active');
+      });
+      // 'Next' to Product Format
+      $("#toProductFormat").click(function(){
+        $("#productFormat-tab").tab('show');
+        $("#productFormat-tab").addClass('active');
+        $("#productPlatform-tab").removeClass('active');
+      });
+      // 'Previous' to Product Platform
+      $("#backToProductPlatform").click(function(){
+        $("#productPlatform-tab").tab('show');
+        $("#productPlatform-tab").addClass('active');
+        $("#productFormat-tab").removeClass('active');
+      });
+      // 'Next' to Shopping Cart Options
+      $("#toCartOptions").click(function(){
+        $("#options-tab").tab('show');
+        $("#options-tab").addClass('active');
+        $("#productFormat-tab").removeClass('active');
+      });
+      // 'Previous' to Product Format
+      $("#backToProductFormat").click(function(){
+        $("#productFormat-tab").tab('show');
+        $("#productFormat-tab").addClass('active');
+        $("#options-tab").removeClass('active');
+      });
+      // 'Next' to Secondary Info
+      $("#toSecondaryInfo").click(function(){
+        $("#secondary-tab").tab('show');
+        $("#secondary-tab").addClass('active');
+        $("#options-tab").removeClass('active');
+      });
+      // 'Previous' to Shopping Cart Options
+      $("#backToCartOptions").click(function(){
+        $("#options-tab").tab('show');
+        $("#options-tab").addClass('active');
+        $("#secondary-tab").removeClass('active');
       });
     </script>
   </body>

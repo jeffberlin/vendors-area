@@ -206,7 +206,7 @@
         setFieldVisible ("affiliateinfo", !isBlank ("##AFFILIATEPERCENTAGE## ##VENDORPRODUCTURL## ##SECUREORDERURL## ##DEMOURL##"));
         setFieldVisible ("ordernotifications", !isBlank ("##NOTIFICATIONEMAILS## ##NOTIFICATIONURL##"));
         setFieldVisible ("subscriptionhandling", ("##RECURFREQUENCY##" != "0") || ("##TICKETCHOICE##" != "0") || ("##RECURDELAY##" != "0"));
-        enableButton    ("update");
+        enableButton    ("update1", "update2", "update3", "update4", "update5", "update6");
         if (isBlank (form.SECUREORDERURL.value)) {
           form.SECUREORDERURL.value = "Use default";
         }
@@ -580,7 +580,7 @@
                       </span>
                       <p style="margin-top: 2rem; margin-bottom: .1rem;">Click 'Save' button to add the new product.</p>
                       <p style="font-size: .9rem; font-style: italic; margin-bottom: .5rem;">Go through every tab option before clicking 'Save'.</p>
-                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
+                      <button id="update1" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="productCategory" role="tabpanel" aria-labelledby="productCategory-tab">
                       <h5>Product&nbsp;Category</h5>
@@ -591,7 +591,7 @@
                       </span>
                       <p style="margin-top: 2rem; margin-bottom: .1rem;">Click 'Save' button to add the new product.</p>
                       <p style="font-size: .9rem; font-style: italic; margin-bottom: .5rem;">Go through every tab option before clicking 'Save'.</p>
-                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
+                      <button id="update2" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="productPlatform" role="tabpanel" aria-labelledby="productPlatform-tabe">
                       <h5>Product&nbsp;Platform</h5>
@@ -633,7 +633,7 @@
                       </span>
                       <p style="margin-top: 2rem; margin-bottom: .1rem;">Click 'Save' button to add the new product.</p>
                       <p style="font-size: .9rem; font-style: italic; margin-bottom: .5rem;">Go through every tab option before clicking 'Save'.</p>
-                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
+                      <button id="update3" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="productFormat" role="tabpanel" aria-labelledby="productFormat-tab">
                       <h5>Product Format List</h5>
@@ -647,7 +647,7 @@
                       </span>
                       <p style="margin-top: 2rem; margin-bottom: .1rem;">Click 'Save' button to add the new product.</p>
                       <p style="font-size: .9rem; font-style: italic; margin-bottom: .5rem;">Go through every tab option before clicking 'Save'.</p>
-                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
+                      <button id="update4" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
                     </div> <!-- end tab-pane -->
                     <div class="tab-pane fade" id="options" role="tabpanel" aria-labelledby="options-tab">
                       <h5>Shopping&nbsp;Cart&nbsp;Options</h5>
@@ -704,7 +704,7 @@
                       </span>
                       <p style="margin-top: 2rem; margin-bottom: .1rem;">Click 'Save' button to add the new product.</p>
                       <p style="font-size: .9rem; font-style: italic; margin-bottom: .5rem;">Go through every tab option before clicking 'Save'.</p>
-                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
+                      <button id="update5" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="secondary" role="tabpanel" aria-labelledby="secondary-tab">
                       <h5>Secondary&nbsp;Info</h5>
@@ -891,7 +891,7 @@
                       </div> <!-- end .toggle-section -->
                       <p style="margin-top: 2rem; margin-bottom: .1rem;">Click 'Save' button to add the new product.</p>
                       <p style="font-size: .9rem; font-style: italic; margin-bottom: .5rem;">Go through every tab option before clicking 'Save'.</p>
-                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
+                      <button id="update6" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
                     </div> <!-- end .tab-pane -->
                   </div> <!-- end tab-content -->
                 </form>
