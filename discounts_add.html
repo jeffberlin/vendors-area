@@ -445,7 +445,7 @@
                     <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="products-tab">
                       <h5>Discounted&nbsp;Products</h5>
                       <p>Select products eligible for discount under this discount scheme. Selected products are listed in the bottom text area.</p>
-                      <select id="PRODUCTLIST" name="PRODUCTLIST" multiple="multiple" ondblclick="addProduct (discform);return (false);" style="width: 85%;" >
+                      <select id="PRODUCTLIST" name="PRODUCTLIST" multiple="multiple" ondblclick="addProduct (discform);return (false);" style="min-width: 500px;">
                          ##PRODUCTLIST##
                       </select>
                       <br>
@@ -455,7 +455,7 @@
                         <button style="margin-right: 5px;" type="button" name="addall" value="Add&nbsp;&gt;&gt;" onclick="addAllProducts (discform);">Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i></button>
                         <button type="button" name="removeall" value="&lt;&lt;&nbsp;Remove" onclick="removeAllProducts (discform);"><i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All</button>
                       </div>
-                      <select id="SELECTEDLIST" name="SELECTEDLIST" multiple="multiple" ondblclick="removeProduct (discform);return (false);" style="width: 85%;" >
+                      <select id="SELECTEDLIST" name="SELECTEDLIST" multiple="multiple" ondblclick="removeProduct (discform);return (false);" style="min-width: 500px;">
                          ##SELECTEDPRODUCTS##
                       </select>
                       <input type="hidden" name="SELECTEDPRODUCTS" value="" />
