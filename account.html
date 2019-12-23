@@ -16,13 +16,11 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addPages.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/tabOptions.css">
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <style media="screen" type="text/css">
-      .shrinkText {
-        font-size: .9rem;
-      }
       xmp {
         margin-top: 0;
         margin-bottom: 1rem;
@@ -308,55 +306,75 @@
               </aside>
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
-              <form name="account" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
-                <input type="hidden" name="ACTION" value="11" />
-                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/account.html" />
-                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-                <div class="content-box">
-                  <h5>Account&nbsp;Information</h5>
-                  <p>Information provided will be displayed to BMTMicro only.</p>
-                  <div class="row shrinkText" style="margin-bottom: 2.5rem;">
-                    <div class="col-4" style="padding-right: 0;">
-                      <span>
-                        <input type="hidden" name="VENDORID" value="##VENDORID##" />
-                        <p style="margin-bottom: .2rem;">My vendor ID ##VENDORID##</p>
-                        <p style="margin-bottom: .2rem;"><strong>##COMPANY##</strong></p>
-                        <p style="margin-bottom: .2rem;">##NAME##</p>
-                        <p style="margin-bottom: .2rem;">##ADDRESS1##</p>
-                        <p style="margin-bottom: .2rem;">##ADDRESS2##</p>
-                        <p style="margin-bottom: .2rem;">##CITY##, ##STATE## ##ZIP##</p>
-                        <p>##COUNTRYNAME##</p>
-                        <p><a href="mailto:vendors@bmtmicro.com">Email changes to BMT Micro</a></p>
-                      </span>
-                    </div>
-                    <div class="col-4" style="padding: 0;">
-                      <span>
-                        <label>Primary&nbsp;Email:&nbsp;</label>
-                        <input id="EMAIL" name="EMAIL" value="##EMAIL##" maxlength="50" size="30" style="margin-bottom: 1rem;" />
-                      </span>
-                      <br clear="all">
-                      <span>
-                        <label>Secondary&nbsp;Email:&nbsp;</label>
-                        <input id="EMAIL2" name="EMAIL2" value="##EMAIL2##" maxlength="50" size="30" style="margin-bottom: 1rem;" />
-                      </span>
-                      <br clear="all">
-                      <span>
-                        <label>Order&nbsp;Notification&nbsp;Email:&nbsp;</label>
-                        <input id="NOTIFICATIONEMAILS" name="NOTIFICATIONEMAILS" value="##NOTIFICATIONEMAILS##" maxlength="200" size="30" style="margin-bottom: 1rem;" />
-                      </span>
-                      <br clear="all">
-                      <span>
-                        <label>File&nbsp;sharing&nbsp;password:&nbsp;</label>
-                        <input id="FILESHAREPASSWORD" name="FILESHAREPASSWORD" value="##FILESHAREPASSWORD##" maxlength="16" size="30" style="margin-bottom: 1rem;" />
-                      </span>
-                      <div class="controlbuttons">
-                        <button type="button" class="grey-btn" onclick="submitForm (form);">Save</button>
-                        <button type="reset" class="grey-btn">Reset</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-6" style="padding: 0;">
+              <h4>Account</h4>
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="account-tab" data-toggle="tab" href="#accountTab" role="tab" aria-controls="account information" aria-selected="true">
+                    Account Information
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="payment-tab" data-toggle="tab" href="#paymentTab" role="tab" aria-controls="payment method" aria-selected="true">
+                    Payment Method
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="public-tab" data-toggle="tab" href="#publicTab" role="tab" aria-controls="public information" aria-selected="true">
+                    Public Information
+                  </a>
+                </li>
+              </ul>
+              <div class="content-box">
+                <form name="account" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
+                  <input type="hidden" name="ACTION" value="11" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/account.html" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="accountTab" role="tabpanel" aria-labelledby="account-tab">
+                      <h5>Account&nbsp;Information</h5>
+                      <p>Information provided will be displayed to BMTMicro only.</p>
+                      <div class="row shrinkText">
+                        <div class="col-4" style="padding-right: 0; font-size: .9rem;">
+                          <span>
+                            <input type="hidden" name="VENDORID" value="##VENDORID##" />
+                            <p style="margin-bottom: .2rem;">My vendor ID ##VENDORID##</p>
+                            <p style="margin-bottom: .2rem;"><strong>##COMPANY##</strong></p>
+                            <p style="margin-bottom: .2rem;">##NAME##</p>
+                            <p style="margin-bottom: .2rem;">##ADDRESS1##</p>
+                            <p style="margin-bottom: .2rem;">##ADDRESS2##</p>
+                            <p style="margin-bottom: .2rem;">##CITY##, ##STATE## ##ZIP##</p>
+                            <p>##COUNTRYNAME##</p>
+                            <p><a href="mailto:vendors@bmtmicro.com">Email changes to BMT Micro</a></p>
+                          </span>
+                        </div>
+                        <div class="col-4" style="padding: 0;">
+                          <span>
+                            <label>Primary&nbsp;Email:&nbsp;</label>
+                            <input id="EMAIL" name="EMAIL" value="##EMAIL##" maxlength="50" size="30" style="margin-bottom: 1rem;" />
+                          </span>
+                          <br clear="all">
+                          <span>
+                            <label>Secondary&nbsp;Email:&nbsp;</label>
+                            <input id="EMAIL2" name="EMAIL2" value="##EMAIL2##" maxlength="50" size="30" style="margin-bottom: 1rem;" />
+                          </span>
+                          <br clear="all">
+                          <span>
+                            <label>Order&nbsp;Notification&nbsp;Email:&nbsp;</label>
+                            <input id="NOTIFICATIONEMAILS" name="NOTIFICATIONEMAILS" value="##NOTIFICATIONEMAILS##" maxlength="200" size="30" style="margin-bottom: 1rem;" />
+                          </span>
+                          <br clear="all">
+                          <span>
+                            <label>File&nbsp;sharing&nbsp;password:&nbsp;</label>
+                            <input id="FILESHAREPASSWORD" name="FILESHAREPASSWORD" value="##FILESHAREPASSWORD##" maxlength="16" size="30" style="margin-bottom: 1rem;" />
+                          </span>
+                          <div class="controlbuttons">
+                            <button type="button" class="grey-btn" onclick="submitForm (form);">Save</button>
+                            <button type="reset" class="grey-btn">Reset</button>
+                          </div>
+                        </div>
+                      </div> <!-- end .row -->
+                    </div> <!-- end .tab-pane -->
+                    <div class="tab-pane fade" id="paymentTab" role="tabpanel" aria-labelledby="payment-tab">
                       <h5>Payment&nbsp;Method</h5>
                       <p>Chose the payment threshold and frequency you wish to use.</p>
                       ##IMPORTC(MULTICURRENCY,0,"https://vendors-new.bmtmicro.com/account_payout_single.html","https://vendors-new.bmtmicro.com/account_payout_multi.html")##
@@ -373,8 +391,8 @@
                         <p style="margin-bottom: .3rem;">Charges appear on customers credit card as:</p>
                         <XMP style="padding-left: 15px;">##FULLBILLINGDESCRIPTOR##</XMP>
                       </span>
-                    </div> <!-- end .col-6 -->
-                    <div class="col-6" style="padding: 0;">
+                    </div> <!-- end .tab-pane -->
+                    <div class="tab-pane fade" id="publicTab" role="tabpanel" aria-labelledby="public-tab">
                       <h5>Public&nbsp;Information</h5>
                       <p>Information provided will be displayed to customers.</p>
                       <span>
@@ -407,11 +425,11 @@
                       </div>
                       <p class="shrinkText"<em>For security reasons the payment information cannot be changed on-line. Please send any updates regarding company name, contact name, payment address, payment frequency, payment currency and charge description to <a href="mailto:vendors@bmtmicro.com">vendors@bmtmicro.com</a>.</em></p>
                       <p class="shrinkText"><em>Order related settings can be managed under the Settings link in the dropdown menu associated with your name on the left.</em></p>
-                    </div> <!-- end .col-6 -->
-                  </div>
+                    </div> <!-- end .tab-pane -->
+                  </div> <!-- end .tab-content -->
                 </div> <!-- end .content-box -->
               </form>
-            </div> <!-- end .col-lg-10 col-md-12 page-title -->
+            </ul> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
