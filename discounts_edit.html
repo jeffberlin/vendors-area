@@ -16,16 +16,12 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addPages.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/tabOptions.css">
     <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
-    <style media="screen" type="text/css">
-      #PRODUCTLIST, #SELECTEDLIST {
-        margin-bottom: 1rem;
-      }
-    </style>
     <script language="javascript" type="text/javascript">
       <!--
       function setFieldVisible (field, visible) {
@@ -243,36 +239,79 @@
               </aside>
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
-              <form method="post" name="discform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes">
-                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/discountsstart.html" />
-                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-                <input type="hidden" name="SCHEMEID" value="##SCHEMEID##" />
-                <input type="hidden" name="ACTION" value="11" />
-                <input type="hidden" name="SCHEMETYPE" value="##SCHEMETYPE##" />
-                <h4>Edit&nbsp;Discount</h4>
-                <div class="content-box">
-                  <h5>Discount&nbsp;Settings</h5>
-                  <p>Discount scheme name will not be seen by your customers.</p>
-                  <span>
-                    <label>Name:&nbsp;</label>
-                    <input id="NAME" name="NAME" maxlength="80" value="##NAME##" type="text" style="width: 275px; margin-bottom: 1.2rem;">
-                    <input type="hidden" name="ACTIVE" value="##ACTIVE##" />&nbsp;
-                    <input name="ACTIVE_CHK" value="-1" type="checkbox">&nbsp;Active
-                  </span>
-                  <div class="row">
-                    <div class="col-6" style="padding-left: 0; margin-bottom: 1.2rem;">
+              <h4>Edit&nbsp;Discount</h4>
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="name-tab" data-toggle="tab" href="#nameTab" role="tab" aria-controls="name" aria-selected="true">
+                    Name
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="type-tab" data-toggle="tab" href="#type" role="tab" aria-controls="discount type" aria-selected="true">
+                    Discount Type
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="amount-tab" data-toggle="tab" href="#amountTab" role="tab" aria-controls="amount" aria-selected="true">
+                    Amount
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="expiration-tab" data-toggle="tab" href="#expirationSettings" role="tab" aria-controls="expiration settings" aria-selected="true">
+                    Expiration
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="quantity-tab" data-toggle="tab" href="#quantity" role="tab" aria-controls="quantity" aria-selected="true">
+                    Quantity
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="products-tab" data-toggle="tab" href="#products" role="tab" aria-controls="discounted products" aria-selected="true">
+                    Products
+                  </a>
+                </li>
+              </ul>
+              <div class="content-box">
+                <form method="post" name="discform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes">
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/discountsstart.html" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+                  <input type="hidden" name="SCHEMEID" value="##SCHEMEID##" />
+                  <input type="hidden" name="ACTION" value="11" />
+                  <input type="hidden" name="SCHEMETYPE" value="##SCHEMETYPE##" />
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="nameTab" role="tabpanel" aria-labelledby="name-tab">
+                      <h5>Discount&nbsp;Settings</h5>
+                      <p>Discount scheme name will not be seen by your customers.</p>
+                      <span>
+                        <label>Name:&nbsp;</label>
+                        <input id="NAME" name="NAME" maxlength="80" value="##NAME##" type="text" style="width: 275px; margin-bottom: 2rem;">
+                        <input type="hidden" name="ACTIVE" value="##ACTIVE##" />&nbsp;
+                        <input name="ACTIVE_CHK" value="-1" type="checkbox">&nbsp;Active
+                      </span>
+                      <br>
+                      <button id="toDiscountType" class="save-btn" type="button">Next</button>
+                    </div> <!-- end .tab-pane -->
+                    <div class="tab-pane fade" id="type" role="tabpanel" aria-labelledby="type-tab">
                       <h5>Discount Type</h5>
                       <p>Discount Type cannot be changed. If this information is incorrect,<br>please set up a new discount scheme.</p>
-                      <input type="hidden" name="SCHEMETYPE" value="##SCHEMETYPE##" />
-                      ##SELECT(SCHEMETYPE,0,"Codes used for granting discount",1,"Automatically applied discount",2,"Recurring billing discount only")##
+                      <span>
+                        <input type="hidden" name="SCHEMETYPE" value="##SCHEMETYPE##" />
+                        ##SELECT(SCHEMETYPE,0,"Codes used for granting discount",1,"Automatically applied discount",2,"Recurring billing discount only")##
+                        <br>
+                        Number of purchases limited to: ##MAXUSECOUNT##
+                        <input name="MAXUSECOUNT" type="hidden" value="##MAXUSECOUNT##" />
+                      </span>
                       <br>
-                      Number of purchases limited to: ##MAXUSECOUNT##
-                     <input name="MAXUSECOUNT" type="hidden" value="##MAXUSECOUNT##" />
-                     <br>
-                     <input type="hidden" name="STOPORDER" value="##STOPORDER##" />
-                     <input type="checkbox" name="STOPORDER_CHK" value="-1">&nbsp;Stop order if code cannot be used
-                    </div> <!-- end .col-6 -->
-                    <div class="col-6" style="margin-bottom: 1.2rem;">
+                      <span>
+                        <input type="hidden" name="STOPORDER" value="##STOPORDER##" />
+                        <input type="checkbox" name="STOPORDER_CHK" value="-1" style="margin-bottom: 2rem;">&nbsp;Stop order if code cannot be used
+                      </span>
+                      <br>
+                      <button id="backToNameTab" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="toAmount" class="save-btn" type="button">Next</button>
+                    </div> <!-- end .tab-pane -->
+                    <div class="tab-pane fade" id="amountTab" role="tabpanel" aria-labelledby="amount-tab">
                       <h5>Amount</h5>
                       <p>Edit amount or percentage below.</p>
                       <span>
@@ -320,10 +359,13 @@
                       <br>
                       <span>
                         <input type="hidden" name="FREESHIPPING" value="##FREESHIPPING##" />
-                        <input type="checkbox" name="FREESHIPPING_CHK" value="-1">&nbsp;Free shipping
+                        <input type="checkbox" name="FREESHIPPING_CHK" value="-1" style="margin-bottom: 2rem;">&nbsp;Free shipping
                       </span>
-                    </div> <!-- end .col-6 -->
-                    <div class="col-6" style="padding-left: 0; margin-bottom: 1.2rem;">
+                      <br>
+                      <button id="backToType" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="toExpiration" class="save-btn" type="button">Next</button>
+                    </div> <!-- end .tab-pane -->
+                    <div class="tab-pane fade" id="expirationSettings" role="tabpanel" aria-labelledby="expiration-tab">
                       <h5>Expiration&nbsp;Settings</h5>
                       <p>Set date range for scheme to apply, or leave blank for no automatic expiration.</p>
                       <span>
@@ -334,22 +376,25 @@
                       <br>
                       <span>
                         <label>Date End:&nbsp;</label>
-                        <input id="DATETO" name="DATETO" value="##DATETO##" type="text">
+                        <input id="DATETO" name="DATETO" value="##DATETO##" type="text" style="margin-bottom: 2rem;">
                         <img src="https://vendors.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
                       </span>
                       <div id="expirationdays" style="display:none;">
                         <span>
-                          Discount ends <input name="EXPIRATIONDAYS" size="3" value="##EXPIRATIONDAYS##" maxlength="3" /> days from date of issue
+                          Discount ends <input name="EXPIRATIONDAYS" size="3" value="##EXPIRATIONDAYS##" maxlength="3" style="margin-bottom: .2rem;" /> days from date of issue
                         </span>
                         <br clear="all">
                         <span>
-                          <em>
+                          <p style="font-size: .9rem; font-style: italic;">
                             The date of issue is the date when the code was manually generated, or the originating order date in case of automatically issued codes or recurring billing.
-                          </em>
+                          </p>
                         </span>
-                      </div>
-                    </div> <!-- end .col-6 -->
-                    <div class="col-6" style="padding-left: 0; margin-bottom: 1.2rem;">
+                      </div> <!-- end .expirationdays -->
+                      <br>
+                      <button id="backToAmount" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="toQuantity" class="save-btn" type="button">Next</button>
+                    </div> <!-- end .tab-pane -->
+                    <div class="tab-pane fade" id="quantity" role="tabpanel" aria-labelledby="quantity-tab">
                       <h5>Quantity</h5>
                       <p>Set minimum quantity required before discount applied. If none, leave blank.</p>
                       <span>
@@ -364,13 +409,16 @@
                       <p style="font-size: .9rem; font-style: italic;">Discount amounts are applied to <strong>each item</strong>, not the order total. Checking the box below will limit the discount to one item in the order only. However, note that this setting has no effect on the Free shipping option. When Free shipping is enabled, all items will get free shipping regardless of this setting.</p>
                       <span>
                         <input type="hidden" name="FIRSTONLY" value="##FIRSTONLY##" />
-                        <input type="checkbox" name="FIRSTONLY_CHK" value="-1" checked>&nbsp;Discount allowed on one item only
+                        <input type="checkbox" name="FIRSTONLY_CHK" value="-1" checked style="margin-bottom: 2rem;">&nbsp;Discount allowed on one item only
                       </span>
-                    </div> <!-- end .col-6 -->
-                    <div class="col-6" style="padding-left: 0;">
+                      <br>
+                      <button id="backToExpiration" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="toProducts" class="save-btn" type="button">Next</button>
+                    </div> <!-- end .tab-pane -->
+                    <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="products-tab">
                       <h5>Discounted Products</h5>
                       <p>Select products eligible for discount under this discount scheme. Selected products are listed in the bottom text area.</p>
-                      <select id="PRODUCTLIST" name="PRODUCTLIST" multiple="multiple" ondblclick="addProduct (discform);return (false);" style="width: 85%;" >
+                      <select id="PRODUCTLIST" name="PRODUCTLIST" multiple="multiple" ondblclick="addProduct (discform);return (false);" style="min-width: 500px; margin-bottom: 1rem;" >
                          ##PRODUCTLIST##
                       </select>
                       <div class="move">
@@ -387,17 +435,17 @@
                           <i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All
                         </button>
                       </div> <!-- end .move -->
-                      <select id="SELECTEDLIST" name="SELECTEDLIST" multiple="multiple" ondblclick="removeProduct (discform);return (false);" style="width: 85%;" >
+                      <select id="SELECTEDLIST" name="SELECTEDLIST" multiple="multiple" ondblclick="removeProduct (discform);return (false);" style="min-width: 500px; margin-bottom: 2rem;" >
                          ##SELECTEDPRODUCTS##
                       </select>
                       <input type="hidden" name="SELECTEDPRODUCTS" value="" />
-                      <div class="controlbuttons">
-                        <button class="save-btn" type="button" onclick="return (submitForm (discform));">Save</button>
-                      </div>
-                    </div> <!-- end .col-6 -->
-                  </div> <!-- end .row -->
-                </div> <!-- end .content-box -->
-              </form>
+                      <br>
+                      <button id="backToQuantity" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button class="save-btn" type="button" onclick="return (submitForm (discform));">Save</button>
+                    </div> <!-- end .tab-pane -->
+                  </div> <!-- end .tab-content -->
+                </form>
+              </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
@@ -428,6 +476,67 @@
       /* Anything that gets to the document will hide the dropdown */
       $(window).click(function(){
         $(".dropright").removeClass('show');
+      });
+      // Handles the 'Next'/'Previous' buttons for tabs
+      // 'Next' to Discount Type
+      $("#toDiscountType").click(function(){
+        $("#type-tab").tab('show');
+        $("#type-tab").addClass('active');
+        $("#name-tab").removeClass('active');
+      });
+      // 'Previous' to Name
+      $("#backToNameTab").click(function(){
+        $("#name-tab").tab('show');
+        $("#name-tab").addClass('active');
+        $("#type-tab").removeClass('active');
+      });
+      // 'Next' to Amount
+      $("#toAmount").click(function(){
+        $("#amount-tab").tab('show');
+        $("#amount-tab").addClass('active');
+        $("#type-tab").removeClass('active');
+      });
+      // 'Previous' to Discount Type
+      $("#backToType").click(function(){
+        $("#type-tab").tab('show');
+        $("#type-tab").addClass('active');
+        $("#amount-tab").removeClass('active');
+      });
+      // 'Next' to Expiration Settings
+      $("#toExpiration").click(function(){
+        $("#expiration-tab").tab('show');
+        $("#expiration-tab").addClass('active');
+        $("#amount-tab").removeClass('active');
+      });
+      // 'Previous' to Amount
+      $("#backToAmount").click(function(){
+        $("#amount-tab").tab('show');
+        $("#amount-tab").addClass('active');
+        $("#expiration-tab").removeClass('active');
+      });
+      // 'Next' to Quantity
+      $("#toQuantity").click(function(){
+        $("#quantity-tab").tab('show');
+        $("#quantity-tab").addClass('active');
+        $("#expiration-tab").removeClass('active');
+      });
+      // 'Previous' to Expiration Settings
+      $("#backToExpiration").click(function(){
+        $("#expiration-tab").tab('show');
+        $("#expiration-tab").addClass('active');
+        $("#quantity-tab").removeClass('active');
+      });
+      // 'Next' to Discounted Products
+      $("#toProducts").click(function(){
+        $("#products-tab").tab('show');
+        $("#products-tab").addClass('active');
+        $("#quantity-tab").removeClass('active');
+      });
+      // 'Previous' to Expiration Settings
+      $("#backToQuantity").click(function(){
+        $("#quantity-tab").tab('show');
+        $("#quantity-tab").addClass('active');
+        $("#products-tab").removeClass('active');
       });
     </script>
   </body>
