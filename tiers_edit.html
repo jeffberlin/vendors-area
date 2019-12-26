@@ -16,16 +16,12 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addPages.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/tabOptions.css">
     <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
-    <style media="screen" type="text/css">
-      #PRODUCTLIST, #SELECTEDLIST {
-        margin-bottom: 1rem;
-      }
-    </style>
     <script language="javascript" type="text/javascript">
       <!--
       function addQualifyingProduct (form) {
@@ -239,157 +235,208 @@
               </aside>
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
-              <form method="post" name="tierform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.TieredPricing">
-                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/tiersstart.html" />
-                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-                <input type="hidden" name="TIERID" value="##TIERID##" />
-                <input type="hidden" name="ACTION" value="11" />
-                <h4>Tiers Settings</h4>
-                <p>Enter primary tier settings in fields below.</p>
-                <div class="content-box">
-                  <span>
-                    <label>Name:&nbsp;</label>
-                    <input type="text" id="NAME" name="NAME" maxlength="80" value="##NAME##" style="width: 275px; margin-bottom: 1.2rem;" />&nbsp;
-                    <input type="hidden" name="ACTIVE" value="##ACTIVE##" />
-                    <input name="ACTIVE_CHK" value="-1" type="checkbox">&nbsp;Active&nbsp;
-                    <input type="hidden" name="SHOWINCART" value="##SHOWINCART##" />
-                    <input type="checkbox" name="SHOWINCART_CHK" value="-1" />&nbsp;Show in Cart
-                  </span>
-                  <br>
-                  <h5>Amount</h5>
-                  <p>Set amount or percentage off of full or discounted price.</p>
-                  <span>
-                    <label>Amount:&nbsp;</label>
-                    <input id="AMOUNT" name="AMOUNT" type="text" value="##AMOUNT##" style="margin-right: 1rem;" />
-                  </span>
-                  <span>
-                    <label>Method:&nbsp;</label>
-                    <select name="DISCOUNTTYPE" style="margin-bottom: 1rem;">
-                      <option value="0">Percent Off</option>
-                      <option value="1">Amount Off</option>
-                      <option value="2">Set New Price</option>
-                      <option value="3">Percent Off Full Price</option>
-                      <option value="4">Amount Off Full Price</option>
-                    </select>
-                  </span>
-                  <br>
-                  <span>
-                    <label>Currency:&nbsp;</label>
-                    <select name="CURRENCY" style="margin-right: 1rem;">
-                      <option value="" selected>All Currencies</option>
-                      <option value="USD">USD</option>
-                      <option value="EUR">EUR</option>
-                      <option value="GBP">GBP</option>
-                      <option value="CAD">CAD</option>
-                      <option value="AUD">AUD</option>
-                    </select>
-                  </span>
-                  <span>
-                    <label>Rounding:&nbsp;</label>
-                    <select name="ROUNDING" style="margin-bottom: 1.2rem;">
-                      <option value="-1.00">Round discount to nearest 1.00</option>
-                      <option value="-0.50">Round discount to nearest 0.50</option>
-                      <option value="-0.25">Round discount to nearest 0.25</option>
-                      <option value="-0.10">Round discount to nearest 0.10</option>
-                      <option value="-0.05">Round discount to nearest 0.05</option>
-                      <option value="0.00" selected="selected">No Rounding</option>
-                      <option value="0.05">Round price to nearest 0.05</option>
-                      <option value="0.10">Round price to nearest 0.10</option>
-                      <option value="0.25">Round price to nearest 0.25</option>
-                      <option value="0.50">Round price to nearest 0.50</option>
-                      <option value="1.00">Round price to nearest 1.00</option>
-                    </select>
-                  </span>
-                  <h5>Quantity</h5>
-                  <p>To apply to all but 1 enter -1 in the discounted quantity field.</p>
-                  <span>
-                    <label>Minimum purchase:&nbsp;</label>
-                    <input type="text" id="QUALIFYINGQUANTITY" name="QUALIFYINGQUANTITY" value="##QUALIFYINGQUANTITY##" style="margin-bottom: 1rem;" />
-                    <select name="QUALIFYINGTYPE">
-                      <option value="0">Items</option>
-                      <option value="1">Amount</option>
-                      <option value="2">Unique Items</option>
-                    </select>
-                  </span>
-                  <br>
-                  <span>
-                    <label>Discounted Quantity:&nbsp;</label>
-                    <input type="text" id="DISCOUNTQUANTITY" name="DISCOUNTQUANTITY" value="##DISCOUNTQUANTITY##" style="margin-bottom: 1rem;" />
-                    <select name="APPLYTYPE">
-                      <option value="0">Items</option>
-                      <option value="2">Unique Items</option>
-                    </select>
-                  </span>
-                  <br>
-                  <span>
-                    <label>Apply&nbsp;Order:&nbsp;</label>
-                    <select name="APPLYORDER" style="margin-bottom: 1rem;">
-                      <option value="0">By Row Number</option>
-                      <option value="1" selected>By Lowest Price</option>
-                      <option value="2">By Highest Price</option>
-                    </select>
-                  </span>
-                  <br>
-                  <span>
-                    <label>Tier&nbsp;Level:&nbsp;</label>
-                    <select name="RUNLEVEL" style="margin-bottom: 1.2rem;">
-                      <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                    </select>
-                  </span>
-                  <h5>Qualifying products</h5>
-                  <p>Choose Qualifying products necessary to apply this tier.</p>
-                  <select id="PRODUCTLIST" name="QUALIFYINGPRODUCTLIST" multiple="multiple" ondblclick="addQualifyingProduct(tierform);return (false);" style="width: 45%;">
-                     ##QUALIFYINGPRODUCTLIST##
-                  </select>
-                  <div class="move">
-                    <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addQualifyingProduct(tierform);return (false);">
-                      Add&nbsp;<i class="fas fa-angle-down"></i>
-                    </button>
-                    <button style="margin-right: 5px;" name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeQualifyingProduct(tierform);return (false);">
-                      <i class="fas fa-angle-up"></i>&nbsp;Remove
-                    </button>
-                    <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addAllQualifyingProducts(tierform);return (false);">
-                      Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i>
-                    </button>
-                    <button name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeAllQualifyingProducts(tierform);return (false);">
-                      <i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All
-                    </button>
-                  </div> <!-- end .move -->
-                  <select id="SELECTEDLIST" name="QUALIFYINGSELECTEDLIST" multiple="multiple" ondblclick="removeQualifyingProduct (tierform);return (false);" style="width: 45%; margin-bottom: 1.2rem;" >
-                     ##QUALIFYINGPRODUCTS##
-                  </select>
-                  <input type="hidden" name="QUALIFYINGPRODUCTS" />
-                  <h5>Discounted Products</h5>
-                  <p>Choose Products to which discount will be applied.</p>
-                  <select id="PRODUCTLIST" name="DISCOUNTPRODUCTLIST" multiple="multiple" ondblclick="addDiscountProduct(tierform);return (false);" style="width: 45%;" >
-                     ##DISCOUNTPRODUCTLIST##
-                  </select>
-                  <div class="move">
-                    <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addDiscountProduct (tierform);return (false);">
-                      Add&nbsp;<i class="fas fa-angle-down"></i>
-                    </button>
-                    <button style="margin-right: 5px;" name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeDiscountProduct (tierform);return (false);">
-                      <i class="fas fa-angle-up"></i>&nbsp;Remove
-                    </button>
-                    <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addAllDiscountProducts (tierform);return (false);">
-                      Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i>
-                    </button>
-                    <button name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeAllDiscountProducts (tierform);return (false);">
-                      <i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All
-                    </button>
-                  </div> <!-- end .move -->
-                  <select id="SELECTEDLIST" name="DISCOUNTSELECTEDLIST" multiple="multiple" ondblclick="removeDiscountProduct (tierform);return (false);" style="width: 45%; margin-bottom: 1.2rem;">
-                     ##DISCOUNTPRODUCTS##
-                  </select>
-                  <input type="hidden" name="DISCOUNTPRODUCTS" />
-                  <div class="controlbuttons">
-                    <button type="button" onclick="submitForm (tierform);" value="Save" class="save-btn" style="margin-right: .3rem;">Save</button>
-                    <button type="reset" onclick="history.back ();" value="Reset" class="save-btn">Reset</button>
-                  </div>
+              <h4>Tiers Settings</h4>
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="primary-tab" data-toggle="tab" href="#primaryTab" role="tab" aria-controls="primary information" aria-selected="true">
+                    Primary Information
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="amount-tab" data-toggle="tab" href="#amountTab" role="tab" aria-controls="amount" aria-selected="true">
+                    Amount
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="quantity-tab" data-toggle="tab" href="#quantityTab" role="tab" aria-controls="quantity" aria-selected="true">
+                    Quantity
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="qualifying-tab" data-toggle="tab" href="#qualifyingTab" role="tab" aria-controls="qualifying products" aria-selected="true">
+                    Qualifying Products
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="discounted-tab" data-toggle="tab" href="#discountedTab" role="tab" aria-controls="discounted products" aria-selected="true">
+                    Discounted Products
+                  </a>
+                </li>
+              </ul>
+              <div class="content-box">
+                <form method="post" name="tierform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.TieredPricing">
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/tiersstart.html" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+                  <input type="hidden" name="TIERID" value="##TIERID##" />
+                  <input type="hidden" name="ACTION" value="11" />
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="primaryTab" role="tabpanel" aria-labelledby="primary-tab">
+                      <h5>Primary Information</h5>
+                      <p>Enter primary tier settings in fields below.</p>
+                      <span>
+                        <label>Name:&nbsp;</label>
+                        <input type="text" id="NAME" name="NAME" maxlength="80" value="##NAME##" style="width: 275px; margin-bottom: 2rem;" />&nbsp;
+                        <input type="hidden" name="ACTIVE" value="##ACTIVE##" />
+                        <input name="ACTIVE_CHK" value="-1" type="checkbox">&nbsp;Active&nbsp;
+                        <input type="hidden" name="SHOWINCART" value="##SHOWINCART##" />
+                        <input type="checkbox" name="SHOWINCART_CHK" value="-1" />&nbsp;Show in Cart
+                      </span>
+                      <br>
+                      <button id="toAmount" class="save-btn" type="button">Next</button>
+                    </div> <!-- end .tab-pane -->
+                    <div class="tab-pane fade" id="amountTab" role="tabpanel" aria-labelledby="amount-tab">
+                      <h5>Amount</h5>
+                      <p>Set amount or percentage off of full or discounted price.</p>
+                      <span>
+                        <label>Amount:&nbsp;</label>
+                        <input id="AMOUNT" name="AMOUNT" type="text" value="##AMOUNT##" style="margin-right: 1rem;" />
+                      </span>
+                      <span>
+                        <label>Method:&nbsp;</label>
+                        <select name="DISCOUNTTYPE" style="margin-bottom: 1rem;">
+                          <option value="0">Percent Off</option>
+                          <option value="1">Amount Off</option>
+                          <option value="2">Set New Price</option>
+                          <option value="3">Percent Off Full Price</option>
+                          <option value="4">Amount Off Full Price</option>
+                        </select>
+                      </span>
+                      <br>
+                      <span>
+                        <label>Currency:&nbsp;</label>
+                        <select name="CURRENCY" style="margin-right: 1rem;">
+                          <option value="" selected>All Currencies</option>
+                          <option value="USD">USD</option>
+                          <option value="EUR">EUR</option>
+                          <option value="GBP">GBP</option>
+                          <option value="CAD">CAD</option>
+                          <option value="AUD">AUD</option>
+                        </select>
+                      </span>
+                      <span>
+                        <label>Rounding:&nbsp;</label>
+                        <select name="ROUNDING" style="margin-bottom: 2rem;">
+                          <option value="-1.00">Round discount to nearest 1.00</option>
+                          <option value="-0.50">Round discount to nearest 0.50</option>
+                          <option value="-0.25">Round discount to nearest 0.25</option>
+                          <option value="-0.10">Round discount to nearest 0.10</option>
+                          <option value="-0.05">Round discount to nearest 0.05</option>
+                          <option value="0.00" selected="selected">No Rounding</option>
+                          <option value="0.05">Round price to nearest 0.05</option>
+                          <option value="0.10">Round price to nearest 0.10</option>
+                          <option value="0.25">Round price to nearest 0.25</option>
+                          <option value="0.50">Round price to nearest 0.50</option>
+                          <option value="1.00">Round price to nearest 1.00</option>
+                        </select>
+                      </span>
+                      <br>
+                      <button id="backToPrimary" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="toQuantity" class="save-btn" type="button">Next</button>
+                    </div> <!-- end .tab-pane -->
+                    <div class="tab-pane fade" id="quantityTab" role="tabpanel" aria-labelledby="quantity-tab">
+                      <h5>Quantity</h5>
+                      <p>To apply to all but 1 enter -1 in the discounted quantity field.</p>
+                      <span>
+                        <label>Minimum purchase:&nbsp;</label>
+                        <input type="text" id="QUALIFYINGQUANTITY" name="QUALIFYINGQUANTITY" value="##QUALIFYINGQUANTITY##" style="margin-bottom: 1rem;" />
+                        <select name="QUALIFYINGTYPE">
+                          <option value="0">Items</option>
+                          <option value="1">Amount</option>
+                          <option value="2">Unique Items</option>
+                        </select>
+                      </span>
+                      <br>
+                      <span>
+                        <label>Discounted Quantity:&nbsp;</label>
+                        <input type="text" id="DISCOUNTQUANTITY" name="DISCOUNTQUANTITY" value="##DISCOUNTQUANTITY##" style="margin-bottom: 1rem;" />
+                        <select name="APPLYTYPE">
+                          <option value="0">Items</option>
+                          <option value="2">Unique Items</option>
+                        </select>
+                      </span>
+                      <br>
+                      <span>
+                        <label>Apply&nbsp;Order:&nbsp;</label>
+                        <select name="APPLYORDER" style="margin-bottom: 1rem;">
+                          <option value="0">By Row Number</option>
+                          <option value="1" selected>By Lowest Price</option>
+                          <option value="2">By Highest Price</option>
+                        </select>
+                      </span>
+                      <br>
+                      <span>
+                        <label>Tier&nbsp;Level:&nbsp;</label>
+                        <select name="RUNLEVEL" style="margin-bottom: 2rem;">
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                        </select>
+                      </span>
+                      <br>
+                      <button id="backToAmount" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="toQualifying" class="save-btn" type="button">Next</button>
+                    </div> <!-- end .tab-pane -->
+                    <div class="tab-pane fade" id="qualifyingTab" role="tabpanel" aria-labelledby="qualifying-tab">
+                      <h5>Qualifying products</h5>
+                      <p>Choose Qualifying products necessary to apply this tier.</p>
+                      <select id="PRODUCTLIST" name="QUALIFYINGPRODUCTLIST" multiple="multiple" ondblclick="addQualifyingProduct(tierform);return (false);" style="min-width: 500px; height: 100px; margin-bottom: 1rem;">
+                         ##QUALIFYINGPRODUCTLIST##
+                      </select>
+                      <div class="move">
+                        <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addQualifyingProduct(tierform);return (false);">
+                          Add&nbsp;<i class="fas fa-angle-down"></i>
+                        </button>
+                        <button style="margin-right: 5px;" name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeQualifyingProduct(tierform);return (false);">
+                          <i class="fas fa-angle-up"></i>&nbsp;Remove
+                        </button>
+                        <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addAllQualifyingProducts(tierform);return (false);">
+                          Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i>
+                        </button>
+                        <button name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeAllQualifyingProducts(tierform);return (false);">
+                          <i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All
+                        </button>
+                      </div> <!-- end .move -->
+                      <select id="SELECTEDLIST" name="QUALIFYINGSELECTEDLIST" multiple="multiple" ondblclick="removeQualifyingProduct (tierform);return (false);" style="min-width: 500px; height: 100px; margin-bottom: 2rem;" >
+                         ##QUALIFYINGPRODUCTS##
+                      </select>
+                      <input type="hidden" name="QUALIFYINGPRODUCTS" />
+                      <br>
+                      <button id="backToQuantity" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="toDiscounted" class="save-btn" type="button">Next</button>
+                    </div> <!-- end .tab-pane -->
+                    <div class="tab-pane fade" id="discountedTab" role="tabpanel" aria-labelledby="discounted-tab">
+                      <h5>Discounted Products</h5>
+                      <p>Choose Products to which discount will be applied.</p>
+                      <select id="PRODUCTLIST" name="DISCOUNTPRODUCTLIST" multiple="multiple" ondblclick="addDiscountProduct(tierform);return (false);" style="min-width: 500px; height: 100px; margin-bottom: 1rem;" >
+                         ##DISCOUNTPRODUCTLIST##
+                      </select>
+                      <div class="move">
+                        <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addDiscountProduct (tierform);return (false);">
+                          Add&nbsp;<i class="fas fa-angle-down"></i>
+                        </button>
+                        <button style="margin-right: 5px;" name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeDiscountProduct (tierform);return (false);">
+                          <i class="fas fa-angle-up"></i>&nbsp;Remove
+                        </button>
+                        <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addAllDiscountProducts (tierform);return (false);">
+                          Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i>
+                        </button>
+                        <button name="Remove" value="&lt;&lt;&nbsp;Remove" onclick="removeAllDiscountProducts (tierform);return (false);">
+                          <i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All
+                        </button>
+                      </div> <!-- end .move -->
+                      <select id="SELECTEDLIST" name="DISCOUNTSELECTEDLIST" multiple="multiple" ondblclick="removeDiscountProduct (tierform);return (false);" style="min-width: 500px; height: 100px; margin-bottom: 2rem;">
+                         ##DISCOUNTPRODUCTS##
+                      </select>
+                      <input type="hidden" name="DISCOUNTPRODUCTS" />
+                      <div class="controlbuttons">
+                        <button id="backToQualifying" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                        <button type="button" onclick="submitForm (tierform);" value="Save" class="save-btn" style="margin-right: .3rem;">Save</button>
+                        <button type="reset" onclick="history.back ();" value="Reset" class="save-btn">Reset</button>
+                      </div>
+                    </div> <!-- end .tab-pane -->
+                  </div> <!-- end .tab-content -->
                 </div> <!-- end .content-box -->
               </form>
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
@@ -422,6 +469,55 @@
       /* Anything that gets to the document will hide the dropdown */
       $(window).click(function(){
         $(".dropright").removeClass('show');
+      });
+      // Handles the 'Next'/'Previous' buttons for tabs
+      // 'Next' to Amount
+      $("#toAmount").click(function(){
+        $("#amount-tab").tab('show');
+        $("#amount-tab").addClass('active');
+        $("#primary-tab").removeClass('active');
+      });
+      // 'Previous' to Primary
+      $("#backToPrimary").click(function(){
+        $("#primary-tab").tab('show');
+        $("#primary-tab").addClass('active');
+        $("#amount-tab").removeClass('active');
+      });
+      // 'Next' to Quantity
+      $("#toQuantity").click(function(){
+        $("#quantity-tab").tab('show');
+        $("#quantity-tab").addClass('active');
+        $("#amount-tab").removeClass('active');
+      });
+      // 'Previous' to Amount
+      $("#backToAmount").click(function(){
+        $("#amount-tab").tab('show');
+        $("#amount-tab").addClass('active');
+        $("#quantity-tab").removeClass('active');
+      });
+      // 'Next' to Qualifying Products
+      $("#toQualifying").click(function(){
+        $("#qualifying-tab").tab('show');
+        $("#qualifying-tab").addClass('active');
+        $("#quantity-tab").removeClass('active');
+      });
+      // 'Previous' to Quantity
+      $("#backToQuantity").click(function(){
+        $("#quantity-tab").tab('show');
+        $("#quantity-tab").addClass('active');
+        $("#qualifying-tab").removeClass('active');
+      });
+      // 'Next' to Discounted Products
+      $("#toDiscounted").click(function(){
+        $("#discounted-tab").tab('show');
+        $("#discounted-tab").addClass('active');
+        $("#qualifying-tab").removeClass('active');
+      });
+      // 'Previous' to Qualifying Products
+      $("#backToQualifying").click(function(){
+        $("#qualifying-tab").tab('show');
+        $("#qualifying-tab").addClass('active');
+        $("#discounted-tab").removeClass('active');
       });
     </script>
   </body>
