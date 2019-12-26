@@ -131,3 +131,7 @@ p {
 button:hover {
   cursor: pointer;
   }
+
+.nav {
+  flex-wrap: nowrap;
+  }
