@@ -495,13 +495,8 @@
               <p>Use the fields below to edit ##PRODUCTNAME## (##PRODUCTID##).</p>
               <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active" id="primaryInfo-tab" data-toggle="tab" href="#primaryInfo" role="tab" aria-controls="primary info" aria-selected="true">
-                    Primary Info
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="priceInfo-tab" data-toggle="tab" href="#priceInfo" role="tab" aria-controls="price info" aria-selected="true">
-                    Price Info
+                  <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basic info" aria-selected="true">
+                    Basic Info
                   </a>
                 </li>
                 <li class="nav-item">
@@ -542,8 +537,8 @@
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/productsstart.html" />
                   <input type="hidden" name="VENDORID" value="##VENDORID##" />
                   <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="primaryInfo" role="tabpanel" aria-labelledby="primaryInfo-tab">
-                      <h5>Primary&nbsp;Info</h5>
+                    <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                      <h5>Basic&nbsp;Info</h5>
                       <p>Name and description of the product.</p>
                       <span>
                         <input type="hidden" name="ACTIVE" value="##ACTIVE##" />
@@ -572,9 +567,9 @@
                       </span>
                       <br>
                       <!-- <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p> -->
-                      <button id="toPriceInfo" class="save-btn" type="button">Next</button>
+                      <button id="toPricing" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
-                    <div class="tab-pane fade" id="priceInfo" role="tabpanel" aria-labelledby="priceInfo-tab">
+                    <div class="tab-pane fade" id="pricing" role="tabpanel" aria-labelledby="pricing-tab">
                       <h5>Price&nbsp;Info</h5>
                       <p>Below are the current values for this product.</p>
                       <span>
@@ -600,14 +595,9 @@
                       </span>
                       <br>
                       <span>
-                        <label style="margin-bottom: 1.2rem;">Amount&nbsp;to&nbsp;Vendor:&nbsp;</label>
+                        <label style="margin-bottom: 2rem;">Amount&nbsp;to&nbsp;Vendor:&nbsp;</label>
                         <span style="color: #000000;">##VENDORAMOUNT##</span>
                       </span>
-                      <br>
-                      <button id="backToPrimary" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
-                      <button id="toPricing" class="save-btn" type="button">Next</button>
-                    </div> <!-- end .tab-pane -->
-                    <div class="tab-pane fade" id="pricing" role="tabpanel" aria-labelledby="pricing-tab">
                       <script language="javascript" type="text/javascript">
                         <!--
                         if (isBlank ("##ROYALTYFIXED## ##ROYALTYPERCENTAGE##")) {
@@ -628,9 +618,10 @@
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: 1.2rem;">Check the respective checkbox to indicate that the price includes European Union VAT and/or Australian GST. When checked, the customer will pay the prices listed above and any tax due is deducted from the sales royalty. When not checked, the customer will see tax added to the price specified above if applicable.</p>
                       </span>
                       <br>
-                      <button id="backToPriceInfo" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
-                      <button id="toProductCategory" class="save-btn" type="button">Next</button>
-                    </div>
+                      <button id="backToBasic" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="toProductFormat" class="save-btn" type="button">Next</button>
+                    </div> <!-- end .tab-pane -->
+
                     <div class="tab-pane fade" id="productCategory" role="tabpanel" aria-labelledby="productCategory-tab">
                       <h5>Product&nbsp;Category</h5>
                       <p>Please select the category that most fits your product.</p>
@@ -962,13 +953,12 @@
       $(window).click(function(){
         $(".dropright").removeClass('show');
       });
-
       // Handles the 'Next'/'Previous' buttons for tabs
       // 'Next' to Price Info
-      $("#toPriceInfo").click(function(){
-        $("#priceInfo-tab").tab('show');
-        $("#priceInfo-tab").addClass('active');
-        $("#primaryInfo-tab").removeClass('active');
+      $("#toPricing").click(function(){
+        $("#pricing-tab").tab('show');
+        $("#pricing-tab").addClass('active');
+        $("#basicInfo-tab").removeClass('active');
       });
       // 'Previous' to Primary Info
       $("#backToPrimary").click(function(){
