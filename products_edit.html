@@ -505,28 +505,18 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="productCategory-tab" data-toggle="tab" href="#productCategory" role="tab" aria-controls="product category" aria-selected="true">
-                    Product Category
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="productPlatform-tab" data-toggle="tab" href="#productPlatform" role="tab" aria-controls="product platform" aria-selected="true">
-                    Product Platform
-                  </a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link" id="productFormat-tab" data-toggle="tab" href="#productFormat" role="tab" aria-controls="product format" aria-selected="true">
                     Product Format
                   </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" id="options-tab" data-toggle="tab" href="#options" role="tab" aria-controls="shopping cart options" aria-selected="true">
-                    Shopping Cart Options
+                    Shopping Cart
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="secondary-tab" data-toggle="tab" href="#secondary" role="tab" aria-controls="secondary info" aria-selected="true">
-                    Secondary Info
+                  <a class="nav-link" id="fulfillment-tab" data-toggle="tab" href="#fulfillment" role="tab" aria-controls="fulfillment info" aria-selected="true">
+                    Fulfillment
                   </a>
                 </li>
               </ul>
@@ -563,10 +553,15 @@
                       <br clear="all">
                       <span>
                         <label>Keywords:&nbsp;</label>
-                        <input id="KEYWORDS" name="KEYWORDS" size="30"  value="##KEYWORDS##" title=" Provide any keywords for your product (Limit 50 characters)" placeholder="Limit 50 characters" style="margin-bottom: 1.2rem;"/>
+                        <input id="KEYWORDS" name="KEYWORDS" size="30"  value="##KEYWORDS##" title=" Provide any keywords for your product (Limit 50 characters)" placeholder="Limit 50 characters" style="margin-bottom: 2rem;"/>
+                      </span>
+                      <h5>Product&nbsp;Category</h5>
+                      <p>Please select the category that most fits your product.</p>
+                      <span>
+                        <label>Category:&nbsp;</label>
+                        <select name="CATEGORY" style="margin-bottom: 2rem;"></select>
                       </span>
                       <br>
-                      <!-- <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes.</p> -->
                       <button id="toPricing" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="pricing" role="tabpanel" aria-labelledby="pricing-tab">
@@ -588,7 +583,6 @@
                           ##SELECT(PRICE_AUD,,,AUD&nbsp;&nbsp;%%PRICE_AUD%%&nbsp;&nbsp;&nbsp;<br>)##
                         </span>
                       </span>
-                      <!-- <br> -->
                       <span>
                         <label>BMT&nbsp;Royalties:&nbsp;</label>
                         <span style="color: #000000;">##BMTROYALTYAMOUNT##</span>
@@ -615,30 +609,17 @@
                       <span>
                         <input type="hidden" name="PRICEINCLUDESVAT" value="##PRICEINCLUDESVAT##" /><input type="checkbox" name="PRICEINCLUDESVAT_CHK" value="-1" />&nbsp;The price includes VAT&nbsp;&nbsp;&nbsp;&nbsp;
                         <input type="hidden" name="PRICEINCLUDESGST" value="##PRICEINCLUDESGST##" /><input type="checkbox" name="PRICEINCLUDESGST_CHK" value="-1" style="margin-bottom: .5rem;" />&nbsp;The price includes GST
-                        <p style="font-size: .9rem; font-style: italic; margin-bottom: 1.2rem;">Check the respective checkbox to indicate that the price includes European Union VAT and/or Australian GST. When checked, the customer will pay the prices listed above and any tax due is deducted from the sales royalty. When not checked, the customer will see tax added to the price specified above if applicable.</p>
+                        <p style="font-size: .9rem; font-style: italic; margin-bottom: 2rem;">Check the respective checkbox to indicate that the price includes European Union VAT and/or Australian GST. When checked, the customer will pay the prices listed above and any tax due is deducted from the sales royalty. When not checked, the customer will see tax added to the price specified above if applicable.</p>
                       </span>
-                      <br>
                       <button id="backToBasic" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
                       <button id="toProductFormat" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
-
-                    <div class="tab-pane fade" id="productCategory" role="tabpanel" aria-labelledby="productCategory-tab">
-                      <h5>Product&nbsp;Category</h5>
-                      <p>Please select the category that most fits your product.</p>
-                      <span>
-                        <label>Category:&nbsp;</label>
-                        <select name="CATEGORY" style="margin-bottom: 1.2rem;"></select>
-                      </span>
-                      <br>
-                      <button id="backToPricing" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
-                      <button id="toProductPlatform" class="save-btn" type="button">Next</button>
-                    </div> <!-- end .tab-pane -->
-                    <div class="tab-pane fade" id="productPlatform" role="tabpanel" aria-labelledby="productPlatform-tab">
+                    <div class="tab-pane fade" id="productFormat" role="tabpanel" aria-labelledby="productFormat-tab">
                       <h5>Product&nbsp;Platform</h5>
                       <p>For products installed on electronical devices.</p>
                       <span>
                         <label>Platform:&nbsp;</label>
-                        <select name="PLATFORM" style="margin-bottom: 1.2rem;">
+                        <select name="PLATFORM" style="margin-bottom: 2rem;">
                           <option value="N/A" selected="selected">Not Applicable</option>
                           <option value="OS/2">OS/2</option>
                           <option value="Windows">Windows</option>
@@ -671,11 +652,6 @@
                           <option value="Mac &amp; Symbian">Mac &amp; Symbian</option>
                         </select>
                       </span>
-                      <br>
-                      <button id="backToProductCategory" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
-                      <button id="toProductFormat" class="save-btn" type="button">Next</button>
-                    </div> <!-- end .tab-pane -->
-                    <div class="tab-pane fade" id="productFormat" role="tabpanel" aria-labelledby="productFormat-tab">
                       <h5>Product&nbsp;Format&nbsp;List</h5>
                       <p>Here you can add several different format/size/type/color for a same product.</p>
                       <span>
@@ -685,7 +661,7 @@
                         <p style="font-size: .9rem; font-style: italic;">Listing formats here will add a selection box in the shopping cart that lets the customer choose format when purchasing. Use the Format List when the customer needs to pick a format, size, type, color, etc. For example, if you're selling a T-shirt, you may want to specify "S,M,L,XL" here. If you sell a program for several platforms and want to do it all under the same product setup, you can specify "Windows,Linux,Mac" for example. If doing it this way, you can associate an index file (.idx) as download file in order to deliver different download files depening on format purchased.</p>
                       </span>
                       <br>
-                      <button id="backToProductPlatform" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="backToPricing" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
                       <button id="toCartOptions" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="options" role="tabpanel" aria-labelledby="options-tab">
@@ -734,14 +710,13 @@
                       <span>
                         <input type="hidden" name="NEEDSORDERPARAMETERS" value="##NEEDSORDERPARAMETERS##" />
                         <input type="checkbox" name="NEEDSORDERPARAMETERS_CHK" value="-1" />&nbsp;Order Parameters must not be blank
-                        <p style="font-size: .9rem; font-style: italic; margin-bottom: 0;">Enabling this option will prevent the customer from completing an order if the ORDERPARAMETERS value is missing in the shopping cart.</p>
+                        <p style="font-size: .9rem; font-style: italic; margin-bottom: 2rem;">Enabling this option will prevent the customer from completing an order if the ORDERPARAMETERS value is missing in the shopping cart.</p>
                       </span>
-                      <br>
                       <button id="backToProductFormat" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
-                      <button id="toSecondaryInfo" class="save-btn" type="button">Next</button>
+                      <button id="toFulfillment" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
-                    <div class="tab-pane fade" id="secondary" role="tabpanel" aria-labelledby="secondary-tab">
-                      <h5>Secondary&nbsp;Info</h5>
+                    <div class="tab-pane fade" id="fulfillment" role="tabpanel" aria-labelledby="fulfillment-tab">
+                      <h5>Fulfillment&nbsp;Info</h5>
                       <p>Please take some time to review if you need to add support with any of the following, if you do not want any more options added, simply click Done (you can always add those options later).</p>
                       <h6>Associate&nbsp;Download&nbsp;File</h6>
                       <p style="margin-bottom: .5rem;">If order should be fulfilled via secure download from BMT&nbsp;Micro, use selector below to associate a file already uploaded using the Manage Files interface.</p>
@@ -954,64 +929,28 @@
         $(".dropright").removeClass('show');
       });
       // Handles the 'Next'/'Previous' buttons for tabs
-      // 'Next' to Price Info
+      // 'Next' to Pricing
       $("#toPricing").click(function(){
         $("#pricing-tab").tab('show');
         $("#pricing-tab").addClass('active');
         $("#basicInfo-tab").removeClass('active');
       });
-      // 'Previous' to Primary Info
-      $("#backToPrimary").click(function(){
-        $("#primaryInfo-tab").tab('show');
-        $("#primaryInfo-tab").addClass('active');
-        $("#priceInfo-tab").removeClass('active');
-      });
-      // 'Next' to Pricing
-      $("#toPricing").click(function(){
-        $("#pricing-tab").tab('show');
-        $("#pricing-tab").addClass('active');
-        $("#priceInfo-tab").removeClass('active');
-      });
-      // 'Previous' to Price Info
-      $("#backToPriceInfo").click(function(){
-        $("#priceInfo-tab").tab('show');
-        $("#priceInfo-tab").addClass('active');
+      // 'Previous' to Basic Info
+      $("#backToBasic").click(function(){
+        $("#basicInfo-tab").tab('show');
+        $("#basicInfo-tab").addClass('active');
         $("#pricing-tab").removeClass('active');
       });
-      // 'Next' to Product Category
-      $("#toProductCategory").click(function(){
-        $("#productCategory-tab").tab('show');
-        $("#productCategory-tab").addClass('active');
+      // 'Next' to Product Format
+      $("#toProductFormat").click(function(){
+        $("#productFormat-tab").tab('show');
+        $("#productFormat-tab").addClass('active');
         $("#pricing-tab").removeClass('active');
       });
       // 'Previous' to Pricing
       $("#backToPricing").click(function(){
         $("#pricing-tab").tab('show');
         $("#pricing-tab").addClass('active');
-        $("#productCategory-tab").removeClass('active');
-      });
-      // 'Next' to Product Platform
-      $("#toProductPlatform").click(function(){
-        $("#productPlatform-tab").tab('show');
-        $("#productPlatform-tab").addClass('active');
-        $("#productCategory-tab").removeClass('active');
-      });
-      // 'Previous' to Product Category
-      $("#backToProductCategory").click(function(){
-        $("#productCategory-tab").tab('show');
-        $("#productCategory-tab").addClass('active');
-        $("#productPlatform-tab").removeClass('active');
-      });
-      // 'Next' to Product Format
-      $("#toProductFormat").click(function(){
-        $("#productFormat-tab").tab('show');
-        $("#productFormat-tab").addClass('active');
-        $("#productPlatform-tab").removeClass('active');
-      });
-      // 'Previous' to Product Platform
-      $("#backToProductPlatform").click(function(){
-        $("#productPlatform-tab").tab('show');
-        $("#productPlatform-tab").addClass('active');
         $("#productFormat-tab").removeClass('active');
       });
       // 'Next' to Shopping Cart Options
@@ -1026,17 +965,17 @@
         $("#productFormat-tab").addClass('active');
         $("#options-tab").removeClass('active');
       });
-      // 'Next' to Secondary Info
-      $("#toSecondaryInfo").click(function(){
-        $("#secondary-tab").tab('show');
-        $("#secondary-tab").addClass('active');
+      // 'Next' to Fulfillment Info
+      $("#toFulfillment").click(function(){
+        $("#fulfillment-tab").tab('show');
+        $("#fulfillment-tab").addClass('active');
         $("#options-tab").removeClass('active');
       });
       // 'Previous' to Shopping Cart Options
       $("#backToCartOptions").click(function(){
         $("#options-tab").tab('show');
         $("#options-tab").addClass('active');
-        $("#secondary-tab").removeClass('active');
+        $("#fulfillment-tab").removeClass('active');
       });
     </script>
   </body>
