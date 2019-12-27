@@ -238,8 +238,8 @@
               <h4>Tiers Settings</h4>
               <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active" id="primary-tab" data-toggle="tab" href="#primaryTab" role="tab" aria-controls="primary information" aria-selected="true">
-                    Primary Information
+                  <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basicTab" role="tab" aria-controls="basic information" aria-selected="true">
+                    Basic Info
                   </a>
                 </li>
                 <li class="nav-item">
@@ -270,8 +270,8 @@
                   <input type="hidden" name="TIERID" value="##TIERID##" />
                   <input type="hidden" name="ACTION" value="11" />
                   <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="primaryTab" role="tabpanel" aria-labelledby="primary-tab">
-                      <h5>Primary Information</h5>
+                    <div class="tab-pane fade show active" id="basicTab" role="tabpanel" aria-labelledby="basic-tab">
+                      <h5>Basic Information</h5>
                       <p>Enter primary tier settings in fields below.</p>
                       <span>
                         <label>Name:&nbsp;</label>
@@ -330,7 +330,7 @@
                         </select>
                       </span>
                       <br>
-                      <button id="backToPrimary" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="backToBasic" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
                       <button id="toQuantity" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="quantityTab" role="tabpanel" aria-labelledby="quantity-tab">
@@ -475,12 +475,12 @@
       $("#toAmount").click(function(){
         $("#amount-tab").tab('show');
         $("#amount-tab").addClass('active');
-        $("#primary-tab").removeClass('active');
+        $("#basic-tab").removeClass('active');
       });
-      // 'Previous' to Primary
-      $("#backToPrimary").click(function(){
-        $("#primary-tab").tab('show');
-        $("#primary-tab").addClass('active');
+      // 'Previous' to Basic
+      $("#backToBasic").click(function(){
+        $("#basic-tab").tab('show');
+        $("#basic-tab").addClass('active');
         $("#amount-tab").removeClass('active');
       });
       // 'Next' to Quantity
