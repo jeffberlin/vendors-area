@@ -78,6 +78,7 @@ thead {
 
 .table td {
   border-top: 1px solid #dddddd;
+  padding: .4rem;
   }
 
 th a, th a:hover {

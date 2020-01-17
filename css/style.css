@@ -33,7 +33,7 @@ a {
   }
 
 .main-raised {
-  margin: 50px 30px 0;
+  margin: 0px 15px 0;
   background: #ffffff;
   position: relative;
   /* padding: 0rem 1rem 0rem; */
@@ -42,6 +42,11 @@ a {
   -moz-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
   }
+
+.body-content {
+  padding-top: 2.2rem;
+  min-height: calc(100vh - 132px);
+}
 
 .content-box {
   -webkit-box-shadow: 0px 2px 7px 2px rgba(0,0,0,0.1);
