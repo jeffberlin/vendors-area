@@ -43,6 +43,7 @@
       function editCustomerEMail(productid) {
         submitForm(2, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_customeremail.html", productid);
         window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function editVendorEMail(productid) {
