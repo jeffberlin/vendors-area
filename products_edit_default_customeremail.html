@@ -159,9 +159,13 @@
         <input type="hidden" name="ACTION" value="15" />
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/productsstart.html" />
         <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+        <input type="submit" class="light-btn" style="margin-right: .5rem;" onclick="document.close.submit();" value="Cancel" />
         <button class="light-btn" type="button" onclick="showPreview (emailform);" style="margin-right: .5rem;">Preview</button>
         <button class="light-btn" type="button" onclick="submitForm (emailform);">Save</button>
       </form>
+      <!-- form for the "Cancel" button -->
+      <form name="close" action="https://vendors-new.bmtmicro.com/productsstart.html" method="get" target="_parent"></form>
+      <!-- -->
       <form method="post" name="previewform" action="https://vendors.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);">
         <input type="hidden" name="ACTION" value="20">
         <input type="hidden" name="PRODUCTID" value="##PRODUCTID##">

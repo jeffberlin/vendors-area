@@ -51,6 +51,8 @@
 
       function editAffiliate (affiliateid) {
         submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/affiliateinfo_edit.html", affiliateid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function removeAffiliate (affiliateid) {

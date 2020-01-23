@@ -48,18 +48,26 @@
 
       function editVendorEMail(productid) {
         submitForm(3, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_vendoremail.html", productid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function viewLink(productid) {
         submitForm(4, "resultframe", "https://vendors-new.bmtmicro.com/products_vieworderlink.html", productid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function editDefaultCustomerEMail(productid) {
         submitForm(5, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_default_customeremail.html");
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function editDefaultVendorEMail(productid) {
         submitForm(6, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_default_vendoremail.html");
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function addMultiple(productid) {

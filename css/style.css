@@ -140,3 +140,7 @@ button:hover {
 .nav {
   flex-wrap: nowrap;
   }
+
+#tableframe {
+  height:calc(100vh - 275px);
+  }
