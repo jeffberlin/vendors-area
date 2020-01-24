@@ -57,17 +57,23 @@
       function deleteDiscount (schemeid, schemetype) {
         if (allowChanges ("You do not have permission to delete schemes.")) {
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/discounts_delete.html", schemeid, schemetype);
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 
       function generateCodes (schemeid, schemetype) {
         if (allowChanges ("You do not have permission to generate codes.")) {
           submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/discounts_generatecodes.html", schemeid, schemetype);
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 
       function viewCodes (schemeid, schemetype) {
         submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/discounts_viewcodes.html", schemeid, schemetype);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
     //-->
     </script>

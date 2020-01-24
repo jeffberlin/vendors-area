@@ -51,15 +51,21 @@
 
       function showDemoURL (downloadfileid) {
         submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/files_viewdemourl.html", downloadfileid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function viewFile (downloadfileid) {
         submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/files_viewproducts.html", downloadfileid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function deleteFile (downloadfileid) {
         if (allowChanges ("You do not have permission to delete files.")) {
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/files_delete.html", downloadfileid);
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 

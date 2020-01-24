@@ -38,27 +38,37 @@
       function addTable () {
         if (allowChanges ("You do not have permission to add new tables.")) {
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/keytables_add.html");
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 
       function editTable (keytableid) {
         submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/keytables_edit.html", keytableid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function deleteTable (keytableid) {
         if (allowChanges ("You do not have permission to delete tables.")) {
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/keytables_delete.html", keytableid);
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 
       function addKeys (keytableid) {
         if (allowChanges ("You do not have permission to add keys.")) {
           submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/keytables_add_keys.html", keytableid);
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 
       function viewProducts (keytableid) {
         submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/keytables_view_products.html", keytableid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function downloadKeys (keytableid) {

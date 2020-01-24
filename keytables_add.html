@@ -94,13 +94,16 @@
           <input type="text" name="LOWKEYEMAIL" maxlength="80" value="##LOWKEYEMAIL##" style="margin-bottom: 1rem;" />
         </span>
         <br clear="all">
+        <input type="submit" class="light-btn" style="margin-right: .5rem;" onclick="document.close.submit();" value="Cancel" />
         <button type="button" class="light-btn" onclick="submitForm (keytables);">Save</button>
-
         <input type="hidden" name="ACTION" value="10" />
         <input type="hidden" name="KEYTABLEID" value="##KEYTABLEID##" />
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/keytablesstart.html" />
         <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
       </form>
+      <!-- form for the "Cancel" button -->
+      <form name="close" action="https://vendors-new.bmtmicro.com/keytablesstart.html" method="get" target="_parent"></form>
+      <!-- -->
     </div> <!-- end .transfer-section -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

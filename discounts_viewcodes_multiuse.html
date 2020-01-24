@@ -35,12 +35,16 @@
         </select>
         <br>
         <button type="submit" class="light-btn">View Codes</button>
+        <input type="submit" class="light-btn" onclick="document.close.submit();" value="Close" />
         <input type="hidden" name="ACTION" value="14" />
         <input type="hidden" name="SCHEMEID" value="##SCHEMEID##" />
         <input type="hidden" name="NAME" value="##NAME##" />
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/discounts_viewcodes_viewcodes.html" />
         <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
       </form>
+      <!-- form for the "Close" button -->
+      <form name="close" action="https://vendors-new.bmtmicro.com/discountsstart.html" method="get" target="_parent"></form>
+      <!-- -->
     </div> <!-- end .transfer-section -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

@@ -52,6 +52,8 @@
           alert ("You do not have permission to edit comments.");
           return (false);
         }
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
         var form = document.CommentsForm;
         form.ORDERID.value = orderid;
         form.ITEMNR.value = itemnr;

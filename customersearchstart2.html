@@ -136,15 +136,16 @@
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Customer&nbsp;Search</h4>
-              <p>Use fields below to enter search criteria.&nbsp;If email information has not changed since purchase you can resend the customer\'s email using the button provided.<br>You will be able to review the email before it is sent.</p>
+              <p>Use fields below to enter search criteria.&nbsp;If email information has not changed since purchase you can resend the customer's email using the button provided.<br>You will be able to review the email before it is sent.</p>
               <div class="content-box">
-                <iframe src="" name="tableframe" id="tableframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 450px;padding: 0px; margin:0px;" >
+                <iframe src="" name="tableframe" id="tableframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; padding: 0px; margin:0px;" >
+                   [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
+                </iframe>
+                <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 450px;padding: 0px; margin:0px; display: none;" >
                    [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
                 </iframe>
               </div> <!-- end .content-box -->
-              <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 450px;padding: 0px; margin:0px;" >
-                 [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
-              </iframe>
+
               <form name="start" method=post action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" target="tableframe">
                 <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customersearch.html">
                 <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customersearch_tablerow.html" />
