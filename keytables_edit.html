@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addTransfer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
-    <!-- <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script> -->
+    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <script language="javascript" type="text/javascript">
       <!--
       function initForm (form){
@@ -43,6 +43,10 @@
   <body onload="initForm (document.keytables);">
     <div class="transfer-section">
       <form method="post" name="keytables" action="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys" target="_parent">
+        <input type="hidden" name="ACTION" value="11" />
+        <input type="hidden" name="KEYTABLEID" value="##KEYTABLEID##" />
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/keytablesstart.html" />
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
         <h5>Edit Activation Code Table - ##NAME##</h5>
         <span>
           <label>Number of Key Parts:&nbsp;</label>
@@ -79,12 +83,12 @@
           <input type="text" name="LOWKEYEMAIL" maxlength="80" value="##LOWKEYEMAIL##" style="margin-bottom: 1rem;" />
         </span>
         <br>
-        <button type="button" class="save-btn" onclick="submitForm (keytables);">Save</button>
-        <input type="hidden" name="ACTION" value="11" />
-        <input type="hidden" name="KEYTABLEID" value="##KEYTABLEID##" />
-        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/keytablesstart.html" />
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+        <input type="button" onclick="document.close.submit();" class="light-btn" style="margin-right: .5rem;" value="Cancel" />
+        <button type="submit" class="light-btn" onclick="submitForm (keytables);">Save</button>
       </form>
+      <!-- Handles "Cancel" button -->
+      <form name="close" action="https://vendors-new.bmtmicro.com/keytablesstart.html" method="get" target="_parent"></form>
+      <!-- -->
     </div> <!-- end .transfer-section -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
