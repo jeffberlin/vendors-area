@@ -27,8 +27,12 @@
         <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
         <p style="margin-bottom: .2rem;">Please confirm deletion of the&nbsp;<strong>##NAME##</strong>&nbsp;table.</p>
         <p>This table is not used by any products and can be deleted.</p>
-        <button type="submit" class="grey-btn">Delete</button>
+        <input type="button" class="light-btn" style="margin-right: .5rem;" onclick="document.close.submit();" value="Cancel" />
+        <button type="submit" class="light-btn">Delete</button>
       </form>
+      <!-- form for the "Cancel" button -->
+      <form name="close" action="https://vendors-new.bmtmicro.com/keytablesstart.html" method="get" target="_parent"></form>
+      <!-- -->
     </div> <!-- end .transfer-section -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
