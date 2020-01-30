@@ -33,9 +33,12 @@
         <strong style="margin-bottom: 1rem;">##NAME##</strong>
       </span>
       <h6>Countries in this Region</h6>
-      <select name="SELECTEDLIST" style="width:45%;height: 150px" multiple="multiple" disabled>
+      <select name="SELECTEDLIST" style="width:45%; height: 150px; margin-bottom: 1rem;" multiple="multiple" disabled>
          ##SELECTEDCOUNTRIES##
       </select>
+      <form name="close" action="https://vendors-new.bmtmicro.com/regionsstart.html" method="get" target="_parent">
+        <input type="button" onclick="document.close.submit();" class="save-btn" value="Back">
+      </form>
     </div> <!-- end .transfer-section -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

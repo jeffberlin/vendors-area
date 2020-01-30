@@ -39,20 +39,28 @@
         if (allowChanges ("You do not have permission to add shipping cost schemes.")) {
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/shipping_add.html");
         }
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function editScheme (schemeid) {
         submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/shipping_edit.html", schemeid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function deleteScheme (schemeid) {
         if (allowChanges ("You do not have permission to delete shipping cost schemes.")) {
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/shipping_delete.html", schemeid);
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 
       function viewScheme (schemeid) {
         submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/shipping_view.html", schemeid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function regions () {

@@ -38,21 +38,29 @@
       function addRegion () {
         if (allowChanges ("You do not have permission to add regions.")) {
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/regions_add.html");
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 
       function editRegion (regionid) {
         submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/regions_edit.html", regionid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function deleteRegion (regionid) {
         if (allowChanges ("You do not have permission to delete regions.")) {
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/regions_delete.html", regionid);
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 
       function viewRegion (regionid) {
         submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/regions_view.html", regionid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function shippingCosts () {

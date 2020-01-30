@@ -24,6 +24,9 @@
       <h5>Unable to Delete Download File</h5>
       <p>The <strong>##DOWNLOADFILENAME##</strong> file is currently used by <strong>##USECOUNT##</strong> products or files.</p>
       <p style="font-size: .9rem;">In order to delete this download file you must disassociate any products or index files that are using this file.<br>Click the View Associations button on the Manage Files page to see what products or files are referring to this file.<br>See the Help files for more information.</p>
+      <form name="close" action="https://vendors-new.bmtmicro.com/filesstart.html" method="get" target="_parent">
+        <input type="button" class="save-btn" onclick="document.close.submit();" value="Back">
+      </form>
     </div> <!-- end .transfer-section -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
