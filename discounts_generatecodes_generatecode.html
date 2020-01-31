@@ -31,19 +31,16 @@
         </span>
         <br>
         <p style="font-size: .9rem; margin-bottom: 1.2rem;">(Leave blank to let the system generate a new code for you)</p>
-        <div class="row">
-          <button type="submit" class="grey-btn" style="margin-right: .5rem;" >Generate New Code</button>
-          <input type="hidden" name="ACTION" value="13" />
-          <input type="hidden" name="SCHEMEID" value="##SCHEMEID##" />
-          <input type="hidden" name="GENCOUNT" value="1" />
-          <input type="hidden" name="REPLACE" value="-1" />
-          <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/discounts_viewcodes_viewcodes.html" />
-          <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
-        </form>
-        <form action="https://vendors-new.bmtmicro.com/discountsstart.html" method="get" target="_parent">
-          <button type="submit" class="light-btn" >Close</button>
-        </form>
-      </div>
+        <input type="button" class="light-btn" onclick="document.close.submit();" style="margin-right: .5rem;" />
+        <button type="submit" class="grey-btn">Generate New Code</button>
+        <input type="hidden" name="ACTION" value="13" />
+        <input type="hidden" name="SCHEMEID" value="##SCHEMEID##" />
+        <input type="hidden" name="GENCOUNT" value="1" />
+        <input type="hidden" name="REPLACE" value="-1" />
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/discounts_viewcodes_viewcodes.html" />
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
+      </form>
+      <form action="https://vendors-new.bmtmicro.com/discountsstart.html" method="get" target="_parent"></form>
     </div> <!-- end .transfer-section -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
