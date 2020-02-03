@@ -62,6 +62,8 @@
       function cancelSubscription (subscriptionid) {
         if (allowResend ("You do not have permission to cancel subscriptions.")) {
           submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/subscriptions_cancel.html", subscriptionid);
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
       //-->

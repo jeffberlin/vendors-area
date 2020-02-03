@@ -42,11 +42,15 @@
         }
         if (allowChanges ("You do not have permission to add vendor splits.")) {
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/splits_add.html");
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 
       function editSplit (schemeid) {
         submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/splits_edit.html", schemeid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function deleteSplit (schemeid) {
@@ -56,11 +60,15 @@
         }
         if (allowChanges ("You do not have permission to delete vendor splits.")) {
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/splits_delete.html", schemeid);
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 
       function viewSplit (schemeid) {
         submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/splits_view.html", schemeid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
       //-->
     </script>

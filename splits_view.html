@@ -44,9 +44,12 @@
         ##SPLITVENDORID##
       </p>
       <h5>Products using this Vendor Split:</h5>
-      <select name="SELECTEDLIST" style="width:60%;height: 150px; cursor: not-allowed;" multiple="multiple" disabled>
+      <select name="SELECTEDLIST" style="width:60%;height: 150px; cursor: not-allowed; margin-bottom: 1rem;" multiple="multiple" disabled>
          ##SELECTEDPRODUCTS##
       </select>
+      <form name="close" action="https://vendors-new.bmtmicro.com/splitsstart.html" method="get" target="_parent">
+        <input type="button" onclick="document.close.submit();" class="save-btn" value="Back">
+      </form>
     </div> <!-- end .transfer-section -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
