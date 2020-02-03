@@ -20,6 +20,15 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <style media="screen">
+      .table-responsive {
+        overflow-y: scroll;
+        display: block;
+      }
+      .table-responsive, #userinfo {
+        height: calc(100vh - 350px);
+      }
+    </style>
     <script language="javascript" type="text/javascript">
       <!--
       function addUser () {
@@ -27,6 +36,8 @@
         form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/users_add.html";
         form.ACTION.value = "0";
         form.USERID.value = "";
+        window.parent.document.getElementById('userinfo').style.display = "block";
+        window.parent.document.getElementById('tablelayer').style.display = "none";
         form.submit ();
       }
       function editUser (userid) {
@@ -34,6 +45,8 @@
         form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/users_edit.html";
         form.ACTION.value = "1";
         form.USERID.value = userid;
+        window.parent.document.getElementById('userinfo').style.display = "block";
+        window.parent.document.getElementById('tablelayer').style.display = "none";
         form.submit ();
       }
       function deleteUser (userid) {
@@ -41,6 +54,8 @@
         form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/users_delete.html";
         form.ACTION.value = "2";
         form.USERID.value = userid;
+        window.parent.document.getElementById('userinfo').style.display = "block";
+        window.parent.document.getElementById('tablelayer').style.display = "none";
         form.submit ();
       }
       //-->
@@ -170,43 +185,44 @@
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/users.html" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
                   <input type="hidden" name="USERID" value="" />
-
-                  <div class="table-header">
-                    <button type="button" class="grey-btn" onclick="addUser ();" >Add New User</button>
-                  </div> <!-- end .table-header -->
-                  <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
-                    <table class="table" id="selection">
-                      <thead>
-                        <tr class="table-category text-center">
-                          <th scope="col" class="sortable sort-column sort" title="Sort on 'Login'" text>
-                            <a href="#" class="fdTableSortTrigger">Login</a>
-                          </th>
-                          <th scope="col" class="sortable sort-column sort" title="Sort on 'Email'" text>
-                            <a href="#" class="fdTableSortTrigger">Email</a>
-                          </th>
-                          <th scope="col" class="sortable sort-column sort" title="Sort on 'Name'" text>
-                            <a href="#" class="fdTableSortTrigger">Name</a>
-                          </th>
-                          <th scope="col" class="sort-column">
-                            <a href="#" style="cursor: default;" onclick="return false;">Remove</a>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          ##TABLEDATA##
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr class="table-total">
-                          <th scope="row" colspan="6">&nbsp;</th>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div> <!-- end .row -->
+                  <div id="tablelayer">
+                    <div class="table-header">
+                      <button type="button" class="grey-btn" onclick="addUser ();" >Add New User</button>
+                    </div> <!-- end .table-header -->
+                    <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
+                      <table class="table" id="selection">
+                        <thead>
+                          <tr class="table-category text-center">
+                            <th scope="col" class="sortable sort-column sort" title="Sort on 'Login'" text>
+                              <a href="#" class="fdTableSortTrigger">Login</a>
+                            </th>
+                            <th scope="col" class="sortable sort-column sort" title="Sort on 'Email'" text>
+                              <a href="#" class="fdTableSortTrigger">Email</a>
+                            </th>
+                            <th scope="col" class="sortable sort-column sort" title="Sort on 'Name'" text>
+                              <a href="#" class="fdTableSortTrigger">Name</a>
+                            </th>
+                            <th scope="col" class="sort-column">
+                              <a href="#" style="cursor: default;" onclick="return false;">Remove</a>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            ##TABLEDATA##
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr class="table-total">
+                            <th scope="row" colspan="6">&nbsp;</th>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div> <!-- end .row -->
+                  </div> <!-- end #tablelayer -->
                 </form>
+                <iframe src="" name="userinfo" id="userinfo" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; padding: 0px; margin:0px; display: none;"></iframe>
               </div> <!-- end .content-box -->
-              <iframe src="" name="userinfo" id="userinfo" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; height: 450px; padding: 0px; margin:0px;"></iframe>
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>

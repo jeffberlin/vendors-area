@@ -64,12 +64,16 @@
       function expireTicket (ticketid) {
         if (allowResend ("You do not have permission to expire tickets.")) {
           submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/tickets_expire.html", ticketid);
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 
       function addTicket (ticketid) {
         if (allowResend ("You do not have permission to grant new tickets.")) {
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/tickets_add.html", ticketid);
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
       //-->

@@ -56,6 +56,8 @@
       function deleteTier (tierid) {
         if (allowChanges ("You do not have permission to delete tiers.")) {
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/tiers_delete.html", tierid);
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
       //-->

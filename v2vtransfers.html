@@ -43,6 +43,8 @@
         }
         if (allowChanges("You do not have permission to add vendor transfers.")) {
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/v2v_add.html");
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 
@@ -53,11 +55,15 @@
         }
         if (allowChanges("You do not have permission to add affiliate transfers.")) {
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/v2a_add.html");
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 
       function editTransfer(transferid, toaffiliateid) {
         submitForm (1, "resultframe", (toaffiliateid == 0) ? "https://vendors-new.bmtmicro.com/v2v_edit.html" : "https://vendors-new.bmtmicro.com/v2a_edit.html", transferid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function cancelTransfer(transferid) {
@@ -67,11 +73,15 @@
         }
         if (allowChanges("You do not have permission to cancel vendor transfers.")) {
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/v2v_delete.html", transferid);
+          window.parent.document.getElementById('resultframe').style.display = "block";
+          window.parent.document.getElementById('tableframe').style.display = "none";
         }
       }
 
       function viewTransfer(transferid) {
         submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/v2v_view.html", transferid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
       //-->
     </script>
