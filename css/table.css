@@ -12,14 +12,11 @@
 
 .table-header span {
   color: #ffffff;
+  margin-right: 15px;
   }
 
 th a, th a:hover, .td-button button, tfoot, select {
   color: #195a7c;
-  }
-
-.table-header span {
-  margin-right: 15px;
   }
 
 .table-header input, .get-btn, .td-button button {
