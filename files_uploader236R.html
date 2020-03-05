@@ -103,10 +103,14 @@
               if (iFailed != 0) {
                 alert (iFailed + " file(s) failed to upload");
               }
+              $("#upload-tab").removeClass("active");
+              $("#result-tab").tab("show");
+              $("#result-tab").addClass("active");
             }
           }
         });
       });
+
     </script>
 
     <form name="uploadresult" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.FileUpload" target="resultframe">
