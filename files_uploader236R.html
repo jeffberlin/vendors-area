@@ -103,12 +103,15 @@
               if (iFailed != 0) {
                 alert (iFailed + " file(s) failed to upload");
               }
-              $("#upload-tab").removeClass("active");
-              $("#result-tab").tab("show");
-              $("#result-tab").addClass("active");
+              window.parent.document.showTab();
+              window.parent.document.getElementById('upload-tab').classList.remove('active');
+              window.parent.document.getElementById('result-tab').classList.add('active');
             }
           }
         });
+      });
+      $(function showTab() {
+        $('#result-tab').tab('show');
       });
 
     </script>
