@@ -107,7 +107,7 @@
           }
         }
         if (##GENERATEKEY## == -1) {
-          if ((text.indexOf ("#\#STDREGINFO#\#") == -1) && (text.indexOf ("#\#REGKEY1#\#") == -1) && (text.indexOf ("#\#REGKEYINFO#\#") == -1) && (text.indexOf ("#\#GIFTCERTIFICATES#\#") == -1) && (text.indexOf ("#\#REGKEYLIST#\#") == -1) &&
+          if (!form.USEDEFAULTTEMPLATE.checked && (text.indexOf ("#\#STDREGINFO#\#") == -1) && (text.indexOf ("#\#REGKEY1#\#") == -1) && (text.indexOf ("#\#REGKEYINFO#\#") == -1) && (text.indexOf ("#\#GIFTCERTIFICATES#\#") == -1) && (text.indexOf ("#\#REGKEYLIST#\#") == -1) &&
           ("#\#KEYGENERATOR#\#".indexOf ("ticket ") != 0))  {
             alert ("Activation Code or Gift Certificate information is required. Please make sure that the message contains the #\#STDREGINFO#\# or #\#GIFTCERTIFICATES#\# token.");
             return (false);
@@ -238,9 +238,9 @@
           <input type="checkbox" name="USEDEFAULTTEMPLATE" onClick="useDefaultChanged (emailform);" style="margin-bottom: 1.2rem;"/>&nbsp;Use default template
         </span>
         <br>
-        <textarea style="margin: .5rem 0; position:absolute;visibility:hidden;" rows="8" cols="100" name="DEFAULTSCREENDELIVERYTEMPLATE">##DEFAULTSCREENDELIVERYTEMPLATE##</textarea>
+        <textarea style="margin: .5rem 0; position:absolute;visibility:hidden;" rows="8" cols="100" name="DEFAULTSCREENDELIVERYTEMPLATE"></textarea>
         <input type="hidden" name="PRODUCTID" value="##PRODUCTID##" />
-        <input type="hidden" name="ACTION" value="12" />
+        <input type="hidden" name="ACTION" value="14" />
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/productsstart.html" />
         <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
         <input type="submit" class="light-btn" style="margin-right: .5rem;" onclick="document.close.submit();" value="Cancel" />
@@ -251,7 +251,7 @@
       <form name="close" action="https://vendors-new.bmtmicro.com/productsstart.html" method="get" target="_parent"></form>
       <!-- -->
       <form method="post" name="previewform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);" >
-        <input type="hidden" name="ACTION" value="20" />
+        <input type="hidden" name="ACTION" value="22" />
         <input type="hidden" name="PRODUCTID" value="##PRODUCTID##" />
         <input type="hidden" name="PREVIEWTEXT" value="" />
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/previewtext.html" />

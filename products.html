@@ -40,46 +40,46 @@
         submitForm(1, "_parent", "https://vendors-new.bmtmicro.com/products_edit.html", productid);
       }
 
-      function editScreenTemplate(productid) {
-        submitForm(2, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_screentemplate.html", productid);
-        window.parent.document.getElementById('resultframe').style.display = "block";
-        window.parent.document.getElementById('tableframe').style.display = "none";
-      }
-
       function editCustomerEMail(productid) {
-        submitForm(3, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_customeremail.html", productid);
+        submitForm(2, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_customeremail.html", productid);
         window.parent.document.getElementById('resultframe').style.display = "block";
         window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function editVendorEMail(productid) {
-        submitForm(4, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_vendoremail.html", productid);
+        submitForm(3, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_vendoremail.html", productid);
         window.parent.document.getElementById('resultframe').style.display = "block";
         window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function viewLink(productid) {
-        submitForm(5, "resultframe", "https://vendors-new.bmtmicro.com/products_vieworderlink.html", productid);
+        submitForm(4, "resultframe", "https://vendors-new.bmtmicro.com/products_vieworderlink.html", productid);
         window.parent.document.getElementById('resultframe').style.display = "block";
         window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function editDefaultCustomerEMail(productid) {
-        submitForm(6, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_default_customeremail.html");
+        submitForm(5, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_default_customeremail.html");
         window.parent.document.getElementById('resultframe').style.display = "block";
         window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function editDefaultVendorEMail(productid) {
-        submitForm(7, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_default_vendoremail.html");
+        submitForm(6, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_default_vendoremail.html");
         window.parent.document.getElementById('resultframe').style.display = "block";
         window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function addMultiple(productid) {
         if (allowChanges("You are not allowed to add products.")) {
-          submitForm(8, "_parent", "https://vendors-new.bmtmicro.com/products_add_multiple.html", productid);
+          submitForm(7, "_parent", "https://vendors-new.bmtmicro.com/products_add_multiple.html", productid);
         }
+      }
+
+      function editScreenTemplate(productid) {
+        submitForm(8, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_screentemplate.html", productid);
+        window.parent.document.getElementById('resultframe').style.display = "block";
+        window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function testOrder(productid) {
@@ -120,7 +120,7 @@
     </script>
   </head>
   <body onload="initForm (document.products);">
-    <form name="products" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" method="post" target="">
+    <form name="products" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" method="POST" target="">
       <input type="hidden" name="ACTION" value="" />
       <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
       <input type="hidden" name="ROWSPERPAGE" value="##ROWSPERPAGE##" />
