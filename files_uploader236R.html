@@ -17,6 +17,7 @@
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/plupload-2.3.6R/js/plupload.full.min.js" charset="UTF-8"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/plupload-2.3.6R/js/plupload.dev.js" charset="UTF-8"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/plupload-2.3.6R/js/jquery.ui.plupload/jquery.ui.plupload.min.js" charset="UTF-8"></script>
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/notification.css">
 
     <!-- <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script> -->
   </head>
@@ -104,9 +105,12 @@
               if (iFailed != 0) {
                 alert (iFailed + " file(s) failed to upload");
               }
-              showTab();
-              window.parent.document.getElementById('upload-tab').classList.remove('active');
-              window.parent.document.getElementById('result-tab').classList.add('active');
+              // showTab();
+              // window.parent.document.getElementById('upload-tab').classList.remove('active');
+              // window.parent.document.getElementById('result-tab').classList.add('active');
+              function showStatus() {
+                window.parent.document.getElementsByClassname('circle').style.display = 'block';
+              }
             }
           }
         });
@@ -126,12 +130,5 @@
       </span>
     </form>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script language="javascript" type="text/javascript">
-      $(function showTab() {
-        $('#result-tab').tab('show');
-      });
-    </script>
   </body>
 </html>

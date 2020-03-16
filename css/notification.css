@@ -1,0 +1,12 @@
+.notification {
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.circle {
+  width: 0px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+}
