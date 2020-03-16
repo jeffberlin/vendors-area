@@ -105,12 +105,7 @@
               if (iFailed != 0) {
                 alert (iFailed + " file(s) failed to upload");
               }
-              // showTab();
-              // window.parent.document.getElementById('upload-tab').classList.remove('active');
-              // window.parent.document.getElementById('result-tab').classList.add('active');
-              function showStatus() {
-                window.parent.document.getElementsByClassname('circle').style.display = 'block';
-              }
+              window.parent.document.getElementById('circle').style.display = 'inline-block';
             }
           }
         });
