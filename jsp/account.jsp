@@ -11,12 +11,10 @@
     <![endif]-->
     <title>BMT Micro Developers Center</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/menuSidebar.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/footer.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addPages.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/tabOptions.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css">
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
@@ -192,11 +190,11 @@
     <div style="visibility:hidden;">
       <form name="logout" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Logout">
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
       </form>
       <form name="payoneer" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Payoneer">
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/main.html">
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
       </form>
     </div>
 
