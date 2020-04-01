@@ -239,6 +239,7 @@
                         <div class="col-4" style="padding-right: 0; font-size: .9rem;">
                           <span>
                             <input type="hidden" name="VENDORID" value="##VENDORID##" />
+                            <%=request.getParameter ("VENDORID") %>
                             <p style="margin-bottom: .2rem;">My vendor ID ##VENDORID##</p>
                             <p style="margin-bottom: .2rem;"><strong>##COMPANY##</strong></p>
                             <p style="margin-bottom: .2rem;">##NAME##</p>
