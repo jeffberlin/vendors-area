@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/footer.css">
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css">
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vhelp.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <script language="javascript" type="text/javascript">
@@ -36,7 +36,17 @@
      //-->
     </script>
   </head>
-  <body>
+  <body onload="initForm ();">
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
     <div style="visibility:hidden;">
       <form name="logout" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Logout">
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
@@ -56,7 +66,7 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <%@ include file = "https://vendors-new.bmtmicro.com/jsp/menuSidebar.jsp" >
+            <jsp:include page="jsp/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12">
               <div class="news-feed">
                 <h4>News Feed</h4>
@@ -83,22 +93,7 @@
         </article>
       </div> <!-- end .container-fluid -->
 
-      <footer class="row footer footer-big">
-        <div class="container">
-          <div class="bottom-footer-content text-center">
-            <div class="social-links">
-              <a href="https://www.facebook.com/bmt.micro" target="_blank"><img src="https://vendors-new.bmtmicro.com/images/facebook-logo-white.png" width="25" alt="Facebook" title="Like us on Facebook"></a>
-              <a href="https://www.linkedin.com/company/bmt-micro-wilmington-nc-usa/" target="_blank"><img src="https://vendors-new.bmtmicro.com/images/linkedin-logo-white.png" width="25" alt="LinkedIn" title="Follow us on LinkedIn"></a>
-              <a href="https://twitter.com/BMTMicro" target="_blank"><img src="https://vendors-new.bmtmicro.com/images/twitter-logo-white.png" width="25" alt="Twitter" title="Follow us on Twitter"></a>
-              <a href="https://www.instagram.com/bmtmicro/" target="_blank"><img src="https://vendors-new.bmtmicro.com/images/instagram-logo-white.png" width="25" alt="Instagram" title="Follow us on Instagram"></a>
-              <a href="https://www.pinterest.com/bmtmicro/" target="_blank"><img src="https://vendors-new.bmtmicro.com/images/pinterest-logo-white.png" width="25" alt="Pinterest" title="See us on Pinterest"></a>
-            </div>
-            <div class="copyright">
-              BMT Micro, Inc. Copyright © 1992 - <script type="text/JavaScript"> document.write(new Date().getFullYear()); </script>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <jsp:include page="jsp/footer.jsp" />
 
     </div> <!-- end .main-raised -->
 
