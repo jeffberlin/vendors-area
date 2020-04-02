@@ -39,7 +39,7 @@
         <div class="dropright">
           <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Sales</a>
           <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/main.html">Sales Graphs</a>
+            <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/mainstart.html">Sales Graphs</a>
             <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/salessummarystart.html">Sales Summary</a>
             <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/detailedsummarystart.html">Detailed Summary</a>
             <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/eusummarystart.html">EU Sales Summary</a>

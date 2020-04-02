@@ -11,10 +11,10 @@
     <![endif]-->
     <title>BMT Micro Developers Center</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css"/>
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css"/>
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
@@ -238,37 +238,37 @@
                       <div class="row shrinkText">
                         <div class="col-4" style="padding-right: 0; font-size: .9rem;">
                           <span>
-                            <input type="hidden" name="VENDORID" value="##VENDORID##" />
-                            <%=request.getParameter ("VENDORID") %>
-                            <p style="margin-bottom: .2rem;">My vendor ID ##VENDORID##</p>
-                            <p style="margin-bottom: .2rem;"><strong>##COMPANY##</strong></p>
-                            <p style="margin-bottom: .2rem;">##NAME##</p>
-                            <p style="margin-bottom: .2rem;">##ADDRESS1##</p>
-                            <p style="margin-bottom: .2rem;">##ADDRESS2##</p>
-                            <p style="margin-bottom: .2rem;">##CITY##, ##STATE## ##ZIP##</p>
-                            <p>##COUNTRYNAME##</p>
+                            <input type="hidden" name="VENDORID" value="<%= request.getParameter ("VENDORID") %>" />
+                            <%= request.getParameter ("VENDORID") %>
+                            <p style="margin-bottom: .2rem;">My vendor ID <%= request.getParameter ("VENDORID") %></p>
+                            <p style="margin-bottom: .2rem;"><strong><%= request.getParameter ("COMPANY") %></strong></p>
+                            <p style="margin-bottom: .2rem;"><%= request.getParameter ("NAME") %></p>
+                            <p style="margin-bottom: .2rem;"><%= request.getParameter ("ADDRESS1") %></p>
+                            <p style="margin-bottom: .2rem;"><%= request.getParameter ("ADDRESS2") %></p>
+                            <p style="margin-bottom: .2rem;"><%= request.getParameter ("CITY") %>, <%= request.getParameter("STATE") %>&nbsp;<%= request.getParameter ("ZIP") %></p>
+                            <p><%= request.getParameter ("COUNTRYNAME") %></p>
                             <p><a href="mailto:vendors@bmtmicro.com">Email changes to BMT Micro</a></p>
                           </span>
                         </div>
                         <div class="col-4" style="padding: 0;">
                           <span>
                             <label>Primary&nbsp;Email:&nbsp;</label>
-                            <input id="EMAIL" name="EMAIL" value="##EMAIL##" maxlength="50" size="30" style="margin-bottom: 1rem;" />
+                            <input id="EMAIL" name="EMAIL" value="<%= request.getParameter ("EMAIL") %>" maxlength="50" size="30" style="margin-bottom: 1rem;" />
                           </span>
                           <br clear="all">
                           <span>
                             <label>Secondary&nbsp;Email:&nbsp;</label>
-                            <input id="EMAIL2" name="EMAIL2" value="##EMAIL2##" maxlength="50" size="30" style="margin-bottom: 1rem;" />
+                            <input id="EMAIL2" name="EMAIL2" value="<%= request.getParameter ("EMAIL2") %>" maxlength="50" size="30" style="margin-bottom: 1rem;" />
                           </span>
                           <br clear="all">
                           <span>
                             <label>Order&nbsp;Notification&nbsp;Email:&nbsp;</label>
-                            <input id="NOTIFICATIONEMAILS" name="NOTIFICATIONEMAILS" value="##NOTIFICATIONEMAILS##" maxlength="200" size="30" style="margin-bottom: 1rem;" />
+                            <input id="NOTIFICATIONEMAILS" name="NOTIFICATIONEMAILS" value="<%= request.getParameter ("NOTIFICATIONEMAILS") %>" maxlength="200" size="30" style="margin-bottom: 1rem;" />
                           </span>
                           <br clear="all">
                           <span>
                             <label>File&nbsp;sharing&nbsp;password:&nbsp;</label>
-                            <input id="FILESHAREPASSWORD" name="FILESHAREPASSWORD" value="##FILESHAREPASSWORD##" maxlength="16" size="30" style="margin-bottom: 1rem;" />
+                            <input id="FILESHAREPASSWORD" name="FILESHAREPASSWORD" value="<%= request.getParameter ("FILESHAREPASSWORD") %>" maxlength="16" size="30" style="margin-bottom: 1rem;" />
                           </span>
                           <div class="controlbuttons">
                             <button type="button" class="grey-btn" onclick="submitForm (form);">Save</button>
@@ -292,7 +292,7 @@
                       </span>
                       <span class="shrinkText">
                         <p style="margin-bottom: .3rem;">Charges appear on customers credit card as:</p>
-                        <XMP style="padding-left: 15px;">##FULLBILLINGDESCRIPTOR##</XMP>
+                        <XMP style="padding-left: 15px;"><%= request.getParameter ("FULLBILLINGDESCRIPTOR") %></XMP>
                       </span>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="publicTab" role="tabpanel" aria-labelledby="public-tab">
@@ -300,27 +300,27 @@
                       <p>Information provided will be displayed to customers.</p>
                       <span>
                         <label>Support&nbsp;Email:&nbsp;</label>
-                        <input id="SUPPORTEMAIL" name="SUPPORTEMAIL" value="##SUPPORTEMAIL##" maxlength="50" size="30" style="margin-bottom: 1rem;" />
+                        <input id="SUPPORTEMAIL" name="SUPPORTEMAIL" value="<%= request.getParameter ("SUPPORTEMAIL") %>" maxlength="50" size="30" style="margin-bottom: 1rem;" />
                       </span>
                       <br>
                       <span>
                         <label>Support&nbsp;URL:&nbsp;</label>
-                        <input id="SUPPORTURL" name="SUPPORTURL" value="##SUPPORTURL##" maxlength="100" size="50" style="margin-bottom: 1rem;" />
+                        <input id="SUPPORTURL" name="SUPPORTURL" value="<%= request.getParameter ("SUPPORTURL") %>" maxlength="100" size="50" style="margin-bottom: 1rem;" />
                       </span>
                       <br>
                       <span>
                         <label>Website:&nbsp;</label>
-                        <input id="WEB" name="WEB" value="##WEB##" maxlength="60" size="50" style="margin-bottom: 1rem;" />
+                        <input id="WEB" name="WEB" value="<%= request.getParameter ("WEB") %>" maxlength="60" size="50" style="margin-bottom: 1rem;" />
                       </span>
                       <br>
                       <span>
                         <label>Phone:&nbsp;</label>
-                        <input id="PHONE" name="PHONE" value="##PHONE##" maxlength="50" size="15" style="margin-bottom: 1rem;" />
+                        <input id="PHONE" name="PHONE" value="<%= request.getParameter ("PHONE") %>" maxlength="50" size="15" style="margin-bottom: 1rem;" />
                       </span>
                       <br>
                       <span>
                         <label>Fax:&nbsp;</label>
-                        <input id="FAX" name="FAX" value="##FAX##" maxlength="50" size="15" style="margin-bottom: 1rem;" />
+                        <input id="FAX" name="FAX" value="<%= request.getParameter ("FAX") %>" maxlength="50" size="15" style="margin-bottom: 1rem;" />
                       </span>
                       <div class="controlbuttons" style="margin-bottom: .5rem;">
                         <button type="button" class="grey-btn" onclick="submitForm (form);">Save</button>
