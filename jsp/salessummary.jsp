@@ -68,7 +68,7 @@
                         <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
                     </span>
                     <span>
-                      <input type="hidden" name="ROWTEMPLATEURL" value="<%= request.getParameter ("ROWTEMPLATEURL") %>" />
+                      <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/salessummary_tablerow.jsp" />
                       <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/salessummary.jsp" />
                       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
                       <button class="get-btn" value="Get New Summary">Update Summary</button>
