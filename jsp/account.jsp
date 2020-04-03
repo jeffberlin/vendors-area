@@ -281,13 +281,30 @@
                       <h5>Payment&nbsp;Method</h5>
                       <p>Chose the payment threshold and frequency you wish to use.</p>
                       ##IMPORTC(MULTICURRENCY,0,"https://vendors-new.bmtmicro.com/account_payout_single.html","https://vendors-new.bmtmicro.com/account_payout_multi.html")##
+                      <% if ("-1".equals (request.getParameter ("MULTICURRENCY"))) { %>
+
+                      *** put the contents of account_payout_multi.html here - or import the page if it's big and that makes more sense ***
+
+                      <% } else { %>
+
+                      *** put the contents of account_payout_single.html here - or import the page if it's big and that makes more sense ***
+
+                      <% } %>
                       <br clear="all">
                       <div class="controlbuttons" style="margin-bottom: 1rem;">
                         <button type="button" class="grey-btn" onclick="submitForm (form);">Save</button>
                         <button type="reset" value="Reset" class="grey-btn">Reset</button>
                       </div>
                       <span>
-                        <p class="shrinkText" style="margin-bottom: .3rem;">You will be paid in ##SELECT(MULTICURRENCY,-1,multiple currencies,%%CURRENCY%%)## via:</p>
+                        <p class="shrinkText" style="margin-bottom: .3rem;">You will be paid in via:
+                          <%
+                          if ("-1".equals (request.getParameter ("MULTICURRENCY")) ) {
+                            out.print ("multiple currencies");
+                          } else {
+                            out.print (request.getParameter ("CURRENCY"));
+                          }
+                          %>
+                        </p>
                         <div id="payoutmethod" class="shrinkText" style="padding-left: 15px; margin-bottom: 1rem;">&nbsp;</div>
                       </span>
                       <span class="shrinkText">
