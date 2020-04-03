@@ -142,7 +142,7 @@ p {
   }
 
 .remove {
-  background: url('../images-2/times-circle-red.png') no-repeat center center;
+  background: url('../images/times-circle-red.png') no-repeat center center;
   background-size: cover;
   width: 1.5rem;
   height: 1.5rem;

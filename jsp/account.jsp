@@ -190,11 +190,11 @@
     <div style="visibility:hidden;">
       <form name="logout" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Logout">
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
       </form>
       <form name="payoneer" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Payoneer">
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/main.html">
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html">
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
       </form>
     </div>
 
@@ -229,8 +229,8 @@
               <div class="content-box">
                 <form name="account" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
                   <input type="hidden" name="ACTION" value="11" />
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/account.html" />
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/account.jsp" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                   <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="accountTab" role="tabpanel" aria-labelledby="account-tab">
                       <h5>Account&nbsp;Information</h5>
@@ -239,8 +239,7 @@
                         <div class="col-4" style="padding-right: 0; font-size: .9rem;">
                           <span>
                             <input type="hidden" name="VENDORID" value="<%= request.getParameter ("VENDORID") %>" />
-                            <%= request.getParameter ("VENDORID") %>
-                            <p style="margin-bottom: .2rem;">My vendor ID <%= request.getParameter ("VENDORID") %></p>
+                            <p style="margin-bottom: .2rem;">My vendor ID: <%= request.getParameter ("VENDORID") %></p>
                             <p style="margin-bottom: .2rem;"><strong><%= request.getParameter ("COMPANY") %></strong></p>
                             <p style="margin-bottom: .2rem;"><%= request.getParameter ("NAME") %></p>
                             <p style="margin-bottom: .2rem;"><%= request.getParameter ("ADDRESS1") %></p>
@@ -280,15 +279,70 @@
                     <div class="tab-pane fade" id="paymentTab" role="tabpanel" aria-labelledby="payment-tab">
                       <h5>Payment&nbsp;Method</h5>
                       <p>Chose the payment threshold and frequency you wish to use.</p>
-                      ##IMPORTC(MULTICURRENCY,0,"https://vendors-new.bmtmicro.com/account_payout_single.html","https://vendors-new.bmtmicro.com/account_payout_multi.html")##
                       <% if ("-1".equals (request.getParameter ("MULTICURRENCY"))) { %>
-
-                      *** put the contents of account_payout_multi.html here - or import the page if it's big and that makes more sense ***
-
+                        <span>
+                          <label>Minimum threshold:</label>
+                          <input id="PAYOUTMINAMT" name="PAYOUTMINAMT_USD" value="<%= request.getParameter ("PAYOUTMINAMT_USD") %>" maxlength="10" onKeyPress="return (numbersonly (this, event, true))" />&nbsp;USD
+                        </span>
+                        <span>
+                          <label>Frequency:</label>
+                          <select type="text" name="PAYOUTFREQUENCY_USD" value="<%= request.getParameter ("PAYOUTFREQUENCY_USD") %>" onmousewheel="return false;" />
+                          <%= ("0".equals (request.getParameter ("PAYOUTFREQUENCY_USD")) ? "<option value='0'>Twice a month</option>" : "") %>
+                            <option value="1">Monthly</option>
+                            <option value="2">Every 2 Months</option>
+                            <option value="3">Quarterly</option>
+                            <option value="4">Triannually</option>
+                            <option value="6">Biannually</option>
+                            <option value="12">Yearly</option>
+                          </select>
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <input id="PAYOUTMINAMT" name="PAYOUTMINAMT_EUR" value="<%= request.getParameter ("PAYOUTMINAMT_EUR") %>" maxlength="10" onKeyPress="return (numbersonly (this, event, true))" />&nbsp;EUR
+                        </span>
+                        <span>
+                          <select type="text" name="PAYOUTFREQUENCY_EUR" value="<%= request.getParameter ("PAYOUTFREQUENCY_EUR") %>" onmousewheel="return false;" />
+                          <%= ("0".equals (request.getParameter ("PAYOUTFREQUENCY_EUR")) ? "<option value='0'>Twice a month</option>" : "") %>
+                            <option value="1">Monthly</option>
+                            <option value="2">Every 2 Months</option>
+                            <option value="3">Quarterly</option>
+                            <option value="4">Triannually</option>
+                            <option value="6">Biannually</option>
+                            <option value="12">Yearly</option>
+                          </select>
+                        </span>
+                        <br clear="all">
+                        <span>
+                          <input id="PAYOUTMINAMT" name="PAYOUTMINAMT_GBP" value="<%= request.getParameter ("PAYOUTMINAMT_GBP") %>" maxlength="10" onKeyPress="return (numbersonly (this, event, true))" />&nbsp;GBP
+                        </span>
+                        <span>
+                          <select type="text" name="PAYOUTFREQUENCY_GBP" value="<%= request.getParameter ("PAYOUTFREQUENCY_GBP") %>" onmousewheel="return false;" />
+                          <%= ("0".equals (request.getParameter ("PAYOUTFREQUENCY_GBP")) ? "<option value='0'>Twice a month</option>" : "") %>
+                            <option value="1">Monthly</option>
+                            <option value="2">Every 2 Months</option>
+                            <option value="3">Quarterly</option>
+                            <option value="4">Triannually</option>
+                            <option value="6">Biannually</option>
+                            <option value="12">Yearly</option>
+                          </select>
+                        </span>
                       <% } else { %>
-
-                      *** put the contents of account_payout_single.html here - or import the page if it's big and that makes more sense ***
-
+                        <span>
+                          <label>Minimum threshold:</label>
+                          <input id="PAYOUTMINAMT" name="PAYOUTMINAMT" value="<%= request.getParameter ("PAYOUTMINAMT") %>" maxlength="10" onKeyPress="return (numbersonly (this, event, true))" />&nbsp;<%= request.getParameter ("CURRENCY") %>
+                        </span>
+                        <span>
+                          <label>Frequency:</label>
+                          <select type="text" name="PAYOUTFREQUENCY" value="<%= request.getParameter ("PAYOUTFREQUENCY") %>" onmousewheel="return false;" />
+                          <%= ("0".equals (request.getParameter ("PAYOUTFREQUENCY")) ? "<option value='0'>Twice a month</option>" : "") %>
+                            <option value="1">Monthly</option>
+                            <option value="2">Every 2 Months</option>
+                            <option value="3">Quarterly</option>
+                            <option value="4">Triannually</option>
+                            <option value="6">Biannually</option>
+                            <option value="12">Yearly</option>
+                          </select>
+                        </span>
                       <% } %>
                       <br clear="all">
                       <div class="controlbuttons" style="margin-bottom: 1rem;">

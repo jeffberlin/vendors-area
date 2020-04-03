@@ -26,6 +26,9 @@
       .table-responsive, #userinfo {
         height: calc(100vh - 350px);
       }
+      td[option], td[text] {
+        text-align: center;
+      }
     </style>
     <script language="javascript" type="text/javascript">
       <!--
@@ -63,11 +66,11 @@
     <div style="visibility:hidden;">
       <form name="logout" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Logout">
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
       </form>
       <form name="payoneer" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Payoneer">
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/main.html">
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
       </form>
     </div>
 
@@ -88,7 +91,7 @@
                   <input type="hidden" name="ACTION" value="" />
                   <input type="hidden" name="ROWTEMPLATEURL" value="<%= request.getParameter ("ROWTEMPLATEURL") %>" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/users.jsp" />
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
                   <input type="hidden" name="USERID" value="" />
                   <div id="tablelayer">
                     <div class="table-header">
