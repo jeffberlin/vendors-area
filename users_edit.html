@@ -11,10 +11,10 @@
     <![endif]-->
     <title>BMT Micro Developers Center</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addTransfer.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/addPages.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addTransfer.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css">
     <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/upsellutil.js"></script>
@@ -99,36 +99,36 @@
   <body onload="initForm (document.users);">
     <div class="transfer-section">
       <form method="post" name="users" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Users" target="_parent">
-        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/users.html" />
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/users.jsp" />
         <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/users_tablerow.html" />
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
         <input type="hidden" name="FEATUREFLAGS" value="##FEATUREFLAGS##" />
         <input type="hidden" name="ACTION" value="11" />
         <input type="hidden" name="USERID" value="##USERID##" />
         <h5>User&nbsp;Info&nbsp;-&nbsp;##NAME##</h5>
         <span>
           <label>Name:&nbsp;</label>
-          <input id="NAME" name="NAME" value="##NAME##" style="margin-bottom: 1rem;" />
+          <input id="NAME" name="NAME" value="##NAME##" style="margin-bottom: 1rem;" size="35" />
         </span>
         <br>
         <span>
           <label>Email:&nbsp;</label>
-          <input id="EMAIL" name="EMAIL" value="##EMAIL##" style="margin-bottom: 1rem;" />
+          <input id="EMAIL" name="EMAIL" value="##EMAIL##" style="margin-bottom: 1rem;" size="35" />
         </span>
         <br>
         <span>
           <label>Login&nbsp;Name:&nbsp;</label>
-          <input id="LOGINNAME" name="LOGINNAME" maxlength="20" value="##LOGINNAME##" style="margin-bottom: 1rem;" />
+          <input id="LOGINNAME" name="LOGINNAME" maxlength="20" value="##LOGINNAME##" style="margin-bottom: 1rem;" size="35" />
         </span>
         <br clear="all">
         <span>
           <label>Password:&nbsp;</label>
-          <input id="PASSWORD" name="PASSWORD" type="password" value="##PASSWORD##" maxlength="16" autocomplete="off" style="margin-bottom: 1rem;" />
+          <input id="PASSWORD" name="PASSWORD" type="password" value="##PASSWORD##" maxlength="16" autocomplete="off" style="margin-bottom: 1rem;" size="35" />
         </span>
         <br>
         <span>
           <label>Re-type&nbsp;Password:&nbsp;</label>
-          <input id="PASSWORDAGAIN" name="PASSWORDAGAIN" type="password" value="##PASSWORD##" autocomplete="off" style="margin-bottom: 1rem;" />
+          <input id="PASSWORDAGAIN" name="PASSWORDAGAIN" type="password" value="##PASSWORD##" autocomplete="off" style="margin-bottom: 1rem;" size="35" />
         </span>
         <br clear="all">
         <span>
@@ -140,7 +140,7 @@
         </span>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <span>
-          <input type="checkbox" name="FEATURE_CHK(2)" disabled style="margin-bottom: 1rem;" />&nbsp;Allow Resend
+          <input type="checkbox" name="FEATURE_CHK(2)" disabled style="margin-bottom: 1.5rem;" />&nbsp;Allow Resend
         </span>
         <br clear="all">
         <span id="explanation1" style="color:red;display:none;">
@@ -150,7 +150,7 @@
         </span>
         <br clear="all">
         <span>
-          <button type="button" class="save-btn" onclick="submitForm (users);" style="margin-top: 1rem; margin-right: .5rem;">Save Changes</button>
+          <button type="button" class="save-btn" onclick="submitForm (users);" style="margin-right: .5rem;">Save Changes</button>
           <button type="button" class="save-btn" onclick="document.close.submit ();">Close without changing</button>
         </span>
       </form>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script language="javascript" type="text/javascript">
+      <!--
+      function initForm (form) {
+        var reporttype = getCookieValue ("BMTMicro.Vendors.AffiliateSales.ReportType");
+        if (reporttype != null) {
+          form.REPORTTYPE.value = reporttype;
+        }
+        getVendorDateRange (form);
+        form.submit ();
+      }
+      // -->
+    </script>
+  </head>
+  <body onload="initForm (document.start);">
+    <form name="start" action="https://vendors-new.bmtmicro.com/servlets/Vendors.AffiliateReports" method="post">
+      <input type="hidden" name="DATEFROM" value="" />
+      <input type="hidden" name="DATETO" value="" />
+      <input type="hidden" name="REPORTTYPE" value="0" />
+      <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/affiliatesales_tablerow.html" />
+      <input type="hidden" name="ROWHEADERTEMPLATEURL" value="https://vendors-new.bmtmicro.com/affiliatesales_rowheader.html" />
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliatesales.jsp" />
+      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+    </form>
+  </body>
+</html>

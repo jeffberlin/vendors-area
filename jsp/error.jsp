@@ -14,6 +14,11 @@
     <link rel="stylesheet" type="text/css" href="https://vendors-new.bmtmicro.com/css/style.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css"/>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
+    <style media="screen" type="text/css">
+      .content-box {
+        padding: 1rem;
+      }
+    </style>
   </head>
   <body>
     <div style="visibility:hidden;">
@@ -39,16 +44,16 @@
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Error</h4>
               <p>An error has occurred.</p>
+              <div class="content-box">
+                <p><%
+                String error_message = request.getParameter ("MESSAGE");
+                if (error_message == null)  {
+                  error_message = "We are unable to complete your request at this time. The system may be down at this time. Please wait 60 minutes and try your report again. If you continue to have difficulties, please contact <a href=\"mailto:vendors@bmtmicro.com\">vendors@bmtmicro.com</a> for assistance.";
+                }
+                out.print (error_message);
+                %></p>
+              </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
-            <div class="content-box">
-              <p><%
-              String error_message = request.getParameter ("MESSAGE");
-              if (error_message == null)  {
-                error_message = "We are unable to complete your request at this time. The system may be down at this time. Please wait 60 minutes and try your report again. If you continue to have difficulties, please contact <a href=\"mailto:vendors@bmtmicro.com\">vendors@bmtmicro.com</a> for assistance.";
-              }
-              out.print (error_message);
-              %></p>
-            </div> <!-- end .content-box -->
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid body-content -->
