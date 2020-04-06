@@ -11,11 +11,11 @@
     <![endif]-->
     <title>BMT Micro Developers Center</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/style.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css">
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/responsive.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css">
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <style media="screen" type="text/css">
       td[mnumber], td[option] {
@@ -33,7 +33,7 @@
         form.ACTION.value     = action;
         form.target           = target;
         form.NEXT_PAGE.value  = nextpage;
-        form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.html" : "https://vendors-new.bmtmicro.com/error_frame.html";
+        form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.jsp" : "https://vendors-new.bmtmicro.com/error_frame.jsp";
         form.SCHEMEID.value   = schemeid;
         form.SCHEMETYPE.value = schemetype;
         form.submit ();
@@ -46,12 +46,12 @@
 
       function addDiscount (form) {
         if (allowChanges ("You do not have permission to add new schemes.")) {
-          submitForm (0, "_parent", "https://vendors-new.bmtmicro.com/discounts_add.html");
+          submitForm (0, "_parent", "https://vendors-new.bmtmicro.com/discounts_add.jsp");
         }
       }
 
       function editDiscount (schemeid, schemetype) {
-        submitForm (1, "_parent", "https://vendors-new.bmtmicro.com/discounts_edit.html", schemeid, schemetype);
+        submitForm (1, "_parent", "https://vendors-new.bmtmicro.com/discounts_edit.jsp", schemeid, schemetype);
       }
 
       function deleteDiscount (schemeid, schemetype) {
@@ -83,7 +83,7 @@
       <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
       <input type="hidden" name="ACTION" value="" />
       <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/discounts.html" />
-      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.html" />
+      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
       <input type="hidden" name="SCHEMEID" value="" />
       <input type="hidden" name="SCHEMETYPE" value="" />
       <div class="table-header">

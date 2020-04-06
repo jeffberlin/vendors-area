@@ -1,0 +1,17 @@
+<tr onclick="highlightLinks(this)">
+  <td>
+    <button class="td-button" value="Comment" onclick="editComments(##ORDERID##,##ITEMNUMBER##);return(false);">Comment</button>
+    ##SELECT(RESENDBUTTON,-1,<button class="td-button" value="Resend" onclick="resendInfo(%%ORDERID%%,%%ITEMNUMBER%%);return(false);">Resend</button>)##
+    ##SELECT(REFUNDBUTTON,-1,<br><button class="td-button" value="Refund" onclick="refund(%%ORDERID%%,%%ITEMNUMBER%%);return(false);">Refund</button>)##
+  </td>
+  <td number>##ORDERID##</td>
+  <td text>##PRODUCTNAME##</td>
+  <td date><span style="white-space: nowrap">##ORDERDATE##</span></td>
+  <td number>##QUANTITY##</td>
+  <td money>##VENDORROYALTY##</td>
+  <td info><p>##ITEMCOMMENTS##</p></td>
+  <td info><p>##NAME##</p></td>
+  <td info><p>##ADDRESS##</p></td>
+  <td info>##PHONE##</td>
+  <td info><a href="mailto:##EMAIL##">##EMAIL##</a></td>
+</tr>
