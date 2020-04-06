@@ -1,0 +1,33 @@
+From: BMT Micro Admin <admin@bmtmicro.com>
+Reply-To: ##EMAIL##
+To: vendors@bmtmicro.com
+Subject: Support Request for Vendor ##VENDORID##
+X-BMT-Template: VendorContactForm
+
+BMT Micro Vendor Support Request
+Vendor ID:
+
+##VENDORID##
+
+Name:
+
+##NAME##
+
+Email:
+
+##EMAIL##
+
+Subject:
+
+##TITLE## - ##SUBTITLE##
+##OTHERSUBJECT##
+
+Description:
+
+##DESCRIPTION##
+
+
+URL:
+
+##URL##
+---END SUBMISSION---
