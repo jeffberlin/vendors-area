@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
-    <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
@@ -61,7 +60,6 @@
         copyField (form, "FIRSTONLY", "FIRSTONLY_CHK");
         copyField (form, "FREESHIPPING", "FREESHIPPING_CHK");
         form.NAME.value = trim(form.NAME.value);
-
         if (!allowChanges ("You do not have permission to edit discount schemes.")) {
           return (false);
         }
@@ -120,7 +118,7 @@
       //-->
     </script>
   </head>
-  <body>
+  <body onload="initForm (document.discform);">
     <div style="visibility:hidden;">
       <form name="logout" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Logout">
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
@@ -200,7 +198,16 @@
                       <p>Discount Type cannot be changed. If this information is incorrect,<br>please set up a new discount scheme.</p>
                       <span>
                         <input type="hidden" name="SCHEMETYPE" value="<%= request.getParameter ("SCHEMETYPE") %>" />
-                        ##SELECT(SCHEMETYPE,0,"Codes used for granting discount",1,"Automatically applied discount",2,"Recurring billing discount only")##
+                        <%
+                        switch (request.getParameter ("SCHEMETYPE")) {
+                          case "0": out.print("Codes used for granting discount");
+                          break;
+                          case "1": out.print("Automatically applied discount");
+                          break;
+                          case "2": out.print("Recurring billing discount only");
+                          break;
+                        }
+                        %>
                         <br>
                         Number of purchases limited to: <%= request.getParameter ("MAXUSECOUNT") %>
                         <input name="MAXUSECOUNT" type="hidden" value="<%= request.getParameter ("MAXUSECOUNT") %>" />
