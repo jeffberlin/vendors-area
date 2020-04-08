@@ -1,0 +1,119 @@
+@import url(contrast.css);
+* {margin:0px}
+
+div.row {clear: both;padding-top: 5px;}
+div.row span.label {float: left;width: 50%;text-align: right;font-weight:bold;}
+div.row span.formw {float: right;width: 49%;text-align: left;}
+div.productrow {clear:both;}  
+div.productrow span.label {float: left;width: 20%;text-align: left;font-size:80%;font-family:verdana;}
+div.productrow span.formw {float: right;width: 75%;text-align: left;}   		
+div.row span.half {float:left;width:40%;text-align:right;}
+div.row span.halfr {float:right;width:40%;text-align:left;}
+div.row span.center {float:left;width:15%;text-align:center;vertical-align: middle;padding: 20px 0 0 20px;}
+.header {color:#003366;font-size:x-large;font-weight:bolder;text-align:center;padding:3px 0px 3px 0px;}
+.headersm {font-size:medium;color:#003366;font-weight: bold;}
+.tableheadsm {background-color: #003366;font-size:small;font-weight:bolder;color:#FFFFFF;text-align:center;padding:1.5px 1px 1.5px 1px;}
+h3 {color:#003366;font-weight:bold;text-align:left;}
+.xsmall {font-size:x-small;font-family:Arial,Geneva,serif;font-style:italic}
+.datesran {color:#003366;font-size:medium;font-weight:bolder;}
+.popup {cursor:help;text-decoration:none}
+input.blueover {
+	background-color: #003366;
+	border:#1e56a6 1px solid;
+	font-weight: bold;
+	font-size: 85%;
+	color: #ffcc66;
+	height:26px;
+	padding:0px 5px 0px 5px;
+}
+input.blue {
+	background-color: #1e56a6;
+	border:#003366 1px solid;
+	font-weight: bold;
+	font-size:85%;
+	color: #ffffff;
+	height:26px;
+	padding:0px 5px 0px 5px;
+}
+input.bluedown {
+	background-color: #1e56a6;
+	border:#003366 1px inset;
+	font-weight: bold;
+	font-size:85%;
+	color: #ffcc66;
+	height:26px;
+	padding:0px 5px 0px 5px;
+}
+.tablehead {
+	background-color: #003366;
+	font-size:16pt;
+	font-weight:bolder;
+	color:#FFFFFF;
+	text-align:center;
+	padding:3px 0px 3px 0px;
+}
+.altrow {
+	background-color: #E8F1F5;
+}
+.accentrow {
+	background-color: #003366;
+	font-size:10pt;
+	color:#FFFFFF;
+	font-weight: bold;
+}
+.detailfont {
+	font-size:10pt;
+	color:#111177;
+	font-weight: bold;
+}
+.error {
+	color:red;
+	font-size:18pt;
+	font-weight:bolder;
+	text-align:center;
+	padding:3px 0px 3px 0px;
+}
+hr {
+	color: #003366;
+	width:90%;
+	height: 2px; 
+}
+.tableheadmed {
+	background-color: #003366;
+	font-size:14pt;
+	font-weight:bolder;
+	color:#FFFFFF;
+	text-align:left;
+	padding:3px 0px 3px 0px;
+}
+.sectionhead {
+	color:#003366;
+	font-size:120%;
+	font-weight:bolder;
+	text-align:center;
+	padding:10px 0px 3px 0px;
+}
+.popup {
+	cursor:help;
+	text-decoration:none
+}
+
+.hover {
+    color:#FFFFFF; 
+    background-color:#003366;
+ 	text-decoration: none
+}
+/*
+#main1 {
+	width: 90%;
+	margin: 1em 2% 2em 3em;
+	padding-bottom:25px;
+}
+div#contentheader {
+	background-image: url(https://vendors.bmtmicro.com/images/logo.gif);
+	background-position : top right;
+	background-repeat:no-repeat;
+	clear : both;
+	line-height:300%;
+}
+*/

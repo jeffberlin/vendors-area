@@ -1,0 +1,170 @@
+html, body {
+   scrollbar-face-color: #003366;
+   scrollbar-highlight-color: #0979B3;
+   scrollbar-shadow-color: #000088;
+   scrollbar-3Dlight-color: #0C91D6;
+   scrollbar-arrow-color: #ffffff;
+   scrollbar-track-color: #84B1C8;
+   scrollbar-darkshadow-color: #054465;
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-size: 100%;
+   margin:0px;
+   padding:0px;
+   background:#ffffff URL(https://vendors.bmtmicro.com/images/top_banner_bkgd.jpg) repeat-x top left}
+#container {
+   min-height:100%;
+   position:relative;
+}
+
+#Layer1, #Layer2, #Layer3, #Layer4, #Layer5 {
+   font-size:90%;
+   position:absolute;
+   width:280px;
+   height:210px;
+   z-index:6;
+   background:#ffffff URL(https://vendors.bmtmicro.com/images/vertbar.jpg) no-repeat top left
+}
+#Layer1 {left: 160px; top: 305px}
+#Layer2 {left: 470px; top: 305px}
+#Layer3 {left: 160px; top: 550px}
+#Layer4 {left: 470px; top: 550px}
+#Layer5 {left: 550px; top: 550px}
+#Layer1 ul, #Layer2 ul, #Layer3 ul, #Layer4 ul, #news ul {
+   list-style:none;
+   margin-left:12px;
+   margin-top:10px
+}
+#title {
+   height:477px;
+   position:absolute;
+   top:0px;
+   left:0px;
+   background:URL(https://vendors.bmtmicro.com/images/background.jpg) no-repeat top left;
+   width:100%;
+   z-index:1
+}
+#title p {
+   padding-left:495px;
+   font-style:italic;
+   color:#ffffff;
+   font-family:georgia,times new roman;
+   font-size:105%;
+   letter-spacing:1.5px;
+   position:absolute;
+   top:30px;
+   z-index:6
+}
+#helplinks {
+   position:absolute;
+   top:480px;
+   left:3px;
+   font-size:75%;
+   width:175px
+}
+#helplinks ul li {
+   list-style:none;
+   margin-left:0px
+}
+#main {
+   padding:0px;
+   margin:0px
+}
+#content p {
+   font-size:85%;
+   padding:3px
+}
+#content ul {
+   font-size:85%;
+   margin-left:25px;
+   margin-bottom:10px
+}
+#content {
+   width:84%;
+   position:absolute;
+   left:130px;
+   top:150px;
+   margin-bottom:10px;
+   font-size:90%;
+   z-index:1000
+}
+#news {
+   position:absolute;
+   width:550px;
+   height:100px;
+   z-index:6;
+   left:160px;
+   top:142px;
+   font-size:80%;
+   background:#ffffff URL(https://vendors.bmtmicro.com/images/vertbar.jpg) no-repeat top left;
+}
+.clearfooter {   height: 330px;   clear: both;}
+#footer {
+   position: relative;
+   bottom:0;
+   left:0px;
+   width:98%;
+   height:45px;   /* Height of the footer */
+}
+.footer {
+   text-align:right;
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-size: 9px;
+   color: #666666;
+   border-top:#000000 1px solid;
+   padding-right:5px
+}
+h3.main  {
+   margin-left:10px;
+   background:url(https://vendors.bmtmicro.com/images/dot.gif) no-repeat top left;
+   color:#003366;
+   padding-left:48px;
+   font-size:110%;
+   font-family: Verdana, Arial, Helvetica, sans-serif
+}
+.orderformhead {
+   background-color:#003366;
+   color:#fffafa;
+   text-align:left;
+   font-weight:bold
+}
+#content a:link,#Layer1 a:link, #Layer2 a:link, #Layer3 a:link, #Layer4 a:link, #helplinks a:link, #news a:link {
+	color: #003366;
+	text-decoration: none;
+	font-family:verdana,arial,sans serif;
+	font-weight:bold;
+	font-size:80%
+}
+#content a:active, #Layer1 a:active, #Layer2 a:active, #Layer3 a:active, #Layer4 a:active, #helplinks a:active, #news a:active {
+	color: #003366;
+	text-decoration: none;
+	font-family:verdana,arial,sans serif;
+	font-weight:bold;	
+	font-size:80%
+}
+#content a:visited, #Layer1 a:visited, #Layer2 a:visited, #Layer3 a:visited, #Layer4 a:visited, #helplinks a:visited, #news a:visited {
+	color: #003366;
+	text-decoration:none;
+	font-family:verdana,arial,sans serif;
+	font-weight:bold;	
+	font-size:80%
+}
+#content a:hover, #Layer1 a:hover, #Layer2 a:hover, #Layer3 a:hover, #Layer4 a:hover, #helplinks a:hover, #news a:hover {
+    color:#FFFFFF; 
+    background-color:#003366;
+ 	text-decoration: none;
+	font-family:verdana,arial,sans serif;
+	font-weight:bold;	
+	font-size:80%
+}
+
+#showme {
+   position:absolute;
+   width:250px;
+   z-index:7;
+   left:650px;
+   top:142px;
+   background:#ffffff;
+   color:#003366; 
+   font-weight:bold;	
+   font-size:80%;
+}

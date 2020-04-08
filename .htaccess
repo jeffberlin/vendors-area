@@ -1,0 +1,10 @@
+# [QSA] = Query String Append
+# mod_rewrite docs (Apache 2.0xx): http://httpd.apache.org/docs/2.0/mod/mod_rewrite.html
+
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^xmlrequest? /servlets/Vendors.XMLRequest [L]
+RewriteRule ^Affiliates$ https://affiliates.bmtmicro.com/ [L]
+RewriteRule ^Affiliates/(.+)$ https://affiliates.bmtmicro.com/$1 [QSA,L]
+RewriteRule ^ResetPassword/(.+)$ /servlets/Vendors.ResetPassword?PWRID=$1 [L]
