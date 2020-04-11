@@ -1,22 +1,36 @@
-<script type="text/javascript">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+<script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vhelp.js"></script>
+<script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+<script language="javascript" type="text/javascript">
+  <!--
   // Redirect to login page if this page is accessed and the vendor is not logged in
   if (getCookieValue ("BMTMicro.Vendors.VendorID") == null) {
-    window.location = "https://vendors-new.bmtmicro.com/login.html";
+    window.location = "https://vendors-new.bmtmicro.com/index.html";
   }
   // Function for pulling name and company when available
   // function getVendorName () {
     var n = getCookieValue ("BMTMicro.Vendors.Name");
     var c = getCookieValue ("BMTMicro.Vendors.Company");
-  // return (((c == null) || (c == "")) ? n : (n + "</br>" + c ));
+    // return (((c == null) || (c == "")) ? n : (n + ", " + c));
   // }
+  // -->
 </script>
+
 <div style="visibility:hidden;">
   <form name="logout" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Logout">
-    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html">
+    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.html" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
   </form>
-  <form name="payoneer" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Payoneer">
-    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/main.jsp">
+  <form name="payoneer" method=post action="https://vendors-new.bmtmicro.com/servlets/Vendors.Payoneer">
+    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/mainstart.html">
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
   </form>
 </div>
