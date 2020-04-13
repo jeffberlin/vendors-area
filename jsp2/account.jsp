@@ -11,9 +11,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <title>BMT Micro Developers Center</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_top_script.html" />
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css"/>
+    <c:import url = "https://vendors-bmtmicro.com/includes/menu_footer_css.html" />
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
@@ -186,8 +186,7 @@
       //-->
     </script>
   </head>
-  <body onload="initForm (document.account);">
-
+  <body>
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -269,78 +268,89 @@
                     <div class="tab-pane fade" id="paymentTab" role="tabpanel" aria-labelledby="payment-tab">
                       <h5>Payment&nbsp;Method</h5>
                       <p>Chose the payment threshold and frequency you wish to use.</p>
-                      <% if ("-1".equals (request.getParameter ("MULTICURRENCY"))) { %>
-                        <span>
-                          <label>Minimum threshold:</label>
-                          <input id="PAYOUTMINAMT" name="PAYOUTMINAMT_USD" value="${param.PAYOUTMINAMT_USD}" maxlength="10" onKeyPress="return (numbersonly (this, event, true))" />&nbsp;USD
-                        </span>
-                        <span>
-                          <label>Frequency:</label>
-                          <select type="text" name="PAYOUTFREQUENCY_USD" value="${param.PAYOUTFREQUENCY_USD}" onmousewheel="return false;" />
-                          <%= ("0".equals (request.getParameter ("PAYOUTFREQUENCY_USD")) ? "<option value='0'>Twice a month</option>" : "") %>
-                            <option value="1">Monthly</option>
-                            <option value="2">Every 2 Months</option>
-                            <option value="3">Quarterly</option>
-                            <option value="4">Triannually</option>
-                            <option value="6">Biannually</option>
-                            <option value="12">Yearly</option>
-                          </select>
-                        </span>
-                        <br clear="all">
-                        <span>
-                          <input id="PAYOUTMINAMT" name="PAYOUTMINAMT_EUR" value="${param.PAYOUTMINAMT_EUR}" maxlength="10" onKeyPress="return (numbersonly (this, event, true))" />&nbsp;EUR
-                        </span>
-                        <span>
-                          <select type="text" name="PAYOUTFREQUENCY_EUR" value="${param.PAYOUTFREQUENCY_EUR}" onmousewheel="return false;" />
-                          <%= ("0".equals (request.getParameter ("PAYOUTFREQUENCY_EUR")) ? "<option value='0'>Twice a month</option>" : "") %>
-                            <option value="1">Monthly</option>
-                            <option value="2">Every 2 Months</option>
-                            <option value="3">Quarterly</option>
-                            <option value="4">Triannually</option>
-                            <option value="6">Biannually</option>
-                            <option value="12">Yearly</option>
-                          </select>
-                        </span>
-                        <br clear="all">
-                        <span>
-                          <input id="PAYOUTMINAMT" name="PAYOUTMINAMT_GBP" value="${param.PAYOUTMINAMT_GBP}" maxlength="10" onKeyPress="return (numbersonly (this, event, true))" />&nbsp;GBP
-                        </span>
-                        <span>
-                          <select type="text" name="PAYOUTFREQUENCY_GBP" value="${parm.PAYOUTFREQUENCY_GBP}" onmousewheel="return false;" />
-                          <%= ("0".equals (request.getParameter ("PAYOUTFREQUENCY_GBP")) ? "<option value='0'>Twice a month</option>" : "") %>
-                            <option value="1">Monthly</option>
-                            <option value="2">Every 2 Months</option>
-                            <option value="3">Quarterly</option>
-                            <option value="4">Triannually</option>
-                            <option value="6">Biannually</option>
-                            <option value="12">Yearly</option>
-                          </select>
-                        </span>
-                      <% } else { %>
-                        <span>
-                          <label>Minimum threshold:</label>
-                          <input id="PAYOUTMINAMT" name="PAYOUTMINAMT" value="${param.PAYOUTMINAMT}" maxlength="10" onKeyPress="return (numbersonly (this, event, true))" />&nbsp;<%= request.getParameter ("CURRENCY") %>
-                        </span>
-                        <span>
-                          <label>Frequency:</label>
-                          <select type="text" name="PAYOUTFREQUENCY" value="${param.PAYOUTFREQUENCY}" onmousewheel="return false;" />
-                          <%= ("0".equals (request.getParameter ("PAYOUTFREQUENCY")) ? "<option value='0'>Twice a month</option>" : "") %>
-                            <option value="1">Monthly</option>
-                            <option value="2">Every 2 Months</option>
-                            <option value="3">Quarterly</option>
-                            <option value="4">Triannually</option>
-                            <option value="6">Biannually</option>
-                            <option value="12">Yearly</option>
-                          </select>
-                        </span>
-                      <% } %>
+                      <c:choose>
+                        <c:when test = "${param.MULTICURRENCY == -1}">
+                          <span>
+                            <label>Minimum threshold:</label>
+                            <input id="PAYOUTMINAMT" name="PAYOUTMINAMT_USD" value="${param.PAYOUTMINAMT_USD}" maxlength="10" onKeyPress="return (numbersonly (this, event, true))" />&nbsp;USD
+                          </span>
+                          <span>
+                            <label>Frequency:</label>
+                            <select type="text" name="PAYOUTFREQUENCY_USD" value="${param.PAYOUTFREQUENCY_USD}" onmousewheel="return false;" />
+                              <c:if test = "${param.PAYOUTFREQUENCY_USD == 0}">
+                                <option value="0">Twice a month</option>
+                                <option value="1">Monthly</option>
+                                <option value="2">Every 2 Months</option>
+                                <option value="3">Quarterly</option>
+                                <option value="4">Triannually</option>
+                                <option value="6">Biannually</option>
+                                <option value="12">Yearly</option>
+                              </c:if>
+                            </select>
+                          </span>
+                          <br clear="all">
+                          <span>
+                            <input id="PAYOUTMINAMT" name="PAYOUTMINAMT_EUR" value="${param.PAYOUTMINAMT_EUR}" maxlength="10" onKeyPress="return (numbersonly (this, event, true))" />&nbsp;EUR
+                          </span>
+                          <span>
+                            <select type="text" name="PAYOUTFREQUENCY_EUR" value="${param.PAYOUTFREQUENCY_EUR}" onmousewheel="return false;" />
+                              <c:if test = "${param.PAYOUTFREQUENCY_EUR == 0}">
+                                <option value='0'>Twice a month</option>
+                                <option value="1">Monthly</option>
+                                <option value="2">Every 2 Months</option>
+                                <option value="3">Quarterly</option>
+                                <option value="4">Triannually</option>
+                                <option value="6">Biannually</option>
+                                <option value="12">Yearly</option>
+                              </c:if>
+                            </select>
+                          </span>
+                          <br clear="all">
+                          <span>
+                            <input id="PAYOUTMINAMT" name="PAYOUTMINAMT_GBP" value="${param.PAYOUTMINAMT_GBP}" maxlength="10" onKeyPress="return (numbersonly (this, event, true))" />&nbsp;GBP
+                          </span>
+                          <span>
+                            <select type="text" name="PAYOUTFREQUENCY_GBP" value="${parm.PAYOUTFREQUENCY_GBP}" onmousewheel="return false;" />
+                              <c:if test = "${param.PAYOUTFREQUENCY_GBP == 0}">
+                                <option value='0'>Twice a month</option>
+                                <option value="1">Monthly</option>
+                                <option value="2">Every 2 Months</option>
+                                <option value="3">Quarterly</option>
+                                <option value="4">Triannually</option>
+                                <option value="6">Biannually</option>
+                                <option value="12">Yearly</option>
+                              </c:if>
+                            </select>
+                          </span>
+                        </c:when>
+                        <c:otherwise>
+                          <span>
+                            <label>Minimum threshold:</label>
+                            <input id="PAYOUTMINAMT" name="PAYOUTMINAMT" value="${param.PAYOUTMINAMT}" maxlength="10" onKeyPress="return (numbersonly (this, event, true))" />&nbsp;${param.CURRENCY}"
+                          </span>
+                          <span>
+                            <label>Frequency:</label>
+                            <select type="text" name="PAYOUTFREQUENCY" value="${param.PAYOUTFREQUENCY}" onmousewheel="return false;" />
+                            <c:if test = "${param.PAYOUTFREQUENCY == 0}">
+                              <option value='0'>Twice a month</option>
+                              <option value="1">Monthly</option>
+                              <option value="2">Every 2 Months</option>
+                              <option value="3">Quarterly</option>
+                              <option value="4">Triannually</option>
+                              <option value="6">Biannually</option>
+                              <option value="12">Yearly</option>
+                            </c:if>
+                            </select>
+                          </span>
+                        </c:otherwise>
+                      </c:choose>
                       <br clear="all">
                       <div class="controlbuttons" style="margin-bottom: 1rem;">
                         <button type="button" class="grey-btn" onclick="submitForm (form);">Save</button>
                         <button type="reset" value="Reset" class="grey-btn">Reset</button>
                       </div>
                       <span>
-                        <p class="shrinkText" style="margin-bottom: .3rem;">You will be paid in via:
+                        <p class="shrinkText" style="margin-bottom: .3rem;">You will be paid in
                           <%
                           if ("-1".equals (request.getParameter ("MULTICURRENCY")) ) {
                             out.print ("multiple currencies");
@@ -348,6 +358,7 @@
                             out.print (request.getParameter ("CURRENCY"));
                           }
                           %>
+                          via:
                         </p>
                         <div id="payoutmethod" class="shrinkText" style="padding-left: 15px; margin-bottom: 1rem;">&nbsp;</div>
                       </span>
@@ -391,14 +402,14 @@
                       <p class="shrinkText"><em>Order related settings can be managed under the Settings link in the dropdown menu associated with your name on the left.</em></p>
                     </div> <!-- end .tab-pane -->
                   </div> <!-- end .tab-content -->
-                </div> <!-- end .content-box -->
-              </form>
-            </ul> <!-- end .col-lg-10 col-md-12 page-title -->
+                </form>
+              </div> <!-- end .content-box -->
+            </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
       <c:import url = "https://vendors-new.bmtmicro.com/includes/footer.html" />
     </div> <!-- end .main-raised -->
-    <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_bottom_scripts" />
+    <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_bottom_scripts.html" />
   </body>
 </html>

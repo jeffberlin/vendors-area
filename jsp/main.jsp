@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css"/>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
-    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vhelp.js"></script>
     <script language="javascript" type="text/javascript">
       <!--
       function submitForm (form) {
@@ -38,7 +37,6 @@
     </script>
   </head>
   <body onload="initForm ();">
-
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
