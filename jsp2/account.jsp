@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,8 +13,8 @@
     <![endif]-->
     <title>BMT Micro Developers Center</title>
     <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_top_script.html" />
+    <c:import url = "https://vendors-new.bmtmicro.com/includes/menu_footer_css.html" />
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css"/>
-    <c:import url = "https://vendors-bmtmicro.com/includes/menu_footer_css.html" />
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
@@ -216,14 +217,21 @@
                 </li>
               </ul>
               <div class="content-box">
-                <form name="account" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
+                <!-- <form name="account" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
                   <input type="hidden" name="ACTION" value="11" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/account.jsp" />
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" /> -->
+                  <c:url value = "https://vendors-new.bmtmicro.com/servlets/Vendors.Account" var = "accountURL">
+                    <c:param name = "SESSIONID" value = "${cookie['BMTMicro.Vendors.SessionID'].value}"/>
+                    <c:param name = "ACTION" value = "11"/>
+                    <c:param name = "NEXT_PAGE" value = "https://vendors-new.bmtmicro.com/account.jsp"/>
+                    <c:param name = "ERROR_PAGE" value = "https://vendors-new.bmtmicro.com/error.jsp"/>
+
+                  <c:import url = "${accountURL}"/>
                   <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="accountTab" role="tabpanel" aria-labelledby="account-tab">
                       <h5>Account&nbsp;Information</h5>
-                      <p>Information provided will be displayed to BMTMicro only.</p>
+                      <p>Information provided will be displayed to BMT Micro only.</p>
                       <div class="row shrinkText">
                         <div class="col-4" style="padding-right: 0; font-size: .9rem;">
                           <span>
@@ -326,7 +334,7 @@
                         <c:otherwise>
                           <span>
                             <label>Minimum threshold:</label>
-                            <input id="PAYOUTMINAMT" name="PAYOUTMINAMT" value="${param.PAYOUTMINAMT}" maxlength="10" onKeyPress="return (numbersonly (this, event, true))" />&nbsp;${param.CURRENCY}"
+                            <input id="PAYOUTMINAMT" name="PAYOUTMINAMT" value="${param.PAYOUTMINAMT}" maxlength="10" onKeyPress="return (numbersonly (this, event, true))" />&nbsp;${param.CURRENCY}
                           </span>
                           <span>
                             <label>Frequency:</label>
@@ -351,13 +359,16 @@
                       </div>
                       <span>
                         <p class="shrinkText" style="margin-bottom: .3rem;">You will be paid in
-                          <%
-                          if ("-1".equals (request.getParameter ("MULTICURRENCY")) ) {
-                            out.print ("multiple currencies");
-                          } else {
-                            out.print (request.getParameter ("CURRENCY"));
-                          }
-                          %>
+
+                          <c:choose>
+                            <c:when test = "${param.MULTICURRENCY == -1}">
+                              multiple currencies
+                            </c:when>
+                            <c:otherwise>
+                              ${param.CURRENCY}
+                            </c:otherwise>
+                          </c:choose>
+
                           via:
                         </p>
                         <div id="payoutmethod" class="shrinkText" style="padding-left: 15px; margin-bottom: 1rem;">&nbsp;</div>
@@ -402,7 +413,8 @@
                       <p class="shrinkText"><em>Order related settings can be managed under the Settings link in the dropdown menu associated with your name on the left.</em></p>
                     </div> <!-- end .tab-pane -->
                   </div> <!-- end .tab-content -->
-                </form>
+                  </c:url>
+                <!-- </form> -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->

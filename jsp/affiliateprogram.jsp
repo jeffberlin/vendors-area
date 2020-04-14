@@ -14,12 +14,9 @@
     <title>BMT Micro Developers Center</title>
     <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_top_script.html" />
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/menuSidebar.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/footer.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css"/>
+    <c:import url = "https://vendors-new.bmtmicro.com/includes/menu_footer_css.html"/>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <style media="screen" type="text/css">
       ul li {
         color: #707070;
