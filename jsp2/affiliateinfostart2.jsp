@@ -29,7 +29,6 @@
     </style>
   </head>
   <body>
-
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -53,7 +52,10 @@
                     <c:param name = "ERROR_PAGE" value = "https://vendors-new.bmtmicro.com/error_frame.jsp"/>
                   </c:url>
                   <c:import url = "${affiliateInfoURL}"/>
-                </div>
+                </div> <!-- end #tableframe -->
+                <div name="resultframe" id="resultframe" style="display: none;">
+
+                </div> <!-- end #resultframe -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->

@@ -34,7 +34,7 @@
           case 2: // ACH
             return ("ACH Direct Deposit");
           case 3: // PayPal
-            return ("PayPal to ##PAYOUTEMAIL##");
+            return ("PayPal to ${param.PAYOUTEMAIL}");
           case 4: // Wire Transfer - Deutsche Bank
             return ("Wire Transfer - Deutsche Bank");
           case 5: // Wire Transfer - JP Morgan
@@ -73,23 +73,23 @@
       }
 
       function getPayOutMethodInfo () {
-        if (##MULTICURRENCY## == 0) {
-          return (getPayOutMethod (##PAYOUTMETHOD##));
+        if (${param.MULTICURRENCY} == 0) {
+          return (getPayOutMethod (${param.PAYOUTMETHOD}));
         }
         return (
-          "USD: " + getPayOutMethod (##PAYOUTMETHOD_USD##) + "<br>" +
-          "EUR: " + getPayOutMethod (##PAYOUTMETHOD_EUR##) + "<br>" +
-          "GBP: " + getPayOutMethod (##PAYOUTMETHOD_GBP##)
+          "USD: " + getPayOutMethod (${param.PAYOUTMETHOD_USD}) + "<br>" +
+          "EUR: " + getPayOutMethod (${param.PAYOUTMETHOD_EUR}) + "<br>" +
+          "GBP: " + getPayOutMethod (${param.PAYOUTMETHOD_GBP})
         );
       }
 
       function initForm (form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        initField (form, "PAYOUTFREQUENCY", "##PAYOUTFREQUENCY##");
-        initField (form, "PAYOUTFREQUENCY_USD", "##PAYOUTFREQUENCY_USD##");
-        initField (form, "PAYOUTFREQUENCY_EUR", "##PAYOUTFREQUENCY_EUR##");
-        initField (form, "PAYOUTFREQUENCY_GBP", "##PAYOUTFREQUENCY_GBP##");
+        initField (form, "PAYOUTFREQUENCY", "${param.PAYOUTFREQUENCY}");
+        initField (form, "PAYOUTFREQUENCY_USD", "${param.PAYOUTFREQUENCY_USD}");
+        initField (form, "PAYOUTFREQUENCY_EUR", "${param.PAYOUTFREQUENCY_EUR}");
+        initField (form, "PAYOUTFREQUENCY_GBP", "${param.PAYOUTFREQUENCY_GBP}");
         document.getElementById ("payoutmethod").innerHTML = getPayOutMethodInfo ();
       }
 
@@ -118,17 +118,17 @@
       function submitForm (form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        if (##PAYDAY## == -1) {
+        if (${param.PAYDAY} == -1) {
           alert ("Changes cannot be made on a vendor pay day. Please try again tomorrow.");
           return (false);
         }
         if (!allowChanges ("You do not have permission to make changes.")) {
           return (false);
         }
-        if (!(checkPayOutMinAmt (form.PAYOUTMINAMT, ##PAYOUTMETHOD##) &&
-        checkPayOutMinAmt (form.PAYOUTMINAMT_USD, ##PAYOUTMETHOD_USD##) &&
-        checkPayOutMinAmt (form.PAYOUTMINAMT_EUR, ##PAYOUTMETHOD_EUR##) &&
-        checkPayOutMinAmt (form.PAYOUTMINAMT_GBP, ##PAYOUTMETHOD_GBP##))) {
+        if (!(checkPayOutMinAmt (form.PAYOUTMINAMT, ${param.PAYOUTMETHOD}) &&
+        checkPayOutMinAmt (form.PAYOUTMINAMT_USD, ${param.PAYOUTMETHOD_USD}) &&
+        checkPayOutMinAmt (form.PAYOUTMINAMT_EUR, ${param.PAYOUTMETHOD_EUR}) &&
+        checkPayOutMinAmt (form.PAYOUTMINAMT_GBP, ${param.PAYOUTMETHOD_GBP}))) {
           return (false);
         }
         if ((form.EMAIL.value.indexOf (",") != -1) || (form.EMAIL.value.indexOf (" ") != -1)) {
@@ -187,7 +187,7 @@
       //-->
     </script>
   </head>
-  <body>
+  <body onload="initForm (document.account);">
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -217,17 +217,10 @@
                 </li>
               </ul>
               <div class="content-box">
-                <!-- <form name="account" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
+                <form name="account" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
                   <input type="hidden" name="ACTION" value="11" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/account.jsp" />
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" /> -->
-                  <c:url value = "https://vendors-new.bmtmicro.com/servlets/Vendors.Account" var = "accountURL">
-                    <c:param name = "SESSIONID" value = "${cookie['BMTMicro.Vendors.SessionID'].value}"/>
-                    <c:param name = "ACTION" value = "11"/>
-                    <c:param name = "NEXT_PAGE" value = "https://vendors-new.bmtmicro.com/account.jsp"/>
-                    <c:param name = "ERROR_PAGE" value = "https://vendors-new.bmtmicro.com/error.jsp"/>
-
-                  <c:import url = "${accountURL}"/>
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                   <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="accountTab" role="tabpanel" aria-labelledby="account-tab">
                       <h5>Account&nbsp;Information</h5>
@@ -359,16 +352,14 @@
                       </div>
                       <span>
                         <p class="shrinkText" style="margin-bottom: .3rem;">You will be paid in
-
                           <c:choose>
                             <c:when test = "${param.MULTICURRENCY == -1}">
-                              multiple currencies
+                              <c:out value = "multiple currencies" />
                             </c:when>
                             <c:otherwise>
-                              ${param.CURRENCY}
+                              <c:out value = "${param.CURRENCY}" />
                             </c:otherwise>
                           </c:choose>
-
                           via:
                         </p>
                         <div id="payoutmethod" class="shrinkText" style="padding-left: 15px; margin-bottom: 1rem;">&nbsp;</div>
@@ -413,8 +404,7 @@
                       <p class="shrinkText"><em>Order related settings can be managed under the Settings link in the dropdown menu associated with your name on the left.</em></p>
                     </div> <!-- end .tab-pane -->
                   </div> <!-- end .tab-content -->
-                  </c:url>
-                <!-- </form> -->
+                </form>
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
