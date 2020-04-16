@@ -27,39 +27,6 @@
     </style>
     <script language="javascript" type="text/javascript">
       <!--
-      function getPayOutMethod (method) {
-        switch (method) {
-          case 1:  // check
-            return ("USD Check");
-          case 2: // ACH
-            return ("ACH Direct Deposit");
-          case 3: // PayPal
-            return ("PayPal to ${param.PAYOUTEMAIL}");
-          case 4: // Wire Transfer - Deutsche Bank
-            return ("Wire Transfer - Deutsche Bank");
-          case 5: // Wire Transfer - JP Morgan
-            return ("Wire Transfer - JP Morgan");
-          case 6: // Wire Transfer - Bank of Wilmington
-            return ("Wire Transfer - First Federal");
-          case 7: // PayPal eCheck
-            return ("PayPal eCheck");
-          case 8: // Other
-            return ("Other - Special payment arrangement");
-          case 9: // Payoneer
-            return ("Payoneer pre-paid Mastercard");
-          case 10:
-            return ("Wire Transfer - Suntrust");
-          case 11:
-            return ("EUR Wire Transfer - Commerzbank");
-          case 12: // PayPal EUR
-            return ("PayPal (EUR)");
-          case 13: // PayPal GBP
-            return ("PayPal (GBP)");
-          case 0:
-            return ("No payment due yet.");
-        }
-        return ("Unknown");
-      }
 
       function isPayPal (method) {
         switch (method) {
@@ -70,27 +37,6 @@
             return (true);
         }
         return (false);
-      }
-
-      function getPayOutMethodInfo () {
-        if (${param.MULTICURRENCY} == 0) {
-          return (getPayOutMethod (${param.PAYOUTMETHOD}));
-        }
-        return (
-          "USD: " + getPayOutMethod (${param.PAYOUTMETHOD_USD}) + "<br>" +
-          "EUR: " + getPayOutMethod (${param.PAYOUTMETHOD_EUR}) + "<br>" +
-          "GBP: " + getPayOutMethod (${param.PAYOUTMETHOD_GBP})
-        );
-      }
-
-      function initForm (form) {
-        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
-        // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        initField (form, "PAYOUTFREQUENCY", "${param.PAYOUTFREQUENCY}");
-        initField (form, "PAYOUTFREQUENCY_USD", "${param.PAYOUTFREQUENCY_USD}");
-        initField (form, "PAYOUTFREQUENCY_EUR", "${param.PAYOUTFREQUENCY_EUR}");
-        initField (form, "PAYOUTFREQUENCY_GBP", "${param.PAYOUTFREQUENCY_GBP}");
-        document.getElementById ("payoutmethod").innerHTML = getPayOutMethodInfo ();
       }
 
       function checkPayOutMinAmt (field, method) {
@@ -187,7 +133,7 @@
       //-->
     </script>
   </head>
-  <body onload="initForm (document.account);">
+  <body>
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -278,15 +224,13 @@
                           <span>
                             <label>Frequency:</label>
                             <select type="text" name="PAYOUTFREQUENCY_USD" value="${param.PAYOUTFREQUENCY_USD}" onmousewheel="return false;" />
-                              <c:if test = "${param.PAYOUTFREQUENCY_USD == 0}">
-                                <option value="0">Twice a month</option>
-                                <option value="1">Monthly</option>
-                                <option value="2">Every 2 Months</option>
-                                <option value="3">Quarterly</option>
-                                <option value="4">Triannually</option>
-                                <option value="6">Biannually</option>
-                                <option value="12">Yearly</option>
-                              </c:if>
+                                <c:if test = "${param.PAYOUTFREQUENCY_USD == 0}"><option value="0" selected>Twice a month</option></c:if>
+                                <option value="1"<c:if test = "${param.PAYOUTFREQUENCY_USD == 1}"> selected</c:if>>Monthly</option>
+                                <option value="2"<c:if test = "${param.PAYOUTFREQUENCY_USD == 2}"> selected</c:if>>Every 2 Months</option>
+                                <option value="3"<c:if test = "${param.PAYOUTFREQUENCY_USD == 3}"> selected</c:if>>Quarterly</option>
+                                <option value="4"<c:if test = "${param.PAYOUTFREQUENCY_USD == 4}"> selected</c:if>>Triannually</option>
+                                <option value="6"<c:if test = "${param.PAYOUTFREQUENCY_USD == 6}"> selected</c:if>>Biannually</option>
+                                <option value="12"<c:if test = "${param.PAYOUTFREQUENCY_USD == 12}"> selected</c:if>>Yearly</option>
                             </select>
                           </span>
                           <br clear="all">
@@ -295,15 +239,13 @@
                           </span>
                           <span>
                             <select type="text" name="PAYOUTFREQUENCY_EUR" value="${param.PAYOUTFREQUENCY_EUR}" onmousewheel="return false;" />
-                              <c:if test = "${param.PAYOUTFREQUENCY_EUR == 0}">
-                                <option value='0'>Twice a month</option>
-                                <option value="1">Monthly</option>
-                                <option value="2">Every 2 Months</option>
-                                <option value="3">Quarterly</option>
-                                <option value="4">Triannually</option>
-                                <option value="6">Biannually</option>
-                                <option value="12">Yearly</option>
-                              </c:if>
+                                <c:if test = "${param.PAYOUTFREQUENCY_EUR == 0}"><option value="0" selected>Twice a month</option></c:if>
+                                <option value="1"<c:if test = "${param.PAYOUTFREQUENCY_EUR == 1}"> selected</c:if>>Monthly</option>
+                                <option value="2"<c:if test = "${param.PAYOUTFREQUENCY_EUR == 2}"> selected</c:if>>Every 2 Months</option>
+                                <option value="3"<c:if test = "${param.PAYOUTFREQUENCY_EUR == 3}"> selected</c:if>>Quarterly</option>
+                                <option value="4"<c:if test = "${param.PAYOUTFREQUENCY_EUR == 4}"> selected</c:if>>Triannually</option>
+                                <option value="6"<c:if test = "${param.PAYOUTFREQUENCY_EUR == 6}"> selected</c:if>>Biannually</option>
+                                <option value="12"<c:if test = "${param.PAYOUTFREQUENCY_EUR == 12}"> selected</c:if>>Yearly</option>
                             </select>
                           </span>
                           <br clear="all">
@@ -312,15 +254,13 @@
                           </span>
                           <span>
                             <select type="text" name="PAYOUTFREQUENCY_GBP" value="${parm.PAYOUTFREQUENCY_GBP}" onmousewheel="return false;" />
-                              <c:if test = "${param.PAYOUTFREQUENCY_GBP == 0}">
-                                <option value='0'>Twice a month</option>
-                                <option value="1">Monthly</option>
-                                <option value="2">Every 2 Months</option>
-                                <option value="3">Quarterly</option>
-                                <option value="4">Triannually</option>
-                                <option value="6">Biannually</option>
-                                <option value="12">Yearly</option>
-                              </c:if>
+                                <c:if test = "${param.PAYOUTFREQUENCY_GBP == 0}"><option value="0" selected>Twice a month</option></c:if>
+                                <option value="1"<c:if test = "${param.PAYOUTFREQUENCY_GBP == 1}"> selected</c:if>>Monthly</option>
+                                <option value="2"<c:if test = "${param.PAYOUTFREQUENCY_GBP == 2}"> selected</c:if>>Every 2 Months</option>
+                                <option value="3"<c:if test = "${param.PAYOUTFREQUENCY_GBP == 3}"> selected</c:if>>Quarterly</option>
+                                <option value="4"<c:if test = "${param.PAYOUTFREQUENCY_GBP == 4}"> selected</c:if>>Triannually</option>
+                                <option value="6"<c:if test = "${param.PAYOUTFREQUENCY_GBP == 6}"> selected</c:if>>Biannually</option>
+                                <option value="12"<c:if test = "${param.PAYOUTFREQUENCY_GBP == 12}"> selected</c:if>>Yearly</option>
                             </select>
                           </span>
                         </c:when>
@@ -332,15 +272,13 @@
                           <span>
                             <label>Frequency:</label>
                             <select type="text" name="PAYOUTFREQUENCY" value="${param.PAYOUTFREQUENCY}" onmousewheel="return false;" />
-                            <c:if test = "${param.PAYOUTFREQUENCY == 0}">
-                              <option value='0'>Twice a month</option>
-                              <option value="1">Monthly</option>
-                              <option value="2">Every 2 Months</option>
-                              <option value="3">Quarterly</option>
-                              <option value="4">Triannually</option>
-                              <option value="6">Biannually</option>
-                              <option value="12">Yearly</option>
-                            </c:if>
+                                <c:if test = "${param.PAYOUTFREQUENCY == 0}"><option value="0" selected>Twice a month</option></c:if>
+                                <option value="1"<c:if test = "${param.PAYOUTFREQUENCY == 1}"> selected</c:if>>Monthly</option>
+                                <option value="2"<c:if test = "${param.PAYOUTFREQUENCY == 2}"> selected</c:if>>Every 2 Months</option>
+                                <option value="3"<c:if test = "${param.PAYOUTFREQUENCY == 3}"> selected</c:if>>Quarterly</option>
+                                <option value="4"<c:if test = "${param.PAYOUTFREQUENCY == 4}"> selected</c:if>>Triannually</option>
+                                <option value="6"<c:if test = "${param.PAYOUTFREQUENCY == 6}"> selected</c:if>>Biannually</option>
+                                <option value="12"<c:if test = "${param.PAYOUTFREQUENCY == 12}"> selected</c:if>>Yearly</option>
                             </select>
                           </span>
                         </c:otherwise>
@@ -353,16 +291,101 @@
                       <span>
                         <p class="shrinkText" style="margin-bottom: .3rem;">You will be paid in
                           <c:choose>
-                            <c:when test = "${param.MULTICURRENCY == -1}">
-                              <c:out value = "multiple currencies" />
-                            </c:when>
-                            <c:otherwise>
-                              <c:out value = "${param.CURRENCY}" />
-                            </c:otherwise>
+                            <c:when test = "${param.MULTICURRENCY == -1}">multiple currencies</c:when>
+                            <c:otherwise>${param.CURRENCY}</c:otherwise>
                           </c:choose>
                           via:
                         </p>
-                        <div id="payoutmethod" class="shrinkText" style="padding-left: 15px; margin-bottom: 1rem;">&nbsp;</div>
+                        <div id="payoutmethod" class="shrinkText" style="padding-left: 15px; margin-bottom: 1rem;">
+                          <c:choose>
+                            <c:when test = "${param.MULTICURRENCY == -1}">
+                              USD:
+                              <c:choose>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 0}">No payment due yet.</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 1}">USD Check</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 2}">ACH Direct Deposit</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 3}">PayPal to ${param.PAYOUTEMAIL}</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 4}">Wire Transfer - Deutsche Bank</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 5}">Wire Transfer - JP Morgan</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 6}">Wire Transfer - First Federal</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 7}">PayPal eCheck</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 8}">Other - Special payment arrangement</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 9}">Payoneer pre-paid Mastercard</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 10}">Wire Transfer - Suntrust</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 11}">EUR Wire Transfer - Commerzbank</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 12}">PayPal (EUR)</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 13}">PayPal (GBP)</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 1}"></c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 1}"></c:when>
+                                <c:otherwise>Unknown</c:otherwise>
+                              </c:choose>
+                              <br />
+                              EUR:
+                              <c:choose>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 0}">No payment due yet.</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 1}">EUR Check</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 2}">ACH Direct Deposit</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 3}">PayPal to ${param.PAYOUTEMAIL}</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 4}">Wire Transfer - Deutsche Bank</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 5}">Wire Transfer - JP Morgan</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 6}">Wire Transfer - First Federal</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 7}">PayPal eCheck</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 8}">Other - Special payment arrangement</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 9}">Payoneer pre-paid Mastercard</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 10}">Wire Transfer - Suntrust</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 11}">EUR Wire Transfer - Commerzbank</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 12}">PayPal (EUR)</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 13}">PayPal (GBP)</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 1}"></c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_EUR == 1}"></c:when>
+                                <c:otherwise>Unknown</c:otherwise>
+                              </c:choose>
+                              <br />
+                              GBP:
+                              <c:choose>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 0}">No payment due yet.</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 1}">GBP Check</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 2}">ACH Direct Deposit</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 3}">PayPal to ${param.PAYOUTEMAIL}</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 4}">Wire Transfer - Deutsche Bank</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 5}">Wire Transfer - JP Morgan</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 6}">Wire Transfer - First Federal</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 7}">PayPal eCheck</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 8}">Other - Special payment arrangement</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 9}">Payoneer pre-paid Mastercard</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 10}">Wire Transfer - Suntrust</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 11}">EUR Wire Transfer - Commerzbank</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 12}">PayPal (EUR)</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 13}">PayPal (GBP)</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 1}"></c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_GBP == 1}"></c:when>
+                                <c:otherwise>Unknown</c:otherwise>
+                              </c:choose>
+                              <br />
+                            </c:when>
+                            <c:otherwise>
+                              <c:choose>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 0}">No payment due yet.</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 1}">USD Check</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 2}">ACH Direct Deposit</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 3}">PayPal to ${param.PAYOUTEMAIL}</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 4}">Wire Transfer - Deutsche Bank</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 5}">Wire Transfer - JP Morgan</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 6}">Wire Transfer - First Federal</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 7}">PayPal eCheck</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 8}">Other - Special payment arrangement</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 9}">Payoneer pre-paid Mastercard</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 10}">Wire Transfer - Suntrust</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 11}">EUR Wire Transfer - Commerzbank</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 12}">PayPal (EUR)</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 13}">PayPal (GBP)</c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 1}"></c:when>
+                                <c:when test = "${param.PAYOUTMETHOD_USD == 1}"></c:when>
+                                <c:otherwise>Unknown</c:otherwise>
+                              </c:choose>
+                            </c:otherwise>
+                          </c:choose>
+                        </div>
                       </span>
                       <span class="shrinkText">
                         <p style="margin-bottom: .3rem;">Charges appear on customers credit card as:</p>
