@@ -13,16 +13,13 @@
     <![endif]-->
     <title>BMT Micro Developers Center</title>
     <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_top_script.html" />
+    <c:import url = "https://vendors-new.bmtmicro.com/includes/menu_footer_css.html" />
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/menuSidebar.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/footer.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css"/>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
-    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <style media="screen" type="text/css">
       .content-box {
         height:calc(100vh - 275px);
@@ -33,7 +30,7 @@
     <script language="javascript" type="text/javascript">
       <!--
       function initForm (form) {
-        initField (form, "REPORTTYPE", "##REPORTTYPE##");
+        initField (form, "REPORTTYPE", "${param.REPORTTYPE}");
       }
       function reportTypeChanged (form) {
         setCookieValue ("BMTMicro.Vendors.AffiliateSales.ReportType", queryField (form, "REPORTTYPE"), 1000);
@@ -61,7 +58,7 @@
             <c:import url = "https://vendors-new.bmtmicro.com/includes/menuSidebar.html" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Affiliate&nbsp;Sales&nbsp;Report</h4>
-              <div class="content-box">
+              <div class="content-box" style="min-height: 350px;">
                 <form name="affiliatesales" action="https://vendors-new.bmtmicro.com/servlets/Vendors.AffiliateReports" method="post">
                   <div class="table-header">
                     <span>
@@ -131,7 +128,6 @@
       </div> <!-- end .container-fluid -->
       <c:import url = "https://vendors-new.bmtmicro.com/includes/footer.html" />
     </div> <!-- end .main-raised -->
-
     <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_bottom_scripts.html" />
   </body>
 </html>

@@ -42,7 +42,7 @@
               <h4>Manage&nbsp;Affiliates</h4>
               <p>Highlighted affiliates have joined within the last month.</p>
               <div class="content-box overflow-auto">
-                <div name="tableframe" id="tableframe">
+                <div name="tableframe" id="tableframe" style="min-height: 280px;">
                   <c:url value = "https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" var = "affiliateInfoURL">
                     <c:param name = "SESSIONID" value = "${cookie['BMTMicro.Vendors.SessionID'].value}"/>
                     <c:param name = "ACTION" value = "-1"/>
@@ -54,7 +54,7 @@
                   <c:import url = "${affiliateInfoURL}"/>
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe" style="display: none;">
-
+                  <c:import url = "https://vendors-new.bmtmicro.com/affiliateinfo_edit.html" />
                 </div> <!-- end #resultframe -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->

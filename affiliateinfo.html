@@ -9,21 +9,12 @@
     </style>
     <script language="javascript" type="text/javascript">
       <!--
-      // function submitForm (action, target, nextpage, affiliateid) {
-      //   var form = document.affiliates;
-      //   form.ACTION.value = action;
-      //   form.target = target;
-      //   form.NEXT_PAGE.value = nextpage;
-      //   form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.html" : "https://vendors-new.bmtmicro.com/error_frame.html";
-      //   form.AFFILIATEID.value = affiliateid;
-      //   form.submit ();
-      // }
-      function submitForm (action, id, nextpage, affiliateid) {
+      function submitForm (action, target, nextpage, affiliateid) {
         var form = document.affiliates;
         form.ACTION.value = action;
-        form.id = id;
+        form.target = target;
         form.NEXT_PAGE.value = nextpage;
-        form.ERROR_PAGE.value = (id == "_parent") ? "https://vendors-new.bmtmicro.com/error.jsp" : "https://vendors-new.bmtmicro.com/error_frame.jsp";
+        form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.jsp" : "https://vendors-new.bmtmicro.com/error_frame.jsp";
         form.AFFILIATEID.value = affiliateid;
         form.submit ();
       }
@@ -36,7 +27,7 @@
             // return false;
             window.top.location.reload();
           } else {
-            submitForm (10, "_parent", "https://vendors-new.bmtmicro.com/affiliateinfostart.html", affiliateid);
+            submitForm (10, "_parent", "https://vendors-new.bmtmicro.com/affiliateinfostart2.jsp", affiliateid);
           }
         }
       }
@@ -49,14 +40,14 @@
 
       function removeAffiliate (affiliateid) {
         if (allowChanges ("You do not have permission to make changes.")) {
-          submitForm (12, "_parent", "https://vendors-new.bmtmicro.com/affiliateinfostart.html", affiliateid);
+          submitForm (12, "_parent", "https://vendors-new.bmtmicro.com/affiliateinfostart2.jsp", affiliateid);
         }
       }
       //-->
     </script>
   </head>
   <body>
-    <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="post">
+    <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="post" target="">
       <input type="hidden" name="ACTION" value="" />
       <input type="hidden" name="AFFILIATEID" value="" />
       <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />

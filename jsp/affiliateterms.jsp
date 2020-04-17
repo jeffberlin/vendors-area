@@ -31,7 +31,7 @@
   <body>
     <!-- Blue background header -->
     <div class="blue-bg"></div>
-
+    
     <!-- Start of body content -->
     <div class="main-raised">
       <div class="container-fluid body-content" id="primary">
@@ -42,12 +42,6 @@
               <h4>Affiliate&nbsp;Program</h4>
               <p>Terms&nbsp;&&nbsp;Conditions</p>
               <div class="content-box" style="padding: 1rem;">
-                <c:url value = "https://vendors-new.bmtmicro.com/servlets/CustomForms.CustomForm" var = "affiliateTermsURL">
-                  <c:param name = "SESSIONID" value = "${cookie['BMTMicro.Vendors.SessionID'].value}"/>
-                  <c:param name = "NEXT_PAGE" value = "https://vendors-new.bmtmicro.com/affiliateterms.jsp"/>
-                  <c:param name = "ERROR_PAGE" value = "https://vendors-new.bmtmicro.com/error.jsp"/>
-                </c:url>
-                <c:import url = "${affiliateTermsURL}"/>
                 <ul style="padding-left: 1rem; margin-bottom: 0;">
                   <li>Any developer or vendor who has an active vendor account may use our affiliate program once they have received their first payment from BMT Micro.</li>
                   <li>There are no setup fees required to use our affiliate program.</li>
