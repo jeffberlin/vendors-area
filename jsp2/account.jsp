@@ -27,7 +27,6 @@
     </style>
     <script language="javascript" type="text/javascript">
       <!--
-
       function isPayPal (method) {
         switch (method) {
           case 3: // PayPal
