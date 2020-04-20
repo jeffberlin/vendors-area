@@ -146,7 +146,6 @@
       </div> <!-- end .container-fluid -->
       <c:import url = "https://vendors-new.bmtmicro.com/includes/footer.html" />
     </div> <!-- end .main-raised -->
-
     <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_bottom_scripts.html" />
   </body>
 </html>

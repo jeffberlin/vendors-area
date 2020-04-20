@@ -162,7 +162,7 @@
                 </li>
               </ul>
               <div class="content-box">
-                <form name="account" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
+                <form name="account" method="get" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
                   <input type="hidden" name="ACTION" value="11" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/account.jsp" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />

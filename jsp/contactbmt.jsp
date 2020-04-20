@@ -16,7 +16,7 @@
     <c:import url = "https://vendors-new.bmtmicro.com/includes/menu_footer_css.html" />
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
-    <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
+    <!-- <script src="https://kit.fontawesome.com/35c40e6698.js"></script> -->
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vhelp.js"></script>
@@ -80,8 +80,7 @@
       // -->
     </script>
   </head>
-  <body onload="initForm (document.contactbmt);">
-
+  <body>
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -90,13 +89,13 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <c:import url = "https://vendors-new.bmtmicro.com/includes/menuSidebar.jsp" />
+            <c:import url = "https://vendors-new.bmtmicro.com/includes/menuSidebar.html" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Vendor&nbsp;Support&nbsp;Request&nbsp;Form</h4>
               <p>If you are unable to find answers to your questions in the&nbsp;<a href="https://help.bmtmicro.com/vendors/" target="_blank">FAQ/Help section</a>,&nbsp;or you have a special request,&nbsp;please contact us using the form below.</p>
               <div class="content-box">
-                <form name="contactbmt" method="post" action="https://vendors-new.bmtmicro.com/servlets/System.EMailTemplate">
-                  <input type="hidden" name="VENDORID" value="<%= request.getParameter ("VENDORID") %>" />
+                <form name="contactbmt" method="get" action="https://vendors-new.bmtmicro.com/servlets/System.EMailTemplate">
+                  <input type="hidden" name="VENDORID" value="${param.VENDORID}" />
                   <input type="hidden" name="RECIPIENT" value="mdaemon@bmtmicro.com" />
                   <input type="hidden" name="SUBJECT" value="BMT Micro Vendor Support Request" />
                   <input type="hidden" name="EMAILTEMPLATE" value="https://vendors-new.bmtmicro.com/contactbmt_emailtemplate.txt" />
@@ -122,7 +121,8 @@
                   <span>
                     <label>Subject:&nbsp;</label>
                     <select name="TITLE" onchange="titleSelectorChanged (contactbmt);" style="margin-bottom: 1rem;">
-                      <option value="General" selected="selected">General</option>
+                      <option value="" selected="selected" disabled="disabled">Choose one</option>
+                      <option value="General">General</option>
                       <option value="Reports">Reports</option>
                       <option value="Affiliate Program">Affiliate Program</option>
                       <option value="Account Management">Account Management</option>
@@ -169,7 +169,6 @@
       </div> <!-- end .container-fluid -->
       <c:import url = "https://vendors-new.bmtmicro.com/includes/footer.html" />
     </div> <!-- end .main-raised -->
-
     <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_bottom_scripts.html" />
   </body>
 </html>
