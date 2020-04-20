@@ -1,183 +1,183 @@
 <html>
-<head>
-   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-   <title>Unauthorized Orders - Details</title>
-   <link rel="stylesheet" title="minimal css" type="text/css" href="https://vendors.bmtmicro.com/minimal.css" />
-   <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-</Head>
-<body bgcolor="white">
-   <table border="0" width="75%" bgcolor="#ffffff" align="center">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Unauthorized Orders - Details</title>
+    <link rel="stylesheet" title="minimal css" type="text/css" href="https://vendors.bmtmicro.com/minimal.css" />
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+  </head>
+  <body bgcolor="white">
+    <table border="0" width="75%" bgcolor="#ffffff" align="center">
       <tr>
-         <th align="middle" class="header">Order Details</th>
+        <th align="middle" class="header">Order Details</th>
       </tr>
-   </table>
-   <form name="orderdetailstable" action="" method="post">
+    </table>
+    <form name="orderdetailstable" action="" method="post">
       <table border=0 width="100%">
-         <tr>
-            <td align="middle" colspan="3">
-               <table cellspacing="0" cellpadding="2" bgcolor="#dddddd" width="100%">
-                  <tr>
-                     <td>
-                        <table cellspacing="0" cellpadding="0" bgcolor="white" width="100%">
-                           <tr class="altrow">
-                              <td colspan="2" valign="top" width="65%" align="left">
-                                 <table cellspacing="0" cellpadding="0" width="100%">
-                                    <tr>
-                                       <td colspan="2" class="accentrow">Billing Information</td>
-                                       <td colspan="2" class="accentrow">Shipping Information</td>
-                                    </tr>
-                                    <tr bgcolor="#ffffff">
-                                       <td>Company: </td>
-                                       <td class="detailfont"><b>##COMPANY##</b></td>
-                                       <td>Ship Company: </td>
-                                       <td class="detailfont"><b>##SHIP_COMPANY##</b></td>
-                                    </tr>
-                                    <tr class="altrow">
-                                       <td>VAT Number: </td>
-                                       <td class="detailfont"><b>##VATNUMBER##</b></td>
-                                       <td>Ship Name: </td>
-                                       <td class="detailfont"><b>##SHIP_FIRSTNAME## ##SHIP_LASTNAME##</b></td>
-                                    </tr>
-                                    <tr bgcolor="#ffffff">
-                                       <td>Name: </td>
-                                       <td class="detailfont"><b>##FIRSTNAME## ##LASTNAME##</b></td>
-                                       <td>Ship Address 1:  </td>
-                                       <td class="detailfont"><b>##SHIP_ADDRESS1##</b></td>
-                                    </tr>
-                                    <tr class="altrow">
-                                       <td>Registered To: </td>
-                                       <td class="detailfont"><b>##REGISTERNAME##</b></td>
-                                       <td>Ship Address 2: </td>
-                                       <td class="detailfont"><b>##SHIP_ADDRESS2##</b></td>
-                                    </tr>
-                                    <tr bgcolor="#ffffff">
-                                       <td>Address 1: </td>
-                                       <td class="detailfont"><b>##ADDRESS1##</b></td>
-                                       <td>Ship City/St/Zip: </td>
-                                       <td class="detailfont"><b>##SHIP_CITY##, ##SHIP_STATE## ##SHIP_ZIP##</b></td>
-                                    </tr>
-                                    <tr class="altrow">
-                                       <td>Address 2: </td>
-                                       <td class="detailfont"><b>##ADDRESS2##</b></td>
-                                       <td>Ship Country: </td>
-                                       <td class="detailfont"><b>##SHIP_COUNTRY##</b></td>
-                                    </tr>
-                                    <tr bgcolor="#ffffff">
-                                       <td>City/St/Zip: </td>
-                                       <td class="detailfont"><b>##CITY##, ##STATE## ##ZIP##</b></td>
-                                       <td>Ship Phone: </td>
-                                       <td class="detailfont"><b>##SHIP_PHONE##</b></td>
-                                    </tr>
-                                    <tr class="altrow">
-                                       <td>Country: </td>
-                                       <td class="detailfont"><b>##COUNTRY##</b></td>
-                                       <td>Ship EMail: </td>
-                                       <td class="detailfont"><b>##SHIP_EMAIL##</b></td>
-                                    </tr>
-                                    <tr bgcolor="#ffffff">
-                                       <td>IP (Origin): </td>
-                                       <td class="detailfont"><b>##IPADDRESS## (##ORIGIN##)</b></td>
-                                       <td COLSPAN=2 class=accentrow>Fulfillment Information</td>
-                                    </tr>
-                                    <tr class="altrow">
-                                       <td>Phone: </td>
-                                       <td class="detailfont"><b>##PHONE##</b></td>
-                                       <td>Comments: </td>
-                                       <td class="detailfont"><b>##ITEMCOMMENTS##</b></td>
-                                    </tr>
-                                    <tr bgcolor="#ffffff">
-                                       <td>EMail: </td>
-                                       <td class="detailfont"><b>##EMAIL##</b></td>
-                                       <td>Error Message: </td>
-                                       <td class="detailfont"><b>##FULFILLMENTMESSAGE##</b></td>
-                                    </tr>
-                                    <tr class="altrow">
-                                       <td>2nd EMail: </td>
-                                       <td class="detailfont"><b>##ALTEMAIL##</b></td>
-                                       <td>Error Code: </td>
-                                       <td class="detailfont"><b>##FULFILLMENTERROR##</b></td>
-                                    </tr>
-                                    <tr bgcolor="#ffffff">
-                                       <td>Comment: </td>
-                                       <td colspan=3 class="detailfont"><b>##COMMENTS##</b></td>
-                                    </tr>
-                                 </table>
-                              </td>
-                              <td colspan="2" valign="top" width="35%" align="right">
-                                 <table cellspacing="0" cellpadding="0" width="100%">
-                                    <tr>
-                                       <td colspan="2" class="accentrow">Product Information</td>
-                                    </tr>
-                                    <tr bgcolor="#ffffff">
-                                       <td>Product: </td>
-                                       <td class="detailfont"><b>##PRODUCTNAME##</b></td>
-                                    </tr>
-                                    <tr class="altrow">
-                                       <td>Product ID: </td>
-                                       <td class="detailfont"><b>##PRODUCTID##</b></td>
-                                    </tr>
-                                    <tr bgcolor="#ffffff">
-                                       <td>Product Price: </td>
-                                       <td class="detailfont"><b>##PRODUCTPRICE##</b></td>
-                                    </tr>
-                                    <tr class="altrow">
-                                       <td>Sales Tax: </td>
-                                       <td class="detailfont"><b>##SALESTAX##</b></td>
-                                    </tr>
-                                    <tr bgcolor="#ffffff">
-                                       <td>Shipping: </td>
-                                       <td class="detailfont"><b>##SHIPPINGPRICE## ##SHIPPINGMETHOD##</b></td>
-                                    </tr>
-                                    <tr class="altrow">
-                                       <td></td>
-                                       <td class="detailfont"></td>
-                                    </tr>
-                                    <tr class="altrow">
-                                       <td>Order ID:</td>
-                                       <td class="detailfont"><b>##ORDERID##</b></td>
-                                    </tr>
-                                    <tr bgcolor="#ffffff">
-                                       <td>Order Number: </td>
-                                       <td class="detailfont"><b>##ORDERNUMBER##</b></td>
-                                    </tr>
-                                    <tr>
-                                       <td colspan="2" class="accentrow">Payment Information</td>
-                                    </tr>
-                                    <tr bgcolor="#ffffff">
-                                       <td>Payment Method: </td>
-                                       <td class="detailfont"><b>##CARDTYPE##</b></td>
-                                    </tr>
-                                    <tr class="altrow">
-                                       <td>Card Number: </td>
-                                       <td class="detailfont"><b>##CREDITCARD##</b></td>
-                                    </tr>
-                                    <tr bgcolor="#ffffff">
-                                       <td>Expiration: </td>
-                                       <td class="detailfont"><b>##EXPIRATION##</b></td>
-                                    </tr>
-                                    <tr class="altrow">
-                                       <td>AVS Code: </td>
-                                       <td class="detailfont"><b>##AVSCODE## ##AVSINFO##</b></td>
-                                    </tr>
-                                    <tr bgcolor="#ffffff">
-                                       <td>CVV Code: </td>
-                                       <td class="detailfont"><b>##CVVCODE## ##CVVINFO##</b></td>
-                                    </tr>
-                                 </table>
-                              </td>
-                           </tr>
-                           <tr class="altrow" valign="top">
-                              <td colspan="4" align="right">
-                                 <input type="button" value="close" onclick="window.close()" class="dark">
-                              </td>
-                           </tr>
+        <tr>
+          <td align="middle" colspan="3">
+            <table cellspacing="0" cellpadding="2" bgcolor="#dddddd" width="100%">
+              <tr>
+                <td>
+                  <table cellspacing="0" cellpadding="0" bgcolor="white" width="100%">
+                    <tr class="altrow">
+                      <td colspan="2" valign="top" width="65%" align="left">
+                        <table cellspacing="0" cellpadding="0" width="100%">
+                          <tr>
+                            <td colspan="2" class="accentrow">Billing Information</td>
+                            <td colspan="2" class="accentrow">Shipping Information</td>
+                          </tr>
+                          <tr bgcolor="#ffffff">
+                            <td>Company: </td>
+                            <td class="detailfont"><b>##COMPANY##</b></td>
+                            <td>Ship Company: </td>
+                            <td class="detailfont"><b>##SHIP_COMPANY##</b></td>
+                          </tr>
+                          <tr class="altrow">
+                            <td>VAT Number: </td>
+                            <td class="detailfont"><b>##VATNUMBER##</b></td>
+                            <td>Ship Name: </td>
+                            <td class="detailfont"><b>##SHIP_FIRSTNAME## ##SHIP_LASTNAME##</b></td>
+                          </tr>
+                          <tr bgcolor="#ffffff">
+                            <td>Name: </td>
+                            <td class="detailfont"><b>##FIRSTNAME## ##LASTNAME##</b></td>
+                            <td>Ship Address 1:  </td>
+                            <td class="detailfont"><b>##SHIP_ADDRESS1##</b></td>
+                          </tr>
+                          <tr class="altrow">
+                            <td>Registered To: </td>
+                            <td class="detailfont"><b>##REGISTERNAME##</b></td>
+                            <td>Ship Address 2: </td>
+                            <td class="detailfont"><b>##SHIP_ADDRESS2##</b></td>
+                          </tr>
+                          <tr bgcolor="#ffffff">
+                            <td>Address 1: </td>
+                            <td class="detailfont"><b>##ADDRESS1##</b></td>
+                            <td>Ship City/St/Zip: </td>
+                            <td class="detailfont"><b>##SHIP_CITY##, ##SHIP_STATE## ##SHIP_ZIP##</b></td>
+                          </tr>
+                          <tr class="altrow">
+                            <td>Address 2: </td>
+                            <td class="detailfont"><b>##ADDRESS2##</b></td>
+                            <td>Ship Country: </td>
+                            <td class="detailfont"><b>##SHIP_COUNTRY##</b></td>
+                          </tr>
+                          <tr bgcolor="#ffffff">
+                            <td>City/St/Zip: </td>
+                            <td class="detailfont"><b>##CITY##, ##STATE## ##ZIP##</b></td>
+                            <td>Ship Phone: </td>
+                            <td class="detailfont"><b>##SHIP_PHONE##</b></td>
+                          </tr>
+                          <tr class="altrow">
+                            <td>Country: </td>
+                            <td class="detailfont"><b>##COUNTRY##</b></td>
+                            <td>Ship EMail: </td>
+                            <td class="detailfont"><b>##SHIP_EMAIL##</b></td>
+                          </tr>
+                          <tr bgcolor="#ffffff">
+                            <td>IP (Origin): </td>
+                            <td class="detailfont"><b>##IPADDRESS## (##ORIGIN##)</b></td>
+                            <td COLSPAN=2 class=accentrow>Fulfillment Information</td>
+                          </tr>
+                          <tr class="altrow">
+                            <td>Phone: </td>
+                            <td class="detailfont"><b>##PHONE##</b></td>
+                            <td>Comments: </td>
+                            <td class="detailfont"><b>##ITEMCOMMENTS##</b></td>
+                          </tr>
+                          <tr bgcolor="#ffffff">
+                            <td>EMail: </td>
+                            <td class="detailfont"><b>##EMAIL##</b></td>
+                            <td>Error Message: </td>
+                            <td class="detailfont"><b>##FULFILLMENTMESSAGE##</b></td>
+                          </tr>
+                          <tr class="altrow">
+                            <td>2nd EMail: </td>
+                            <td class="detailfont"><b>##ALTEMAIL##</b></td>
+                            <td>Error Code: </td>
+                            <td class="detailfont"><b>##FULFILLMENTERROR##</b></td>
+                          </tr>
+                          <tr bgcolor="#ffffff">
+                            <td>Comment: </td>
+                            <td colspan=3 class="detailfont"><b>##COMMENTS##</b></td>
+                          </tr>
                         </table>
-                     </td>
-                  </tr>
-               </table>
-            </td>
-         </tr>
+                      </td>
+                      <td colspan="2" valign="top" width="35%" align="right">
+                        <table cellspacing="0" cellpadding="0" width="100%">
+                          <tr>
+                            <td colspan="2" class="accentrow">Product Information</td>
+                          </tr>
+                          <tr bgcolor="#ffffff">
+                            <td>Product: </td>
+                            <td class="detailfont"><b>##PRODUCTNAME##</b></td>
+                          </tr>
+                          <tr class="altrow">
+                            <td>Product ID: </td>
+                            <td class="detailfont"><b>##PRODUCTID##</b></td>
+                          </tr>
+                          <tr bgcolor="#ffffff">
+                            <td>Product Price: </td>
+                            <td class="detailfont"><b>##PRODUCTPRICE##</b></td>
+                          </tr>
+                          <tr class="altrow">
+                            <td>Sales Tax: </td>
+                            <td class="detailfont"><b>##SALESTAX##</b></td>
+                          </tr>
+                          <tr bgcolor="#ffffff">
+                            <td>Shipping: </td>
+                            <td class="detailfont"><b>##SHIPPINGPRICE## ##SHIPPINGMETHOD##</b></td>
+                          </tr>
+                          <tr class="altrow">
+                            <td></td>
+                            <td class="detailfont"></td>
+                          </tr>
+                          <tr class="altrow">
+                            <td>Order ID:</td>
+                            <td class="detailfont"><b>##ORDERID##</b></td>
+                          </tr>
+                          <tr bgcolor="#ffffff">
+                            <td>Order Number: </td>
+                            <td class="detailfont"><b>##ORDERNUMBER##</b></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2" class="accentrow">Payment Information</td>
+                          </tr>
+                          <tr bgcolor="#ffffff">
+                            <td>Payment Method: </td>
+                            <td class="detailfont"><b>##CARDTYPE##</b></td>
+                          </tr>
+                          <tr class="altrow">
+                            <td>Card Number: </td>
+                            <td class="detailfont"><b>##CREDITCARD##</b></td>
+                          </tr>
+                          <tr bgcolor="#ffffff">
+                            <td>Expiration: </td>
+                            <td class="detailfont"><b>##EXPIRATION##</b></td>
+                          </tr>
+                          <tr class="altrow">
+                            <td>AVS Code: </td>
+                            <td class="detailfont"><b>##AVSCODE## ##AVSINFO##</b></td>
+                          </tr>
+                          <tr bgcolor="#ffffff">
+                            <td>CVV Code: </td>
+                            <td class="detailfont"><b>##CVVCODE## ##CVVINFO##</b></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr class="altrow" valign="top">
+                      <td colspan="4" align="right">
+                        <input type="button" value="close" onclick="window.close()" class="dark">
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
       </table>
-   </form>
-</body>
+    </form>
+  </body>
 </html>
