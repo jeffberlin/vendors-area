@@ -13,8 +13,7 @@
     <![endif]-->
     <title>BMT Micro Developers Center</title>
     <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_top_script.html" />
-    <c:import url = "https://vendors-new.bmtmicro.com/includes/menu_footer_css.html" />
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css"/>
+    <c:import url = "https://vendors-new.bmtmicro.com/includes/style_menu_footer_css.html" />
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
@@ -54,7 +53,7 @@
                     <c:param name = "DATEFROM" value="${datenow-6}" />
                     <c:param name = "DATETO" value="${datenow}" />" />
                     <c:param name = "ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customercomments_tablerow.html" />
-                    <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customercomments.jsp" />
+                    <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customercomments.html" />
                     <c:param name = "ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                   </c:url>
                   <c:import url = "${commentsURL}"/>

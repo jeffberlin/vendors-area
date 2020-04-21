@@ -13,8 +13,7 @@
     <![endif]-->
     <title>BMT Micro Developers Center</title>
     <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_top_script.html" />
-    <c:import url = "https://vendors-new.bmtmicro.com/includes/menu_footer_css.html" />
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css"/>
+    <c:import url = "https://vendors-new.bmtmicro.com/includes/style_menu_footer_css.html" />
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
@@ -54,7 +53,7 @@
                   <c:import url = "${affiliateInfoURL}"/>
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe" style="display: none;">
-                  <c:import url = "https://vendors-new.bmtmicro.com/affiliateinfo_edit.html" />
+
                 </div> <!-- end #resultframe -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->

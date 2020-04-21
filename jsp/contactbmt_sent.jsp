@@ -13,8 +13,7 @@
     <![endif]-->
     <title>BMT Micro Developers Center</title>
     <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_top_script.html" />
-    <c:import url = "https://vendors-new.bmtmicro.com/includes/menu_footer_css.html" />
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css"/>
+    <c:import url = "https://vendors-new.bmtmicro.com/includes/style_menu_footer_css.html" />
   </head>
   <body>
     <!-- Blue background header -->

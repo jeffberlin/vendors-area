@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
     <style media="screen" type="text/css">
       td[option], td[text], td[date] {
         text-align: center;
@@ -27,20 +26,20 @@
             // return false;
             window.top.location.reload();
           } else {
-            submitForm (10, "_parent", "https://vendors-new.bmtmicro.com/affiliateinfostart2.jsp", affiliateid);
+            submitForm (10, "_parent", "https://vendors-new.bmtmicro.com/affiliateinfostart.jsp", affiliateid);
           }
         }
       }
 
       function editAffiliate (affiliateid) {
         submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/affiliateinfo_edit.html", affiliateid);
-        window.parent.document.getElementById('resultframe').style.display = "block";
-        window.parent.document.getElementById('tableframe').style.display = "none";
+        document.getElementById('resultframe').style.display = "block";
+        document.getElementById('tableframe').style.display = "none";
       }
 
       function removeAffiliate (affiliateid) {
         if (allowChanges ("You do not have permission to make changes.")) {
-          submitForm (12, "_parent", "https://vendors-new.bmtmicro.com/affiliateinfostart2.jsp", affiliateid);
+          submitForm (12, "_parent", "https://vendors-new.bmtmicro.com/affiliateinfostart.jsp", affiliateid);
         }
       }
       //-->
