@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,7 +12,8 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <title>BMT Micro Developers Center</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_top_script.html" />
+    <c:import url = "https://vendors-new.bmtmicro.com/includes/menu_footer_css.html" />
     <link rel="stylesheet" type="text/css" href="https://vendors-new.bmtmicro.com/css/style.css"/>
     <style media="screen" type="text/css">
       .content-box {
@@ -19,7 +22,6 @@
     </style>
   </head>
   <body>
-
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 

@@ -13,11 +13,9 @@
     <![endif]-->
     <title>BMT Micro Developers Center</title>
     <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_top_script.html" />
+    <c:import url = "https://vendors-new.bmtmicro.com/includes/menu_footer_css.html" />
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/main.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/menuSidebar.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/footer.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css"/>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript">
@@ -73,7 +71,6 @@
       </div> <!-- end .container-fluid -->
       <c:import url = "https://vendors-new.bmtmicro.com/includes/footer.html" />
     </div> <!-- end .main-raised -->
-
     <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_bottom_scripts.html" />
   </body>
 </html>
