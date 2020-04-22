@@ -56,7 +56,7 @@
                 </iframe>
               </div> <!-- end .content-box -->
               <form name="start" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" target="tableframe">
-                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customersearch.html">
+                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customersearch.jsp">
                 <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customersearch_tablerow.html" />
                 <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp">
                 <input type="hidden" name="FLT_ORDERID" value="">
