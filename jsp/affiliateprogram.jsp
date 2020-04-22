@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="/includes/core.jsp" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,8 +12,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <title>BMT Micro Developers Center</title>
-    <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_top_script.html" />
-    <c:import url = "https://vendors-new.bmtmicro.com/includes/style_menu_footer_css.html"/>
+    <%@ include file="/includes/bootstrap_top_script.html" %>
+    <%@ include file="/includes/style_menu_footer_css.html" %>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <style media="screen" type="text/css">
@@ -46,7 +46,7 @@
       <div class="container-fluid body-content" id="primary">
         <article class="section">
           <div class="row justify-content-start">
-            <c:import url = "https://vendors-new.bmtmicro.com/includes/menuSidebar.html" />
+            <%@ include file="/includes/menuSidebar.html" %>
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Affiliate&nbsp;Program</h4>
               <p>General affiliate program information.</p>
@@ -80,9 +80,8 @@
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
-      <c:import url = "https://vendors-new.bmtmicro.com/includes/footer.html" />
+      <%@ include file="/includes/footer.html" %>
     </div> <!-- end .main-raised -->
-
-    <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_bottom_scripts.html" />
+    <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
 </html>

@@ -1,5 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,27 +11,20 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <title>BMT Micro Developers Center</title>
-    <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_top_script.html" />
-    <c:import url = "https://vendors-new.bmtmicro.com/includes/style_menu_footer_css.html" />
+    <%@ include file="/includes/bootstrap_top_script.html" %>
+    <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vhelp.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
       #resultframe {
         height: calc(100vh - 275px);
       }
     </style>
-    <script language="javascript" type="text/javascript">
-      <!--
-      function initForm (form) {
-        getVendorDateRange (form);
-        form.submit ();
-      }
-      // -->
-    </script>
   </head>
-  <body onload="initForm (document.start);">
+  <body>
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -41,22 +33,20 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <c:import url = "https://vendors-new.bmtmicro.com/includes/menuSidebar.html" />
+            <%@ include file="/includes/menuSidebar.html" %>
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Customer&nbsp;Comments</h4>
               <p>This report displays customer comments and custom field values from your shopping cart.</p>
               <div class="content-box">
                 <div>
-                  <fmt:formatDate var="datenow" value="${now}" pattern="yyyy-MM-dd" />
-                  <c:url value = "https://vendors-new.bmtmicro.com/servlets/Vendors.Comments" var = "commentsURL">
-                    <c:param name = "SESSIONID" value = "${cookie['BMTMicro.Vendors.SessionID'].value}"/>
-                    <c:param name = "DATEFROM" value="${datenow-6}" />
-                    <c:param name = "DATETO" value="${datenow}" />" />
+                  <c:import url = "https://vendors-new.bmtmicro.com/servlets/Vendors.Comments">
+                    <c:param name = "SESSIONID" value = "${sessionid}" />
+                    <c:param name = "DATEFROM" value="${fromDate}" />
+                    <c:param name = "DATETO" value="${toDate}" />
                     <c:param name = "ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customercomments_tablerow.html" />
                     <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customercomments.html" />
                     <c:param name = "ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-                  </c:url>
-                  <c:import url = "${commentsURL}"/>
+                  </c:import>
                 </div>
                 <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 350px; padding: 0px; margin:0px; display: none;" >
                    [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
@@ -66,8 +56,8 @@
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
-      <c:import url = "https://vendors-new.bmtmicro.com/includes/footer.html" />
+      <%@ include file="/includes/footer.html" %>
     </div> <!-- end .main-raised -->
-    <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_bottom_scripts.html" />
+    <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
 </html>
