@@ -98,7 +98,7 @@
                   <input type="hidden" name="SUBJECT" value="BMT Micro Vendor Support Request" />
                   <input type="hidden" name="EMAILTEMPLATE" value="https://vendors-new.bmtmicro.com/contactbmt_emailtemplate.txt" />
                   <input type="hidden" name="REDIRECT" value="0" />
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/contactbmt_sent.jsp" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/contact-sent.jsp" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
 
                   <h6>Vendor&nbsp;ID:&nbsp;${param.VENDORID}</h6>
