@@ -46,8 +46,8 @@
                     <c:param name="FLT_NAME" value=""/>
                     <c:param name="FLT_ADDRESS" value=""/>
                     <c:param name="FLT_EMAIL" value=""/>
-                    <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customersearch.jsp"/>
-                    <c:param name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customersearch_tablerow.html" />
+                    <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-start.html"/>
+                    <c:param name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-search-tablerow.html" />
                     <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp"/>
                   </c:import>
                 </div>
@@ -55,16 +55,16 @@
                    [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
                 </iframe>
               </div> <!-- end .content-box -->
-              <form name="start" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" target="tableframe">
-                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customersearch.jsp">
-                <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customersearch_tablerow.html" />
+              <!-- <form name="start" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" target="tableframe">
+                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-start.jsp">
+                <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-search-tablerow.html" />
                 <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp">
                 <input type="hidden" name="FLT_ORDERID" value="">
                 <input type="hidden" name="FLT_PRODUCTNAME" value="">
                 <input type="hidden" name="FLT_NAME" value="">
                 <input type="hidden" name="FLT_ADDRESS" value="">
                 <input type="hidden" name="FLT_EMAIL" value="">
-              </form>
+              </form> -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
