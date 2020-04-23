@@ -5,6 +5,6 @@
   <c:param name = "BLANKFILE" value="https://vendors-new.bmtmicro.com/images/blank.gif"/>
   <c:param name = "ACTION" value = "1"/>
   <c:param name = "ACTION2" value = "5"/>
-  <c:param name = "NEXT_PAGE" value = "https://vendors-new.bmtmicro.com/authorize_table.jsp"/>
+  <c:param name = "NEXT_PAGE" value = "https://vendors-new.bmtmicro.com/customers-authorize-sales-table.jsp"/>
   <c:param name = "ERROR_PAGE" value = "https://vendors-new.bmtmicro.com/error.jsp"/>
 </c:import>

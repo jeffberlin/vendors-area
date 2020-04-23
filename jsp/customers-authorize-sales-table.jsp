@@ -54,7 +54,7 @@
               <div class="content-box">
                 <form name="orderlistform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ImportRipOrders" method="post">
                   <input type="hidden" name="ACTION" value="0" />
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/authorize_table.jsp" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-authorize-sales-table.jsp" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
                   <input type="hidden" name="SUBMISSIONID" value="${param.SUBMISSIONID}">
                   <input type="hidden" name="STARFILE" value="https://vendors-new.bmtmicro.com/images/star.gif" />
@@ -136,7 +136,7 @@
                   <input Type="hidden" NAME="ACTION" value="5">
                   <input type="hidden" name="RIPCODE" value="${param.RIPCODE}">
                   <input Type="hidden" NAME="ORDERID" value="">
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/authorize_orderdetails.html" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-authorize-sales-orderdetails.html" />
                 </form>
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
