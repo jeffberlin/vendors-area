@@ -44,8 +44,7 @@
       //-->
     </script>
   </head>
-  <body onload="initForm (document.affiliatesales);">
-
+  <body>
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -80,7 +79,7 @@
                     </span>
                     <input type="hidden" name="ROWHEADERTEMPLATEURL" value="${param.ROWHEADERTEMPLATEURL}" />
                     <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
-                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-sales.jsp" />
+                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-sales-start.jsp" />
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                     <button type="button" class="get-btn" onclick="submitForm (affiliatesales);" value="Get Affiliate Sales">Get Affiliate Sales</button>
                   </div> <!-- end .table-header -->
