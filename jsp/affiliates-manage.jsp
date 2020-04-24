@@ -46,8 +46,8 @@
                     <c:param name = "SESSIONID" value = "${sessionid}" />
                     <c:param name = "ACTION" value = "-1"/>
                     <c:param name = "MAXAMOUNT" value = ""/>
-                    <c:param name = "ROWTEMPLATEURL" value = "https://vendors-new.bmtmicro.com/affiliateinfo_tablerow.html"/>
-                    <c:param name = "NEXT_PAGE" value = "https://vendors-new.bmtmicro.com/affiliates-manage-start.html"/>
+                    <c:param name = "ROWTEMPLATEURL" value = "https://vendors-new.bmtmicro.com/affiliates-manage-tablerow.html"/>
+                    <c:param name = "NEXT_PAGE" value = "https://vendors-new.bmtmicro.com/affiliates-manage-start.jsp"/>
                     <c:param name = "ERROR_PAGE" value = "https://vendors-new.bmtmicro.com/error_frame.jsp"/>
                   </c:import>
                 </div> <!-- end #tableframe -->
