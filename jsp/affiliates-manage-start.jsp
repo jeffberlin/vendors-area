@@ -110,7 +110,9 @@
             </button>
           </div>
           <div class="modal-body">
-            <c:import url="https://vendors-new.bmtmicro.com/affiliates-manage-edit.jsp" />
+            <iframe src="" name="resultframe" id="resultframe">
+              [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
+            </iframe>
           </div>
         </div>
       </div>
