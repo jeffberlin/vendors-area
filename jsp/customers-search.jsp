@@ -19,8 +19,9 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <style media="screen" type="text/css">
-      #resultframe {
+      .contact-box {
         height: calc(100vh - 275px);
+        min-height: 350px;
       }
     </style>
   </head>
