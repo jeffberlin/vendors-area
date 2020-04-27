@@ -18,8 +18,11 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <style media="screen" type="text/css">
-      .table-responsive-lg {
+      .content-box {
         height:calc(100vh - 350px);
+        min-height: 350px;
+      }
+      .table-responsive-lg {
         display: block;
         overflow-y: scroll;
       }
@@ -51,10 +54,10 @@
             <%@ include file="/includes/menuSidebar.html" %>
             <div class="col-lg-10 col-md-12 page-title">
               <h4>${param.TITLE}</h4>
-              <div class="content-box">
+              <div class="content-box overflow-auto">
                 <form name="orderlistform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ImportRipOrders" method="post">
                   <input type="hidden" name="ACTION" value="0" />
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-authorize-sales-table.jsp" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-authorize-sales-start.jsp" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
                   <input type="hidden" name="SUBMISSIONID" value="${param.SUBMISSIONID}">
                   <input type="hidden" name="STARFILE" value="https://vendors-new.bmtmicro.com/images/star.gif" />
