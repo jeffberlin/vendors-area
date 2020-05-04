@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
-    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vhelp.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
       #resultframe {
@@ -44,7 +44,7 @@
                     <c:param name = "DATEFROM" value="${fromDate}" />
                     <c:param name = "DATETO" value="${toDate}" />
                     <c:param name = "ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-comments-tablerow.html" />
-                    <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-comments-start.html" />
+                    <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-comments-start.jsp" />
                     <c:param name = "ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                   </c:import>
                 </div>

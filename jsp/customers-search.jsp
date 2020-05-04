@@ -39,7 +39,7 @@
               <h4>Customer&nbsp;Search</h4>
               <p>Use fields below to enter search criteria.&nbsp;If email information has not changed since purchase you can resend the customer's email using the button provided.<br>You will be able to review the email before it is sent.</p>
               <div class="content-box">
-                <div>
+                <div name="tableframe" id="tableframe">
                   <c:import url = "https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch">
                     <c:param name = "SESSIONID" value = "${sessionid}" />
                     <c:param name="FLT_ORDERID" value=""/>
@@ -47,7 +47,7 @@
                     <c:param name="FLT_NAME" value=""/>
                     <c:param name="FLT_ADDRESS" value=""/>
                     <c:param name="FLT_EMAIL" value=""/>
-                    <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-start.html"/>
+                    <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-start.jsp"/>
                     <c:param name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-search-tablerow.html" />
                     <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp"/>
                   </c:import>

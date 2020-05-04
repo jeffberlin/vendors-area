@@ -34,7 +34,8 @@
       }
 
       function editAffiliate (affiliateid) {
-        submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/affiliates-manage-edit.jsp", affiliateid);
+        submitForm (1, "tableframe", "https://vendors-new.bmtmicro.com/affiliates-manage-edit.jsp", affiliateid);
+        // $('#tableframe').load('affiliates-manage-edit.jsp', affiliateid);
       }
 
       function removeAffiliate (affiliateid) {
@@ -53,7 +54,7 @@
       <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com//affiliates-manage-start.jsp" />
       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
       <div class="table-header">
-        <span>
+        <span style="color: #ffffff;">
           Affiliate ID:&nbsp;
           <input type="text" name="AFFILIATEID_ADD" value=""/>
         </span>
@@ -97,25 +98,6 @@
           </tfoot>
         </table>
       </div>
-
     </form>
-    <!-- Modal -->
-    <div class="modal fade" id="editModalCenter" tabindex="-1" role="dialog" aria-labelledby="editModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="editModalCenterTitle">Edit Affiliate</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <iframe src="" name="resultframe" id="resultframe">
-              [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
-            </iframe>
-          </div>
-        </div>
-      </div>
-    </div>
   </body>
 </html>

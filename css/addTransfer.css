@@ -2,19 +2,19 @@
   padding: 1rem;
   }
 
-h5, .dropdown-toggle:hover, .dropdown-toggle:active {
+h5, .transfer-dropdown:hover, .transfer-dropdown:active {
   color: #efa900;
   }
 
-label, .text-section, .dropdown-item, span {
-  color: #707070 !important;
+label, .text-section, .transfer-dropdown-item, span {
+  color: #707070;
   }
 
 h5, label, input, textarea, select, .light-btn, .text-section, span, p {
   letter-spacing: .5px;
   }
 
-input, textarea, label, .dropdown-toggle {
+input, textarea, label, .transfer-dropdown {
   font-size: .9rem;
   }
 
@@ -27,7 +27,7 @@ input, textarea, select {
   border: 1px solid #a9a9a9;
   }
 
-input:focus, textarea:focus, select:focus, select, .dropdown-toggle:focus {
+input:focus, textarea:focus, select:focus, select, .transfer-dropdown:focus {
   outline: none;
   }
 
@@ -43,7 +43,7 @@ select:hover {
   cursor: pointer;
   }
 
-select, .light-btn, .dropdown-toggle {
+select, .light-btn, .transfer-dropdown {
   color: #195a7c;
   }
 
@@ -68,12 +68,12 @@ select, .light-btn {
   margin-right: 1.4rem;
   }
 
-.dropdown-menu {
+.transfer-dropdown-menu {
   -webkit-box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   transform: translate3d(0px, 25px, 0px) !important;
   }
-.dropdown-item:hover {
+.transfer-dropdown-item:hover {
   cursor: pointer;
   color: #16181b !important;
   }

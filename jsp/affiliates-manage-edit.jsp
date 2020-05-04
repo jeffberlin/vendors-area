@@ -22,7 +22,7 @@
   </head>
   <body>
     <div class="transfer-section">
-      <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="get">
+      <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="post">
         <input type="hidden" name="ACTION" value="11" />
         <input type="hidden" name="AFFILIATEID" value="${param.AFFILIATEID}" />
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-manage-edited.html" />
@@ -39,10 +39,9 @@
         </table>
         <p>To use Standard Percentages - Leave Custom Percentage field blank.</p>
         <input type="button" value="Save" onclick="submitForm (affiliates);" class="save-btn" style="margin-right: .3rem;" />
-        <input type="button" value="Cancel" onclick="document.close.submit ();" class="save-btn" />
+        <input type="button" value="Cancel" onclick="location.reload();" class="save-btn" />
       </form>
-      <form name="close" action="https://vendors-new.bmtmicro.com/affiliates-manage.jsp" method="get" target="_parent">
-      </form>
+      <!-- <form name="close" action="https://vendors-new.bmtmicro.com/affiliates-manage.jsp" method="get" target="_parent"></form> -->
     </div> <!-- end .transfer-section -->
   </body>
 </html>

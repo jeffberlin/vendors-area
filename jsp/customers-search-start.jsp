@@ -1,3 +1,5 @@
+<%@ include file="/includes/core.jsp" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -77,9 +79,9 @@
   </head>
   <body>
     <form method="get" name="customersearch" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" onSubmit="return (checkForm (this));">
-      <input type="hidden" name="ROWTEMPLATEURL" value="##ROWTEMPLATEURL##" />
+      <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
       <input type="hidden" name="ACTION"  value="0">
-      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-start.html" />
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-start.jsp" />
       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
       <div class="table-header">
         <button type="submit" class="get-btn" value="Search for Customers">Search for Customers</button>
@@ -127,29 +129,29 @@
           <tr id="input-tr">
             <th></th>
             <th number>
-              <input class="input-search" type="text" name="FLT_ORDERID" value="##FLT_ORDERID##" size="8" onkeydown="javascript:stripspaces(this)" placeholder="Search">
+              <input class="input-search" type="text" name="FLT_ORDERID" value="${param.FLT_ORDERID}" size="8" onkeydown="javascript:stripspaces(this)" placeholder="Search">
             </th>
             <th text>
-              <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="##FLT_PRODUCTNAME##" size="10" placeholder="Search">
+              <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="${param.FLT_PRODUCTNAME}" size="10" placeholder="Search">
             </th>
             <th date></th>
             <th number></th>
             <th money></th>
             <th info></th>
             <th info>
-              <input class="input-search" type="text" name="FLT_NAME" value="##FLT_NAME##" size="14" placeholder="Search">
+              <input class="input-search" type="text" name="FLT_NAME" value="${param.FLT_NAME}" size="14" placeholder="Search">
             </th>
             <th info>
-              <input class="input-search" type="text" name="FLT_ADDRESS" value="##FLT_ADDRESS##" size="14" placeholder="Search">
+              <input class="input-search" type="text" name="FLT_ADDRESS" value="${param.FLT_ADDRESS}" size="14" placeholder="Search">
             </th>
             <th text></th>
             <th info>
-              <input class="input-search" type="text" name="FLT_EMAIL" value="##FLT_EMAIL##" size="14" onkeydown="javascript:stripspaces(this)" placeholder="Search">
+              <input class="input-search" type="text" name="FLT_EMAIL" value="${param.FLT_EMAIL}" size="14" onkeydown="javascript:stripspaces(this)" placeholder="Search">
             </th>
           </tr>
           <tbody>
             <tr>
-              ##TABLEDATA##
+              ${param.TABLEDATA}
             </tr>
           </tbody>
           <tfoot>
