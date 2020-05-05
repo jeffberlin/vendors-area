@@ -55,8 +55,10 @@
                     <c:param name = "ERROR_PAGE" value = "https://vendors-new.bmtmicro.com/error_frame.jsp"/>
                   </c:import>
                 </div> <!-- end #tableframe -->
+                <div name="resultframe" id="resultframe" style="display: none;"></div>
                 <!-- <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; padding: 0px; margin:0px; display: none;"></iframe> -->
               </div> <!-- end .content-box -->
+
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
