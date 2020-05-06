@@ -22,7 +22,7 @@
   </head>
   <body>
     <div class="transfer-section">
-      <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="post">
+      <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="get">
         <input type="hidden" name="ACTION" value="11" />
         <input type="hidden" name="AFFILIATEID" value="${param.AFFILIATEID}" />
         <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-manage-edited.html" />

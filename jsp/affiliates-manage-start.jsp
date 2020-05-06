@@ -35,8 +35,11 @@
 
       function editAffiliate (affiliateid) {
         editContent = submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/affiliates-manage-edit.jsp", affiliateid);
-        //submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/affiliates-manage-edit.jsp", affiliateid);
-        $('#tableframe').load(editContent);
+        $.ajax({
+          url: editContent,
+        });
+        $('#tableframe').hide();
+        $('#resultframe').show();
       }
 
       function removeAffiliate (affiliateid) {
@@ -48,7 +51,8 @@
     </script>
   </head>
   <body>
-    <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="get" target="">
+    <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="get",
+    dataType: 'html'>
       <input type="hidden" name="ACTION" value="" />
       <input type="hidden" name="AFFILIATEID" value="" />
       <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />

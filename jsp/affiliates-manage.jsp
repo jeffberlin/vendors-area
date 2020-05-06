@@ -44,7 +44,7 @@
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Manage&nbsp;Affiliates</h4>
               <p>Highlighted affiliates have joined within the last month.</p>
-              <div class="content-box overflow-auto">
+              <div class="content-box overflow-auto" id="contentBox">
                 <div name="tableframe" id="tableframe">
                   <c:import url = "https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates">
                     <c:param name = "SESSIONID" value = "${sessionid}" />
@@ -58,7 +58,6 @@
                 <div name="resultframe" id="resultframe" style="display: none;"></div>
                 <!-- <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; padding: 0px; margin:0px; display: none;"></iframe> -->
               </div> <!-- end .content-box -->
-
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
