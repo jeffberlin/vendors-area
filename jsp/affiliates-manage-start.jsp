@@ -34,12 +34,13 @@
       }
 
       function editAffiliate (affiliateid) {
-        editContent = submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/affiliates-manage-edit.jsp", affiliateid);
+        editContent = submitForm (1, "tableframe", "https://vendors-new.bmtmicro.com/affiliates-manage-edit.jsp", affiliateid);
         $.ajax({
           url: editContent,
+          success: function(result) {
+            $('#contentBox').html(result);
+          }
         });
-        $('#tableframe').hide();
-        $('#resultframe').show();
       }
 
       function removeAffiliate (affiliateid) {
