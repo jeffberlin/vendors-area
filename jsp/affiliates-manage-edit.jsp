@@ -2,6 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <%@ include file="/includes/bootstrap_top_script.html" %>
+    <%@ include file="/css/style.css" %>
+    <%@ include file="/css/table.css" %>
+    <%@ include file="/css/addTransfer.css" %>
     <style media="screen" type="text/css">
       th {
         font-size: .9rem;
@@ -43,5 +47,6 @@
       </form>
       <!-- <form name="close" action="https://vendors-new.bmtmicro.com/affiliates-manage.jsp" method="get" target="_parent"></form> -->
     </div> <!-- end .transfer-section -->
+    <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
 </html>
