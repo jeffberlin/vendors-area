@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/includes/core.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -12,9 +12,8 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <title>BMT Micro Developers Center</title>
-    <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_top_script.html" />
-    <c:import url = "https://vendors-new.bmtmicro.com/includes/menu_footer_css.html" />
-    <link rel="stylesheet" type="text/css" href="https://vendors-new.bmtmicro.com/css/style.css"/>
+    <%@ include file="/includes/bootstrap_top_script.html" %>
+    <%@ include file="/includes/style_menu_footer_css.html" %>
     <style media="screen" type="text/css">
       .content-box {
         padding: 1rem;
@@ -30,7 +29,7 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <c:import url = "https://vendors-new.bmtmicro.com/includes/menuSidebar.html" />
+            <%@ include file="/includes/menuSidebar.html" %>
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Error</h4>
               <p>An error has occurred.</p>
@@ -45,8 +44,8 @@
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid body-content -->
-      <c:import url = "https://vendors-new.bmtmicro.com/includes/footer.html" />
+      <%@ include file="/includes/footer.html" %>
     </div> <!-- end .main-raised -->
-    <c:import url = "https://vendors-new.bmtmicro.com/includes/bootstrap_bottom_scripts.html" />
+    <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
 </html>

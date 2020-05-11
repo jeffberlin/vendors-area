@@ -11,13 +11,12 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <title>BMT Micro Developers Center</title>
-
+    <%@ include file="/includes/bootstrap_top_script.html" %>
+    <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <style media="screen" type="text/css">
       .text-area {
         padding: 1rem;
@@ -69,7 +68,7 @@
             <%@ include file="/includes/menuSidebar.html" %>
             <div class="col-lg-10 col-md-12 page-title">
               <form accept-charset="UTF-8" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.EMailAffiliates">
-                <input type="hidden" name="NEXT_PAGE"  value="https://vendors-new.bmtmicro.com/emailaffiliates_sent.jsp" />
+                <input type="hidden" name="NEXT_PAGE"  value="https://vendors-new.bmtmicro.com/affiliates-email-all-sent.jsp" />
                 <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                 <h4>Email&nbsp;All&nbsp;Affiliates</h4>
                 <p>Use this form to email all your affiliates.&nbsp;Individual affiliates can be emailed under Manage Affiliates.</p>
