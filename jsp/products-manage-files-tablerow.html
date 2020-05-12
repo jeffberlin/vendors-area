@@ -1,0 +1,10 @@
+<tr onclick="highlightLinks(this)" ##SELECT(DEMO,-1,demo)##>
+  <td mtext>##NAME##</td>
+  <td mnumber>##SIZE##</td>
+  <td option><span style="white-space: nowrap">##TIME##</span></td>
+  <td mnumber>##DOWNLOADCOUNT##</td>
+  <td option><input type="checkbox" name="Demo" class="demo" onchange="toggleDemo(##FILEID##);" ##SELECT(DEMO,-1,checked)##></checkbox></td>
+  <td option><button type="button" name="Download" class="save-btn" onclick="##SELECT(DEMO,-1,showDemoURL(%%FILEID%%),downloadFile(%%FILEID%%))##;">##SELECT(DEMO,-1,"Show URL","Download File")##</button></td>
+  <td option><button type="button" name="View File" class="save-btn" onclick="viewFile(##FILEID##);">View Associations</button></td>
+  <td option><button type="button" name="Delete" class="remove" onclick="deleteFile(##FILEID##);"></button></td>
+</tr>
