@@ -17,7 +17,7 @@
         form.ACTION.value = action;
         form.target = target;
         form.NEXT_PAGE.value = nextpage;
-        form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.jsp" : "https://vendors-new.bmtmicro.com/error_frame.js[]";
+        form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.jsp" : "https://vendors-new.bmtmicro.com/error_frame.jsp";
         form.DOWNLOADFILEID.value = downloadfileid;
         form.submit ();
       }
