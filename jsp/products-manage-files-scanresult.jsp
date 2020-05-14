@@ -62,7 +62,7 @@
                 <br>
                 <textarea style="width: 650px; height: 350px; margin-bottom: 1rem;" rows="10" cols="20" name="SCANREPORT" readonly>${param.SCANREPORT}</textarea>
                 <span>
-                  <form action="https://vendors-new.bmtmicro.com/products-manage-files.html" method="get" target="_parent">
+                  <form action="https://vendors-new.bmtmicro.com/products-manage-files.jsp" method="get" target="_parent">
                     <button type="submit" name="Refresh" value="submit" class="save-btn" style="margin-right: .5rem;" >Done</button>
                     <button type="button" name="Refresh" onclick="document.upload.submit ();" class="save-btn">Upload More Files</button>
                   </form>

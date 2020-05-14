@@ -10,8 +10,9 @@
         text-align: center;
       }
     </style>
+    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript">
-      <!--
       function submitForm (action, target, nextpage, downloadfileid) {
         var form = document.files;
         form.ACTION.value = action;
@@ -66,21 +67,9 @@
         document.files.PAGE.value = p;
         submitForm (-1, "", "https://vendors-new.bmtmicro.com/products-manage-files-start.jsp");
       }
-
-      function initForm (form) {
-        if (${param.PAGECOUNT} > 1) {
-          var s = "Pages:&nbsp;";
-          for (var p = 1; p <= ${param.PAGECOUNT}; p++) {
-            s += "<a href=\"javascript:selectPage(" + p + ");\">" + p  + "</a>&nbsp;&nbsp;";
-          }
-          document.getElementById ("pageselector").innerHTML = s;
-        }
-        catchEnter (form.FILTER, filterChanged);
-      }
-      //-->
     </script>
   </head>
-  <body onload="initForm (document.files);">
+  <body>
     <form name="files" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadFiles" method="post" target="resultframe">
       <input type="hidden" name="ACTION" value="" />
       <input type="hidden" name="DOWNLOADFILEID" value="" />
@@ -94,7 +83,7 @@
         <span>
           Filter&nbsp;by&nbsp;File&nbsp;Name:
           <input type="text" name="FILTER" value="${param.FILTER}" style="margin-bottom: 1rem;" />&nbsp;
-          <button type="button" name="FILTERBUTTON" value="Refresh" class="get-btn" onClick="filterChanged ();" />Apply</button>
+          <button type="button" name="FILTERBUTTON" value="Refresh" class="get-btn" onClick="filterChanged ();">Apply</button>
         </span>
         <br clear="all">
         <p style="color: #ffffff; margin-bottom: .3rem;">
@@ -103,7 +92,6 @@
         <p style="color: #ffffff;">
           Total&nbsp;size:&nbsp;${param.TOTALSIZE}
         </p>
-        <!-- <br clear="all" /> -->
         <button type="button" class="grey-btn" onclick="uploadFile ();">Upload File</button>
       </div> <!-- end .table-header -->
       <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
@@ -143,7 +131,12 @@
             <tr class="table-total">
               <th scope="row" colspan="8">
                 <div id="pageselector">
-                  &nbsp;
+                   <c:if test = "${param.PAGECOUNT > 1}">
+                      Pages:
+                      <c:forEach var = "page" begin = "1" end = "${param.PAGECOUNT}">
+                        &nbsp;<a href="javascript:selectPage(${page});">${page}</a>&nbsp;
+                      </c:forEach>
+                   </c:if>
                 </div>
               </th>
             </tr>
@@ -155,5 +148,8 @@
       <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-upload.jsp">
       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
     </form>
+    <script>
+      catchEnter (document.files.FILTER, filterChanged);
+    </script>
   </body>
 </html>

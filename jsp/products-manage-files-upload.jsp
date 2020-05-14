@@ -53,15 +53,17 @@
                     Scan Result
                     <i class="fas fa-circle" id="circle" style="display: none;"></i>
                   </a>
-
                 </li>
               </ul>
               <div class="content-box" style="padding: 1rem;">
                 <div class="tab-content" id="myTabContent">
                   <div class="tab-pane fade show active" id="uploadTab" role="tabpanel" aria-labelledby="upload-tab">
-                    <iframe src="https://vendors-new.bmtmicro.com/files_uploader236R.html" name="uploader" id="uploader" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%;height: 350px;padding: 0px; margin: 0px; background: #FFFFFF;" >
+                    <iframe src="https://vendors-new.bmtmicro.com/products-manage-files-uploader236R.html" name="uploader" id="uploader" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; height: 350px; padding: 0px; margin: 0px; background: #FFFFFF;" >
                      [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
                     </iframe>
+                    <form name="close" action="https://vendors-new.bmtmicro.com/products-manage-files.jsp" method="get" target="_parent">
+                      <input type="button" class="save-btn" onclick="document.close.submit ();" value="Back to Files" >
+                    </form>
                   </div> <!-- /.tab-pane fade show active #uploadtTab -->
                   <div class="tab-pane fade" id="resultTab">
                     <h5 style="color: #efa900; letter-spacing: .5px;">File&nbsp;Upload&nbsp;Result</h5>
@@ -69,6 +71,7 @@
                     <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; height: 500px; padding: 0px; margin: 0px; background: #FFFFFF;" >
                        [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
                     </iframe>
+                      <input type="button" class="save-btn" onclick="location.href('https://vendors-new.bmtmicro.com/products-manage-files.jsp');" value="Back to Files" >
                   </div><!-- /.tab-pane fade #uploadtTab -->
                 </div> <!-- /.tab-content #myTabContent -->
               </div> <!-- end .content-box -->
