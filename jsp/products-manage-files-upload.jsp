@@ -13,9 +13,9 @@
     <title>BMT Micro Developers Center</title>
     <%@ include file="/includes/bootstrap_top_script.html" %>
     <%@ include file="/includes/style_menu_footer_css.html" %>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/tabOptions.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/notification.css"/>
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/notification.css"/>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
     <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
@@ -79,5 +79,10 @@
       <%@ include file="/includes/footer.html" %>
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
+    <script type="text/javascript">
+      $('#result-tab').click(function () {
+        $('#circle').css('display', 'none');
+      });
+    </script>
   </body>
 </html>
