@@ -39,20 +39,20 @@
               <h4>File&nbsp;Upload&nbsp;Result</h4>
               <p>File Scan results are displayed below. If there is a problem with your file, please email us at&nbsp;<a href="mailto:vendors@bmtmicro.com">vendors@bmtmicro.com</a>.</p>
               <div class="content-box">
-                <h6><%= request.getParameter ("FILECOUNT") %> files scanned.</h6>
-                <% { String addCount = request.getParameter ("ADDCOUNT"); if ((addCount != null) && (Integer.parseInt (addCount) > 0)) { %>
+                <h6>${param.FILECOUNT} files scanned.</h6>
+                <% { String addCount = ${param.ADDCOUNT}; if ((addCount != null) && (Integer.parseInt (addCount) > 0)) { %>
                 <br clear="all" /><span><%= addCount %> files added.</span>
                 <% }} %>
                 <br>
-                <% { String updateCount = request.getParameter ("UPDATECOUNT"); if ((updateCount != null) && (Integer.parseInt (updateCount) > 0)) { %>
+                <% { String updateCount = ${param.UPDATECOUNT}; if ((updateCount != null) && (Integer.parseInt (updateCount) > 0)) { %>
                 <br clear="all" /><span><%= updateCount %> files updated.</span>
                 <% }} %>
                 <br>
-                <% { String virusCount = request.getParameter ("VIRUSCOUNT"); if ((virusCount != null) && (Integer.parseInt (virusCount) > 0)) { %>
+                <% { String virusCount = ${param.VIRUSCOUNT}; if ((virusCount != null) && (Integer.parseInt (virusCount) > 0)) { %>
                 <br clear="all" /><span><font color="red"><%= virusCount %> files do not pass the virus check. The files are put in quarantine for further examination by a customer service representative. If we find that the files check out good, we will put them on-line. Otherwise, if we find issues with the files we will contact you in order to solve the problem. Please see virus scan below for details.</font></span>
                 <% }} %>
                 <br>
-                <% { String errorCount = request.getParameter ("ERRORCOUNT"); if ((errorCount != null) && (Integer.parseInt (errorCount) > 0)) { %>
+                <% { String errorCount = ${param.ERRORCOUNT}; if ((errorCount != null) && (Integer.parseInt (errorCount) > 0)) { %>
                 <br clear="all" /><span><font color="red"><%= errorCount %> files have errors. These files are rejected. Please fix the errors listed below and reupload.</font></span>
                 <% }} %>
                 <br clear="all">
@@ -60,14 +60,14 @@
                   <label style="margin-bottom: .1rem;">File&nbsp;Scan&nbsp;Details:</label>
                 </span>
                 <br>
-                <textarea style="width: 650px; height: 350px; margin-bottom: 1rem;" rows="10" cols="20" name="SCANREPORT" readonly><%= request.getParameter ("SCANREPORT") %></textarea>
+                <textarea style="width: 650px; height: 350px; margin-bottom: 1rem;" rows="10" cols="20" name="SCANREPORT" readonly>${param.SCANREPORT}</textarea>
                 <span>
-                  <form action="https://vendors-new.bmtmicro.com/filesstart.html" method="get" target="_parent">
+                  <form action="https://vendors-new.bmtmicro.com/products-manage-files.html" method="get" target="_parent">
                     <button type="submit" name="Refresh" value="submit" class="save-btn" style="margin-right: .5rem;" >Done</button>
                     <button type="button" name="Refresh" onclick="document.upload.submit ();" class="save-btn">Upload More Files</button>
                   </form>
-                  <form name="upload" method=post action="https://vendors-new.bmtmicro.com/servlets/CustomForms.CustomForm" target="_parent">
-                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/files_upload.jsp">
+                  <form name="upload" method="post" action="https://vendors-new.bmtmicro.com/servlets/CustomForms.CustomForm" target="_parent">
+                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-upload.jsp">
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
                   </form>
                 </span>

@@ -35,20 +35,20 @@
       }
 
       function showDemoURL (downloadfileid) {
-        submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/files_viewdemourl.html", downloadfileid);
+        submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-viewdemourl.html", downloadfileid);
         window.parent.document.getElementById('resultframe').style.display = "block";
         window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function viewFile (downloadfileid) {
-        submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/files_viewproducts.html", downloadfileid);
+        submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-viewproducts.html", downloadfileid);
         window.parent.document.getElementById('resultframe').style.display = "block";
         window.parent.document.getElementById('tableframe').style.display = "none";
       }
 
       function deleteFile (downloadfileid) {
         if (allowChanges ("You do not have permission to delete files.")) {
-          submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/files_delete.html", downloadfileid);
+          submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-delete.html", downloadfileid);
           window.parent.document.getElementById('resultframe').style.display = "block";
           window.parent.document.getElementById('tableframe').style.display = "none";
         }
@@ -152,7 +152,7 @@
       </div>
     </form>
     <form name="upload" method=post action="https://vendors-new.bmtmicro.com/servlets/CustomForms.CustomForm" target="_parent">
-      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/files_upload.jsp">
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-upload.jsp">
       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
     </form>
   </body>
