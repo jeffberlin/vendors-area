@@ -42,8 +42,8 @@
           alert ("You do not have permission to edit comments.");
           return (false);
         }
-        // window.parent.document.getElementById('resultframe').style.display = "block";
-        // window.parent.document.getElementById('tableframe').style.display = "none";
+        document.getElementById('resultframe').style.display = "block";
+        document.getElementById('tableframe').style.display = "none";
         var form = document.CommentsForm;
         form.ORDERID.value = orderid;
         form.ITEMNR.value = itemnr;
@@ -78,7 +78,7 @@
     </script>
   </head>
   <body>
-    <form method="get" name="customersearch" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" onSubmit="return (checkForm (this));">
+    <form method="post" name="customersearch" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" onSubmit="return (checkForm (this));">
       <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
       <input type="hidden" name="ACTION"  value="0">
       <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-start.jsp" />
