@@ -37,26 +37,26 @@
 
       function showDemoURL (downloadfileid) {
         submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-viewdemourl.html", downloadfileid);
-        window.parent.document.getElementById('resultframe').style.display = "block";
-        window.parent.document.getElementById('tableframe').style.display = "none";
+        document.getElementById('resultframe').style.display = "block";
+        document.getElementById('tableframe').style.display = "none";
       }
 
       function viewFile (downloadfileid) {
         submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-viewproducts.html", downloadfileid);
-        window.parent.document.getElementById('resultframe').style.display = "block";
-        window.parent.document.getElementById('tableframe').style.display = "none";
+        document.getElementById('resultframe').style.display = "block";
+        document.getElementById('tableframe').style.display = "none";
       }
 
       function deleteFile (downloadfileid) {
         if (allowChanges ("You do not have permission to delete files.")) {
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-delete.html", downloadfileid);
-          window.parent.document.getElementById('resultframe').style.display = "block";
-          window.parent.document.getElementById('tableframe').style.display = "none";
+          document.getElementById('resultframe').style.display = "block";
+          document.getElementById('tableframe').style.display = "none";
         }
       }
 
       function toggleDemo (downloadfileid) {
-        submitForm (14, "", "https://vendors-new.bmtmicro.com/products-manage-files-start.jsp", downloadfileid);
+        submitForm (14, "", "https://vendors-new.bmtmicro.com/products-manage-files.jsp", downloadfileid);
       }
 
       function filterChanged () {

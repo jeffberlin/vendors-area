@@ -52,7 +52,7 @@
                     <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
                   </c:import>
                 </div> <!-- end #tableframe -->
-                <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; padding: 0px; margin:0px; display: none; min-height: 180px;" >
+                <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; padding: 0px; margin:0px; display: none; min-height: 220px;" >
                    [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
                 </iframe>
               </div> <!-- end .content-box -->
