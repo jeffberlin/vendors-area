@@ -48,7 +48,7 @@
     </script>
   </head>
   <body>
-    <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="get",
+    <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="get"
     dataType: 'html'>
       <input type="hidden" name="ACTION" value="" />
       <input type="hidden" name="AFFILIATEID" value="" />

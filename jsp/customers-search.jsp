@@ -19,8 +19,10 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <style media="screen" type="text/css">
-      .content-box {
+      #resultframe {
         height: calc(100vh - 275px);
+      }
+      #tableframe, #resultframe {
         min-height: 290px;
       }
     </style>
@@ -38,7 +40,7 @@
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Customer&nbsp;Search</h4>
               <p>Use fields below to enter search criteria.&nbsp;If email information has not changed since purchase you can resend the customer's email using the button provided.<br>You will be able to review the email before it is sent.</p>
-              <div class="content-box">
+              <div class="content-box overflow-auto" id="contentBox">
                 <div name="tableframe" id="tableframe">
                   <c:import url = "https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch">
                     <c:param name = "SESSIONID" value = "${sessionid}" />
@@ -52,20 +54,10 @@
                     <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp"/>
                   </c:import>
                 </div>
-                <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; padding: 0px; margin:0px; display: none;" >
+                <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; padding: 0px; margin: 0px; display: none;" >
                    [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
                 </iframe>
               </div> <!-- end .content-box -->
-              <!-- <form name="start" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" target="tableframe">
-                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-start.jsp">
-                <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-search-tablerow.html" />
-                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp">
-                <input type="hidden" name="FLT_ORDERID" value="">
-                <input type="hidden" name="FLT_PRODUCTNAME" value="">
-                <input type="hidden" name="FLT_NAME" value="">
-                <input type="hidden" name="FLT_ADDRESS" value="">
-                <input type="hidden" name="FLT_EMAIL" value="">
-              </form> -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>

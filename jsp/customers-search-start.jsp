@@ -78,7 +78,7 @@
     </script>
   </head>
   <body>
-    <form method="post" name="customersearch" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" onSubmit="return (checkForm (this));">
+    <form method="get" dataType: 'html' name="customersearch" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" onSubmit="return (checkForm (this));">
       <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
       <input type="hidden" name="ACTION"  value="0">
       <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-start.jsp" />
