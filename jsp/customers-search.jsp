@@ -43,7 +43,7 @@
               <div class="content-box overflow-auto" id="contentBox">
                 <div name="tableframe" id="tableframe">
                   <c:import url = "https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch">
-                    <c:param name = "SESSIONID" value = "${sessionid}" />
+                    <c:param name="SESSIONID" value="${sessionid}" />
                     <c:param name="FLT_ORDERID" value=""/>
                     <c:param name="FLT_PRODUCTNAME" value=""/>
                     <c:param name="FLT_NAME" value=""/>
