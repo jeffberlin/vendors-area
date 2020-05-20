@@ -57,7 +57,7 @@
             <%@ include file="/includes/menuSidebar.html" %>
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Affiliate&nbsp;Sales&nbsp;Report</h4>
-              <div class="content-box" style="min-height: 350px;">
+              <div class="content-box overflow-auto" style="min-height: 350px;">
                 <form name="affiliatesales" action="https://vendors-new.bmtmicro.com/servlets/Vendors.AffiliateReports" method="get">
                   <div class="table-header">
                     <span>
