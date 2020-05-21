@@ -79,6 +79,8 @@
           alert ("You do not have permission to resend information.");
           return (false);
         }
+        document.getElementById('resultframe').style.display = "block";
+        document.getElementById('tableframe').style.display = "none";
         var form = document.ResendInfoForm;
         form.ORDERID.value = orderid;
         form.ITEMNR.value = itemnr;
@@ -91,6 +93,8 @@
           alert ("You do not have permission to refund an order.");
           return (false);
         }
+        document.getElementById('resultframe').style.display = "block";
+        document.getElementById('tableframe').style.display = "none";
         var form = document.RefundItem;
         form.ORDERID.value = orderid;
         form.ITEMNR.value = itemnr;

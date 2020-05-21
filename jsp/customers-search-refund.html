@@ -36,7 +36,7 @@
         <input type="hidden" name="ORDERID" value="##ORDERID##">
         <input type="hidden" name="ITEMNR" value="##ITEMNR##">
         <input type="hidden" name="ACTION" value="3">
-        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers=search-refunded.html">
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-refunded.html">
         <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
         <h5>Initiate Refund</h5>
         <span>
@@ -56,7 +56,10 @@
           <textarea name="COMMENTS" ROWS="5" COLS="78" placeholder="Type the reason for the refund"></textarea>
         </p>
         <button type="button" class="save-btn" onclick="submitForm (form);">Refund</button>
+        <input type="button" class="save-btn" onclick="document.close.submit();" value="Cancel" />
       </form>
+      <!-- form for the "Cancel" button -->
+      <form name="close" action="https://vendors-new.bmtmicro.com/customers-search.jsp" method="get" target="_parent"></form>
     </div> <!-- end .transfer-section -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
