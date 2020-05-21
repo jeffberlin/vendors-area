@@ -27,6 +27,9 @@
       .input-search {
         width: 100%;
       }
+      .save-btn {
+        margin-bottom: .3rem;
+      }
     </style>
     <script language="javascript" type="text/javascript">
       <!--
