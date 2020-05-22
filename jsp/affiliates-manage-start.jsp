@@ -53,7 +53,7 @@
       <input type="hidden" name="ACTION" value="" />
       <input type="hidden" name="AFFILIATEID" value="" />
       <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
-      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com//affiliates-manage-start.jsp" />
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-manage-start.jsp" />
       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
       <div class="table-header">
         <span style="color: #ffffff;">
