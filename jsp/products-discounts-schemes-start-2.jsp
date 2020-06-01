@@ -31,17 +31,17 @@
 
         function addDiscount (form) {
           if (allowChanges ("You do not have permission to add new schemes.")) {
-            submitForm (0, "_parent", "https://vendors-new.bmtmicro.com/discounts_add.jsp");
+            submitForm (0, "_parent", "https://vendors-new.bmtmicro.com/products-discounts-schemes-add.jsp");
           }
         }
 
         function editDiscount (schemeid, schemetype) {
-          submitForm (1, "_parent", "https://vendors-new.bmtmicro.com/discounts_edit.jsp", schemeid, schemetype);
+          submitForm (1, "_parent", "https://vendors-new.bmtmicro.com/products-discounts-schemes-edit.jsp", schemeid, schemetype);
         }
 
         function deleteDiscount (schemeid, schemetype) {
           if (allowChanges ("You do not have permission to delete schemes.")) {
-            submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/discounts_delete.html", schemeid, schemetype);
+            submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/products-discounts-schemes-delete.html", schemeid, schemetype);
             window.parent.document.getElementById('resultframe').style.display = "block";
             window.parent.document.getElementById('tableframe').style.display = "none";
           }
@@ -49,14 +49,14 @@
 
         function generateCodes (schemeid, schemetype) {
           if (allowChanges ("You do not have permission to generate codes.")) {
-            submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/discounts_generatecodes.html", schemeid, schemetype);
+            submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/products-discounts-schemes-generatecodes.jsp", schemeid, schemetype);
             window.parent.document.getElementById('resultframe').style.display = "block";
             window.parent.document.getElementById('tableframe').style.display = "none";
           }
         }
 
         function viewCodes (schemeid, schemetype) {
-          submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/discounts_viewcodes.html", schemeid, schemetype);
+          submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/products-discounts-schemes-viewcodes.jsp", schemeid, schemetype);
           window.parent.document.getElementById('resultframe').style.display = "block";
           window.parent.document.getElementById('tableframe').style.display = "none";
         }
