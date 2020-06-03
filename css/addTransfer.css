@@ -10,7 +10,7 @@ label, .text-section, .transfer-dropdown-item, span {
   color: #707070;
   }
 
-h5, label, input, textarea, select, .light-btn, .text-section, span, p {
+h5, label, input, textarea, select, .text-section, span, p {
   letter-spacing: .5px;
   }
 
@@ -31,7 +31,7 @@ input:focus, textarea:focus, select:focus, select, .transfer-dropdown:focus {
   outline: none;
   }
 
-input:focus, textarea:focus, select:focus, .light-btn:hover {
+input:focus, textarea:focus, select:focus {
   border: 1px solid #195a7c;
   }
 
@@ -43,21 +43,13 @@ select:hover {
   cursor: pointer;
   }
 
-select, .light-btn, .transfer-dropdown {
+select, .transfer-dropdown {
   color: #195a7c;
   }
 
-select, .light-btn {
+select {
   background: #ffffff;
   border-radius: 3px;
-  }
-
-.light-btn {
-  border: 1px solid rgba(17,22,26,.04);
-  box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
-  -webkit-box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
-  padding: .3rem .75rem;
-  font-size: .8rem;
   }
 
 .toolbar {

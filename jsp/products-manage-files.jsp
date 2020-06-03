@@ -17,13 +17,87 @@
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
-      .content-box, #tableframe {
-        height: calc(100vh - 275px);
-        min-height: 290px;
-        overflow-y: scroll;
+      .content-box {
+        max-height: calc(100vh - 275px);
         display: block;
       }
+      .content-box, #tableframe {
+        min-height: 290px;
+      }
+      td[option], td[mnumber] {
+        text-align: center;
+      }
     </style>
+    <script language="javascript" type="text/javascript">
+      function submitToDiv (form) {
+        var target = '#' + $(form).attr('target');
+        $.ajax({
+          url: $(form).attr('action'), // the file to call
+          data: $(form).serialize(), // get the form data
+          type: $(form).attr('method'), // GET or POST
+          success: function (data, status) {  
+            $(target).html (data); //content loads here
+          },
+          error: function (xhr, desc, err) {
+            console.log ("error");
+          }
+        });     
+      }
+      
+      function submitForm (action, target, nextpage, downloadfileid) {
+        var form = document.files;
+        form.ACTION.value = action;
+        form.target = target;
+        form.NEXT_PAGE.value = nextpage;
+        form.DOWNLOADFILEID.value = downloadfileid;
+        submitToDiv (form);
+      }
+
+      function uploadFile () {
+        if (allowChanges ("You do not have permission to upload files.")) {
+          document.location.href = "https://vendors-new.bmtmicro.com/products-manage-files-upload.jsp";
+        }
+      }
+
+      function downloadFile (downloadfileid) {
+        if (allowChanges ("You do not have permission to download files.")) {
+          submitForm (1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp", downloadfileid);
+        }
+      }
+
+      function showDemoURL (downloadfileid) {
+        submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-viewdemourl.html", downloadfileid);
+        //document.getElementById('resultframe').style.display = "block";
+        //document.getElementById('tableframe').style.display = "none";
+      }
+
+      function viewFile (downloadfileid) {
+        submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-viewproducts.html", downloadfileid);
+        //document.getElementById('resultframe').style.display = "block";
+        //document.getElementById('tableframe').style.display = "none";
+      }
+
+      function deleteFile (downloadfileid) {
+        if (allowChanges ("You do not have permission to delete files.")) {
+          submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-delete.html", downloadfileid);
+        //  document.getElementById('resultframe').style.display = "block";
+        //  document.getElementById('tableframe').style.display = "none";
+        }
+      }
+
+      function toggleDemo (downloadfileid) {
+        submitForm (14, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp", downloadfileid);
+      }
+
+      function filterChanged () {
+        submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp");
+      }
+
+      function selectPage (p) {
+        document.files.PAGE.value = p;
+        submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp");
+      }
+    </script>
   </head>
   <body>
 
@@ -39,7 +113,7 @@
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Manage&nbsp;Files</h4>
               <p>The View Associations button only displays products and files associated for secure download file fulfillment.</p>
-              <div class="content-box">
+              <div class="content-box overflow-auto">
                 <div name="tableframe" id="tableframe">
                   <c:import url = "https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadFiles">
                     <c:param name="SESSIONID" value="${sessionid}" />
@@ -48,14 +122,15 @@
                     <c:param name="ROWSPERPAGE" value="500" />
                     <c:param name="PAGE" value="1" />
                     <c:param name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-files-tablerow.html" />
-                    <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-start.jsp" />
-                    <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
+                    <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-table.jsp" />
+                    <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-table.jsp" />
                   </c:import>
                 </div> <!-- end #tableframe -->
-                <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; padding: 0px; margin:0px; display: none; min-height: 220px;" >
-                   [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
-                </iframe>
+                <!-- <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; padding: 0px; margin:0px; display: none; min-height: 220px;" >
+                  [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
+                </iframe> -->
               </div> <!-- end .content-box -->
+              <div name="resultframe" id="resultframe"></div>
             </div>
           </div> <!-- end first .row justify-content-start -->
         </article>

@@ -1,167 +1,191 @@
 html,
 body {
-  overflow-x: hidden;
-  width: 100%;
-  height: 100%;
-  }
+	overflow-x: hidden;
+	width: 100%;
+	height: 100%;
+}
 
 .row {
-  margin: 0px;
-  }
+	margin: 0px;
+}
 
 input,
 button:focus {
-  outline: none !important;
-  }
+	outline: none !important;
+}
 
 [type=button] {
-  -webkit-appearance: none;
-  }
+	-webkit-appearance: none;
+}
 
 a {
-  text-decoration: none !important;
-  }
+	text-decoration: none !important;
+}
 
 .save-btn,
 .dropdown-item,
 .grey-btn {
-  font-size: .8rem;
-  }
+	font-size: .8rem;
+}
 
 .blue-bg {
-  background-color: #195a7c;
-  height: 300px;
-  width: 100%;
-  z-index: -1;
-  position: absolute;
-  }
+	background-color: #195a7c;
+	height: 300px;
+	width: 100%;
+	z-index: -1;
+	position: absolute;
+}
 
 .main-raised {
-  margin: 0px 15px 0;
-  background: #ffffff;
-  position: relative;
-  /* padding: 0rem 1rem 0rem; */
-  border-radius: 10px 10px 0 0;
-  -webkit-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-  }
+	margin: 0px 15px 0;
+	position: relative;
+	border-radius: 10px 10px 0 0;
+	-webkit-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.main-raised,
+.save-btn,
+.light-btn {
+	background: #ffffff;
+}
 
 .sidebar img {
-  height: auto;
-  width: 208px;
-  margin-bottom: 20px;
-  }
+	height: auto;
+	width: 208px;
+	margin-bottom: 20px;
+}
 
 .body-content {
-  padding-top: 2.2rem;
-  min-height: calc(100vh - 132px);
-  }
+	padding-top: 2.2rem;
+	min-height: calc(100vh - 132px);
+}
 
 .content-box {
-  -webkit-box-shadow: 0px 2px 7px 2px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 2px 7px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 2px 7px 2px rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-  margin-bottom: 1rem;
-  }
+	-webkit-box-shadow: 0px 2px 7px 2px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 2px 7px 2px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 2px 7px 2px rgba(0, 0, 0, 0.1);
+	border-radius: 3px;
+	margin-bottom: 1rem;
+}
 
 .dropdown-item {
-  color: #707070;
-  letter-spacing: .4px;
-  padding: .25rem .8rem;
-  }
-
+	color: #707070;
+	letter-spacing: .4px;
+	padding: .25rem .8rem;
+}
 
 /* Handles the caret transition */
 
 .open:hover .dropdown-toggle::after,
 .dropdown-toggle[aria-expanded="true"]:after {
-  transform: rotate(-180deg);
-  }
+	transform: rotate(-180deg);
+}
 
 .dropdown-toggle::after {
-  transition: .5s;
-  }
-
+	transition: .5s;
+}
 
 /*  */
 
 .page-title h4,
 .save-btn:hover {
-  color: #ef9a00;
-  }
+	color: #ef9a00;
+}
 
 .page-title h4,
 .page-title p,
 .grey-btn,
-.save-btn {
-  letter-spacing: .5px;
-  }
+.save-btn,
+.light-btn {
+	letter-spacing: .5px;
+}
 
 p {
-  color: #707070;
-  }
+	color: #707070;
+}
 
 .grey-btn {
-  border-radius: 8px;
-  border: 1px solid #000000;
-  padding: .2rem .4rem;
-  background-color: #dddddd;
-  margin-right: .2rem;
-  }
+	border-radius: 8px;
+	border: 1px solid #000000;
+	padding: .2rem .4rem;
+	background-color: #dddddd;
+	margin-right: .2rem;
+}
 
 .grey-btn:hover {
-  background-color: #a9a9a9;
-  }
+	background-color: #a9a9a9;
+}
 
 .grey-btn,
 .remove,
 .save-btn {
-  transition: all .2s ease;
-  }
+	transition: all .2s ease;
+}
+
+.save-btn,
+.light-btn {
+	color: #195a7c;
+}
+
+.save-btn,
+.light-btn:hover {
+	border: 1px solid #195a7c;
+}
+
+.save-btn,
+.light-btn {
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+}
 
 .save-btn {
-  border: 1px solid #195a7c;
-  color: #195a7c;
-  }
-
-.save-btn {
-  border-radius: 3px;
-  box-shadow: 0 0 4px 0 rgba(17, 22, 26, .16), 0 2px 4px 0 rgba(17, 22, 26, .08), 0 4px 8px 0 rgba(17, 22, 26, .08);
-  -webkit-box-shadow: 0 0 4px 0 rgba(17, 22, 26, .16), 0 2px 4px 0 rgba(17, 22, 26, .08), 0 4px 8px 0 rgba(17, 22, 26, .08);
-  background: #ffffff;
-  padding: .3rem .75rem;
-  }
+	box-shadow: 0 0 4px 0 rgba(17, 22, 26, .16), 0 2px 4px 0 rgba(17, 22, 26, .08), 0 4px 8px 0 rgba(17, 22, 26, .08);
+	-webkit-box-shadow: 0 0 4px 0 rgba(17, 22, 26, .16), 0 2px 4px 0 rgba(17, 22, 26, .08), 0 4px 8px 0 rgba(17, 22, 26, .08);
+	padding: .3rem .75rem;
+}
 
 .save-btn:hover {
-  box-shadow: 0 2px 16px 2px rgba(17, 22, 26, .16), 0 2px 4px 0 rgba(17, 22, 26, .08), 0 8px 14px 0 rgba(17, 22, 26, .08);
-  -webkit-box-shadow: 0 2px 16px 2px rgba(17, 22, 26, .16), 0 2px 4px 0 rgba(17, 22, 26, .08), 0 8px 14px 0 rgba(17, 22, 26, .08);
-  -moz-box-shadow: 0 2px 16px 2px rgba(17, 22, 26, .16), 0 2px 4px 0 rgba(17, 22, 26, .08), 0 8px 14px 0 rgba(17, 22, 26, .08);
-  border: 1px solid #efa900;
-  }
+	box-shadow: 0 2px 16px 2px rgba(17, 22, 26, .16), 0 2px 4px 0 rgba(17, 22, 26, .08), 0 8px 14px 0 rgba(17, 22, 26, .08);
+	-webkit-box-shadow: 0 2px 16px 2px rgba(17, 22, 26, .16), 0 2px 4px 0 rgba(17, 22, 26, .08), 0 8px 14px 0 rgba(17, 22, 26, .08);
+	-moz-box-shadow: 0 2px 16px 2px rgba(17, 22, 26, .16), 0 2px 4px 0 rgba(17, 22, 26, .08), 0 8px 14px 0 rgba(17, 22, 26, .08);
+	border: 1px solid #efa900;
+}
+
+.light-btn {
+  border: 1px solid rgba(17,22,26,.04);
+  box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
+  -webkit-box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
+  padding: .3rem .75rem;
+  font-size: .8rem;
+}
 
 .remove {
-  background: url('../images/times-circle-red.png') no-repeat center center;
-  background-size: cover;
-  width: 1.5rem;
-  height: 1.5rem;
-  vertical-align: middle;
-  border: none;
-  }
+	background: url('../images/times-circle-red.png') no-repeat center center;
+	background-size: cover;
+	width: 1.5rem;
+	height: 1.5rem;
+	vertical-align: middle;
+	border: none;
+}
 
 .remove:hover {
-  filter: brightness(.7);
-  }
+	filter: brightness(.7);
+	-webkit-filter: brightness(.7);
+}
 
 button:hover {
-  cursor: pointer;
-  }
+	cursor: pointer;
+}
 
 .nav {
-  flex-wrap: nowrap;
-  }
+	flex-wrap: nowrap;
+}
 
 #tableframe {
-  height: calc(100vh - 350px);
-  }
+	height: calc(100vh - 350px);
+}

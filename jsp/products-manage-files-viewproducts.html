@@ -25,6 +25,11 @@
         text-decoration-color: #efa900;
       }
     </style>
+		<script language="javascript" type="text/javascript">
+			function closeDiv() {
+				document.getElementById('resultframe').style.display = "none";
+			}
+		</script>
   </head>
   <body>
     <div class="transfer-section">
@@ -48,7 +53,7 @@
       </form>
       <form action="https://vendors-new.bmtmicro.com/products-manage-files.jsp" method="get" target="_parent">
         ##SELECT(PRODUCTCOUNT,0,,"<button type="button" class="light-btn" onclick="document.files.submit ();" style="margin-right: .4rem;">Change file association for the associated products</button>")##
-        <button type="submit" class="light-btn">Close</button>
+        <button type="button" class="light-btn" onclick="closeDiv()">Close</button>
       </form>
     </div> <!-- end .transfer-section -->
 
