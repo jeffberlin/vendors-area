@@ -24,7 +24,8 @@ a {
 
 .save-btn,
 .dropdown-item,
-.grey-btn {
+.grey-btn,
+.light-btn {
 	font-size: .8rem;
 }
 
@@ -71,7 +72,6 @@ a {
 }
 
 .dropdown-item {
-	color: #707070;
 	letter-spacing: .4px;
 	padding: .25rem .8rem;
 }
@@ -81,10 +81,18 @@ a {
 .open:hover .dropdown-toggle::after,
 .dropdown-toggle[aria-expanded="true"]:after {
 	transform: rotate(-180deg);
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	-o-transform: rotate(-180deg);
 }
 
 .dropdown-toggle::after {
 	transition: .5s;
+	-webkit-transition: .5s;
+	-moz-transition: .5s;
+	-ms-transition: .5s;
+	-o-transition: .5s;
 }
 
 /*  */
@@ -102,7 +110,8 @@ a {
 	letter-spacing: .5px;
 }
 
-p {
+p,
+.dropdown-item {
 	color: #707070;
 }
 
@@ -125,7 +134,8 @@ p {
 }
 
 .save-btn,
-.light-btn {
+.light-btn,
+.result-th {
 	color: #195a7c;
 }
 
@@ -161,7 +171,6 @@ p {
   box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
   -webkit-box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
   padding: .3rem .75rem;
-  font-size: .8rem;
 }
 
 .remove {
@@ -184,6 +193,12 @@ button:hover {
 
 .nav {
 	flex-wrap: nowrap;
+}
+
+.result-th {
+	font-size: .9rem;
+	text-decoration: underline;
+	text-decoration-color: #efa900;
 }
 
 #tableframe {

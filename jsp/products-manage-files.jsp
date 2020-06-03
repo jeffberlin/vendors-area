@@ -72,7 +72,7 @@
       }
 
       function viewFile (downloadfileid) {
-        submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-viewproducts.html", downloadfileid);
+        submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-viewproducts.jsp", downloadfileid);
         //document.getElementById('resultframe').style.display = "block";
         //document.getElementById('tableframe').style.display = "none";
       }
@@ -100,7 +100,6 @@
     </script>
   </head>
   <body>
-
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
