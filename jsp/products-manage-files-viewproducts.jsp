@@ -1,30 +1,33 @@
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
-	<form name="files" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadFiles" target="resultframe">
+	<form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadFiles">
 		<input type="hidden" name="ACTION" value="-1" />
-		<input type="hidden" name="DOWNLOADFILEID" value="##DOWNLOADFILEID##" />
-		<input type="hidden" name="DOWNLOADFILENAME" value="##DOWNLOADFILENAME##" />
+		<input type="hidden" name="DOWNLOADFILEID" value="${ param.DOWNLOADFILEID }" />
+		<input type="hidden" name="DOWNLOADFILENAME" value="${ param.DOWNLOADFILENAME }" />
 		<input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-files-changeassociations-tablerow.html" />
-		<input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-changeassociations.html" />
-		<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
-		<p>The following products and files are currently using the <strong>##DOWNLOADFILENAME##</strong>&nbsp;file.</p>
-		<table class="table" style="margin-bottom: 1rem; width: 70%; border: 1px solid #a9a9a9;">
-			<thead>
-				##SELECT(PRODUCTCOUNT,0,,"<tr class="table-category text-center"><th class="result-th sort-column">Product&nbsp;ID</th><th class="result-th sort-column">Product&nbsp;Name</th>")##
-					##PRODUCTTABLEDATA##
-					##SELECT(FILECOUNT,0,,"<td>Vendor&nbsp;ID</td><td>File&nbsp;Name</td>")##
-					##FILETABLEDATA##
-				</tr>
-			</thead>
-		</table>
+		<input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-changeassociations.jsp" />
+		<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/result-error.jsp" />
+		<c:if test = "${ param.PRODUCTCOUNT == 0 }">
+			<p>The file <strong>${ param.DOWNLOADFILENAME }</strong> is currently not used.</p>
+		</c:if>
+		<c:if test = "${ param.PRODUCTCOUNT != 0 }">
+			<p>The following products and files are currently using the <strong>${ param.DOWNLOADFILENAME }</strong> file.</p>
+			<table class="table" style="margin-bottom: 1rem; width: 70%; border: 1px solid #a9a9a9;">
+				<thead>
+					<tr class="table-category">
+						<th class="result-th text-center sort-column">Product&nbsp;ID</th>
+						<th class="result-th text-center sort-column">Product&nbsp;Name</th>
+						${ param.PRODUCTTABLEDATA }
+						<c:if test = "${ param.FILECOUNT > 0 }">
+							<td>Vendor&nbsp;ID</td>
+							<td>File&nbsp;Name</td>
+						</c:if>
+						${ param.FILETABLEDATA }
+					</tr>
+				</thead>    
+			</table>
+			<button type="button" class="light-btn" onclick="submitToResultFrame (this.form);" style="margin-right: .4rem;">Change file association for the associated products</button>
+		</c:if>
+		<button type="button" class="light-btn" onclick="closeResultFrame()">Close</button>
 	</form>
-	<form action="https://vendors-new.bmtmicro.com/products-manage-files.jsp" method="get" target="_parent">
-		##SELECT(PRODUCTCOUNT,0,,"<button type="button" class="light-btn" onclick="document.files.submit ();" style="margin-right: .4rem;">Change file association for the associated products</button>")##
-		<button type="button" class="light-btn" onclick="closeDiv()">Close</button>
-	</form>
-	<script language="javascript" type="text/javascript">
-		function closeDiv() {
-			document.getElementById('resultframe').style.display = "none";
-		}
-	</script>
 </div> <!-- end .transfer-section -->

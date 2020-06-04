@@ -98,7 +98,8 @@ a {
 /*  */
 
 .page-title h4,
-.save-btn:hover {
+.save-btn:hover,
+h5 {
 	color: #ef9a00;
 }
 
@@ -106,7 +107,8 @@ a {
 .page-title p,
 .grey-btn,
 .save-btn,
-.light-btn {
+.light-btn,
+h5 {
 	letter-spacing: .5px;
 }
 

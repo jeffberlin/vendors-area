@@ -29,80 +29,89 @@
       }
     </style>
     <script language="javascript" type="text/javascript">
-      function submitToDiv (form) {
-        var target = '#' + $(form).attr('target');
-        $.ajax({
-          url: $(form).attr('action'), // the file to call
-          data: $(form).serialize(), // get the form data
-          type: $(form).attr('method'), // GET or POST
-          success: function (data, status) {  
-            $(target).html (data); //content loads here
-          },
-          error: function (xhr, desc, err) {
-            console.log ("error");
-          }
-        });     
-      }
-      
-      function submitForm (action, target, nextpage, downloadfileid) {
-        var form = document.files;
-        form.ACTION.value = action;
-        form.target = target;
-        form.NEXT_PAGE.value = nextpage;
-        form.DOWNLOADFILEID.value = downloadfileid;
-        submitToDiv (form);
-      }
+			function closeDiv(id) {
+				$('#' + id).css ("display", "none");
+			}                                       
 
-      function uploadFile () {
-        if (allowChanges ("You do not have permission to upload files.")) {
-          document.location.href = "https://vendors-new.bmtmicro.com/products-manage-files-upload.jsp";
-        }
-      }
+			function submitToDiv (form, id) {
+				var target = '#' + id;
+				$.ajax({
+					url: $(form).attr('action'), // the file to call
+					data: $(form).serialize(), // get the form data
+					type: $(form).attr('method'), // GET or POST
+					success: function (data, status) {  
+						$(target).html (data); //content loads here
+						$(target).css ("display", "block");
+					},                                     
+					error: function (xhr, desc, err) {
+						console.log ("error");
+					}
+				});   
+			}
 
-      function downloadFile (downloadfileid) {
-        if (allowChanges ("You do not have permission to download files.")) {
-          submitForm (1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp", downloadfileid);
-        }
-      }
+			function closeResultFrame() {
+				closeDiv ('resultframe');
+			}                       
 
-      function showDemoURL (downloadfileid) {
-        submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-viewdemourl.html", downloadfileid);
-        //document.getElementById('resultframe').style.display = "block";
-        //document.getElementById('tableframe').style.display = "none";
-      }
+			function submitToResultFrame(form) {
+				submitToDiv (form, 'resultframe');
+			}                        
 
-      function viewFile (downloadfileid) {
-        submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-viewproducts.jsp", downloadfileid);
-        //document.getElementById('resultframe').style.display = "block";
-        //document.getElementById('tableframe').style.display = "none";
-      }
+			function submitForm (action, target, nextpage, downloadfileid) {
+				var form = document.files;
+				form.ACTION.value = action;
+				form.NEXT_PAGE.value = nextpage;
+				form.DOWNLOADFILEID.value = downloadfileid;
+				if (target == "") {
+					form.submit ();
+				} else {
+					submitToDiv (form, target);
+				}
+			}
 
-      function deleteFile (downloadfileid) {
-        if (allowChanges ("You do not have permission to delete files.")) {
-          submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-delete.html", downloadfileid);
-        //  document.getElementById('resultframe').style.display = "block";
-        //  document.getElementById('tableframe').style.display = "none";
-        }
-      }
+			function uploadFile () {
+				if (allowChanges ("You do not have permission to upload files.")) {
+					document.location.href = "https://vendors-new.bmtmicro.com/products-manage-files-upload.jsp";
+				}
+			}
 
-      function toggleDemo (downloadfileid) {
-        submitForm (14, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp", downloadfileid);
-      }
+			function downloadFile (downloadfileid) {
+				if (allowChanges ("You do not have permission to download files.")) {
+					submitForm (1, "", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp", downloadfileid);
+				}
+			}
 
-      function filterChanged () {
-        submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp");
-      }
+			function showDemoURL (downloadfileid) {
+				submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-viewdemourl.jsp", downloadfileid);
+			}
 
-      function selectPage (p) {
-        document.files.PAGE.value = p;
-        submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp");
-      }
+			function viewFile (downloadfileid) {
+				submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-viewproducts.jsp", downloadfileid);
+			}
+
+			function deleteFile (downloadfileid) {
+				if (allowChanges ("You do not have permission to delete files.")) {
+					submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-delete.jsp", downloadfileid);
+				}
+			}
+
+			function toggleDemo (downloadfileid) {
+				submitForm (14, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp", downloadfileid);
+			}
+
+			function filterChanged () {
+				submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp");
+			}
+
+			function selectPage (p) {
+				document.files.PAGE.value = p;
+				submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp");
+			}
     </script>
   </head>
   <body>
     <!-- Blue background header -->
     <div class="blue-bg"></div>
-
     <!-- Start of body content -->
     <div class="main-raised">
       <div class="container-fluid body-content">
@@ -125,9 +134,6 @@
                     <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-table.jsp" />
                   </c:import>
                 </div> <!-- end #tableframe -->
-                <!-- <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; padding: 0px; margin:0px; display: none; min-height: 220px;" >
-                  [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
-                </iframe> -->
               </div> <!-- end .content-box -->
               <div name="resultframe" id="resultframe"></div>
             </div>

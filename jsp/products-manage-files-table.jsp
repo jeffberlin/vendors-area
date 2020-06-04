@@ -1,5 +1,5 @@
 <%@ include file="/includes/core.jsp" %>
-<form id="files" name="files" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadFiles" method="post" onsubmit="alert('boo'); return false;">
+<form id="files" name="files" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadFiles" method="post">
   <input type="hidden" name="ACTION" value="" />
   <input type="hidden" name="DOWNLOADFILEID" value="" />
   <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
@@ -7,7 +7,7 @@
   <input type="hidden" name="PAGE" value="${param.PAGE}" />
   <input type="hidden" name="PAGECOUNT" value="${param.PAGECOUNT}" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-table.jsp" />
-  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-table.jsp" />
+  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/result-error.jsp" />
   <div class="table-header">
     <span>
       Filter&nbsp;by&nbsp;File&nbsp;Name:
@@ -15,17 +15,13 @@
       <script>
         catchEnter (document.files.FILTER, filterChanged);
       </script>
-      <button type="button" name="FILTERBUTTON" value="Refresh" class="get-btn" onClick="filterChanged ();">Apply</button>
+      <button type="button" name="FILTERBUTTON" value="Refresh" class="grey-btn" onClick="filterChanged ();">Apply</button>
     </span>
 		<button type="button" class="grey-btn float-right" onclick="uploadFile ();">Upload File</button>
-    <br clear="all">
-    <p style="color: #ffffff; margin-bottom: .3rem;">
-      Total&nbsp;number&nbsp;of&nbsp;files:&nbsp;${param.TOTALCOUNT}
-    </p>
-    <p style="color: #ffffff; margin-bottom: 0;">
+		<span>
+      Total&nbsp;number&nbsp;of&nbsp;files:&nbsp;${param.TOTALCOUNT}&nbsp;|
       Total&nbsp;size:&nbsp;${param.TOTALSIZE}
-    </p>
-    <!-- <button type="button" class="grey-btn" onclick="uploadFile ();">Upload File</button> -->
+    </span>
   </div> <!-- end .table-header -->
   <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
     <table class="table" id="selection">
@@ -42,7 +38,7 @@
             <a href="#" class="fdTableSortTrigger">Date</a>
           </th>
           <th scope="col" class="sort-column number sortable sort text-center" data-sorttype="number" title="Sort by 'Download number'" date>
-            <a href="#" class="fdTableSortTrigger">Download#</a>
+            <a href="#" class="fdTableSortTrigger">Download</a>
           </th>
           <th scope="col" class="sort-column text-center" option>
             <a href="#" style="cursor: default;"

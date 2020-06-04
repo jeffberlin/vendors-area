@@ -30,10 +30,8 @@
     </style>
   </head>
   <body>
-
     <!-- Blue background header -->
     <div class="blue-bg"></div>
-
     <!-- Start of body content -->
     <div class="main-raised">
       <div class="container-fluid body-content">
