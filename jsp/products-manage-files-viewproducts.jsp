@@ -15,8 +15,8 @@
 			<table class="table" style="margin-bottom: 1rem; width: 70%; border: 1px solid #a9a9a9;">
 				<thead>
 					<tr class="table-category">
-						<th class="result-th text-center sort-column">Product&nbsp;ID</th>
-						<th class="result-th text-center sort-column">Product&nbsp;Name</th>
+						<th class="result-th sort-column">Product&nbsp;ID</th>
+						<th class="result-th sort-column">Product&nbsp;Name</th>
 						${ param.PRODUCTTABLEDATA }
 						<c:if test = "${ param.FILECOUNT > 0 }">
 							<td>Vendor&nbsp;ID</td>

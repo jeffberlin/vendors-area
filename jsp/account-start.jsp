@@ -1,5 +1,4 @@
 <%@ include file="/includes/core.jsp" %>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,11 +13,14 @@
     <title>BMT Micro Developers Center</title>
     <%@ include file="/includes/bootstrap_top_script.html" %>
     <%@ include file="/includes/style_menu_footer_css.html" %>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
+		<link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
+			/* .content-box {
+				padding: 1rem;
+			} */
       xmp {
         margin-top: 0;
         margin-bottom: 1rem;

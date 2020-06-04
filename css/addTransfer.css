@@ -19,9 +19,16 @@ input, textarea, label, .transfer-dropdown {
   }
 
 input, textarea {
-  border-radius: 3px;
   padding: .25rem .35rem;
-  }
+}
+
+input, textarea, select {
+	border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
 
 input, textarea, select {
   border: 1px solid #a9a9a9;
@@ -39,17 +46,12 @@ select {
   padding: .2rem;
   }
 
-select:hover {
+select:hover, .transfer-dropdown-item:hover {
   cursor: pointer;
   }
 
 select, .transfer-dropdown {
   color: #195a7c;
-  }
-
-select {
-  background: #ffffff;
-  border-radius: 3px;
   }
 
 .toolbar {
@@ -64,8 +66,11 @@ select {
   -webkit-box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   transform: translate3d(0px, 25px, 0px) !important;
-  }
+  -webkit-transform: translate3d(0px, 25px, 0px) !important;
+  -moz-transform: translate3d(0px, 25px, 0px) !important;
+  -ms-transform: translate3d(0px, 25px, 0px) !important;
+  -o-transform: translate3d(0px, 25px, 0px) !important;
+}
 .transfer-dropdown-item:hover {
-  cursor: pointer;
   color: #16181b !important;
   }

@@ -11,7 +11,7 @@
   <div class="table-header">
     <span>
       Filter&nbsp;by&nbsp;File&nbsp;Name:
-      <input type="text" name="FILTER" value="${param.FILTER}" style="margin-bottom: 1rem;" />&nbsp;
+      <input type="text" name="FILTER" value="${param.FILTER}"/>&nbsp;
       <script>
         catchEnter (document.files.FILTER, filterChanged);
       </script>
