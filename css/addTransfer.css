@@ -1,17 +1,9 @@
-.transfer-section {
-  padding: 1rem;
-  }
-
 h5, .transfer-dropdown:hover, .transfer-dropdown:active {
   color: #efa900;
   }
 
 label, .text-section, .transfer-dropdown-item, span {
   color: #707070;
-  }
-
-h5, label, input, textarea, select, .text-section, span, p {
-  letter-spacing: .5px;
   }
 
 input, textarea, label, .transfer-dropdown {

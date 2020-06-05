@@ -1,9 +1,9 @@
 <%@ include file="/includes/core.jsp" %>
 <form id="files" name="files" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadFiles" method="post">
-  <input type="hidden" name="ACTION" value="" />
+  <input type="hidden" name="ACTION" value="-1" />
   <input type="hidden" name="DOWNLOADFILEID" value="" />
-  <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
-  <input type="hidden" name="ROWSPERPAGE" value="${param.ROWSPERPAGE}" />
+  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-files-tablerow.html" />
+  <input type="hidden" name="ROWSPERPAGE" value="500" />
   <input type="hidden" name="PAGE" value="${param.PAGE}" />
   <input type="hidden" name="PAGECOUNT" value="${param.PAGECOUNT}" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-table.jsp" />
@@ -19,16 +19,14 @@
     </span>
 		<button type="button" class="grey-btn float-right" onclick="uploadFile ();">Upload File</button>
 		<span>
-      Total&nbsp;number&nbsp;of&nbsp;files:&nbsp;${param.TOTALCOUNT}&nbsp;|
-      Total&nbsp;size:&nbsp;${param.TOTALSIZE}
+			${param.TOTALCOUNT} files, ${param.TOTALSIZE}
     </span>
   </div> <!-- end .table-header -->
   <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
     <table class="table" id="selection">
       <thead>
         <tr class="table-category">
-          <th scope="col"
-              class="sort-column sortable sort text-left" title="Sort on 'File Name'" text>
+          <th scope="col" class="sort-column sortable sort text-left" title="Sort on 'File Name'" text>
             <a href="#" class="fdTableSortTrigger">File Name</a>
           </th>
           <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Size'"  data-sorttype="number">

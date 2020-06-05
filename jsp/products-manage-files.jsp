@@ -17,46 +17,11 @@
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
-      .content-box {
-        max-height: calc(100vh - 275px);
-        display: block;
-      }
-      .content-box, #tableframe {
-        min-height: 290px;
-      }
-      td[option], td[mnumber] {
-        text-align: center;
-      }
+			td[option], td[mnumber] {
+				text-align: center;
+				}
     </style>
     <script language="javascript" type="text/javascript">
-			function closeDiv(id) {
-				$('#' + id).css ("display", "none");
-			}                                       
-
-			function submitToDiv (form, id) {
-				var target = '#' + id;
-				$.ajax({
-					url: $(form).attr('action'), // the file to call
-					data: $(form).serialize(), // get the form data
-					type: $(form).attr('method'), // GET or POST
-					success: function (data, status) {  
-						$(target).html (data); //content loads here
-						$(target).css ("display", "block");
-					},                                     
-					error: function (xhr, desc, err) {
-						console.log ("error");
-					}
-				});   
-			}
-
-			function closeResultFrame() {
-				closeDiv ('resultframe');
-			}                       
-
-			function submitToResultFrame(form) {
-				submitToDiv (form, 'resultframe');
-			}                        
-
 			function submitForm (action, target, nextpage, downloadfileid) {
 				var form = document.files;
 				form.ACTION.value = action;
@@ -68,41 +33,40 @@
 					submitToDiv (form, target);
 				}
 			}
-
-			function uploadFile () {
-				if (allowChanges ("You do not have permission to upload files.")) {
+			<c:if test = "${ allowChanges == 0 }">
+				function uploadFile () {               
+					alert ("You do not have permission to upload files.");
+				}
+				function downloadFile (downloadfileid) {
+					alert ("You do not have permission to download files.");
+				}
+				function deleteFile (downloadfileid) {
+					alert ("You do not have permission to delete files.");
+				}                                 
+			</c:if>
+			<c:if test = "${ allowChanges == 1 }">
+				function uploadFile () {               
 					document.location.href = "https://vendors-new.bmtmicro.com/products-manage-files-upload.jsp";
 				}
-			}
-
-			function downloadFile (downloadfileid) {
-				if (allowChanges ("You do not have permission to download files.")) {
+				function downloadFile (downloadfileid) {
 					submitForm (1, "", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp", downloadfileid);
 				}
-			}
-
+				function deleteFile (downloadfileid) {
+					submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-delete.jsp", downloadfileid);
+				}
+			</c:if>
 			function showDemoURL (downloadfileid) {
 				submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-viewdemourl.jsp", downloadfileid);
 			}
-
 			function viewFile (downloadfileid) {
 				submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-viewproducts.jsp", downloadfileid);
 			}
-
-			function deleteFile (downloadfileid) {
-				if (allowChanges ("You do not have permission to delete files.")) {
-					submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-files-delete.jsp", downloadfileid);
-				}
-			}
-
 			function toggleDemo (downloadfileid) {
 				submitForm (14, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp", downloadfileid);
 			}
-
 			function filterChanged () {
 				submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp");
 			}
-
 			function selectPage (p) {
 				document.files.PAGE.value = p;
 				submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-files-table.jsp");
@@ -121,21 +85,12 @@
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Manage&nbsp;Files</h4>
               <p>The View Associations button only displays products and files associated for secure download file fulfillment.</p>
-              <div class="content-box overflow-auto">
-                <div name="tableframe" id="tableframe">
-                  <c:import url = "https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadFiles">
-                    <c:param name="SESSIONID" value="${sessionid}" />
-                    <c:param name="ACTION" value="-1" />
-                    <c:param name="FILTER" value="" />
-                    <c:param name="ROWSPERPAGE" value="500" />
-                    <c:param name="PAGE" value="1" />
-                    <c:param name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-files-tablerow.html" />
-                    <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-table.jsp" />
-                    <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-table.jsp" />
-                  </c:import>
-                </div> <!-- end #tableframe -->
-              </div> <!-- end .content-box -->
-              <div name="resultframe" id="resultframe"></div>
+              <div class="content-box d-flex flex-column">
+                <div name="tableframe" class="overflow-auto h-100" id="tableframe">
+									<jsp:include page="./products-manage-files-table.jsp" />
+								</div>
+                <div name="resultframe" id="resultframe"></div>
+              </div>
             </div>
           </div> <!-- end first .row justify-content-start -->
         </article>
@@ -144,4 +99,7 @@
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
+  <script> 
+     $(document).ready(function(){ submitToDiv (document.files, 'tableframe'); }); 
+  </script>   
 </html>
