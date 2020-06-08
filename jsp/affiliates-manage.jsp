@@ -1,5 +1,4 @@
 <%@ include file="/includes/core.jsp" %>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,16 +19,57 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <style media="screen" type="text/css">
-      #resultframe {
-        height: calc(100vh - 275px);
-      }
-      #tableframe, #resultframe {
-        min-height: 290px;
-      }
       td[option], td[text], td[date] {
         text-align: center;
       }
     </style>
+		<script language="javascript" type="text/javascript">
+      function submitForm (action, target, nextpage, affiliateid) {
+        var form = document.affiliates;
+        form.ACTION.value = action;
+        form.target = target;
+        form.NEXT_PAGE.value = nextpage;
+        form.AFFILIATEID.value = affiliateid;
+        if (target == "_parent") {
+					form.target = target;
+					form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
+					form.submit ();
+				} else {
+					submitToDiv (form, target);
+				}
+      }
+			<c:if test = "${ allowChanges == 0 }">
+				function addAffiliate () {               
+					alert ("You do not have permission to upload files.");
+				}
+				function editAffiliate (affiliateid) {
+					alert ("You do not have permission to download files.");
+				}
+				function removeAffiliate (affiliateid) {
+					alert ("You do not have permission to delete files.");
+				} 
+			</c:if>
+			<c:if test = "${ allowChanges == 1 }">
+				function addAffiliate (affiliateid) {
+					if (isBlank (affiliateid) || isNaN (affiliateid) || (parseInt (affiliateid) < 1)) {
+            alert ("Please specify an Affiliate ID!");
+            document.affiliates.AFFILIATEID_ADD.focus ();
+            // return false;
+            window.top.location.reload();
+          } else {
+            submitForm (10, "_parent", "https://vendors-new.bmtmicro.com/affiliates-manage.jsp", affiliateid);
+          }
+				}
+
+				function removeAffiliate (affiliateid) {
+					submitForm (12, "_parent", "https://vendors-new.bmtmicro.com/affiliates-manage.jsp", affiliateid);
+				}
+
+				function editAffiliate (affiliateid) {
+					submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/affiliates-manage-edit.jsp", affiliateid);
+				}
+			</c:if>
+    </script>
   </head>
   <body>
     <!-- Blue background header -->
@@ -45,17 +85,10 @@
               <h4>Manage&nbsp;Affiliates</h4>
               <p>Highlighted affiliates have joined within the last month.</p>
               <div class="content-box overflow-auto" id="contentBox">
-                <div name="tableframe" id="tableframe">
-                  <c:import url = "https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates">
-                    <c:param name = "SESSIONID" value = "${sessionid}" />
-                    <c:param name = "ACTION" value = "-1"/>
-                    <c:param name = "MAXAMOUNT" value = ""/>
-                    <c:param name = "ROWTEMPLATEURL" value = "https://vendors-new.bmtmicro.com/affiliates-manage-tablerow.html"/>
-                    <c:param name = "NEXT_PAGE" value = "https://vendors-new.bmtmicro.com/affiliates-manage-start.jsp"/>
-                    <c:param name = "ERROR_PAGE" value = "https://vendors-new.bmtmicro.com/error_frame.jsp"/>
-                  </c:import>
+                <div name="tableframe" class="overflow-auto h-100" id="tableframe">
+									<jsp:include page="./affiliates-manage-table.jsp" />
                 </div> <!-- end #tableframe -->
-                <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; padding: 0px; margin: 0px; display: none;"></iframe>
+                <div name="resultframe" id="resultframe"></div>
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
@@ -65,4 +98,7 @@
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
+	<script> 
+     $(document).ready(function(){ submitToDiv (document.affiliates, 'tableframe'); });
+  </script> 
 </html>

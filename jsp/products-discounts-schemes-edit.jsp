@@ -15,6 +15,7 @@
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
+		<script src="https://kit.fontawesome.com/35c40e6698.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
@@ -118,7 +119,6 @@
     </script>
   </head>
   <body onload="initForm (document.discform);">
-
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -335,7 +335,7 @@
                         </button>
                       </div> <!-- end .move -->
                       <select id="SELECTEDLIST" name="SELECTEDLIST" multiple="multiple" ondblclick="removeProduct (discform);return (false);" style="min-width: 500px; margin-bottom: 2rem;">
-                         ${param.SELECTEDPRODUCTS}
+												${param.SELECTEDPRODUCTS}
                       </select>
                       <input type="hidden" name="SELECTEDPRODUCTS" value="" />
                       <br>

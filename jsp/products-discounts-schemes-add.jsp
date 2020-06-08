@@ -175,8 +175,8 @@
               </ul>
               <div class="content-box">
                 <form method="post" name="discform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes">
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/discountsstart.html" />
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes.jsp" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                   <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
                   <input type="hidden" name="ACTION" value="10" />
                   <div class="tab-content" id="myTabContent">
@@ -291,7 +291,7 @@
                       <span>
                         <label>Date&nbsp;End:&nbsp;</label>
                         <input id="DATETO" name="DATETO" value="${param.DATETO}" type="text" style="max-width: 150px; margin-bottom: 1rem;">
-                        <img src='<c:url value="/images/cal.gif"></c:url>' width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
+                        <img src='<c:url value="/images/cal.gif"></c:url>' width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);" onmouseover="this.style.cursor='pointer';" />
                       </span>
                       <div id="expirationdays" style="display: none;">
                         <span>
@@ -334,17 +334,17 @@
                       <h5>Discounted&nbsp;Products</h5>
                       <p>Select products eligible for discount under this discount scheme. Selected products are listed in the bottom text area.</p>
                       <select id="PRODUCTLIST" name="PRODUCTLIST" multiple="multiple" ondblclick="addProduct (discform);return (false);" style="min-width: 500px; margin-bottom: 1rem;">
-                         ${param.PRODUCTLIST}
+												${param.PRODUCTLIST}
                       </select>
                       <br>
                       <div class="move">
-                        <button style="margin-right: 5px;" type="button" name="add" value="Add&nbsp;&gt;&gt;"  onclick="addProduct (discform);">Add&nbsp;<i class="fas fa-angle-down"></i></button>
+                        <button style="margin-right: 5px;" type="button" name="add" value="Add&nbsp;&gt;&gt;" onclick="addProduct (discform);">Add&nbsp;<i class="fas fa-angle-down"></i></button>
                         <button style="margin-right: 25px;" type="button" name="remove" value="&lt;&lt;&nbsp;Remove" onclick="removeProduct (discform);"><i class="fas fa-angle-up"></i>&nbsp;Remove</button>
                         <button style="margin-right: 5px;" type="button" name="addall" value="Add&nbsp;&gt;&gt;" onclick="addAllProducts (discform);">Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i></button>
                         <button type="button" name="removeall" value="&lt;&lt;&nbsp;Remove" onclick="removeAllProducts (discform);"><i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All</button>
                       </div>
                       <select id="SELECTEDLIST" name="SELECTEDLIST" multiple="multiple" ondblclick="removeProduct (discform);return (false);" style="min-width: 500px; margin-bottom: 2rem;">
-                         ${param.SELECTEDPRODUCTS}
+												${param.SELECTEDPRODUCTS}
                       </select>
                       <input type="hidden" name="SELECTEDPRODUCTS" value="" />
                       <br>

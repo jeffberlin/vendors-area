@@ -53,20 +53,20 @@
 			</c:if>
 			<c:if test = "${ allowChanges == 1 }">
 				function addDiscount (form) {
-					submitForm (0, "_parent", "https://vendors-new.bmtmicro.com/discounts_add.jsp");
+					submitForm (0, "_parent", "https://vendors-new.bmtmicro.com/products-discounts-schemes-add.jsp");
 				}
 				function editDiscount (schemeid, schemetype) {
-					submitForm (1, "_parent", "https://vendors-new.bmtmicro.com/discounts_edit.jsp", schemeid, schemetype);
+					submitForm (1, "_parent", "https://vendors-new.bmtmicro.com/products-discounts-schemes-edit.jsp", schemeid, schemetype);
 				}
 				function deleteDiscount (schemeid, schemetype) {
-					submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/products-discounts-schemes-delete.html", schemeid, schemetype);
+					submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/products-discounts-schemes-delete.jsp", schemeid, schemetype);
 				}
 				function generateCodes (schemeid, schemetype) {
-					submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/discounts_generatecodes.html", schemeid, schemetype);
+					submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/products-discounts-schemes-generatecodes.jsp", schemeid, schemetype);
 				}
 			</c:if>
 			function viewCodes (schemeid, schemetype) {
-				submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/discounts_viewcodes.html", schemeid, schemetype);
+				submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/products-discounts-schemes-viewcodes.jsp", schemeid, schemetype);
 			}
 			function showInactiveChanged () {
 				setCookieValue ("BMTMicro.Vendors.Discounts.ShowInactive", queryField (document.discounts, "SHOWINACTIVE"), 1000);
