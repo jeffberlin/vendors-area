@@ -20,7 +20,6 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript">
-      <!--
       function setFieldVisible (field, visible) {
         document.getElementById (field).style.display = (visible === false) ? 'none' : '';
       }
@@ -115,7 +114,6 @@
         form.submit ();
         return (true);
       }
-      //-->
     </script>
   </head>
   <body onload="initForm (document.discform);">
@@ -321,7 +319,7 @@
                          ${param.PRODUCTLIST}
                       </select>
                       <div class="move">
-                        <button style="margin-right: 5px;" type="button" name="add" value="Add&nbsp;&gt;&gt;"  onclick="addProduct (discform);">
+                        <button style="margin-right: 5px;" type="button" name="add" value="Add&nbsp;&gt;&gt;" onclick="addProduct (discform);">
                           Add&nbsp;<i class="fas fa-angle-down"></i>
                         </button>
                         <button style="margin-right: 5px;" type="button" name="remove" value="&lt;&lt;&nbsp;Remove" onclick="removeProduct (discform);">

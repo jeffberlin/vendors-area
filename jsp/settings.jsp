@@ -1,33 +1,12 @@
-<%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <title></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript">
-      <!--
-      function init () {
-        document.editaccountstart.submit();
-        document.bmtconfig.submit();
-      }
-      //-->
-    </script>
-  </head>
-  <body onload="init();">
-    <form name="editaccountstart" method=post action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
-      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/settings-start.jsp">
-      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
-      <input type="hidden" name="ACTION" value="1" />
-    </form>
-    <form name="bmtconfig" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetailsConfig" method="post" >
-      <input type="hidden" name="NEXT_PAGE"  value="https://vendors-new.bmtmicro.com/settings-start.jsp" />
-      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-    </form>
-    <!-- If config affiliate here, will have to bring in full affiliate list
-    <form name="configform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.AffiliateConfig" method="post" target="configPopUp">
-      <input type="hidden" name="AFFILIATEID" value="" />
-      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/percentconfig.html" />
-    </form> -->
-  </body>
+<html>
+  <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+  <body onload="submitToDoc(document.account);">
+		<form  name="account" action = "https://vendors-new.bmtmicro.com/servlets/Vendors.Account" method="post">
+			<input type="hidden" name = "ACTION" value = "1"/>
+			<input type="hidden" name = "NEXT_PAGE" value = "https://vendors-new.bmtmicro.com/settings-page.jsp"/>
+			<input type="hidden" name = "ERROR_PAGE" value = "https://vendors-new.bmtmicro.com/report-error.jsp"/>
+		</form>
+  <body> 
 </html>
+

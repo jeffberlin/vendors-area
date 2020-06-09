@@ -143,26 +143,26 @@
   </head>
   <body onload="loadFields ();">
     <h5>Personalize&nbsp;Sales&nbsp;Details&nbsp;Fields</h5>
-      <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
-        <form name="configdetail" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetailsConfig" method="post" target="salesdetailsconfig">
-          <input type="hidden" name="NEXT_PAGE" value=" https://vendors-new.bmtmicro.com/settings_salesdetailsconfig.html" />
-          <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+		<div class="container-fluid" style="padding-left: 0; padding-right: 0;">
+			<form name="configdetail" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetailsConfig" method="post" target="salesdetailsconfig">
+				<input type="hidden" name="NEXT_PAGE" value=" https://vendors-new.bmtmicro.com/settings_salesdetailsconfig.html" />
+				<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
 
-          <div id="fields" class="row"></div>
+				<div id="fields" class="row"></div>
 
-          <span>
-            <label>Add&nbsp;Field:&nbsp;</label>
-            <button class="add" type="button" onclick="addField ();" style="border: none; background: none; padding: .1rem; vertical-align: middle;"><i class="fas fa-plus-circle"></i></button>
-          </span>
-          <!-- <br clear="all"> -->
-          <div class="buttons">
-            <button type="submit" class="grey-btn">Save</button>
-            <button type="button" onclick="loadFields ();" class="grey-btn">Reset</button>
-            <button type="button" onclick="loadDefaults ();" class="grey-btn">Default</button>
-            <button type="button" onclick="clearFields ();" class="grey-btn">Clear all fields</button>
-          </div>
-        </form>
-      </div>
+				<span>
+					<label>Add&nbsp;Field:&nbsp;</label>
+					<button class="add" type="button" onclick="addField ();" style="border: none; background: none; padding: .1rem; vertical-align: middle;"><i class="fas fa-plus-circle"></i></button>
+				</span>
+				<!-- <br clear="all"> -->
+				<div class="buttons">
+					<button type="submit" class="grey-btn">Save</button>
+					<button type="button" onclick="loadFields ();" class="grey-btn">Reset</button>
+					<button type="button" onclick="loadDefaults ();" class="grey-btn">Default</button>
+					<button type="button" onclick="clearFields ();" class="grey-btn">Clear all fields</button>
+				</div>
+			</form>
+		</div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
