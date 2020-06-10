@@ -25,10 +25,11 @@
         color: #efa900;
       }
       #expiration a {
-        margin-left: 20px;
-        margin-bottom: 1rem;
         text-decoration: underline !important;;
       }
+			#expiration a, #maxuse {
+				margin-left: 1rem;
+			}
     </style>
     <script language="javascript" type="text/javascript">
       <!--
@@ -49,15 +50,15 @@
         function initForm (form){
           // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
           // field is not present. (An unchecked checkbox constitutes a non-existent field).
-          initField (form, "ACTIVE_CHK",     "${param.ACTIVE}");
-          initField (form, "STOPORDER_CHK",  "${param.STOPORDER}");
-          initField (form, "FIRSTONLY_CHK",  "${param.FIRSTONLY}");
-          initField (form, "FREESHIPPING_CHK","${param.FREESHIPPING}");
-          initField (form, "ROUNDING",       "${param.ROUNDING}");
-          initField (form, "DISCOUNTTYPE",   "${param.DISCOUNTTYPE}");
-          initField (form, "QUALIFYINGTYPE", "${param.QUALIFYINGTYPE}");
-          initField (form, "CURRENCY",       "${param.CURRENCY}");
-          initField (form, "SCHEMETYPE",     "${param.SCHEMETYPE}");
+          //initField (form, "ACTIVE_CHK",     "${param.ACTIVE}");
+          //initField (form, "STOPORDER_CHK",  "${param.STOPORDER}");
+          //initField (form, "FIRSTONLY_CHK",  "${param.FIRSTONLY}");
+          //initField (form, "FREESHIPPING_CHK","${param.FREESHIPPING}");
+          //initField (form, "ROUNDING",       "${param.ROUNDING}");
+          //initField (form, "DISCOUNTTYPE",   "${param.DISCOUNTTYPE}");
+          //initField (form, "QUALIFYINGTYPE", "${param.QUALIFYINGTYPE}");
+          //initField (form, "CURRENCY",       "${param.CURRENCY}");
+          //initField (form, "SCHEMETYPE",     "${param.SCHEMETYPE}");
           if (parseInt (form.MAXUSECOUNT.value) == 0) {
             form.MAXUSECOUNT.value = "";
           }
@@ -68,10 +69,10 @@
         function submitForm (form) {
           // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
           // field is not present. (An unchecked checkbox constitutes a non-existent field).
-          copyField (form, "ACTIVE", "ACTIVE_CHK");
-          copyField (form, "STOPORDER", "STOPORDER_CHK");
-          copyField (form, "FIRSTONLY", "FIRSTONLY_CHK");
-          copyField (form, "FREESHIPPING", "FREESHIPPING_CHK");
+          //copyField (form, "ACTIVE", "ACTIVE_CHK");
+          //copyField (form, "STOPORDER", "STOPORDER_CHK");
+          //copyField (form, "FIRSTONLY", "FIRSTONLY_CHK");
+          //copyField (form, "FREESHIPPING", "FREESHIPPING_CHK");
           form.NAME.value = trim (form.NAME.value);
 
           if (isBlank (form.NAME.value)) {
@@ -187,7 +188,7 @@
                         <input id="NAME" name="NAME" maxlength="80" value="${param.NAME}" type="text" style="margin-bottom: 2rem;">
                         &nbsp;&nbsp;
                         <input type="hidden" name="ACTIVE" value="${param.ACTIVE}" />
-                        <input name="ACTIVE_CHK" value="-1" type="checkbox">&nbsp;Active
+                        <input type="checkbox" <c:if test="${param.ACTIVE!=0}">checked</c:if> />&nbsp;Active
                       </span>
                       <br>
                       <button id="toDiscountType" class="save-btn" type="button">Next</button>
@@ -196,29 +197,29 @@
                       <h5>Discount&nbsp;Type</h5>
                       <p>Choose&nbsp;discount&nbsp;type.</p>
                       <span>
-                        <input type="radio" name="SCHEMETYPE" value="0" onclick="setFieldVisible('expiration',true); setFieldVisible('expirationdays',true);" style="margin-bottom: 1rem;">&nbsp;Codes required (customer needs to enter a discount code)
+                        <input type="radio" onclick="setFieldVisible('expiration',true); setFieldVisible('expirationdays',true);" style="margin-bottom: 1rem;" <c:if test="${param.SCHEMETYPE!=0}">checked</c:if> />&nbsp;Codes required (customer needs to enter a discount code)
                       </span>
                       <br>
                       <div id="expiration" style="display: none;">
                         <a href="#" onclick="setFieldVisible('maxuse', true);">Limit number of uses</a>&nbsp;
+												<br>
                         <div id="maxuse" style="display: none;">
                           <span>
                             This code can be used
                             <input name="MAXUSECOUNT" size="3" value="${param.MAXUSECOUNT}" />&nbsp;times
                           </span>
                         </div>
-                        <br>
                         <span>
                           <input type="hidden" name="STOPORDER" value="${param.STOPORDER}" />
-                          <input type="checkbox" name="STOPORDER_CHK" value="-1" style="margin-bottom: 1rem; margin-top: 1rem;">&nbsp;Stop order if code cannot be used
+                          <input type="checkbox" style="margin-bottom: 1rem; margin-left: 1rem;" <c:if test="${param.STOPORDER!=0}">checked</c:if> />&nbsp;Stop order if code cannot be used
                         </span>
                       </div>
                       <span>
-                        <input type="radio" name="SCHEMETYPE" value="1" onclick="setFieldVisible('expiration',false); setFieldVisible('expirationdays',false);" style="margin-bottom: 1rem;">&nbsp;Automatic discount (no codes required, all customers will get the discount)
+                        <input type="radio" onclick="setFieldVisible('expiration',false); setFieldVisible('expirationdays',false);" style="margin-bottom: 1rem;" <c:if test="${param.SCHEMETYPE!=0}">checked</c:if> />&nbsp;Automatic discount (no codes required, all customers will get the discount)
                       </span>
                       <br>
                       <span>
-                        <input type="radio" name="SCHEMETYPE" value="2" onclick="setFieldVisible('expiration', false); setFieldVisible('expirationdays',true);" style="margin-bottom: 2rem;">&nbsp;Recurring billing (automatic discount on subscriptions)
+                        <input type="radio" onclick="setFieldVisible('expiration', false); setFieldVisible('expirationdays',true);" style="margin-bottom: 2rem;" <c:if test="${param.SCHEMETYPE!=0}">checked</c:if> />&nbsp;Recurring billing (automatic discount on subscriptions)
                       </span>
                       <br>
                       <button id="backToNameTab" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
@@ -234,11 +235,11 @@
                       <span>
                         <label>Method:&nbsp;</label>
                         <select name="DISCOUNTTYPE" style="margin-bottom: 1rem;">
-                          <option value="0" selected="selected">Percent Off</option>
-                          <option value="1">Amount Off</option>
-                          <option value="2">Set New Price</option>
-                          <option value="3">Percent Off Full Price</option>
-                          <option value="4">Amount Off Full Price</option>
+                          <option value="0"<c:if test="${param.DISCOUNTTYPE==0}">selected</c:if>>Percent Off</option>
+                          <option value="1"<c:if test="${param.DISCOUNTTYPE==1}">selected</c:if>>Amount Off</option>
+                          <option value="2"<c:if test="${param.DISCOUNTTYPE==2}">selected</c:if>>Set New Price</option>
+                          <option value="3"<c:if test="${param.DISCOUNTTYPE==3}">selected</c:if>>Percent Off Full Price</option>
+                          <option value="4"<c:if test="${param.DISCOUNTTYPE==4}">selected</c:if>>Amount Off Full Price</option>
                         </select>
                       </span>
                       <br clear="all">
@@ -246,34 +247,34 @@
                         <label>Currency:&nbsp;</label>
                         <select name="CURRENCY" style="margin-bottom: 1rem;">
                           <option value="" selected>All Currencies</option>
-                          <option value="USD">USD</option>
-                          <option value="EUR">EUR</option>
-                          <option value="GBP">GBP</option>
-                          <option value="CAD">CAD</option>
-                          <option value="AUD">AUD</option>
+                          <option value="USD"<c:if test="${param.CURRENCY=='USD'}">selected</c:if>>USD</option>
+                          <option value="EUR"<c:if test="${param.CURRENCY=='EUR'}">selected</c:if>>EUR</option>
+                          <option value="GBP"<c:if test="${param.CURRENCY=='GBP'}">selected</c:if>>GBP</option>
+                          <option value="CAD"<c:if test="${param.CURRENCY=='CAD'}">selected</c:if>>CAD</option>
+                          <option value="AUD"<c:if test="${param.CURRENCY=='AUD'}">selected</c:if>>AUD</option>
                         </select>
                       </span>
                       <br>
                       <span>
                         <label>Rounding:&nbsp;</label>
                         <select name="ROUNDING" style="margin-bottom: 1rem;">
-                          <option value="-1.00">Round discount to nearest 1.00</option>
-                          <option value="-0.50">Round discount to nearest 0.50</option>
-                          <option value="-0.25">Round discount to nearest 0.25</option>
-                          <option value="-0.10">Round discount to nearest 0.10</option>
-                          <option value="-0.05">Round discount to nearest 0.05</option>
-                          <option value="0.00" selected="selected">No Rounding</option>
-                          <option value="0.05">Round price to nearest 0.05</option>
-                          <option value="0.10">Round price to nearest 0.10</option>
-                          <option value="0.25">Round price to nearest 0.25</option>
-                          <option value="0.50">Round price to nearest 0.50</option>
-                          <option value="1.00">Round price to nearest 1.00</option>
+                          <option value="-1.00"<c:if test="${param.ROUNDING=='-1.00'}">selected</c:if>>Round discount to nearest 1.00</option>
+                          <option value="-0.50"<c:if test="${param.ROUNDING=='-0.50'}">selected</c:if>>Round discount to nearest 0.50</option>
+                          <option value="-0.25"<c:if test="${param.ROUNDING=='-0.25'}">selected</c:if>>Round discount to nearest 0.25</option>
+                          <option value="-0.10"<c:if test="${param.ROUNDING=='-0.10'}">selected</c:if>>Round discount to nearest 0.10</option>
+                          <option value="-0.05"<c:if test="${param.ROUNDING=='-0.05'}">selected</c:if>>Round discount to nearest 0.05</option>
+                          <option value="0.00" selected="selected"<c:if test="${param.ROUNDING=='0.00'}">selected</c:if>>No Rounding</option>
+                          <option value="0.05"<c:if test="${param.ROUNDING=='0.05'}">selected</c:if>>Round price to nearest 0.05</option>
+                          <option value="0.10"<c:if test="${param.ROUNDING=='0.10'}">selected</c:if>>Round price to nearest 0.10</option>
+                          <option value="0.25"<c:if test="${param.ROUNDING=='0.25'}">selected</c:if>>Round price to nearest 0.25</option>
+                          <option value="0.50"<c:if test="${param.ROUNDING=='0.50'}">selected</c:if>>Round price to nearest 0.50</option>
+                          <option value="1.00"<c:if test="${param.ROUNDING=='1.00'}">selected</c:if>>Round price to nearest 1.00</option>
                         </select>
                       </span>
                       <br clear="all">
                       <span>
                         <input type="hidden" name="FREESHIPPING" value="${param.FREESHIPPING}" />
-                        <input type="checkbox" name="FREESHIPPING_CHK" value="-1" style="margin-bottom: 2rem;">&nbsp;Free shipping
+                        <input type="checkbox" style="margin-bottom: 2rem;" <c:if test="${param.FREESHIPPING!=0}">checked</c:if> />&nbsp;Free shipping
                       </span>
                       <br>
                       <button id="backToType" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
@@ -313,9 +314,9 @@
                         <label>Minimum&nbsp;Quantity:&nbsp;</label>
                         <input id="QUALIFYINGQUANTITY" name="QUALIFYINGQUANTITY" value="${param.QUALIFYINGQUANTITY}" type="text" style="max-width: 75px;">
                         <select name="QUALIFYINGTYPE">
-                          <option value="0">Items</option>
-                          <option value="1">Amount</option>
-                          <option value="2">Unique Items</option>
+                          <option value="0"<c:if test="${param.QUALIFYINGTYPE==0}">selected</c:if>>Items</option>
+                          <option value="1"<c:if test="${param.QUALIFYINGTYPE==1}">selected</c:if>>Amount</option>
+                          <option value="2"<c:if test="${param.QUALIFYINGTYPE==2}">selected</c:if>>Unique Items</option>
                         </select>
                       </span>
                       <br clear="all">
@@ -324,7 +325,7 @@
                       </p>
                       <span>
                         <input type="hidden" name="FIRSTONLY" value="${param.FIRSTONLY}" />
-                        <input type="checkbox" name="FIRSTONLY_CHK" value="-1" checked style="margin-bottom: 2rem;">&nbsp;Discount allowed on one item only
+                        <input type="checkbox" style="margin-bottom: 2rem;" <c:if test="${param.FIRSTONLY!=0}">checked</c:if> />&nbsp;Discount allowed on one item only
                       </span>
                       <br>
                       <button id="backToExpiration" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
@@ -425,4 +426,5 @@
       });
     </script>
   </body>
+	<script> $('input[type=checkbox]').change(function(){ $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0); });</script>
 </html>

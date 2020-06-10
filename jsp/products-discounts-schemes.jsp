@@ -72,7 +72,7 @@
 				setCookieValue ("BMTMicro.Vendors.Discounts.ShowInactive", queryField (document.discounts, "SHOWINACTIVE"), 1000);
 				submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/products-discounts-schemes-table.jsp");
 			}
-		</script>
+		</script>        
 	</head>
 	<body>
 		<!-- Blue background header -->
