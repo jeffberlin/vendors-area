@@ -175,7 +175,7 @@
                         <label>Name:&nbsp;</label>
                         <input id="NAME" name="NAME" maxlength="80" value="${param.NAME}" type="text" style="width: 275px; margin-bottom: 2rem;">
                         <input type="hidden" name="ACTIVE" value="${param.ACTIVE}" />&nbsp;
-                        <input type="checkbox" <c:if test="${param.ACTIVE!=0}">checked</c:if> />&nbsp;Active
+                        <input type="checkbox"<c:if test="${param.ACTIVE!=0}"> checked</c:if> />&nbsp;Active
                       </span>
                       <br>
                       <button id="toDiscountType" class="save-btn" type="button">Next</button>
@@ -195,7 +195,7 @@
                       <br>
                       <span>
                         <input type="hidden" name="STOPORDER" value="${param.STOPORDER}" />
-                        <input type="checkbox" style="margin-bottom: 2rem;" <c:if test="${param.STOPORDER!=0}">checked</c:if> />&nbsp;Stop order if code cannot be used
+                        <input type="checkbox" style="margin-bottom: 2rem;"<c:if test="${param.STOPORDER!=0}"> checked</c:if> />&nbsp;Stop order if code cannot be used
                       </span>
                       <br>
                       <button id="backToNameTab" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
@@ -212,10 +212,10 @@
                         <label>Method:&nbsp;</label>
                         <select name="DISCOUNTTYPE" style="margin-bottom: 1rem;">
                           <option value="0" selected="selected"<c:if test="${param.DISCOUNTTYPE==0}">selected</c:if>>Percent Off</option>
-                          <option value="1" <c:if test="${param.DISCOUNTTYPE==1}">selected</c:if>>Amount Off</option>
-                          <option value="2" <c:if test="${param.DISCOUNTTYPE==2}">selected</c:if>>Set New Price</option>
-                          <option value="3" <c:if test="${param.DISCOUNTTYPE==3}">selected</c:if>>Percent Off Full Price</option>
-                          <option value="4" <c:if test="${param.DISCOUNTTYPE==4}">selected</c:if>>Amount Off Full Price</option>
+                          <option value="1"<c:if test="${param.DISCOUNTTYPE==1}"> selected</c:if>>Amount Off</option>
+                          <option value="2"<c:if test="${param.DISCOUNTTYPE==2}"> selected</c:if>>Set New Price</option>
+                          <option value="3"<c:if test="${param.DISCOUNTTYPE==3}"> selected</c:if>>Percent Off Full Price</option>
+                          <option value="4"<c:if test="${param.DISCOUNTTYPE==4}"> selected</c:if>>Amount Off Full Price</option>
                         </select>
                       </span>
                       <br>
@@ -223,27 +223,27 @@
                         <label>Currency:&nbsp;</label>
                         <select name="CURRENCY" style="margin-right: 1rem;">
                           <option value="" selected>All Currencies</option>
-                          <option value="USD" <c:if test="${param.CURRENCY=='USD'}">selected</c:if>>USD</option>
-                          <option value="EUR" <c:if test="${param.CURRENCY=='EUR'}">selected</c:if>>EUR</option>
-                          <option value="GBP" <c:if test="${param.CURRENCY=='GBP'}">selected</c:if>>GBP</option>
-                          <option value="CAD" <c:if test="${param.CURRENCY=='CAD'}">selected</c:if>>CAD</option>
-                          <option value="AUD" <c:if test="${param.CURRENCY=='AUD'}">selected</c:if>>AUD</option>
+                          <option value="USD"<c:if test="${param.CURRENCY=='USD'}"> selected</c:if>>USD</option>
+                          <option value="EUR"<c:if test="${param.CURRENCY=='EUR'}"> selected</c:if>>EUR</option>
+                          <option value="GBP"<c:if test="${param.CURRENCY=='GBP'}"> selected</c:if>>GBP</option>
+                          <option value="CAD"<c:if test="${param.CURRENCY=='CAD'}"> selected</c:if>>CAD</option>
+                          <option value="AUD"<c:if test="${param.CURRENCY=='AUD'}"> selected</c:if>>AUD</option>
                         </select>
                       </span>
                       <span>
                         <label>Rounding:&nbsp;</label>
                         <select name="ROUNDING" style="margin-bottom: 1rem;">
-                          <option value="-1.00" <c:if test="${param.ROUNDING=='-1.00'}">selected</c:if>>Round discount to nearest 1.00</option>
-                          <option value="-0.50" <c:if test="${param.ROUNDING=='-0.50'}">selected</c:if>>Round discount to nearest 0.50</option>
-                          <option value="-0.25" <c:if test="${param.ROUNDING=='-0.25'}">selected</c:if>>Round discount to nearest 0.25</option>
-                          <option value="-0.10" <c:if test="${param.ROUNDING=='-0.10'}">selected</c:if>>Round discount to nearest 0.10</option>
-                          <option value="-0.05" <c:if test="${param.ROUNDING=='-0.05'}">selected</c:if>>Round discount to nearest 0.05</option>
-                          <option value="0.00" selected="selected" <c:if test="${param.ROUNDING=='0.00'}">selected</c:if>>No Rounding</option>
-                          <option value="0.05" <c:if test="${param.ROUNDING=='0.05'}">selected</c:if>>Round price to nearest 0.05</option>
-                          <option value="0.10" <c:if test="${param.ROUNDING=='0.10'}">selected</c:if>>Round price to nearest 0.10</option>
-                          <option value="0.25" <c:if test="${param.ROUNDING=='0.25'}">selected</c:if>>Round price to nearest 0.25</option>
-                          <option value="0.50" <c:if test="${param.ROUNDING=='0.50'}">selected</c:if>>Round price to nearest 0.50</option>
-                          <option value="1.00" <c:if test="${param.ROUNDING=='1.00'}">selected</c:if>>Round price to nearest 1.00</option>
+                          <option value="-1.00"<c:if test="${param.ROUNDING=='-1.00'}"> selected</c:if>>Round discount to nearest 1.00</option>
+                          <option value="-0.50"<c:if test="${param.ROUNDING=='-0.50'}"> selected</c:if>>Round discount to nearest 0.50</option>
+                          <option value="-0.25"<c:if test="${param.ROUNDING=='-0.25'}"> selected</c:if>>Round discount to nearest 0.25</option>
+                          <option value="-0.10"<c:if test="${param.ROUNDING=='-0.10'}"> selected</c:if>>Round discount to nearest 0.10</option>
+                          <option value="-0.05"<c:if test="${param.ROUNDING=='-0.05'}"> selected</c:if>>Round discount to nearest 0.05</option>
+                          <option value="0.00" selected="selected"<c:if test="${param.ROUNDING=='0.00'}"> selected</c:if>>No Rounding</option>
+                          <option value="0.05"<c:if test="${param.ROUNDING=='0.05'}"> selected</c:if>>Round price to nearest 0.05</option>
+                          <option value="0.10"<c:if test="${param.ROUNDING=='0.10'}"> selected</c:if>>Round price to nearest 0.10</option>
+                          <option value="0.25"<c:if test="${param.ROUNDING=='0.25'}"> selected</c:if>>Round price to nearest 0.25</option>
+                          <option value="0.50"<c:if test="${param.ROUNDING=='0.50'}"> selected</c:if>>Round price to nearest 0.50</option>
+                          <option value="1.00"<c:if test="${param.ROUNDING=='1.00'}"> selected</c:if>>Round price to nearest 1.00</option>
                         </select>
                       </span>
                       <br>
@@ -291,15 +291,15 @@
                         <label>Minimum&nbsp;Quantity:&nbsp;</label>
                         <input id="QUALIFYINGQUANTITY" name="QUALIFYINGQUANTITY" value="${param.QUALIFYINGQUANTITY}" type="text" style="width: 100px;">
                         <select name="QUALIFYINGTYPE" style="margin-bottom: .2rem;">
-                          <option value="0" <c:if test="${param.QUALIFYINGTYPE==0}">selected</c:if>>Items</option>
-                          <option value="1" <c:if test="${param.QUALIFYINGTYPE==1}">selected</c:if>>Amount</option>
-                          <option value="2" <c:if test="${param.QUALIFYINGTYPE==2}">selected</c:if>>Unique Items</option>
+                          <option value="0"<c:if test="${param.QUALIFYINGTYPE==0}"> selected</c:if>>Items</option>
+                          <option value="1"<c:if test="${param.QUALIFYINGTYPE==1}"> selected</c:if>>Amount</option>
+                          <option value="2"<c:if test="${param.QUALIFYINGTYPE==2}"> selected</c:if>>Unique Items</option>
                         </select>
                       </span>
                       <p style="font-size: .9rem; font-style: italic;">Discount amounts are applied to <strong>each item</strong>, not the order total. Checking the box below will limit the discount to one item in the order only. However, note that this setting has no effect on the Free shipping option. When Free shipping is enabled, all items will get free shipping regardless of this setting.</p>
                       <span>
                         <input type="hidden" name="FIRSTONLY" value="${param.FIRSTONLY}" />
-                        <input type="checkbox" checked style="margin-bottom: 2rem;" <c:if test="${param.FIRSTONLY!=0}">checked</c:if>>&nbsp;Discount allowed on one item only
+                        <input type="checkbox" checked style="margin-bottom: 2rem;"<c:if test="${param.FIRSTONLY!=0}"> checked</c:if>>&nbsp;Discount allowed on one item only
                       </span>
                       <br>
                       <button id="backToExpiration" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
