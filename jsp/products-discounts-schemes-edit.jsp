@@ -37,14 +37,6 @@
       function initForm (form){
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        // initField (form, "ACTIVE_CHK",     "${param.ACTIVE}");
-        // initField (form, "STOPORDER_CHK",  "${param.STOPORDER}");
-        // initField (form, "FIRSTONLY_CHK",  "${param.FIRSTONLY}");
-        // initField (form, "FREESHIPPING_CHK","${param.FREESHIPPING}");
-        // initField (form, "ROUNDING",       "${param.ROUNDING}");
-        // initField (form, "DISCOUNTTYPE",   "${param.DISCOUNTTYPE}");
-        // initField (form, "QUALIFYINGTYPE", "${param.QUALIFYINGTYPE}");
-        // initField (form, "CURRENCY",       "${param.CURRENCY}");
         if (parseInt (form.MAXUSECOUNT.value) == 0) {
           form.MAXUSECOUNT.value = "";
         }
@@ -54,10 +46,6 @@
       function submitForm (form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        // copyField (form, "ACTIVE", "ACTIVE_CHK");
-        // copyField (form, "STOPORDER", "STOPORDER_CHK");
-        // copyField (form, "FIRSTONLY", "FIRSTONLY_CHK");
-        // copyField (form, "FREESHIPPING", "FREESHIPPING_CHK");
         form.NAME.value = trim(form.NAME.value);
         if (!allowChanges ("You do not have permission to edit discount schemes.")) {
           return (false);
@@ -195,7 +183,7 @@
                       <br>
                       <span>
                         <input type="hidden" name="STOPORDER" value="${param.STOPORDER}" />
-                        <input type="checkbox" style="margin-bottom: 2rem;"<c:if test="${param.STOPORDER!=0}"> checked</c:if> />&nbsp;Stop order if code cannot be used
+                        <input type="checkbox" style="margin-bottom: 2rem;"<c:if test="${param.STOPORDER!=0}"> checked</c:if>/>&nbsp;Stop order if code cannot be used
                       </span>
                       <br>
                       <button id="backToNameTab" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
@@ -249,7 +237,7 @@
                       <br>
                       <span>
                         <input type="hidden" name="FREESHIPPING" value="${param.FREESHIPPING}" />
-                        <input type="checkbox" style="margin-bottom: 2rem;" <c:if test="${param.FREESHIPPING!=0}">checked</c:if>>&nbsp;Free shipping
+                        <input type="checkbox" style="margin-bottom: 2rem;"<c:if test="${param.FREESHIPPING!=0}"> checked</c:if>>&nbsp;Free shipping
                       </span>
                       <br>
                       <button id="backToType" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
@@ -299,7 +287,7 @@
                       <p style="font-size: .9rem; font-style: italic;">Discount amounts are applied to <strong>each item</strong>, not the order total. Checking the box below will limit the discount to one item in the order only. However, note that this setting has no effect on the Free shipping option. When Free shipping is enabled, all items will get free shipping regardless of this setting.</p>
                       <span>
                         <input type="hidden" name="FIRSTONLY" value="${param.FIRSTONLY}" />
-                        <input type="checkbox" checked style="margin-bottom: 2rem;"<c:if test="${param.FIRSTONLY!=0}"> checked</c:if>>&nbsp;Discount allowed on one item only
+                        <input type="checkbox" checked style="margin-bottom: 2rem;"<c:if test="${param.FIRSTONLY!=0}"> checked</c:if>/>&nbsp;Discount allowed on one item only
                       </span>
                       <br>
                       <button id="backToExpiration" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>

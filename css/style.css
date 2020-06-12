@@ -58,7 +58,7 @@ a {
 
 .sidebar img {
 	height: auto;
-	width: 208px;
+	width: 200px;
 	margin-bottom: 20px;
 }
 
@@ -226,7 +226,7 @@ button:hover {
 	max-height: calc(100vh - 260px);
 	min-height: 290px;
 	}
-	
+
 #resultframe {
 	display: none;
 	padding: 1rem;
