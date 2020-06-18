@@ -63,6 +63,7 @@ select, .transfer-dropdown {
   -ms-transform: translate3d(0px, 25px, 0px) !important;
   -o-transform: translate3d(0px, 25px, 0px) !important;
 }
+
 .transfer-dropdown-item:hover {
   color: #16181b !important;
   }
