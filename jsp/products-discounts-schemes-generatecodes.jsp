@@ -15,13 +15,13 @@
           <br>
           <p style="font-size: .9rem; margin-bottom: 1.2rem;">(Leave blank to let the system generate a new code for you)</p>
           <div class="row">
-            <button type="submit" class="light-btn" style="margin-right: .5rem;">Apply Custom Code</button>
+            <button type="button" class="light-btn" style="margin-right: .5rem;" onclick="submitToDiv (form, 'resultframe');">Apply Custom Code</button>
             <button type="button" class="light-btn" onclick="closeResultFrame()">Cancel</button>
             <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
             <input type="hidden" name="ACTION" value="13" />
             <input type="hidden" name="GENCOUNT" value="1" />
             <input type="hidden" name="REPLACE" value="-1" />
-            <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/discounts_viewcodes_viewcodes.html" /> <!-- codetable -->
+            <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes-codetable.jsp" /> <!-- codetable -->
             <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
             <input type="hidden" name="NAME" value="${param.NAME}" />
           </div> <!-- end .row -->
@@ -40,13 +40,13 @@
           </span>
           <br>
           <p style="font-size: .9rem; margin-bottom: 1.2rem;">(Leave blank to let the system generate a new code for you)</p>
-          <button type="submit" class="light-btn" style="margin-right: .5rem;">Generate New Code</button>
+          <button type="submit" class="light-btn" style="margin-right: .5rem;" onclick="submitToDiv (form, 'resultframe');">Generate New Code</button>
           <button type="button" class="light-btn" onclick="closeResultFrame()">Cancel</button>
           <input type="hidden" name="ACTION" value="13" />
           <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
           <input type="hidden" name="GENCOUNT" value="1" />
           <input type="hidden" name="REPLACE" value="-1" />
-          <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/discounts_viewcodes_viewcodes.html" />
+          <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes-codetable.jsp" />
           <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
         </form>
       </c:if>

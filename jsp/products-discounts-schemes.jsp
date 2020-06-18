@@ -14,6 +14,7 @@
 		<%@ include file="/includes/bootstrap_top_script.html" %>
 		<%@ include file="/includes/style_menu_footer_css.html" %>
 		<link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
+		<link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addTransfer.css"/>
 		<script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
 		<script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
 		<style media="screen" type="text/css">
@@ -45,11 +46,11 @@
 					}
 					function deleteDiscount (schemeid, schemetype) {
 						alert ("You do not have permission to delete schemes.");
-					}   
+					}
 					function generateCodes (schemeid, schemetype) {
 						alert ("You do not have permission to generate codes.");
 					`
-				}                                              
+				}
 			</c:if>
 			<c:if test = "${ allowChanges == 1 }">
 				function addDiscount (form) {
@@ -72,7 +73,7 @@
 				setCookieValue ("BMTMicro.Vendors.Discounts.ShowInactive", queryField (document.discounts, "SHOWINACTIVE"), 1000);
 				submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/products-discounts-schemes-table.jsp");
 			}
-		</script>        
+		</script>
 	</head>
 	<body>
 		<!-- Blue background header -->
@@ -100,5 +101,5 @@
 		</div> <!-- end .main-raised -->
 		<%@ include file="/includes/bootstrap_bottom_scripts.html" %>
 	</body>
-	<script>$(document).ready(function(){ submitToDiv (document.discounts, 'tableframe'); });</script>   
+	<script>$(document).ready(function(){ submitToDiv (document.discounts, 'tableframe'); });</script>
 </html>
