@@ -25,12 +25,12 @@
 	          <option value="3"<c:if test="${param.VIEWTYPE==3}"> selected</c:if>>View Unused Codes</option>
 	        </select>
 	        <br>
-	        <button type="submit" class="light-btn" style="margin-right: .5rem;">View Codes</button>
+	        <button type="button" class="light-btn" style="margin-right: .5rem;" onclick="submitToDiv (form, 'resultframe);" >View Codes</button>
 					<button type="button" class="light-btn" onclick="closeResultFrame()">Close</button>
 	        <input type="hidden" name="ACTION" value="14" />
 	        <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
 	        <input type="hidden" name="NAME" value="${param.NAME}" />
-	        <input type="hidden" name="NEXT_PAGE" value="${param.CODETABLE}" />
+	        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes-codetable.jsp" />
 	        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/result-error.jsp" />
 	      </form>
 			</c:if>
@@ -45,12 +45,12 @@
 	          <option value="3"<c:if test="${param.VIEWTYPE==3}"> selected</c:if>>View Unused Codes</option>
 	        </select>
 	        <br>
-	        <button type="submit" class="light-btn">View Codes</button>
+	        <button type="button" class="light-btn" style="margin-right: .5rem;" onclick="submitToDiv (form, 'resultframe);">View Codes</button>
 	        <button type="button" class="light-btn" onclick="closeResultFrame()">Close</button>
 	        <input type="hidden" name="ACTION" value="14" />
 	        <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
 	        <input type="hidden" name="NAME" value="${param.NAME}" />
-	        <input type="hidden" name="NEXT_PAGE" value="${param.CODETABLE}" />
+	        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes-codetable.jsp" />
 	        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/result-error.jsp" />
 	      </form>
 			</c:if>
