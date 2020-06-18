@@ -25,7 +25,7 @@
 	          <option value="3"<c:if test="${param.VIEWTYPE==3}"> selected</c:if>>View Unused Codes</option>
 	        </select>
 	        <br>
-	        <button type="button" class="light-btn" style="margin-right: .5rem;" onclick="submitToDiv (form, 'resultframe);" >View Codes</button>
+	        <button type="button" class="light-btn" style="margin-right: .5rem;" onclick="submitToDiv (form, 'resultframe');" >View Codes</button>
 					<button type="button" class="light-btn" onclick="closeResultFrame()">Close</button>
 	        <input type="hidden" name="ACTION" value="14" />
 	        <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
@@ -45,7 +45,7 @@
 	          <option value="3"<c:if test="${param.VIEWTYPE==3}"> selected</c:if>>View Unused Codes</option>
 	        </select>
 	        <br>
-	        <button type="button" class="light-btn" style="margin-right: .5rem;" onclick="submitToDiv (form, 'resultframe);">View Codes</button>
+	        <button type="button" class="light-btn" style="margin-right: .5rem;" onclick="submitToDiv (form, 'resultframe');">View Codes</button>
 	        <button type="button" class="light-btn" onclick="closeResultFrame()">Close</button>
 	        <input type="hidden" name="ACTION" value="14" />
 	        <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
