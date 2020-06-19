@@ -1,7 +1,7 @@
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
   <h5>Discount&nbsp;Codes</h5>
-  <table class="table" style="margin-bottom: 1rem;">
+  <table class="table table-bordered" style="margin-bottom: 1rem; width: 50%;">
     <tbody>
       ${param.CODETABLE}
     </tbody>

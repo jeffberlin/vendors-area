@@ -12,7 +12,7 @@ input, textarea, label, .transfer-dropdown {
 
 input, textarea {
   padding: .25rem .35rem;
-}
+  }
 
 input, textarea, select {
 	border-radius: 3px;
@@ -20,7 +20,7 @@ input, textarea, select {
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
-}
+  }
 
 input, textarea, select {
   border: 1px solid #a9a9a9;
@@ -62,7 +62,7 @@ select, .transfer-dropdown {
   -moz-transform: translate3d(0px, 25px, 0px) !important;
   -ms-transform: translate3d(0px, 25px, 0px) !important;
   -o-transform: translate3d(0px, 25px, 0px) !important;
-}
+  }
 
 .transfer-dropdown-item:hover {
   color: #16181b !important;
