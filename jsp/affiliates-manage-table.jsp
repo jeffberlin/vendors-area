@@ -1,6 +1,5 @@
 <%@ include file="/includes/core.jsp" %>
-<form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="post"
-dataType: 'html' id="affiliates">
+<form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="post">
 	<input type="hidden" name="ACTION" value="" />
 	<input type="hidden" name="AFFILIATEID" value="" />
 	<input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/affiliates-manage-tablerow.html" />

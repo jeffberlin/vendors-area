@@ -17,34 +17,27 @@
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
-
     <script language="javascript" type="text/javascript">
       <!--
       function addUser () {
         var form = document.users;
-        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/users_add.html";
+        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/user-management-add.jsp";
         form.ACTION.value = "0";
         form.USERID.value = "";
-        window.parent.document.getElementById('userinfo').style.display = "block";
-        window.parent.document.getElementById('tablelayer').style.display = "none";
         form.submit ();
       }
       function editUser (userid) {
         var form = document.users;
-        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/users_edit.html";
+        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/user-management-edit.jsp";
         form.ACTION.value = "1";
         form.USERID.value = userid;
-        window.parent.document.getElementById('userinfo').style.display = "block";
-        window.parent.document.getElementById('tablelayer').style.display = "none";
         form.submit ();
       }
       function deleteUser (userid) {
         var form = document.users;
-        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/users_delete.html";
+        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/user-management-delete.jsp";
         form.ACTION.value = "2";
         form.USERID.value = userid;
-        window.parent.document.getElementById('userinfo').style.display = "block";
-        window.parent.document.getElementById('tablelayer').style.display = "none";
         form.submit ();
       }
       //-->
