@@ -17,30 +17,62 @@
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
+    <style media="screen" type="text/css">
+      td[text]:first-child {
+        text-align: left;
+      }
+      td[option], td[text] {
+        text-align: center;
+      }
+    </style>
     <script language="javascript" type="text/javascript">
-      <!--
-      function addUser () {
+      function submitForm(action, target, nextpage, userid) {
         var form = document.users;
-        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/user-management-add.jsp";
-        form.ACTION.value = "0";
-        form.USERID.value = "";
-        form.submit ();
-      }
-      function editUser (userid) {
-        var form = document.users;
-        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/user-management-edit.jsp";
-        form.ACTION.value = "1";
+        form.ACTION.value = action;
+        form.NEXT_PAGE.value = nextpage;
         form.USERID.value = userid;
-        form.submit ();
+        if (target == "_parent") {
+					form.target = target;
+					form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/result-error.jsp";
+					form.submit ();
+				} else {
+					submitToDiv (form, target);
+				}
       }
-      function deleteUser (userid) {
-        var form = document.users;
-        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/user-management-delete.jsp";
-        form.ACTION.value = "2";
-        form.USERID.value = userid;
-        form.submit ();
+
+      function addUser(form) {
+        submitForm(0, "_parent", "https://vendors-new.bmtmicro.com/user-management-add.jsp");
       }
-      //-->
+
+      function editUser(userid) {
+        submitForm(1, "_parent", "https://vendors-new.bmtmicro.com/user-management-edit.jsp", userid);
+      }
+
+      function deleteUser(userid) {
+        submitForm(2, "resultframe", "https://vendors-new.bmtmicro.com/user-management-delete.jsp", userid);
+      }
+
+      // function addUser () {
+      //   var form = document.users;
+      //   form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/user-management-add.jsp";
+      //   form.ACTION.value = "0";
+      //   form.USERID.value = "";
+      //   form.submit ();
+      // }
+      // function editUser (userid) {
+      //   var form = document.users;
+      //   form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/user-management-edit.jsp";
+      //   form.ACTION.value = "1";
+      //   form.USERID.value = userid;
+      //   form.submit ();
+      // }
+      // function deleteUser (userid) {
+      //   var form = document.users;
+      //   form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/user-management-delete.jsp";
+      //   form.ACTION.value = "2";
+      //   form.USERID.value = userid;
+      //   form.submit ();
+      // }
     </script>
   </head>
   <body>
@@ -54,8 +86,8 @@
           <div class="row justify-content-start">
             <%@ include file="/includes/menuSidebar.html" %>
             <div class="col-lg-10 col-md-12 page-title">
-              <h4>Manage&nbsp;Affiliates</h4>
-              <p>Highlighted affiliates have joined within the last month.</p>
+              <h4>Manage&nbsp;Users</h4>
+              <p>Use this interface to add or edit additional logins under your account.</p>
               <div class="content-box overflow-auto" id="contentBox">
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
 									<jsp:include page="./user-management-table.jsp" />
@@ -71,6 +103,6 @@
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
 	<script>
-     $(document).ready(function(){ submitToDiv (document.affiliates, 'tableframe'); });
+     $(document).ready(function(){ submitToDiv (document.users, 'tableframe'); });
   </script>
 </html>
