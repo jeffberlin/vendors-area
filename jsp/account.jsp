@@ -22,6 +22,9 @@
         margin-top: 0;
         margin-bottom: 1rem;
       }
+      .content-box {
+        min-height: 334.31px !important;
+      }
     </style>
     <script language="javascript" type="text/javascript">
       function checkPayOutMinAmt (field, method) {
@@ -39,6 +42,7 @@
         }
         return (true);
       }
+
       <c:choose>
         <c:when test = "${ allowChanges == 0 }">
           function submitForm (form) {
