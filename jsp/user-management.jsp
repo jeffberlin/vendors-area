@@ -51,28 +51,6 @@
       function deleteUser(userid) {
         submitForm(2, "resultframe", "https://vendors-new.bmtmicro.com/user-management-delete.jsp", userid);
       }
-
-      // function addUser () {
-      //   var form = document.users;
-      //   form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/user-management-add.jsp";
-      //   form.ACTION.value = "0";
-      //   form.USERID.value = "";
-      //   form.submit ();
-      // }
-      // function editUser (userid) {
-      //   var form = document.users;
-      //   form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/user-management-edit.jsp";
-      //   form.ACTION.value = "1";
-      //   form.USERID.value = userid;
-      //   form.submit ();
-      // }
-      // function deleteUser (userid) {
-      //   var form = document.users;
-      //   form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/user-management-delete.jsp";
-      //   form.ACTION.value = "2";
-      //   form.USERID.value = userid;
-      //   form.submit ();
-      // }
     </script>
   </head>
   <body>
