@@ -23,7 +23,7 @@
         margin-bottom: 1rem;
       }
       .content-box {
-        min-height: 334.31px !important;
+        min-height: 476.38px !important;
       }
     </style>
     <script language="javascript" type="text/javascript">
