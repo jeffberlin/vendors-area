@@ -19,43 +19,9 @@
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
-      /* button.listremove, button.listremove:active {
-        -webkit-border-radius: 15px; -moz-border-radius: 15px; border-radius: 15px;
-        background: #840010;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.50)), color-stop(0.5, rgba(255,255,255,0.30)), color-stop(0.5, rgba(150,150,150,0.0)), to(rgba(255,255,255,0.35)));
-        background-image: -moz-linear-gradient(top, rgba(255,255,255,0.50), rgba(255,255,255,0.30) 50%, rgba(150,150,150,0.0) 50%, rgba(255,255,255,0.35));
-        color: #FFF; font-weight: bold;
-        padding: 0px; width: 1.9em; height: 1.9em;
-        text-shadow: 0px 1px 1px rgba(0,0,0,0.5);
+      .content-box {
+        min-height: 489.2px;
       }
-      button.listremove:hover {
-        background: #a32925;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.50)), color-stop(0.5, rgba(255,255,255,0.30)), color-stop(0.5, rgba(150,150,150,0.0)), to(rgba(255,255,255,0.35)));
-        background-image: -moz-linear-gradient(top, rgba(255,255,255,0.50), rgba(255,255,255,0.30) 50%, rgba(150,150,150,0.0) 50%, rgba(255,255,255,0.35));
-      }
-      button.listremove:focus {
-        -webkit-outline-radius: 15px; -moz-outline-radius: 15px; outline-radius: 15px;
-        outline: solid #ef9a00 1px;
-      }
-
-      button.listadd, button.listadd:active {
-        -webkit-border-radius: 15px; -moz-border-radius: 15px; border-radius: 15px;
-        background: #118700;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.50)), color-stop(0.5, rgba(255,255,255,0.30)), color-stop(0.5, rgba(150,150,150,0.0)), to(rgba(255,255,255,0.35)));
-        background-image: -moz-linear-gradient(top, rgba(255,255,255,0.50), rgba(255,255,255,0.30) 50%, rgba(150,150,150,0.0) 50%, rgba(255,255,255,0.35));
-        color: #FFF; font-weight: bold;
-        padding: 0px; width: 1.9em; height: 1.9em;
-        text-shadow: 0px 1px 1px rgba(0,0,0,0.5);
-      }
-      button.listadd:hover {
-        background: #44a900;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.50)), color-stop(0.5, rgba(255,255,255,0.30)), color-stop(0.5, rgba(150,150,150,0.0)), to(rgba(255,255,255,0.35)));
-        background-image: -moz-linear-gradient(top, rgba(255,255,255,0.50), rgba(255,255,255,0.30) 50%, rgba(150,150,150,0.0) 50%, rgba(255,255,255,0.35));
-      }
-      button.listadd:focus {
-        -webkit-outline-radius: 15px; -moz-outline-radius: 15px; outline-radius: 15px;
-        outline: solid #ef9a00 1px;
-      } */
       .fa-plus-circle:hover {
         color: darkgreen;
       }
