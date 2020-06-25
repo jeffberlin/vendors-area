@@ -42,8 +42,8 @@
                   <c:param name = "SESSIONID" value = "${sessionid}" />
                   <c:param name = "DATEFROM" value="${fromDate}" />
                   <c:param name = "DATETO" value="${toDate}" />
-                  <c:param name = "ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-sales-summary-tablerow.html" />
-                  <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-sales-summary-table.jsp" />
+                  <c:param name = "ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-summary-tablerow.html" />
+                  <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-summary-table.jsp" />
                   <c:param name = "ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                 </c:import>
 							</div> <!-- end .content-box -->

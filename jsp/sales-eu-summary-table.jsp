@@ -10,9 +10,9 @@
     </span>
     <span>
       <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
-      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-sales-summary-table.jsp" />
-      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-      <button class="grey-btn" value="Get New Summary">Update Summary</button>
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-summary.jsp" />
+      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+      <button class="get-btn" value="Get New Summary">Update Summary</button>
     </span>
   </div> <!-- end .table-header -->
   <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
@@ -22,21 +22,19 @@
           <th scope="col" class="sort-column text-center sortable sort" title="Sort on 'Product'">
             <a href="#" class="fdTableSortTrigger">Product</a>
           </th>
-          <th scope="col" class="sort-column text-center sortable sort" title="Sort on 'Units Sold'">
-            <a href="#" class="fdTableSortTrigger">Units Sold</a>
-          </th>
-          <th scope="col" class="sort-column text-center sortable-currency sort" title="Sort on 'Total to Vendor'">
-            <a href="#" class="fdTableSortTrigger">Total to Vendor</a>
+          <th scope="col" class="sort-column text-center sortable sort" title="Sort on 'Total Sales'">
+            <a href="#" class="fdTableSortTrigger">Total Sales</a>
           </th>
         </tr>
       </thead>
       <tbody>
-        ${param.TABLEDATA}
+        <tr>
+          ${param.TABLEDATA}
+        </tr>
       </tbody>
       <tfoot>
         <tr class="table-total">
           <th scope="row">Total</th>
-          <th scope="row" class="text-center" number>${param.TOTALQUANTITY}</th>
           <th scope="row" class="text-right" money>${param.TOTALAMOUNT}</th>
         </tr>
       </tfoot>
