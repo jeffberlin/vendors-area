@@ -39,7 +39,7 @@
 				}
       }
 			<c:if test = "${ allowChanges == 0 }">
-				function addAffiliate () {               
+				function addAffiliate () {
 					alert ("You do not have permission to upload files.");
 				}
 				function editAffiliate (affiliateid) {
@@ -47,7 +47,7 @@
 				}
 				function removeAffiliate (affiliateid) {
 					alert ("You do not have permission to delete files.");
-				} 
+				}
 			</c:if>
 			<c:if test = "${ allowChanges == 1 }">
 				function addAffiliate (affiliateid) {
@@ -84,9 +84,9 @@
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Manage&nbsp;Affiliates</h4>
               <p>Highlighted affiliates have joined within the last month.</p>
-              <div class="content-box overflow-auto" id="contentBox">
+              <div class="content-box d-flex flex-column">
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
-									<jsp:include page="./affiliates-manage-table.jsp" />
+									<jsp:include page="affiliates-manage-table.jsp" />
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div>
               </div> <!-- end .content-box -->
@@ -98,7 +98,7 @@
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
-	<script> 
+	<script>
      $(document).ready(function(){ submitToDiv (document.affiliates, 'tableframe'); });
-  </script> 
+  </script>
 </html>

@@ -17,6 +17,9 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <style media="screen" type="text/css">
+      .content-box {
+        min-height: 585px !important;
+      }
       ul li {
         color: #707070;
         letter-spacing: .5px;

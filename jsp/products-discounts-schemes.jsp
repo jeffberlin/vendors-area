@@ -89,7 +89,7 @@
 							<p>Click on Discount Scheme Name to edit discount schemes.</p>
 							<div class="content-box d-flex flex-column">
 								<div name="tableframe" class="overflow-auto h-100" id="tableframe">
-									<jsp:include page="/products-discounts-schemes-table.jsp" />
+									<jsp:include page="products-discounts-schemes-table.jsp" />
 								</div>
 								<div name="resultframe" id="resultframe"></div>
 							</div> <!-- end .content-box -->
