@@ -37,15 +37,24 @@
 						<div class="col-lg-10 col-md-12 page-title">
               <h4>Sales Summary</h4>
               <p>Below is a summary of your sales from ${param.DATEFROM} through ${param.DATETO}.</p>
-							<div class="content-box overflow-auto">
-                <c:import url = "https://vendors-new.bmtmicro.com/servlets/Vendors.SalesSummary" name="start">
-                  <c:param name = "SESSIONID" value = "${sessionid}" />
-                  <c:param name = "DATEFROM" value="${fromDate}" />
-                  <c:param name = "DATETO" value="${toDate}" />
-                  <c:param name = "ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-summary-tablerow.html" />
-                  <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-summary-table.jsp" />
-                  <c:param name = "ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-                </c:import>
+							<div class="content-box">
+								<!-- <div name="tableframe" class="overflow-auto h-100" id="tableframe"> -->
+									<!-- <form name="start" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesSummary" method="post">
+										<input type="hidden" name="DATEFROM" value="${fromDate}" />
+							      <input type="hidden" name="DATETO" value="${toDate}" />
+							      <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-summary-tablerow.html" />
+							      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-summary-table.jsp" />
+							      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+									</form> -->
+									<c:import url = "https://vendors-new.bmtmicro.com/servlets/Vendors.SalesSummary">
+										<c:param name = "SESSIONID" value = "${sessionid}" />
+										<c:param name = "DATEFROM" value="${fromDate}" />
+										<c:param name = "DATETO" value="${toDate}" />
+										<c:param name = "ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-summary-tablerow.html" />
+										<c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-summary-table.jsp" />
+										<c:param name = "ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+									</c:import>
+								<!-- </div> --> <!-- end #tableframe -->
 							</div> <!-- end .content-box -->
 						</div> <!-- end .col-lg-10 page-title -->
 					</div> <!-- end first .row justify-content-start -->

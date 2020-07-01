@@ -18,6 +18,9 @@
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <style media="screen" type="text/css">
+      .content-box {
+        min-height: 770px !important;
+      }
       .text-area {
         padding: 1rem;
       }

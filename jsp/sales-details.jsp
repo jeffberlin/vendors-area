@@ -40,8 +40,83 @@
         text-align: right;
       }
     </style>
+    <script language="javascript" type="text/javascript">
+      <!--
+      // from salesdetailsstart.html
+      function initForm (form) {
+        var exactmatch = getCookieValue ("BMTMicro.Vendors.SalesDetails.ExactMatch");
+        if (exactmatch != null) {
+          form.EXACTMATCH.value = exactmatch;
+        }
+        getVendorDateRange (form);
+        form.submit ();
+      }
+      function initForm (form){
+        initField (form, "EXACTMATCH",  "${param.EXACTMATCH}");
+      }
+      function exactMatch (form) {
+        setCookieValue ("BMTMicro.Vendors.SalesDetails.ExactMatch", queryField (form, "EXACTMATCH"), 1000);
+      }
+      function invoice (orderid) {
+        var form = document.invoice;
+        //   window.open("", "InvoicePopUp","scrollbars=yes,menubar=1,location=no,resizable=yes").focus();
+        form.ORDERID.value = orderid;
+        form.submit();
+      }
+      function tabledata () {
+        var colTypes = [ ${param.COLTYPELIST} ];
+        var colTypeNames = [
+          "text",   // 0 - Text
+          "number", // 1 - Number
+          "money",  // 2 - Amount
+          "money",  // 3 - Currency
+          "date",   // 4 - Date
+          "info",   // 5 - EMail
+          "number"  // 6 - Order ID
+        ];
+        var colHdrs = [ ${param.COLHDRLIST} ];
+        var s = "<thead><tr class=\"table-category\">";
+        for (var i = 0; i < colHdrs.length; i++) {
+          s += "<th class=\"sortable sort-column text-center sort\" " + colTypeNames[colTypes[i]] + ">" + colHdrs[i] + "<\/th>";
+        }
+        s += "<\/tr><\/thead><tbody class=\"text-center\"><tr>";
+        var colFlts = [ ${param.COLFLTLIST} ];
+        for (var i = 0; i < colFlts.length; i++) {
+          s += "<th " + colTypeNames[colTypes[i]] + "><input class=\"input-search\" type=\"text\" name=\"FILTER\" placeholder=\"Search\" value=\"" + colFlts[i] + "\" style=\"width: 100%\"/><\/th>";
+        }
+        s += "<\/tr>";
+        var colData = [ ${param.COLDATALIST} ];
+        for (var j = 0; j < colData.length; ) {
+          s += "<tr>";
+          for (var i = 0; i < colTypes.length; i++, j++) {
+            var d = colData[j];
+            switch (colTypes[i]) {
+              case 3: // Currency
+                d = "<b>" + d + "<\/b>";
+              break;
+              case 5: // EMail
+                d = "<a href=mailto:" + d + ">" + d + "<\/a>";
+              break;
+              case 6:    //Order ID with invoice link
+                d = "<a href=\"javascript:invoice(" + d + ");\">" + d + "<\/a>";
+              break;
+            }
+            s += "<td " + colTypeNames[colTypes[i]] + ">" + d + "<\/td>";
+          }
+          s += "<\/tr>";
+        }
+        var colTotal = [ ${param.COLTOTALLIST} ];
+        s += "<\/tbody><tfoot><tr class=\"table-total text-center\">";
+        for (var i = 0; i < colTotal.length; i++) {
+          s += "<td " + colTypeNames[colTypes[i]] + "><strong>" + colTotal[i] + "<\/strong><\/td>";
+        }
+        s += "<\/tr><\/tfoot>";
+        return (s);
+      }
+      //-->
+    </script>
   </head>
-  <body>
+  <body onload="initForm (document.salesdetails);">
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -53,7 +128,7 @@
             <%@ include file="/includes/menuSidebar.html" %>
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Sales Detail Report</h4>
-              <p>Filter Details using the input fields. Fields can be added or removed using the Settings link under your name.</p>
+              <p>Filter Details using the input fields. Fields can be added or removed using the Settings link at the top right of this page.</p>
               <div class="content-box overflow-auto">
                 <c:import name="start" url = "https://vendors.bmtmicro.com/servlets/Vendors.SalesDetails">
                   <c:param name = "SESSIONID" value = "${sessionid}" />
@@ -62,8 +137,8 @@
                   <c:param name = "EXACTMATCH" value="0" />
                   <c:param name = "ROWSPERPAGE" value="250" />
                   <c:param name = "PAGE" value="1" />
-                  <c:param name = "ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-eu-summary-tablerow.html" />
-                  <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-details.jsp" />
+                  <!-- File not used <c:param name = "ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-eu-summary-tablerow.html" /> -->
+                  <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-details-table.jsp" />
                   <c:param name = "ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                 </c:import>
               </div> <!-- end .content-box -->
