@@ -18,14 +18,23 @@
 		<script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
-    <script language="javascript" type="text/javascript">
-      function initForm (form) {
-        getVendorDateRange (form);
-        form.submit ();
-      }
+		<style media="screen" type="text/css">
+			td[number] {
+				text-align: center;
+			}
+			td[money] {
+				text-align: right;
+			}
+		</style>
+    <script>
+			function refreshReport (form) {
+				if (CheckDateRange (form)) {
+					submitToDiv (form, 'tableframe');
+				}
+			}
     </script>
 	</head>
-	<body onload="initForm (document.start);">
+	<body>
 		<!-- Blue background header -->
 		<div class="blue-bg"></div>
 		<!-- Start of the body -->
@@ -37,24 +46,25 @@
 						<div class="col-lg-10 col-md-12 page-title">
               <h4>Sales Summary</h4>
               <p>Below is a summary of your sales from ${param.DATEFROM} through ${param.DATETO}.</p>
-							<div class="content-box">
-								<!-- <div name="tableframe" class="overflow-auto h-100" id="tableframe"> -->
-									<!-- <form name="start" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesSummary" method="post">
-										<input type="hidden" name="DATEFROM" value="${fromDate}" />
-							      <input type="hidden" name="DATETO" value="${toDate}" />
-							      <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-summary-tablerow.html" />
-							      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-summary-table.jsp" />
-							      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-									</form> -->
-									<c:import url = "https://vendors-new.bmtmicro.com/servlets/Vendors.SalesSummary">
-										<c:param name = "SESSIONID" value = "${sessionid}" />
-										<c:param name = "DATEFROM" value="${fromDate}" />
-										<c:param name = "DATETO" value="${toDate}" />
-										<c:param name = "ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-summary-tablerow.html" />
-										<c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-summary-table.jsp" />
-										<c:param name = "ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-									</c:import>
-								<!-- </div> --> <!-- end #tableframe -->
+							<div class="content-box overflow-auto">
+								<form name="summary" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesSummary">
+									<div class="table-header">
+										<span>From:&nbsp;<input id="DATEFROM" name="DATEFROM" value="${fromDate}" />
+											<img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
+										</span>
+										<span>To:&nbsp;<input id="DATETO" name="DATETO" value="${toDate}" />
+											<img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATETO'); return (false);" onmouseover="this.style.cursor='pointer';" />
+										</span>
+										<span>
+											<input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-summary-tablerow.html" />
+											<input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-summary-table.jsp" />
+											<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+											<button class="grey-btn" value="Get New Summary" onclick="refreshReport (document.summary);">Update Summary</button>
+										</span>
+									</div> <!-- end .table-header -->
+								</form>
+								<div name="tableframe" class="h-100" id="tableframe">
+								</div> <!-- end #tableframe -->
 							</div> <!-- end .content-box -->
 						</div> <!-- end .col-lg-10 page-title -->
 					</div> <!-- end first .row justify-content-start -->
@@ -64,4 +74,5 @@
 		</div> <!-- end .main-raised -->
 		<%@ include file="/includes/bootstrap_bottom_scripts.html" %>
 	</body>
+	<script>$(document).ready(function(){ submitToDiv (document.summary, 'tableframe'); });</script>
 </html>

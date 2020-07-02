@@ -13,7 +13,7 @@
       <c:param name = "REPORTTYPE" value="${cookie['BMTMicro.Vendors.AffiliateSales.ReportType'].value}" />
       <c:param name = "ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/affiliates-sales-tablerow.html" />
       <c:param name = "ROWHEADERTEMPLATEURL" value="https://vendors-new.bmtmicro.com/affiliates-sales-rowheader.html" />
-      <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-sales-start.jsp" />
+      <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-sales-table.jsp" />
       <c:param name = "ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
     </c:import>
   </body>
