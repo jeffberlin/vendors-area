@@ -31,14 +31,15 @@
         display: block;
       }
     </style>
-    <script language="javascript" type="text/javascript">
-      function initForm (form) {
-        getVendorDateRange (form);
-        form.submit ();
+    <script>
+      function refreshReport (form) {
+        if (CheckDateRange (form)) {
+          submitToDiv (form, 'tableframe');
+        }
       }
     </script>
   </head>
-  <body onload="initForm (document.start);">
+  <body>
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -52,14 +53,23 @@
               <h4>EU Sales Summary</h4>
               <p>Below is a summary of sales to the European Union.</p>
               <div class="content-box overflow-auto">
-                <c:import name="start" url = "https://vendors-new.bmtmicro.com/servlets/Vendors.EUSalesSummary">
-                  <c:param name = "SESSIONID" value = "${sessionid}" />
-                  <c:param name = "DATEFROM" value="${fromDate}" />
-                  <c:param name = "DATETO" value="${toDate}" />
-                  <c:param name = "ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-eu-summary-tablerow.html" />
-                  <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-eu-summary-table.jsp" />
-                  <c:param name = "ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-                </c:import>
+                <form name="eusummary" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.EUSalesSummary">
+                  <div class="table-header">
+                    <span>From:&nbsp;<input id="DATEFROM" name="DATEFROM" value="${fromDate}" />
+                      <img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
+                    </span>
+                    <span>To:&nbsp;<input id="DATETO" name="DATETO" value="${toDate}" />
+                      <img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATETO'); return (false);" onmouseover="this.style.cursor='pointer';" />
+                    </span>
+                    <span>
+                      <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-eu-summary-tablerow.html" />
+                      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-eu-summary-table.jsp" />
+                      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+                      <button type="button" class="grey-btn" value="Get New Summary" onclick="refreshReport (document.eusummary);">Update Summary</button>
+                    </span>
+                  </div> <!-- end .table-header -->
+                </form>
+                <div name="tableframe" class="h-100" id="tableframe"></div>
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 -->
           </div> <!-- end first .row -->
@@ -67,6 +77,7 @@
       </div> <!-- end .container-fluid -->
       <%@ include file="/includes/footer.html" %>
     </div> <!-- end .main-raised -->
-  <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
+    <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
+  <script>$(document).ready(function(){ submitToDiv (document.eusummary, 'tableframe'); });</script>
 </html>

@@ -21,8 +21,6 @@
     <style media="screen" type="text/css">
       .table-responsive {
         overflow-y: scroll;
-        height: calc(100vh - 350px);
-        display: block;
       }
       td[text], td[number], td[date], td[info], td[money], th {
         border-right: 1px solid #a9a9a9;
@@ -41,82 +39,35 @@
       }
     </style>
     <script language="javascript" type="text/javascript">
-      <!--
-      // from salesdetailsstart.html
-      function initForm (form) {
-        var exactmatch = getCookieValue ("BMTMicro.Vendors.SalesDetails.ExactMatch");
-        if (exactmatch != null) {
-          form.EXACTMATCH.value = exactmatch;
-        }
-        getVendorDateRange (form);
-        form.submit ();
-      }
-      function initForm (form){
-        initField (form, "EXACTMATCH",  "${param.EXACTMATCH}");
-      }
       function exactMatch (form) {
         setCookieValue ("BMTMicro.Vendors.SalesDetails.ExactMatch", queryField (form, "EXACTMATCH"), 1000);
       }
+
       function invoice (orderid) {
         var form = document.invoice;
-        //   window.open("", "InvoicePopUp","scrollbars=yes,menubar=1,location=no,resizable=yes").focus();
         form.ORDERID.value = orderid;
         form.submit();
       }
-      function tabledata () {
-        var colTypes = [ ${param.COLTYPELIST} ];
-        var colTypeNames = [
-          "text",   // 0 - Text
-          "number", // 1 - Number
-          "money",  // 2 - Amount
-          "money",  // 3 - Currency
-          "date",   // 4 - Date
-          "info",   // 5 - EMail
-          "number"  // 6 - Order ID
-        ];
-        var colHdrs = [ ${param.COLHDRLIST} ];
-        var s = "<thead><tr class=\"table-category\">";
-        for (var i = 0; i < colHdrs.length; i++) {
-          s += "<th class=\"sortable sort-column text-center sort\" " + colTypeNames[colTypes[i]] + ">" + colHdrs[i] + "<\/th>";
-        }
-        s += "<\/tr><\/thead><tbody class=\"text-center\"><tr>";
-        var colFlts = [ ${param.COLFLTLIST} ];
-        for (var i = 0; i < colFlts.length; i++) {
-          s += "<th " + colTypeNames[colTypes[i]] + "><input class=\"input-search\" type=\"text\" name=\"FILTER\" placeholder=\"Search\" value=\"" + colFlts[i] + "\" style=\"width: 100%\"/><\/th>";
-        }
-        s += "<\/tr>";
-        var colData = [ ${param.COLDATALIST} ];
-        for (var j = 0; j < colData.length; ) {
-          s += "<tr>";
-          for (var i = 0; i < colTypes.length; i++, j++) {
-            var d = colData[j];
-            switch (colTypes[i]) {
-              case 3: // Currency
-                d = "<b>" + d + "<\/b>";
-              break;
-              case 5: // EMail
-                d = "<a href=mailto:" + d + ">" + d + "<\/a>";
-              break;
-              case 6:    //Order ID with invoice link
-                d = "<a href=\"javascript:invoice(" + d + ");\">" + d + "<\/a>";
-              break;
-            }
-            s += "<td " + colTypeNames[colTypes[i]] + ">" + d + "<\/td>";
+
+      function refreshReport (form) {
+        if (CheckDateRange (form)) {
+          if (form.FORMAT.selectedIndex == 0) {
+            submitToDiv (form, 'tableframe');
+          } else {
+            form.submit ();
           }
-          s += "<\/tr>";
         }
-        var colTotal = [ ${param.COLTOTALLIST} ];
-        s += "<\/tbody><tfoot><tr class=\"table-total text-center\">";
-        for (var i = 0; i < colTotal.length; i++) {
-          s += "<td " + colTypeNames[colTypes[i]] + "><strong>" + colTotal[i] + "<\/strong><\/td>";
-        }
-        s += "<\/tr><\/tfoot>";
-        return (s);
       }
-      //-->
+
+      function filterKeyPress(event) {
+        if (event.keyCode == 13) {
+          refreshReport (document.salesdetails);
+          return (true);
+        }
+      }
     </script>
   </head>
-  <body onload="initForm (document.salesdetails);">
+  <body>
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -130,17 +81,43 @@
               <h4>Sales Detail Report</h4>
               <p>Filter Details using the input fields. Fields can be added or removed using the Settings link at the top right of this page.</p>
               <div class="content-box overflow-auto">
-                <c:import name="start" url = "https://vendors.bmtmicro.com/servlets/Vendors.SalesDetails">
-                  <c:param name = "SESSIONID" value = "${sessionid}" />
-                  <c:param name = "DATEFROM" value="${fromDate}" />
-                  <c:param name = "DATETO" value="${toDate}" />
-                  <c:param name = "EXACTMATCH" value="0" />
-                  <c:param name = "ROWSPERPAGE" value="250" />
-                  <c:param name = "PAGE" value="1" />
-                  <!-- File not used <c:param name = "ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-eu-summary-tablerow.html" /> -->
-                  <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-details-table.jsp" />
-                  <c:param name = "ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-                </c:import>
+                <form name="salesdetails" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetails" method="post">
+                  <div class="table-header">
+                    <span>From:&nbsp;
+                      <input id="DATEFROM" name="DATEFROM" value="${fromDate}" onkeypress="filterKeyPress(event)"/>&nbsp;
+                      <img src='<c:url value="/images/cal.gif"></c:url>' width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
+                    </span>
+                    <span>To:&nbsp;
+                      <input id="DATETO" name="DATETO" value="${toDate}" onkeypress="filterKeyPress(event)"/>&nbsp;
+                      <img src='<c:url value="/images/cal.gif"></c:url>' width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
+                    </span>
+                    <span>
+                      <input type="checkbox" name="EXACTMATCH" value="-1"<c:if test="${cookie['BMTMicro.Vendors.SalesDetails.ExactMatch'].value==-1}"> checked</c:if>
+                      onclick="exactMatch(salesdetails);" title="Check for exact matches"  >&nbsp;Use exact match when filtering
+                      <input type="hidden" name="ROWSPERPAGE" value="250" />
+                      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-details-table.jsp" />
+                      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+                    </span>
+                    <span>
+                      <select name="FORMAT">
+                        <option value="0" selected="selected">HTML</option>
+                        <option value="1">CSV</option>
+                        <option value="2">XML</option>
+                        <option value="3">PDF</option>
+                      </select>
+                    </span>
+                    <span>
+                      <button type="button" class="grey-btn" type="button" value="Get Report" onclick="refreshReport (document.salesdetails);">Get Sales Details</button>
+                    </span>
+                  </div> <!-- end .table-header -->
+                  <div name="tableframe" class="overflow-auto h-100" id="tableframe"></div> <!-- end #tableframe -->
+                </form>
+                <div style="visibility:hidden;">
+                  <form name="invoice" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Invoice" method="post" target="_blank">
+                    <input name="ORDERID" type="hidden" value="0">
+                    <input name="VENDORID" type="hidden" value="${param.VENDORID}">
+                  </form>
+                </div>
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 -->
           </div> <!-- end first .row -->
@@ -148,6 +125,7 @@
       </div> <!-- end .container-fluid -->
       <%@ include file="/includes/footer.html" %>
     </div> <!-- end .main-raised -->
-  <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
+    <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
+    <script>$(document).ready(function(){ submitToDiv (document.salesdetails, 'tableframe'); });</script>
   </body>
 </html>

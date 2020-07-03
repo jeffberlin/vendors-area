@@ -57,14 +57,9 @@
               <h4>Detailed Sales Summary</h4>
               <p>Sales are batched by number of items in order.</p>
               <div class="content-box overflow-auto">
-                <form name="detailedsummary" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDSummary" method="post">
-                  <input type="hidden" name="DATEFROM" value="${fromDate}" />
-                  <input type="hidden" name="DATETO" value="${toDate}" />
-                  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-detailed-summary-tablerow.html" />
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-detailed-summary-table.jsp" />
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-                </form>
-                <div name="tableframe" class="h-100" id="tableframe"></div>
+                <div name="tableframe" class="h-100" id="tableframe">
+                  <jsp:include page="sales-detailed-summary-table.jsp" />
+                </div>
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 -->
           </div> <!-- end first .row -->
