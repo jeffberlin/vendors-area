@@ -1,4 +1,4 @@
-/* Shared styling of sales tables */
+/* Shared styling of tables */
 
 .table-header {
   background: #195a7c;
@@ -24,7 +24,7 @@ th a, th a:hover, .td-button button, tfoot, select {
   }
 
 .table-header input {
-  padding-left: .4rem;
+  padding: .1rem;
   margin: 0rem .2rem;
   }
 
@@ -112,7 +112,6 @@ td, .get-btn, .input-search {
 
 tfoot {
   background-color: #dddddd;
-  /* border: .5px solid #a9a9a9; */
   font-weight: 500;
   }
 
@@ -157,7 +156,6 @@ select {
 
 table.table > tbody tr.selected td, table.table > tbody tr.selected td[sort] {
   background: #cbdce8;
-  /* border-left: #b3c4d0 solid 1px; */
   border-top: #b3c4d0 solid 2px;
   border-bottom: #b3c4d0 solid 2px;
   }
@@ -165,4 +163,12 @@ table.table > tbody tr.selected td, table.table > tbody tr.selected td[sort] {
 table.table > tbody tr[debit] {
   color: #808080;
   background: #E9FFE3;
+  }
+
+#DATEFROM, #DATETO {
+  width: 100px;
+  }
+
+#DATEFROM[value], #DATETO[value] {
+  text-align: center;
   }

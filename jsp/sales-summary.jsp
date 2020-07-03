@@ -45,7 +45,7 @@
 						<%@ include file="/includes/menuSidebar.html" %>
 						<div class="col-lg-10 col-md-12 page-title">
               <h4>Sales Summary</h4>
-              <p>Below is a summary of your sales from ${param.DATEFROM} through ${param.DATETO}.</p>
+              <p>Below is a summary of your sales from ${fromDate} through ${toDate}.</p>
 							<div class="content-box overflow-auto">
 								<form name="summary" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesSummary">
 									<div class="table-header">
@@ -59,12 +59,11 @@
 											<input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-summary-tablerow.html" />
 											<input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-summary-table.jsp" />
 											<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-											<button class="grey-btn" value="Get New Summary" onclick="refreshReport (document.summary);">Update Summary</button>
+											<button type="button" class="grey-btn" value="Get New Summary" onclick="refreshReport (document.summary);">Update Summary</button>
 										</span>
 									</div> <!-- end .table-header -->
 								</form>
-								<div name="tableframe" class="h-100" id="tableframe">
-								</div> <!-- end #tableframe -->
+								<div name="tableframe" class="h-100" id="tableframe"></div> <!-- end #tableframe -->
 							</div> <!-- end .content-box -->
 						</div> <!-- end .col-lg-10 page-title -->
 					</div> <!-- end first .row justify-content-start -->

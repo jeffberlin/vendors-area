@@ -35,6 +35,13 @@
         display: block;
       }
     </style>
+    <script>
+			function refreshReport (form) {
+				if (CheckDateRange (form)) {
+					submitToDiv (form, 'tableframe');
+				}
+			}
+    </script>
   </head>
   <body>
     <!-- Blue background header -->
@@ -50,14 +57,14 @@
               <h4>Detailed Sales Summary</h4>
               <p>Sales are batched by number of items in order.</p>
               <div class="content-box overflow-auto">
-                <c:import url = "https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDSummary">
-                  <c:param name = "SESSIONID" value = "${sessionid}" />
-                  <c:param name = "DATEFROM" value="${fromDate}" />
-                  <c:param name = "DATETO" value="${toDate}" />
-                  <c:param name = "ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-detailed-summary-tablerow.html" />
-                  <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-detailed-summary-table.jsp" />
-                  <c:param name = "ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-                </c:import>
+                <form name="detailedsummary" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDSummary" method="post">
+                  <input type="hidden" name="DATEFROM" value="${fromDate}" />
+                  <input type="hidden" name="DATETO" value="${toDate}" />
+                  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-detailed-summary-tablerow.html" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-detailed-summary-table.jsp" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+                </form>
+                <div name="tableframe" class="h-100" id="tableframe"></div>
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 -->
           </div> <!-- end first .row -->
@@ -65,6 +72,7 @@
       </div> <!-- end .container-fluid -->
       <%@ include file="/includes/footer.html" %>
     </div> <!-- end .main-raised -->
-  <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
+    <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
+  <script>$(document).ready(function(){ submitToDiv (document.detailedsummary, 'tableframe'); });</script>
 </html>
