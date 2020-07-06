@@ -110,6 +110,10 @@ td, .get-btn, .input-search {
   font-size: .9rem;
   }
 
+.table-total th {
+  padding: .75rem .4rem;
+  }
+
 tfoot {
   background-color: #dddddd;
   font-weight: 500;

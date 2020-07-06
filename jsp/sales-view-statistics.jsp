@@ -21,8 +21,6 @@
     <style media="screen" type="text/css">
       .table-responsive-lg {
         overflow-y: scroll;
-        display: block;
-        height: calc(100vh - 375px);
       }
       select {
         letter-spacing: .5px;
@@ -43,25 +41,56 @@
         border-right: 1px solid #a9a9a9;
       }
       td[number] {
-        text-align: right;
+        text-align: center;
       }
     </style>
 		<script language="javascript" type="text/javascript">
-      function initForm (form) {
-        var consolidateby = getCookieValue ("BMTMicro.Vendors.Statistics.ConsolidateBy");
-        var direction     = getCookieValue ("BMTMicro.Vendors.Statistics.Direction");
-        if (consolidateby != null) {
-          form.CONSOLIDATEBY.value = consolidateby;
+      // function initForm (form) {
+      //   var consolidateby = getCookieValue ("BMTMicro.Vendors.Statistics.ConsolidateBy");
+      //   var direction     = getCookieValue ("BMTMicro.Vendors.Statistics.Direction");
+      //   if (consolidateby != null) {
+      //     form.CONSOLIDATEBY.value = consolidateby;
+      //   }
+      //   if (direction != null) {
+      //     form.DIRECTION.value = direction;
+      //   }
+      //   getVendorDateRange (form);
+      //   form.submit ();
+      // }
+			function consolidateByChanged (form) {
+				setCookieValue ("BMTMicro.Vendors.Statistics.ConsolidateBy", queryField (form, "CONSOLIDATEBY"), 1000);
+			}
+
+			function directionChanged (form) {
+				setCookieValue ("BMTMicro.Vendors.Statistics.Direction", queryField (form, "DIRECTION"), 1000);
+			}
+
+			function refreshReport (form) {
+				var consolidateby = getCookieValue ("BMTMicro.Vendors.Statistics.ConsolidateBy");
+				var direction     = getCookieValue ("BMTMicro.Vendors.Statistics.Direction");
+
+				if (CheckDateRange (form)) {
+					if (form.CONSOLIDATEBY.value == 0) {
+						form.CONSOLIDATEBY.value = consolidateby;
+					}
+					if (form.DIRECTION.value == 0) {
+						form.DIRECTION.value = direction;
+					}
+					submitToDiv (form, 'tableframe');
+				} else {
+					form.submit();
+				}
+			}
+
+			function filterKeyPress(event) {
+        if (event.keyCode == 13) {
+          refreshReport (document.statistics);
+          return (true);
         }
-        if (direction != null) {
-          form.DIRECTION.value = direction;
-        }
-        getVendorDateRange (form);
-        form.submit ();
       }
 		</script>
 	</head>
-	<body  onload="initForm (document.start);">
+	<body>
 		<!-- Blue background header -->
 		<div class="blue-bg"></div>
 		<!-- Start of the body -->
@@ -73,19 +102,50 @@
 						<div class="col-lg-10 col-md-12 page-title">
               <h4>View Statistics</h4>
               <p>Select field to display occurrences.</p>
-							<div class="content-box d-flex flex-column">
-								<div name="tableframe" class="overflow-auto h-100" id="tableframe">
-                  <form name="start" action="https://vendors.bmtmicro.com/servlets/Vendors.Statistics" method="post">
-                    <input type="hidden" name="DATEFROM" value="${fromDate}" />
-                    <input type="hidden" name="DATETO" value="${toDate}" />
-                    <input type="hidden" name="CONSOLIDATEBY" value="0" />
-                    <input type="hidden" name="DIRECTION" value="1" />
-                    <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-view-statistics-tablerow.html" />
-                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-view-statistics-table.jsp" />
-                    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-                  </form>
-                </div>
-								<div name="resultframe" id="resultframe"></div>
+							<div class="content-box overflow-auto d-flex flex-column">
+                <form name="statistics" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Statistics" method="post">
+                  <input type="hidden" name="CONSOLIDATEBY" value="0" />
+                  <input type="hidden" name="DIRECTION" value="1" />
+									<div class="table-header">
+								    <span>From:&nbsp;<input id="DATEFROM" name="DATEFROM" value="${fromDate}" onkeypress="filterKeyPress(event)" />
+								      <img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
+								    </span>
+								    <span>To:&nbsp;
+								      <input id="DATETO" name="DATETO" value="${toDate}" style="margin-bottom: 1rem;" onkeypress="filterKeyPress(event)" />
+								      <img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
+								    </span>
+								    <br>
+								    <span>Consolidate By:&nbsp;
+								      <select name="CONSOLIDATEBY" onchange="consolidateByChanged (statistics);">
+								        <option value="0" selected="selected">Product Name</option>
+								        <option value="1">Product ID</option>
+								        <option value="2">Payment Date</option>
+								        <option value="3">Number of Items Ordered</option>
+								        <option value="4">Price of Item Ordered</option>
+								        <option value="5">Payment Method</option>
+								        <option value="6">Country</option>
+								        <option value="7">Comments</option>
+								        <option value="8">Howheard</option>
+								        <option value="9">Vendor specific info 1</option>
+								        <option value="10">Vendor specific info 2</option>
+								        <option value="11">Vendor specific info 3</option>
+								      </select>
+								    </span>
+								    <span>
+								      <select name="DIRECTION" onchange="directionChanged (statistics);">
+								        <option value="0">Ascending order</option>
+								        <option value="1">Descending order</option>
+								      </select>
+								    </span>
+								    <span>
+											<input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-view-statistics-tablerow.html" />
+								      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-view-statistics-table.jsp" />
+								      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+								      <button type="button" class="grey-btn" value="Get Sales Summary" onclick="refreshReport (document.statistics);">Get Statistics</button>
+								    </span>
+								  </div> <!-- end .table-header -->
+                </form>
+                <div name="tableframe" class="h-100" id="tableframe"></div>
 							</div> <!-- end .content-box -->
 						</div> <!-- end .col-lg-10 page-title -->
 					</div> <!-- end first .row justify-content-start -->
@@ -95,5 +155,5 @@
 		</div> <!-- end .main-raised -->
 		<%@ include file="/includes/bootstrap_bottom_scripts.html" %>
 	</body>
-	<script>$(document).ready(function(){ submitToDiv (document.discounts, 'tableframe'); });</script>
+	<script>$(document).ready(function(){ submitToDiv (document.statistics, 'tableframe'); });</script>
 </html>

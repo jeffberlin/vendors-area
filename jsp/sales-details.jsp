@@ -21,8 +21,6 @@
     <style media="screen" type="text/css">
       .table-responsive {
         overflow-y: scroll;
-        height: calc(100vh - 350px);
-        display: block;
       }
       td[text], td[number], td[date], td[info], td[money], th {
         border-right: 1px solid #a9a9a9;
@@ -44,6 +42,7 @@
       function exactMatch (form) {
         setCookieValue ("BMTMicro.Vendors.SalesDetails.ExactMatch", queryField (form, "EXACTMATCH"), 1000);
       }
+
       function invoice (orderid) {
         var form = document.invoice;
         form.ORDERID.value = orderid;
@@ -51,21 +50,21 @@
       }
 
       function refreshReport (form) {
-         if (CheckDateRange (form)) {
-            if (form.FORMAT.selectedIndex == 0) {
-               submitToDiv (form, 'tableframe');
-               }
-            else {
-               form.submit ();
-               }
-            }
-         }
+        if (CheckDateRange (form)) {
+          if (form.FORMAT.selectedIndex == 0) {
+            submitToDiv (form, 'tableframe');
+          } else {
+            form.submit ();
+          }
+        }
+      }
+
       function filterKeyPress(event) {
-         if (event.keyCode == 13) {
-             refreshReport (document.salesdetails);
-             return (true);
-             }
-         }
+        if (event.keyCode == 13) {
+          refreshReport (document.salesdetails);
+          return (true);
+        }
+      }
     </script>
   </head>
   <body>
@@ -112,8 +111,7 @@
                       <button class="grey-btn" type="button" value="Get Report" onclick="refreshReport (document.salesdetails);">Get Sales Details</button>
                     </span>
                   </div> <!-- end .table-header -->
-                  <div name="tableframe" class="overflow-auto h-100" id="tableframe">
-  					   </div> <!-- end #tableframe -->
+                  <div name="tableframe" class="overflow-auto h-100" id="tableframe"></div> <!-- end #tableframe -->
                 </form>
                 <div style="visibility:hidden;">
                   <form name="invoice" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Invoice" method="post" target="_blank">
@@ -128,7 +126,7 @@
       </div> <!-- end .container-fluid -->
       <%@ include file="/includes/footer.html" %>
     </div> <!-- end .main-raised -->
-  <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
-  <script>$(document).ready(function(){ submitToDiv (document.salesdetails, 'tableframe'); });</script>
+    <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
+    <script>$(document).ready(function(){ submitToDiv (document.salesdetails, 'tableframe'); });</script>
   </body>
 </html>
