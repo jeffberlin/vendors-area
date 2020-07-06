@@ -21,6 +21,8 @@
     <style media="screen" type="text/css">
       .table-responsive {
         overflow-y: scroll;
+        height: calc(100vh - 350px);
+        display: block;
       }
       td[text], td[number], td[date], td[info], td[money], th {
         border-right: 1px solid #a9a9a9;
@@ -42,7 +44,6 @@
       function exactMatch (form) {
         setCookieValue ("BMTMicro.Vendors.SalesDetails.ExactMatch", queryField (form, "EXACTMATCH"), 1000);
       }
-
       function invoice (orderid) {
         var form = document.invoice;
         form.ORDERID.value = orderid;
@@ -50,21 +51,21 @@
       }
 
       function refreshReport (form) {
-        if (CheckDateRange (form)) {
-          if (form.FORMAT.selectedIndex == 0) {
-            submitToDiv (form, 'tableframe');
-          } else {
-            form.submit ();
-          }
-        }
-      }
-
+         if (CheckDateRange (form)) {
+            if (form.FORMAT.selectedIndex == 0) {
+               submitToDiv (form, 'tableframe');
+               }
+            else {
+               form.submit ();
+               }
+            }
+         }
       function filterKeyPress(event) {
-        if (event.keyCode == 13) {
-          refreshReport (document.salesdetails);
-          return (true);
-        }
-      }
+         if (event.keyCode == 13) {
+             refreshReport (document.salesdetails);
+             return (true);
+             }
+         }
     </script>
   </head>
   <body>
@@ -79,7 +80,7 @@
             <%@ include file="/includes/menuSidebar.html" %>
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Sales Detail Report</h4>
-              <p>Filter Details using the input fields. Fields can be added or removed using the Settings link at the top right of this page.</p>
+              <p>Filter Details using the input fields. Fields can be added or removed using the Settings link on the left side of this page.</p>
               <div class="content-box overflow-auto">
                 <form name="salesdetails" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetails" method="post">
                   <div class="table-header">
@@ -88,12 +89,13 @@
                       <img src='<c:url value="/images/cal.gif"></c:url>' width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
                     </span>
                     <span>To:&nbsp;
-                      <input id="DATETO" name="DATETO" value="${toDate}" onkeypress="filterKeyPress(event)"/>&nbsp;
+                      <input id="DATETO" name="DATETO" value="${toDate}" style="margin-bottom: 1rem;" onkeypress="filterKeyPress(event)"/>&nbsp;
                       <img src='<c:url value="/images/cal.gif"></c:url>' width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
                     </span>
+                    <!-- <br> -->
                     <span>
                       <input type="checkbox" name="EXACTMATCH" value="-1"<c:if test="${cookie['BMTMicro.Vendors.SalesDetails.ExactMatch'].value==-1}"> checked</c:if>
-                      onclick="exactMatch(salesdetails);" title="Check for exact matches"  >&nbsp;Use exact match when filtering
+                          onclick="exactMatch(salesdetails);" title="Check for exact matches"  >&nbsp;Use exact match when filtering
                       <input type="hidden" name="ROWSPERPAGE" value="250" />
                       <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-details-table.jsp" />
                       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
@@ -107,10 +109,11 @@
                       </select>
                     </span>
                     <span>
-                      <button type="button" class="grey-btn" type="button" value="Get Report" onclick="refreshReport (document.salesdetails);">Get Sales Details</button>
+                      <button class="grey-btn" type="button" value="Get Report" onclick="refreshReport (document.salesdetails);">Get Sales Details</button>
                     </span>
                   </div> <!-- end .table-header -->
-                  <div name="tableframe" class="overflow-auto h-100" id="tableframe"></div> <!-- end #tableframe -->
+                  <div name="tableframe" class="overflow-auto h-100" id="tableframe">
+  					   </div> <!-- end #tableframe -->
                 </form>
                 <div style="visibility:hidden;">
                   <form name="invoice" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Invoice" method="post" target="_blank">
@@ -125,7 +128,7 @@
       </div> <!-- end .container-fluid -->
       <%@ include file="/includes/footer.html" %>
     </div> <!-- end .main-raised -->
-    <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
-    <script>$(document).ready(function(){ submitToDiv (document.salesdetails, 'tableframe'); });</script>
+  <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
+  <script>$(document).ready(function(){ submitToDiv (document.salesdetails, 'tableframe'); });</script>
   </body>
 </html>

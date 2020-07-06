@@ -45,7 +45,7 @@
 						<%@ include file="/includes/menuSidebar.html" %>
 						<div class="col-lg-10 col-md-12 page-title">
               <h4>Sales Summary</h4>
-              <p>Below is a summary of your sales from ${fromDate} through ${toDate}.</p>
+              <p>Below is a summary of your sales.</p>
 							<div class="content-box overflow-auto">
 								<form name="summary" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesSummary">
 									<div class="table-header">

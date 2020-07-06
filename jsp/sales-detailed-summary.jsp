@@ -23,7 +23,11 @@
         border-right: 1px solid #a9a9a9;
       }
 
-      td[number], td[money] {
+      td[number] {
+        text-align: center;
+      }
+
+      td[money] {
         text-align: right;
       }
 
@@ -57,9 +61,25 @@
               <h4>Detailed Sales Summary</h4>
               <p>Sales are batched by number of items in order.</p>
               <div class="content-box overflow-auto">
-                <div name="tableframe" class="h-100" id="tableframe">
-                  <jsp:include page="sales-detailed-summary-table.jsp" />
-                </div>
+               <form name="detailedsummary" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDSummary">
+                 <div class="row table-responsive-lg" style="margin-left: auto; margin-right: auto;">
+                   <div class="table-header">
+                     <span>From:&nbsp;<input id="DATEFROM" name="DATEFROM" value="${fromDate}" />
+                       <img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
+                     </span>
+                     <span>To:&nbsp;<input id="DATETO" name="DATETO" value="${toDate}" />
+                       <img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATETO'); return (false);" onmouseover="this.style.cursor='pointer';" />
+                     </span>
+                     <span>
+                       <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-detailed-summary-tablerow.html" />
+                       <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-detailed-summary-table.jsp" />
+                       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+                       <button type="button" class="grey-btn" value="Get New Summary" onclick="refreshReport (document.detailedsummary);">Update Summary</button>
+                     </span>
+                   </div> <!-- end .table-header -->
+                   <div name="tableframe" class="h-100" id="tableframe"></div>
+                 </div> <!-- end .row table-responsive-lg -->
+                </form>
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 -->
           </div> <!-- end first .row -->
