@@ -52,7 +52,7 @@
       }
       function filterKeyPress(event) {
         if (event.keyCode == 13) {
-          refreshReport (document.salesdetails);
+          refreshReport (document.pendingsales);
           return (true);
         }
       }

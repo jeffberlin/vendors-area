@@ -33,15 +33,41 @@
       }
     </style>
 		<script language="javascript" type="text/javascript">
-      
+      // function submitForm (form) {
+        // if (!CheckDateRange (form)) {
+        //   return (false);
+        // }
+        // if (parseInt (form.FORMAT.value) == 0) { // If printable HTML is selected we use a different row template and landing page
+        //   form.target = "_blank"; // Open up in new window
+        //   form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print.jsp";
+        //   form.ROWTEMPLATEURL.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print-tablerow.html";
+        //   form.submit ();
+        // } else {
+          // form.target = "";
+          // form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-table.jsp";
+          // form.ROWTEMPLATEURL.value = "${param.ROWTEMPLATEURL}";
+        //   submitToDiv (form, 'tableframe');
+        // }
+        // submitToDiv (form, 'tableframe');
+        // form.submit ();
+        // return (true);
+      // }
       function refreshReport (form) {
         if (CheckDateRange (form)) {
+          if (parseInt (form.FORMAT.value) == 0) { // If printable HTML is selected we use a different row template and landing page
+            form.target = "_blank"; // Open up in new window
+            form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print.jsp";
+            form.ROWTEMPLATEURL.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print-tablerow.html";
+            form.submit ();
+          } else {
+            submitToDiv (form, 'tableframe');
+          }
           submitToDiv (form, 'tableframe');
         }
       }
       function filterKeyPress(event) {
         if (event.keyCode == 13) {
-          refreshReport (document.salesdetails);
+          refreshReport (document.transactions);
           return (true);
         }
       }
@@ -60,27 +86,33 @@
               <h4>Pending Sales Report</h4>
               <p>Click on Order ID to retrieve a pdf Invoice for that pending order.</p>
 							<div class="content-box overflow-auto d-flex flex-column">
-                <form name="pendingsales" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesPending">
-                  <input type="hidden" name="ROWHEADERTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-pending-rowheader.html" />
-                  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-pending-tablerow.html" />
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-pending-table.jsp">
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
+                <form name="transactions" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Transactions" method="post">
+                  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-account-transactions-tablerow.html" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-account-transactions-table.jsp" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+                </form>
                   <div class="table-header">
                     <span>From:&nbsp;
-                      <input id="DATEFROM" name="DATEFROM" value="${fromDate90}" onkeypress="filterKeyPress(event)"/>&nbsp;
+                      <input id="DATEFROM" name="DATEFROM" value="${fromDate}" onkeypress="filterKeyPress(event)"/>&nbsp;
                       <img src='<c:url value="/images/cal.gif"></c:url>' width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
                     </span>
                     <span>To:&nbsp;
-                      <input id="DATETO" name="DATETO" value="${toDate}" style="margin-bottom: 1rem;" onkeypress="filterKeyPress(event)"/>&nbsp;
-                      <img src='<c:url value="/images/cal.gif"></c:url>' width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
+                      <input id="DATETO" name="DATETO" value="${toDate}" onkeypress="filterKeyPress(event)"/>&nbsp;
+                      <img src='<c:url value="/images/cal.gif"></c:url>' width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);" onmouseover="this.style.cursor='pointer';" />
                     </span>
                     <span>
-                      <button type="button" class="grey-btn" value="Get Sales Summary" onclick="refreshReport (document.pendingsales);">Update Sales</button>
+                      <select name="FORMAT">
+                        <option value="-1" selected="selected">HTML (refresh)</option>
+                        <option value="0">HTML (printable)</option>
+                        <option value="1">CSV</option>
+                        <option value="2">XML</option>
+                        <option value="3">PDF</option>
+                      </select>
                     </span>
-                    <br>
-                    <span id="lastupdate">&nbsp;</span>
+                    <span>
+                      <button type="button" class="grey-btn" value="Get Sales Summary" onclick="refreshReport (document.transactions);">Update Transactions</button>
+                    </span>
                   </div>
-                </form>
                 <div name="tableframe" class="h-100" id="tableframe"></div>
 							</div> <!-- end .content-box -->
 						</div> <!-- end .col-lg-10 page-title -->
@@ -91,5 +123,5 @@
 		</div> <!-- end .main-raised -->
 		<%@ include file="/includes/bootstrap_bottom_scripts.html" %>
 	</body>
-	<script>$(document).ready(function(){ submitToDiv (document.pendingsales, 'tableframe'); });</script>
+	<script>$(document).ready(function(){ submitToDiv (document.transactions, 'tableframe'); });</script>
 </html>
