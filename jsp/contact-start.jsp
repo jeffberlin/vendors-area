@@ -156,10 +156,8 @@
                 <h5>Contact&nbsp;BMT&nbsp;Micro</h5>
                 <p>If you need to contact one of us directly,&nbsp;please use email links below.</p>
                 <p>For questions regarding vendor payments and updating vendor payment information, contact our Office Manager, Jennifer Lancaster at&nbsp;<a href="mailto:jenni@bmtmicro.com">jenni@bmtmicro.com</a>.</p>
-                <p>For questions regarding refunds, chargebacks and exchanges, contact Barb Hickman at&nbsp;<a href="mailto:barb@bmtmicro.com">barb@bmtmicro.com</a>.</p>
-                <p>For questions regarding purchase order processing and handling, contact us at&nbsp;<a href="mailto:cservice@bmtmicro.com">carrie@bmtmicro.com</a>.</p>
+                <p>For questions regarding refunds, chargebacks and exchanges, contact us at&nbsp;<a href="mailto:refunds@bmtmicro.com">refunds@bmtmicro.com</a>.</p>
                 <p>For questions regarding technical support and shopping cart customizations, contact us at&nbsp;<a href="mailto:vendors@bmtmicro.com">vendors@bmtmicro.com</a>.</p>
-                <p>For special requests and negotiations, contact Peter Nielsen at&nbsp;<a href="mailto:petern@bmtmicro.com">petern@bmtmicro.com</a>.</p>
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
