@@ -32,6 +32,13 @@
 					submitToDiv (form, 'tableframe');
 				}
 			}
+
+			function filterKeyPress(event) {
+        if (event.keyCode == 13) {
+          refreshReport (document.salesdetails);
+          return (true);
+        }
+      }
     </script>
 	</head>
 	<body>
@@ -49,10 +56,10 @@
 							<div class="content-box overflow-auto">
 								<form name="summary" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesSummary">
 									<div class="table-header">
-										<span>From:&nbsp;<input id="DATEFROM" name="DATEFROM" value="${fromDate}" />
+										<span>From:&nbsp;<input id="DATEFROM" name="DATEFROM" value="${fromDate}" onkeypress="filterKeyPress(event)" />
 											<img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
 										</span>
-										<span>To:&nbsp;<input id="DATETO" name="DATETO" value="${toDate}" />
+										<span>To:&nbsp;<input id="DATETO" name="DATETO" value="${toDate}" onkeypress="filterKeyPress(event)" />
 											<img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATETO'); return (false);" onmouseover="this.style.cursor='pointer';" />
 										</span>
 										<span>

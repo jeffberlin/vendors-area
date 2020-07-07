@@ -35,6 +35,12 @@
       function reportTypeChanged (form) {
         setCookieValue ("BMTMicro.Vendors.AffiliateSales.ReportType", queryField (form, "REPORTTYPE"), 1000);
       }
+      function filterKeyPress(event) {
+        if (event.keyCode == 13) {
+          refreshReport (document.salesdetails);
+          return (true);
+        }
+      }
       function submitForm (form){
         if (!CheckDateRange (form)) {
           return (false);
@@ -62,12 +68,12 @@
                   <div class="table-header">
                     <span>
                       From:&nbsp;
-                      <input id="DATEFROM" name="DATEFROM" value="${param.DATEFROM}" />
+                      <input id="DATEFROM" name="DATEFROM" value="${param.DATEFROM}" onkeypress="filterKeyPress(event)" />
                       <img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
                     </span>
                     <span>
                       To:&nbsp;
-                      <input id="DATETO" name="DATETO" value="${param.DATETO}" style="margin-bottom: 1rem;" />
+                      <input id="DATETO" name="DATETO" value="${param.DATETO}" onkeypress="filterKeyPress(event)" style="margin-bottom: 1rem;" />
                       <img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATETO'); return (false);" onmouseover="this.style.cursor='pointer';" />
                     </span>
                     <span>

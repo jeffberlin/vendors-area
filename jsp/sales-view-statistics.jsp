@@ -66,19 +66,21 @@
 			}
 
 			function refreshReport (form) {
-				var consolidateby = getCookieValue ("BMTMicro.Vendors.Statistics.ConsolidateBy");
-				var direction     = getCookieValue ("BMTMicro.Vendors.Statistics.Direction");
+				// var consolidateby = getCookieValue ("BMTMicro.Vendors.Statistics.ConsolidateBy");
+				// var direction     = getCookieValue ("BMTMicro.Vendors.Statistics.Direction");
 
 				if (CheckDateRange (form)) {
-					if (form.CONSOLIDATEBY.value == 0) {
-						form.CONSOLIDATEBY.value = consolidateby;
+					// if (consolidateby == 0) {
+					// 	form.CONSOLIDATEBY.value = consolidateby;
+					// }
+					// if (direction == 1) {
+					// 	form.DIRECTION.value = direction;
+					// }
+					if (form.CONSOLIDATEBY.value == 0 && form.DIRECTION.value == 1) {
+						submitToDiv (form, 'tableframe');
+					} else {
+						form.submit();
 					}
-					if (form.DIRECTION.value == 0) {
-						form.DIRECTION.value = direction;
-					}
-					submitToDiv (form, 'tableframe');
-				} else {
-					form.submit();
 				}
 			}
 
@@ -104,8 +106,8 @@
               <p>Select field to display occurrences.</p>
 							<div class="content-box overflow-auto d-flex flex-column">
                 <form name="statistics" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Statistics" method="post">
-                  <input type="hidden" name="CONSOLIDATEBY" value="0" />
-                  <input type="hidden" name="DIRECTION" value="1" />
+                  <!-- <input type="hidden" name="CONSOLIDATEBY" value="0" /> -->
+                  <!-- <input type="hidden" name="DIRECTION" value="1" /> -->
 									<div class="table-header">
 								    <span>From:&nbsp;<input id="DATEFROM" name="DATEFROM" value="${fromDate}" onkeypress="filterKeyPress(event)" />
 								      <img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
@@ -116,8 +118,8 @@
 								    </span>
 								    <br>
 								    <span>Consolidate By:&nbsp;
-								      <select name="CONSOLIDATEBY" onchange="consolidateByChanged (statistics);">
-								        <option value="0" selected="selected">Product Name</option>
+								      <select name="CONSOLIDATEBY"<c:if test="${cookie['BMTMicro.Vendors.SalesDetails.ConsolidateBy'].value==0}"> selected</c:if> onchange="consolidateByChanged (statistics);">
+								        <option value="0">Product Name</option>
 								        <option value="1">Product ID</option>
 								        <option value="2">Payment Date</option>
 								        <option value="3">Number of Items Ordered</option>
@@ -132,7 +134,7 @@
 								      </select>
 								    </span>
 								    <span>
-								      <select name="DIRECTION" onchange="directionChanged (statistics);">
+								      <select name="DIRECTION"<c:if test="${cookie['BMTMicro.Vendors.SalesDetails.Direction'].value==0}"> selected</c:if> onchange="directionChanged (statistics);">
 								        <option value="0">Ascending order</option>
 								        <option value="1">Descending order</option>
 								      </select>
