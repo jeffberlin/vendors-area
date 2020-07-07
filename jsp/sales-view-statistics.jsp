@@ -45,18 +45,6 @@
       }
     </style>
 		<script language="javascript" type="text/javascript">
-      // function initForm (form) {
-      //   var consolidateby = getCookieValue ("BMTMicro.Vendors.Statistics.ConsolidateBy");
-      //   var direction     = getCookieValue ("BMTMicro.Vendors.Statistics.Direction");
-      //   if (consolidateby != null) {
-      //     form.CONSOLIDATEBY.value = consolidateby;
-      //   }
-      //   if (direction != null) {
-      //     form.DIRECTION.value = direction;
-      //   }
-      //   getVendorDateRange (form);
-      //   form.submit ();
-      // }
 			function consolidateByChanged (form) {
 				setCookieValue ("BMTMicro.Vendors.Statistics.ConsolidateBy", queryField (form, "CONSOLIDATEBY"), 1000);
 			}
@@ -66,21 +54,14 @@
 			}
 
 			function refreshReport (form) {
-				// var consolidateby = getCookieValue ("BMTMicro.Vendors.Statistics.ConsolidateBy");
-				// var direction     = getCookieValue ("BMTMicro.Vendors.Statistics.Direction");
-
 				if (CheckDateRange (form)) {
-					// if (consolidateby == 0) {
-					// 	form.CONSOLIDATEBY.value = consolidateby;
-					// }
-					// if (direction == 1) {
-					// 	form.DIRECTION.value = direction;
-					// }
-					if (form.CONSOLIDATEBY.value == 0 && form.DIRECTION.value == 1) {
+					if (form.CONSOLIDATEBY.value == 0) {
 						submitToDiv (form, 'tableframe');
-					} else {
-						form.submit();
 					}
+					if (form.DIRECTION.value == 1) {
+						submitToDiv (form, 'tableframe');
+					}
+					submitToDiv (form, 'tableframe');
 				}
 			}
 
@@ -118,7 +99,7 @@
 								    </span>
 								    <br>
 								    <span>Consolidate By:&nbsp;
-								      <select name="CONSOLIDATEBY"<c:if test="${cookie['BMTMicro.Vendors.SalesDetails.ConsolidateBy'].value==0}"> selected</c:if> onchange="consolidateByChanged (statistics);">
+								      <select name="CONSOLIDATEBY"<c:if test="${cookie['BMTMicro.Vendors.SalesDetails.ConsolidateBy'].value==1}"> selected</c:if> onchange="consolidateByChanged (statistics);">
 								        <option value="0">Product Name</option>
 								        <option value="1">Product ID</option>
 								        <option value="2">Payment Date</option>
