@@ -33,37 +33,26 @@
       }
     </style>
 		<script language="javascript" type="text/javascript">
-      // function submitForm (form) {
-        // if (!CheckDateRange (form)) {
-        //   return (false);
-        // }
-        // if (parseInt (form.FORMAT.value) == 0) { // If printable HTML is selected we use a different row template and landing page
-        //   form.target = "_blank"; // Open up in new window
-        //   form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print.jsp";
-        //   form.ROWTEMPLATEURL.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print-tablerow.html";
-        //   form.submit ();
-        // } else {
-          // form.target = "";
-          // form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-table.jsp";
-          // form.ROWTEMPLATEURL.value = "${param.ROWTEMPLATEURL}";
-        //   submitToDiv (form, 'tableframe');
-        // }
-        // submitToDiv (form, 'tableframe');
-        // form.submit ();
-        // return (true);
-      // }
+			function submitForm (form) {
+				if (!CheckDateRange (form)) {
+					return (false);
+				}
+				if (parseInt (form.FORMAT.value) == 0) { // If printable HTML is selected we use a different row template and landing page
+					form.target = "_blank"; // Open up in new window
+					form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print.jsp";
+					form.ROWTEMPLATEURL.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print-tablerow.html";
+				} else {
+					form.target = "";
+					form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-table.jsp";
+					form.ROWTEMPLATEURL.value = "${param.ROWTEMPLATEURL}";
+				}
+				form.submit ();
+				return (true);
+			}
       function refreshReport (form) {
-        if (CheckDateRange (form)) {
-          if (parseInt (form.FORMAT.value) == 0) { // If printable HTML is selected we use a different row template and landing page
-            form.target = "_blank"; // Open up in new window
-            form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print.jsp";
-            form.ROWTEMPLATEURL.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print-tablerow.html";
-            form.submit ();
-          } else {
-            submitToDiv (form, 'tableframe');
-          }
-          submitToDiv (form, 'tableframe');
-        }
+				if (CheckDateRange (form)) {
+					submitToDiv (form, 'tableframe');
+				}
       }
       function filterKeyPress(event) {
         if (event.keyCode == 13) {
@@ -83,14 +72,13 @@
 					<div class="row justify-content-start">
 						<%@ include file="/includes/menuSidebar.html" %>
 						<div class="col-lg-10 col-md-12 page-title">
-              <h4>Pending Sales Report</h4>
-              <p>Click on Order ID to retrieve a pdf Invoice for that pending order.</p>
+              <h4>Account Transactions</h4>
+              <p>Vendor payments are made on the first of each month.</p>
 							<div class="content-box overflow-auto d-flex flex-column">
                 <form name="transactions" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Transactions" method="post">
                   <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-account-transactions-tablerow.html" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-account-transactions-table.jsp" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-                </form>
                   <div class="table-header">
                     <span>From:&nbsp;
                       <input id="DATEFROM" name="DATEFROM" value="${fromDate}" onkeypress="filterKeyPress(event)"/>&nbsp;
@@ -112,7 +100,8 @@
                     <span>
                       <button type="button" class="grey-btn" value="Get Sales Summary" onclick="refreshReport (document.transactions);">Update Transactions</button>
                     </span>
-                  </div>
+                  </div> <!-- end .table-header -->
+								</form>
                 <div name="tableframe" class="h-100" id="tableframe"></div>
 							</div> <!-- end .content-box -->
 						</div> <!-- end .col-lg-10 page-title -->
