@@ -122,6 +122,15 @@
         }
         return (true);
       }
+      function submitRefund (form) {
+        if (isBlank (form.COMMENTS.value) ) {
+          alert ("You must provide a reason for this refund.");
+          form.COMMENTS.focus ();
+          return (false);
+        }
+        submitToDiv (form, 'resultframe');
+        return (true);
+      }
     </script>
   </head>
   <body>
