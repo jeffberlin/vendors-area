@@ -39,7 +39,32 @@
               <h4>Customer&nbsp;Comments</h4>
               <p>This report displays customer comments and custom field values from your shopping cart.</p>
               <div class="content-box">
-                <div>
+                <form name="customercomments" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Comments" method="post" onsubmit="return (CheckDateRange (this));">
+                  <input type="hidden" name="SESSIONID" value="${sessionid}" />
+                  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-comments-tablerow.html" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-comments-start.jsp" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+                  <div class="table-header">
+                    <span>From:&nbsp;<input id="DATEFROM" name="DATEFROM" value="${fromDate}" />
+                      <img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
+                    </span>
+                    <span>To:&nbsp;<input id="DATETO" name="DATETO" value="${toDate}"  style="margin-bottom: 1rem;"/>
+                      <img src='<c:url value="/images/cal.gif"></c:url>' width="22" height="22" border="0" alt="Click Here to Pick the date" onclick="show_calendar ('DATETO'); return (false);" onmouseover="this.style.cursor='pointer';" />
+                    </span>
+                    <span>
+                      <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
+                      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-comments-start.jsp" />
+                      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+                      <select name="FORMAT">
+                        <option value="0" selected="selected">HTML</option>
+                        <option value="1">CSV</option>
+                        <option value="2">XML</option>
+                      </select>
+                    </span>
+                    <button class="get-btn" value="Get Report" />Get&nbsp;Report</button>
+                  </div> <!-- end .table-header -->
+                </form>
+                <div name="tableframe" class="h-100" id="tableframe"></div> <!-- end #tableframe -->
                   <c:import url = "https://vendors-new.bmtmicro.com/servlets/Vendors.Comments">
                     <c:param name = "SESSIONID" value = "${sessionid}" />
                     <c:param name = "DATEFROM" value="${fromDate}" />
@@ -48,7 +73,6 @@
                     <c:param name = "NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-comments-start.jsp" />
                     <c:param name = "ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                   </c:import>
-                </div>
                 <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 350px; padding: 0px; margin:0px; display: none;" >
                    [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
                 </iframe>
@@ -61,4 +85,5 @@
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
+  <script>$(document).ready(function(){ submitToDiv (document.customercomments, 'tableframe'); });</script>
 </html>

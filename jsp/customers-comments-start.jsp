@@ -1,15 +1,4 @@
 <%@ include file="/includes/core.jsp" %>
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <style media="screen" type="text/css">
-      td[text], td[info] {
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
     <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.Comments" method="get" onsubmit="return (CheckDateRange (this));">
       <div class="table-header">
         <span>
@@ -114,5 +103,3 @@
         </table>
       </div>
     </form>
-  </body>
-</html>
