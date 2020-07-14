@@ -3,7 +3,7 @@
 	<c:if test = "${ param.USECOUNT == 0 }">
 		<form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes">
 			<input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes.jsp" />
-			<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/result-error.jsp" />
+			<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
 			<input type="hidden" name="ACTION" value="12">
 			<input type="hidden" name="SCHEMEID" value="${ param.SCHEMEID }" />
 			<h5>Delete Discount Scheme</h5>

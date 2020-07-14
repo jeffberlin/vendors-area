@@ -114,7 +114,7 @@
                 <form method="post" name="users" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Users" target="_parent">
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/user-management.jsp" />
                   <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/user-management-ablerow.html" />
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/result-error.jsp" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                   <input type="hidden" name="FEATUREFLAGS" value="${param.FEATUREFLAGS}" />
                   <input type="hidden" name="ACTION" value="11" />
                   <input type="hidden" name="USERID" value="${param.USERID}" />

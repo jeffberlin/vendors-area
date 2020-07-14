@@ -2,7 +2,7 @@
 <div class="transfer-section">
   <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Users">
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/user-management.jsp" />
-    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/result-error.jsp" />
+    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
     <input type="hidden" name="USERID" value="${param.USERID}" />
     <input type="hidden" name="ACTION" value="12" />
     <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/users_tablerow.html" />

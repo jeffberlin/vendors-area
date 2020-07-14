@@ -122,7 +122,6 @@
                   <input type="hidden" name="FEATUREFLAGS" value="${param.FEATUREFLAGS}" />
                   <input type="hidden" name="ACTION" value="10" />
                   <input type="hidden" name="USERID" value="${param.USERID}" />
-                  <!-- <h5>Add&nbsp;New&nbsp;User</h5> -->
                   <span>
                     <label>Name:&nbsp;</label>
                     <input id="NAME" name="NAME" value="${param.NAME}" style="margin-bottom: 1rem;" size="35" />

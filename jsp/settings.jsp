@@ -146,7 +146,7 @@
               <form name="settings" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" method="post">
                 <input type="hidden" name = "ACTION" value = "1"/>
                 <input type="hidden" name = "NEXT_PAGE" value = "https://vendors-new.bmtmicro.com/settings-page.jsp"/>
-                <input type="hidden" name = "ERROR_PAGE" value = "https://vendors-new.bmtmicro.com/error.jsp"/>
+                <input type="hidden" name = "ERROR_PAGE" value = "https://vendors-new.bmtmicro.com/error-div.jsp"/>
               </form>
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->

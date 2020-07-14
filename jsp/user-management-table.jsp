@@ -3,7 +3,7 @@
   <input type="hidden" name="ACTION" value="-1" />
   <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/user-management-tablerow.html" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/user-management-table.jsp" />
-  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/result-error.jsp" />
+  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   <input type="hidden" name="USERID" value="" />
   <div class="table-header">
     <button type="button" class="grey-btn" onclick="addUser ();" >Add New User</button>

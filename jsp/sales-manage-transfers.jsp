@@ -63,7 +63,7 @@
         } else {
           form.target = "";
           form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/transactions.html";
-          form.ROWTEMPLATEURL.value = "##ROWTEMPLATEURL##";
+          form.ROWTEMPLATEURL.value = "${param.ROWTEMPLATEURL}.";
         }
         form.submit();
         return (true);
@@ -92,7 +92,7 @@
                    <input type="hidden" name="MAXAMOUNT" value="" />
                    <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/v2v_tablerow.html" />
                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/v2vtransfers.html">
-                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
+                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp">
                 </form>
                 <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; padding: 0px; margin: 10px 0px 0px 0px; display: none;">
                    [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]

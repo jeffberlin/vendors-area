@@ -123,7 +123,7 @@
 								    <span>
 											<input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-view-statistics-tablerow.html" />
 								      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-view-statistics-table.jsp" />
-								      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+								      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
 								      <button type="button" class="grey-btn" value="Get Sales Summary" onclick="refreshReport (document.statistics);">Get Statistics</button>
 								    </span>
 								  </div> <!-- end .table-header -->

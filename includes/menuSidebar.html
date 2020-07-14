@@ -13,16 +13,6 @@
   // -->
 </script>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-var js, fjs = d.getElementsByTagName(s)[0];
-if (d.getElementById(id)) return;
-js = d.createElement(s); js.id = id;
-js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
-
 <div style="visibility:hidden;">
   <form name="logout" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Logout">
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login.jsp" />
@@ -47,8 +37,8 @@ fjs.parentNode.insertBefore(js, fjs);
       <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/account.jsp">My Account</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/settings.jsp">Settings</a>
-        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/usersstart.html">User Management</a>
-        <a class="dropdown-item" href="logout.jsp">Log Out</a>
+        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/user-management.jsp">User Management</a>
+        <a class="dropdown-item" href="./logout.jsp">Log Out</a>
       </div>
     </div> <!-- end .dropright -->
     <div class="vendor-company">
@@ -67,14 +57,14 @@ fjs.parentNode.insertBefore(js, fjs);
       <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Sales</a>
       <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/mainstart.html">Sales Graphs</a>
-        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/salessummarystart.html">Sales Summary</a>
+        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/sales-summary.jsp">Sales Summary</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/sales-detailed-summary.jsp">Detailed Summary</a>
-        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/eusummarystart.html">EU Sales Summary</a>
-        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/salesdetailsstart.html">Sales Details</a>
-        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/statisticsstart.html">View Statistics</a>
-        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/pendingsalesstart.html">Pending Sales</a>
-        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/transactionsstart.html">Account Transactions</a>
-        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/v2vstart.html">Manage Transfers</a>
+        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/sales-eu-summary.jsp">EU Sales Summary</a>
+        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/sales-details.jsp">Sales Details</a>
+        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/sales-view-statistics.jsp">View Statistics</a>
+        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/sales-pending.jsp">Pending Sales</a>
+        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/sales-account-transactions.jsp">Account Transactions</a>
+        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/sales-manage-transfers.jsp">Manage Transfers</a>
       </div>
     </div> <!-- end .dropright -->
     <div class="dropright">
@@ -97,7 +87,13 @@ fjs.parentNode.insertBefore(js, fjs);
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/downloadpasswordsstart.html">Manage Download Passwords</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/subscriptionsstart.html">Manage Subscriptions</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/ticketsstart.html">Manage Tickets</a>
-        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/customers-authorize-sales.jsp">Authorize Sales</a>
+        <script language="javascript" type="text/javascript">
+          <!--
+          if (getCookieValue ("BMTMicro.Vendors.AuthMenu") == -1) {
+            document.write ("<a class=\"dropdown-item\" href=\"https://vendors-new.bmtmicro.com/customers-authorize-sales.jsp\">Authorize Sales</a>");
+          }
+          // -->
+        </script>
       </div>
     </div> <!-- end .dropright -->
     <div class="dropright">

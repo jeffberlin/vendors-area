@@ -1,5 +1,4 @@
 <%@ include file="/includes/core.jsp" %>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -47,18 +46,7 @@
           return (CheckDateRange (form));
         }
 
-        function initForm (form){
-          // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
-          // field is not present. (An unchecked checkbox constitutes a non-existent field).
-          //initField (form, "ACTIVE_CHK",     "${param.ACTIVE}");
-          //initField (form, "STOPORDER_CHK",  "${param.STOPORDER}");
-          //initField (form, "FIRSTONLY_CHK",  "${param.FIRSTONLY}");
-          //initField (form, "FREESHIPPING_CHK","${param.FREESHIPPING}");
-          //initField (form, "ROUNDING",       "${param.ROUNDING}");
-          //initField (form, "DISCOUNTTYPE",   "${param.DISCOUNTTYPE}");
-          //initField (form, "QUALIFYINGTYPE", "${param.QUALIFYINGTYPE}");
-          //initField (form, "CURRENCY",       "${param.CURRENCY}");
-          //initField (form, "SCHEMETYPE",     "${param.SCHEMETYPE}");
+        function initForm (form) {
           if (parseInt (form.MAXUSECOUNT.value) == 0) {
             form.MAXUSECOUNT.value = "";
           }
@@ -67,12 +55,6 @@
         }
 
         function submitForm (form) {
-          // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
-          // field is not present. (An unchecked checkbox constitutes a non-existent field).
-          //copyField (form, "ACTIVE", "ACTIVE_CHK");
-          //copyField (form, "STOPORDER", "STOPORDER_CHK");
-          //copyField (form, "FIRSTONLY", "FIRSTONLY_CHK");
-          //copyField (form, "FREESHIPPING", "FREESHIPPING_CHK");
           form.NAME.value = trim (form.NAME.value);
 
           if (isBlank (form.NAME.value)) {

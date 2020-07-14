@@ -22,7 +22,7 @@
             <input type="hidden" name="GENCOUNT" value="1" />
             <input type="hidden" name="REPLACE" value="-1" />
             <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes-codetable.jsp" /> <!-- codetable -->
-            <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
+            <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
             <input type="hidden" name="NAME" value="${param.NAME}" />
           </div> <!-- end .row -->
         </form>

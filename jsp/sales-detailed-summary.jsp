@@ -80,7 +80,7 @@
                      <span>
                        <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-detailed-summary-tablerow.html" />
                        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-detailed-summary-table.jsp" />
-                       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+                       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                        <button type="button" class="grey-btn" value="Get New Summary" onclick="refreshReport (document.detailedsummary);">Update Summary</button>
                      </span>
                    </div> <!-- end .table-header -->

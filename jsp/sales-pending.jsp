@@ -75,7 +75,7 @@
                   <input type="hidden" name="ROWHEADERTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-pending-rowheader.html" />
                   <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-pending-tablerow.html" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-pending-table.jsp">
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp">
                   <div class="table-header">
                     <span>From:&nbsp;
                       <input id="DATEFROM" name="DATEFROM" value="${fromDate90}" onkeypress="filterKeyPress(event)"/>&nbsp;

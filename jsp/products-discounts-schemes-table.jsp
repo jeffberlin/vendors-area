@@ -3,7 +3,7 @@
 	<input type="hidden" name="ACTION" value="-1" />
 	<input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-discounts-schemes-tablerow.html" />
 	<input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes-table.jsp" />
-	<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/report-error.jsp" />
+	<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
 	<input type="hidden" name="SCHEMEID" value="" />
 	<input type="hidden" name="SCHEMETYPE" value="" />
 	<div class="table-header">
@@ -33,7 +33,7 @@
 			</thead>
 			<tbody>
 				${param.TABLEDATA}
-			</tbody>  
+			</tbody>
 			<!--
 			<tfoot>
 				<tr class="table-total">

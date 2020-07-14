@@ -3,7 +3,7 @@
 	<c:if test = "${ param.USECOUNT == 0 }">
 		<form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadFiles" >
 			<input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files.jsp" />
-			<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/result-error.jsp" />
+			<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
 			<input type="hidden" name="ACTION" value="12" />
 			<input type="hidden" name="DOWNLOADFILEID" value="${ param.DOWNLOADFILEID }" />
 			<h5>Confirm Deletion of Download File</h5>

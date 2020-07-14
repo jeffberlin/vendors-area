@@ -6,7 +6,7 @@
 		<input type="hidden" name="DOWNLOADFILENAME" value="${ param.DOWNLOADFILENAME }" />
 		<input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-files-changeassociations-tablerow.html" />
 		<input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-changeassociations.jsp" />
-		<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/result-error.jsp" />
+		<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
 		<c:if test = "${ param.PRODUCTCOUNT == 0 }">
 			<p>The file <strong>${ param.DOWNLOADFILENAME }</strong> is currently not used.</p>
 		</c:if>
@@ -24,7 +24,7 @@
 						</c:if>
 						${ param.FILETABLEDATA }
 					</tr>
-				</thead>    
+				</thead>
 			</table>
 			<button type="button" class="light-btn" onclick="submitToResultFrame (this.form);" style="margin-right: .4rem;">Change file association for the associated products</button>
 		</c:if>
