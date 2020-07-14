@@ -4,13 +4,13 @@
 	<input type="hidden" name="AFFILIATEID" value="" />
 	<input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/affiliates-manage-tablerow.html" />
 	<input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-manage-table.jsp" />
-	<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/result-error.jsp" />
+	<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
 	<div class="table-header">
 		<span style="color: #ffffff;">
 			Affiliate ID:&nbsp;
 			<input type="text" name="AFFILIATEID_ADD" value=""/>
 		</span>
-		<button class="get-btn" id="affiliate-btn" onclick="addAffiliate (affiliates.AFFILIATEID_ADD.value);" >Add New Affiliate</button>
+		<button class="grey-btn" id="affiliate-btn" onclick="addAffiliate (affiliates.AFFILIATEID_ADD.value);" >Add New Affiliate</button>
 	</div> <!-- end .table-header -->
 	<div class="row table-responsive-lg" style="margin-left: auto; margin-right: auto;">
 		<table class="table" id="selection">

@@ -38,19 +38,6 @@
         return true;
       }
 
-      function submitenter (myfield, e) {
-        var keycode;
-        if (window.event) keycode = window.event.keyCode;
-        else if (e) keycode = e.which;
-        else return true;
-        if (keycode == 13) {
-          myfield.form.submit();
-          return false;
-        } else {
-          return true;
-        }
-      }
-
       function checkForm (form) {
         if (isBlank (form.FLT_ORDERID.value) && isBlank (form.FLT_PRODUCTNAME.value) && isBlank (form.FLT_NAME.value) && isBlank (form.FLT_ADDRESS.value) && isBlank (form.FLT_EMAIL.value)) {
           alert ("You must enter search criteria!");
@@ -74,7 +61,7 @@
         var form = document.CommentsForm;
         form.ORDERID.value = orderid;
         form.ITEMNR.value = itemnr;
-        submitToDiv (form, 'resultframe');
+        submitForm (form);
         return (true);
       }
 
@@ -86,7 +73,7 @@
         var form = document.ResendInfoForm;
         form.ORDERID.value = orderid;
         form.ITEMNR.value = itemnr;
-        submitToDiv (form, 'resultframe');
+        submitForm (form);
         return (true);
       }
 
@@ -98,7 +85,7 @@
         var form = document.RefundItem;
         form.ORDERID.value = orderid;
         form.ITEMNR.value = itemnr;
-        submitToDiv (form, 'resultframe');
+        submitForm (form);
         return (true);
       }
 
@@ -109,7 +96,7 @@
         }
       }
 
-      // for linked pages
+      // from linked pages
       function submitForm (form) {
         submitToDiv (form, 'resultframe');
         return (true);
@@ -120,15 +107,6 @@
           form.EMAIL.focus ();
           return (false);
         }
-        return (true);
-      }
-      function submitRefund (form) {
-        if (isBlank (form.COMMENTS.value) ) {
-          alert ("You must provide a reason for this refund.");
-          form.COMMENTS.focus ();
-          return (false);
-        }
-        submitToDiv (form, 'resultframe');
         return (true);
       }
     </script>
@@ -151,30 +129,30 @@
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
                 <div style="visibility:hidden;">
-                  <form name="CommentsForm" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="get" target="resultframe">
+                  <form name="CommentsForm" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post" target="resultframe">
                     <input type="hidden" name="ORDERID" value="">
                     <input type="hidden" name="ITEMNR" value="">
                     <input type="hidden" name="ACTION"  value="1">
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-comments.jsp">
-                    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
+                    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                   </form>
                 </div>
                 <div style="visibility:hidden;">
-                  <form name="ResendInfoForm" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="get" target="resultframe">
+                  <form name="ResendInfoForm" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post" target="resultframe">
                     <input type="hidden" name="ORDERID" value="">
                     <input type="hidden" name="ITEMNR" value="">
                     <input type="hidden" name="ACTION"  value="2">
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-resend.jsp">
-                    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
+                    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                   </form>
                 </div>
                 <div style="visibility:hidden;">
-                  <form name="RefundItem" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="get" target="resultframe">
+                  <form name="RefundItem" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post" target="resultframe">
                     <input type="hidden" name="ORDERID" value="">
                     <input type="hidden" name="ITEMNR" value="">
                     <input type="hidden" name="ACTION"  value="3">
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-refund.jsp">
-                    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
+                    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                   </form>
                 </div>
               </div> <!-- end .content-box -->

@@ -41,6 +41,9 @@ textarea, select, select:focus {
 select {
   padding: .2rem;
   background: #ffffff;
+}
+
+select, .transfer-edit-th {
   font-size: .9rem;
 }
 
@@ -48,7 +51,7 @@ select:hover {
   cursor: pointer;
 }
 
-select, #expiration a, .move button {
+select, #expiration a, .move button, .transfer-edit-th {
   color: #195a7c;
 }
 
@@ -66,4 +69,9 @@ select, #expiration a, .move button {
 
 .move {
   margin-bottom: 1rem;
+}
+
+.transfer-edit-th {
+  text-decoration: underline;
+  text-decoration-color: #efa900;
 }

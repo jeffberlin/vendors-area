@@ -3,7 +3,7 @@
   <input type="hidden" name="ACTION"  value="0" />
   <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-search-tablerow.html" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-table.jsp" />
-  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   <div class="table-header">
     <button type="button" class="grey-btn" value="Search for Customers" onclick="refreshReport (document.customersearch);">Search for Customers</button>
   </div> <!-- end .table-header -->
