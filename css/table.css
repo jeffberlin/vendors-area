@@ -32,7 +32,7 @@ th a, th a:hover, .td-button button, tfoot, select {
   border-radius: 3px;
   }
 
-.table-header input, .input-search {
+.table-header input, .input-search, .transfer-section span {
   color: #707070;
   }
 

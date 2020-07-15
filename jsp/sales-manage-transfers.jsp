@@ -13,37 +13,22 @@
     <title>BMT Micro Developers Center</title>
     <%@ include file="/includes/bootstrap_top_script.html" %>
     <%@ include file="/includes/style_menu_footer_css.html" %>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css-2/table.css"/>
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
-      select {
-        letter-spacing: .5px;
-        border: 1px solid #a9a9a9;
-        border-radius: 3px;
-        padding: .2rem;
-        outline: none;
-        background: #ffffff;
-        color: #195a7c;
-      }
-      select:hover {
-        cursor: pointer;
-      }
-      select:focus {
-        border: 1px solid #195a7c;
-      }
       th {
         min-width: 150px;
-      }
-      td {
-        border-right: 1px solid #a9a9a9;
       }
       td[info] {
         border-right: none;
       }
       td[money] {
+        text-align: right;
+      }
+      td[option] {
         text-align: center;
       }
     </style>
@@ -74,45 +59,63 @@
         form.NEXT_PAGE.value = nextpage;
         form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.jsp" : "https://vendors-new.bmtmicro.com/error-div.jsp";
         form.TRANSFERID.value = transferid;
-        form.submit ();
+        if (target == "") {
+					form.submit ();
+				} else {
+					submitToDiv (form, target);
+				}
       }
-
-      function addVendorTransfer() {
-        if (${param.PAYDAY} == -1) {
+      <c:if test = "{ ${param.PAYDAY} == -1 }">
+        function addVendorTransfer() {
           alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
           return;
         }
+        function addAffiliateTransfer() {
+          alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
+          return;
+        }
+        function cancelTransfer(transferid) {
+          alert ("Transfers cannot be deleted on a pay day. Please try again tomorrow.");
+          return;
+        }
+      </c:if>
+
+      function addVendorTransfer() {
+        // if (${param.PAYDAY} == -1) {
+        //   alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
+        //   return;
+        // }
         if (allowChanges("You do not have permission to add vendor transfers.")) {
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/v2v_add.html");
         }
       }
 
       function addAffiliateTransfer() {
-        if (${param.PAYDAY} == -1) {
-          alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
-          return;
-        }
+        // if (${param.PAYDAY} == -1) {
+        //   alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
+        //   return;
+        // }
         if (allowChanges("You do not have permission to add affiliate transfers.")) {
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/v2a_add.html");
         }
       }
 
       function editTransfer(transferid, toaffiliateid) {
-        submitForm (1, "resultframe", (toaffiliateid == 0) ? "https://vendors-new.bmtmicro.com/v2v_edit.html" : "https://vendors-new.bmtmicro.com/v2a_edit.html", transferid);
+        submitForm (1, "resultframe", (toaffiliateid == 0) ? "https://vendors-new.bmtmicro.com/sales-manage-vendors-transfers-edit.jsp" : "https://vendors-new.bmtmicro.com/v2a_edit.html", transferid);
       }
 
       function cancelTransfer(transferid) {
-        if (${param.PAYDAY} == -1) {
-          alert ("Transfers cannot be deleted on a pay day. Please try again tomorrow.");
-          return;
-        }
+        // if (${param.PAYDAY} == -1) {
+        //   alert ("Transfers cannot be deleted on a pay day. Please try again tomorrow.");
+        //   return;
+        // }
         if (allowChanges("You do not have permission to cancel vendor transfers.")) {
-          submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/v2v_delete.html", transferid);
+          submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/sales-manage-transfers-delete.jsp", transferid);
         }
       }
 
       function viewTransfer(transferid) {
-        submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/v2v_view.html", transferid);
+        submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/sales-manage-transfers-view.jsp", transferid);
       }
     </script>
   </head>
