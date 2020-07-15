@@ -38,7 +38,7 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <%@ include file="/includes/menuSidebar.html" %>
+            <jsp:include page="includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>${param.TITLE}</h4>
               <div class="content-box overflow-auto">

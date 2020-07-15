@@ -49,7 +49,7 @@
 			<div class="container-fluid body-content">
 				<article class="section">
 					<div class="row justify-content-start">
-						<%@ include file="/includes/menuSidebar.html" %>
+						<jsp:include page="includes/menuSidebar.jsp" />
 						<div class="col-lg-10 col-md-12 page-title">
               <h4>Sales Summary</h4>
               <p>Below is a summary of your sales.</p>

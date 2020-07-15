@@ -34,7 +34,7 @@
 				font-size: .9rem;
 			}
 			#fieldslist label {
-				margin-right: .3rem; 
+				margin-right: .3rem;
 				min-width: 4.3rem;
 			}
 			#fieldslist select {
@@ -52,7 +52,7 @@
 			}
     </style>
     <script type="text/javascript" language="javascript">
-      var fieldnamelist; 
+      var fieldnamelist;
       function createField (index, selectedindex) {
 				var fieldID = "field" + (index + 1);
 				var spanElem = document.createElement ("div");
@@ -128,7 +128,7 @@
         </c:if>
         <c:if test = "${ allowChanges != 0 }">
           submitToAlert (form, 'The settings have been saved');
-        </c:if> 
+        </c:if>
 			}
     </script>
   </head>
@@ -141,7 +141,7 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <%@ include file="/includes/menuSidebar.html" %>
+            <jsp:include page="includes/menuSidebar.jsp" />
             <div id="settings-page" class="col-lg-10 col-md-12 page-title">
             <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
               <input type="hidden" name="VENDORID"   value="${param.VENDORID}" />
@@ -172,18 +172,18 @@
                   </div>
                   <div class="tab-pane fade" id="cart" role="tabpanel" aria-labelledby="cart-tab">
                      <%@ include file="./settings-cart.jsp" %>
-                  </div>                                     
+                  </div>
                   <div class="tab-pane fade" id="tracking" role="tabpanel" aria-labelledby="tracking-tab">
                      <%@ include file="./settings-tracking.jsp" %>
-                  </div>                              
+                  </div>
                   <div class="tab-pane fade" id="apitoken" role="tabpanel" aria-labelledby="apitoken-tab">
                      <%@ include file="./settings-apitoken.jsp" %>
-                  </div>                                  
+                  </div>
                   <div class="tab-pane fade" id="fields" role="tabpanel" aria-labelledby="fields-tab">
                      <%@ include file="./settings-fields.jsp" %>
-                  </div>                                  
+                  </div>
                 </div>
-              </div> 
+              </div>
             </form>
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
@@ -196,6 +196,5 @@
   <script>
       $(document).ready(function(){ initFields ('${param.FIELDIDLIST}','${param.FIELDNAMELIST}'); });
       $('input[type=checkbox]').change(function(){ $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0); });
-  </script>   
+  </script>
 </html>
-            

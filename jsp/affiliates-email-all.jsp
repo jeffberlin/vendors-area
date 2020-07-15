@@ -68,7 +68,7 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <%@ include file="/includes/menuSidebar.html" %>
+            <jsp:include page="includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <form accept-charset="UTF-8" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.EMailAffiliates">
                 <input type="hidden" name="NEXT_PAGE"  value="https://vendors-new.bmtmicro.com/affiliates-email-all-sent.jsp" />

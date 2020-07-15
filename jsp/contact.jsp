@@ -86,11 +86,11 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <%@ include file="/includes/menuSidebar.html" %>
+            <jsp:include page="includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Vendor&nbsp;Support&nbsp;Request&nbsp;Form</h4>
               <p>If you are unable to find answers to your questions in the&nbsp;<a href="https://help.bmtmicro.com/vendors/" target="_blank">FAQ/Help section</a>,&nbsp;or you have a special request,&nbsp;please contact us using the form below.</p>
-              <div class="content-box">
+              <div class="content-box overflow-auto">
                 <form name="contactbmt" method="get" action="https://vendors-new.bmtmicro.com/servlets/System.EMailTemplate">
                   <input type="hidden" name="VENDORID" value="${cookie['BMTMicro.Vendors.VendorID'].value}" />
                   <input type="hidden" name="RECIPIENT" value="mdaemon@bmtmicro.com" />
@@ -99,15 +99,14 @@
                   <input type="hidden" name="REDIRECT" value="0" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/contact-sent.jsp" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-
                   <h6>Vendor&nbsp;ID:&nbsp;${cookie['BMTMicro.Vendors.VendorID'].value}</h6>
                   <span>
                     <label>Your&nbsp;name:&nbsp;</label>
-                    <input type="text" name="NAME" size="35" value="${cookie['BMTMicro.Vendors.VendorName'].value}" style="margin-right: .5rem;"/>
+                    <input type="text" name="NAME" size="35" value="${URLDecoder.decode(cookie['BMTMicro.Vendors.VendorName'].value)}" style="margin-right: .5rem;"/>
                   </span>
                   <span>
                     <label>Your&nbsp;email:&nbsp;</label>
-                    <input type="text" name="EMAIL" size="35" value="${cookie['BMTMicro.Vendors.VendorEMail'].value}" style="margin-bottom: 1rem;"/>
+                    <input type="text" name="EMAIL" size="35" value="${URLDecoder.decode(cookie['BMTMicro.Vendors.VendorEMail'].value)}" style="margin-bottom: 1rem;"/>
                   </span>
                   <br>
                   <span>
@@ -131,7 +130,6 @@
                     <label>More&nbsp;Specific:&nbsp;</label>
                     <select name="SUBTITLE" style="margin-bottom: 1rem;"></select>
                   </span>
-                  <!-- <br clear="all"> -->
                   <div class="toggle-section" id="Other" style="display: none;">
                     <span>
                       <label>Other:&nbsp;</label>

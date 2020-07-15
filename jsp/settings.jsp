@@ -141,7 +141,7 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <%@ include file="/includes/menuSidebar.html" %>
+            <jsp:include page="includes/menuSidebar.jsp" />
             <div id="settings-page" class="col-lg-10 col-md-12 page-title">
               <form name="settings" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" method="post">
                 <input type="hidden" name = "ACTION" value = "1"/>

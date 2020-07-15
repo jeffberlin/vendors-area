@@ -46,7 +46,7 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <%@ include file="/includes/menuSidebar.html" %>
+            <jsp:include page="includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <form enctype="multipart/form-data" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.FileUploadLegacy">
                 <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-scanresult.jsp" />

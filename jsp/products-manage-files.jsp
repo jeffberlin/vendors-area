@@ -34,7 +34,7 @@
 				}
 			}
 			<c:if test = "${ allowChanges == 0 }">
-				function uploadFile () {               
+				function uploadFile () {
 					alert ("You do not have permission to upload files.");
 				}
 				function downloadFile (downloadfileid) {
@@ -42,10 +42,10 @@
 				}
 				function deleteFile (downloadfileid) {
 					alert ("You do not have permission to delete files.");
-				}                                 
+				}
 			</c:if>
 			<c:if test = "${ allowChanges == 1 }">
-				function uploadFile () {               
+				function uploadFile () {
 					document.location.href = "https://vendors-new.bmtmicro.com/products-manage-files-upload.jsp";
 				}
 				function downloadFile (downloadfileid) {
@@ -81,7 +81,7 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <%@ include file="/includes/menuSidebar.html" %>
+            <jsp:include page="includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Manage&nbsp;Files</h4>
               <p>The View Associations button only displays products and files associated for secure download file fulfillment.</p>
@@ -99,7 +99,7 @@
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
-  <script> 
-		$(document).ready(function(){ submitToDiv (document.files, 'tableframe'); }); 
-  </script>   
+  <script>
+		$(document).ready(function(){ submitToDiv (document.files, 'tableframe'); });
+  </script>
 </html>

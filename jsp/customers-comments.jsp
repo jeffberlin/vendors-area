@@ -42,7 +42,7 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <%@ include file="/includes/menuSidebar.html" %>
+            <jsp:include page="includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Customer&nbsp;Comments</h4>
               <p>This report displays customer comments and custom field values from your shopping cart.</p>

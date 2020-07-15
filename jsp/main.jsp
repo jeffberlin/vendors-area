@@ -1,5 +1,4 @@
 <%@ include file="/includes/core.jsp" %>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,12 +41,12 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <%@ include file="/includes/menuSidebar.html" %>
+            <jsp:include page="includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12">
               <div class="news-feed">
                 <h4>News Feed</h4>
-                <div class="col-12" style="padding: 0;">
-                  <iframe src="https://vendors-new.bmtmicro.com/tweetstart.html" name="ceotweet" id="ceotweet" frameBorder="0" scrolling="no"></iframe>
+                <div class="col-12">
+                  <jsp:include page="/newsfeed.jsp" />
                 </div>
               </div> <!-- end .news-feed -->
               <div class="row charts" style="margin-bottom: 8rem;">

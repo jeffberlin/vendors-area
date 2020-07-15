@@ -40,16 +40,15 @@
 			<c:if test = "${ allowChanges == 0 }">
 				function addDiscount (form) {
 					alert ("You do not have permission to add new schemes.");
-					`           }
-					function editDiscount (schemeid, schemetype) {
-						alert ("You do not have permission to edit schemes.");
-					}
-					function deleteDiscount (schemeid, schemetype) {
-						alert ("You do not have permission to delete schemes.");
-					}
-					function generateCodes (schemeid, schemetype) {
-						alert ("You do not have permission to generate codes.");
-					`
+				}
+				function editDiscount (schemeid, schemetype) {
+					alert ("You do not have permission to edit schemes.");
+				}
+				function deleteDiscount (schemeid, schemetype) {
+					alert ("You do not have permission to delete schemes.");
+				}
+				function generateCodes (schemeid, schemetype) {
+					alert ("You do not have permission to generate codes.");
 				}
 			</c:if>
 			<c:if test = "${ allowChanges == 1 }">
@@ -83,7 +82,7 @@
 			<div class="container-fluid body-content">
 				<article class="section">
 					<div class="row justify-content-start">
-						<%@ include file="/includes/menuSidebar.html" %>
+						<jsp:include page="includes/menuSidebar.jsp" />
 						<div class="col-lg-10 col-md-12 page-title">
 							<h4>Manage&nbsp;Discount&nbsp;Schemes</h4>
 							<p>Click on Discount Scheme Name to edit discount schemes.</p>
