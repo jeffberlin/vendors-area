@@ -25,7 +25,6 @@
     </style>
   </head>
   <body>
-
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -76,7 +75,7 @@
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
-      <%@ include file="/includes/footer.html" %>
+      <jsp:include page="includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>

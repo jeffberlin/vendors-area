@@ -9,20 +9,20 @@
     <img class="img-fluid" src="https://vendors-new.bmtmicro.com/images/bmt-micro-logo-new-min.png" alt="BMT Micro, Inc. logo">
     <div class="dropright" style="padding-bottom: 0px;">
       <a class="dropdown-toggle vendor-name" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-         ${URLDecoder.decode(cookie['BMTMicro.Vendors.Name'].value)}
+        ${URLDecoder.decode(cookie['BMTMicro.Vendors.Name'].value)}
       </a>
       <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/account.jsp">My Account</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/settings.jsp">Settings</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/user-management.jsp">User Management</a>
-        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com//logout.jsp">Log Out</a>
+        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/logout.jsp">Log Out</a>
       </div>
     </div> <!-- end .dropright -->
     <div class="vendor-company">
       <span>${URLDecoder.decode(cookie['BMTMicro.Vendors.Company'].value)}</span>
     </div> <!-- end .vendor-company -->
     <div class="vendor-balance">
-      <jsp:include page="/balance.jsp"/>
+      <jsp:include page="../balance.jsp"/>
     </div>
     <div class="dropright">
       <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Sales</a>
