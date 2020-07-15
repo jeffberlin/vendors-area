@@ -16,23 +16,8 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/main.css"/>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
-    <script language="javascript" type="text/javascript">
-      <!--
-      function submitForm (form) {
-        form.DATEFROM.value = fromDate ();
-        form.DATETO.value = makeDate ();
-        form.submit ();
-      }
-      function initForm () {
-        submitForm (document.productpiestart);
-        submitForm (document.productlinestart);
-        submitForm (document.productcolumnstart);
-        submitForm (document.countrylinestart);
-      }
-     //-->
-    </script>
   </head>
-  <body onload="initForm ();">
+  <body>
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -50,24 +35,13 @@
                 </div>
               </div> <!-- end .news-feed -->
               <div class="row charts" style="margin-bottom: 8rem;">
-                <div class="royalty-chart col-xl-5 col-lg-12">
-                  <iframe src="https://vendors-new.bmtmicro.com/charts.html" name="columnchart" id="columnchart" frameborder="0" border="0" cellspacing="0"></iframe>
-                </div>
-                <div class="circle-graph col-xl-5 col-lg-12">
-                  <iframe src="https://vendors-new.bmtmicro.com/charts.html" name="piechart" id="piechart" frameborder="0" border="0" cellspacing="0"></iframe>
-                </div>
-                <div class="product-chart col-xl-5 col-lg-12">
-                  <iframe src="https://vendors-new.bmtmicro.com/charts.html" name="linechart" id="linechart" frameborder="0" border="0" cellspacing="0"></iframe>
-                </div>
-                <div class="country-graph col-xl-5 col-lg-12">
-                  <iframe src="https://vendors-new.bmtmicro.com/charts.html" name="linebycountry" id="linebycountry" frameborder="0" border="0" cellspacing="0"></iframe>
-                </div>
+                <jsp:include page="charts.jsp"/>
               </div> <!-- end .charts/row -->
             </div> <!-- end .col-lg-10 -->
           </div> <!-- end first .row -->
         </article>
       </div> <!-- end .container-fluid -->
-      <%@ include file="/includes/footer.html" %>
+      <jsp:include page="includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
