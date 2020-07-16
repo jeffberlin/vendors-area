@@ -15,15 +15,15 @@
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addTransfer.css"/>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <style media="screen" type="text/css">
       td[option], td[text], td[date] {
         text-align: center;
       }
     </style>
-		<script language="javascript" type="text/javascript">
+		<script>
       function submitForm (action, target, nextpage, affiliateid) {
         var form = document.affiliates;
         form.ACTION.value = action;

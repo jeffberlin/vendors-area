@@ -200,7 +200,7 @@ p,
 	-webkit-filter: brightness(.7);
 }
 
-button:hover {
+button:hover, .calendar:hover {
 	cursor: pointer;
 }
 
@@ -231,3 +231,9 @@ button:hover {
 	display: none;
 	padding: 1rem;
 	}
+
+.calendar {
+	min-width: 22px;
+	min-height: 22px;
+	content: url("https://vendors-new.bmtmicro.com/images/cal.gif")
+}

@@ -14,10 +14,9 @@
     <%@ include file="/includes/bootstrap_top_script.html" %>
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addTransfer.css"/>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
   </head>
   <body>
-
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 

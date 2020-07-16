@@ -15,15 +15,15 @@
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addTransfer.css"/>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
       .content-box {
         padding: 1rem;
         min-height: 362.59px !important;
       }
     </style>
-    <script language="javascript" type="text/javascript">
+    <script>
       function initForm (form) {
         setFieldVisible ("explanation1", (${param.FAILEDLOGINS} != 0));
         for (var i = 0; i < 32; i++) {

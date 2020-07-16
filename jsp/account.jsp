@@ -15,8 +15,8 @@
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
       xmp {
         margin-top: 0;
@@ -26,7 +26,7 @@
         min-height: 476.38px !important;
       }
     </style>
-    <script language="javascript" type="text/javascript">
+    <script>
       function checkPayOutMinAmt (field, method) {
         if (field != null) {
           if ((field.value < 0) || (field.value > 99999.99)) {

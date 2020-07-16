@@ -14,9 +14,9 @@
     <%@ include file="/includes/bootstrap_top_script.html" %>
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script type="text/javascript" language="javascript">
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script>
       function doAction(action) {
         document.orderlistform.ACTION.value = action;
         document.orderlistform.submit();
@@ -45,7 +45,7 @@
                 <div name="tableframe" class="h-100" id="tableframe">
                   <jsp:include page="customers-authorize-sales-table.jsp"/>
                 </div>
-                <form name="homeform" action="https://vendors-new.bmtmicro.com/mainstart.html"></form>
+                <form name="homeform" action="https://vendors-new.bmtmicro.com/main.jsp"></form>
                 <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.ImportRipOrders" method="post" target="detailsPopUp">
                   <input Type="hidden" NAME="ACTION" value="5">
                   <input type="hidden" name="RIPCODE" value="${param.RIPCODE}">

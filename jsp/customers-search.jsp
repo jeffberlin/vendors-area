@@ -15,9 +15,9 @@
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addTransfer.css"/>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <style media="screen" type="text/css">
       .input-search {
         width: 100%;
@@ -32,7 +32,7 @@
         margin-bottom: 0;
       }
     </style>
-    <script language="javascript" type="text/javascript">
+    <script>
       function stripspaces(input) {
         input.value = input.value.replace(/\s/gi,"");
         return true;
@@ -125,7 +125,7 @@
               <p>Use fields below to enter search criteria.&nbsp;If email information has not changed since purchase you can resend the customer's email using the button provided.<br>You will be able to review the email before it is sent.</p>
               <div class="content-box overflow-auto d-flex flex-column">
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
-                   <jsp:include page="customers-search-table.jsp" />
+                  <jsp:include page="customers-search-table.jsp" />
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
                 <div style="visibility:hidden;">

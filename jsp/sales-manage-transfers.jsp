@@ -14,10 +14,10 @@
     <%@ include file="/includes/bootstrap_top_script.html" %>
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
       th {
         min-width: 150px;
@@ -32,7 +32,7 @@
         text-align: center;
       }
     </style>
-    <script language="javascript" type="text/javascript">
+    <script>
       function submitForm(form) {
         if (!CheckDateRange(form)) {
           return (false);
@@ -86,7 +86,7 @@
 
       function addVendorTransfer() {
         if (allowChanges("You do not have permission to add vendor transfers.")) {
-          submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/v2v_add.html");
+          submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/sales-manage-vendors-transfers-add.jsp");
         }
       }
 
@@ -117,6 +117,14 @@
         initField(form, "CURRENCY", "${param.CURRENCY}");
       }
 
+      <c:if test = "${ form.TOVENDORID.value < 1 }">
+        function submitForm (form) {
+          alert("You must specify a valid vendor ID");
+          form.TOVENDORID.focus();
+          return (false);
+        }
+      </c:if>
+
       function submitForm(form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
@@ -132,23 +140,24 @@
           form.AMOUNT.focus();
           return (false);
         }
-        if (form.AMOUNT.value <= 0) {
-          alert("Value out of range. (Must not be negative or zero)");
-          form.AMOUNT.focus();
-          return (false);
-        }
+        // if (form.AMOUNT.value <= 0) {
+        //   alert("Value out of range. (Must not be negative or zero)");
+        //   form.AMOUNT.focus();
+        //   return (false);
+        // }
         if (isBlank(form.TOVENDORID.value)) {
           alert("You must specify a vendor ID");
           form.TOVENDORID.focus();
           return (false);
         }
-        if (form.TOVENDORID.value < 1) {
-          alert("You must specify a valid vendor ID");
-          form.TOVENDORID.focus();
-          return (false);
-        }
+        // if (form.TOVENDORID.value < 1) {
+        //   alert("You must specify a valid vendor ID");
+        //   form.TOVENDORID.focus();
+        //   return (false);
+        // }
+
         // form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues(form.SELECTEDLIST);
-        form.submit();
+        submitToDiv(form, 'tableframe');
         return (true);
       }
     </script>

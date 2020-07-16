@@ -16,10 +16,10 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
 		<script src="https://kit.fontawesome.com/35c40e6698.js"></script>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
-    <script language="javascript" type="text/javascript">
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script>
       function setFieldVisible (field, visible) {
         document.getElementById (field).style.display = (visible === false) ? 'none' : '';
       }
@@ -249,13 +249,13 @@
                       <span>
                         <label>Date Start:&nbsp;</label>
                         <input id="DATEFROM" name="DATEFROM" value="${param.DATEFROM}" type="text" style="margin-bottom: 1rem;">
-                        <img src='<c:url value="/images/cal.gif"></c:url>' width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" />
+                        <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
                       </span>
                       <br>
                       <span>
                         <label>Date End:&nbsp;</label>
                         <input id="DATETO" name="DATETO" value="${param.DATETO}" type="text" style="margin-bottom: 2rem;">
-                        <img src='<c:url value="/images/cal.gif"></c:url>' width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);"  onmouseover="this.style.cursor='pointer';" />
+                        <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
                       </span>
                       <div id="expirationdays" style="display:none;">
                         <span>
@@ -331,7 +331,7 @@
       <jsp:include page="includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
-    <script type="text/javascript">
+    <script>
       // Handles the 'Next'/'Previous' buttons for tabs
       // 'Next' to Discount Type
       $("#toDiscountType").click(function(){
@@ -395,5 +395,5 @@
       });
     </script>
   </body>
-	<script> $('input[type=checkbox]').change(function(){ $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0); });</script>
+	<script>$('input[type=checkbox]').change(function(){ $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0); });</script>
 </html>

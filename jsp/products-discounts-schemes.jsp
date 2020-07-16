@@ -15,14 +15,14 @@
 		<%@ include file="/includes/style_menu_footer_css.html" %>
 		<link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
 		<link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addTransfer.css"/>
-		<script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-		<script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+		<script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+		<script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
 		<style media="screen" type="text/css">
 			td[option], td[mnumber] {
 				text-align: center;
 				}
 		</style>
-		<script language="javascript" type="text/javascript">
+		<script>
 			function submitForm (action, target, nextpage, schemeid, schemetype) {
 				var form = document.discounts;
 				form.ACTION.value     = action;

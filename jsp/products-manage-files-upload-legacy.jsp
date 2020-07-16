@@ -15,15 +15,14 @@
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen">
       .file:hover {
         cursor: pointer;
       }
     </style>
-    <script language="javascript" type="text/javascript">
-      <!--
+    <script>
       function addFilenameField () {
         var ni = document.getElementById ('filenameDiv');
         var numi = document.getElementById ('fieldCount');
@@ -33,11 +32,9 @@
         newdiv.innerHTML = "<span><label>Filename:</label><input type=\"file\" name=\"file\" size=\"50\" /></span><br clear=\"all\" />";
         ni.appendChild (newdiv);
       }
-      //-->
     </script>
   </head>
   <body>
-
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 

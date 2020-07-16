@@ -14,14 +14,14 @@
     <%@ include file="/includes/bootstrap_top_script.html" %>
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
 			td[option], td[mnumber] {
 				text-align: center;
 				}
     </style>
-    <script language="javascript" type="text/javascript">
+    <script>
 			function submitForm (action, target, nextpage, downloadfileid) {
 				var form = document.files;
 				form.ACTION.value = action;
@@ -99,7 +99,5 @@
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
-  <script>
-		$(document).ready(function(){ submitToDiv (document.files, 'tableframe'); });
-  </script>
+  <script>$(document).ready(function(){ submitToDiv (document.files, 'tableframe'); });</script>
 </html>

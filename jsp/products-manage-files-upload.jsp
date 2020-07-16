@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/notification.css"/>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors.bmtmicro.com/js/vendors.js"></script>
     <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
     <style media="screen" type="text/css">
       .email-link {
@@ -78,7 +78,7 @@
       <jsp:include page="includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
-    <script type="text/javascript">
+    <script>
       $('#result-tab').click(function () {
         $('#circle').css('display', 'none');
       });

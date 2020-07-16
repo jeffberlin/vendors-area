@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
 		<script src="https://kit.fontawesome.com/35c40e6698.js"></script>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
 			.content-box {
 				min-height: 505px;
@@ -51,7 +51,7 @@
 				width: 400px;
 			}
     </style>
-    <script type="text/javascript" language="javascript">
+    <script>
       var fieldnamelist;
       function createField (index, selectedindex) {
 				var fieldID = "field" + (index + 1);
@@ -194,7 +194,7 @@
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
   <script>
-      $(document).ready(function(){ initFields ('${param.FIELDIDLIST}','${param.FIELDNAMELIST}'); });
-      $('input[type=checkbox]').change(function(){ $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0); });
+    $(document).ready(function(){ initFields ('${param.FIELDIDLIST}','${param.FIELDNAMELIST}'); });
+    $('input[type=checkbox]').change(function(){ $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0); });
   </script>
 </html>

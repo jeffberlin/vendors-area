@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
     <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
       #expiration a:hover {
         color: #efa900;
@@ -30,86 +30,84 @@
 				margin-left: 1rem;
 			}
     </style>
-    <script language="javascript" type="text/javascript">
-      <!--
-        function setFieldVisible (field, visible) {
-          document.getElementById (field).style.display = (visible === false) ? 'none' : '';
+    <script>
+      function setFieldVisible (field, visible) {
+        document.getElementById (field).style.display = (visible === false) ? 'none' : '';
+      }
+
+      function CheckDateRangeAndAllowBlankDates (form) {
+        if (isBlank (form.DATEFROM.value)) {
+          return (isBlank (form.DATETO.value) || checkDate (form.DATETO));
         }
-
-        function CheckDateRangeAndAllowBlankDates (form) {
-          if (isBlank (form.DATEFROM.value)) {
-            return (isBlank (form.DATETO.value) || checkDate (form.DATETO));
-          }
-          if (isBlank (form.DATETO.value)) {
-            return (isBlank (form.DATEFROM.value) || checkDate (form.DATEFROM));
-          }
-          return (CheckDateRange (form));
+        if (isBlank (form.DATETO.value)) {
+          return (isBlank (form.DATEFROM.value) || checkDate (form.DATEFROM));
         }
+        return (CheckDateRange (form));
+      }
 
-        function initForm (form) {
-          if (parseInt (form.MAXUSECOUNT.value) == 0) {
-            form.MAXUSECOUNT.value = "";
-          }
-          setFieldVisible ("expiration", ${param.SCHEMETYPE} == 0);
-          setFieldVisible ("expirationdays", ${param.SCHEMETYPE} != 1);
+      function initForm (form) {
+        if (parseInt (form.MAXUSECOUNT.value) == 0) {
+          form.MAXUSECOUNT.value = "";
         }
+        setFieldVisible ("expiration", ${param.SCHEMETYPE} == 0);
+        setFieldVisible ("expirationdays", ${param.SCHEMETYPE} != 1);
+      }
 
-        function submitForm (form) {
-          form.NAME.value = trim (form.NAME.value);
+      function submitForm (form) {
+        form.NAME.value = trim (form.NAME.value);
 
-          if (isBlank (form.NAME.value)) {
-            alert ("You must name the discount scheme!");
-            form.NAME.focus ();
+        if (isBlank (form.NAME.value)) {
+          alert ("You must name the discount scheme!");
+          form.NAME.focus ();
+          return (false);
+        }
+        if ((form.NAME.value != "${param.NAME}") && ("${param.NAMELIST}".split ("\t").indexOf (form.NAME.value) != -1)) {
+          alert ("A discount scheme with that name already exists!");
+          form.NAME.focus ();
+          return (false);
+        }
+        if (queryField (form, "SCHEMETYPE") == "1"){
+          form.EXPIRATIONDAYS.value = "";
+        } else if (!isBlank (form.EXPIRATIONDAYS.value)) {
+          var days = parseInt (form.EXPIRATIONDAYS.value);
+          if ((days < 1) || (days > 999)) {
+            alert ("Please enter a valid number of days (1-999) or leave this field blank.");
+            form.EXPIRATIONDAYS.focus ();
             return (false);
           }
-          if ((form.NAME.value != "${param.NAME}") && ("${param.NAMELIST}".split ("\t").indexOf (form.NAME.value) != -1)) {
-            alert ("A discount scheme with that name already exists!");
-            form.NAME.focus ();
-            return (false);
-          }
-          if (queryField (form, "SCHEMETYPE") == "1"){
-            form.EXPIRATIONDAYS.value = "";
-          } else if (!isBlank (form.EXPIRATIONDAYS.value)) {
-            var days = parseInt (form.EXPIRATIONDAYS.value);
-            if ((days < 1) || (days > 999)) {
-              alert ("Please enter a valid number of days (1-999) or leave this field blank.");
-              form.EXPIRATIONDAYS.focus ();
-              return (false);
-            }
-          }
-          if (!CheckDateRangeAndAllowBlankDates (form)) {
-            return (false);
-          }
-          switch (parseInt (queryField (form, "DISCOUNTTYPE"))) {
-            case 0: // Percent off
-            case 3: // Percent off full price
-            if (form.AMOUNT.value > 100) {
-              alert ("Percentage out of range. (Must be between 0 and 100%)");
-              form.AMOUNT.focus ();
-              return (false);
-            }
-            break;
-          }
-          if (form.AMOUNT.value < 0) {
-            alert ("Value out of range. (Must not be negative)");
+        }
+        if (!CheckDateRangeAndAllowBlankDates (form)) {
+          return (false);
+        }
+        switch (parseInt (queryField (form, "DISCOUNTTYPE"))) {
+          case 0: // Percent off
+          case 3: // Percent off full price
+          if (form.AMOUNT.value > 100) {
+            alert ("Percentage out of range. (Must be between 0 and 100%)");
             form.AMOUNT.focus ();
             return (false);
           }
-          if (form.QUALIFYINGQUANTITY.value <= 0) {
-            alert ("Value out of range. (Must not be smaller than one)");
-            form.QUALIFYINGQUANTITY.focus ();
-            return (false);
-          }
-          if (form.MAXUSECOUNT.value < 0) {
-            alert ("Value out of range. (Must not be negative)");
-            form.QUALIFYINGQUANTITY.focus ();
-            return (false);
-          }
-          form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues (form.SELECTEDLIST);
-          form.submit ();
-          return (true);
+          break;
         }
-      //-->
+        if (form.AMOUNT.value < 0) {
+          alert ("Value out of range. (Must not be negative)");
+          form.AMOUNT.focus ();
+          return (false);
+        }
+        if (form.QUALIFYINGQUANTITY.value <= 0) {
+          alert ("Value out of range. (Must not be smaller than one)");
+          form.QUALIFYINGQUANTITY.focus ();
+          return (false);
+        }
+        if (form.MAXUSECOUNT.value < 0) {
+          alert ("Value out of range. (Must not be negative)");
+          form.QUALIFYINGQUANTITY.focus ();
+          return (false);
+        }
+        form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues (form.SELECTEDLIST);
+        form.submit ();
+        return (true);
+      }
     </script>
   </head>
   <body onload="initForm (document.discform);">
@@ -268,13 +266,13 @@
                       <span>
                         <label>Date&nbsp;Start:&nbsp;</label>
                         <input id="DATEFROM" name="DATEFROM" value="${param.DATEFROM}" type="text" style="max-width: 150px; margin-bottom: 1rem;">
-                        <img src='<c:url value="/images/cal.gif"></c:url>' width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATEFROM'); return (false);" onmouseover="this.style.cursor='pointer';" style="margin-right: .5rem;"/>
+                        <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
                       </span>
                       <br>
                       <span>
                         <label>Date&nbsp;End:&nbsp;</label>
                         <input id="DATETO" name="DATETO" value="${param.DATETO}" type="text" style="max-width: 150px; margin-bottom: 1rem;">
-                        <img src='<c:url value="/images/cal.gif"></c:url>' width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('DATETO'); return (false);" onmouseover="this.style.cursor='pointer';" />
+                        <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
                       </span>
                       <div id="expirationdays" style="display: none;">
                         <span>
@@ -344,7 +342,7 @@
       <jsp:include page="includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
-    <script type="text/javascript">
+    <script>
       // Handles the 'Next'/'Previous' buttons for tabs
       // 'Next' to Discount Type
       $("#toDiscountType").click(function(){
@@ -408,5 +406,5 @@
       });
     </script>
   </body>
-	<script> $('input[type=checkbox]').change(function(){ $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0); });</script>
+	<script>$('input[type=checkbox]').change(function(){ $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0); });</script>
 </html>
