@@ -51,7 +51,7 @@
         return (true);
       }
 
-      // from v2vtransfers.html
+      // from linked pages
       function submitForm(action, target, nextpage, transferid) {
         var form = document.splits;
         form.ACTION.value = action;
@@ -78,23 +78,19 @@
           alert ("Transfers cannot be deleted on a pay day. Please try again tomorrow.");
           return;
         }
+        function submitForm(form) {
+          alert("Transfers cannot be made on a vendor pay day. Please try again tomorrow.");
+          return (false);
+        }
       </c:if>
 
       function addVendorTransfer() {
-        // if (${param.PAYDAY} == -1) {
-        //   alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
-        //   return;
-        // }
         if (allowChanges("You do not have permission to add vendor transfers.")) {
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/v2v_add.html");
         }
       }
 
       function addAffiliateTransfer() {
-        // if (${param.PAYDAY} == -1) {
-        //   alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
-        //   return;
-        // }
         if (allowChanges("You do not have permission to add affiliate transfers.")) {
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/v2a_add.html");
         }
@@ -105,10 +101,6 @@
       }
 
       function cancelTransfer(transferid) {
-        // if (${param.PAYDAY} == -1) {
-        //   alert ("Transfers cannot be deleted on a pay day. Please try again tomorrow.");
-        //   return;
-        // }
         if (allowChanges("You do not have permission to cancel vendor transfers.")) {
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/sales-manage-transfers-delete.jsp", transferid);
         }
@@ -116,6 +108,48 @@
 
       function viewTransfer(transferid) {
         submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/sales-manage-transfers-view.jsp", transferid);
+      }
+
+      // from v2v_add.html
+      function initForm(form) {
+        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+        // field is not present. (An unchecked checkbox constitutes a non-existent field).
+        initField(form, "CURRENCY", "${param.CURRENCY}");
+      }
+
+      function submitForm(form) {
+        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+        // field is not present. (An unchecked checkbox constitutes a non-existent field).
+        //if (##PAYDAY## == -1) {
+          // alert("Transfers cannot be made on a vendor pay day. Please try again tomorrow.");
+          // return (false);
+        //}
+        if (!allowChanges("You do not have permission to make vendor transfers.")) {
+          return (false);
+        }
+        if (isBlank(form.AMOUNT.value) || !isValidDollarAmount(form.AMOUNT.value)) {
+          alert("You must specify an amount");
+          form.AMOUNT.focus();
+          return (false);
+        }
+        if (form.AMOUNT.value <= 0) {
+          alert("Value out of range. (Must not be negative or zero)");
+          form.AMOUNT.focus();
+          return (false);
+        }
+        if (isBlank(form.TOVENDORID.value)) {
+          alert("You must specify a vendor ID");
+          form.TOVENDORID.focus();
+          return (false);
+        }
+        if (form.TOVENDORID.value < 1) {
+          alert("You must specify a valid vendor ID");
+          form.TOVENDORID.focus();
+          return (false);
+        }
+        // form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues(form.SELECTEDLIST);
+        form.submit();
+        return (true);
       }
     </script>
   </head>
