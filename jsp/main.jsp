@@ -16,6 +16,12 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/main.css"/>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+     <!-- Begin charts -->
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/newChart.css">
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css">
+    <script src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
+     <!-- End charts -->
+     <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
   </head>
   <body>
     <!-- Blue background header -->
