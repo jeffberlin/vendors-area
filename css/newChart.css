@@ -3,10 +3,10 @@
   }
 
 label, span {
-  color: #000000;
+  color: #707070;
   }
 
-label, select, .currentSelected, button {
+.currentSelected, button {
   letter-spacing: .5px;
   }
 
