@@ -41,7 +41,7 @@
     <div class="dropright">
       <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Products</a>
       <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/productsstart.html">Manage Products</a>
+        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/products-manage.jsp">Manage Products</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/products-manage-files.jsp">Manage Files</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/keytablesstart.html">Activation Code Table</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/products-discounts-schemes.jsp">Discount Schemes</a>
@@ -55,7 +55,7 @@
       <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/customers-search.jsp">Customer Search</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/customers-comments.jsp">Customer Comments</a>
-        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/downloadpasswordsstart.html">Manage Download Passwords</a>
+        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/customers-manage-download-passwords.jsp">Manage Download Passwords</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/subscriptionsstart.html">Manage Subscriptions</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/ticketsstart.html">Manage Tickets</a>
         <c:if test="${cookie['BMTMicro.Vendors.AuthMenu'].value==-1}">

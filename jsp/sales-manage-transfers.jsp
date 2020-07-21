@@ -14,6 +14,7 @@
     <%@ include file="/includes/bootstrap_top_script.html" %>
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addTransfer.css"/>
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://vendors.bmtmicro.com/js/vendors.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
@@ -33,7 +34,7 @@
       }
     </style>
     <script>
-      function submitForm(form) {
+      function refreshReport(form) {
         if (!CheckDateRange(form)) {
           return (false);
         }
@@ -78,7 +79,7 @@
           alert ("Transfers cannot be deleted on a pay day. Please try again tomorrow.");
           return;
         }
-        function submitForm(form) {
+        function submitVendor(form) {
           alert("Transfers cannot be made on a vendor pay day. Please try again tomorrow.");
           return (false);
         }
@@ -117,21 +118,13 @@
         initField(form, "CURRENCY", "${param.CURRENCY}");
       }
 
-      <c:if test = "${ form.TOVENDORID.value < 1 }">
-        function submitForm (form) {
-          alert("You must specify a valid vendor ID");
-          form.TOVENDORID.focus();
-          return (false);
-        }
-      </c:if>
-
-      function submitForm(form) {
+      function submitVendor(form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        //if (##PAYDAY## == -1) {
-          // alert("Transfers cannot be made on a vendor pay day. Please try again tomorrow.");
-          // return (false);
-        //}
+        // if (${param.PAYDAY} == -1) {
+        //   alert("Transfers cannot be made on a vendor pay day. Please try again tomorrow.");
+        //   return (false);
+        // }
         if (!allowChanges("You do not have permission to make vendor transfers.")) {
           return (false);
         }
@@ -140,24 +133,24 @@
           form.AMOUNT.focus();
           return (false);
         }
-        // if (form.AMOUNT.value <= 0) {
-        //   alert("Value out of range. (Must not be negative or zero)");
-        //   form.AMOUNT.focus();
-        //   return (false);
-        // }
+        if (form.AMOUNT.value <= 0) {
+          alert("Value out of range. (Must not be negative or zero)");
+          form.AMOUNT.focus();
+          return (false);
+        }
         if (isBlank(form.TOVENDORID.value)) {
           alert("You must specify a vendor ID");
           form.TOVENDORID.focus();
           return (false);
         }
-        // if (form.TOVENDORID.value < 1) {
-        //   alert("You must specify a valid vendor ID");
-        //   form.TOVENDORID.focus();
-        //   return (false);
-        // }
-
+        if (form.TOVENDORID.value < 1) {
+          alert("You must specify a valid vendor ID");
+          form.TOVENDORID.focus();
+          return (false);
+        }
         // form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues(form.SELECTEDLIST);
-        submitToDiv(form, 'tableframe');
+        // form.submit();
+        submitToDiv(form);
         return (true);
       }
     </script>
