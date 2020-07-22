@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <title>BMT Micro Developers Center</title>
     <%@ include file="/includes/bootstrap_top_script.html" %>
@@ -16,11 +16,11 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/main.css"/>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
-     <!-- Begin charts -->
+    <!-- Begin charts -->
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/newChart.css"/>
     <script src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
-     <!-- End charts -->
-     <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
+    <!-- End charts -->
+    <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
   </head>
   <body>
     <!-- Blue background header -->
@@ -36,7 +36,7 @@
               <div class="news-feed">
                 <h4>News Feed</h4>
                 <div class="col-12">
-                  <jsp:include page="/newsfeed.jsp" />
+                  <jsp:include page="newsfeed.jsp" />
                 </div>
               </div> <!-- end .news-feed -->
               <div class="row charts" style="margin-bottom: 8rem;">
