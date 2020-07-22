@@ -13,7 +13,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;
     <span>Filter by Product ID/Name:
       <input type="text" name="FILTER" value="" placeholder="Search" style="margin-bottom: 1rem;" />&nbsp;
-      <button type="button" name="FILTERBUTTON" class="get-btn" onClick="filterChanged ();" />Apply</button>
+      <button type="button" name="FILTERBUTTON" class="grey-btn" onClick="filterChanged ();">Apply</button>
     </span>
     <br clear="all" />
     <button type="button" class="grey-btn" onclick="editDefaultCustomerEMail ();">Edit Global Customer Email</button>

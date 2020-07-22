@@ -93,7 +93,7 @@
 
       function addAffiliateTransfer() {
         if (allowChanges("You do not have permission to add affiliate transfers.")) {
-          submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/v2a_add.html");
+          submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/sales-manage-affiliates-transfers-add.jsp");
         }
       }
 
@@ -151,6 +151,53 @@
         // form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues(form.SELECTEDLIST);
         // form.submit();
         submitToDiv(form);
+        return (true);
+      }
+
+      // from v2a_add.html
+      function initForm(form) {
+        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+        // field is not present. (An unchecked checkbox constitutes a non-existent field).
+        initField(form, "CURRENCY", "${param.CURRENCY}");
+      }
+
+      function submitForm(form) {
+        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+        // field is not present. (An unchecked checkbox constitutes a non-existent field).
+        if (${param.PAYDAY} == -1) {
+          alert("Transfers cannot be made on a vendor pay day. Please try again tomorrow.");
+          return (false);
+        }
+
+        if (!allowChanges("You do not have permission to make affiliate transfers.")) {
+          return (false);
+        }
+
+        if (isBlank (form.AMOUNT.value) || !isValidDollarAmount (form.AMOUNT.value)) {
+          alert("You must specify an amount");
+          form.AMOUNT.focus();
+          return (false);
+        }
+
+        if (form.AMOUNT.value <= 0) {
+          alert("Value out of range. (Must not be negative or zero)");
+          form.AMOUNT.focus();
+          return (false);
+        }
+
+        if (isBlank(form.TOAFFILIATEID.value)) {
+          alert("You must specify an affiliate ID");
+          form.TOAFFILIATEID.focus();
+          return (false);
+        }
+
+        if (form.TOAFFILIATEID.value < 100000) {
+          alert("You must specify a valid affiliate ID");
+          form.TOAFFILIATEID.focus();
+          return (false);
+        }
+        // form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues (form.SELECTEDLIST);
+        form.submit ();
         return (true);
       }
     </script>
