@@ -34,172 +34,141 @@
       }
     </style>
     <script>
-      function refreshReport(form) {
-        if (!CheckDateRange(form)) {
-          return (false);
-        }
-        if (parseInt(form.FORMAT.value) == 0) {
-          // If printable HTMl is selected we use a different row template and landing page
-          form.target = "_ blank"; // Open up in a new window
-          form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print.jsp";
-          form.ROWTEMPLATEURL.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print-tablerow.html";
-        } else {
-          form.target = "";
-          form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions.jsp";
-          form.ROWTEMPLATEURL.value = "${param.ROWTEMPLATEURL}.";
-        }
-        submitToDiv(form, 'tableframe');
-        return (true);
-      }
-
-      // from linked pages
-      function submitForm(action, target, nextpage, transferid) {
-        var form = document.splits;
-        form.ACTION.value = action;
-        form.target = target;
-        form.NEXT_PAGE.value = nextpage;
-        form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.jsp" : "https://vendors-new.bmtmicro.com/error-div.jsp";
-        form.TRANSFERID.value = transferid;
-        if (target == "") {
-					form.submit ();
-				} else {
-					submitToDiv (form, target);
-				}
-      }
-      <c:if test = "{ ${param.PAYDAY} == -1 }">
-        function addVendorTransfer() {
-          alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
-          return;
-        }
-        function addAffiliateTransfer() {
-          alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
-          return;
-        }
-        function cancelTransfer(transferid) {
-          alert ("Transfers cannot be deleted on a pay day. Please try again tomorrow.");
-          return;
-        }
-        function submitVendor(form) {
-          alert("Transfers cannot be made on a vendor pay day. Please try again tomorrow.");
-          return (false);
-        }
-      </c:if>
-
+      function submitTransfer (action, nextpage, transferid) {
+         var form = document.transfers;
+         form.ACTION.value = action;
+         form.NEXT_PAGE.value = nextpage;
+         form.TRANSFERID.value = transferid;
+         submitToDiv (form, "resultframe");
+         }
+         
       function addVendorTransfer() {
-        if (allowChanges("You do not have permission to add vendor transfers.")) {
-          submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/sales-manage-vendors-transfers-add.jsp");
-        }
-      }
+         <c:choose>
+         <c:when test = "${ allowChanges == 0 }">
+            alert ("You do not have permission to add vendor transfers.");
+         </c:when>
+         <c:when test = "${ payDay == 1 }">
+            alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
+         </c:when>
+         <c:otherwise>
+             submitTransfer (0, "https://vendors-new.bmtmicro.com/sales-manage-vendors-transfers-add.jsp");
+         </c:otherwise>
+         </c:choose>
+         }       
 
       function addAffiliateTransfer() {
-        if (allowChanges("You do not have permission to add affiliate transfers.")) {
-          submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/sales-manage-affiliates-transfers-add.jsp");
-        }
-      }
-
+         <c:choose>
+         <c:when test = "${ allowChanges == 0 }">
+            alert ("You do not have permission to add affiliate transfers.");
+         </c:when>
+         <c:when test = "${ payDay == 1 }">
+            alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
+         </c:when>
+         <c:otherwise>
+            submitTransfer (0, "https://vendors-new.bmtmicro.com/sales-manage-affiliates-transfers-add.jsp");
+         </c:otherwise>
+         </c:choose>
+         }                                   
+      
       function editTransfer(transferid, toaffiliateid) {
-        submitForm (1, "resultframe", (toaffiliateid == 0) ? "https://vendors-new.bmtmicro.com/sales-manage-vendors-transfers-edit.jsp" : "https://vendors-new.bmtmicro.com/v2a_edit.html", transferid);
-      }
-
+         <c:choose>
+         <c:when test = "${ allowChanges == 0 }">
+            alert ("You do not have permission to edit transfers.");
+         </c:when>
+         <c:when test = "${ payDay == 1 }">
+            alert ("Transfers cannot be edited on a pay day. Please try again tomorrow.");
+         </c:when>
+         <c:otherwise>
+             submitTransfer (1, (toaffiliateid == 0) ? "https://vendors-new.bmtmicro.com/sales-manage-vendors-transfers-edit.jsp" : "https://vendors-new.bmtmicro.com/sales-manage-affiliate-transfers-edit.jsp", transferid);
+         </c:otherwise>
+         </c:choose>
+         }         
+      
       function cancelTransfer(transferid) {
-        if (allowChanges("You do not have permission to cancel vendor transfers.")) {
-          submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/sales-manage-transfers-delete.jsp", transferid);
-        }
-      }
+         <c:choose>
+         <c:when test = "${ allowChanges == 0 }">
+            alert ("You do not have permission to cancel vendor transfers.");
+         </c:when>
+         <c:when test = "${ payDay == 1 }">
+            alert ("Transfers cannot be cancelled on a pay day. Please try again tomorrow.");
+         </c:when>
+         <c:otherwise>
+            submitTransfer (2, "https://vendors-new.bmtmicro.com/sales-manage-transfers-delete.jsp", transferid);
+         </c:otherwise>
+         </c:choose>
+         }         
+      
+      function submitVendorTransfer (form) {
+         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+         // field is not present. (An unchecked checkbox constitutes a non-existent field).
+         <c:choose>
+         <c:when test = "${ allowChanges == 0 }">
+            alert ("You do not have permission to make vendor transfers."):
+         </c:when>
+         <c:when test = "${ payDay == 1 }">
+            alert ("Transfers cannot be made on a vendor pay day. Please try again tomorrow.");
+         </c:when>
+         <c:otherwise>
+            if (isBlank(form.AMOUNT.value) || !isValidDollarAmount(form.AMOUNT.value)) {
+               alert ("You must specify an amount");
+               form.AMOUNT.focus();
+               }
+            else if (form.AMOUNT.value <= 0) {
+               alert ("Value out of range. (Must not be negative or zero)");
+               form.AMOUNT.focus();
+               }
+            else if (isBlank(form.TOVENDORID.value)) {
+               alert ("You must specify a vendor ID");
+               form.TOVENDORID.focus();
+               }
+            else if (form.TOVENDORID.value < 1) {
+               alert ("You must specify a valid vendor ID");
+               form.TOVENDORID.focus();
+               }
+            else {
+               form.submit ();
+               }
+         </c:otherwise>
+         </c:choose>
+         }
+      function submitAffiliateTransfer (form) {
+        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+        // field is not present. (An unchecked checkbox constitutes a non-existent field).
+         <c:choose>
+         <c:when test = "${ allowChanges == 0 }">
+            alert ("You do not have permission to make affiliate transfers."):
+         </c:when>
+         <c:when test = "${ payDay == 1 }">
+            alert("Transfers cannot be made on a vendor pay day. Please try again tomorrow.");
+         </c:when>
+         <c:otherwise>
+            if (isBlank (form.AMOUNT.value) || !isValidDollarAmount (form.AMOUNT.value)) {
+               alert ("You must specify an amount");
+               form.AMOUNT.focus();
+               }
+            else if (form.AMOUNT.value <= 0) {
+               alert("Value out of range. (Must not be negative or zero)");
+               form.AMOUNT.focus();
+               }
+            else if (isBlank(form.TOAFFILIATEID.value)) {
+               alert("You must specify an affiliate ID");
+               form.TOAFFILIATEID.focus();
+               }
+            else if (form.TOAFFILIATEID.value < 100000) {
+               alert("You must specify a valid affiliate ID");
+               form.TOAFFILIATEID.focus();
+               }
+            else {
+               form.submit ();
+               }
+         </c:otherwise>
+         </c:choose>
+         }
 
       function viewTransfer(transferid) {
-        submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/sales-manage-transfers-view.jsp", transferid);
-      }
-
-      // from v2v_add.html
-      function initForm(form) {
-        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
-        // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        initField(form, "CURRENCY", "${param.CURRENCY}");
-      }
-
-      function submitVendor(form) {
-        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
-        // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        // if (${param.PAYDAY} == -1) {
-        //   alert("Transfers cannot be made on a vendor pay day. Please try again tomorrow.");
-        //   return (false);
-        // }
-        if (!allowChanges("You do not have permission to make vendor transfers.")) {
-          return (false);
-        }
-        if (isBlank(form.AMOUNT.value) || !isValidDollarAmount(form.AMOUNT.value)) {
-          alert("You must specify an amount");
-          form.AMOUNT.focus();
-          return (false);
-        }
-        if (form.AMOUNT.value <= 0) {
-          alert("Value out of range. (Must not be negative or zero)");
-          form.AMOUNT.focus();
-          return (false);
-        }
-        if (isBlank(form.TOVENDORID.value)) {
-          alert("You must specify a vendor ID");
-          form.TOVENDORID.focus();
-          return (false);
-        }
-        if (form.TOVENDORID.value < 1) {
-          alert("You must specify a valid vendor ID");
-          form.TOVENDORID.focus();
-          return (false);
-        }
-        // form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues(form.SELECTEDLIST);
-        // form.submit();
-        submitToDiv(form);
-        return (true);
-      }
-
-      // from v2a_add.html
-      function initForm(form) {
-        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
-        // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        initField(form, "CURRENCY", "${param.CURRENCY}");
-      }
-
-      function submitForm(form) {
-        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
-        // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        if (${param.PAYDAY} == -1) {
-          alert("Transfers cannot be made on a vendor pay day. Please try again tomorrow.");
-          return (false);
-        }
-
-        if (!allowChanges("You do not have permission to make affiliate transfers.")) {
-          return (false);
-        }
-
-        if (isBlank (form.AMOUNT.value) || !isValidDollarAmount (form.AMOUNT.value)) {
-          alert("You must specify an amount");
-          form.AMOUNT.focus();
-          return (false);
-        }
-
-        if (form.AMOUNT.value <= 0) {
-          alert("Value out of range. (Must not be negative or zero)");
-          form.AMOUNT.focus();
-          return (false);
-        }
-
-        if (isBlank(form.TOAFFILIATEID.value)) {
-          alert("You must specify an affiliate ID");
-          form.TOAFFILIATEID.focus();
-          return (false);
-        }
-
-        if (form.TOAFFILIATEID.value < 100000) {
-          alert("You must specify a valid affiliate ID");
-          form.TOAFFILIATEID.focus();
-          return (false);
-        }
-        // form.SELECTEDPRODUCTS.value = getCommaSeparatedSelectorValues (form.SELECTEDLIST);
-        form.submit ();
-        return (true);
-      }
+         submitTransfer (3, "https://vendors-new.bmtmicro.com/sales-manage-transfers-view.jsp", transferid);
+         }
+            
     </script>
   </head>
   <body>
@@ -216,14 +185,14 @@
               <h4>Manage&nbsp;Transfers</h4>
               <p>Transfers will be completed on vendor paydays.&nbsp;You may add or cancel transfers up until that date.</p>
               <div class="content-box overflow-auto d-flex flex-column">
-                <div name="tableframe" class="overflow-auto h-100" id="tableframe"></div> <!-- end #tableframe -->
-                <form name="transfers" method=post action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer">
-                   <input type="hidden" name="ACTION" value="-1" />
-                   <input type="hidden" name="MAXAMOUNT" value="" />
-                   <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-manage-transfers-tablerow.html" />
-                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-manage-transfers-table.jsp">
-                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp">
-                </form>
+                <div name="tableframe" class="overflow-auto h-100" id="tableframe">
+                   <form name="transfers" method=post action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer">
+                      <input type="hidden" name="ACTION" value="-1" />
+                      <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-manage-transfers-tablerow.html" />
+                      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-manage-transfers-table.jsp">
+                      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp">
+                   </form>                                                            
+                </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-12 -->

@@ -1,19 +1,18 @@
 <%@ include file="/includes/core.jsp" %>
 <form name="products" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" method="post">
-  <input type="hidden" name="ACTION" value="" />
-  <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
-  <input type="hidden" name="ROWSPERPAGE" value="${param.ROWSPERPAGE}" />
+  <input type="hidden" name="ACTION" value="-1" />
+  <input type="hidden" name="ROWSPERPAGE" value="500" />
   <input type="hidden" name="PAGE" value="${param.PAGE}" />
-  <input type="hidden" name="PAGECOUNT" value="${param.PAGECOUNT}" />
+  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-tablerow.html" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   <input type="hidden" name="PRODUCTID" value="" />
   <div class="table-header">
-    <input type="checkbox" name="SHOWINACTIVE" value="-1" onClick="showInactiveChanged ();" /><span>&nbsp;Show inactive products</span>
+    <input type="checkbox" name="SHOWINACTIVE" value="-1" onClick="showInactiveChanged ();"<c:if test = "${ cookie['BMTMicro.Vendors.Products.ShowInactive'].value == -1 }"> checked</c:if>/><span>&nbsp;Show inactive products</span>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <span>Filter by Product ID/Name:
-      <input type="text" name="FILTER" value="" placeholder="Search" style="margin-bottom: 1rem;" />&nbsp;
-      <button type="button" name="FILTERBUTTON" class="grey-btn" onClick="filterChanged ();">Apply</button>
+      <input type="text" name="FILTER" value="${param.FILTER}" onkeypress="filterKeyPress(event)" placeholder="Search" style="margin-bottom: 1rem;" />&nbsp;
+      <button type="button" name="FILTERBUTTON" class="grey-btn" onClick="refreshReport ();">Apply</button>
     </span>
     <br clear="all" />
     <button type="button" class="grey-btn" onclick="editDefaultCustomerEMail ();">Edit Global Customer Email</button>
@@ -51,7 +50,14 @@
       </tbody>
       <tfoot class="table-total">
         <th scope="col" colspan="20">
-          <div id="pageselector">&nbsp;</div>
+          <div id="pageselector">
+              <c:if test = "${param.PAGECOUNT > 1}">
+                Pages:
+                <c:forEach var = "page" begin = "1" end = "${param.PAGECOUNT}">
+                  &nbsp;<a href="javascript:selectPage(${page});">${page}</a>&nbsp;
+                </c:forEach>
+              </c:if>
+          </div>
         </th>
       </tfoot>
     </table>

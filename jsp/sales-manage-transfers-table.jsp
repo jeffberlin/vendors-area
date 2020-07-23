@@ -1,6 +1,6 @@
 <%@ include file="/includes/core.jsp" %>
-<form name="splits" action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer" method="post">
-  <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
+<form name="transfers" action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer" method="post">
+  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-manage-transfers-tablerow.html" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-manage-transfers-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   <input type="hidden" name="ACTION" value="" />

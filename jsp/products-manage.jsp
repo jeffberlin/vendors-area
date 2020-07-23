@@ -87,29 +87,23 @@
 
       function showInactiveChanged() {
         setCookieValue("BMTMicro.Vendors.Products.ShowInactive", queryField(document.products, "SHOWINACTIVE"), 1000);
-        submitForm(-1, "", "https://vendors-new.bmtmicro.com/products-manage.jsp");
+        refreshReport ();
       }
 
-      function filterChanged() {
-        submitForm(-1, "", "https://vendors-new.bmtmicro.com/products-manage.jsp");
+      function refreshReport () {
+        submitToDiv (document.products, 'tableframe');
+      }
+
+      function filterKeyPress(event) {
+        if (event.keyCode == 13) {
+          refreshReport ();
+          return (true);
+        }
       }
 
       function selectPage(p) {
         document.products.PAGE.value = p;
         submitForm(-1, "", "https://vendors-new.bmtmicro.com/products-manage.jsp");
-      }
-
-      function initForm(form) {
-        initField(form, "SHOWINACTIVE", "${param.SHOWINACTIVE}");
-        initField(form, "FILTER", "${param.FILTER}");
-        if (${param.PAGECOUNT} > 1) {
-          var s = "Pages:&nbsp;";
-          for (var p = 1; p <= ${param.PAGECOUNT}; p++) {
-            s += "<a href=\"javascript:selectPage(" + p + ");\">" + p  + "</a>&nbsp;&nbsp;";
-          }
-          document.getElementById("pageselector").innerHTML = s;
-        }
-        catchEnter(form.FILTER, filterChanged);
       }
     </script>
   </head>
@@ -128,17 +122,8 @@
               <p>Click Product ID below to edit product.&nbsp;If you have any questions about this area, please email&nbsp;<a href="mailto:vendors@bmtmicro.com" class="email" title="Email us">vendors@bmtmicro.com</a>.</p>
               <div class="content-box overflow-auto d-flex flex-column">
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
-                  <!-- <jsp:include page="products-manage-table.jsp"/> -->
+                  <jsp:include page="products-manage-table.jsp"/>
                 </div> <!-- end #tableframe -->
-                <form name="products" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
-                  <input type="hidden" name="ACTION" value="-1" />
-                  <input type="hidden" name="SHOWINACTIVE" value="0" />
-                  <input type="hidden" name="ROWSPERPAGE" value="500" />
-                  <input type="hidden" name="PAGE" value="1" />
-                  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-tablerow.html" />
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-table.jsp">
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp">
-                </form>
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-12 -->
@@ -149,5 +134,5 @@
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
-  <script>$(document).ready(function(){ submitToDiv (document.products, 'tableframe'); });</script>
+  <script>$(document).ready(function(){ refreshReport (); });</script>
 </html>
