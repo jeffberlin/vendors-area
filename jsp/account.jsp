@@ -43,82 +43,67 @@
         return (true);
       }
 
-      <c:choose>
-        <c:when test = "${ allowChanges == 0 }">
-          function submitForm (form) {
-            alert ("You do not have permission to make changes.");
-            return (false);
-          }
-        </c:when>
-        <c:when test = "${param.PAYDAY != 0}">
-          function submitForm (form) {
-            alert ("Changes cannot be made on a vendor pay day. Please try again tomorrow.");
-            return (false);
-          }
-        </c:when>
-        <c:otherwise>
-          function submitForm (form) {
-            if (!(checkPayOutMinAmt (form.PAYOUTMINAMT, ${param.PAYOUTMETHOD}) &&
-            checkPayOutMinAmt (form.PAYOUTMINAMT_USD, ${param.PAYOUTMETHOD_USD}) &&
-            checkPayOutMinAmt (form.PAYOUTMINAMT_EUR, ${param.PAYOUTMETHOD_EUR}) &&
-            checkPayOutMinAmt (form.PAYOUTMINAMT_GBP, ${param.PAYOUTMETHOD_GBP}))) {
-              return (false);
-            }
-            if ((form.EMAIL.value.indexOf (",") != -1) || (form.EMAIL.value.indexOf (" ") != -1)) {
+        function submitForm (form) {
+           <c:choose>
+           <c:when test = "${ allowChanges == 0 }">
+           alert ("You do not have permission to make changes.");
+           </c:when>
+           <c:when test = "${ payDay == 1 }">
+           alert ("Changes cannot be made on a vendor pay day. Please try again tomorrow.");
+           </c:when>
+           <c:otherwise>
+           if (!(checkPayOutMinAmt (form.PAYOUTMINAMT, ${param.PAYOUTMETHOD}) &&
+              checkPayOutMinAmt (form.PAYOUTMINAMT_USD, ${param.PAYOUTMETHOD_USD}) &&
+              checkPayOutMinAmt (form.PAYOUTMINAMT_EUR, ${param.PAYOUTMETHOD_EUR}) &&
+              checkPayOutMinAmt (form.PAYOUTMINAMT_GBP, ${param.PAYOUTMETHOD_GBP}))) {
+              // Bad min amount
+              }
+           else if ((form.EMAIL.value.indexOf (",") != -1) || (form.EMAIL.value.indexOf (" ") != -1)) {
               alert("The e-mail address must not contain a space or a comma (only one address is allowed here)!");
               form.EMAIL.focus ();
-              return (false);
-            }
-            if (!isValidEmail (form.EMAIL.value)) {
+              }
+           else if (!isValidEmail (form.EMAIL.value)) {
               alert ("You must provide a VALID e-mail address!");
               form.EMAIL.focus ();
-              return (false);
-            }
-            if ((form.EMAIL2.value.indexOf (",") != -1) || (form.EMAIL2.value.indexOf (" ") != -1)) {
+              }
+           else if ((form.EMAIL2.value.indexOf (",") != -1) || (form.EMAIL2.value.indexOf (" ") != -1)) {
               alert("The e-mail address must not contain a space or a comma (only one address is allowed here)!");
               form.EMAIL2.focus ();
-              return (false);
-            }
-            if (!isBlank (form.EMAIL2.value) && !isValidEmail (form.EMAIL2.value)) {
+              }
+           else if (!isBlank (form.EMAIL2.value) && !isValidEmail (form.EMAIL2.value)) {
               alert ("You must provide a VALID e-mail address!");
               form.EMAIL2.focus ();
-              return (false);
-            }
-            if ((form.SUPPORTEMAIL.value.indexOf (",") != -1) || (form.SUPPORTEMAIL.value.indexOf (" ") != -1)) {
+              }
+           else if ((form.SUPPORTEMAIL.value.indexOf (",") != -1) || (form.SUPPORTEMAIL.value.indexOf (" ") != -1)) {
               alert("The e-mail address must not contain a space or a comma (only one address is allowed here)!");
               form.SUPPORTEMAIL.focus ();
-              return (false);
-            }
-            if (!isBlank (form.SUPPORTEMAIL.value) && !isValidEmail (form.SUPPORTEMAIL.value)) {
+              }
+           else if (!isBlank (form.SUPPORTEMAIL.value) && !isValidEmail (form.SUPPORTEMAIL.value)) {
               alert ("You must provide a VALID e-mail address!");
               form.SUPPORTEMAIL.focus ();
-              return (false);
-            }
-            if (!isBlank(form.SUPPORTURL.value) && !isValidURL (form.SUPPORTURL.value)) {
+              }
+           else if (!isBlank(form.SUPPORTURL.value) && !isValidURL (form.SUPPORTURL.value)) {
               alert('Please enter a full URL starting with "http://" or "https://"');
               form.SUPPORTURL.focus();
-              return (false);
-            }
-            if (form.NOTIFICATIONEMAILS.value.indexOf (",") != -1) {
+              }
+           else if (form.NOTIFICATIONEMAILS.value.indexOf (",") != -1) {
               alert("Notification e-mail addresses should be separated with a space, not a comma!");
               form.NOTIFICATIONEMAILS.focus ();
-              return (false);
-            }
-            if (!isBlank (form.NOTIFICATIONEMAILS.value) && !isValidEmailList (form.NOTIFICATIONEMAILS.value)) {
+              }
+           else if (!isBlank (form.NOTIFICATIONEMAILS.value) && !isValidEmailList (form.NOTIFICATIONEMAILS.value)) {
               alert ("You must provide a VALID e-mail address!");
               form.NOTIFICATIONEMAILS.focus ();
-              return (false);
-            }
-            if (!isValidURL (form.WEB.value)) {
+              }
+           else if (!isValidURL (form.WEB.value)) {
               alert('Please enter a full URL starting with "http://" or "https://"');
               form.WEB.focus ();
-              return (false);
-            }
-            submitToAlert (form, 'The settings have been saved');
-            return (true);
-          }
-        </c:otherwise>
-      </c:choose>
+              }
+           else {
+              submitToAlert (form, 'The settings have been saved');
+              }
+           </c:otherwise>
+           </c:choose>
+           }
     </script>
   </head>
   <body>

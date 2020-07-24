@@ -79,15 +79,15 @@
             <span>
               <label>Frequency:</label>
               <select type="text" name="PAYOUTFREQUENCY_USD" value="${param.PAYOUTFREQUENCY_USD}" onmousewheel="return false;">
-                <c:if test = "${param.PAYOUTFREQUENCY_USD == 0}">
-                  <option value='0'>Twice a month</option>
+                <c:if test = "${param.PAYOUTFREQUENCY_USD==0}">
+                  <option value='0' selected>Twice a month</option>
                 </c:if>
-                <option value="1">Monthly</option>
-                <option value="2">Every 2 Months</option>
-                <option value="3">Quarterly</option>
-                <option value="4">Triannually</option>
-                <option value="6">Biannually</option>
-                <option value="12">Yearly</option>
+                <option value="1"<c:if test="${param.PAYOUTFREQUENCY_USD==1}"> selected</c:if>>Monthly</option>
+                <option value="2"<c:if test="${param.PAYOUTFREQUENCY_USD==2}"> selected</c:if>>Every 2 Months</option>
+                <option value="3"<c:if test="${param.PAYOUTFREQUENCY_USD==3}"> selected</c:if>>Quarterly</option>
+                <option value="4"<c:if test="${param.PAYOUTFREQUENCY_USD==4}"> selected</c:if>>Triannually</option>
+                <option value="6"<c:if test="${param.PAYOUTFREQUENCY_USD==6}"> selected</c:if>>Biannually</option>
+                <option value="12"<c:if test="${param.PAYOUTFREQUENCY_USD==12}"> selected</c:if>>Yearly</option>
               </select>
             </span>
             <br clear="all">
@@ -96,15 +96,15 @@
             </span>
             <span>
               <select type="text" name="PAYOUTFREQUENCY_EUR" value="${param.PAYOUTFREQUENCY_EUR}" onmousewheel="return false;">
-                <c:if test = "${param.PAYOUTFREQUENCY_EUR == 0}">
-                  <option value='0'>Twice a month</option>
-                </c:if>
-                <option value="1">Monthly</option>
-                <option value="2">Every 2 Months</option>
-                <option value="3">Quarterly</option>
-                <option value="4">Triannually</option>
-                <option value="6">Biannually</option>
-                <option value="12">Yearly</option>
+                <c:if test = "${param.PAYOUTFREQUENCY_EUR==0}">
+                  <option value='0' selected>Twice a month</option>
+                </c:if>                                                    
+                <option value="1"<c:if test="${param.PAYOUTFREQUENCY_EUR==1}"> selected</c:if>>Monthly</option>
+                <option value="2"<c:if test="${param.PAYOUTFREQUENCY_EUR==2}"> selected</c:if>>Every 2 Months</option>
+                <option value="3"<c:if test="${param.PAYOUTFREQUENCY_EUR==3}"> selected</c:if>>Quarterly</option>
+                <option value="4"<c:if test="${param.PAYOUTFREQUENCY_EUR==4}"> selected</c:if>>Triannually</option>
+                <option value="6"<c:if test="${param.PAYOUTFREQUENCY_EUR==6}"> selected</c:if>>Biannually</option>
+                <option value="12"<c:if test="${param.PAYOUTFREQUENCY_EUR==12}"> selected</c:if>>Yearly</option>
               </select>
             </span>
             <br clear="all">
@@ -113,15 +113,15 @@
             </span>
             <span>
               <select type="text" name="PAYOUTFREQUENCY_GBP" value="${param.PAYOUTFREQUENCY_GBP}" onmousewheel="return false;">
-                <c:if test = "${param.PAYOUTFREQUENCY_GBP == 0}">
-                  <option value='0'>Twice a month</option>
+                <c:if test = "${param.PAYOUTFREQUENCY_GBP==0}">
+                  <option value='0' selected>Twice a month</option>
                 </c:if>
-                <option value="1">Monthly</option>
-                <option value="2">Every 2 Months</option>
-                <option value="3">Quarterly</option>
-                <option value="4">Triannually</option>
-                <option value="6">Biannually</option>
-                <option value="12">Yearly</option>
+                <option value="1"<c:if test="${param.PAYOUTFREQUENCY_GBP==1}"> selected</c:if>>Monthly</option>
+                <option value="2"<c:if test="${param.PAYOUTFREQUENCY_GBP==2}"> selected</c:if>>Every 2 Months</option>
+                <option value="3"<c:if test="${param.PAYOUTFREQUENCY_GBP==3}"> selected</c:if>>Quarterly</option>
+                <option value="4"<c:if test="${param.PAYOUTFREQUENCY_GBP==4}"> selected</c:if>>Triannually</option>
+                <option value="6"<c:if test="${param.PAYOUTFREQUENCY_GBP==6}"> selected</c:if>>Biannually</option>
+                <option value="12"<c:if test="${param.PAYOUTFREQUENCY_GBP==12}"> selected</c:if>>Yearly</option>
               </select>
             </span>
           </c:when>
@@ -133,15 +133,15 @@
             <span>
               <label>Frequency:</label>
               <select type="text" name="PAYOUTFREQUENCY" value="${param.PAYOUTFREQUENCY}" onmousewheel="return false;">
-                <c:if test = "${param.PAYOUTFREQUENCY == 0}">
-                  <option value='0'>Twice a month</option>
+                <c:if test = "${param.PAYOUTFREQUENCY==0}">
+                  <option value='0' selected>Twice a month</option>
                 </c:if>
-                <option value="1">Monthly</option>
-                <option value="2">Every 2 Months</option>
-                <option value="3">Quarterly</option>
-                <option value="4">Triannually</option>
-                <option value="6">Biannually</option>
-                <option value="12">Yearly</option>
+                <option value="1"<c:if test="${param.PAYOUTFREQUENCY==1}"> selected</c:if>>Monthly</option>
+                <option value="2"<c:if test="${param.PAYOUTFREQUENCY==2}"> selected</c:if>>Every 2 Months</option>
+                <option value="3"<c:if test="${param.PAYOUTFREQUENCY==3}"> selected</c:if>>Quarterly</option>
+                <option value="4"<c:if test="${param.PAYOUTFREQUENCY==4}"> selected</c:if>>Triannually</option>
+                <option value="6"<c:if test="${param.PAYOUTFREQUENCY==6}"> selected</c:if>>Biannually</option>
+                <option value="12"<c:if test="${param.PAYOUTFREQUENCY==12}"> selected</c:if>>Yearly</option>
               </select>
             </span>
           </c:otherwise>
@@ -174,8 +174,6 @@
                   <c:when test = "${param.PAYOUTMETHOD_USD == 11}">EUR Wire Transfer - Commerzbank</c:when>
                   <c:when test = "${param.PAYOUTMETHOD_USD == 12}">PayPal (EUR)</c:when>
                   <c:when test = "${param.PAYOUTMETHOD_USD == 13}">PayPal (GBP)</c:when>
-                  <c:when test = "${param.PAYOUTMETHOD_USD == 1}"></c:when>
-                  <c:when test = "${param.PAYOUTMETHOD_USD == 1}"></c:when>
                   <c:otherwise>Unknown</c:otherwise>
                 </c:choose>
                 <br />
@@ -195,8 +193,6 @@
                   <c:when test = "${param.PAYOUTMETHOD_EUR == 11}">EUR Wire Transfer - Commerzbank</c:when>
                   <c:when test = "${param.PAYOUTMETHOD_EUR == 12}">PayPal (EUR)</c:when>
                   <c:when test = "${param.PAYOUTMETHOD_EUR == 13}">PayPal (GBP)</c:when>
-                  <c:when test = "${param.PAYOUTMETHOD_EUR == 1}"></c:when>
-                  <c:when test = "${param.PAYOUTMETHOD_EUR == 1}"></c:when>
                   <c:otherwise>Unknown</c:otherwise>
                 </c:choose>
                 <br />
@@ -216,8 +212,6 @@
                   <c:when test = "${param.PAYOUTMETHOD_GBP == 11}">EUR Wire Transfer - Commerzbank</c:when>
                   <c:when test = "${param.PAYOUTMETHOD_GBP == 12}">PayPal (EUR)</c:when>
                   <c:when test = "${param.PAYOUTMETHOD_GBP == 13}">PayPal (GBP)</c:when>
-                  <c:when test = "${param.PAYOUTMETHOD_GBP == 1}"></c:when>
-                  <c:when test = "${param.PAYOUTMETHOD_GBP == 1}"></c:when>
                   <c:otherwise>Unknown</c:otherwise>
                 </c:choose>
                 <br />
@@ -238,8 +232,6 @@
                   <c:when test = "${param.PAYOUTMETHOD_USD == 11}">EUR Wire Transfer - Commerzbank</c:when>
                   <c:when test = "${param.PAYOUTMETHOD_USD == 12}">PayPal (EUR)</c:when>
                   <c:when test = "${param.PAYOUTMETHOD_USD == 13}">PayPal (GBP)</c:when>
-                  <c:when test = "${param.PAYOUTMETHOD_USD == 1}"></c:when>
-                  <c:when test = "${param.PAYOUTMETHOD_USD == 1}"></c:when>
                   <c:otherwise>Unknown</c:otherwise>
                 </c:choose>
               </c:otherwise>

@@ -27,20 +27,29 @@
       }
     </style>
     <script>
-      function submitForm(action, target, nextpage, productid) {
+      function submitForm (action, target, nextpage, productid) {
         var form = document.products;
         form.ACTION.value = action;
         form.target = target;
         form.NEXT_PAGE.value = nextpage;
-        form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.jsp" : "https://vendors-new.bmtmicro.com/error-div.jsp";
+        form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error-div.jsp";
         form.PRODUCTID.value = productid;
-        submitToDiv(form, target);
+        if (target == "_parent") {
+          form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
+          form.submit ();
+        } else {
+          form.target = "";
+          submitToDiv (form, target);
+        }
       }
 
-      function addProduct(productid) {
-        if (allowChanges("You are not allowed to add products.")) {
+      function addNewProduct(productid) {
+        <c:if test = "${ allowChanges == 0 }">
+          alert ("You are not allowed to add products.");
+        </c:if>
+        <c:if test = "${ allowChanges == 1 }">
           submitForm(0, "_parent", "https://vendors-new.bmtmicro.com/products-manage-add.jsp", productid);
-        }
+        </c:if>
       }
 
       function editProduct(productid) {
@@ -48,7 +57,7 @@
       }
 
       function editCustomerEMail(productid) {
-        submitForm(2, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_customeremail.html", productid);
+        submitForm(2, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-edit-customer-email.jsp", productid);
       }
 
       function editVendorEMail(productid) {
@@ -68,9 +77,12 @@
       }
 
       function addMultiple(productid) {
-        if (allowChanges("You are not allowed to add products.")) {
+        <c:if test = "${ allowChanges == 0 }">
+          alert ("You are not allowed to add products.");
+        </c:if>
+        <c:if test = "${ allowChanges == 1 }">
           submitForm(7, "_parent", "https://vendors-new.bmtmicro.com/products_add_multiple.html", productid);
-        }
+        </c:if>
       }
 
       function editScreenTemplate(productid) {
@@ -78,11 +90,14 @@
       }
 
       function testOrder(productid) {
-        if (allowTestOrders("You do not have permission to place test orders.")) {
+        <c:if test = "${ allowTestOrders == 0 }">
+          alert ("You do not have permission to place test orders.");
+        </c:if>
+        <c:if test = "${ allowTestOrders == 1 }">
           var pin = getCookieValue("BMTMicro.Vendors.SessionID");
           var vid = getCookieValue("BMTMicro.Vendors.VendorID");
           window.open("https://secure.bmtmicro.com/cart?CID=" + vid + "&CLR=0&PRODUCTID=" + productid + "&PAYMENTMETHOD=1&CCNUMBER=pin=" + encodeURIComponent(pin), "OrderTestPopUp", "location=no,menubar=1,scrollbars=yes,width=980,height=900,resizable=yes").focus();
-        }
+        </c:if>
       }
 
       function showInactiveChanged() {
@@ -90,20 +105,14 @@
         refreshReport ();
       }
 
-      function refreshReport () {
-        submitToDiv (document.products, 'tableframe');
-      }
 
-      function filterKeyPress(event) {
-        if (event.keyCode == 13) {
-          refreshReport ();
-          return (true);
-        }
+      function refreshReport () {
+        submitForm(-1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-table.jsp");
       }
 
       function selectPage(p) {
         document.products.PAGE.value = p;
-        submitForm(-1, "", "https://vendors-new.bmtmicro.com/products-manage.jsp");
+        refreshReport ();
       }
     </script>
   </head>

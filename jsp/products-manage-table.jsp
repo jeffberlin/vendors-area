@@ -1,5 +1,5 @@
 <%@ include file="/includes/core.jsp" %>
-<form name="products" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" method="post">
+<form id="products" name="products" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" method="post">
   <input type="hidden" name="ACTION" value="-1" />
   <input type="hidden" name="ROWSPERPAGE" value="500" />
   <input type="hidden" name="PAGE" value="${param.PAGE}" />
@@ -11,7 +11,10 @@
     <input type="checkbox" name="SHOWINACTIVE" value="-1" onClick="showInactiveChanged ();"<c:if test = "${ cookie['BMTMicro.Vendors.Products.ShowInactive'].value == -1 }"> checked</c:if>/><span>&nbsp;Show inactive products</span>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <span>Filter by Product ID/Name:
-      <input type="text" name="FILTER" value="${param.FILTER}" onkeypress="filterKeyPress(event)" placeholder="Search" style="margin-bottom: 1rem;" />&nbsp;
+      <input type="text" name="FILTER" value="${param.FILTER}" placeholder="Search" style="margin-bottom: 1rem;" />&nbsp;
+      <script>
+        catchEnter (document.products.FILTER, refreshReport);
+      </script>
       <button type="button" name="FILTERBUTTON" class="grey-btn" onClick="refreshReport ();">Apply</button>
     </span>
     <br clear="all" />
@@ -19,7 +22,7 @@
     &nbsp;&nbsp;
     <button type="button" class="grey-btn" onclick="editDefaultVendorEMail ();">Edit Global Vendor Email</button>
     &nbsp;&nbsp;
-    <button type="button" class="grey-btn" onclick="addProduct ();" >Add New Product</button>
+    <button type="button" class="grey-btn" onclick="addNewProduct ();" >Add New Product</button>
   </div> <!-- end .table-header -->
   <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
     <table class="table" id="selection">

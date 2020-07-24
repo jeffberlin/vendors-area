@@ -19,7 +19,6 @@
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/upsellutil.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
-    <script type="text/javascript" src="https://vendors-new.bmtmicro.com/js/main.js"></script>
     <style media="screen" type="text/css">
       .fa-plus-circle:hover, .toggle-section h6  {
         color: #efa900;
@@ -56,7 +55,6 @@
     <script>
       var vendorFileList = ${param.VENDORDFL};
       var productFileList = ${param.PRODUCTDFL};
-
       function createFileField (index, selectedFileID, description) {
         var fieldID = "fileField" + (index + 1);
         var spanElem = document.createElement ("span");
@@ -482,8 +480,7 @@
                         <label style="margin-bottom: 2rem;">Amount&nbsp;to&nbsp;Vendor:&nbsp;</label>
                         <span style="color: #000000;">${param.VENDORAMOUNT}</span>
                       </span>
-                      <script language="javascript" type="text/javascript">
-                        <!--
+                      <script>
                         if (isBlank ("${param.ROYALTYFIXED} ${param.ROYALTYPERCENTAGE}")) {
                           document.write ('<h5>Pricing</h5><p>Set the product price in one or more currencies.</p>');
                           document.write ('<table style="background-color:transparent">');
@@ -494,7 +491,6 @@
                           document.write ('<tr><td><label>Price (AUD):&nbsp;</label></td><td><input name="PRICE_AUD" SIZE="10" value="##PRICE_AUD##" onchange="calcFX(this,##FXRATE_AUD##);" style="margin-bottom: 1rem;"></td><td valign="middle"><div id="FXRATE_AUD"></div></td></tr>');
                           document.write ('</table>');
                         }
-                        // -->
                       </script>
                       <span>
                         <input type="hidden" name="PRICEINCLUDESVAT" value="${param.PRICEINCLUDESVAT}" /><input type="checkbox" name="PRICEINCLUDESVAT_CHK" value="-1" />&nbsp;The price includes VAT&nbsp;&nbsp;&nbsp;&nbsp;
@@ -789,7 +785,9 @@
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
+      <jsp:include page="includes/footer.jsp"/>
     </div> <!-- end .main-raised -->
+    <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
     <script>
       // Handles the 'Next'/'Previous' buttons for tabs
       // 'Next' to Pricing
