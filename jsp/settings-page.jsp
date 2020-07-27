@@ -21,7 +21,7 @@
       <a class="nav-link" id="fields-tab" data-toggle="tab" href="#fields" role="tab" aria-controls="fields" aria-selected="false">Sales Details Fields</a>
     </li>
   </ul>
-  <div class="content-box overflow-auto">
+  <div class="tab-box">
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab">
          <%@ include file="./settings-account.jsp" %>
@@ -44,4 +44,4 @@
 <script>
     initFields ('${param.FIELDIDLIST}','${param.FIELDNAMELIST}');
     $('input[type=checkbox]').change(function(){ $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0); });
-</script>   
+</script>

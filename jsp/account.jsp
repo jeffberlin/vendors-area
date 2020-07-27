@@ -22,9 +22,6 @@
         margin-top: 0;
         margin-bottom: 1rem;
       }
-      .content-box {
-        min-height: 476.38px !important;
-      }
     </style>
     <script>
       function checkPayOutMinAmt (field, method) {

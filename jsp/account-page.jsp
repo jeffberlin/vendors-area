@@ -17,7 +17,7 @@
     </a>
   </li>
 </ul>
-<div class="content-box">
+<div class="tab-box">
   <form name="account" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
     <input type="hidden" name="ACTION" value="11" />
     <input type="hidden" name="NEXT_PAGE" value="${param.NEXT_PAGE}" />
@@ -79,9 +79,7 @@
             <span>
               <label>Frequency:</label>
               <select type="text" name="PAYOUTFREQUENCY_USD" value="${param.PAYOUTFREQUENCY_USD}" onmousewheel="return false;">
-                <c:if test = "${param.PAYOUTFREQUENCY_USD==0}">
-                  <option value='0' selected>Twice a month</option>
-                </c:if>
+                <c:if test = "${param.PAYOUTFREQUENCY_USD==0}"><option value='0' selected>Twice a month</option></c:if>
                 <option value="1"<c:if test="${param.PAYOUTFREQUENCY_USD==1}"> selected</c:if>>Monthly</option>
                 <option value="2"<c:if test="${param.PAYOUTFREQUENCY_USD==2}"> selected</c:if>>Every 2 Months</option>
                 <option value="3"<c:if test="${param.PAYOUTFREQUENCY_USD==3}"> selected</c:if>>Quarterly</option>
@@ -96,9 +94,7 @@
             </span>
             <span>
               <select type="text" name="PAYOUTFREQUENCY_EUR" value="${param.PAYOUTFREQUENCY_EUR}" onmousewheel="return false;">
-                <c:if test = "${param.PAYOUTFREQUENCY_EUR==0}">
-                  <option value='0' selected>Twice a month</option>
-                </c:if>                                                    
+                <c:if test = "${param.PAYOUTFREQUENCY_EUR==0}"><option value='0' selected>Twice a month</option></c:if>
                 <option value="1"<c:if test="${param.PAYOUTFREQUENCY_EUR==1}"> selected</c:if>>Monthly</option>
                 <option value="2"<c:if test="${param.PAYOUTFREQUENCY_EUR==2}"> selected</c:if>>Every 2 Months</option>
                 <option value="3"<c:if test="${param.PAYOUTFREQUENCY_EUR==3}"> selected</c:if>>Quarterly</option>
@@ -276,7 +272,7 @@
         </span>
         <p class="shrinkText"<em>For security reasons the payment information cannot be changed on-line. Please send any updates regarding company name, contact name, payment address, payment frequency, payment currency and charge description to <a href="mailto:vendors@bmtmicro.com">vendors@bmtmicro.com</a>.</em></p>
         <p class="shrinkText"><em>Order related settings can be managed under the Settings link in the dropdown menu associated with your name on the left.</em></p>
-        <div class="controlbuttons" style="margin-bottom: .5rem;">
+        <div class="controlbuttons">
           <button type="button" class="grey-btn" onclick="submitForm (form);">Save</button>
           <button type="reset" value="Reset" class="grey-btn">Reset</button>
         </div>

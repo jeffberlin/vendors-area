@@ -168,40 +168,40 @@
       function initForm (form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        initField (form, "SHOWCDOPTION_CHK",        "${param.SHOWCDOPTION}");
-        initField (form, "SHOWDISCOUNTFIELD_CHK",   "${param.SHOWDISCOUNTFIELD}");
-        initField (form, "SHOWREGNAMEFIELD_CHK",    "${param.SHOWREGNAMEFIELD}");
-        initField (form, "SHOWEMAILFIELD_CHK",      "${param.SHOWEMAILFIELD}");
-        initField (form, "QUANTITYFIXED_CHK",       "${param.QUANTITYFIXED}");
-        initField (form, "NEEDSORDERPARAMETERS_CHK","${param.NEEDSORDERPARAMETERS}");
-        initField (form, "NOTIFYVENDOR_CHK",        "${param.NOTIFYVENDOR}");
-        initField (form, "ACTIVE_CHK",              "${param.ACTIVE}");
-        initField (form, "SHIPPED_CHK",             "${param.SHIPPED}");
-        initField (form, "USEONEKEY_CHK",           "${param.USEONEKEY}");
-        initField (form, "USEONEKEY_CHK2",          "${param.USEONEKEY}");
-        initField (form, "INCLUDEONAPLIST_CHK",     "${param.INCLUDEONAPLIST}");
-        initField (form, "USEPRODUCTAIDCOOKIE_CHK", "${param.USEPRODUCTAIDCOOKIE}");
-        initField (form, "TICKETCHOICE_CHK",        "${param.TICKETCHOICE}");
-        initField (form, "RECURAFFILIATE_CHK",      "${param.RECURAFFILIATE}");
-        initField (form, "PRICEINCLUDESVAT_CHK",    "${param.PRICEINCLUDESVAT}");
-        initField (form, "PRICEINCLUDESGST_CHK",    "${param.PRICEINCLUDESGST}");
-        initField (form, "PLATFORM",                "${param.PLATFORM}");
-        initField (form, "CATEGORY",                "${param.CATEGORY}");
-        initField (form, "KEYTABLEID",              "${param.KEYTABLEID}");
-        initField (form, "DISCOUNTSCHEMEID",        "${param.DISCOUNTSCHEMEID}");
-        initField (form, "DOWNLOADEXPDAYS",         "${param.DOWNLOADEXPDAYS}");
-        initField (form, "KEYGENCHARSET",           "${param.KEYGENCHARSET}");
-        initField (form, "RECURFREQUENCY",          "${param.RECURFREQUENCY}");
-        initField (form, "RECURDELAY",              "${param.RECURDELAY}");
-        initField (form, "SHIPPINGCOSTSCHEMEID",    "${param.SHIPPINGCOSTSCHEMEID}");
-        setFieldVisible ("shipping", ("${param.SHIPPED}" != 0));
-        setFieldVisible ("downloadfile",  productFileList.length != 0);
-        setFieldVisible ("keygenerator",  !isBlank ("${param.KEYGENERATOR}"));
-        setFieldVisible ("regkeytable",   !isBlank ("${param.KEYTABLEID}"));
-        setFieldVisible ("discounts",     !isBlank ("${param.DISCOUNTSCHEMEID}"));
-        setFieldVisible ("affiliateinfo", !isBlank ("${param.AFFILIATEPERCENTAGE} ${param.VENDORPRODUCTURL} ${param.SECUREORDERURL} ${param.DEMOURL}"));
-        setFieldVisible ("ordernotifications", !isBlank ("${param.NOTIFICATIONEMAILS} ${param.NOTIFICATIONURL}"));
-        setFieldVisible ("subscriptionhandling", ("${param.RECURFREQUENCY}" != "0") || ("${param.TICKETCHOICE}" != "0") || ("${param.RECURDELAY}" != "0"));
+        // initField (form, "SHOWCDOPTION_CHK",        "${param.SHOWCDOPTION}");
+        // initField (form, "SHOWDISCOUNTFIELD_CHK",   "${param.SHOWDISCOUNTFIELD}");
+        // initField (form, "SHOWREGNAMEFIELD_CHK",    "${param.SHOWREGNAMEFIELD}");
+        // initField (form, "SHOWEMAILFIELD_CHK",      "${param.SHOWEMAILFIELD}");
+        // initField (form, "QUANTITYFIXED_CHK",       "${param.QUANTITYFIXED}");
+        // initField (form, "NEEDSORDERPARAMETERS_CHK","${param.NEEDSORDERPARAMETERS}");
+        // initField (form, "NOTIFYVENDOR_CHK",        "${param.NOTIFYVENDOR}");
+        // initField (form, "ACTIVE_CHK",              "${param.ACTIVE}");
+        // initField (form, "SHIPPED_CHK",             "${param.SHIPPED}");
+        // initField (form, "USEONEKEY_CHK",           "${param.USEONEKEY}");
+        // initField (form, "USEONEKEY_CHK2",          "${param.USEONEKEY}");
+        // initField (form, "INCLUDEONAPLIST_CHK",     "${param.INCLUDEONAPLIST}");
+        // initField (form, "USEPRODUCTAIDCOOKIE_CHK", "${param.USEPRODUCTAIDCOOKIE}");
+        // initField (form, "TICKETCHOICE_CHK",        "${param.TICKETCHOICE}");
+        // initField (form, "RECURAFFILIATE_CHK",      "${param.RECURAFFILIATE}");
+        // initField (form, "PRICEINCLUDESVAT_CHK",    "${param.PRICEINCLUDESVAT}");
+        // initField (form, "PRICEINCLUDESGST_CHK",    "${param.PRICEINCLUDESGST}");
+        // initField (form, "PLATFORM",                "${param.PLATFORM}");
+        // initField (form, "CATEGORY",                "${param.CATEGORY}");
+        // initField (form, "KEYTABLEID",              "${param.KEYTABLEID}");
+        // initField (form, "DISCOUNTSCHEMEID",        "${param.DISCOUNTSCHEMEID}");
+        // initField (form, "DOWNLOADEXPDAYS",         "${param.DOWNLOADEXPDAYS}");
+        // initField (form, "KEYGENCHARSET",           "${param.KEYGENCHARSET}");
+        // initField (form, "RECURFREQUENCY",          "${param.RECURFREQUENCY}");
+        // initField (form, "RECURDELAY",              "${param.RECURDELAY}");
+        // initField (form, "SHIPPINGCOSTSCHEMEID",    "${param.SHIPPINGCOSTSCHEMEID}");
+        // setFieldVisible ("shipping", ("${param.SHIPPED}" != 0));
+        // setFieldVisible ("downloadfile",  productFileList.length != 0);
+        // setFieldVisible ("keygenerator",  !isBlank ("${param.KEYGENERATOR}"));
+        // setFieldVisible ("regkeytable",   !isBlank ("${param.KEYTABLEID}"));
+        // setFieldVisible ("discounts",     !isBlank ("${param.DISCOUNTSCHEMEID}"));
+        // setFieldVisible ("affiliateinfo", !isBlank ("${param.AFFILIATEPERCENTAGE} ${param.VENDORPRODUCTURL} ${param.SECUREORDERURL} ${param.DEMOURL}"));
+        // setFieldVisible ("ordernotifications", !isBlank ("${param.NOTIFICATIONEMAILS} ${param.NOTIFICATIONURL}"));
+        // setFieldVisible ("subscriptionhandling", ("${param.RECURFREQUENCY}" != "0") || ("${param.TICKETCHOICE}" != "0") || ("${param.RECURDELAY}" != "0"));
         enableButton    ("update");
         if (isBlank (form.SECUREORDERURL.value)) {
           form.SECUREORDERURL.value = "Use default";
@@ -231,7 +231,7 @@
           form.CATEGORY.options[idx++] = new Option ("System Tools", "21");
           form.CATEGORY.options[idx++] = new Option ("Other", "16");
         }
-        initField (form, "CATEGORY", "${param.CATEGORY}");
+        // initField (form, "CATEGORY", "${param.CATEGORY}");
 
         calcFX(form.PRICE_EUR,${param.FXRATE_EUR});
         calcFX(form.PRICE_GBP,${param.FXRATE_GBP});
@@ -244,22 +244,22 @@
       function submitForm (form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        copyField (form, "SHOWCDOPTION",        "SHOWCDOPTION_CHK");
-        copyField (form, "SHOWDISCOUNTFIELD",   "SHOWDISCOUNTFIELD_CHK");
-        copyField (form, "SHOWREGNAMEFIELD",    "SHOWREGNAMEFIELD_CHK");
-        copyField (form, "SHOWEMAILFIELD",      "SHOWEMAILFIELD_CHK");
-        copyField (form, "QUANTITYFIXED",       "QUANTITYFIXED_CHK");
-        copyField (form, "NEEDSORDERPARAMETERS","NEEDSORDERPARAMETERS_CHK");
-        copyField (form, "ACTIVE",              "ACTIVE_CHK");
-        copyField (form, "SHIPPED",             "SHIPPED_CHK");
-        copyField (form, "NOTIFYVENDOR",        "NOTIFYVENDOR_CHK");
-        copyField (form, "USEONEKEY",           "USEONEKEY_CHK");
-        copyField (form, "INCLUDEONAPLIST",     "INCLUDEONAPLIST_CHK");
-        copyField (form, "USEPRODUCTAIDCOOKIE", "USEPRODUCTAIDCOOKIE_CHK");
-        copyField (form, "TICKETCHOICE",        "TICKETCHOICE_CHK");
-        copyField (form, "RECURAFFILIATE",      "RECURAFFILIATE_CHK");
-        copyField (form, "PRICEINCLUDESVAT",     "PRICEINCLUDESVAT_CHK");
-        copyField (form, "PRICEINCLUDESGST",     "PRICEINCLUDESGST_CHK");
+        // copyField (form, "SHOWCDOPTION",        "SHOWCDOPTION_CHK");
+        // copyField (form, "SHOWDISCOUNTFIELD",   "SHOWDISCOUNTFIELD_CHK");
+        // copyField (form, "SHOWREGNAMEFIELD",    "SHOWREGNAMEFIELD_CHK");
+        // copyField (form, "SHOWEMAILFIELD",      "SHOWEMAILFIELD_CHK");
+        // copyField (form, "QUANTITYFIXED",       "QUANTITYFIXED_CHK");
+        // copyField (form, "NEEDSORDERPARAMETERS","NEEDSORDERPARAMETERS_CHK");
+        // copyField (form, "ACTIVE",              "ACTIVE_CHK");
+        // copyField (form, "SHIPPED",             "SHIPPED_CHK");
+        // copyField (form, "NOTIFYVENDOR",        "NOTIFYVENDOR_CHK");
+        // copyField (form, "USEONEKEY",           "USEONEKEY_CHK");
+        // copyField (form, "INCLUDEONAPLIST",     "INCLUDEONAPLIST_CHK");
+        // copyField (form, "USEPRODUCTAIDCOOKIE", "USEPRODUCTAIDCOOKIE_CHK");
+        // copyField (form, "TICKETCHOICE",        "TICKETCHOICE_CHK");
+        // copyField (form, "RECURAFFILIATE",      "RECURAFFILIATE_CHK");
+        // copyField (form, "PRICEINCLUDESVAT",     "PRICEINCLUDESVAT_CHK");
+        // copyField (form, "PRICEINCLUDESGST",     "PRICEINCLUDESGST_CHK");
 
         if (!isBlank ("${param.DATEDISCONTINUED}")) {
           alert ("This product has been closed.  Please contact vendors@bmtmicro.com");
@@ -408,19 +408,19 @@
                   </a>
                 </li>
               </ul>
-              <div class="content-box">
+              <div class="tab-box">
                 <form name="productform" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                   <input type="hidden" name="ACTION" value="11" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage.jsp" />
-                  <input type="hidden" name="VENDORID" value="${param.VENDORID#}" />
+                  <input type="hidden" name="VENDORID" value="${param.VENDORID}" />
                   <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
                       <h5>Basic&nbsp;Info</h5>
                       <p>Name and description of the product.</p>
                       <span>
                         <input type="hidden" name="ACTIVE" value="${param.ACTIVE}" />
-                        <input type="checkbox" name="ACTIVE_CHK" value="-1"  title="If you wish to deactivate a product, uncheck this box. This will stop orders from being automatically processed. If you are deactivating a product, please notify a BMT representative to update the catalog as well. " style="margin-bottom: 1rem;"/>&nbsp;Active Product (uncheck to discontinue the product)
+                        <input type="checkbox" title="If you wish to deactivate a product, uncheck this box. This will stop orders from being automatically processed. If you are deactivating a product, please notify a BMT representative to update the catalog as well." style="margin-bottom: 1rem;"<c:if test="${param.ACTIVE != 0}"> checked</c:if>/>&nbsp;Active Product (uncheck to discontinue the product)
                       </span>
                       <br>
                       <span>
@@ -493,8 +493,10 @@
                         }
                       </script>
                       <span>
-                        <input type="hidden" name="PRICEINCLUDESVAT" value="${param.PRICEINCLUDESVAT}" /><input type="checkbox" name="PRICEINCLUDESVAT_CHK" value="-1" />&nbsp;The price includes VAT&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="hidden" name="PRICEINCLUDESGST" value="${param.PRICEINCLUDESGST}" /><input type="checkbox" name="PRICEINCLUDESGST_CHK" value="-1" style="margin-bottom: .5rem;" />&nbsp;The price includes GST
+                        <input type="hidden" name="PRICEINCLUDESVAT" value="${param.PRICEINCLUDESVAT}" />
+                        <input type="checkbox"<c:if test="${param.PRICEINCLUDESVAT != 0}"> checked</c:if>/>&nbsp;The price includes VAT&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="hidden" name="PRICEINCLUDESGST" value="${param.PRICEINCLUDESGST}" />
+                        <input type="checkbox" style="margin-bottom: .5rem;"<c:if test="${param.PRICEINCLUDESGST != 0}"> checked</c:if>/>&nbsp;The price includes GST
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: 2rem;">Check the respective checkbox to indicate that the price includes European Union VAT and/or Australian GST. When checked, the customer will pay the prices listed above and any tax due is deducted from the sales royalty. When not checked, the customer will see tax added to the price specified above if applicable.</p>
                       </span>
                       <button id="backToBasic" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
@@ -556,19 +558,19 @@
                       <p style="font-size: .9rem; font-style: italic;">Note that the account settings have additional shopping cart options.</p>
                       <span>
                         <input type="hidden" name="SHOWCDOPTION" value="${param.SHOWCDOPTION}" />
-                        <input type="checkbox" name="SHOWCDOPTION_CHK" value="-1" / style="margin-bottom: .1rem;">&nbsp;Show Backup CD option
+                        <input type="checkbox" style="margin-bottom: .1rem;"<c:if test="${param.SHOWCDOPTION != 0}"> checked</c:if>/>&nbsp;Show Backup CD option
                         <p style="font-size: .9rem; font-style: italic;">(Backup CD will be created by BMT Micro and sent to the customer).</p>
                       </span>
                       <p>
                         <input type="hidden" name="SHOWDISCOUNTFIELD" value="${param.SHOWDISCOUNTFIELD}" />
-                        <input type="checkbox" name="SHOWDISCOUNTFIELD_CHK" value="-1"/>&nbsp;Show Discount/Gift Certificate field
+                        <input type="checkbox"<c:if test="${param.SHOWDISCOUNTFIELD != 0}"> checked</c:if>/>&nbsp;Show Discount/Gift Certificate field
                       </p>
                       <span>
                         <input type="hidden" name="SHIPPED" value="${param.SHIPPED}" />
-                        <input type="checkbox" name="SHIPPED_CHK" onchange="setFieldVisible ('shipping', this.checked);" />&nbsp;Product is shipped
+                        <input type="checkbox" onchange="setFieldVisible ('shipping', this.checked);"<c:if test="${param.SHIPPED != 0}"> checked</c:if>/>&nbsp;Product is shipped
                         <p style="font-size: .9rem; font-style: italic;">This option ensures that shipping information is available (some payment methods do not require customer to enter address).</p>
                       </span>
-                      <div id="shipping" style="display: none;">
+                      <div id="shipping"<c:if test="${param.SHIPPED==0}">style="display: none;"</c:if>>
                         <h5>Shipping&nbsp;Cost</h5>
                         <p>Select a shipping scheme if shipping should be charged for this product.</p>
                         <label>Shipping&nbsp;Cost&nbsp;Scheme:&nbsp;</label>
@@ -579,23 +581,23 @@
                       <h6>Fields for allowing gift purchases</h6>
                       <span>
                         <input type="hidden" name="SHOWREGNAMEFIELD" value="${param.SHOWREGNAMEFIELD}" />
-                        <input type="checkbox" name="SHOWREGNAMEFIELD_CHK" value="-1" />&nbsp;Show Registername field
+                        <input type="checkbox"<c:if test="${param.SHOWREGNAMEFIELD != 0}"> checked</c:if>/>&nbsp;Show Registername field
                         <p style="font-size: .9rem; font-style: italic;">Allow buyer to purchase for third party (gift for friend/colleague/etc).</p>
                       </span>
                       <span>
                         <input type="hidden" name="SHOWEMAILFIELD" value="${param.SHOWEMAILFIELD}" />
-                        <input type="checkbox" name="SHOWEMAILFIELD_CHK" value="-1" />&nbsp;Show Delivery Email field
+                        <input type="checkbox"<c:if test="${param.SHOWEMAILFIELD != 0}"> checked</c:if>/>&nbsp;Show Delivery Email field
                         <p style="font-size: .9rem; font-style: italic;">Allow product information email to be sent to third party (gift for friend/colleague/etc).</p>
                       </span>
                       <h6>Cart&nbsp;parameter&nbsp;checks</h6>
-                      <span>}
+                      <span>
                         <input type="hidden" name="QUANTITYFIXED" value="${param.QUANTITYFIXED}" />
-                        <input type="checkbox" name="QUANTITYFIXED_CHK" value="-1" />&nbsp;Quantity is fixed
+                        <input type="checkbox"<c:if test="${param.QUANTITYFIXED != 0}"> checked</c:if>/>&nbsp;Quantity is fixed
                         <p style="font-size: .9rem; font-style: italic;">Enabling this option will prevent the customer from changing the quantity in the shopping cart.</p>
                       </span>
                       <span>
                         <input type="hidden" name="NEEDSORDERPARAMETERS" value="${param.NEEDSORDERPARAMETERS}" />
-                        <input type="checkbox" name="NEEDSORDERPARAMETERS_CHK" value="-1" />&nbsp;Order Parameters must not be blank
+                        <input type="checkbox"<c:if test="${param.NEEDSORDERPARAMETERS != 0}"> checked</c:if>/>&nbsp;Order Parameters must not be blank
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: 2rem;">Enabling this option will prevent the customer from completing an order if the ORDERPARAMETERS value is missing in the shopping cart.</p>
                       </span>
                       <button id="backToProductFormat" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
@@ -607,7 +609,7 @@
                       <h6>Associate&nbsp;Download&nbsp;File</h6>
                       <p style="margin-bottom: .5rem;">If order should be fulfilled via secure download from BMT&nbsp;Micro, use selector below to associate a file already uploaded using the Manage Files interface.</p>
                       <button type="button" class="grey-btn" onclick="toggleField('downloadfile');" style="margin-bottom: 1rem;">Choose File</button>
-                      <div id="downloadfile" class="toggle-section" style="display: none;">
+                      <div id="downloadfile" class="toggle-section"<c:if test="${empty param.PRODUCTDFL}">style="display: none;"</c:if>>
                         <h6>Choose&nbsp;File</h6>
                         <div id="fileFields"></div>
                         <br clear="all">
@@ -637,7 +639,7 @@
                       <button type="button" class="grey-btn" onclick="toggleField('regkeytable');">Choose&nbsp;Activation&nbsp;Code&nbsp;Table</button>
                       <button type="button" class="grey-btn" onclick="toggleField('keygenerator',true);">Add&nbsp;Code&nbsp;Generator&nbsp;Information</button>
                       <button type="button" class="grey-btn" onclick="toggleField('discounts');" style="margin-bottom: 1rem;">Choose&nbsp;Discount&nbsp;Scheme</button>
-                      <div id="regkeytable" class="toggle-section" style="display: none;">
+                      <div id="regkeytable" class="toggle-section"<c:if test="${empty param.KEYTABLEID}">style="display: none;"</c:if>>
                         <h6>Include&nbsp;Activation&nbsp;Code&nbsp;from&nbsp;Table</h6>
                         <p>Select activation code table to associate with this product.&nbsp;Our system will retrieve a code from this table for each customer.</p>
                         <span>
@@ -645,15 +647,15 @@
                           <select name="KEYTABLEID">${param.KEYTABLEIDLIST}</select>
                           <br clear="all">
                           <input type="hidden" name="USEONEKEY" value="${param.USEONEKEY}" />
-                          <input type="checkbox" name="USEONEKEY_CHK" value="-1" size="12" onclick="document.productform.USEONEKEY_CHK2.checked = this.checked;"/>&nbsp;Use only one code for quantity purchases.
+                          <input type="checkbox" name="USEONEKEY_CHK" size="12" onclick="document.productform.USEONEKEY_CHK2.checked = this.checked;"<c:if test="${param.USEONEKEY != 0}"> checked</c:if>/>&nbsp;Use only one code for quantity purchases.
                         </span>
                       </div>
-                      <div id="keygenerator" class="toggle-section" style="display: none;">
+                      <div id="keygenerator" class="toggle-section"<c:if test="${empty param.KEYGENERATOR}">style="display: none;"</c:if>>
                         <h6>Include&nbsp;Activation&nbsp;Code&nbsp;Generated&nbsp;On-the-Fly</h6>
                         <p>Add code generation information for this product below.&nbsp;Our system will post this information with each successful order.</p>
                         <span>
                           <label>Generate&nbsp;Activation&nbsp;Codes/Gift Certificate/Subscription&nbsp;Credit:&nbsp;</label>
-                          <input name="KEYGENERATOR" maxlength="256" value="${param.KEYGENERATOR}" size="75"  style="margin-bottom: 1rem;"/>
+                          <input name="KEYGENERATOR" maxlength="256" value="${param.KEYGENERATOR}" size="75" style="margin-bottom: 1rem;"/>
                         </span>
                         <br>
                         <span>
@@ -667,7 +669,7 @@
                         </span>
                         <br>
                         <span>
-                          <input type="checkbox" name="USEONEKEY_CHK2" value="-1" size="12" onclick="document.productform.USEONEKEY_CHK.checked = this.checked;" />&nbsp;Generate only one code for quantity purchases.
+                          <input type="checkbox" name="USEONEKEY_CHK2" value="-1" size="12" onclick="document.productform.USEONEKEY_CHK.checked = this.checked;"<c:if test="${param.USEONEKEY != 0}"> checked</c:if>/>&nbsp;Generate only one code for quantity purchases.
                         </span>
                         <script>
                           if (!isBlank ("${param.KEYVALIDATOR}")) {
@@ -677,18 +679,18 @@
                           }
                         </script>
                       </div>
-                      <div id="discounts" class="toggle-section" style="display: none;">
+                      <div id="discounts" class="toggle-section"<c:if test="${empty param.DISCOUNTSCHEMEID}">style="display: none;"</c:if>>
                         <h6>Include&nbsp;Discount&nbsp;Code</h6>
                         <p>If you would like to send the customer a discount code for their next purchase, please select discount scheme below.</p>
                         <span>
                           <label>Choose&nbsp;Discount&nbsp;Scheme:&nbsp;</label>
-                          <select name="DISCOUNTSCHEMEID">##DISCOUNTSCHEMEIDLIST##</select>
+                          <select name="DISCOUNTSCHEMEID">${param.DISCOUNTSCHEMEIDLIST}</select>
                         </span>
                       </div>
                       <h6>Add&nbsp;Affiliate&nbsp;Information</h6>
                       <p style="margin-bottom: .5rem;">Let your affiliates do the marketing for you. Adding your product to the affiliate program is easy to do. Follow our simple steps by clicking this button below.</p>
                       <button type="button" class="grey-btn" onclick="toggleField('affiliateinfo');" style="margin-bottom: 1rem;">Make available for affiliate sales</button>
-                      <div id="affiliateinfo" class="toggle-section" style="display: none;">
+                      <div id="affiliateinfo" class="toggle-section"<c:if test="${empty param.AFFILIATEPERCENTAGE && empty param.VENDORPRODUCTURL && empty param.SECUREORDERURL && empty param.DEMOURL}">style="display: none;"</c:if>>
                         <h6>Affiliate&nbsp;Sales&nbsp;Info</h6>
                         <p>If you would like to accept affiliate sales for this product, fill in information below.</p>
                         <span>
@@ -698,38 +700,38 @@
                         <br clear="all">
                         <span>
                           <label>Full&nbsp;Description&nbsp;URL:&nbsp;</label>
-                          <input type="text" maxlength="100" name="VENDORPRODUCTURL"  size="75" value="${param.VENDORPRODUCTURL}" style="margin-bottom: 1rem;"/>&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.VENDORPRODUCTURL)">Test</button>
+                          <input type="text" maxlength="100" name="VENDORPRODUCTURL" size="75" value="${param.VENDORPRODUCTURL}" style="margin-bottom: 1rem;"/>&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.VENDORPRODUCTURL)">Test</button>
                         </span>
                         <br clear="all">
                         <span>
                           <label>Secure&nbsp;Order&nbsp;URL:&nbsp;</label>
-                          <input type="text" maxlength="100" name="SECUREORDERURL"  size="75" value="${param.SECUREORDERURL}" style="margin-bottom: 1rem;"/>&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.SECUREORDERURL, (form.SECUREORDERURL.value == 'Use default') ? '${param.DEFAULT_SECUREORDERURL}' : '')">Test</button>
+                          <input type="text" maxlength="100" name="SECUREORDERURL" size="75" value="${param.SECUREORDERURL}" style="margin-bottom: 1rem;"/>&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.SECUREORDERURL, (form.SECUREORDERURL.value == 'Use default') ? '${param.DEFAULT_SECUREORDERURL}' : '')">Test</button>
                         </span>
                         <br clear="all">
                         <span>
                           <label>Demo/Product&nbsp;Info&nbsp;URL:&nbsp;</label>
-                          <input type="text" maxlength="100" name="DEMOURL"  size="75" value="${param.DEMOURL}" style="margin-bottom: 1rem;"/>&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.DEMOURL)">Test</button>
+                          <input type="text" maxlength="100" name="DEMOURL" size="75" value="${param.DEMOURL}" style="margin-bottom: 1rem;"/>&nbsp;<button class="grey-btn" type="button" onclick="testURL (form.DEMOURL)">Test</button>
                         </span>
                         <br clear="all">
                         <span style="margin-right: 2rem;">
                           <input type="hidden" name="INCLUDEONAPLIST" value="${param.INCLUDEONAPLIST}" />
-                          <input type="checkbox" name="INCLUDEONAPLIST_CHK" value="-1" />&nbsp;Include in All Affiliates List
+                          <input type="checkbox"<c:if test="${param.INCLUDEONAPLIST != 0}"> checked</c:if>/>&nbsp;Include in All Affiliates List
                         </span>
                         <span>
                           <input type="hidden" name="USEPRODUCTAIDCOOKIE" value="${param.USEPRODUCTAIDCOOKIE}" />
-                          <input type="checkbox" name="USEPRODUCTAIDCOOKIE_CHK" value="-1" />&nbsp;Use Product Specific Cookie
+                          <input type="checkbox"<c:if test="${param.USEPRODUCTAIDCOOKIE != 0}"> checked</c:if>/>&nbsp;Use Product Specific Cookie
                         </span>
                       </div>
                       <h6>Order&nbsp;Notifications/Subscription&nbsp;Handling</h6>
                       <p style="margin-bottom: .5rem;">Click button below to add an additional notification email address, XML notification URL, recurring billing information and allow ticket use.</p>
                       <button type="button" class="grey-btn" onclick="toggleField('ordernotifications');">Order&nbsp;Notifications</button>
                       <button type="button" class="grey-btn" onclick="toggleField('subscriptionhandling');" style="margin-bottom: 1rem;">Subscription&nbsp;Handling</button>
-                      <div id="ordernotifications" class="toggle-section" style="display: none;">
+                      <div id="ordernotifications" class="toggle-section"<c:if test="${empty param.NOTIFICATIONEMAILS && empty param.NOTIFICATIONURL}">style="display: none;"</c:if>>
                         <h6>Order&nbsp;Notifications</h6>
                         <p>By default order notifications are sent via email to the notification email address listed under 'My Account'.<br />To stop order notifications, add a different email address or receive notification via XML, fill in appropriate fields below.</p>
                         <span>
                           <input type="hidden" name="NOTIFYVENDOR" value="${param.NOTIFYVENDOR}" />
-                          <input type="checkbox" name="NOTIFYVENDOR_CHK" value="-1" style="margin-bottom: 1rem;" />&nbsp;Send to Vendor Notification email
+                          <input type="checkbox" style="margin-bottom: 1rem;"<c:if test="${param.NOTIFYVENDOR != 0}"> checked</c:if>/>&nbsp;Send to Vendor Notification email
                         </span>
                         <br clear="all">
                         <span>
@@ -743,17 +745,17 @@
                           <input name="NOTIFICATIONURL" size="75" value="${param.NOTIFICATIONURL}" maxlength="256" />
                         </span>
                       </div>
-                      <div id="subscriptionhandling" class="toggle-section" style="display: none;">
+                      <div id="subscriptionhandling" class="toggle-section"<c:if test="${param.RECURFREQUENCY==0 && param.TICKETCHOICE==0 && param.RECURDELAY}">style="display: none;"</c:if>>
                         <h6>Subscription&nbsp;Handling</h6>
                         <p>If this is product should be rebilled automatically, select frequency below.&nbsp;Your website must inform your customers that they are purchasing a subscription product.</p>
                         <label>Recurring&nbsp;Billing&nbsp;Frequency:&nbsp;</label>
-                        <select name="RECURFREQUENCY" style="margin-bottom: 1rem;"/>
-                          <option value="0" selected>None</option>
-                          <option value="1">Every Month</option>
-                          <option value="3">Every 3 Months</option>
-                          <option value="4">Every 4 Months</option>
-                          <option value="6">Every 6 Months</option>
-                          <option value="12">Every 12 Months</option>
+                        <select name="RECURFREQUENCY" style="margin-bottom: 1rem;">
+                          <option value="0"<c:if test="${param.RECURFREQUENCY==0}"> selected</c:if>>None</option>
+                          <option value="1"<c:if test="${param.RECURFREQUENCY==1}"> selected</c:if>>Every Month</option>
+                          <option value="3"<c:if test="${param.RECURFREQUENCY==3}"> selected</c:if>>Every 3 Months</option>
+                          <option value="4"<c:if test="${param.RECURFREQUENCY==4}"> selected</c:if>>Every 4 Months</option>
+                          <option value="6"<c:if test="${param.RECURFREQUENCY==6}"> selected</c:if>>Every 6 Months</option>
+                          <option value="12"<c:if test="${param.RECURFREQUENCY==12}"> selected</c:if>>Every 12 Months</option>
                         </select>
                         <br clear="all">
                         <span>
@@ -765,13 +767,13 @@
                         <span>
                           <p style="margin-bottom: .2rem;">To allow customer to purchase this product using a credit from subscription product purchase, check box below.</p>
                           <input type="hidden" name="TICKETCHOICE" value="${param.TICKETCHOICE}" />
-                          <input type="checkbox" name="TICKETCHOICE_CHK" value="-1" style="margin-bottom: 1rem;"/>&nbsp;Allow purchase with Ticket
+                          <input type="checkbox" style="margin-bottom: 1rem;"<c:if test="${param.TICKETCHOICE != 0}"> checked</c:if>/>&nbsp;Allow purchase with Ticket
                         </span>
                         <br clear="all">
                         <span>
                           <p style="margin-bottom: .2rem;">To give affiliates credit for recurring billings, check box below.&nbsp;If unchecked, affiliates will only get credit for the initial sale.</p>
                           <input type="hidden" name="RECURAFFILIATE" value="${param.RECURAFFILIATE}" />
-                          <input type="checkbox" name="RECURAFFILIATE_CHK" value="-1" style="margin-bottom: 1rem;"/>&nbsp;Credit affiliate when rebilling
+                          <input type="checkbox" style="margin-bottom: 1rem;"<c:if test="${param.RECURAFFILIATE != 0}"> checked</c:if>/>&nbsp;Credit affiliate when rebilling
                         </span>
                       </div>
                       <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes, or 'Previous' to go back.</p>
@@ -780,7 +782,7 @@
                     </div> <!-- end .tab-pane -->
                   </div> <!-- end .tab-content -->
                 </form>
-              </div> <!-- end .content-box -->
+              </div> <!-- end .tab-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
@@ -837,6 +839,10 @@
         $("#options-tab").tab('show');
         $("#options-tab").addClass('active');
         $("#fulfillment-tab").removeClass('active');
+      });
+
+      $('input[type=checkbox]').change(function(){
+        $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
       });
     </script>
   </body>

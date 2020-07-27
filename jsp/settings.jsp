@@ -19,9 +19,6 @@
     <scriptsrc="https://secure.bmtmicro.com/Templates/util.js"></script>
     <scriptsrc="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
-      .content-box {
-        min-height: 489.2px;
-      }
       .fa-plus-circle:hover {
         color: darkgreen;
       }
