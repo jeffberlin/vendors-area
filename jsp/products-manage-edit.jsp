@@ -484,11 +484,11 @@
                         if (isBlank ("${param.ROYALTYFIXED} ${param.ROYALTYPERCENTAGE}")) {
                           document.write ('<h5>Pricing</h5><p>Set the product price in one or more currencies.</p>');
                           document.write ('<table style="background-color:transparent">');
-                          document.write ('<tr><td><label>Price (USD):&nbsp;</label></td><td><input name="PRICE_USD" SIZE="10" value="##PRICE_USD##"></td><td></td></tr>');
-                          document.write ('<tr><td><label>Price (EUR):&nbsp;</label></td><td><input name="PRICE_EUR" SIZE="10" value="##PRICE_EUR##" onchange="calcFX(this,##FXRATE_EUR##);"></td><td valign="middle"><div id="FXRATE_EUR"></div></td></tr>');
-                          document.write ('<tr><td><label>Price (GBP):&nbsp;</label></td><td><input name="PRICE_GBP" SIZE="10" value="##PRICE_GBP##" onchange="calcFX(this,##FXRATE_GBP##);"></td><td valign="middle"><div id="FXRATE_GBP"></div></td></tr>');
-                          document.write ('<tr><td><label>Price (CAD):&nbsp;</label></td><td><input name="PRICE_CAD" SIZE="10" value="##PRICE_CAD##" onchange="calcFX(this,##FXRATE_CAD##);"></td><td valign="middle"><div id="FXRATE_CAD"></div></td></tr>');
-                          document.write ('<tr><td><label>Price (AUD):&nbsp;</label></td><td><input name="PRICE_AUD" SIZE="10" value="##PRICE_AUD##" onchange="calcFX(this,##FXRATE_AUD##);" style="margin-bottom: 1rem;"></td><td valign="middle"><div id="FXRATE_AUD"></div></td></tr>');
+                          document.write ('<tr><td><label>Price (USD):&nbsp;</label></td><td><input name="PRICE_USD" SIZE="10" value="${param.PRICE_USD}"></td><td></td></tr>');
+                          document.write ('<tr><td><label>Price (EUR):&nbsp;</label></td><td><input name="PRICE_EUR" SIZE="10" value="${param.PRICE_EUR}" onchange="calcFX(this,${param.FXRATE_EUR});"></td><td valign="middle"><div id="FXRATE_EUR"></div></td></tr>');
+                          document.write ('<tr><td><label>Price (GBP):&nbsp;</label></td><td><input name="PRICE_GBP" SIZE="10" value="${param.PRICE_GBP}" onchange="calcFX(this,${param.FXRATE_GBP});"></td><td valign="middle"><div id="FXRATE_GBP"></div></td></tr>');
+                          document.write ('<tr><td><label>Price (CAD):&nbsp;</label></td><td><input name="PRICE_CAD" SIZE="10" value="${param.PRICE_CAD}" onchange="calcFX(this,${param.FXRATE_CAD});"></td><td valign="middle"><div id="FXRATE_CAD"></div></td></tr>');
+                          document.write ('<tr><td><label>Price (AUD):&nbsp;</label></td><td><input name="PRICE_AUD" SIZE="10" value="${param.PRICE_AUD}" onchange="calcFX(this,${param.FXRATE_AUD});" style="margin-bottom: 1rem;"></td><td valign="middle"><div id="FXRATE_AUD"></div></td></tr>');
                           document.write ('</table>');
                         }
                       </script>
@@ -508,36 +508,36 @@
                       <span>
                         <label>Platform:&nbsp;</label>
                         <select name="PLATFORM" style="margin-bottom: 2rem;">
-                          <option value="N/A" selected="selected">Not Applicable</option>
-                          <option value="OS/2">OS/2</option>
-                          <option value="Windows">Windows</option>
-                          <option value="OS/2 &amp; Win">OS/2 &amp;Win</option>
-                          <option value="Win 3.x">Win 3.x</option>
-                          <option value="Windows 95/NT">Windows 95/NT</option>
-                          <option value="Windows 9x/Me">Windows 9x/Me</option>
-                          <option value="Windows NT/2000/XP/Vista">Windows NT/2000/XP/Vista</option>
-                          <option value="Windows CE">Windows CE</option>
-                          <option value="Palm OS">Palm OS</option>
-                          <option value="Handheld">Handheld</option>
-                          <option value="Macintosh">Macintosh</option>
-                          <option value="Unix">Unix</option>
-                          <option value="Linux">Linux</option>
-                          <option value="Sun Solaris">Sun Solaris</option>
-                          <option value="BeOS">BeOS</option>
-                          <option value="Symbian">Symbian OS</option>
-                          <option value="DOS">DOS</option>
-                          <option value="Java">Java</option>
-                          <option value="Embedded">Embedded</option>
-                          <option value="Other">Other</option>
-                          <option value="Windows &amp; Linux">Windows &amp; Linux</option>
-                          <option value="Windows &amp; Mac">Windows &amp; Mac</option>
-                          <option value="Linux &amp; Mac">Linux &amp; Mac</option>
-                          <option value="Linux &amp; OS/2">Linux &amp; OS/2</option>
-                          <option value="Win Lin Mac">Windows Linux &amp; Mac</option>
-                          <option value="Win Lin OS2">Windows Linux &amp; OS/2</option>
-                          <option value="Windows &amp; FreeBSD">Windows &amp; FreeBSD</option>
-                          <option value="Windows &amp; Symbian">Windows &amp; Symbian</option>
-                          <option value="Mac &amp; Symbian">Mac &amp; Symbian</option>
+                          <option value="N/A"<c:if test="${param.PLATFORM=='N/A'}"> selected</c:if>>Not Applicable</option>
+                          <option value="OS/2"<c:if test="${param.PLATFORM=='OS/2'}"> selected</c:if>>OS/2</option>
+                          <option value="Windows"<c:if test="${param.PLATFORM=='Windows'}"> selected</c:if>>Windows</option>
+                          <option value="OS/2 &amp; Win"<c:if test="${param.PLATFORM=='OS/2 &amp; Win'}"> selected</c:if>>OS/2 &amp;Win</option>
+                          <option value="Win 3.x"<c:if test="${param.PLATFORM=='Win 3.x'}"> selected</c:if>>Win 3.x</option>
+                          <option value="Windows 95/NT"<c:if test="${param.PLATFORM=='Windows 95/NT'}"> selected</c:if>>Windows 95/NT</option>
+                          <option value="Windows 9x/Me"<c:if test="${param.PLATFORM=='Windows 9x/Me'}"> selected</c:if>>Windows 9x/Me</option>
+                          <option value="Windows NT/2000/XP/Vista"<c:if test="${param.PLATFORM=='Windows NT/2000/XP/Vista'}"> selected</c:if>>Windows NT/2000/XP/Vista</option>
+                          <option value="Windows CE"<c:if test="${param.PLATFORM=='Windows CE'}"> selected</c:if>>Windows CE</option>
+                          <option value="Palm OS"<c:if test="${param.PLATFORM=='Palm OS'}"> selected</c:if>>Palm OS</option>
+                          <option value="Handheld"<c:if test="${param.PLATFORM=='Handheld'}"> selected</c:if>>Handheld</option>
+                          <option value="Macintosh"<c:if test="${param.PLATFORM=='Macintosh'}"> selected</c:if>>Macintosh</option>
+                          <option value="Unix"<c:if test="${param.PLATFORM=='Unix'}"> selected</c:if>>Unix</option>
+                          <option value="Linux"<c:if test="${param.PLATFORM=='Linux'}"> selected</c:if>>Linux</option>
+                          <option value="Sun Solaris"<c:if test="${param.PLATFORM=='Sun Solaris'}"> selected</c:if>>Sun Solaris</option>
+                          <option value="BeOS"<c:if test="${param.PLATFORM=='BeOS'}"> selected</c:if>>BeOS</option>
+                          <option value="Symbian"<c:if test="${param.PLATFORM=='Symbian'}"> selected</c:if>>Symbian OS</option>
+                          <option value="DOS"<c:if test="${param.PLATFORM=='DOS'}"> selected</c:if>>DOS</option>
+                          <option value="Java"<c:if test="${param.PLATFORM=='Java'}"> selected</c:if>>Java</option>
+                          <option value="Embedded"<c:if test="${param.PLATFORM=='Embedded'}"> selected</c:if>>Embedded</option>
+                          <option value="Other"<c:if test="${param.PLATFORM=='Other'}"> selected</c:if>>Other</option>
+                          <option value="Windows &amp; Linux"<c:if test="${param.PLATFORM=='Windows &amp; Linux'}"> selected</c:if>>Windows &amp; Linux</option>
+                          <option value="Windows &amp; Mac"<c:if test="${param.PLATFORM=='Windows &amp; Mac'}"> selected</c:if>>Windows &amp; Mac</option>
+                          <option value="Linux &amp; Mac"<c:if test="${param.PLATFORM=='Linux &amp; Mac'}"> selected</c:if>>Linux &amp; Mac</option>
+                          <option value="Linux &amp; OS/2"<c:if test="${param.PLATFORM=='Linux &amp; OS/2'}"> selected</c:if>>Linux &amp; OS/2</option>
+                          <option value="Win Lin Mac"<c:if test="${param.PLATFORM=='Win Lin Mac'}"> selected</c:if>>Windows Linux &amp; Mac</option>
+                          <option value="Win Lin OS2"<c:if test="${param.PLATFORM=='Win Lin OS2'}"> selected</c:if>>Windows Linux &amp; OS/2</option>
+                          <option value="Windows &amp; FreeBSD"<c:if test="${param.PLATFORM=='Windows &amp; FreeBSD'}"> selected</c:if>>Windows &amp; FreeBSD</option>
+                          <option value="Windows &amp; Symbian"<c:if test="${param.PLATFORM=='Windows &amp; Symbian'}"> selected</c:if>>Windows &amp; Symbian</option>
+                          <option value="Mac &amp; Symbian"<c:if test="${param.PLATFORM=='Mac &amp; Symbian'}"> selected</c:if>>Mac &amp; Symbian</option>
                         </select>
                       </span>
                       <h5>Product&nbsp;Format&nbsp;List</h5>
@@ -567,7 +567,7 @@
                       </p>
                       <span>
                         <input type="hidden" name="SHIPPED" value="${param.SHIPPED}" />
-                        <input type="checkbox" onchange="setFieldVisible ('shipping', this.checked);"<c:if test="${param.SHIPPED != 0}"> checked</c:if>/>&nbsp;Product is shipped
+                        <input type="checkbox" name="SHIPPED_CHK" onchange="setFieldVisible ('shipping', this.checked);"<c:if test="${param.SHIPPED != 0}"> checked</c:if>/>&nbsp;Product is shipped
                         <p style="font-size: .9rem; font-style: italic;">This option ensures that shipping information is available (some payment methods do not require customer to enter address).</p>
                       </span>
                       <div id="shipping"<c:if test="${param.SHIPPED==0}">style="display: none;"</c:if>>
@@ -616,12 +616,12 @@
                         <span>
                           <label>Download password should expire in:</label>
                           <select name="DOWNLOADEXPDAYS" style="margin-right: .5rem;">
-                            <option value="31" selected>31 Days</option>
-                            <option value="60">60 Days</option>
-                            <option value="90">90 Days</option>
-                            <option value="180">180 Days</option>
-                            <option value="365">365 Days</option>
-                            <option value="-1">Never Expires</option>
+                            <option value="31"<c:if test="${param.DOWNLOADEXPDAYS=='31'}"> selected</c:if>>31 Days</option>
+                            <option value="60"<c:if test="${param.DOWNLOADEXPDAYS=='60'}"> selected</c:if>>60 Days</option>
+                            <option value="90"<c:if test="${param.DOWNLOADEXPDAYS=='90'}"> selected</c:if>>90 Days</option>
+                            <option value="180"<c:if test="${param.DOWNLOADEXPDAYS=='180'}"> selected</c:if>>180 Days</option>
+                            <option value="365"<c:if test="${param.DOWNLOADEXPDAYS=='365'}"> selected</c:if>>365 Days</option>
+                            <option value="-1"<c:if test="${param.DOWNLOADEXPDAYS=='-1'}"> selected</c:if>>Never Expires</option>
                           </select>
                         </span>
                         <span>
@@ -661,10 +661,10 @@
                         <span>
                           <label>Character&nbsp;Set:&nbsp;</label>
                           <select name="KEYGENCHARSET" style="margin-bottom: 1rem;">
-                            <option value="0">US ASCII (7-bit)</option>
-                            <option value="1">UTF-8</option>
-                            <option value="2">Windows-1252</option>
-                            <option value="3">ISO 8859-1</option>
+                            <option value="0"<c:if test="${param.KEYGENCHARSET=='0'}"> selected</c:if>>US ASCII (7-bit)</option>
+                            <option value="1"<c:if test="${param.KEYGENCHARSET=='1'}"> selected</c:if>>UTF-8</option>
+                            <option value="2"<c:if test="${param.KEYGENCHARSET=='2'}"> selected</c:if>>Windows-1252</option>
+                            <option value="3"<c:if test="${param.KEYGENCHARSET=='3'}"> selected</c:if>>ISO 8859-1</option>
                           </select>
                         </span>
                         <br>
