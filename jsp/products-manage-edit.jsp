@@ -464,11 +464,11 @@
                       <span>
                         <label>Product&nbsp;Price:&nbsp;</label>
                         <span style="color: #000000;">
-                          ##SELECT(PRICE_USD,,,USD&nbsp;&nbsp;%%PRICE_USD%%&nbsp;&nbsp;&nbsp;<br>)##
-                          ##SELECT(PRICE_EUR,,,EUR&nbsp;&nbsp;%%PRICE_EUR%%&nbsp;&nbsp;&nbsp;<br>)##
-                          ##SELECT(PRICE_GBP,,,GBP&nbsp;&nbsp;%%PRICE_GBP%%&nbsp;&nbsp;&nbsp;<br>)##
-                          ##SELECT(PRICE_CAD,,,CAD&nbsp;&nbsp;%%PRICE_CAD%%&nbsp;&nbsp;&nbsp;<br>)##
-                          ##SELECT(PRICE_AUD,,,AUD&nbsp;&nbsp;%%PRICE_AUD%%&nbsp;&nbsp;&nbsp;<br>)##
+                          <c:if test="${!empty param.PRICE_USD}">USD&nbsp;&nbsp;${param.PRICE_USD}&nbsp;&nbsp;&nbsp;<br></c:if>
+                          <c:if test="${!empty param.PRICE_EUR}">USD&nbsp;&nbsp;${param.PRICE_EUR}&nbsp;&nbsp;&nbsp;<br></c:if>
+                          <c:if test="${!empty param.PRICE_GBP}">USD&nbsp;&nbsp;${param.PRICE_GBP}&nbsp;&nbsp;&nbsp;<br></c:if>
+                          <c:if test="${!empty param.PRICE_CAD}">USD&nbsp;&nbsp;${param.PRICE_CAD}&nbsp;&nbsp;&nbsp;<br></c:if>
+                          <c:if test="${!empty param.PRICE_AUD}">USD&nbsp;&nbsp;${param.PRICE_AUD}&nbsp;&nbsp;&nbsp;<br></c:if>
                         </span>
                       </span>
                       <span>
@@ -499,7 +499,7 @@
                         <input type="checkbox" style="margin-bottom: .5rem;"<c:if test="${param.PRICEINCLUDESGST != 0}"> checked</c:if>/>&nbsp;The price includes GST
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: 2rem;">Check the respective checkbox to indicate that the price includes European Union VAT and/or Australian GST. When checked, the customer will pay the prices listed above and any tax due is deducted from the sales royalty. When not checked, the customer will see tax added to the price specified above if applicable.</p>
                       </span>
-                      <button id="backToBasic" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="backToBasic" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
                       <button id="toProductFormat" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="productFormat" role="tabpanel" aria-labelledby="productFormat-tab">
@@ -549,7 +549,7 @@
                         <p style="font-size: .9rem; font-style: italic;">Listing formats here will add a selection box in the shopping cart that lets the customer choose format when purchasing. Use the Format List when the customer needs to pick a format, size, type, color, etc. For example, if you're selling a T-shirt, you may want to specify "S,M,L,XL" here. If you sell a program for several platforms and want to do it all under the same product setup, you can specify "Windows,Linux,Mac" for example. If doing it this way, you can associate an index file (.idx) as download file in order to deliver different download files depening on format purchased.</p>
                       </span>
                       <br>
-                      <button id="backToPricing" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="backToPricing" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
                       <button id="toCartOptions" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="options" role="tabpanel" aria-labelledby="options-tab">
@@ -600,7 +600,7 @@
                         <input type="checkbox"<c:if test="${param.NEEDSORDERPARAMETERS != 0}"> checked</c:if>/>&nbsp;Order Parameters must not be blank
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: 2rem;">Enabling this option will prevent the customer from completing an order if the ORDERPARAMETERS value is missing in the shopping cart.</p>
                       </span>
-                      <button id="backToProductFormat" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="backToProductFormat" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
                       <button id="toFulfillment" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="fulfillment" role="tabpanel" aria-labelledby="fulfillment-tab">
@@ -776,8 +776,8 @@
                           <input type="checkbox" style="margin-bottom: 1rem;"<c:if test="${param.RECURAFFILIATE != 0}"> checked</c:if>/>&nbsp;Credit affiliate when rebilling
                         </span>
                       </div>
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to save changes, or 'Previous' to go back.</p>
-                      <button id="backToCartOptions" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <p style="margin-top: 2rem;">Click 'Save' button to save changes, or 'Previous' to go back.</p>
+                      <button id="backToCartOptions" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
                       <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
                     </div> <!-- end .tab-pane -->
                   </div> <!-- end .tab-content -->
