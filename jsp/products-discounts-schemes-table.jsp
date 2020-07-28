@@ -7,7 +7,7 @@
 	<input type="hidden" name="SCHEMEID" value="" />
 	<input type="hidden" name="SCHEMETYPE" value="" />
 	<div class="table-header">
-		<input type="checkbox" name="SHOWINACTIVE" value="-1" onClick="showInactiveChanged ();" style="margin-bottom: 1rem;" <c:if test = "${ cookie['BMTMicro.Vendors.Discounts.ShowInactive'].value == -1 }">checked</c:if> />
+		<input type="checkbox" name="SHOWINACTIVE" value="-1" onClick="showInactiveChanged ();"<c:if test = "${ cookie['BMTMicro.Vendors.Discounts.ShowInactive'].value == -1 }">checked</c:if> />
 		<span>
 			Show inactive/expired schemes
 		</span>

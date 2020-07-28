@@ -20,13 +20,16 @@
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/upsellutil.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
-      .fa-plus-circle:hover, .toggle-section h6  {
-        color: #efa900;
+      .fa-plus-circle:hover {
+        color: darkgreen;
       }
-      h6, .fa-plus-circle {
-        color: #195a7c;
+      .fa-plus-circle {
+        color: green;
+        font-size: 1.5rem;
+        transition: all .2s ease;
       }
       h6 {
+        color: #195a7c;
         font-size: 1.15rem;
         letter-spacing: .5px;
       }
@@ -35,11 +38,8 @@
         padding-left: 10px;
       }
       .toggle-section h6 {
+        color: #efa900;
         margin-bottom: .3rem;
-      }
-      .fa-plus-circle {
-        font-size: 1.5rem;
-        transition: all .2s ease;
       }
       #fileFields label {
         margin-right: .3rem;

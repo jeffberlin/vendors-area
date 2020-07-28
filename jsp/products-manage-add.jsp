@@ -19,13 +19,16 @@
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
-      .fa-plus-circle:hover, .toggle-section h6  {
-        color: #efa900;
+      .fa-plus-circle:hover {
+        color: darkgreen;
       }
-      h6, .fa-plus-circle {
-        color: #195a7c;
+      .fa-plus-circle {
+        color: green;
+        font-size: 1.5rem;
+        transition: all .2s ease;
       }
       h6 {
+        color: #195a7c;
         font-size: 1.15rem;
         letter-spacing: .5px;
       }
@@ -35,10 +38,7 @@
       }
       .toggle-section h6 {
          margin-bottom: .3rem;
-      }
-      .fa-plus-circle {
-        font-size: 1.5rem;
-        transition: all .2s ease;
+         color: #efa900;
       }
       #fileFields label {
         margin-right: .3rem;
@@ -186,7 +186,7 @@
         // initField (form, "PRICEINCLUDESVAT_CHK",    "##PRICEINCLUDESVAT##");
         // initField (form, "PRICEINCLUDESGST_CHK",    "##PRICEINCLUDESGST##");
         // initField (form, "PLATFORM",                "##PLATFORM##");
-        // initField (form, "CATEGORY",                "##CATEGORY##");
+        initField (form, "CATEGORY",                "${param.CATEGORY}");
         // initField (form, "KEYTABLEID",              "##KEYTABLEID##");
         // initField (form, "DISCOUNTSCHEMEID",        "##DISCOUNTSCHEMEID##");
         // initField (form, "DOWNLOADEXPDAYS",         "##DOWNLOADEXPDAYS##");
@@ -232,7 +232,7 @@
           form.CATEGORY.options[idx++] = new Option ("System Tools", "21");
           form.CATEGORY.options[idx++] = new Option ("Other", "16");
         }
-        // initField (form, "CATEGORY", "##CATEGORY##");
+        initField (form, "CATEGORY", "${param.CATEGORY}");
         initFileFields ();
       }
 
@@ -245,7 +245,7 @@
         // copyField (form, "SHOWEMAILFIELD",      "SHOWEMAILFIELD_CHK");
         // copyField (form, "QUANTITYFIXED",       "QUANTITYFIXED_CHK");
         // copyField (form, "NEEDSORDERPARAMETERS","NEEDSORDERPARAMETERS_CHK");
-        //copyField (form, "ACTIVE",              "ACTIVE_CHK");
+        // copyField (form, "ACTIVE",              "ACTIVE_CHK");
         // copyField (form, "SHIPPED",             "SHIPPED_CHK");
         // copyField (form, "NOTIFYVENDOR",        "NOTIFYVENDOR_CHK");
         // copyField (form, "USEONEKEY",           "USEONEKEY_CHK");
@@ -365,8 +365,6 @@
         form.submit ();
         return (true);
       }
-
-      //-->
     </script>
   </head>
   <body onload="initForm (document.productform);">
@@ -404,16 +402,16 @@
                   </a>
                 </li>
               </ul>
-              <div class="content-box">
+              <div class="tab-box">
                 <form name="productform" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" />
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                   <input type="hidden" name="ACTION" value="10" />
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/productsstart.html" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage.jsp" />
                   <input type="hidden" name="VENDORID" value="${param.VENDORID}" />
                   <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
                       <h5>Basic&nbsp;Info</h5>
-                      <!-- <p>Enter basic product info in fields below.</p> -->
+                      <p>Enter basic product info in the fields below.</p>
                       <span>
                         <label>Product&nbsp;Name:</label>
                         <input type="text" name="PRODUCTNAME" value="${param.PRODUCTNAME}" style="margin-right: .5rem; margin-bottom: 1rem;">
@@ -423,11 +421,11 @@
                         <label>Product&nbsp;Price:</label>
                         <input type="text" name="PRICE_USD" size="8" />
                         <select name="CURRENCY" onmousewheel="return false;" style="margin-right: .5rem; margin-bottom: 1rem;">
-                          <option value="USD" selected="selected">USD</option>
-                          <option value="EUR">EUR</option>
-                          <option value="GBP">GBP</option>
-                          <option value="CAD">CAD</option>
-                          <option value="AUD">AUD</option>
+                          <option value="USD"<c:if test="${param.CURRENCY=='USD'}"> selected</c:if>>USD</option>
+                          <option value="EUR"<c:if test="${param.CURRENCY=='EUR'}"> selected</c:if>>EUR</option>
+                          <option value="GBP"<c:if test="${param.CURRENCY=='GBP'}"> selected</c:if>>GBP</option>
+                          <option value="CAD"<c:if test="${param.CURRENCY=='CAD'}"> selected</c:if>>CAD</option>
+                          <option value="AUD"<c:if test="${param.CURRENCY=='AUD'}"> selected</c:if>>AUD</option>
                         </select>
                         <input type="hidden" name="PRICE_EUR" />
                         <input type="hidden" name="PRICE_GBP" />
@@ -448,7 +446,6 @@
                         <br>
                         <textarea name="DESCRIPTION" id="DESCRIPTION" onkeydown="textLimiterAndCounter(this.form.DESCRIPTION,this.form.CHARSREMAINING,1024);" onkeyup="textLimiterAndCounter(this.form.DESCRIPTION,this.form.CHARSREMAINING,1024);" cols="50" rows="4" placeholder="Type a message">${param.DESCRIPTION}</textarea>
                       </span>
-                      <!-- <br clear="all"> -->
                       <span>
                         <label style="font-size: .8rem;">Characters&nbsp;remaining:</label>
                         <input type="text" name="CHARSREMAINING" value="" size="4" readonly="readonly" style="border: none; padding: .25rem 0rem; color: red; margin-bottom: 1rem;" />
@@ -473,36 +470,36 @@
                       <span>
                         <label>Platform:</label>
                         <select name="PLATFORM" style="margin-bottom: 2rem;">
-                          <option value="N/A" selected="selected">Not Applicable</option>
-                          <option value="OS/2">OS/2</option>
-                          <option value="Windows">Windows</option>
-                          <option value="OS/2 &amp; Win">OS/2 &amp;Win</option>
-                          <option value="Win 3.x">Win 3.x</option>
-                          <option value="Windows 95/NT">Windows 95/NT</option>
-                          <option value="Windows 9x/Me">Windows 9x/Me</option>
-                          <option value="Windows NT/2000/XP/Vista">Windows NT/2000/XP/Vista</option>
-                          <option value="Windows CE">Windows CE</option>
-                          <option value="Palm OS">Palm OS</option>
-                          <option value="Handheld">Handheld</option>
-                          <option value="Macintosh">Macintosh</option>
-                          <option value="Unix">Unix</option>
-                          <option value="Linux">Linux</option>
-                          <option value="Sun Solaris">Sun Solaris</option>
-                          <option value="BeOS">BeOS</option>
-                          <option value="Symbian">Symbian OS</option>
-                          <option value="DOS">DOS</option>
-                          <option value="Java">Java</option>
-                          <option value="Embedded">Embedded</option>
-                          <option value="Other">Other</option>
-                          <option value="Windows &amp; Linux">Windows &amp; Linux</option>
-                          <option value="Windows &amp; Mac">Windows &amp; Mac</option>
-                          <option value="Linux &amp; Mac">Linux &amp; Mac</option>
-                          <option value="Linux &amp; OS/2">Linux &amp; OS/2</option>
-                          <option value="Win Lin Mac">Windows Linux &amp; Mac</option>
-                          <option value="Win Lin OS2">Windows Linux &amp; OS/2</option>
-                          <option value="Windows &amp; FreeBSD">Windows &amp; FreeBSD</option>
-                          <option value="Windows &amp; Symbian">Windows &amp; Symbian</option>
-                          <option value="Mac &amp; Symbian">Mac &amp; Symbian</option>
+                          <option value="N/A"<c:if test="${param.PLATFORM=='N/A'}"> selected</c:if>>Not Applicable</option>
+                          <option value="OS/2"<c:if test="${param.PLATFORM=='OS/2'}"> selected</c:if>>OS/2</option>
+                          <option value="Windows"<c:if test="${param.PLATFORM=='Windows'}"> selected</c:if>>Windows</option>
+                          <option value="OS/2 &amp; Win"<c:if test="${param.PLATFORM=='OS/2 &amp; Win'}"> selected</c:if>>OS/2 &amp;Win</option>
+                          <option value="Win 3.x"<c:if test="${param.PLATFORM=='Win 3.x'}"> selected</c:if>>Win 3.x</option>
+                          <option value="Windows 95/NT"<c:if test="${param.PLATFORM=='Windows 95/NT'}"> selected</c:if>>Windows 95/NT</option>
+                          <option value="Windows 9x/Me"<c:if test="${param.PLATFORM=='Windows 9x/Me'}"> selected</c:if>>Windows 9x/Me</option>
+                          <option value="Windows NT/2000/XP/Vista"<c:if test="${param.PLATFORM=='Windows NT/2000/XP/Vista'}"> selected</c:if>>Windows NT/2000/XP/Vista</option>
+                          <option value="Windows CE"<c:if test="${param.PLATFORM=='Windows CE'}"> selected</c:if>>Windows CE</option>
+                          <option value="Palm OS"<c:if test="${param.PLATFORM=='Palm OS'}"> selected</c:if>>Palm OS</option>
+                          <option value="Handheld"<c:if test="${param.PLATFORM=='Handheld'}"> selected</c:if>>Handheld</option>
+                          <option value="Macintosh"<c:if test="${param.PLATFORM=='Macintosh'}"> selected</c:if>>Macintosh</option>
+                          <option value="Unix"<c:if test="${param.PLATFORM=='Unix'}"> selected</c:if>>Unix</option>
+                          <option value="Linux"<c:if test="${param.PLATFORM=='Linux'}"> selected</c:if>>Linux</option>
+                          <option value="Sun Solaris"<c:if test="${param.PLATFORM=='Sun Solaris'}"> selected</c:if>>Sun Solaris</option>
+                          <option value="BeOS"<c:if test="${param.PLATFORM=='BeOS'}"> selected</c:if>>BeOS</option>
+                          <option value="Symbian"<c:if test="${param.PLATFORM=='Symbian'}"> selected</c:if>>Symbian OS</option>
+                          <option value="DOS"<c:if test="${param.PLATFORM=='DOS'}"> selected</c:if>>DOS</option>
+                          <option value="Java"<c:if test="${param.PLATFORM=='Java'}"> selected</c:if>>Java</option>
+                          <option value="Embedded"<c:if test="${param.PLATFORM=='Embedded'}"> selected</c:if>>Embedded</option>
+                          <option value="Other"<c:if test="${param.PLATFORM=='Other'}"> selected</c:if>>Other</option>
+                          <option value="Windows &amp; Linux"<c:if test="${param.PLATFORM=='Windows &amp; Linux'}"> selected</c:if>>Windows &amp; Linux</option>
+                          <option value="Windows &amp; Mac"<c:if test="${param.PLATFORM=='Windows &amp; Mac'}"> selected</c:if>>Windows &amp; Mac</option>
+                          <option value="Linux &amp; Mac"<c:if test="${param.PLATFORM=='Linux &amp; Mac'}"> selected</c:if>>Linux &amp; Mac</option>
+                          <option value="Linux &amp; OS/2"<c:if test="${param.PLATFORM=='Linux &amp; OS/2'}"> selected</c:if>>Linux &amp; OS/2</option>
+                          <option value="Win Lin Mac"<c:if test="${param.PLATFORM=='Win Lin Mac'}"> selected</c:if>>Windows Linux &amp; Mac</option>
+                          <option value="Win Lin OS2"<c:if test="${param.PLATFORM=='Win Lin OS2'}"> selected</c:if>>Windows Linux &amp; OS/2</option>
+                          <option value="Windows &amp; FreeBSD"<c:if test="${param.PLATFORM=='Windows &amp; FreeBSD'}"> selected</c:if>>Windows &amp; FreeBSD</option>
+                          <option value="Windows &amp; Symbian"<c:if test="${param.PLATFORM=='Windows &amp; Symbian'}"> selected</c:if>>Windows &amp; Symbian</option>
+                          <option value="Mac &amp; Symbian"<c:if test="${param.PLATFORM=='Mac &amp; Symbian'}"> selected</c:if>>Mac &amp; Symbian</option>
                         </select>
                       </span>
                       <h5>Product Format List</h5>
@@ -510,12 +507,11 @@
                       <span>
                         <label>Format&nbsp;List:</label>
                         <input name="FILEFORMATS" size="40" maxlength="80" value="${param.FILEFORMATS}" />
-                        <!--<button class="green">Add to >></button> <select name="FILEFORMATS"><option value="1">X-Large</option><option value="2">XX-Large</option></select> <button>Reset List</button>//-->
                         <p style="font-size: .9rem; font-style: italic; color: red; margin-bottom: .5rem;">If product purchase does not require a format/size/type/color choice, please leave this field blank.</p>
                         <p style="font-size: .9rem; font-style: italic;" style="margin-bottom: 2rem;">Listing formats here will add a selection box in the shopping cart that lets the customer choose format when purchasing. Use the Format List when the customer needs to pick a format, size, type, color, etc. For example, if you're selling a T-shirt, you may want to specify "S,M,L,XL" here. If you sell a program for several platforms and want to do it all under the same product setup, you can specify "Windows,Linux,Mac" for example. If doing it this way, you can associate an index file (.idx) as download file in order to deliver different download files depening on format purchased.</p>
                       </span>
                       <br>
-                      <button id="backToBasic" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="backToBasic" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
                       <button id="toShoppingCart" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="options" role="tabpanel" aria-labelledby="options-tab">
@@ -533,17 +529,17 @@
                       </p>
                       <span>
                         <input type="hidden" name="SHIPPED" value="${param.SHIPPED}" />
-                        <input type="checkbox" name="SHIPPED_CHK" onchange="setFieldVisible ('shipping', this.checked);" />&nbsp;Product is shipped
+                        <input type="checkbox" name="SHIPPED_CHK" onchange="setFieldVisible ('shipping', this.checked);"<c:if test="${param.SHIPPED != 0}"> checked</c:if>/>&nbsp;Product is shipped
                         <br />
                         <p style="font-size: .9rem; font-style: italic;">This option ensures that shipping information is available (some payment methods do not require customer to enter address).</p>
                       </span>
-                      <div id="shipping" class="toggle-section" style="display: none;">
+                      <div id="shipping" class="toggle-section"<c:if test="${param.SHIPPED==0}">style="display: none;"</c:if>>
                         <label>Shipping&nbsp;Cost&nbsp;Scheme:</label>
                         <select name="SHIPPINGCOSTSCHEMEID">
                           ${param.SHIPPINGSCHEMEIDLIST}
                         </select>
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: .2rem;">If shipping is free or included in product price, please leave this field blank!</p>
-                        <p style="font-size: .9rem; font-style: italic;">Click&nbsp;<a href="https://vendors-new.bmtmicro.com/shippingstart.html">here</a>&nbsp;to set up or configure shipping schemes and regions.</p>
+                        <p style="font-size: .9rem; font-style: italic;">Click&nbsp;<a href="https://vendors-new.bmtmicro.com/shipping.jsp">here</a>&nbsp;to set up or configure shipping schemes and regions.</p>
                       </div>
                       <h6>Fields for allowing gift purchases</h6>
                       <span>
@@ -572,7 +568,7 @@
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: 2rem;">Enabling this option will prevent the customer from completing an order if the ORDERPARAMETERS value is missing in the shopping cart.</p>
                       </span>
                       <br>
-                      <button id="backToProductFormat" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <button id="backToProductFormat" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
                       <button id="toFulfillment" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="fulfillment" role="tabpanel" aria-labelledby="fulfillment-tab">
@@ -580,23 +576,22 @@
                       <p>Please take some time to review if you need to add support with any of the following, if you do not want any more options added, simply click Save (you can always add those options later).</p>
                       <h6>Associate&nbsp;Download&nbsp;File</h6>
                       <p style="margin-bottom: .5rem;">If order should be fulfilled via secure download from BMT&nbsp;Micro, use selector below to associate a file already uploaded using the Manage Files interface.</p>
-                      <!--<button type="button" class="orange" onclick="toggleField('uploadfile');">Upload a New File</button>&nbsp;-->
                       <button type="button" class="grey-btn" onclick="toggleField('downloadfile');" style="margin-bottom: 1rem;">
                         Choose&nbsp;File
                       </button>
-                      <div id="downloadfile" class="toggle-section" style="display: none;">
+                      <div id="downloadfile" class="toggle-section"<c:if test="${empty param.PRODUCTDFL}">style="display: none;"</c:if>>
                         <h6>Choose&nbsp;File</h6>
                         <div id="fileFields"></div>
                         <br clear="all">
                         <span>
                           <label>Download password should expire in:</label>
                           <select name="DOWNLOADEXPDAYS" style="margin-right: .5rem;">
-                            <option value="31" selected>31 Days</option>
-                            <option value="60">60 Days</option>
-                            <option value="90">90 Days</option>
-                            <option value="180">180 Days</option>
-                            <option value="365">365 Days</option>
-                            <option value="-1">Never Expires</option>
+                            <option value="31"<c:if test="${param.DOWNLOADEXPDAYS=='31'}"> selected</c:if>>31 Days</option>
+                            <option value="60"<c:if test="${param.DOWNLOADEXPDAYS=='60'}"> selected</c:if>>60 Days</option>
+                            <option value="90"<c:if test="${param.DOWNLOADEXPDAYS=='90'}"> selected</c:if>>90 Days</option>
+                            <option value="180"<c:if test="${param.DOWNLOADEXPDAYS=='180'}"> selected</c:if>>180 Days</option>
+                            <option value="365"<c:if test="${param.DOWNLOADEXPDAYS=='365'}"> selected</c:if>>365 Days</option>
+                            <option value="-1"<c:if test="${param.DOWNLOADEXPDAYS=='-1'}"> selected</c:if>>Never Expires</option>
                           </select>
                         </span>
                         <span>
@@ -611,19 +606,18 @@
                       </div>
                       <h6>Generate&nbsp;Codes/Gift&nbsp;Certificates/Subscription&nbsp;Credits</h6>
                       <p>If you would like to add pre-generated Activation Codes to your product select the Choose Activation Code Table button.  If activation code, gift certificate or subscription credit should be generated on the fly, select Add Code Generator Information. To generate promotional discount code for customers use on their next purchase Click Choose Discount Scheme.</p>
-                      <!--<button class="blue">Add New Activation Codes</button>-->
                       <button type="button" class="grey-btn" onclick="toggleField('regkeytable');">Choose&nbsp;Activation&nbsp;Code&nbsp;Table</button>
                       <button type="button" class="grey-btn" onclick="toggleField('keygenerator');">Add&nbsp;Code&nbsp;Generator&nbsp;Information</button>
                       <button type="button" class="grey-btn" onclick="toggleField('discounts');" style="margin-bottom: 1rem;">Choose&nbsp;a&nbsp;Discount&nbsp;Scheme</button>
-                      <div id="regkeytable" class="toggle-section" style="display: none;">
+                      <div id="regkeytable" class="toggle-section"<c:if test="${empty param.KEYTABLEID}">style="display: none;"</c:if>>
                         <h6>Include&nbsp;Activation&nbsp;Code&nbsp;from&nbsp;Table</h6>
                         <p>Select activation code table to associate with this product.&nbsp;Our system will retrieve a code from this table for each customer.</p>
                         <span>
                           <input type="hidden" name="USEONEKEY" value="${param.USEONEKEY}" />
-                          <input type="checkbox" name="USEONEKEY_CHK" value="-1" size="12" onclick="document.productform.USEONEKEY_CHK2.checked = this.checked;" />&nbsp;Use only one code for quantity purchases.
+                          <input type="checkbox" name="USEONEKEY_CHK" size="12" onclick="document.productform.USEONEKEY_CHK2.checked = this.checked;"<c:if test="${param.USEONEKEY != 0}"> checked</c:if>/>&nbsp;Use only one code for quantity purchases.
                         </span>
                       </div>
-                      <div id="keygenerator" class="toggle-section" style="display: none;">
+                      <div id="keygenerator" class="toggle-section"<c:if test="${empty param.KEYGENERATOR}">style="display: none;"</c:if>>
                         <h6>Include&nbsp;Activation&nbsp;Code&nbsp;Generated&nbsp;On-the-Fly</h6>
                         <p>Add code generation information for this product below.&nbsp;Our system will post this information with each successful order.</p>
                         <span>
@@ -634,33 +628,31 @@
                         <span>
                           <label>Character&nbsp;Set:</label>
                           <select name="KEYGENCHARSET" style="margin-bottom: 1rem;">
-                            <option value="0">US&nbsp;ASCII&nbsp;(7-bit)</option>
-                            <option value="1">UTF-8</option>
-                            <option value="2">Windows-1252</option>
-                            <option value="3">ISO&nbsp;8859-1</option>
+                            <option value="0"<c:if test="${param.KEYGENCHARSET=='0'}"> selected</c:if>>US ASCII (7-bit)</option>
+                            <option value="1"<c:if test="${param.KEYGENCHARSET=='1'}"> selected</c:if>>UTF-8</option>
+                            <option value="2"<c:if test="${param.KEYGENCHARSET=='2'}"> selected</c:if>>Windows-1252</option>
+                            <option value="3"<c:if test="${param.KEYGENCHARSET=='3'}"> selected</c:if>>ISO 8859-1</option>
                           </select>
                         </span>
                         <br clear="all">
                         <span>
-                          <input type="checkbox" name="USEONEKEY_CHK2" value="-1" size="12" onclick="document.productform.USEONEKEY_CHK.checked = this.checked;" />&nbsp;Generate only one code for quantity purchases.
+                          <input type="checkbox" name="USEONEKEY_CHK2" size="12" onclick="document.productform.USEONEKEY_CHK.checked = this.checked;"<c:if test="${param.USEONEKEY != 0}"> checked</c:if>/>&nbsp;Generate only one code for quantity purchases.
                         </span>
-                        <script language="javascript" type="text/javascript">
-                          <!--
+                        <script>
                           if (!isBlank("${param.KEYVALIDATOR}")) {
                             document.write('<br clear="all"><br>  ');
                             document.write('<span><label>Validate Generated Activation Codes</label>  ');
                             document.write('<input name="KEYVALIDATOR" maxlength="256" value="${param.KEYVALIDATOR}" size="75" /></span> ');
                           }
-                          // -->
                         </script>
                       </div> <!-- end .toggle-section -->
-                      <div id="discounts" class="toggle-section" style="display: none;">
+                      <div id="discounts" class="toggle-section"<c:if test="${empty param.DISCOUNTSCHEMEID}">style="display: none;"</c:if>>
                         <h6>Include&nbsp;Discount&nbsp;Code</h6>
                         <p>If you would like to send the customer a discount code for their next purchase, please select discount scheme below.</p>
                         <span>
                           <label>Choose&nbsp;Discount&nbsp;Scheme:</label>
                           <select name="DISCOUNTSCHEMEID">
-                            <option value="" selected>Select</option>
+                            <option value="" selected="selected">Select</option>
                             ${param.DISCOUNTSCHEMEIDLIST}
                           </select>
                         </span>
@@ -668,7 +660,7 @@
                       <h6>Add&nbsp;Affiliate&nbsp;Information</h6>
                       <p>Let your affiliates do the marketing for you. Adding your product to the affiliate program is easy to do. Follow our simple steps by clicking the button below.</p>
                       <button type="button" class="grey-btn" onclick="toggleField('affiliateinfo');" style="margin-bottom: 1rem;">Make available for affiliate sales</button>
-                      <div id="affiliateinfo" class="toggle-section" style="display: none;">
+                      <div id="affiliateinfo" class="toggle-section"<c:if test="${empty param.AFFILIATEPERCENTAGE && empty param.VENDORPRODUCTURL && empty param.SECUREORDERURL && empty param.DEMOURL}">style="display: none;"</c:if>>
                         <h6>Affiliate&nbsp;Sales&nbsp;Info</h6>
                         <p>If you would like to accept affiliate sales for this product, fill in information below.</p>
                         <span>
@@ -705,7 +697,7 @@
                       <p>Click button below to add an additional notification email address, XML notification URL, recurring billing information and allow ticket use.</p>
                       <button type="button" class="grey-btn" onclick="toggleField('ordernotifications');">Order&nbsp;Notifications</button>
                       <button type="button" class="grey-btn" onclick="toggleField('subscriptionhandling');" style="margin-bottom: 1rem;">Subscription&nbsp;Handling</button>
-                      <div id="ordernotifications" class="toggle-section" style="display: none;">
+                      <div id="ordernotifications" class="toggle-section"<c:if test="${empty param.NOTIFICATIONEMAILS && empty param.NOTIFICATIONURL}">style="display: none;"</c:if>>
                         <h6>Order&nbsp;Notifications</h6>
                         <p>By default order notifications are sent via email to the notification email address listed under 'My Account'.&nbsp;To stop order notifications, add a different email address or receive notification via XML, fill in appropriate fields below.</p>
                         <span>
@@ -724,19 +716,19 @@
                           <input name="NOTIFICATIONURL" size="75" value="${param.NOTIFICATIONURL}" maxlength="256" />
                         </span>
                       </div> <!-- end .toggle-section -->
-                      <div id="subscriptionhandling" class="toggle-section" style="display: none;">
+                      <div id="subscriptionhandling" class="toggle-section"<c:if test="${param.RECURFREQUENCY==0 && param.TICKETCHOICE==0 && param.RECURDELAY}">style="display: none;"</c:if>>
                         <h6>Subscription&nbsp;Handling</h6>
                         <p>If this is product should be rebilled automatically, select frequency below.</p>
                         <span>
                           <p style="margin-bottom: .3rem;">Your website must inform your customers that they are purchasing a subscription product.</p>
                           <label>Recurring&nbsp;Billing&nbsp;Frequency:</label>
                           <select name="RECURFREQUENCY" style="margin-bottom: 1rem;" />
-                            <option value="0" selected>None</option>
-                            <option value="1">Every&nbsp;Month</option>
-                            <option value="3">Every&nbsp;3&nbsp;Months</option>
-                            <option value="4">Every&nbsp;4&nbsp;Months</option>
-                            <option value="6">Every&nbsp;6&nbsp;Months</option>
-                            <option value="12">Every&nbsp;12&nbsp;Months</option>
+                            <option value="0"<c:if test="${param.RECURFREQUENCY==0}"> selected</c:if>>None</option>
+                            <option value="1"<c:if test="${param.RECURFREQUENCY==1}"> selected</c:if>>Every Month</option>
+                            <option value="3"<c:if test="${param.RECURFREQUENCY==3}"> selected</c:if>>Every 3 Months</option>
+                            <option value="4"<c:if test="${param.RECURFREQUENCY==4}"> selected</c:if>>Every 4 Months</option>
+                            <option value="6"<c:if test="${param.RECURFREQUENCY==6}"> selected</c:if>>Every 6 Months</option>
+                            <option value="12"<c:if test="${param.RECURFREQUENCY==12}"> selected</c:if>>Every 12 Months</option>
                           </select>
                         </span>
                         <br clear="all">
@@ -758,8 +750,8 @@
                           <input type="checkbox" style="margin-bottom: 1rem;"<c:if test="${param.RECURAFFILIATE!=0}"> checked</c:if>/> Credit affiliate when rebilling
                         </span>
                       </div> <!-- end .toggle-section -->
-                      <p style="margin-top: 2rem; margin-bottom: .5rem;">Click 'Save' button to add the new product, or 'Previous' to go back.</p>
-                      <button id="backToCartOptions" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
+                      <p style="margin-top: 2rem;">Click 'Save' button to add the new product, or 'Previous' to go back.</p>
+                      <button id="backToCartOptions" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
                       <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
                     </div> <!-- end .tab-pane -->
                   </div> <!-- end tab-content -->
