@@ -576,7 +576,7 @@
                         <label>Shipping&nbsp;Cost&nbsp;Scheme:&nbsp;</label>
                         <select name="SHIPPINGCOSTSCHEMEID">${param.SHIPPINGSCHEMEIDLIST}</select>
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: .2rem;">If shipping is free or included in product price, please leave this field blank!</p>
-                        <p style="font-size: .9rem; font-style: italic;">Click&nbsp;<a href="https://vendors-new.bmtmicro.com/shippingstart.html">here</a>&nbsp;to set up or configure shipping schemes and regions.</p>
+                        <p style="font-size: .9rem; font-style: italic;">Click&nbsp;<a href="https://vendors-new.bmtmicro.com/manage-shipping-schemes.jsp">here</a>&nbsp;to set up or configure shipping schemes and regions.</p>
                       </div>
                       <h6>Fields for allowing gift purchases</h6>
                       <span>
