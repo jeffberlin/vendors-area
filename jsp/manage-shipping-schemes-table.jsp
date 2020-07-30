@@ -1,6 +1,6 @@
 <%@ include file="/includes/core.jsp" %>
 <form name="shipping" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ShippingCost" method="post">
-  <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
+  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/manage-shipping-schemes-tablerow.html" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/manage-shipping-schemes-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   <input type="hidden" name="ACTION" value="" />

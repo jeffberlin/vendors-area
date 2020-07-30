@@ -1,11 +1,11 @@
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
   <form method="post" name="shipping" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ShippingCost">
-    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/manage-shipping-schemes.jsp" />
+    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/manage-shipping-scheme.jsp" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
     <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
-    <input type="hidden" name="ACTION" value="10" />
-    <h5>Add New Shipping Scheme</h5>
+    <input type="hidden" name="ACTION" value="11" />
+    <h5>Edit Region ${param.NAME}</h5>
     <span>
       <label>Scheme Name:&nbsp;</label>
       <input name="NAME" maxlength="80" value="${param.NAME}" title="This is the descriptive name for the Shipping Cost Scheme. maximum 80 characters." style="margin-bottom: 1rem;" />
@@ -30,7 +30,7 @@
     </span>
     <br clear="all">
     <span>
-      <button type="button" class="save-btn" onclick="submitScheme (document.shipping);" style="margin-right: .5rem;">Save</button>
+      <button type="button" class="save-btn" onclick="submitForm (document.shipping);" style="margin-right: .5rem;">Save</button>
       <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
     </span>
   </form>

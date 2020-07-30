@@ -105,7 +105,6 @@
         refreshReport ();
       }
 
-
       function refreshReport () {
         submitForm(-1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-table.jsp");
       }
