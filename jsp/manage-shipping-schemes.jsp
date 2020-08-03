@@ -15,6 +15,7 @@
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addTransfer.css"/>
+    <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
@@ -43,13 +44,8 @@
         form.target = target;
         form.NEXT_PAGE.value = nextpage;
         form.SCHEMEID.value = schemeid;
-        if (target == "_parent") {
-					form.target = target;
-					form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
-					form.submit ();
-				} else {
-					submitToDiv (form, target);
-				}
+        form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
+        submitToDiv(form, target);
       }
 
       <c:if test = "${ allowChanges == 0 }">
@@ -77,11 +73,11 @@
         function viewScheme (schemeid) {
           submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/manage-shipping-schemes-view.jsp", schemeid);
         }
-
-        function regions () {
-          submitForm (0, "_parent", "https://vendors-new.bmtmicro.com/regionsstart.html");
-        }
       </c:if>
+
+      function regions () {
+        submitForm (0, "_parent", "https://vendors-new.bmtmicro.com/regionsstart.html");
+      }
 
       // from ...add.jsp
       function createField (regionData) {
@@ -256,6 +252,7 @@
                   <form name="shipping" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ShippingCost">
                     <input type="hidden" name="ACTION" value="-1" />
                     <input type="hidden" name="MAXAMOUNT" value="" />
+                    <input type="hidden" name="SCHEMEID" value="">
                     <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/manage-shipping-schemes-tablerow.html" />
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/manage-shipping-schemes-table.jsp" />
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
