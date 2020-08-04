@@ -41,11 +41,16 @@
       function submitForm (action, target, nextpage, schemeid) {
         var form = document.shipping;
         form.ACTION.value = action;
-        form.target = target;
+        // form.target = target;
         form.NEXT_PAGE.value = nextpage;
         form.SCHEMEID.value = schemeid;
-        form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
-        submitToDiv(form, target);
+        if (target == "_parent") {
+					form.target = target;
+					form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
+					form.submit ();
+				} else {
+					submitToDiv (form, target);
+				}
       }
 
       <c:if test = "${ allowChanges == 0 }">
@@ -69,17 +74,17 @@
         function deleteScheme (schemeid) {
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/manage-shipping-schemes-delete.jsp", schemeid);
         }
-
-        function viewScheme (schemeid) {
-          submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/manage-shipping-schemes-view.jsp", schemeid);
-        }
       </c:if>
 
-      function regions () {
-        submitForm (0, "_parent", "https://vendors-new.bmtmicro.com/regionsstart.html");
+      function viewScheme (schemeid) {
+        submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/manage-shipping-schemes-view.jsp", schemeid);
       }
 
-      // from ...add.jsp
+      function regions () {
+        submitForm (0, "_parent", "https://vendors-new.bmtmicro.com/manage-regions.jsp");
+      }
+
+      // from shipping_add.html
       function createField (regionData) {
         var rda = regionData.split ("\f");
         if (rda.length >= 2) {
@@ -229,7 +234,8 @@
             return (false);
           }
         }
-        form.submit ();
+        // form.submit ();
+        submitToDiv (form);
         return (true);
       }
     </script>
