@@ -83,6 +83,43 @@
       function shippingCosts () {
         submitForm (0, "_parent", "https://vendors-new.bmtmicro.com/manage-shipping-schemes.jsp");
       }
+
+      // from regions_add.html
+      function submitRegion (form) {
+        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+        // field is not present. (An unchecked checkbox constitutes a non-existent field).
+        form.NAME.value = trim (form.NAME.value);
+
+        if (isBlank (form.NAME.value)) {
+          alert ("You must name the region!");
+          form.NAME.focus ();
+          return (false);
+        }
+        if ((form.NAME.value != "${param.NAME}") && ("${param.NAMELIST}".split ("\t").indexOf (form.NAME.value) != -1)) {
+          alert ("A region with that name already exists!");
+          form.NAME.focus ();
+          return (false);
+        }
+        form.SELECTEDCOUNTRIES.value = getCommaSeparatedSelectorValues (form.SELECTEDLIST);
+        form.submit ();
+        return (true);
+      }
+
+      function addCountry (form) {
+        moveSelectedListItems (form.SELECTEDLIST, form.COUNTRYLIST);
+      }
+
+      function removeCountry (form) {
+        moveSelectedListItems (form.COUNTRYLIST, form.SELECTEDLIST);
+      }
+
+      function addAllCountries (form) {
+        moveAllListItems (form.SELECTEDLIST, form.COUNTRYLIST);
+      }
+
+      function removeAllCountries (form) {
+        moveAllListItems (form.COUNTRYLIST, form.SELECTEDLIST);
+      }
     </script>
   </head>
   <body>
