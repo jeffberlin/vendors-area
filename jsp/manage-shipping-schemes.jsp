@@ -36,12 +36,18 @@
       td[option] {
         text-align: center;
       }
+      .item-info span {
+        margin-right: 1rem;
+      }
+      .item-info span:last-child {
+        margin-right: 0;
+      }
     </style>
     <script>
       function submitForm (action, target, nextpage, schemeid) {
         var form = document.shipping;
         form.ACTION.value = action;
-        // form.target = target;
+        form.target = target;
         form.NEXT_PAGE.value = nextpage;
         form.SCHEMEID.value = schemeid;
         if (target == "_parent") {
@@ -53,28 +59,26 @@
 				}
       }
 
-      <c:if test = "${ allowChanges == 0 }">
-        function addScheme() {
+      function addScheme() {
+        <c:if test = "${ allowChanges == 0 }">
           alert("You do not have permission to add shipping cost schemes.");
-        }
-        function deleteScheme(schemeid) {
-          alert("You do not have permission to delete shipping cost schemes.");
-        }
-      </c:if>
-
-      <c:if test = "${ allowChanges == 1 }">
-        function addScheme () {
+        </c:if>
+        <c:if test = "${ allowChanges != 0 }">
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/manage-shipping-schemes-add.jsp");
-        }
-
-        function editScheme (schemeid) {
-          submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/manage-shipping-schemes-edit.jsp", schemeid);
-        }
-
-        function deleteScheme (schemeid) {
+        </c:if>
+      }
+      function deleteScheme(schemeid) {
+        <c:if test = "${ allowChanges == 0 }">
+          alert("You do not have permission to delete shipping cost schemes.");
+        </c:if>
+        <c:if test = "${ allowChanges != 0 }">
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/manage-shipping-schemes-delete.jsp", schemeid);
-        }
-      </c:if>
+        </c:if>
+      }
+
+      function editScheme (schemeid) {
+        submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/manage-shipping-schemes-edit.jsp", schemeid);
+      }
 
       function viewScheme (schemeid) {
         submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/manage-shipping-schemes-view.jsp", schemeid);

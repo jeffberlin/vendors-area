@@ -7,19 +7,19 @@
       ${param.NAME}
     </span>
     <h6>Default Shipping Costs</h6>
-    <span>
+    <div class="item-info">
       <label>First Item:&nbsp;</label>
-      ${param.FIRSTITEM}
-      <br>
+      <span>${param.FIRSTITEM}</span>
+      <!-- <br> -->
       <label>Next Item:&nbsp;</label>
-      ${param.NEXTITEM}
-      <br>
+      <span>${param.NEXTITEM}</span>
+      <!-- <br> -->
       <label>Ship PID:&nbsp;</label>
-      ${param.PRODUCTID}
-    </span>
-    <br clear="all">
+      <span>${param.PRODUCTID}</span>
+    </div>
+    <!-- <br clear="all"> -->
     <h6>Region Dependent Shipping Costs</h6>
-    <div id="regions"></div>
+    <div class="item-info" id="regions"></div>
   </form>
   <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
 </div> <!-- end .transfer-section -->

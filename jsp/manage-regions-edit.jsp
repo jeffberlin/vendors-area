@@ -11,7 +11,7 @@
       <input name="NAME" maxlength="80" value="${param.NAME}" title="This is the descriptive name for the Region. maximum 80 characters." style="margin-bottom: 1rem;" />
     </span>
     <h6>Choose Countries in this Region</h6>
-    <select id="COUNTRYLIST" name="COUNTRYLIST" multiple="multiple" ondblclick="addCountry (regions);" style="width:400px;height:150px">
+    <select id="COUNTRYLIST" name="COUNTRYLIST" multiple="multiple" ondblclick="addCountry (regions);" style="width:400px; height:150px">
        ${param.COUNTRYLIST}
     </select>
     <div class="move" style="margin-bottom: 1rem;">
@@ -30,12 +30,12 @@
         <i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All
       </button>
     </div> <!-- end .move -->
-    <select id="SELECTEDLIST" name="SELECTEDLIST" multiple="multiple" ondblclick="removeCountry (regions);" style="width:400px;height:150px">
+    <select id="SELECTEDLIST" name="SELECTEDLIST" multiple="multiple" ondblclick="removeCountry (regions);" style="width:400px; height:150px">
        ${param.SELECTEDCOUNTRIES}
     </select>
     <input type="hidden" name="SELECTEDCOUNTRIES" />
     <div class="controlbuttons">
-      <button type="button" class="save-btn" onclick="submitRegion (regions);" style="margin-right: .3rem;">Save</button>
+      <button type="button" class="save-btn" onclick="submitRegion (regions);" style="margin-right: .5rem;">Save</button>
       <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
     </div>
   </form>

@@ -13,9 +13,9 @@
     <title>BMT Micro Developers Center</title>
     <%@ include file="/includes/bootstrap_top_script.html" %>
     <%@ include file="/includes/style_menu_footer_css.html" %>
-    <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addTransfer.css"/>
+    <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
     <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
@@ -35,7 +35,7 @@
       function submitForm (action, target, nextpage, regionid) {
         var form = document.regions;
         form.ACTION.value = action;
-        // form.target = target;
+        form.target = target;
         form.NEXT_PAGE.value = nextpage;
         // form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.jsp" : "https://vendors-new.bmtmicro.com/error-div.jsp";
         form.REGIONID.value = regionid;
@@ -48,29 +48,23 @@
 				}
       }
 
-      <c:if test = "${ allowChanges == 0 }">
-        function addRegion() {
+      function addRegion() {
+        <c:if test="${ allowChanges == 0 }">
           alert("You do not have permission to add regions.");
-        }
-
-        function deleteRegion (regionid) {
-          alert("You do not have permission to delete regions.");
-        }
-      </c:if>
-
-      <c:if test = "${ allowChanges == 1 }">
-        function addRegion () {
-          // if (allowChanges ("You do not have permission to add regions.")) {
+        </c:if>
+        <c:if test = "${ allowChanges != 0 }">
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/manage-regions-add.jsp");
-          // }
-        }
+        </c:if>
+      }
 
-        function deleteRegion (regionid) {
-          // if (allowChanges ("You do not have permission to delete regions.")) {
+      function deleteRegion (regionid) {
+        <c:if test="${ allowChanges == 0 }">
+          alert("You do not have permission to delete regions.");
+        </c:if>
+        <c:if test = "${ allowChanges != 0 }">
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/manage-regions-delete.jsp", regionid);
-          // }
-        }
-      </c:if>
+        </c:if>
+      }
 
       function editRegion (regionid) {
         submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/manage-regions-edit.jsp", regionid);
@@ -89,7 +83,6 @@
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
         form.NAME.value = trim (form.NAME.value);
-
         if (isBlank (form.NAME.value)) {
           alert ("You must name the region!");
           form.NAME.focus ();
