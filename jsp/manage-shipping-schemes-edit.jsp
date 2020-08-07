@@ -1,6 +1,6 @@
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
-  <form method="post" name="shipping" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ShippingCost">
+  <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ShippingCost">
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/manage-shipping-scheme.jsp" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
     <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
@@ -14,9 +14,9 @@
     <h6>Default Shipping Costs</h6>
     <span>
       <label>First Item:&nbsp;</label>
-      <input name="FIRSTITEM" size="8" value="${param.FIRSTITEM}" title="The shipping cost for the first item." style="margin-right: .5rem;" />
+      <input name="FIRSTITEM" size="8" value="${param.FIRSTITEM}" title="The shipping cost for the first item." style="margin-right: 1rem;" />
       <label>Next Item:&nbsp;</label>
-      <input name="NEXTITEM" size="8" value="${param.NEXTITEM}" title="The shipping cost for subsequent items." style="margin-right: .5rem;" />
+      <input name="NEXTITEM" size="8" value="${param.NEXTITEM}" title="The shipping cost for subsequent items." style="margin-right: 1rem;" />
       <label>Ship PID:&nbsp;</label>
       <input name="PRODUCTID" size="8" value="${param.PRODUCTID}" title="The product ID under which this shipping cost will appear. Normally this field should be left blank!" style="margin-bottom: 1rem;" />
     </span>
@@ -30,7 +30,7 @@
     </span>
     <br clear="all">
     <span>
-      <button type="button" class="save-btn" onclick="submitForm (document.shipping);" style="margin-right: .5rem;">Save</button>
+      <button type="button" class="save-btn" onclick="submitForm (this.form);" style="margin-right: .5rem;">Save</button>
       <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
     </span>
   </form>

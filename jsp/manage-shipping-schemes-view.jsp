@@ -1,6 +1,6 @@
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
-  <form method="post" name="shipping" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ShippingCost">
+  <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ShippingCost">
     <h5>View Shipping Scheme</h5>
     <span>
       <label>Name:&nbsp;</label>

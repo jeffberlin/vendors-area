@@ -1,6 +1,6 @@
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
-  <form method="post" name="regions" action="https://vendors-new.bmtmicro.com/servlets/Vendors.WorldRegions">
+  <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.WorldRegions">
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/manage-regions-table.jsp" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
     <input type="hidden" name="REGIONID" value="${param.REGIONID}" />

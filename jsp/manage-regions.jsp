@@ -95,6 +95,7 @@
         }
         form.SELECTEDCOUNTRIES.value = getCommaSeparatedSelectorValues (form.SELECTEDLIST);
         form.submit ();
+        // submitToDiv(form);
         return (true);
       }
 

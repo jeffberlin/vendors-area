@@ -168,70 +168,11 @@
       function initForm (form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        // initField (form, "SHOWCDOPTION_CHK",        "${param.SHOWCDOPTION}");
-        // initField (form, "SHOWDISCOUNTFIELD_CHK",   "${param.SHOWDISCOUNTFIELD}");
-        // initField (form, "SHOWREGNAMEFIELD_CHK",    "${param.SHOWREGNAMEFIELD}");
-        // initField (form, "SHOWEMAILFIELD_CHK",      "${param.SHOWEMAILFIELD}");
-        // initField (form, "QUANTITYFIXED_CHK",       "${param.QUANTITYFIXED}");
-        // initField (form, "NEEDSORDERPARAMETERS_CHK","${param.NEEDSORDERPARAMETERS}");
-        // initField (form, "NOTIFYVENDOR_CHK",        "${param.NOTIFYVENDOR}");
-        // initField (form, "ACTIVE_CHK",              "${param.ACTIVE}");
-        // initField (form, "SHIPPED_CHK",             "${param.SHIPPED}");
-        // initField (form, "USEONEKEY_CHK",           "${param.USEONEKEY}");
-        // initField (form, "USEONEKEY_CHK2",          "${param.USEONEKEY}");
-        // initField (form, "INCLUDEONAPLIST_CHK",     "${param.INCLUDEONAPLIST}");
-        // initField (form, "USEPRODUCTAIDCOOKIE_CHK", "${param.USEPRODUCTAIDCOOKIE}");
-        // initField (form, "TICKETCHOICE_CHK",        "${param.TICKETCHOICE}");
-        // initField (form, "RECURAFFILIATE_CHK",      "${param.RECURAFFILIATE}");
-        // initField (form, "PRICEINCLUDESVAT_CHK",    "${param.PRICEINCLUDESVAT}");
-        // initField (form, "PRICEINCLUDESGST_CHK",    "${param.PRICEINCLUDESGST}");
-        // initField (form, "PLATFORM",                "${param.PLATFORM}");
-        // initField (form, "CATEGORY",                "${param.CATEGORY}");
-        // initField (form, "KEYTABLEID",              "${param.KEYTABLEID}");
-        // initField (form, "DISCOUNTSCHEMEID",        "${param.DISCOUNTSCHEMEID}");
-        // initField (form, "DOWNLOADEXPDAYS",         "${param.DOWNLOADEXPDAYS}");
-        // initField (form, "KEYGENCHARSET",           "${param.KEYGENCHARSET}");
-        // initField (form, "RECURFREQUENCY",          "${param.RECURFREQUENCY}");
-        // initField (form, "RECURDELAY",              "${param.RECURDELAY}");
-        // initField (form, "SHIPPINGCOSTSCHEMEID",    "${param.SHIPPINGCOSTSCHEMEID}");
-        // setFieldVisible ("shipping", ("${param.SHIPPED}" != 0));
-        // setFieldVisible ("downloadfile",  productFileList.length != 0);
-        // setFieldVisible ("keygenerator",  !isBlank ("${param.KEYGENERATOR}"));
-        // setFieldVisible ("regkeytable",   !isBlank ("${param.KEYTABLEID}"));
-        // setFieldVisible ("discounts",     !isBlank ("${param.DISCOUNTSCHEMEID}"));
-        // setFieldVisible ("affiliateinfo", !isBlank ("${param.AFFILIATEPERCENTAGE} ${param.VENDORPRODUCTURL} ${param.SECUREORDERURL} ${param.DEMOURL}"));
-        // setFieldVisible ("ordernotifications", !isBlank ("${param.NOTIFICATIONEMAILS} ${param.NOTIFICATIONURL}"));
-        // setFieldVisible ("subscriptionhandling", ("${param.RECURFREQUENCY}" != "0") || ("${param.TICKETCHOICE}" != "0") || ("${param.RECURDELAY}" != "0"));
+
         enableButton    ("update");
         if (isBlank (form.SECUREORDERURL.value)) {
           form.SECUREORDERURL.value = "Use default";
         }
-        var idx = 1;
-        if ("${param.CATEGORY}" == "22") {
-          form.CATEGORY.options[idx++] = new Option ("XXX-Adult Software", "22");
-        } else {
-          form.CATEGORY.options[idx++] = new Option ("AutoCad", "1");
-          form.CATEGORY.options[idx++] = new Option ("Business", "2");
-          form.CATEGORY.options[idx++] = new Option ("Communications", "3");
-          form.CATEGORY.options[idx++] = new Option ("Desktop Enhancements", "4");
-          form.CATEGORY.options[idx++] = new Option ("Editors and Viewers", "5");
-          form.CATEGORY.options[idx++] = new Option ("Educational Software", "6");
-          form.CATEGORY.options[idx++] = new Option ("Encryption and Archiving", "7");
-          form.CATEGORY.options[idx++] = new Option ("File and Disk Utilities", "8");
-          form.CATEGORY.options[idx++] = new Option ("Games and Diversions", "9");
-          form.CATEGORY.options[idx++] = new Option ("Internet Software", "10");
-          form.CATEGORY.options[idx++] = new Option ("Merchandise", "11");
-          form.CATEGORY.options[idx++] = new Option ("Multimedia Software", "12");
-          form.CATEGORY.options[idx++] = new Option ("OS/2", "14");
-          form.CATEGORY.options[idx++] = new Option ("Organisers, Databases, PIM's", "15");
-          form.CATEGORY.options[idx++] = new Option ("Philosophy and Religon", "17");
-          form.CATEGORY.options[idx++] = new Option ("Service or Membership", "18");
-          form.CATEGORY.options[idx++] = new Option ("Sewing Products", "19");
-          form.CATEGORY.options[idx++] = new Option ("Software Development Tools", "20");
-          form.CATEGORY.options[idx++] = new Option ("System Tools", "21");
-          form.CATEGORY.options[idx++] = new Option ("Other", "16");
-        }
-        // initField (form, "CATEGORY", "${param.CATEGORY}");
 
         calcFX(form.PRICE_EUR,${param.FXRATE_EUR});
         calcFX(form.PRICE_GBP,${param.FXRATE_GBP});
@@ -244,23 +185,6 @@
       function submitForm (form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        // copyField (form, "SHOWCDOPTION",        "SHOWCDOPTION_CHK");
-        // copyField (form, "SHOWDISCOUNTFIELD",   "SHOWDISCOUNTFIELD_CHK");
-        // copyField (form, "SHOWREGNAMEFIELD",    "SHOWREGNAMEFIELD_CHK");
-        // copyField (form, "SHOWEMAILFIELD",      "SHOWEMAILFIELD_CHK");
-        // copyField (form, "QUANTITYFIXED",       "QUANTITYFIXED_CHK");
-        // copyField (form, "NEEDSORDERPARAMETERS","NEEDSORDERPARAMETERS_CHK");
-        // copyField (form, "ACTIVE",              "ACTIVE_CHK");
-        // copyField (form, "SHIPPED",             "SHIPPED_CHK");
-        // copyField (form, "NOTIFYVENDOR",        "NOTIFYVENDOR_CHK");
-        // copyField (form, "USEONEKEY",           "USEONEKEY_CHK");
-        // copyField (form, "INCLUDEONAPLIST",     "INCLUDEONAPLIST_CHK");
-        // copyField (form, "USEPRODUCTAIDCOOKIE", "USEPRODUCTAIDCOOKIE_CHK");
-        // copyField (form, "TICKETCHOICE",        "TICKETCHOICE_CHK");
-        // copyField (form, "RECURAFFILIATE",      "RECURAFFILIATE_CHK");
-        // copyField (form, "PRICEINCLUDESVAT",     "PRICEINCLUDESVAT_CHK");
-        // copyField (form, "PRICEINCLUDESGST",     "PRICEINCLUDESGST_CHK");
-
         if (!isBlank ("${param.DATEDISCONTINUED}")) {
           alert ("This product has been closed.  Please contact vendors@bmtmicro.com");
           return (false);
@@ -447,9 +371,35 @@
                       <p>Please select the category that most fits your product.</p>
                       <span>
                         <label>Category:&nbsp;</label>
-                        <select name="CATEGORY" style="margin-bottom: 2rem;"></select>
+                        <select name="CATEGORY" style="margin-bottom: 2rem;">
+                          <option value=""<c:if test="${empty param.CATEGORY}"> selected</c:if>></option>
+                          <option value="1"<c:if test="${param.CATEGORY=='1'}"> selected</c:if>>AutoCad</option>
+                          <option value="2"<c:if test="${param.CATEGORY=='2'}"> selected</c:if>>Business</option>
+                          <option value="3"<c:if test="${param.CATEGORY=='3'}"> selected</c:if>>Communications</option>
+                          <option value="4"<c:if test="${param.CATEGORY=='4'}"> selected</c:if>>Desktop Enhancements</option>
+                          <option value="5"<c:if test="${param.CATEGORY=='5'}"> selected</c:if>>Editors and Viewers</option>
+                          <option value="6"<c:if test="${param.CATEGORY=='6'}"> selected</c:if>>Educational Software</option>
+                          <option value="7"<c:if test="${param.CATEGORY=='7'}"> selected</c:if>>Encryption and Archiving</option>
+                          <option value="8"<c:if test="${param.CATEGORY=='8'}"> selected</c:if>>File and Disk Utilities</option>
+                          <option value="9"<c:if test="${param.CATEGORY=='9'}"> selected</c:if>>Games and Diversions</option>
+                          <option value="10"<c:if test="${param.CATEGORY=='10'}"> selected</c:if>>Internet Software</option>
+                          <option value="11"<c:if test="${param.CATEGORY=='11'}"> selected</c:if>>Merchandise</option>
+                          <option value="12"<c:if test="${param.CATEGORY=='12'}"> selected</c:if>>Multimedia Software</option>
+                          <option value="14"<c:if test="${param.CATEGORY=='14'}"> selected</c:if>>OS/2</option>
+                          <option value="15"<c:if test="${param.CATEGORY=='15'}"> selected</c:if>>Organisers, Databases, PIM's</option>
+                          <option value="17"<c:if test="${param.CATEGORY=='17'}"> selected</c:if>>Philosophy and Religon</option>
+                          <option value="18"<c:if test="${param.CATEGORY=='18'}"> selected</c:if>>Service or Membership</option>
+                          <option value="19"<c:if test="${param.CATEGORY=='19'}"> selected</c:if>>Sewing Products</option>
+                          <option value="20"<c:if test="${param.CATEGORY=='20'}"> selected</c:if>>Software Development Tools</option>
+                          <option value="21"<c:if test="${param.CATEGORY=='21'}"> selected</c:if>>System Tools</option>
+                          <c:if test="${param.VENDORTYPE=='2'}">
+                              <option value="22"<c:if test="${param.CATEGORY=='22'}"> selected</c:if>>XXX-Adult Software</option>
+                          </c:if>
+                          <option value="16"<c:if test="${param.CATEGORY=='16'}"> selected</c:if>>Other</option>
+                        </select>
                       </span>
                       <br>
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" disabled >Save</button>
                       <button id="toPricing" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="pricing" role="tabpanel" aria-labelledby="pricing-tab">
@@ -458,7 +408,6 @@
                       <span>
                         <label>Product&nbsp;ID:&nbsp;</label>
                         <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" /> <span style="color: #000000;">${param.PRODUCTID}</span>
-                        <input type="hidden" name="PRICEINCLUDESGST" value="${param.PRICEINCLUDESGST}" />
                       </span>
                       <br>
                       <span>
@@ -500,6 +449,7 @@
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: 2rem;">Check the respective checkbox to indicate that the price includes European Union VAT and/or Australian GST. When checked, the customer will pay the prices listed above and any tax due is deducted from the sales royalty. When not checked, the customer will see tax added to the price specified above if applicable.</p>
                       </span>
                       <button id="backToBasic" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" disabled >Save</button>
                       <button id="toProductFormat" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="productFormat" role="tabpanel" aria-labelledby="productFormat-tab">
@@ -550,6 +500,7 @@
                       </span>
                       <br>
                       <button id="backToPricing" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" disabled >Save</button>
                       <button id="toCartOptions" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="options" role="tabpanel" aria-labelledby="options-tab">
@@ -601,6 +552,7 @@
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: 2rem;">Enabling this option will prevent the customer from completing an order if the ORDERPARAMETERS value is missing in the shopping cart.</p>
                       </span>
                       <button id="backToProductFormat" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" disabled >Save</button>
                       <button id="toFulfillment" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="fulfillment" role="tabpanel" aria-labelledby="fulfillment-tab">
@@ -609,7 +561,8 @@
                       <h6>Associate&nbsp;Download&nbsp;File</h6>
                       <p style="margin-bottom: .5rem;">If order should be fulfilled via secure download from BMT&nbsp;Micro, use selector below to associate a file already uploaded using the Manage Files interface.</p>
                       <button type="button" class="grey-btn" onclick="toggleField('downloadfile');" style="margin-bottom: 1rem;">Choose File</button>
-                      <div id="downloadfile" class="toggle-section"<c:if test="${empty param.PRODUCTDFL}">style="display: none;"</c:if>>
+                      <div id="downloadfile"
+                        class="toggle-section"<c:if test="${param.PRODUCTDFL=='[]'}">style="display: none;"</c:if>>
                         <h6>Choose&nbsp;File</h6>
                         <div id="fileFields"></div>
                         <br clear="all">
@@ -671,13 +624,11 @@
                         <span>
                           <input type="checkbox" name="USEONEKEY_CHK2" value="-1" size="12" onclick="document.productform.USEONEKEY_CHK.checked = this.checked;"<c:if test="${param.USEONEKEY != 0}"> checked</c:if>/>&nbsp;Generate only one code for quantity purchases.
                         </span>
-                        <script>
-                          if (!isBlank ("${param.KEYVALIDATOR}")) {
-                            document.write ('<br clear="all"><br>  ');
-                            document.write ('<span><label>Validate Generated Activation Codes</label>   ');
-                            document.write ('<input name="KEYVALIDATOR" maxlength="256" value="${param.KEYVALIDATOR}" size="75" /></span>  ');
-                          }
-                        </script>
+                        <c:if test="${!empty param.KEYVALIDATOR}">
+                           <br clear="all"><br>
+                           <span><label>Validate Generated Activation Codes</label>
+                           <input name="KEYVALIDATOR" maxlength="256" value="${param.KEYVALIDATOR}" size="75" /></span>
+                        </c:if>
                       </div>
                       <div id="discounts" class="toggle-section"<c:if test="${empty param.DISCOUNTSCHEMEID}">style="display: none;"</c:if>>
                         <h6>Include&nbsp;Discount&nbsp;Code</h6>

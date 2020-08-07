@@ -92,11 +92,11 @@
       function createField (regionData) {
         var rda = regionData.split ("\f");
         if (rda.length >= 2) {
-          var regionID   = rda[0];
+          var regionID = rda[0];
           var regionName = rda[1];
           var regionFirstItem = (rda.length > 2) ? rda[2] : "";
-          var regionNextItem  = (rda.length > 2) ? rda[3] : "";
-          var regionProductID  = (rda.length > 2) ? rda[4] : "";
+          var regionNextItem = (rda.length > 2) ? rda[3] : "";
+          var regionProductID = (rda.length > 2) ? rda[4] : "";
           var regionRowNum = "regionRow" + (document.getElementsByName ("REGIONID").length + 1);
           var spanElem = document.createElement ("span");
           spanElem.setAttribute ("id", regionRowNum);
@@ -146,6 +146,7 @@
           buttonElem.setAttribute ("onclick", "removeRegion (\"" + regionRowNum + "\");");
           // buttonElem.appendChild (document.createTextNode ("X"));
           spanElem.appendChild (buttonElem);
+          // spanElem.style.marginRight = "1rem";
           spanElem.appendChild (document.createElement ("br"));
           document.getElementById ("regions").appendChild (spanElem);
         }
@@ -241,6 +242,46 @@
         // form.submit ();
         submitToDiv (form);
         return (true);
+      }
+      // from shipping_view.html
+      function createField (regionData) {
+        var rda = regionData.split ("\f");
+        if (rda.length >= 2) {
+          var regionID = rda[0];
+          var regionName = rda[1];
+          var regionFirstItem = rda[2];
+          var regionNextItem = rda[3];
+          var regionProductID = rda[4];
+          var spanElem = document.createElement ("span");
+          var labelElem = document.createElement ("label");
+          labelElem.appendChild (document.createTextNode ("First Item: " + regionFirstItem));
+          spanElem.appendChild (labelElem);
+          spanElem.appendChild (document.createTextNode (" \u00A0\u00A0 "));
+          spanElem.appendChild(document.createElement("br"));
+          labelElem = document.createElement ("label");
+          labelElem.appendChild (document.createTextNode ("Next Item: " + regionNextItem));
+          labelElem.setAttribute ("width", "150px");
+          spanElem.appendChild(document.createElement("br"));
+          spanElem.appendChild (labelElem);
+          spanElem.appendChild (document.createTextNode ("\u00A0\u00A0"));
+          labelElem = document.createElement ("label");
+          labelElem.appendChild (document.createTextNode ("Ship PID: " + regionProductID));
+          labelElem.setAttribute ("width", "150px");
+          spanElem.appendChild (labelElem);
+          spanElem.appendChild (document.createTextNode ("\u00A0\u00A0"));
+          labelElem = document.createElement ("b");
+          labelElem.appendChild (document.createTextNode (regionName));
+          spanElem.appendChild (labelElem);
+          spanElem.appendChild (document.createElement ("br"));
+          document.getElementById ("regions").appendChild (spanElem);
+        }
+      }
+
+      function initForm (form){
+        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
+        // field is not present. (An unchecked checkbox constitutes a non-existent field).
+        var shippingcosts = "${param.SHIPPINGCOSTLIST}".split ("\t");
+        for (var i = 0; i < shippingcosts.length; createField (shippingcosts[i++]));
       }
     </script>
   </head>
