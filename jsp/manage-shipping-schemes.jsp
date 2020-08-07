@@ -285,7 +285,7 @@
       }
     </script>
   </head>
-  <body>
+  <body onload="initForm (document.shipping);">
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
