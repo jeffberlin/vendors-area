@@ -10,16 +10,16 @@
     <button type="button" class="grey-btn" onclick="regions ();" >Manage Regions</button>
   </div> <!-- end .table-header -->
   <div class="row table-responsive">
-    <table class="table">
+    <table class="table sortable" id="selection">
       <thead>
-        <tr class="table-category text-center">
-          <th scope="col" class="sort-column sortable sort" title="Sort on 'Product ID'" text>
+        <tr class="table-category">
+          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Product ID'" text>
             <a href="#" class="fdTableSortTrigger">Name</a>
           </th>
           <th scope="col" class="sort-column" option>
             <a href="#" style="cursor: default;" onclick="return false;"></a>
           </th>
-          <th scope="col" class="sort-column" option>
+          <th scope="col" class="sort-column text-center" option>
             <a href="#" style="cursor: default;" onclick="return false;">Remove</a>
           </th>
         </tr>

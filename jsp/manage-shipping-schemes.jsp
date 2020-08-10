@@ -244,7 +244,7 @@
         return (true);
       }
       // from shipping_view.html
-      function createField (regionData) {
+      function createRegionViewField (regionData) {
         var rda = regionData.split ("\f");
         if (rda.length >= 2) {
           var regionID = rda[0];
@@ -257,7 +257,7 @@
           labelElem.appendChild (document.createTextNode ("First Item: " + regionFirstItem));
           spanElem.appendChild (labelElem);
           spanElem.appendChild (document.createTextNode (" \u00A0\u00A0 "));
-          spanElem.appendChild(document.createElement("br"));
+          spanElem.appendChild (document.createElement("br"));
           labelElem = document.createElement ("label");
           labelElem.appendChild (document.createTextNode ("Next Item: " + regionNextItem));
           labelElem.setAttribute ("width", "150px");
@@ -281,7 +281,7 @@
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
         var shippingcosts = "${param.SHIPPINGCOSTLIST}".split ("\t");
-        for (var i = 0; i < shippingcosts.length; createField (shippingcosts[i++]));
+        for (var i = 0; i < shippingcosts.length; createRegionViewField (shippingcosts[i++]));
       }
     </script>
   </head>
