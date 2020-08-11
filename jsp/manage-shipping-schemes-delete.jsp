@@ -11,7 +11,7 @@
     <p style="color: red;">Note that deleting a scheme will remove the shipping fee for any products that are currently set up to use the deleted scheme.</p>
     <span>
       <button type="submit" class="save-btn" style="margin-right: .5rem;">Delete Scheme</button>
-      <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
+      <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
     </span>
   </form>
 </div> <!-- end .transfer-section -->
