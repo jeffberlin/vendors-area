@@ -138,10 +138,6 @@
         oldDivElem.parentNode.replaceChild (newDivElem, oldDivElem);
       }
 
-      function enableButton (buttonid, enabled) {
-        document.getElementById (buttonid).disabled = (enabled === false);
-      }
-
       function toggleField (field) {
         var e = document.getElementById (field);
         if (e.style.display == '') {
@@ -169,7 +165,6 @@
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
 
-        enableButton    ("update");
         if (isBlank (form.SECUREORDERURL.value)) {
           form.SECUREORDERURL.value = "Use default";
         }
@@ -399,7 +394,7 @@
                         </select>
                       </span>
                       <br>
-                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" disabled >Save</button>
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" >Save</button>
                       <button id="toPricing" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="pricing" role="tabpanel" aria-labelledby="pricing-tab">
@@ -414,10 +409,10 @@
                         <label>Product&nbsp;Price:&nbsp;</label>
                         <span style="color: #000000;">
                           <c:if test="${!empty param.PRICE_USD}">USD&nbsp;&nbsp;${param.PRICE_USD}&nbsp;&nbsp;&nbsp;<br></c:if>
-                          <c:if test="${!empty param.PRICE_EUR}">USD&nbsp;&nbsp;${param.PRICE_EUR}&nbsp;&nbsp;&nbsp;<br></c:if>
-                          <c:if test="${!empty param.PRICE_GBP}">USD&nbsp;&nbsp;${param.PRICE_GBP}&nbsp;&nbsp;&nbsp;<br></c:if>
-                          <c:if test="${!empty param.PRICE_CAD}">USD&nbsp;&nbsp;${param.PRICE_CAD}&nbsp;&nbsp;&nbsp;<br></c:if>
-                          <c:if test="${!empty param.PRICE_AUD}">USD&nbsp;&nbsp;${param.PRICE_AUD}&nbsp;&nbsp;&nbsp;<br></c:if>
+                          <c:if test="${!empty param.PRICE_EUR}">EUR&nbsp;&nbsp;${param.PRICE_EUR}&nbsp;&nbsp;&nbsp;<br></c:if>
+                          <c:if test="${!empty param.PRICE_GBP}">GBP&nbsp;&nbsp;${param.PRICE_GBP}&nbsp;&nbsp;&nbsp;<br></c:if>
+                          <c:if test="${!empty param.PRICE_CAD}">CAD&nbsp;&nbsp;${param.PRICE_CAD}&nbsp;&nbsp;&nbsp;<br></c:if>
+                          <c:if test="${!empty param.PRICE_AUD}">AUD&nbsp;&nbsp;${param.PRICE_AUD}&nbsp;&nbsp;&nbsp;<br></c:if>
                         </span>
                       </span>
                       <span>
@@ -429,18 +424,65 @@
                         <label style="margin-bottom: 2rem;">Amount&nbsp;to&nbsp;Vendor:&nbsp;</label>
                         <span style="color: #000000;">${param.VENDORAMOUNT}</span>
                       </span>
-                      <script>
-                        if (isBlank ("${param.ROYALTYFIXED} ${param.ROYALTYPERCENTAGE}")) {
-                          document.write ('<h5>Pricing</h5><p>Set the product price in one or more currencies.</p>');
-                          document.write ('<table style="background-color:transparent">');
-                          document.write ('<tr><td><label>Price (USD):&nbsp;</label></td><td><input name="PRICE_USD" SIZE="10" value="${param.PRICE_USD}"></td><td></td></tr>');
-                          document.write ('<tr><td><label>Price (EUR):&nbsp;</label></td><td><input name="PRICE_EUR" SIZE="10" value="${param.PRICE_EUR}" onchange="calcFX(this,${param.FXRATE_EUR});"></td><td valign="middle"><div id="FXRATE_EUR"></div></td></tr>');
-                          document.write ('<tr><td><label>Price (GBP):&nbsp;</label></td><td><input name="PRICE_GBP" SIZE="10" value="${param.PRICE_GBP}" onchange="calcFX(this,${param.FXRATE_GBP});"></td><td valign="middle"><div id="FXRATE_GBP"></div></td></tr>');
-                          document.write ('<tr><td><label>Price (CAD):&nbsp;</label></td><td><input name="PRICE_CAD" SIZE="10" value="${param.PRICE_CAD}" onchange="calcFX(this,${param.FXRATE_CAD});"></td><td valign="middle"><div id="FXRATE_CAD"></div></td></tr>');
-                          document.write ('<tr><td><label>Price (AUD):&nbsp;</label></td><td><input name="PRICE_AUD" SIZE="10" value="${param.PRICE_AUD}" onchange="calcFX(this,${param.FXRATE_AUD});" style="margin-bottom: 1rem;"></td><td valign="middle"><div id="FXRATE_AUD"></div></td></tr>');
-                          document.write ('</table>');
-                        }
-                      </script>
+                      <c:if test="${(empty param.ROYALTYFIXED) and (empty param.ROYALTYPERCENTAGE)}">
+                        <h5>Pricing</h5><p>Set the product price in one or more currencies.</p>
+                        <table style="background-color:transparent">
+                          <tr>
+                            <td>
+                              <label>Price (USD):&nbsp;</label>
+                            </td>
+                            <td>
+                              <input name="PRICE_USD" SIZE="10" value="${param.PRICE_USD}">
+                            </td>
+                            <td>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label>Price (EUR):&nbsp;</label>
+                            </td>
+                            <td>
+                              <input name="PRICE_EUR" SIZE="10" value="${param.PRICE_EUR}" onchange="calcFX(this,${param.FXRATE_EUR});">
+                            </td>
+                            <td valign="middle">
+                              <div id="FXRATE_EUR"></div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label>Price (GBP):&nbsp;</label>
+                            </td>
+                            <td>
+                              <input name="PRICE_GBP" SIZE="10" value="${param.PRICE_GBP}" onchange="calcFX(this,${param.FXRATE_GBP});">
+                            </td>
+                            <td valign="middle">
+                              <div id="FXRATE_GBP"></div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label>Price (CAD):&nbsp;</label>
+                            </td>
+                            <td>
+                              <input name="PRICE_CAD" SIZE="10" value="${param.PRICE_CAD}" onchange="calcFX(this,${param.FXRATE_CAD});">
+                            </td>
+                            <td valign="middle">
+                              <div id="FXRATE_CAD"></div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label>Price (AUD):&nbsp;</label>
+                            </td>
+                            <td>
+                              <input name="PRICE_AUD" SIZE="10" value="${param.PRICE_AUD}" onchange="calcFX(this,${param.FXRATE_AUD});" style="margin-bottom: 1rem;">
+                            </td>
+                            <td valign="middle">
+                              <div id="FXRATE_AUD"></div>
+                            </td>
+                          </tr>
+                        </table>
+                      </c:if>
                       <span>
                         <input type="hidden" name="PRICEINCLUDESVAT" value="${param.PRICEINCLUDESVAT}" />
                         <input type="checkbox"<c:if test="${param.PRICEINCLUDESVAT != 0}"> checked</c:if>/>&nbsp;The price includes VAT&nbsp;&nbsp;&nbsp;&nbsp;
@@ -449,7 +491,7 @@
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: 2rem;">Check the respective checkbox to indicate that the price includes European Union VAT and/or Australian GST. When checked, the customer will pay the prices listed above and any tax due is deducted from the sales royalty. When not checked, the customer will see tax added to the price specified above if applicable.</p>
                       </span>
                       <button id="backToBasic" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
-                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" disabled >Save</button>
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" >Save</button>
                       <button id="toProductFormat" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="productFormat" role="tabpanel" aria-labelledby="productFormat-tab">
@@ -500,7 +542,7 @@
                       </span>
                       <br>
                       <button id="backToPricing" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
-                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" disabled >Save</button>
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" >Save</button>
                       <button id="toCartOptions" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="options" role="tabpanel" aria-labelledby="options-tab">
@@ -552,7 +594,7 @@
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: 2rem;">Enabling this option will prevent the customer from completing an order if the ORDERPARAMETERS value is missing in the shopping cart.</p>
                       </span>
                       <button id="backToProductFormat" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
-                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" disabled >Save</button>
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" >Save</button>
                       <button id="toFulfillment" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
                     <div class="tab-pane fade" id="fulfillment" role="tabpanel" aria-labelledby="fulfillment-tab">
@@ -729,7 +771,7 @@
                       </div>
                       <p style="margin-top: 2rem;">Click 'Save' button to save changes, or 'Previous' to go back.</p>
                       <button id="backToCartOptions" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
-                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" >Save</button>
                     </div> <!-- end .tab-pane -->
                   </div> <!-- end .tab-content -->
                 </form>

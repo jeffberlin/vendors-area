@@ -138,10 +138,6 @@
         oldDivElem.parentNode.replaceChild (newDivElem, oldDivElem);
       }
 
-      function enableButton (buttonid, enabled) {
-        document.getElementById (buttonid).disabled = (enabled === false);
-      }
-
       function toggleField (field) {
         var e = document.getElementById (field);
         if (e.style.display == '') {
@@ -168,8 +164,37 @@
       function initForm (form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-
-        enableButton    ("update1", "update2", "update3", "update4", "update5", "update6");
+        // initField (form, "SHOWCDOPTION_CHK",        "##SHOWCDOPTION##");
+        // initField (form, "SHOWDISCOUNTFIELD_CHK",   "##SHOWDISCOUNTFIELD##");
+        // initField (form, "SHOWREGNAMEFIELD_CHK",    "##SHOWREGNAMEFIELD##");
+        // initField (form, "SHOWEMAILFIELD_CHK",      "##SHOWEMAILFIELD##");
+        // initField (form, "QUANTITYFIXED_CHK",       "##QUANTITYFIXED##");
+        // initField (form, "NEEDSORDERPARAMETERS_CHK","##NEEDSORDERPARAMETERS##");
+        // initField (form, "NOTIFYVENDOR_CHK",        "##NOTIFYVENDOR##");
+        //initField (form, "ACTIVE_CHK",              "##ACTIVE##");
+        // initField (form, "SHIPPED_CHK",             "##SHIPPED##");
+        // initField (form, "USEONEKEY_CHK",           "##USEONEKEY##");
+        // initField (form, "USEONEKEY_CHK2",          "##USEONEKEY##");
+        // initField (form, "INCLUDEONAPLIST_CHK",     "##INCLUDEONAPLIST##");
+        // initField (form, "USEPRODUCTAIDCOOKIE_CHK", "##USEPRODUCTAIDCOOKIE##");
+        // initField (form, "TICKETCHOICE_CHK",        "##TICKETCHOICE##");
+        // initField (form, "RECURAFFILIATE_CHK",      "##RECURAFFILIATE##");
+        // initField (form, "PLATFORM",                "##PLATFORM##");
+        // initField (form, "KEYTABLEID",              "##KEYTABLEID##");
+        // initField (form, "DISCOUNTSCHEMEID",        "##DISCOUNTSCHEMEID##");
+        // initField (form, "DOWNLOADEXPDAYS",         "##DOWNLOADEXPDAYS##");
+        // initField (form, "KEYGENCHARSET",           "##KEYGENCHARSET##");
+        // initField (form, "RECURFREQUENCY",          "##RECURFREQUENCY##");
+        // initField (form, "RECURDELAY",              "##RECURDELAY##");
+        // initField (form, "SHIPPINGCOSTSCHEMEID",    "##SHIPPINGCOSTSCHEMEID##");
+        // setFieldVisible ("shipping", ("##SHIPPED##" != 0));
+        // setFieldVisible ("downloadfile",  productFileList.length != 0);
+        // setFieldVisible ("keygenerator",  !isBlank ("##KEYGENERATOR##"));
+        // setFieldVisible ("regkeytable",   !isBlank ("##KEYTABLEID##"));
+        // setFieldVisible ("discounts",     !isBlank ("##DISCOUNTSCHEMEID##"));
+        // setFieldVisible ("affiliateinfo", !isBlank ("##AFFILIATEPERCENTAGE## ##VENDORPRODUCTURL## ##SECUREORDERURL## ##DEMOURL##"));
+        // setFieldVisible ("ordernotifications", !isBlank ("##NOTIFICATIONEMAILS## ##NOTIFICATIONURL##"));
+        // setFieldVisible ("subscriptionhandling", ("##RECURFREQUENCY##" != "0") || ("##TICKETCHOICE##" != "0") || ("##RECURDELAY##" != "0"));
         if (isBlank (form.SECUREORDERURL.value)) {
           form.SECUREORDERURL.value = "Use default";
         }
@@ -180,6 +205,21 @@
       function submitForm (form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
+        // copyField (form, "SHOWCDOPTION",        "SHOWCDOPTION_CHK");
+        // copyField (form, "SHOWDISCOUNTFIELD",   "SHOWDISCOUNTFIELD_CHK");
+        // copyField (form, "SHOWREGNAMEFIELD",    "SHOWREGNAMEFIELD_CHK");
+        // copyField (form, "SHOWEMAILFIELD",      "SHOWEMAILFIELD_CHK");
+        // copyField (form, "QUANTITYFIXED",       "QUANTITYFIXED_CHK");
+        // copyField (form, "NEEDSORDERPARAMETERS","NEEDSORDERPARAMETERS_CHK");
+        // copyField (form, "ACTIVE",              "ACTIVE_CHK");
+        // copyField (form, "SHIPPED",             "SHIPPED_CHK");
+        // copyField (form, "NOTIFYVENDOR",        "NOTIFYVENDOR_CHK");
+        // copyField (form, "USEONEKEY",           "USEONEKEY_CHK");
+        // copyField (form, "INCLUDEONAPLIST",     "INCLUDEONAPLIST_CHK");
+        // copyField (form, "USEPRODUCTAIDCOOKIE", "USEPRODUCTAIDCOOKIE_CHK");
+        // copyField (form, "TICKETCHOICE",        "TICKETCHOICE_CHK");
+        // copyField (form, "RECURAFFILIATE",      "RECURAFFILIATE_CHK");
+
         if ("${param.DATEDISCONTINUED}" != "") {
           alert ("This product has been closed. Please contact vendors@bmtmicro.com");
           return (false);
@@ -405,7 +445,7 @@
                           <option value="20"<c:if test="${param.CATEGORY=='20'}"> selected</c:if>>Software Development Tools</option>
                           <option value="21"<c:if test="${param.CATEGORY=='21'}"> selected</c:if>>System Tools</option>
                           <c:if test="${param.VENDORTYPE=='2'}">
-                            <option value="22"<c:if test="${param.CATEGORY=='22'}"> selected</c:if>>XXX-Adult Software</option>
+                              <option value="22"<c:if test="${param.CATEGORY=='22'}"> selected</c:if>>XXX-Adult Software</option>
                           </c:if>
                           <option value="16"<c:if test="${param.CATEGORY=='16'}"> selected</c:if>>Other</option>
                         </select>
@@ -699,7 +739,7 @@
                       </div> <!-- end .toggle-section -->
                       <p style="margin-top: 2rem;">Click 'Save' button to add the new product, or 'Previous' to go back.</p>
                       <button id="backToCartOptions" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
-                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" disabled >Save</button>
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));">Save</button>
                     </div> <!-- end .tab-pane -->
                   </div> <!-- end tab-content -->
                 </form>
