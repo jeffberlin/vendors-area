@@ -1,14 +1,14 @@
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
-  <form method="post" name="transfers" action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer" target="_parent">
-    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/v2vstart.html" />
-    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
+  <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer">
+    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-manage-transfers.jsp" />
+    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
     <input type="hidden" name="TRANSFERID" value="${param.TRANSFERID}" />
     <input type="hidden" name="ACTION" value="10" />
     <h5>Add New Affiliate Transfer</h5>
     <span>
       <label>Beneficiary Affiliate ID:</label>
-      <input name="TOVENDORID" maxlength="5" size="5" value="${param.TOVENDORID}" title=" This should be the vendor ID receiving this transfer. " style="margin-bottom: .8rem;"/>
+      <input name="TOVENDORID" maxlength="5" size="5" value="${param.TOVENDORID}" title="This should be the vendor ID receiving this transfer." style="margin-bottom: .8rem;"/>
     </span>
     <c:if test = "${param.MULTICURRENCY == -1}">
       <br clear="all" />
@@ -27,7 +27,7 @@
     <br clear="all" />
     <span>
       <label>Amount:</label>
-      <input name="AMOUNT" value="${param.AMOUNT}" size="10" title=" Enter the amount in the text field. Numbers only, decimals are allowed. " style="margin-bottom: .8rem;" />
+      <input name="AMOUNT" value="${param.AMOUNT}" size="10" title="Enter the amount in the text field. Numbers only, decimals are allowed." style="margin-bottom: .8rem;" />
     </span>
     <br clear="all">
     <span>
@@ -36,8 +36,8 @@
     </span>
     <br clear="all" />
     <span>
-      <button class="light-btn" type="button" onclick="submitForm (transfers);" style="margin-right: .4rem;">Save</button>
-      <button class="light-btn" type="button" onclick="document.close.submit ();">Close</button>
+      <button class="save-btn" type="button" onclick="submitTransfer (this.form);" style="margin-right: .5rem;">Save</button>
+      <button class="save-btn" type="button" onclick="closeResultFrame();">Close</button>
     </span>
   </form>
 </div>

@@ -127,7 +127,7 @@
 </script>
 <body onLoad="initForm (document.emailform);">
   <div class="transfer-section">
-    <form method="post" name="emailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="_parent">
+    <form method="post" name="emailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
       <h5>Customer&nbsp;Email&nbsp;template&nbsp;for&nbsp;${param.PRODUCTNAME}</h5>
       <p class="text-section" style="margin-bottom: .5rem;">
         The template specified below will be used to override the global email template.
@@ -137,8 +137,8 @@
         Please read&nbsp;<a href="https://help.bmtmicro.com/vendors/edit-customer-email-notifications/" target="_blank">help files</a>&nbsp;for a full explanation on standard messages and token usage.
       </p>
       <div class="toolbar">
-        <div class="dropdown">
-          <a class="dropdown-toggle" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+        <div class="dropright">
+          <a class="transfer-dropdown dropdown-toggle" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
             User&nbsp;Token&nbsp;List
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -161,8 +161,8 @@
             <a class="dropdown-item" title="ALTEMAIL" onmouseover="return (fixTitle (this));" onclick="addToken (this);">Secondary&nbsp;Email</a>
           </div>
         </div> <!-- end .dropdown -->
-        <div class="dropdown">
-          <a class="dropdown-toggle" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+        <div class="dropright">
+          <a class="transfer-dropdown dropdown-toggle" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
             Server&nbsp;Token&nbsp;List
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -182,8 +182,8 @@
             <a class="dropdown-item" title="PAYMENTMETHOD_DESC" onmouseover="return (fixTitle (this));" onclick="addToken (this);">Payment&nbsp;description</a>
           </div>
         </div> <!-- end .dropdown -->
-        <div class="dropdown">
-          <a class="dropdown-toggle" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+        <div class="dropright">
+          <a class="transfer-dropdown dropdown-toggle" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
             Products&nbsp;Token&nbsp;List
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -218,11 +218,11 @@
       <textarea style="margin: .5rem 0; position:absolute; visibility:hidden;" rows="8" cols="100" name="DEFAULTCUSTOMEREMAILTEMPLATE">${param.DEFAULTCUSTOMEREMAILTEMPLATE}</textarea>
       <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" />
       <input type="hidden" name="ACTION" value="12" />
-      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/productsstart.html" />
-      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.html" />
-      <input type="submit" class="light-btn" style="margin-right: .5rem;" onclick="document.close.submit();" value="Cancel" />
-      <button class="light-btn" type="button" style="margin-right: .5rem;" onclick="showPreview (emailform);">Preview</button>
-      <button class="light-btn" type="button" onclick="submitForm (emailform);">Save</button>
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage.jsp" />
+      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+      <button type="button" class="save-btn" onclick="closeResultFrame()" style="margin-right: .5rem;">Close</button>
+      <button class="save-btn" type="button" onclick="showPreview (emailform);"style="margin-right: .5rem;" >Preview</button>
+      <button class="save-btn" type="button" onclick="submitForm (emailform);">Save</button>
     </form>
     <form method="post" name="previewform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);" >
       <input type="hidden" name="ACTION" value="20" />
