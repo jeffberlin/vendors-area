@@ -195,13 +195,13 @@
         initRegionSel ();
       }
 
-      function initForm (form) {
+      // function initForm (form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        var shippingcosts = "${param.SHIPPINGCOSTLIST}".split ("\t");
-        for (var i = 0; i < shippingcosts.length; createField (shippingcosts[i++]));
-        initRegionSel ();
-      }
+      //   var shippingcosts = "${param.SHIPPINGCOSTLIST}".split ("\t");
+      //   for (var i = 0; i < shippingcosts.length; createField (shippingcosts[i++]));
+      //   initRegionSel ();
+      // }
 
       function checkValuePair (firstField, nextField) {
         if (isBlank (firstField.value) || isNaN (firstField.value) || (parseFloat (firstField.value) < 0.01)) {
@@ -282,6 +282,10 @@
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
         var shippingcosts = "${param.SHIPPINGCOSTLIST}".split ("\t");
         for (var i = 0; i < shippingcosts.length; createRegionViewField (shippingcosts[i++]));
+
+        // var shippingcosts = "${param.SHIPPINGCOSTLIST}".split ("\t");
+        for (var i = 0; i < shippingcosts.length; createField (shippingcosts[i++]));
+        initRegionSel ();
       }
     </script>
   </head>
