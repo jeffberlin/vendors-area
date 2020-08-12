@@ -61,7 +61,7 @@
           <c:when test = "${ allowChanges == 0 }">
             alert ("You do not have permission to add affiliate transfers.");
           </c:when>
-          <c:when test = "${ payDay == 1 }">
+          <c:when test = "${ payDay == -1 }">
             alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
           </c:when>
           <c:otherwise>
