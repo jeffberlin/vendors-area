@@ -1,13 +1,14 @@
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
   <form method="post" name="emailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
-    <h5>Customer&nbsp;Email&nbsp;template&nbsp;for&nbsp;${param.PRODUCTNAME}</h5>
+    <h5>Vendor&nbsp;Email&nbsp;template&nbsp;for&nbsp;${param.PRODUCTNAME}</h5>
     <p class="text-section" style="margin-bottom: .5rem;">
       The template specified below will be used to override the global email template.
       <br>
       When possible, please consider using the global e-mail template since this makes it easier to manage future updates.
       <br>
-      Please read&nbsp;<a href="https://help.bmtmicro.com/vendors/edit-customer-email-notifications/" target="_blank">help files</a>&nbsp;for a full explanation on standard messages and token usage.
+      Please read&nbsp;<a href="https://help.bmtmicro.com/vendors/edit-vendor-email-notifications/" target="_blank">help
+      files</a>&nbsp;for a full explanation on standard messages and token usage.
     </p>
     <div class="toolbar">
       <div class="dropright">
@@ -54,7 +55,7 @@
           <a class="dropdown-item" title="PAYMENTMETHOD" onmouseover="return (fixTitle (this));" onclick="addToken (this);">Payment&nbsp;method</a>
           <a class="dropdown-item" title="PAYMENTMETHOD_DESC" onmouseover="return (fixTitle (this));" onclick="addToken (this);">Payment&nbsp;description</a>
         </div>
-      </div> <!-- end .dropdown -->
+      </div>
       <div class="dropright">
         <a class="transfer-dropdown dropdown-toggle" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
           Products&nbsp;Token&nbsp;List
@@ -80,28 +81,29 @@
           <a class="dropdown-item" title="DOWNLOADPASSWORD" onmouseover="return (fixTitle (this));" onclick="addToken (this);">Download&nbsp;Password</a>
           <a class="dropdown-item" title="DPWEXPIRATIONDATE" onmouseover="return (fixTitle (this));" onclick="addToken (this);">Password&nbsp;expiration&nbsp;date</a>
         </div>
-      </div> <!-- end .dropdown -->
-    </div>
-    <textarea style="margin: .5rem 0;" id="emailtemplate" name="CUSTOMEREMAILTEMPLATE" rows="8" cols="100">${param.CUSTOMEREMAILTEMPLATE}</textarea>
+      </div>
+    </div> <!-- end .toolbar -->
+    <textarea style="margin: .5rem 0;" rows="8" cols="100" id="emailtemplate" name="VENDOREMAILTEMPLATE">${param.VENDOREMAILTEMPLATE}</textarea>
     <br>
     <span>
       <input type="checkbox" name="USEDEFAULTTEMPLATE" onClick="useDefaultChanged (emailform);" style="margin-bottom: 1.2rem;"/>&nbsp;Use default/global template
     </span>
     <br>
-    <textarea style="margin: .5rem 0; position: absolute; visibility: hidden;" rows="8" cols="100" name="DEFAULTCUSTOMEREMAILTEMPLATE">${param.DEFAULTCUSTOMEREMAILTEMPLATE}</textarea>
+    <textarea style="margin: .5rem 0; position: absolute; visibility: hidden;" rows="8" cols="100" name="DEFAULTVENDOREMAILTEMPLATE">${param.DEFAULTVENDOREMAILTEMPLATE}</textarea>
     <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" />
-    <input type="hidden" name="ACTION" value="12" />
+    <input type="hidden" name="ACTION" value="13" />
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage.jsp" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
     <button type="button" class="save-btn" onclick="closeResultFrame()" style="margin-right: .5rem;">Close</button>
-    <button class="save-btn" type="button" onclick="showPreview (emailform);"style="margin-right: .5rem;" >Preview</button>
-    <button class="save-btn" type="button" onclick="submitCustomerEmail (emailform);">Save</button>
+    <button class="save-btn" type="button" style="margin-right: .5rem;" onclick="showPreview (emailform);">Preview</button>
+    <button class="save-btn" type="button" onclick="submitForm (emailform);">Save</button>
   </form>
+
   <form method="post" name="previewform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);" >
-    <input type="hidden" name="ACTION" value="20" />
+    <input type="hidden" name="ACTION" value="21" />
     <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" />
     <input type="hidden" name="PREVIEWTEXT" value="" />
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/previewtext.html" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
   </form>
-</div>
+</div> <!-- end .transfer-section -->

@@ -13,7 +13,7 @@
   <br>
   <span>
     <label style="margin-bottom: 1rem;">Notes:&nbsp;</label>
-    <strong>##${param.NOTES}.</strong>
+    <strong>${param.NOTES}.</strong>
   </span>
   <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
 </div> <!-- end .transfer-section -->
