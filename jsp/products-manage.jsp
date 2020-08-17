@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addTransfer.css"/>
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script src="https://vendors.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <style media="screen" type="text/css">
       .email {
