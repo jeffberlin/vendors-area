@@ -43,7 +43,7 @@
       <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/products-manage.jsp">Manage Products</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/products-manage-files.jsp">Manage Files</a>
-        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/keytablesstart.html">Activation Code Table</a>
+        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables.jsp">Activation Code Table</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/products-discounts-schemes.jsp">Discount Schemes</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/tiersstart.html">Manage Pricing Tiers</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/splitsstart.html">Manage Splits</a>
