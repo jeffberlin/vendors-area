@@ -28,9 +28,16 @@
         form.ACTION.value = action;
         form.target = target;
         form.NEXT_PAGE.value  = nextpage;
-        form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.jsp" : "https://vendors-new.bmtmicro.com/error-div.jsp";
+        // form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.jsp" : "https://vendors-new.bmtmicro.com/error-div.jsp";
         form.KEYTABLEID.value = keytableid;
-        submitToDiv (form, "resultframe");
+        // submitToDiv (form, "resultframe");
+        if (target == "_parent") {
+          form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
+          form.submit ();
+        } else {
+          form.target = "";
+          submitToDiv (form, target);
+        }
       }
 
       <c:if test = "${ allowChanges == 0 }">
@@ -80,11 +87,11 @@
       // }
 
       function viewProducts (keytableid) {
-        submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-activation-tables-view-products.jsp", keytableid);
+        submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-view-products.jsp", keytableid);
       }
 
       function downloadKeys (keytableid) {
-        submitForm (5, "", "https://vendors-new.bmtmicro.com/products-manage-activation-tables.jsp", keytableid);
+        submitForm (5, "", "https://vendors-new.bmtmicro.com/products-manage-code-activation-tables.jsp", keytableid);
       }
 
       // from keytables_add.html
