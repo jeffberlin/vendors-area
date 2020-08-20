@@ -21,6 +21,14 @@
       td[mnumber], td[info], td[option] {
         text-align: center;
       }
+      #keyinfo {
+        color: #707070;
+        margin-bottom: 1rem;
+        font-size: .9rem;
+      }
+      #keyinfo {
+        letter-spacing: .5px;
+      }
     </style>
     <script>
       function submitForm (action, target, nextpage, keytableid) {
@@ -49,6 +57,10 @@
         }
         function addKeys (keytableid) {
           alert("You do not have permission to add keys.");
+        }
+
+        function submitKeys (form) {
+          alert ("You do not have permission to edit tables.");
         }
       </c:if>
 
@@ -98,6 +110,28 @@
       function initForm (form){
         initField (form, "KEYPARTS", "${param.KEYPARTS}");
         initField (form, "SEPARATOR", "${param.SEPARATOR}");
+
+        var info = "Each row contains one code."
+        if (${param.KEYPARTS} == 1) {
+          info += " (The codes are single-part. The separator character is not used.)";
+        } else {
+          info += " Each code should have ${param.KEYPARTS} parts. Each part should be separated by ";
+          switch ('${param.SEPARATOR}') {
+            case ' ':
+              info += " a space character ('&nbsp;').";
+            break;
+            case ',':
+              info += " a comma (',').";
+            break;
+            case ';':
+              info += " a semicolon (';').";
+            break;
+            default:
+              info += "the character '${param.SEPARATOR}'";
+            break;
+          }
+        }
+        document.getElementById ("keyinfo").innerHTML = info;
       }
 
       function submitKeys (form) {
@@ -117,6 +151,110 @@
           form.LOWKEYEMAIL.focus ();
           return (false);
         }
+        form.submit ();
+        return (true);
+      }
+
+      // from keytables_add_keys.html
+      function checkKeyParts (str,parts,separator) {
+        var i = 0;
+        var l = str.length;
+        var lineNumber = 0;
+        var keyCount = 0;
+        while (i < l) {
+          var next;
+          var lf = str.indexOf ("\r\n", i);
+          if (lf != -1) {
+            next = lf + 2;
+          } else if ((lf = str.indexOf ("\n", i)) != -1) {
+            next = lf + 1;
+          } else {
+            next = lf = l;
+          }
+          var line = str.substring (i, lf);
+          lineNumber++;
+          i = next;
+
+          if (isBlank (line)) {
+            if (!confirm ("Warning: Line " + lineNumber + "  will be ignored because it is blank")) {
+              return (false);
+            }
+          continue;
+          }
+
+          var keyparts = ["","","",""];
+          if (parts == 1) {
+            keyparts[0] = line.substring (j);
+          } else {
+            var part = 0;
+            var j = 0;
+            for (;;) {
+              var s = line.indexOf (separator, j);
+              if (s == -1) {
+                break;
+              }
+              keyparts[part++] = line.substring (j, s);
+              j = s + 1;
+              if (part == parts) {
+                alert ("Error on line " + lineNumber + ". Found more than " + parts + " parts.\nThis table should only have " + parts + " parts per code");
+                return (false);
+              }
+            }
+            keyparts[part++] = line.substring (j);
+            if (part < parts) {
+              alert ("Error on line " + lineNumber + ". Could only find " + part + " parts.\nThis table needs " + parts + " parts per code");
+              return (false);
+            }
+          }
+
+          for (var k = 0; k < part; k++) {
+            if (keyparts[k].length > 80) {
+              alert ("Error on line " + lineNumber + ". The length of the code (part " + k + ") exceeds the maximum length of 80 characters.");
+              return (false);
+            }
+          }
+
+          keyCount++;
+        }
+        return (confirm (keyCount + " codes will be added to the database."));
+      }
+
+      // function initForm (form) {
+      //   var info = "Each row contains one code."
+      //   if (${param.KEYPARTS} == 1) {
+      //     info += " (The codes are single-part. The separator character is not used.)";
+      //   } else {
+      //     info += " Each code should have ${param.KEYPARTS} parts. Each part should be separated by ";
+      //     switch ('${param.SEPARATOR}') {
+      //       case ' ':
+      //         info += " a space character ('&nbsp;').";
+      //       break;
+      //       case ',':
+      //         info += " a comma (',').";
+      //       break;
+      //       case ';':
+      //         info += " a semicolon (';').";
+      //       break;
+      //       default:
+      //         info += "the character '${param.SEPARATOR}'";
+      //       break;
+      //     }
+      //   }
+      //   document.getElementById ("keyinfo").innerHTML = info;
+      // }
+
+      function submitNewKeysCodes (form) {
+        if (isBlank (form.KEYLIST.value)) {
+          alert ("No codes provided!");
+          form.KEYLIST.focus ();
+          return (false);
+        }
+        if (!checkKeyParts (form.KEYLIST.value, form.KEYPARTS.value, form.SEPARATOR.value)) {
+          form.KEYLIST.focus ();
+          return (false);
+        }
+        setFieldVisible ("main", false);
+        setFieldVisible ("progress", true);
         form.submit ();
         return (true);
       }
