@@ -107,32 +107,32 @@
       }
 
       // from keytables_add.html
-      function initForm (form){
-        initField (form, "KEYPARTS", "${param.KEYPARTS}");
-        initField (form, "SEPARATOR", "${param.SEPARATOR}");
-
-        var info = "Each row contains one code."
-        if (${param.KEYPARTS} == 1) {
-          info += " (The codes are single-part. The separator character is not used.)";
-        } else {
-          info += " Each code should have ${param.KEYPARTS} parts. Each part should be separated by ";
-          switch ('${param.SEPARATOR}') {
-            case ' ':
-              info += " a space character ('&nbsp;').";
-            break;
-            case ',':
-              info += " a comma (',').";
-            break;
-            case ';':
-              info += " a semicolon (';').";
-            break;
-            default:
-              info += "the character '${param.SEPARATOR}'";
-            break;
-          }
-        }
-        document.getElementById ("keyinfo").innerHTML = info;
-      }
+      // function initForm (form){
+      //   initField (form, "KEYPARTS", "${param.KEYPARTS}");
+      //   initField (form, "SEPARATOR", "${param.SEPARATOR}");
+      //
+      //   var info = "Each row contains one code."
+      //   if (${param.KEYPARTS} == 1) {
+      //     info += " (The codes are single-part. The separator character is not used.)";
+      //   } else {
+      //     info += " Each code should have ${param.KEYPARTS} parts. Each part should be separated by ";
+      //     switch ('${param.SEPARATOR}') {
+      //       case ' ':
+      //         info += " a space character ('&nbsp;').";
+      //       break;
+      //       case ',':
+      //         info += " a comma (',').";
+      //       break;
+      //       case ';':
+      //         info += " a semicolon (';').";
+      //       break;
+      //       default:
+      //         info += "the character '${param.SEPARATOR}'";
+      //       break;
+      //     }
+      //   }
+      //   document.getElementById ("keyinfo").innerHTML = info;
+      // }
 
       function submitKeys (form) {
         form.NAME.value = trim (form.NAME.value);
@@ -260,7 +260,7 @@
       }
     </script>
   </head>
-  <body onload="initForm (document.keytables);">
+  <body>
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -277,6 +277,7 @@
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
                   <form name="keytables" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys">
                     <input type="hidden" name="ACTION" value="-1" />
+                    <input type="hidden" name="KEYTABLEID" value="" />
                     <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-tablerow.html" />
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-table.jsp">
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp">
@@ -292,5 +293,10 @@
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
-  <script>$(document).ready(function(){ submitToDiv (document.keytables, 'tableframe'); });</script>
+  <script>
+    $(document).ready(function(){ submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-table.jsp"); });
+    $('input[type=checkbox]').change(function(){
+      $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
+    });
+  </script>
 </html>

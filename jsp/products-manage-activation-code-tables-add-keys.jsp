@@ -3,7 +3,7 @@
   <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys">
     <h5>Add&nbsp;Activation&nbsp;Codes&nbsp;to&nbsp;${param.NAME}</h5>
     <span>
-      <input type="checkbox" name="REPLACEKEYS" value="-1"  style="margin-bottom: 1rem;"/>&nbsp;Replace&nbsp;existing&nbsp;codes
+      <input type="checkbox" style="margin-bottom: 1rem;"<c:if test="${param.REPLACEKEYS!=0}"> checked</c:if>/>&nbsp;Replace&nbsp;existing&nbsp;codes
     </span>
     <br>
     <span>
@@ -12,9 +12,24 @@
       <textarea name="KEYLIST" rows="8" cols="70"></textarea>
     </span>
     <br>
-    <div id="keyinfo"></div>
+    <div>
+      <p>Each row contains one code.
+      <c:if test="${param.KEYPARTS==1}">
+        (The codes are single-part. The separator character is not used).
+      </c:if>
+      <c:if test="${param.KEYPARTS!=1}">
+        Each code should have ${param.KEYPARTS} parts. Each part should be separated by
+        <c:choose>
+          <c:when test="${param.SEPARATOR==' '}"> a space character ('&nbsp;').</c:when>
+          <c:when test="${param.SEPARATOR==','}"> a comma (',').</c:when>
+          <c:when test="${param.SEPARATOR==';'}"> a semicolon (';').</c:when>
+          <c:otherwise> the character '${param.SEPARATOR}'.</c:otherwise>
+        </c:choose>
+        </p>
+      </c:if>
+    </div>
     <span>
-      <button type="button" class="light-btn" onclick="submitNewKeysCodes (this.form);" style="margin-bottom: 1rem; margin-right: .5rem;">Add Codes</button>
+      <button type="button" class="save-btn" onclick="submitNewKeysCodes (this.form);" style="margin-right: .5rem;">Add Codes</button>
       <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
     </span>
     <input type="hidden" name="ACTION" value="13" />
