@@ -1,7 +1,7 @@
 <%@ include file="/includes/core.jsp" %>
 <form name="keytables" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys">
-  <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}">
-  <input type="hidden" name="ACTION" value="" />
+  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-tablerow.html" />
+  <input type="hidden" name="ACTION" value="-1" />
   <input type="hidden" name="KEYTABLEID" value="" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />

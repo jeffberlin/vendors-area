@@ -6,10 +6,10 @@
       <input type="hidden" name="ACTION" value="12" />
       <input type="hidden" name="KEYTABLEID" value="${param.KEYTABLEID}" />
       <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables.jsp" />
-      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
       <p style="margin-bottom: .2rem;">Please confirm deletion of the&nbsp;<strong>${param.NAME}</strong>&nbsp;table.</p>
       <p>This table is not used by any products and can be deleted.</p>
-      <button type="button" class="save-btn" onclick="submitToDiv (this.form, 'resultframe');" style="margin-right: .5rem;">Delete</button>
+      <button type="submit" class="save-btn" style="margin-right: .5rem;">Delete</button>
       <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
     </form>
   </c:if>

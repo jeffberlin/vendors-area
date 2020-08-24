@@ -106,34 +106,8 @@
         submitForm (5, "", "https://vendors-new.bmtmicro.com/products-manage-code-activation-tables.jsp", keytableid);
       }
 
-      // from keytables_add.html
-      // function initForm (form){
-      //   initField (form, "KEYPARTS", "${param.KEYPARTS}");
-      //   initField (form, "SEPARATOR", "${param.SEPARATOR}");
-      //
-      //   var info = "Each row contains one code."
-      //   if (${param.KEYPARTS} == 1) {
-      //     info += " (The codes are single-part. The separator character is not used.)";
-      //   } else {
-      //     info += " Each code should have ${param.KEYPARTS} parts. Each part should be separated by ";
-      //     switch ('${param.SEPARATOR}') {
-      //       case ' ':
-      //         info += " a space character ('&nbsp;').";
-      //       break;
-      //       case ',':
-      //         info += " a comma (',').";
-      //       break;
-      //       case ';':
-      //         info += " a semicolon (';').";
-      //       break;
-      //       default:
-      //         info += "the character '${param.SEPARATOR}'";
-      //       break;
-      //     }
-      //   }
-      //   document.getElementById ("keyinfo").innerHTML = info;
-      // }
 
+      <c:if test = "${ allowChanges == 1 }">
       function submitKeys (form) {
         form.NAME.value = trim (form.NAME.value);
         if (isBlank (form.NAME.value)) {
@@ -141,7 +115,7 @@
           form.NAME.focus ();
           return (false);
         }
-        if ("${param.NAMELIST}".split ("\t").indexOf (form.NAME.value) != -1) {
+        if (form.NAMELIST.value.split ("\t").indexOf (form.NAME.value) != -1) {
           alert ("A table with that name already exists!");
           form.NAME.focus ();
           return (false);
@@ -219,30 +193,6 @@
         return (confirm (keyCount + " codes will be added to the database."));
       }
 
-      // function initForm (form) {
-      //   var info = "Each row contains one code."
-      //   if (${param.KEYPARTS} == 1) {
-      //     info += " (The codes are single-part. The separator character is not used.)";
-      //   } else {
-      //     info += " Each code should have ${param.KEYPARTS} parts. Each part should be separated by ";
-      //     switch ('${param.SEPARATOR}') {
-      //       case ' ':
-      //         info += " a space character ('&nbsp;').";
-      //       break;
-      //       case ',':
-      //         info += " a comma (',').";
-      //       break;
-      //       case ';':
-      //         info += " a semicolon (';').";
-      //       break;
-      //       default:
-      //         info += "the character '${param.SEPARATOR}'";
-      //       break;
-      //     }
-      //   }
-      //   document.getElementById ("keyinfo").innerHTML = info;
-      // }
-
       function submitNewKeysCodes (form) {
         if (isBlank (form.KEYLIST.value)) {
           alert ("No codes provided!");
@@ -258,6 +208,8 @@
         form.submit ();
         return (true);
       }
+      </c:if>
+
     </script>
   </head>
   <body>
@@ -294,6 +246,9 @@
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
   <script>
+    if (window.history.replaceState) {
+      window.history.replaceState (null, null, "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables.jsp");
+    }
     $(document).ready(function(){ submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-table.jsp"); });
     $('input[type=checkbox]').change(function(){
       $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);

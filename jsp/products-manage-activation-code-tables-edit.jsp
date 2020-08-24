@@ -3,8 +3,9 @@
   <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys">
     <input type="hidden" name="ACTION" value="11" />
     <input type="hidden" name="KEYTABLEID" value="${param.KEYTABLEID}" />
+    <input type="hidden" name="NAMELIST" value="${param.NAMELIST}" />
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables.jsp" />
-    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
     <h5>Edit Activation Code Table - ${param.NAME}</h5>
     <span>
       <label>Number of Key Parts:&nbsp;</label>
