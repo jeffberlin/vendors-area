@@ -36,7 +36,7 @@
     <input type="hidden" name="KEYPARTS" value="${param.KEYPARTS}" />
     <input type="hidden" name="SEPARATOR" value="${param.SEPARATOR}" />
     <input type="hidden" name="KEYTABLEID" value="${param.KEYTABLEID}" />
-    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/keytables_add_keys_progress.html" />
+    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-add-keys-progress.jsp" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   </form>
   <div id="progress" style="display: none;">

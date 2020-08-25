@@ -31,7 +31,7 @@
 	        <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
 	        <input type="hidden" name="NAME" value="${param.NAME}" />
 	        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes-codetable.jsp" />
-	        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/result-error.jsp" />
+	        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
 	      </form>
 			</c:if>
 			<c:if test="${param.MAXUSECOUNT > 1}">
@@ -51,7 +51,7 @@
 	        <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
 	        <input type="hidden" name="NAME" value="${param.NAME}" />
 	        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes-codetable.jsp" />
-	        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/result-error.jsp" />
+	        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
 	      </form>
 			</c:if>
 		</c:if>

@@ -6,7 +6,7 @@
         <h5>Generated Discount Code</h5>
         <p>The discount code for <strong>${param.NAME}</strong> is <strong>${param.DISCOUNTCODE}</strong>. This code is good for any number of purchases.</p>
         <c:if test="${param.EXPIRATIONDATE!=''}"><p>It expires on ${param.EXPIRATIONDATE}.</p></c:if>
-        <form method="post" name="discform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes" target="resultframe">
+        <form method="post" name="discform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes">
           <p><strong>Would you like to customize this code?</strong></p>
           <span>
             <label>New discount code:&nbsp;</label>
@@ -15,8 +15,8 @@
           <br>
           <p style="font-size: .9rem; margin-bottom: 1.2rem;">(Leave blank to let the system generate a new code for you)</p>
           <div class="row">
-            <button type="button" class="light-btn" style="margin-right: .5rem;" onclick="submitToDiv (form, 'resultframe');">Apply Custom Code</button>
-            <button type="button" class="light-btn" onclick="closeResultFrame()">Cancel</button>
+            <button type="button" class="save-btn" style="margin-right: .5rem;" onclick="submitToDiv (form, 'resultframe');">Apply Custom Code</button>
+            <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
             <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
             <input type="hidden" name="ACTION" value="13" />
             <input type="hidden" name="GENCOUNT" value="1" />
@@ -28,7 +28,7 @@
         </form>
       </c:if>
       <c:if test="${param.NUMCODES != 0}">
-        <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes" target="resultframe">
+        <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes">
           <h5>Generate&nbsp;Discount&nbsp;Codes&nbsp;for&nbsp;${param.NAME}</h5>
           <p>The current code for this discount scheme is&nbsp;<strong>${param.DISCOUNTCODE}</strong>.</p>
           <c:if test="${param.EXPIRATIONDATE!=''}"><p>Date of expiration: ${param.EXPIRATIONDATE}.</p></c:if>
@@ -40,19 +40,19 @@
           </span>
           <br>
           <p style="font-size: .9rem; margin-bottom: 1.2rem;">(Leave blank to let the system generate a new code for you)</p>
-          <button type="submit" class="light-btn" style="margin-right: .5rem;" onclick="submitToDiv (form, 'resultframe');">Generate New Code</button>
-          <button type="button" class="light-btn" onclick="closeResultFrame()">Cancel</button>
+          <button type="button" class="save-btn" style="margin-right: .5rem;" onclick="submitToDiv (form, 'resultframe');">Generate New Code</button>
+          <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
           <input type="hidden" name="ACTION" value="13" />
           <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
           <input type="hidden" name="GENCOUNT" value="1" />
           <input type="hidden" name="REPLACE" value="-1" />
           <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes-codetable.jsp" />
-          <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
+          <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
         </form>
       </c:if>
     </c:if>
     <c:if test="${param.MAXUSECOUNT != 0}">
-      <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes" target="resultframe">
+      <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes">
         <h5>Generate Discount Codes for ${param.NAME}</h5>
         <span>
           Number of codes to generate:&nbsp;
@@ -66,16 +66,16 @@
         <input type="hidden" name="ACTION" value="13" />
         <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
         <input type="hidden" name="NAME" value="${param.NAME}" />
-        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/discounts_viewcodes_viewcodes.html" />
-        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
-        <button type="submit" class="light-btn" style="margin-right: .5rem;">Generate&nbsp;Codes</button>
-        <button type="button" class="light-btn" onclick="closeResultFrame()">Cancel</button>
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discount-schemes-codetable.jsp" />
+        <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+        <button type="button" class="save-btn" style="margin-right: .5rem;" onclick="submitToDiv (form, 'resultframe');">Generate&nbsp;Codes</button>
+        <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
       </form>
     </c:if>
   </c:if>
   <c:if test="${param.SCHEMETYPE != 0}">
     <h5>${param.NAME}</h5>
     <p>This scheme does not require any codes.</p>
-    <button type="button" class="light-btn" onclick="closeResultFrame()">Cancel</button>
+    <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
   </c:if>
 </div> <!-- end .transfer-section -->

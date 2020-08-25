@@ -34,7 +34,6 @@
 			<tbody>
 				${param.TABLEDATA}
 			</tbody>
-			<!--
 			<tfoot>
 				<tr class="table-total">
 					<th scope="row" colspan="6">
@@ -42,7 +41,6 @@
 					</th>
 				</tr>
 			</tfoot>
-			-->
 		</table>
 	</div>
 </form>

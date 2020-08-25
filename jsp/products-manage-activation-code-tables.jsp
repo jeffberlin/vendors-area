@@ -58,9 +58,11 @@
         function addKeys (keytableid) {
           alert("You do not have permission to add keys.");
         }
-
         function submitKeys (form) {
           alert ("You do not have permission to edit tables.");
+        }
+        function submitNewKeysCodes (form) {
+          alert ("You do not have permission to add key codes.");
         }
       </c:if>
 
@@ -74,29 +76,108 @@
         function addKeys (keytableid) {
           submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-add-keys.jsp", keytableid);
         }
-      </c:if>
+        
+        function submitKeys (form) {
+          form.NAME.value = trim (form.NAME.value);
+          if (isBlank (form.NAME.value)) {
+            alert ("You must name the table!");
+            form.NAME.focus ();
+            return (false);
+          }
+          if (form.NAMELIST.value.split ("\t").indexOf (form.NAME.value) != -1) {
+            alert ("A table with that name already exists!");
+            form.NAME.focus ();
+            return (false);
+          }
+          if (!isBlank (form.LOWKEYEMAIL.value) && !isValidEmail (form.LOWKEYEMAIL.value)) {
+            alert ("You must use a valid email address!");
+            form.LOWKEYEMAIL.focus ();
+            return (false);
+          }
+          form.submit ();
+          return (true);
+        }
 
-      // function addTable () {
-      //   if (allowChanges ("You do not have permission to add new tables.")) {
-      //     submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/keytables_add.html");
-      //   }
-      // }
+        // from keytables_add_keys.html
+        function checkKeyParts (str,parts,separator) {
+          var i = 0;
+          var l = str.length;
+          var lineNumber = 0;
+          var keyCount = 0;
+          while (i < l) {
+            var next;
+            var lf = str.indexOf ("\r\n", i);
+            if (lf != -1) {
+              next = lf + 2;
+            } else if ((lf = str.indexOf ("\n", i)) != -1) {
+              next = lf + 1;
+            } else {
+              next = lf = l;
+            }
+            var line = str.substring (i, lf);
+            lineNumber++;
+            i = next;
+            if (isBlank (line)) {
+              if (!confirm ("Warning: Line " + lineNumber + "  will be ignored because it is blank")) {
+                return (false);
+              }
+              continue;
+            }
+            var keyparts = ["","","",""];
+            if (parts == 1) {
+              keyparts[0] = line.substring (j);
+            } else {
+              var part = 0;
+              var j = 0;
+              for (;;) {
+                var s = line.indexOf (separator, j);
+                if (s == -1) {
+                  break;
+                }
+                keyparts[part++] = line.substring (j, s);
+                j = s + 1;
+                if (part == parts) {
+                  alert ("Error on line " + lineNumber + ". Found more than " + parts + " parts.\nThis table should only have " + parts + " parts per code");
+                  return (false);
+                }
+              }
+              keyparts[part++] = line.substring (j);
+              if (part < parts) {
+                alert ("Error on line " + lineNumber + ". Could only find " + part + " parts.\nThis table needs " + parts + " parts per code");
+                return (false);
+              }
+            }
+            for (var k = 0; k < part; k++) {
+              if (keyparts[k].length > 80) {
+                alert ("Error on line " + lineNumber + ". The length of the code (part " + k + ") exceeds the maximum length of 80 characters.");
+                return (false);
+              }
+            }
+            keyCount++;
+          }
+          return (confirm (keyCount + " codes will be added to the database."));
+        }
+
+        function submitNewKeysCodes (form) {
+          if (isBlank (form.KEYLIST.value)) {
+            alert ("No codes provided!");
+            form.KEYLIST.focus ();
+            return (false);
+          }
+          if (!checkKeyParts (form.KEYLIST.value, form.KEYPARTS.value, form.SEPARATOR.value)) {
+            form.KEYLIST.focus ();
+            return (false);
+          }
+          setFieldVisible ("main", false);
+          setFieldVisible ("progress", true);
+          form.submit ();
+          return (true);
+        }
+      </c:if>
 
       function editTable (keytableid) {
         submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-edit.jsp", keytableid);
       }
-
-      // function deleteTable (keytableid) {
-      //   if (allowChanges ("You do not have permission to delete tables.")) {
-      //     submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/keytables_delete.html", keytableid);
-      //   }
-      // }
-
-      // function addKeys (keytableid) {
-      //   if (allowChanges ("You do not have permission to add keys.")) {
-      //     submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/keytables_add_keys.html", keytableid);
-      //   }
-      // }
 
       function viewProducts (keytableid) {
         submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-view-products.jsp", keytableid);
@@ -105,111 +186,6 @@
       function downloadKeys (keytableid) {
         submitForm (5, "", "https://vendors-new.bmtmicro.com/products-manage-code-activation-tables.jsp", keytableid);
       }
-
-
-      <c:if test = "${ allowChanges == 1 }">
-      function submitKeys (form) {
-        form.NAME.value = trim (form.NAME.value);
-        if (isBlank (form.NAME.value)) {
-          alert ("You must name the table!");
-          form.NAME.focus ();
-          return (false);
-        }
-        if (form.NAMELIST.value.split ("\t").indexOf (form.NAME.value) != -1) {
-          alert ("A table with that name already exists!");
-          form.NAME.focus ();
-          return (false);
-        }
-        if (!isBlank (form.LOWKEYEMAIL.value) && !isValidEmail (form.LOWKEYEMAIL.value)) {
-          alert ("You must use a valid email address!");
-          form.LOWKEYEMAIL.focus ();
-          return (false);
-        }
-        form.submit ();
-        return (true);
-      }
-
-      // from keytables_add_keys.html
-      function checkKeyParts (str,parts,separator) {
-        var i = 0;
-        var l = str.length;
-        var lineNumber = 0;
-        var keyCount = 0;
-        while (i < l) {
-          var next;
-          var lf = str.indexOf ("\r\n", i);
-          if (lf != -1) {
-            next = lf + 2;
-          } else if ((lf = str.indexOf ("\n", i)) != -1) {
-            next = lf + 1;
-          } else {
-            next = lf = l;
-          }
-          var line = str.substring (i, lf);
-          lineNumber++;
-          i = next;
-
-          if (isBlank (line)) {
-            if (!confirm ("Warning: Line " + lineNumber + "  will be ignored because it is blank")) {
-              return (false);
-            }
-          continue;
-          }
-
-          var keyparts = ["","","",""];
-          if (parts == 1) {
-            keyparts[0] = line.substring (j);
-          } else {
-            var part = 0;
-            var j = 0;
-            for (;;) {
-              var s = line.indexOf (separator, j);
-              if (s == -1) {
-                break;
-              }
-              keyparts[part++] = line.substring (j, s);
-              j = s + 1;
-              if (part == parts) {
-                alert ("Error on line " + lineNumber + ". Found more than " + parts + " parts.\nThis table should only have " + parts + " parts per code");
-                return (false);
-              }
-            }
-            keyparts[part++] = line.substring (j);
-            if (part < parts) {
-              alert ("Error on line " + lineNumber + ". Could only find " + part + " parts.\nThis table needs " + parts + " parts per code");
-              return (false);
-            }
-          }
-
-          for (var k = 0; k < part; k++) {
-            if (keyparts[k].length > 80) {
-              alert ("Error on line " + lineNumber + ". The length of the code (part " + k + ") exceeds the maximum length of 80 characters.");
-              return (false);
-            }
-          }
-
-          keyCount++;
-        }
-        return (confirm (keyCount + " codes will be added to the database."));
-      }
-
-      function submitNewKeysCodes (form) {
-        if (isBlank (form.KEYLIST.value)) {
-          alert ("No codes provided!");
-          form.KEYLIST.focus ();
-          return (false);
-        }
-        if (!checkKeyParts (form.KEYLIST.value, form.KEYPARTS.value, form.SEPARATOR.value)) {
-          form.KEYLIST.focus ();
-          return (false);
-        }
-        setFieldVisible ("main", false);
-        setFieldVisible ("progress", true);
-        form.submit ();
-        return (true);
-      }
-      </c:if>
-
     </script>
   </head>
   <body>

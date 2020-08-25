@@ -100,5 +100,10 @@
 		</div> <!-- end .main-raised -->
 		<%@ include file="/includes/bootstrap_bottom_scripts.html" %>
 	</body>
-	<script>$(document).ready(function(){ submitToDiv (document.discounts, 'tableframe'); });</script>
+	<script>
+		if (window.history.replaceState) {
+			window.history.replaceState (null, null, "https://vendors-new.bmtmicro.com/products-discounts-schemes.jsp");
+		}
+		$(document).ready(function(){ submitToDiv (document.discounts, 'tableframe'); });
+	</script>
 </html>

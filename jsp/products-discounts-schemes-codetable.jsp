@@ -6,5 +6,5 @@
       ${param.CODETABLE}
     </tbody>
   </table>
-  <button type="button" class="light-btn" onclick="closeResultFrame()">Close</button>
+  <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
 </div> <!-- end .transfer-section -->
