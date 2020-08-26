@@ -66,7 +66,7 @@
         <input type="hidden" name="ACTION" value="13" />
         <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
         <input type="hidden" name="NAME" value="${param.NAME}" />
-        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discount-schemes-codetable.jsp" />
+        <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes-codetable.jsp" />
         <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
         <button type="button" class="save-btn" style="margin-right: .5rem;" onclick="submitToDiv (form, 'resultframe');">Generate&nbsp;Codes</button>
         <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
