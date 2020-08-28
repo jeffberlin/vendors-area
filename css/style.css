@@ -126,7 +126,8 @@ textarea,
 select,
 .text-section,
 span,
-p {
+p,
+.move button {
 	letter-spacing: .5px;
 }
 

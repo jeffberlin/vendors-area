@@ -10,11 +10,15 @@ input, textarea, label, .transfer-dropdown {
   font-size: .9rem;
   }
 
+.move button {
+  font-size: .8rem;
+  }
+
 input, textarea {
   padding: .25rem .35rem;
   }
 
-input, textarea, select {
+input, textarea, select, .move button {
 	border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -30,7 +34,7 @@ input:focus, textarea:focus, select:focus, select, .transfer-dropdown:focus {
   outline: none;
   }
 
-input:focus, textarea:focus, select:focus {
+input:focus, textarea:focus, select:focus, .move button:hover {
   border: 1px solid #195a7c;
   }
 
@@ -42,7 +46,7 @@ select:hover, .transfer-dropdown-item:hover {
   cursor: pointer;
   }
 
-select, .transfer-dropdown {
+select, .transfer-dropdown, .move button {
   color: #195a7c;
   }
 
@@ -66,4 +70,20 @@ select, .transfer-dropdown {
 
 .transfer-dropdown-item:hover {
   color: #16181b !important;
+  }
+
+.move button {
+  border: 1px solid rgba(17,22,26,.04);
+  box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
+  -webkit-box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
+  background: #ffffff;
+  padding: .3rem .75rem;
+  }
+
+.move, .controlbuttons {
+  padding-left: 2px;
+  }
+
+.move {
+  margin-bottom: 1rem;
   }
