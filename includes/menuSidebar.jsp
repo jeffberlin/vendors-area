@@ -47,7 +47,7 @@
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/products-discounts-schemes.jsp">Discount Schemes</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/products-manage-pricing-tiers.jsp">Manage Pricing Tiers</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/products-manage-splits.jsp">Manage Splits</a>
-        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/splitsalesreportstart.html">Split Sales Report</a>
+        <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/products-split-sales-report.jsp">Split Sales Report</a>
       </div>
     </div> <!-- end .dropright -->
     <div class="dropright">
