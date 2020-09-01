@@ -1,6 +1,6 @@
 <%@ include file="/includes/core.jsp" %>
 <p align="right">
-  <input type="image" src="https://vendors-new.bmtmicro.com/images/print.gif" border="0" alt="Print Report" onclick="window.print (); return (false);"  />
+  <input type="image" src="https://vendors-new.bmtmicro.com/images/print.gif" border="0" alt="Print Report" onclick="window.print (); return (false);" />
 </p>
 <h1 class="header">Account Transactions Report</h1>
 <table width="100%" border="1" cellpadding="0" cellspacing="0">

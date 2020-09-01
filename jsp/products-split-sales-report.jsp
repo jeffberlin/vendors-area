@@ -25,32 +25,24 @@
       td[money] {
         text-align: right;
       }
-      /* td[number]:first-child {
-        text-align: left;
-      } */
     </style>
     <script>
-      function submitForm (form) {
-        if (!CheckDateRange (form)) {
-          return (false);
+      function refreshReport (form) {
+        if (!CheckDateRange(form)) {
+          return(false)
         }
-        if (parseInt (form.FORMAT.value) == 0) { // If printable HTML is selected we use a different row template and landing page
-          form.target = "_blank"; // Open up in new window
-          form.NEXT_PAGE.value = "https://vendors.bmtmicro.com/products-split-sales-report-print.jsp";
-          form.ROWTEMPLATEURL.value = "https://vendors.bmtmicro.com/products-split-sales-report-print-tablerow.html";
+        if (parseInt (form.FORMAT.value) == 0) {
+          form.target = "_blank";
+          form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/products-split-sales-report-print.jsp";
+          form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/products-split-sales-report-print-tablerow.html";
+          form.submit();
         } else {
           form.target = "";
           form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/products-split-sales-report-table.jsp";
-          form.ROWTEMPLATEURL.value = "${param.ROWTEMPLATEURL}";
+          form.ERROR_PAGE.value = "${param.ROWTEMPLATEURL}";
+          submitToDiv(form, 'tableframe')
         }
-        form.submit ();
-        return (true);
-      }
-
-      function refreshReport (form) {
-				if (CheckDateRange (form)) {
-					submitToDiv (form, 'tableframe');
-				}
+        return(true)
       }
 
       function filterKeyPress(event) {
@@ -73,15 +65,15 @@
 						<div class="col-lg-10 col-md-12 page-title">
               <h4>Split&nbsp;Sales&nbsp;Report</h4>
               <p>Report should be run based on the Account Transactions dates.</p>
-							<div class="content-box d-flex flex-column">
+							<div class="content-box overflow-auto d-flex flex-column">
                 <form name="splitsalesreport" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SplitSalesReport" method="post">
                   <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-split-sales-report-tablerow.html" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-split-sales-report-table.jsp" />
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                   <div class="table-header">
                     <span>
                       From:&nbsp;
-                      <input id="DATEFROM" name="DATEFROM" value="${fromDate}" onkeypress="filterKeyPress(event)"/>&nbsp;
+                      <input id="DATEFROM" name="DATEFROM" value="${bomDate}" onkeypress="filterKeyPress(event)"/>&nbsp;
 											<img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
                     </span>
                     <span>
@@ -98,10 +90,12 @@
                         <option value="3"<c:if test="${param.FORMAT=='3'}"> selected</c:if>>PDF</option>
                       </select>
                     </span>
-                    <button type="button" class="grey-btn" value="Get Split Sales Summary" onclick="refreshReport (document.splitsalesreport);" >Get Split Sales Summary</button>
+                    <span>
+                      <button type="button" class="grey-btn" value="Get Split Sales Summary" onclick="refreshReport (document.splitsalesreport);">Get Split Sales Summary</button>
+                    </span>
                   </div> <!-- end .table-header -->
                 </form>
-								<div name="tableframe" class="overflow-auto h-100" id="tableframe"></div>
+								<div name="tableframe" class="h-100" id="tableframe"></div>
 							</div> <!-- end .content-box -->
 						</div> <!-- end .col-lg-10 page-title -->
 					</div> <!-- end first .row justify-content-start -->
@@ -112,9 +106,6 @@
 		<%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
   <script>
-    if (window.history.replaceState) {
-      window.history.replaceState (null, null, "https://vendors-new.bmtmicro.com/products-split-sales-report.jsp");
-    }
     $(document).ready(function(){ submitToDiv (document.splitsalesreport, 'tableframe'); });
   </script>
 </html>

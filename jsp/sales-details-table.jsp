@@ -42,7 +42,7 @@
               case 5: // EMail
               d = "<a href=mailto:" + d + ">" + d + "</a>";
               break;
-              case 6:    //Order ID with invoice link
+              case 6: //Order ID with invoice link
               d = "<a href=\"javascript:invoice(" + d + ");\">" + d + "</a>";
               break;
             }

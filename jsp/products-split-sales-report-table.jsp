@@ -35,19 +35,19 @@
     </tr>
     <tr id="input-tr">
       <th number>
-        <input class="input-search" type="text" name="FLT_SPLITVENDORID" value="" placeholder="Search" size="12">
+        <input class="input-search" type="text" name="FLT_SPLITVENDORID" value="" placeholder="Search" size="12" onkeypress="filterKeyPress(event);">
       </th>
       <th text>
-        <input class="input-search" type="text" name="FLT_NAME" value="" placeholder="Search">
+        <input class="input-search" type="text" name="FLT_NAME" value="" placeholder="Search" onkeypress="filterKeyPress(event);">
       </th>
       <th text>
-        <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="" placeholder="Search">
+        <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="" placeholder="Search" onkeypress="filterKeyPress(event);">
       </th>
       <th number></th>
       <th money></th>
       <th money></th>
       <th number>
-        <input class="input-search" type="text" name="FLT_PERCENTAGE" value="" placeholder="Search" size="14">
+        <input class="input-search" type="text" name="FLT_PERCENTAGE" value="" placeholder="Search" size="14" onkeypress="filterKeyPress(event);">
       </th>
       <th text></th>
     </tr>

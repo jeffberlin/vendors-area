@@ -82,6 +82,9 @@
               <p>Filter Details using the input fields. Fields can be added or removed using the Settings link on the left side of this page.</p>
               <div class="content-box overflow-auto">
                 <form name="salesdetails" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetails" method="post">
+                  <input type="hidden" name="ROWSPERPAGE" value="250" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-details-table.jsp" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                   <div class="table-header">
                     <span>From:&nbsp;
                       <input id="DATEFROM" name="DATEFROM" value="${fromDate}" onkeypress="filterKeyPress(event)"/>&nbsp;
@@ -92,11 +95,7 @@
                       <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
                     </span>
                     <span>
-                      <input type="checkbox" name="EXACTMATCH" value="-1"<c:if test="${cookie['BMTMicro.Vendors.SalesDetails.ExactMatch'].value==-1}"> checked</c:if>
-                          onclick="exactMatch(salesdetails);" title="Check for exact matches"  >&nbsp;Use exact match when filtering
-                      <input type="hidden" name="ROWSPERPAGE" value="250" />
-                      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-details-table.jsp" />
-                      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+                      <input type="checkbox" name="EXACTMATCH" value="-1"<c:if test="${cookie['BMTMicro.Vendors.SalesDetails.ExactMatch'].value==-1}"> checked</c:if> onclick="exactMatch(salesdetails);" title="Check for exact matches"  >&nbsp;Use exact match when filtering
                     </span>
                     <span>
                       <select name="FORMAT">
