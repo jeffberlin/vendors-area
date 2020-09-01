@@ -24,7 +24,7 @@
     <textarea name="BODY" ROWS="15" COLS="78" style="margin-bottom: .5rem;" readonly>${param.MESSAGEBODY}</textarea>
   </span>
   <div class="controlbuttons">
-    <button type="submit" class="save-btn" style="margin-right: .3rem;">Resend Message</button>
+    <button type="submit" class="save-btn" style="margin-right: .5rem;">Resend Message</button>
     <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
   </div>
 </form>

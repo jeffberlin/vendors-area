@@ -39,7 +39,7 @@
           return (false);
         }
         form.ACTION.value = "-1";
-        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/downloadpasswords_sent.html";
+        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/customers-manage-download-passwords-sent.jsp";
         form.submit ();
         return (true);
       }
@@ -77,7 +77,7 @@
                 <form name="downloadpasswords" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadPassword">
                   <input type="hidden" name="ACTION" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-download-passwords-status.jsp" />
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                   <span>
                     <label>Product&nbsp;List:</label>
                     <br>
@@ -97,7 +97,7 @@
                   </span>
                   <input type="text" name="PASSWORD" value=""  style="margin-bottom: 1rem;" placeholder="Search"/>
                   <div class="controlbuttons">
-                    <button id="status" type="button" class="grey-btn" value="Save" onclick="getStatus (downloadpasswords);" style="margin-bottom: 1rem;">Get Status</button>
+                    <button id="status" type="button" class="save-btn" value="Save" onclick="getStatus (downloadpasswords);" style="margin-bottom: 1rem;">Get Status</button>
                   </div>
                   <h5>Send&nbsp;New&nbsp;Password</h5>
                   <p>Generate a new password to any email address.</p>
@@ -110,7 +110,7 @@
                     <input type="checkbox" name="CCEMAIL" value="${param.CCEMAIL}" style="margin-bottom: 1rem;"/>&nbsp;Send copy to:&nbsp;<strong>${param.CCEMAIL}</strong>
                   </span>
                   <div class="controlbuttons">
-                    <button id="password" type="button" class="grey-btn" value="Save" onclick="sendPassword (downloadpasswords);">Send Password</button>
+                    <button id="password" type="button" class="save-btn" value="Save" onclick="sendPassword (downloadpasswords);">Send Password</button>
                   </div>
                 </form>
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe"></div> <!-- end #tableframe -->

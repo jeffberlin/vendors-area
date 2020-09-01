@@ -1,6 +1,6 @@
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
-  <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post" target="">
+  <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post">
     <input type="hidden" name="ORDERID" value="${param.ORDERID}">
     <input type="hidden" name="ITEMNR" value="${param.ITEMNR}">
     <input type="hidden" name="ACTION" value="3">
@@ -23,7 +23,7 @@
     <p style="margin-bottom: .5rem;">
       <textarea name="COMMENTS" ROWS="5" COLS="78" placeholder="Type the reason for the refund"></textarea>
     </p>
-    <button type="button" class="save-btn" onclick="submitRefund (form);" style="margin-right: .3rem;">Refund</button>
+    <button type="button" class="save-btn" onclick="submitRefund (form);" style="margin-right: .5rem;">Refund</button>
     <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
   </form>
 </div> <!-- end .transfer-section -->

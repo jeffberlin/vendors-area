@@ -1,0 +1,11 @@
+<tr onclick="highlightLinks (this);">
+  <td number>##SUBSCRIPTIONID##</td>
+  <td text><a href="mailto:##EMAIL##">##EMAIL##</a></td>
+  <td text>##NAME##</td>
+  <td info>##PRODUCTNAME##</td>
+  <td money>##PRICE##</td>
+  <td date><p>##EFFECTIVEDATE##</p></td>
+  <td date>##SELECT(EXPIRATIONDATE,"","Active","%%EXPIRATIONDATE%%")##</td>
+  <td date>##NEXTBILLINGDATE##</td>
+  <td option>##SELECT(EXPIRATIONDATE,"","<button class='save-btn' value='Cancel' onclick='cancelSubscription (%%SUBSCRIPTIONID%%);'>Cancel</button>","Cancelled")##</td>
+</tr>

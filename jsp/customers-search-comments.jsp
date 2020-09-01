@@ -20,7 +20,7 @@
       <textarea name="ITEMCOMMENTS" ROWS="5" COLS="78" placeholder="Type a message" style="margin-bottom: 1.2rem;">${param.ITEMCOMMENTS}</textarea>
     </span>
     <div class="controlbuttons">
-      <button type="button" class="save-btn" onclick="submitForm (form);" style="margin-right: .3rem;">Save</button>
+      <button type="button" class="save-btn" onclick="submitForm (form);" style="margin-right: .5rem;">Save</button>
       <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
     </div>
   </form>
