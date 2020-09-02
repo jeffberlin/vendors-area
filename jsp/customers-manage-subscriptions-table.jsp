@@ -10,9 +10,9 @@
   <input type="hidden" name="SUBSCRIPTIONID" value="">
   <div class="table-header">
     <span>
-      <input type="checkbox" name="SHOWINACTIVE" value="-1" onClick="showInactiveChanged ();"/>&nbsp;Show inactive subscriptions
+      <input type="checkbox" onClick="showExpiredChanged ();"<c:if test="${cookie['BMTMicro.Vendors.Subscriptions.ShowExpired'.value == -1]SHOWEXPIRED}">checked</c:if>/>&nbsp;Show expired subscriptions
     </span>
-    <button type="button" class="grey-btn" onclick="filter ();">Show Subscriptions</button>
+    <button type="button" class="grey-btn" onclick="refreshReport ();">Show Subscriptions</button>
   </div> <!-- end .table-header -->
   <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
     <table class="table" id="selection">

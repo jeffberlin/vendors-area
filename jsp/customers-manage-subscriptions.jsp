@@ -19,15 +19,12 @@
     <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script>
       function initForm (form) {
-        var showexpired = getCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired");
-        if (showexpired != null) {
-          form.SHOWEXPIRED.value = showexpired;
-        }
-        form.submit ();
-      }
-
-      function initForm (form) {
-        initField (form, "SHOWEXPIRED",         "${param.SHOWEXPIRED}");
+        // var showexpired = getCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired");
+        // if (showexpired != null) {
+        //   form.SHOWEXPIRED.value = showexpired;
+        // }
+        // form.submit ();
+        // initField (form, "SHOWEXPIRED", "${param.SHOWEXPIRED}");
         // initField (form, "FLT_SUBSCRIPTIONID",  "${param.FLT_SUBSCRIPTIONID}");
         // initField (form, "FLT_PRODUCTNAME",     "${param.FLT_PRODUCTNAME}");
         // initField (form, "FLT_NAME",            "${param.FLT_NAME}");
@@ -57,18 +54,18 @@
         // form.submit ();
       }
 
+      function refreshReport () {
+        submitForm(-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp");
+      }
+
       function showExpiredChanged () {
         setCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired", queryField (document.subscriptions, "SHOWEXPIRED"), 1000);
-        submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions.jsp");
+        refreshReport();
       }
 
       function selectPage (p) {
         document.subscriptions.PAGE.value = p;
-        submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp");
-      }
-
-      function filter () {
-        submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp");
+        refreshReport();
       }
 
       function cancelSubscription (subscriptionid) {
