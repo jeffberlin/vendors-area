@@ -7,10 +7,10 @@
   <input type="hidden" name="PAGE" value="${param.PAGE}" />
   <input type="hidden" name="PAGECOUNT" value="${param.PAGECOUNT}" />
   <input type="hidden" name="ACTION" value="" />
-  <input type="hidden" name="SUBSCRIPTIONID" value="">
+  <input type="hidden" name="SUBSCRIPTIONID" value="" />
   <div class="table-header">
     <span>
-      <input type="checkbox" onClick="showExpiredChanged ();"<c:if test="${cookie['BMTMicro.Vendors.Subscriptions.ShowExpired'.value == -1]SHOWEXPIRED}">checked</c:if>/>&nbsp;Show expired subscriptions
+      <input type="checkbox" name="ShowExpired" value="-1" onClick="showExpiredChanged ();" />&nbsp;Show expired subscriptions
     </span>
     <button type="button" class="grey-btn" onclick="refreshReport ();">Show Subscriptions</button>
   </div> <!-- end .table-header -->
@@ -75,7 +75,14 @@
       <tfoot>
         <tr class="table-total">
           <th scope="row" colspan="9">
-            <div id="pageselector">&nbsp;</div>
+            <div id="pageselector">
+              <c:if test = "${param.PAGECOUNT > 1}">
+                Pages:
+                <c:forEach var = "page" begin = "1" end = "${param.PAGECOUNT}">
+                  &nbsp;<a href="javascript:selectPage(${page});">${page}</a>&nbsp;
+                </c:forEach>
+              </c:if>
+            </div>
           </th>
         </tr>
       </tfoot>

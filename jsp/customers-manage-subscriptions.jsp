@@ -19,29 +19,23 @@
     <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script>
       function initForm (form) {
-        // var showexpired = getCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired");
-        // if (showexpired != null) {
-        //   form.SHOWEXPIRED.value = showexpired;
-        // }
-        // form.submit ();
-        // initField (form, "SHOWEXPIRED", "${param.SHOWEXPIRED}");
+        var showexpired = getCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired");
+        if (showexpired != null) {
+          form.SHOWEXPIRED.value = showexpired;
+        }
+        form.submit ();
+        initField (form, "SHOWEXPIRED", "${param.SHOWEXPIRED}");
         // initField (form, "FLT_SUBSCRIPTIONID",  "${param.FLT_SUBSCRIPTIONID}");
         // initField (form, "FLT_PRODUCTNAME",     "${param.FLT_PRODUCTNAME}");
         // initField (form, "FLT_NAME",            "${param.FLT_NAME}");
         // initField (form, "FLT_EMAIL",           "${param.FLT_EMAIL}");
-        if (${param.PAGECOUNT} > 1) {
-          var s = "Pages:&nbsp;";
-          for (var p = 1; p <= ${param.PAGECOUNT}; p++) {
-            s += "<a href=\"javascript:selectPage(" + p + ");\">" + p  + "</a>&nbsp;&nbsp;";
-          }
-          document.getElementById ("pageselector").innerHTML = s;
-        }
       }
 
       function submitForm (action, target, nextpage, subscriptionid) {
         var form = document.subscriptions;
         form.ACTION.value = action;
         form.target = target;
+        form.SUBSCRIPTIONID.value = subscriptionid;
         form.NEXT_PAGE.value = nextpage;
         if (target == "_parent") {
           form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
@@ -50,7 +44,6 @@
           form.target = "";
           submitToDiv (form, target);
         }
-        form.SUBSCRIPTIONID.value = subscriptionid;
         // form.submit ();
       }
 
@@ -69,13 +62,18 @@
       }
 
       function cancelSubscription (subscriptionid) {
-        if (allowResend ("You do not have permission to cancel subscriptions.")) {
+        <c:if test="${allowResend == 0}">
+          alert("You do not have permission to cancel subscriptions.")
+        </c:if>
+        // if (allowResend ("You do not have permission to cancel subscriptions.")) {
+        <c:if test="${allowResend == 1}">
           submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-cancel.jsp", subscriptionid);
-        }
+        </c:if>
+        // }
       }
     </script>
   </head>
-  <body>
+  <body onload="initForm (document.subscriptions);">
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -89,14 +87,14 @@
               <h4>Manage&nbsp;Subscriptions</h4>
               <p>Check box to show inactive subscriptions.&nbsp;Use search fields to filter results.</p>
               <div class="content-box overflow-auto d-flex flex-column">
-                <form name="subscriptions" method=post action="https://vendors-new.bmtmicro.com/servlets/Vendors.Subscriptions">
+                <form name="subscriptions" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Subscriptions">
                   <input type="hidden" name="ACTION" value="-1" />
                   <input type="hidden" name="ROWSPERPAGE" value="500" />
                   <input type="hidden" name="PAGE" value="1" />
                   <input type="hidden" name="SHOWEXPIRED" value="0" />
                   <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-tablerow.html" />
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp">
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp"/>
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp"/>
                 </form>
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe"></div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
