@@ -2,7 +2,7 @@
 <form name="subscriptions" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Subscriptions" method="post">
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
-  <input type="hidden" name="ROWTEMPLATEURL" value="${ROWTEMPLATEURL}" />
+  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-tablerow.html" />
   <input type="hidden" name="ROWSPERPAGE" value="${param.ROWSPERPAGE}" />
   <input type="hidden" name="PAGE" value="${param.PAGE}" />
   <input type="hidden" name="PAGECOUNT" value="${param.PAGECOUNT}" />
@@ -10,7 +10,7 @@
   <input type="hidden" name="SUBSCRIPTIONID" value="" />
   <div class="table-header">
     <span>
-      <input type="checkbox" name="ShowExpired" value="-1" onClick="showExpiredChanged ();" />&nbsp;Show expired subscriptions
+      <input type="checkbox" name="SHOWEXPIRED" value="-1" onClick="showExpiredChanged ();" />&nbsp;Show expired subscriptions
     </span>
     <button type="button" class="grey-btn" onclick="refreshReport ();">Show Subscriptions</button>
   </div> <!-- end .table-header -->

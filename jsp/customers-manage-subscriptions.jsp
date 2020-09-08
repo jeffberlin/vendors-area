@@ -73,7 +73,7 @@
       }
     </script>
   </head>
-  <body onload="initForm (document.subscriptions);">
+  <body>
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 
@@ -87,7 +87,7 @@
               <h4>Manage&nbsp;Subscriptions</h4>
               <p>Check box to show inactive subscriptions.&nbsp;Use search fields to filter results.</p>
               <div class="content-box overflow-auto d-flex flex-column">
-                <form name="subscriptions" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Subscriptions">
+                <!-- <form name="subscriptions" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Subscriptions">
                   <input type="hidden" name="ACTION" value="-1" />
                   <input type="hidden" name="ROWSPERPAGE" value="500" />
                   <input type="hidden" name="PAGE" value="1" />
@@ -95,8 +95,10 @@
                   <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-tablerow.html" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp"/>
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp"/>
-                </form>
-                <div name="tableframe" class="overflow-auto h-100" id="tableframe"></div> <!-- end #tableframe -->
+                </form> -->
+                <div name="tableframe" class="overflow-auto h-100" id="tableframe">
+                  <jsp:include page="customers-manage-subscriptions-table.jsp" />
+                </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-12 -->
@@ -109,8 +111,8 @@
   </body>
   <script>
     $(document).ready(function(){ submitToDiv (document.subscriptions, 'tableframe'); });
-    $('input[type=checkbox]').change(function(){
-      $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
-    });
+    // $('input[type=checkbox]').change(function(){
+    //   $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
+    // });
   </script>
 </html>
