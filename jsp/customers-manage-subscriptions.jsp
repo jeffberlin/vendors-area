@@ -47,18 +47,18 @@
         // form.submit ();
       }
 
-      function refreshReport () {
+      function showExpiredChanged () {
+        setCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired", queryField (document.subscriptions, "SHOWEXPIRED"), 1000);
         submitForm(-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp");
       }
 
-      function showExpiredChanged () {
-        setCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired", queryField (document.subscriptions, "SHOWEXPIRED"), 1000);
-        refreshReport();
+      function filter () {
+        submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp");
       }
 
       function selectPage (p) {
         document.subscriptions.PAGE.value = p;
-        refreshReport();
+        submitForm(-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp");
       }
 
       function cancelSubscription (subscriptionid) {

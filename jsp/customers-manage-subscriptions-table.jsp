@@ -12,7 +12,7 @@
     <span>
       <input type="checkbox" name="SHOWEXPIRED" value="-1" onClick="showExpiredChanged ();" />&nbsp;Show expired subscriptions
     </span>
-    <button type="button" class="grey-btn" onclick="refreshReport ();">Show Subscriptions</button>
+    <button type="button" class="grey-btn" onclick="filter ();">Show Subscriptions</button>
   </div> <!-- end .table-header -->
   <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
     <table class="table" id="selection">
