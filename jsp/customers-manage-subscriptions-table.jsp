@@ -6,11 +6,11 @@
   <input type="hidden" name="ROWSPERPAGE" value="${param.ROWSPERPAGE}" />
   <input type="hidden" name="PAGE" value="${param.PAGE}" />
   <input type="hidden" name="PAGECOUNT" value="${param.PAGECOUNT}" />
-  <input type="hidden" name="ACTION" value="" />
+  <input type="hidden" name="ACTION" value="-1" />
   <input type="hidden" name="SUBSCRIPTIONID" value="" />
   <div class="table-header">
     <span>
-      <input type="checkbox" name="SHOWEXPIRED" value="-1" onClick="showExpiredChanged ();" />&nbsp;Show expired subscriptions
+      <input type="checkbox" name="SHOWEXPIRED" value="-1" onClick="showExpiredChanged ();"<c:if test = "${ cookie['BMTMicro.Vendors.Subscriptions.ShowExpired'].value == -1 }">checked</c:if> />&nbsp;Show expired subscriptions
     </span>
     <button type="button" class="grey-btn" onclick="filter ();">Show Subscriptions</button>
   </div> <!-- end .table-header -->

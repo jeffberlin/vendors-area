@@ -19,10 +19,10 @@
     <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script>
       function initForm (form) {
-        var showexpired = getCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired");
-        if (showexpired != null) {
-          form.SHOWEXPIRED.value = showexpired;
-        }
+        // var showexpired = getCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired");
+        // if (showexpired != null) {
+        //   form.SHOWEXPIRED.value = showexpired;
+        // }
         form.submit ();
         initField (form, "SHOWEXPIRED", "${param.SHOWEXPIRED}");
         // initField (form, "FLT_SUBSCRIPTIONID",  "${param.FLT_SUBSCRIPTIONID}");
@@ -111,8 +111,8 @@
   </body>
   <script>
     $(document).ready(function(){ submitToDiv (document.subscriptions, 'tableframe'); });
-    // $('input[type=checkbox]').change(function(){
-    //   $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
-    // });
+    $('input[type=checkbox]').change(function(){
+      $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
+    });
   </script>
 </html>
