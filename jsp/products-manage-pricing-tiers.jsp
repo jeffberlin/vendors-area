@@ -87,7 +87,7 @@
               <p>Edit existing pricing tiers by clicking on the tier name.</p>
 							<div class="content-box d-flex flex-column">
 								<div name="tableframe" class="overflow-auto h-100" id="tableframe">
-                  <form name="tiers" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.TieredPricing" target="tableframe">
+                  <form name="tiers" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.TieredPricing">
                     <input type="hidden" name="ACTION" value="-1" />
                     <input type="hidden" name="SHOWINACTIVE" value="0" />
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-pricing-tiers-table.jsp" />

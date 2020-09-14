@@ -19,10 +19,10 @@
     <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script>
       function initForm (form) {
-        // var showexpired = getCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired");
-        // if (showexpired != null) {
-        //   form.SHOWEXPIRED.value = showexpired;
-        // }
+        var showexpired = getCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired");
+        if (showexpired != null) {
+          form.SHOWEXPIRED.value = showexpired;
+        }
         form.submit ();
         initField (form, "SHOWEXPIRED", "${param.SHOWEXPIRED}");
         // initField (form, "FLT_SUBSCRIPTIONID",  "${param.FLT_SUBSCRIPTIONID}");
@@ -49,16 +49,18 @@
 
       function showExpiredChanged () {
         setCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired", queryField (document.subscriptions, "SHOWEXPIRED"), 1000);
-        submitForm(-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp");
+        // submitForm(-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp");
+        refreshPage ();
       }
 
-      function filter () {
+      function refreshPage () {
         submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp");
       }
 
       function selectPage (p) {
         document.subscriptions.PAGE.value = p;
-        submitForm(-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp");
+        // submitForm(-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp");
+        refreshPage ();
       }
 
       function cancelSubscription (subscriptionid) {
@@ -87,17 +89,17 @@
               <h4>Manage&nbsp;Subscriptions</h4>
               <p>Check box to show inactive subscriptions.&nbsp;Use search fields to filter results.</p>
               <div class="content-box overflow-auto d-flex flex-column">
-                <!-- <form name="subscriptions" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Subscriptions">
-                  <input type="hidden" name="ACTION" value="-1" />
-                  <input type="hidden" name="ROWSPERPAGE" value="500" />
-                  <input type="hidden" name="PAGE" value="1" />
-                  <input type="hidden" name="SHOWEXPIRED" value="0" />
-                  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-tablerow.html" />
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp"/>
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp"/>
-                </form> -->
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
-                  <jsp:include page="customers-manage-subscriptions-table.jsp" />
+                  <form name="subscriptions" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Subscriptions">
+                    <input type="hidden" name="ACTION" value="-1" />
+                    <input type="hidden" name="ROWSPERPAGE" value="500" />
+                    <input type="hidden" name="PAGE" value="1" />
+                    <input type="hidden" name="SHOWEXPIRED" value="0" />
+                    <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-tablerow.html" />
+                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp"/>
+                    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp"/>
+                  </form>
+                  <!-- <jsp:include page="customers-manage-subscriptions-table.jsp" /> -->
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
               </div> <!-- end .content-box -->

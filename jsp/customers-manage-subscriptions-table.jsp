@@ -2,17 +2,18 @@
 <form name="subscriptions" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Subscriptions" method="post">
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
-  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-tablerow.html" />
+  <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
   <input type="hidden" name="ROWSPERPAGE" value="${param.ROWSPERPAGE}" />
   <input type="hidden" name="PAGE" value="${param.PAGE}" />
   <input type="hidden" name="PAGECOUNT" value="${param.PAGECOUNT}" />
-  <input type="hidden" name="ACTION" value="-1" />
+  <input type="hidden" name="ACTION" value="" />
   <input type="hidden" name="SUBSCRIPTIONID" value="" />
   <div class="table-header">
+    <input type="checkbox" name="SHOWEXPIRED" value="-1" onClick="showExpiredChanged ();"<c:if test = "${ cookie['BMTMicro.Vendors.Subscriptions.ShowExpired'].value == -1 }">checked</c:if> />
     <span>
-      <input type="checkbox" name="SHOWEXPIRED" value="-1" onClick="showExpiredChanged ();"<c:if test = "${ cookie['BMTMicro.Vendors.Subscriptions.ShowExpired'].value == -1 }">checked</c:if> />&nbsp;Show expired subscriptions
+      Show expired subscriptions
     </span>
-    <button type="button" class="grey-btn" onclick="filter ();">Show Subscriptions</button>
+    <button type="button" class="grey-btn" onclick="refreshPage ();">Show Subscriptions</button>
   </div> <!-- end .table-header -->
   <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
     <table class="table" id="selection">
