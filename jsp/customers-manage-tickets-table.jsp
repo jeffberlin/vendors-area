@@ -28,13 +28,29 @@
           <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Product Name'" text>
             <a href="#" class="fdTableSortTrigger">Product&nbsp;Name</a>
           </th>
-          ##SELECT(SHOWDETAILS, -1, ,<th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Granted'" number><a href="#" class="fdTableSortTrigger">Granted</a></th>)##
-          ##SELECT(SHOWDETAILS, -1, ,<th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Redeemed'" number><a href="#" class="fdTableSortTrigger">Redeemed</a></th>)##
-          ##SELECT(SHOWDETAILS, -1, ,<th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Available'" number><a href="#" class="fdTableSortTrigger">Available</a></th>)##
-          ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Order ID'" number><a href="#" class="fdTableSortTrigger">Order ID</th>)##
-          ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Expires'" date><a href="#" class="fdTableSortTrigger">Expires</a></th>)##
-          ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Status'" text><a href="#" class="fdTableSortTrigger">Status</a></th>)##
-          ##SELECT(SHOWDETAILS, -1, <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Status'" option></th>)##
+          <c:if test = "${param.SHOWDETAILS != -1}">
+            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Granted'" number>
+              <a href="#" class="fdTableSortTrigger">Granted</a>
+            </th>
+            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Redeemed'" number>
+              <a href="#" class="fdTableSortTrigger">Redeemed</a>
+            </th>
+            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Available'" number>
+              <a href="#" class="fdTableSortTrigger">Available</a>
+            </th>
+          </c:if>
+          <c:if test = "${param.SHOWDETAILS == -1}">
+            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Order ID'" number>
+              <a href="#" class="fdTableSortTrigger">Order ID</a>
+            </th>
+            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Expires'" date>
+              <a href="#" class="fdTableSortTrigger">Expires</a>
+            </th>
+            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Status'" text>
+              <a href="#" class="fdTableSortTrigger">Status</a>
+            </th>
+            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Status'" option></th>
+          </c:if>
         </tr>
       </thead>
       <tr>
@@ -52,14 +68,17 @@
         <th text>
            <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="" size="20" placeholder="Search">
         </th>
-        ##SELECT(SHOWDETAILS, -1, ,<th number></th>)##
-        ##SELECT(SHOWDETAILS, -1, ,<th number></th>)##
-        ##SELECT(SHOWDETAILS, -1, ,<th number></th>)##
-
-        ##SELECT(SHOWDETAILS, -1, <th number></th>)##
-        ##SELECT(SHOWDETAILS, -1, <th date></th>)##
-        ##SELECT(SHOWDETAILS, -1, <th text></th>)##
-        ##SELECT(SHOWDETAILS, -1, <th option></th>)##
+        <c:if test = "${param.SHOWDETAILS != -1}">
+          <th number></th>
+          <th number></th>
+          <th number></th>
+        </c:if>
+        <c:if test = "${param.SHOWDETAILS == -1}">
+          <th number></th>
+          <th date></th>
+          <th text></th>
+          <th option></th>
+        </c:if>
       </tr>
       <tbody>
         <tr>

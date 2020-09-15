@@ -18,6 +18,11 @@
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
+    <style media="screen">
+      td[number] {
+        text-align: center;
+      }
+    </style>
     <script>
       function initForm (form) {
         var showdetails = getCookieValue ("BMTMicro.Vendors.Tickets.ShowDetails");
@@ -39,6 +44,7 @@
         form.ACTION.value = action;
         form.target = target;
         form.NEXT_PAGE.value = nextpage;
+        form.TICKETID.value = ticketid;
         if (target == "_parent") {
           form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
           form.submit ();
@@ -46,7 +52,6 @@
           form.target = "";
           submitToDiv (form, target);
         }
-        form.TICKETID.value = ticketid;
       }
 
       function showDetailsChanged () {
