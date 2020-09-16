@@ -44,12 +44,10 @@
           form.target = "";
           submitToDiv (form, target);
         }
-        // form.submit ();
       }
 
       function showExpiredChanged () {
         setCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired", queryField (document.subscriptions, "SHOWEXPIRED"), 1000);
-        // submitForm(-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp");
         refreshPage ();
       }
 
@@ -59,7 +57,6 @@
 
       function selectPage (p) {
         document.subscriptions.PAGE.value = p;
-        // submitForm(-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp");
         refreshPage ();
       }
 
@@ -67,11 +64,9 @@
         <c:if test="${allowResend == 0}">
           alert("You do not have permission to cancel subscriptions.")
         </c:if>
-        // if (allowResend ("You do not have permission to cancel subscriptions.")) {
         <c:if test="${allowResend == 1}">
           submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-cancel.jsp", subscriptionid);
         </c:if>
-        // }
       }
     </script>
   </head>

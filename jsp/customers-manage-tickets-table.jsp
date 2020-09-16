@@ -7,7 +7,7 @@
   <input type="hidden" name="PAGE" value="${param.PAGE}" />
   <input type="hidden" name="PAGECOUNT" value="${param.PAGECOUNT}" />
   <input type="hidden" name="ACTION" value="" />
-  <input type="hidden" name="TICKETID" value="">
+  <input type="hidden" name="TICKETID" value=""/>
   <div class="table-header">
     <input type="checkbox" name="SHOWDETAILS" value="-1" onClick="showDetailsChanged ();"<c:if test = "${ cookie['BMTMicro.Vendors.Tickets.ShowDetails'].value == -1 }">checked</c:if> />
     <span>
