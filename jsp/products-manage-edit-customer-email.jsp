@@ -1,4 +1,70 @@
 <%@ include file="/includes/core.jsp" %>
+<script>
+  function checkSyntax (form) {
+    var text = form.CUSTOMEREMAILTEMPLATE.value.toUpperCase ();
+    if (text.indexOf ("#\#STDMESSAGE#\#") != -1) {
+      return (true);
+    }
+    if ((text.indexOf ("#\#IMPORTFILE") != -1) && confirm ("If you are certain you have the correct tokens in the message, click 'OK' to continue. Otherwise, click 'Cancel' and contact us for further assistance.\n\n****IMPORTANT*****\n\nPlease note that clicking 'OK' will bypass checks that ensure the message is using the proper tokens.\n\n")) {
+      return (true);
+    }
+    if (${param.DOWNLOADFILE} == -1) {
+      if ((text.indexOf ("#\#DOWNLOADINSTRUCTIONS#\#") == -1) &&
+      ((text.indexOf ("#\#PRODUCTID#\#") == -1) || (text.indexOf ("#\#DOWNLOADPASSWORD#\#") == -1))) {
+        alert ("Download instructions are required. Please make sure that the message contains the #\#DOWNLOADINSTRUCTIONS#\# token.");
+        return (false);
+      }
+    }
+    if (${param.PULLKEY} == -1) {
+      if (${param.KEYPARTS} == 1) {
+        if ((text.indexOf ("#\#STDREGINFO#\#") == -1) && (text.indexOf ("#\#REGKEY1#\#") == -1) && (text.indexOf ("#\#REGKEYINFO#\#") == -1) && (text.indexOf ("#\#REGKEYLIST#\#") == -1)) {
+          alert ("Activation Code information is required. Please make sure that the message contains the #\#STDREGINFO#\# token.");
+          return (false);
+        }
+      } else {
+        if (text.indexOf ("#\#STDREGINFO#\#") != -1) {
+          alert ("This product uses multi-part keys. Because of this, the #\#STDREGINFO#\# token should not be used. Use #\#REGKEY1#\#, #\#REGKEY2#\#, #\#REGKEY3#\# and #\#REGKEY4#\# instead.");
+          return (false);
+        }
+        if ((text.indexOf ("#\#REGKEY1#\#") != -1) || (text.indexOf ("#\#REGKEY2#\#") != -1) || (text.indexOf ("#\#REGKEY3#\#") != -1) || (text.indexOf ("#\#REGKEY4#\#") != -1))  {
+          if (text.indexOf ("#\#REGKEY1#\#") == -1) {
+            alert ("Please make sure that the message contains the #\#REGKEY1#\# token.");
+            return (false);
+          }
+          if ((${param.KEYPARTS} >= 2) && (text.indexOf ("#\#REGKEY2#\#") == -1)) {
+            alert ("Please make sure that the message contains the #\#REGKEY2#\# token.");
+            return (false);
+          }
+          if ((${param.KEYPARTS} >= 3) && (text.indexOf ("#\#REGKEY3#\#") == -1)) {
+            alert ("Please make sure that the message contains the #\#REGKEY3#\# token.");
+            return (false);
+          }
+          if ((${param.KEYPARTS} >= 4) && (text.indexOf ("#\#REGKEY4#\#") == -1)) {
+            alert ("Please make sure that the message contains the #\#REGKEY4#\# token.");
+            return (false);
+          }
+        } else if ((text.indexOf ("#\#REGKEYINFO#\#") == -1) && (text.indexOf ("#\#REGKEYKLIST#\#") == -1)) {
+          alert ("Activation Code information is required. Please make sure that the message contains the #\#REGKEY1#\# token.");
+          return (false);
+        }
+      }
+    }
+    if (${param.GENERATEKEY} == -1) {
+      if ((text.indexOf ("#\#STDREGINFO#\#") == -1) && (text.indexOf ("#\#REGKEY1#\#") == -1) && (text.indexOf ("#\#REGKEYINFO#\#") == -1) && (text.indexOf ("#\#GIFTCERTIFICATES#\#") == -1) && (text.indexOf ("#\#REGKEYLIST#\#") == -1) &&
+      ("#\#KEYGENERATOR#\#".indexOf ("ticket ") != 0))  {
+        alert ("Activation Code or Gift Certificate information is required. Please make sure that the message contains the #\#STDREGINFO#\# or #\#GIFTCERTIFICATES#\# token.");
+        return (false);
+      }
+    }
+    if (${param.KEYLIST} == -1) {
+      if ((text.indexOf ("#\#REGKEYINFO#\#") == -1) && (text.indexOf ("#\#GIFTCERTIFICATES#\#") == -1) && (text.indexOf ("#\#REGKEYLIST#\#") == -1)) {
+        alert ("This product is configured to send out more than one key. Because of this, a key list is required. Please make sure that the message contains the #\#REGKEYINFO#\# or #\#GIFTCERTIFICATES#\# token.");
+        return (false);
+      }
+    }
+    return (true);
+  }
+</script>
 <div class="transfer-section">
   <form method="post" name="emailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
     <h5>Customer&nbsp;Email&nbsp;template&nbsp;for&nbsp;${param.PRODUCTNAME}</h5>
