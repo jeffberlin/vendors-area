@@ -33,7 +33,6 @@
         form.ACTION.value = action;
         form.target = target;
         form.NEXT_PAGE.value = nextpage;
-        form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error-div.jsp";
         form.PRODUCTID.value = productid;
         if (target == "_parent") {
           form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
@@ -44,14 +43,49 @@
         }
       }
 
-      function addNewProduct(productid) {
-        <c:if test = "${ allowChanges == 0 }">
+      <c:if test = "${ allowChanges == 0 }">
+        function addNewProduct (productid) {
+          alert("You are not allowed to add products.");
+        }
+        function addMultiple (productid) {
           alert ("You are not allowed to add products.");
-        </c:if>
-        <c:if test = "${ allowChanges == 1 }">
+        }
+        function submitCustomerEmail (form) {
+          alert("You do not have permission to make changes.");
+        }
+      </c:if>
+
+      <c:if test = "${ allowChanges == 1 }">
+        function addNewProduct (productid) {
           submitForm(0, "_parent", "https://vendors-new.bmtmicro.com/products-manage-add.jsp", productid);
-        </c:if>
-      }
+        }
+        function addMultiple (productid) {
+          submitForm(7, "_parent", "https://vendors-new.bmtmicro.com/products_add_multiple.html", productid);
+        }
+        function submitCustomerEmail (form) {
+          if (checkSyntax (form)) {
+            form.submit();
+          }
+        }
+      </c:if>
+
+      // function addNewProduct(productid) {
+      //   <c:if test = "${ allowChanges == 0 }">
+      //     alert ("You are not allowed to add products.");
+      //   </c:if>
+      //   <c:if test = "${ allowChanges == 1 }">
+      //     submitForm(0, "_parent", "https://vendors-new.bmtmicro.com/products-manage-add.jsp", productid);
+      //   </c:if>
+      // }
+
+      // function addMultiple(productid) {
+      //   <c:if test = "${ allowChanges == 0 }">
+      //     alert ("You are not allowed to add products.");
+      //   </c:if>
+      //   <c:if test = "${ allowChanges == 1 }">
+      //     submitForm(7, "_parent", "https://vendors-new.bmtmicro.com/products_add_multiple.html", productid);
+      //   </c:if>
+      // }
 
       function editProduct(productid) {
         submitForm(1, "_parent", "https://vendors-new.bmtmicro.com/products-manage-edit.jsp", productid);
@@ -75,15 +109,6 @@
 
       function editDefaultVendorEMail(productid) {
         submitForm(6, "resultframe", "https://vendors-new.bmtmicro.com/products_edit_default_vendoremail.html");
-      }
-
-      function addMultiple(productid) {
-        <c:if test = "${ allowChanges == 0 }">
-          alert ("You are not allowed to add products.");
-        </c:if>
-        <c:if test = "${ allowChanges == 1 }">
-          submitForm(7, "_parent", "https://vendors-new.bmtmicro.com/products_add_multiple.html", productid);
-        </c:if>
       }
 
       function editScreenTemplate(productid) {
@@ -214,7 +239,6 @@
             return (false);
           }
         }
-
         return (true);
       }
 
@@ -233,16 +257,16 @@
         }
       }
 
-      function submitCustomerEmail (form) {
-        if (allowChanges ("You do not have permission to make changes.")) {
-          if (checkSyntax (form)) {
-            form.submit ();
-          }
-        }
-      }
+      // function submitCustomerEmail (form) {
+      //   if (allowChanges ("You do not have permission to make changes.")) {
+      //     if (checkSyntax (form)) {
+      //       form.submit ();
+      //     }
+      //   }
+      // }
     </script>
   </head>
-  <body onload="initForm (document.emailform);">
+  <body>
     <!-- Blue background header -->
     <div class="blue-bg"></div>
 

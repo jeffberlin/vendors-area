@@ -102,7 +102,7 @@
             <jsp:include page="includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Manage&nbsp;Tickets</h4>
-              <div class="content-box overflow-auto d-flex flex-column">
+              <div class="content-box d-flex flex-column">
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
                   <form name="tickets" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Tickets" method="post">
                     <input type="hidden" name="ACTION" value="-1" />
@@ -114,7 +114,7 @@
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp"/>
                   </form>
                 </div> <!-- end #tableframe -->
-                <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
+                <div name="resultframe" id="resultframe" class="overflow-auto"></div> <!-- end #resultframe -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-12 -->
           </div> <!-- end first .row -->
