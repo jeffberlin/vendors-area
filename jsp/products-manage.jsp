@@ -53,6 +53,9 @@
         function submitCustomerEmail (form) {
           alert("You do not have permission to make changes.");
         }
+        function submitCustomerEmail (form) {
+          alert("You do not have permission to make changes.");
+        }
       </c:if>
 
       <c:if test = "${ allowChanges == 1 }">
@@ -65,6 +68,11 @@
         function submitCustomerEmail (form) {
           if (checkSyntax (form)) {
             form.submit();
+          }
+        }
+        function submitCustomerEmail (form) {
+          if (checkSyntax (form)) {
+            form.submit ();
           }
         }
       </c:if>
@@ -189,14 +197,6 @@
           form.CUSTOMEREMAILTEMPLATE.value = form.DEFAULTCUSTOMEREMAILTEMPLATE.value;
           form.CUSTOMEREMAILTEMPLATE.disabled = true;
           form.USEDEFAULTTEMPLATE.checked = true;
-        }
-      }
-
-      function submitCustomerEmail (form) {
-        if (allowChanges ("You do not have permission to make changes.")) {
-          if (checkSyntax (form)) {
-            form.submit ();
-          }
         }
       }
     </script>
