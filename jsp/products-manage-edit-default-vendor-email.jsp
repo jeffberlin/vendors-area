@@ -124,7 +124,6 @@
         </div>
       </div>
     </div>
-
     <textarea style="margin: .5rem 0;" id="emailtemplate" name="DEFAULTVENDOREMAILTEMPLATE" rows="8" cols="80" placeholder="Type a message">${param.DEFAULTVENDOREMAILTEMPLATE}</textarea>
     <br>
     <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" />

@@ -18,6 +18,7 @@
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
       .email {
         color: #efa900;
@@ -108,7 +109,7 @@
       }
 
       function viewLink(productid) {
-        submitForm(4, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-vieworder-link.jsp", productid);
+        submitForm(4, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-view-order-link.jsp", productid);
       }
 
       function editDefaultCustomerEMail(productid) {
@@ -120,7 +121,7 @@
       }
 
       function editScreenTemplate(productid) {
-        submitForm(8, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-edit-screentemplate.jsp", productid);
+        submitForm(8, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-edit-screen-template.jsp", productid);
       }
 
       function testOrder(productid) {
@@ -146,6 +147,13 @@
       function selectPage(p) {
         document.products.PAGE.value = p;
         refreshReport ();
+      }
+
+      function filterKeyPress(event) {
+        if (event.keyCode == 13) {
+          refreshReport ();
+          return (true);
+        }
       }
 
       // from products-manage-edit-customer-email.jsp

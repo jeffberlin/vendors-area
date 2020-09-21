@@ -388,7 +388,7 @@
                           <option value="20"<c:if test="${param.CATEGORY=='20'}"> selected</c:if>>Software Development Tools</option>
                           <option value="21"<c:if test="${param.CATEGORY=='21'}"> selected</c:if>>System Tools</option>
                           <c:if test="${param.VENDORTYPE=='2'}">
-                              <option value="22"<c:if test="${param.CATEGORY=='22'}"> selected</c:if>>XXX-Adult Software</option>
+                            <option value="22"<c:if test="${param.CATEGORY=='22'}"> selected</c:if>>XXX-Adult Software</option>
                           </c:if>
                           <option value="16"<c:if test="${param.CATEGORY=='16'}"> selected</c:if>>Other</option>
                         </select>
@@ -667,9 +667,9 @@
                           <input type="checkbox" name="USEONEKEY_CHK2" value="-1" size="12" onclick="document.productform.USEONEKEY_CHK.checked = this.checked;"<c:if test="${param.USEONEKEY != 0}"> checked</c:if>/>&nbsp;Generate only one code for quantity purchases.
                         </span>
                         <c:if test="${!empty param.KEYVALIDATOR}">
-                           <br clear="all"><br>
-                           <span><label>Validate Generated Activation Codes</label>
-                           <input name="KEYVALIDATOR" maxlength="256" value="${param.KEYVALIDATOR}" size="75" /></span>
+                          <br clear="all"><br>
+                          <span><label>Validate Generated Activation Codes</label>
+                          <input name="KEYVALIDATOR" maxlength="256" value="${param.KEYVALIDATOR}" size="75" /></span>
                         </c:if>
                       </div>
                       <div id="discounts" class="toggle-section"<c:if test="${empty param.DISCOUNTSCHEMEID}">style="display: none;"</c:if>>
