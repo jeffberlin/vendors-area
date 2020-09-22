@@ -628,9 +628,9 @@
                           <input type="checkbox" name="USEONEKEY_CHK2" size="12" onclick="document.productform.USEONEKEY_CHK.checked = this.checked;"<c:if test="${param.USEONEKEY != 0}"> checked</c:if>/>&nbsp;Generate only one code for quantity purchases.
                         </span>
                         <c:if test="${!empty param.KEYVALIDATOR}">
-                           <br clear="all"><br>
-                           <span><label>Validate Generated Activation Codes</label>
-                           <input name="KEYVALIDATOR" maxlength="256" value="${param.KEYVALIDATOR}" size="75" /></span>
+                          <br clear="all"><br>
+                          <span><label>Validate Generated Activation Codes</label>
+                          <input name="KEYVALIDATOR" maxlength="256" value="${param.KEYVALIDATOR}" size="75" /></span>
                         </c:if>
                       </div> <!-- end .toggle-section -->
                       <div id="discounts" class="toggle-section"<c:if test="${empty param.DISCOUNTSCHEMEID}">style="display: none;"</c:if>>
