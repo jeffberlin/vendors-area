@@ -15,15 +15,15 @@
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
       h6 {
         color: #195a7c;
         font-size: 1.15rem;
         letter-spacing: .5px;
       }
-      </style>
+    </style>
     <script>
       function toggleField (field) {
         var e = document.getElementById (field);
@@ -94,10 +94,10 @@
         toggleField (field);
       }
 
-      function initForm (form) {
-        setFieldVisible ("downloadfile", !isBlank ("${param.DOWNLOADFILEID}"));
-        setFieldVisible ("keygenerator", !isBlank ("${param.KEYGENERATOR}"));
-      }
+      // function initForm (form) {
+      //   setFieldVisible ("downloadfile", !isBlank ("${param.DOWNLOADFILEID}"));
+      //   setFieldVisible ("keygenerator", !isBlank ("${param.KEYGENERATOR}"));
+      // }
 
       function submitNewMultipleProduct (form) {
         if ((getCookieValue ("BMTMicro.Vendors.Flags") & 2) == 0) {
@@ -246,7 +246,7 @@
                         <h6>Download&nbsp;File&nbsp;List</h6>
                         <p>If these products should be associated with download files already uploaded through the Manage Files interface, click button to add product file list.</p>
                         <button type="button" class="grey-btn" onclick="conditionalToggleField('downloadfile');" style="margin-bottom: .7rem;">Add Download File list</button>
-                        <div id="downloadfile" style="display: none;">
+                        <div id="downloadfile" class="toggle-section"<c:if test="${empty param.DOWNLOADFILEID}">style="display: none;"</c:if>>
                           <h6>Create Multiple Products&nbsp;-&nbsp;Add Download File List</h6>
                           <p>To associated download files, add list below.&nbsp;There must be a download file for every product name above.</p>
                           <span>
@@ -258,7 +258,7 @@
                         <h6>Generated&nbsp;Codes/Gift&nbsp;Certificates/Subscription Credits</h6>
                         <p>If activation code, gift certificate or subscription credit should be generated on the fly, select Add Code Generator Information.</p>
                         <button type="button" class="grey-btn" onclick="conditionalToggleField('keygenerator');" style="margin-bottom: 1rem;">Add Code Generator list</button>
-                        <div id="keygenerator" style="display: none;">
+                        <div id="keygenerator" class="toggle-section"<c:if test="${empty param.KEYGENERATOR}">style="display: none;"</c:if>>
                           <h6>Create Product&nbsp;-&nbsp;Codes Generated On-the-Fly</h6>
                           <p>Add code generation information for these products below.&nbsp;Separate value must be added for each product name listed above.</p>
                           <span>
@@ -290,7 +290,7 @@
                       </div> <!-- end .tab-pane -->
                       <div id="progress" style="display: none;">
                         <!-- <iframe src="https://vendors-new.bmtmicro.com/products_add_multiple_progress_start.html" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 350px;" >
-                      </iframe> -->
+                        </iframe> -->
                         <jsp:include page="products-manage-add-multiple-progress.jsp" />
                       </div>
                     </div> <!-- end .tab-content -->
