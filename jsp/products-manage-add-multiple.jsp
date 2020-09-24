@@ -130,20 +130,20 @@
         lc = getLineCount (form.DOWNLOADFILENAME.value);
         if (lc == 0) {
           if (dlExpected) {
-            setFieldVisible ("downloadfile");
+            // setFieldVisible ("downloadfile");
             alert ("Template product specifies a download file but download files are not provided. Please choose a different template product or provide a list of download files.");
             form.DOWNLOADFILENAME.focus ();
             return (false);
           }
         } else {
           if (!dlExpected) {
-            setFieldVisible ("downloadfile");
+            // setFieldVisible ("downloadfile");
             alert ("Template product does not specify a download file. Please choose a different template product or remove the list of download files.");
             form.DOWNLOADFILENAME.focus ();
             return (false);
           }
           if (lc != productCount) {
-            setFieldVisible ("downloadfile");
+            // setFieldVisible ("downloadfile");
             alert ("You have specified " + lc + " download files. If specified, the number of download files must match the number of products (" + productCount + ")");
             form.DOWNLOADFILENAME.focus ();
             return (false);
@@ -153,20 +153,20 @@
         lc = getLineCount (form.KEYGENERATOR.value);
         if (lc == 0) {
           if (kgExpected) {
-            setFieldVisible ("keygenerator");
+            // setFieldVisible ("keygenerator");
             alert ("Template product specifies a code generator but code generators are not provided. Please choose a different template product or provide a list of code generators.");
             form.KEYGENERATOR.focus ();
             return (false);
           }
         } else {
           if (!kgExpected) {
-            setFieldVisible ("keygenerator");
+            // setFieldVisible ("keygenerator");
             alert ("Template product does not specify a code generator. Please choose a different template product or remove the list of code generators.");
             form.KEYGENERATOR.focus ();
             return (false);
           }
           if (lc != productCount) {
-            setFieldVisible ("keygenerator");
+            // setFieldVisible ("keygenerator");
             alert ("You have specified " + lc + " code geenerators. If specified, the number of code generators must match the number of products (" + productCount + ")");
             form.KEYGENERATOR.focus ();
             return (false);
@@ -174,13 +174,14 @@
         }
         lc = getLineCount (form.NOTIFICATIONEMAILS.value);
         if ((lc != 0) && (lc != productCount)) {
-          setFieldVisible ("ordernotifications");
+          // setFieldVisible ("ordernotifications");
           alert ("You have specified " + lc + " notification emails. If specified, the number of notification emails must match the number of products (" + productCount + ")");
           form.NOTIFICATIONEMAIL.focus ();
           return (false);
         }
-        setFieldVisible ("submitbutton", false);
-        setFieldVisible ("progress", true);
+        // setFieldVisible ("submitbutton", false);
+        // setFieldVisible ("progress", true);
+        // document.getElementById('progress').style.display = "block";
         form.submit ();
         return (true);
       }
@@ -288,11 +289,6 @@
                         <button id="backToProductType" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
                         <button type="button" class="save-btn" onclick="submitNewMultipleProduct (productform);">Save</button>
                       </div> <!-- end .tab-pane -->
-                      <div id="progress" style="display: none;">
-                        <!-- <iframe src="https://vendors-new.bmtmicro.com/products_add_multiple_progress_start.html" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 350px;" >
-                        </iframe> -->
-                        <jsp:include page="products-manage-add-multiple-progress.jsp" />
-                      </div>
                     </div> <!-- end .tab-content -->
                   </form>
                 </div> <!-- end .tab-box -->

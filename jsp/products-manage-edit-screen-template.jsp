@@ -98,7 +98,6 @@
         return (false);
       }
     }
-
     return (true);
   }
 
@@ -117,7 +116,7 @@
     }
   }
 
-  function submitForm (form) {
+  function submitChanges (form) {
     <c:if test = "${ allowChanges == 0 }">
       alert("You do not have permission to make changes.");
     </c:if>
@@ -133,7 +132,7 @@
     <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" />
     <input type="hidden" name="ACTION" value="14" />
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage.jsp" />
-    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
     <h5>On-screen&nbsp;delivery&nbsp;template&nbsp;for&nbsp;${param.PRODUCTNAME}</h5>
     <p class="text-section" style="margin-bottom: .5rem;">
       The template specified below will be used to override the default template.
@@ -224,7 +223,7 @@
     <textarea style="margin: .5rem 0; position:absolute;visibility:hidden;" rows="8" cols="100" name="DEFAULTSCREENDELIVERYTEMPLATE"></textarea>
     <button type="button" class="save-btn" style="margin-right: .5rem;" onclick="closeResultFrame ();">Cancel</button>
     <button class="save-btn" type="button" style="margin-right: .5rem;" onclick="showPreview (emailform);">Preview</button>
-    <button class="save-btn" type="button" onclick="submitForm (emailform);">Save</button>
+    <button class="save-btn" type="button" onclick="submitChanges (emailform);">Save</button>
   </form>
   <form method="post" name="previewform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);" >
     <input type="hidden" name="ACTION" value="22" />

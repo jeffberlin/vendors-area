@@ -78,24 +78,6 @@
         }
       </c:if>
 
-      // function addNewProduct(productid) {
-      //   <c:if test = "${ allowChanges == 0 }">
-      //     alert ("You are not allowed to add products.");
-      //   </c:if>
-      //   <c:if test = "${ allowChanges == 1 }">
-      //     submitForm(0, "_parent", "https://vendors-new.bmtmicro.com/products-manage-add.jsp", productid);
-      //   </c:if>
-      // }
-
-      // function addMultiple(productid) {
-      //   <c:if test = "${ allowChanges == 0 }">
-      //     alert ("You are not allowed to add products.");
-      //   </c:if>
-      //   <c:if test = "${ allowChanges == 1 }">
-      //     submitForm(7, "_parent", "https://vendors-new.bmtmicro.com/products_add_multiple.html", productid);
-      //   </c:if>
-      // }
-
       function editProduct(productid) {
         submitForm(1, "_parent", "https://vendors-new.bmtmicro.com/products-manage-edit.jsp", productid);
       }
@@ -140,6 +122,19 @@
         refreshReport ();
       }
 
+      function addToken (div) {
+        insertAtCursor (document.getElementById ("emailtemplate"), makeToken (div.title));
+      }
+
+      function makeToken (s) {
+        return ((s.charAt (0) == "#") ? s : ("##" + s + "##"));
+      }
+
+      function fixTitle (div) {
+        div.title = makeToken (div.title);
+        return (false);
+      }
+
       function refreshReport () {
         submitForm(-1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-table.jsp");
       }
@@ -155,58 +150,6 @@
           return (true);
         }
       }
-
-      // from products-manage-edit-customer-email.jsp
-      // function insertAtCursor (myField, myValue) {
-      //   //IE support
-      //   if (document.selection) {
-      //     myField.focus();
-      //     sel = document.selection.createRange ();
-      //     sel.text = myValue;
-      //   }
-      //   //MOZILLA/NETSCAPE support
-      //   else if (myField.selectionStart || myField.selectionStart == '0') {
-      //     var startPos = myField.selectionStart;
-      //     var endPos = myField.selectionEnd;
-      //     myField.value = myField.value.substring(0, startPos) + myValue + myField.value.substring(endPos, myField.value.length);
-      //   } else {
-      //     myField.value += myValue;
-      //   }
-      // }
-      //
-      // function makeToken (s) {
-      //   return ((s.charAt (0) == "#") ? s : ("##" + s + "##"));
-      // }
-      //
-      // function addToken (div) {
-      //   insertAtCursor (document.getElementById ("emailtemplate"), makeToken (div.title));
-      // }
-      //
-      // function fixTitle (div) {
-      //   div.title = makeToken (div.title);
-      //   return (false);
-      // }
-      //
-      // function showPreview (form) {
-      //   var tgtform = document.previewform;
-      //   tgtform.PREVIEWTEXT.value = form.CUSTOMEREMAILTEMPLATE.value;
-      //   tgtform.submit ();
-      // }
-      //
-      // function useDefaultChanged (form) {
-      //   if (form.USEDEFAULTTEMPLATE.checked) {
-      //     form.CUSTOMEREMAILTEMPLATE.value = form.DEFAULTCUSTOMEREMAILTEMPLATE.value;
-      //   }
-      //   form.CUSTOMEREMAILTEMPLATE.disabled = form.USEDEFAULTTEMPLATE.checked;
-      // }
-      //
-      // function initForm (form) {
-      //   if (isBlank (form.CUSTOMEREMAILTEMPLATE.value)){
-      //     form.CUSTOMEREMAILTEMPLATE.value = form.DEFAULTCUSTOMEREMAILTEMPLATE.value;
-      //     form.CUSTOMEREMAILTEMPLATE.disabled = true;
-      //     form.USEDEFAULTTEMPLATE.checked = true;
-      //   }
-      // }
     </script>
   </head>
   <body>
@@ -236,5 +179,10 @@
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
-  <script>$(document).ready(function(){ refreshReport (); });</script>
+  <script>
+    $(document).ready(function(){ refreshReport (); });
+    // $('input[type=checkbox]').change(function(){
+    //   $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
+    // });
+  </script>
 </html>
