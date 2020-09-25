@@ -26,7 +26,7 @@
     <table class="table" id="selection">
       <thead>
         <tr class="table-category">
-          <th scope="col" class="sort-column sortable sort text-left" title="Sort on 'File Name'" text>
+          <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'File Name'" text>
             <a href="#" class="fdTableSortTrigger">File Name</a>
           </th>
           <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Size'"  data-sorttype="number">

@@ -26,8 +26,8 @@
 					</tr>
 				</thead>
 			</table>
-			<button type="button" class="light-btn" onclick="submitToResultFrame (this.form);" style="margin-right: .4rem;">Change file association for the associated products</button>
+			<button type="button" class="save-btn" onclick="submitToResultFrame (this.form);" style="margin-right: .4rem;">Change file association for the associated products</button>
 		</c:if>
-		<button type="button" class="light-btn" onclick="closeResultFrame()">Close</button>
+		<button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
 	</form>
 </div> <!-- end .transfer-section -->

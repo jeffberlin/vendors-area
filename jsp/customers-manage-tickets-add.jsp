@@ -15,6 +15,6 @@
     <br>
     <p>Please confirm cancelation of the subscription for&nbsp;<strong>${param.NAME}</strong>&nbsp;(${param.EMAIL}).</p>
     <button type="button" class="save-btn" style="margin-right: .5rem;" onclick="submitForm (this.form);">Confirm</button>
-    <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
+    <button type="button" class="save-btn" onclick="closeResultFrame();">Cancel</button>
   </form>
 </div> <!-- end .transfer-section -->

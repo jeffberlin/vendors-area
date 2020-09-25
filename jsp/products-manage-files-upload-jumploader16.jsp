@@ -29,7 +29,7 @@
           <div class="row justify-content-start">
             <jsp:include page="includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
-              <div class="content-box">
+              <div class="content-box overflow-auto">
                 <div id="uploader" name="uploader" style="height:480px">
                   <applet name="FileUploader" code="jmaster.jumploader.app.JumpLoaderApplet.class" archive="https://vendors-new.bmtmicro.com/jumploader_z.jar" width="100%" height="100%" mayscript>
                     <param name="vc_mainViewLogoEnabled" value="false" />

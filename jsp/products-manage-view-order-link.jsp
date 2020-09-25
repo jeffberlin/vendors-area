@@ -52,7 +52,7 @@
       Expiration&nbsp;Date:&nbsp;
       <!-- <input id="EXPIRATIONDATE" name="EXPIRATIONDATE" value="" size=10 style="margin-bottom: 1rem;"/>&nbsp; -->
       <!-- <img src="https://vendors-new.bmtmicro.com/images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" onclick="show_calendar ('EXPIRATIONDATE'); return (false);" onmouseover="this.style.cursor='pointer';" /> -->
-      <input id="EXPIRATIONDATE" name="EXPIRATIONDATE" value="" onkeypress="filterKeyPress(event)" style="margin-bottom: 1rem;"/>&nbsp;
+      <input id="EXPIRATIONDATE" name="EXPIRATIONDATE" value="${expDate}" onkeypress="filterKeyPress(event)" style="margin-bottom: 1rem;"/>&nbsp;
       <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this);" />
     </span>
     <br>

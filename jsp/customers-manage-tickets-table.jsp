@@ -13,7 +13,7 @@
     <span>
       Show details
     </span>
-    <button type="button" class="grey-btn" onclick="refreshPage ();">Show Tickets</button>
+    <button type="button" class="grey-btn" onclick="refreshReport ();">Show Tickets</button>
   </div> <!-- end .table-header -->
   <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
     <table class="table"id="selection">

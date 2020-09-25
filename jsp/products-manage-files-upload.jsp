@@ -53,7 +53,7 @@
                   </a>
                 </li>
               </ul>
-              <div class="content-box" style="padding: 1rem;">
+              <div class="content-box overflow-auto" style="padding: 1rem;">
                 <div class="tab-content" id="myTabContent">
                   <div class="tab-pane fade show active" id="uploadTab" role="tabpanel" aria-labelledby="upload-tab">
                     <iframe src="https://vendors-new.bmtmicro.com/products-manage-files-uploader236R.html" name="uploader" id="uploader" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; height: 350px; padding: 0px; margin: 0px; background: #FFFFFF;" >

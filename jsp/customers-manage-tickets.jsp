@@ -59,16 +59,16 @@
         var value = queryField (form, "SHOWDETAILS");
         setCookieValue ("BMTMicro.Vendors.Tickets.ShowDetails", value, 1000);
         form.ROWTEMPLATEURL.value = (value == -1) ? "https://vendors-new.bmtmicro.com/customers-manage-tickets-tablerow-details.html" : "https://vendors-new.bmtmicro.com/customers-manage-tickets-tablerow.html";
-        refreshPage ();
+        refreshReport ();
       }
 
-      function refreshPage () {
+      function refreshReport () {
         submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-tickets-table.jsp");
       }
 
       function selectPage (p) {
         document.tickets.PAGE.value = p;
-        refreshPage ();
+        refreshReport ();
       }
 
       <c:if test = "${ allowResend == 0 }">

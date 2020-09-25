@@ -37,7 +37,7 @@
             <div class="col-lg-10 col-md-12 page-title">
               <h4>File&nbsp;Upload&nbsp;Result</h4>
               <p>File Scan results are displayed below. If there is a problem with your file, please email us at&nbsp;<a href="mailto:vendors@bmtmicro.com">vendors@bmtmicro.com</a>.</p>
-              <div class="content-box">
+              <div class="content-box overflow-auto">
                 <h6>${param.FILECOUNT} files scanned.</h6>
                 <% { String addCount = ${param.ADDCOUNT}; if ((addCount != null) && (Integer.parseInt (addCount) > 0)) { %>
                 <br clear="all" /><span><%= addCount %> files added.</span>

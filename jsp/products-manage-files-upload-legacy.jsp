@@ -49,7 +49,7 @@
                 <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-scanresult.jsp" />
                 <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                 <h4>Upload&nbsp;File(s)</h4>
-                <div class="content-box">
+                <div class="content-box overflow-auto">
                   <span>
                     <label>Filename:&nbsp;</label>
                     <input type="file" name="file" class="file" style="margin-bottom: 1rem;" />
