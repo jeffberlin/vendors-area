@@ -37,6 +37,18 @@
     https://secure.bmtmicro.com/cart?CID=${param.VENDORID}&amp;CLR=0&amp;PRODUCTID=${param.PRODUCTID}
   </p>
   <h5>Short&nbsp;Links:</h5>
+  <table class="table" style="margin-bottom: 1rem; width: 70%; border: 1px solid #a9a9a9;">
+    <thead>
+      <tr class="table-category">
+        <th class="sort-column text-center">URL</th>
+        <th class="sort-column text-center">Parameters</th>
+        <th class="sort-column text-center">Expiration Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${param.SHORTLINKLIST}
+    </tbody>
+  </table>  
   <p class="text-section" style="margin-bottom: .5rem;">To create short links with custom parameters, please enter parameters below.</p>
   <form name="short" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
     <input type="hidden" name="ACTION" value="18" />
