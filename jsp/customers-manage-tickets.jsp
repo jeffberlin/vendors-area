@@ -126,8 +126,8 @@
   </body>
   <script>
     $(document).ready(function(){ submitToDiv (document.tickets, 'tableframe'); });
-    $('input[type=checkbox]').change(function(){
-      $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
-    });
+    // $('input[type=checkbox]').change(function(){
+    //   $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
+    // });
   </script>
 </html>

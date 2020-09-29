@@ -2,7 +2,5 @@
 <div class="transfer-section">
   <h5>Tickets&nbsp;Added</h5>
   <p>You have successfully added tickets.</p>
-  <form action="https://vendors-new.bmtmicro.com/customers-manage-tickets.jsp" method="get" target="_parent">
-    <button type="submit" class="save-btn">Refresh Page</button>
-  </form>
+  <button type="button" class="save-btn" onclick="refreshReport ();">Close</button>
 </div> <!-- end .transfer-section -->

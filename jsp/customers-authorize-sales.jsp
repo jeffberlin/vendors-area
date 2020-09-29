@@ -15,11 +15,21 @@
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script>
-      function doAction(action) {
-        document.orderlistform.ACTION.value = action;
-        document.orderlistform.submit();
+      function doAction(action, target) {
+        var form = document.orderlistform;
+        form.ACTION.value = action;
+        form.target = target;
+        // document.orderlistform.submit();
+        if (target == "_parent") {
+          form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
+          form.submit ();
+        } else {
+          form.target = "";
+          submitToDiv (form, target);
+        }
       }
       function showDetails(ctrl) {
         var row = GetIndexOfElement (ctrl);
@@ -41,17 +51,17 @@
             <jsp:include page="includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>${param.TITLE}</h4>
-              <div class="content-box overflow-auto">
-                <div name="tableframe" class="h-100" id="tableframe">
+              <div class="content-box d-flex flex-column">
+                <div name="tableframe" class="overflow-auto h-100" id="tableframe">
+                  <form name="orderlistform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ImportRipOrders" method="post">
+                    <input type="hidden" name="ACTION" value="1">
+                    <input type="hidden" name="ACTION2" value="5">
+                    <input type="hidden" name="STARFILE" value="https://vendors-new.bmtmicro.com/images/star.gif" />
+                    <input type="hidden" name="BLANKFILE" value="https://vendors-new.bmtmicro.com/images/blank.gif" />
+                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-authorize-sales-table.jsp" />
+                  </form>
                   <jsp:include page="customers-authorize-sales-table.jsp"/>
                 </div>
-                <form name="homeform" action="https://vendors-new.bmtmicro.com/main.jsp"></form>
-                <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.ImportRipOrders" method="post" target="detailsPopUp">
-                  <input Type="hidden" NAME="ACTION" value="5">
-                  <input type="hidden" name="RIPCODE" value="${param.RIPCODE}">
-                  <input Type="hidden" NAME="ORDERID" value="">
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-authorize-sales-orderdetails.html" />
-                </form>
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
@@ -61,5 +71,7 @@
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
-  <!-- <script>$(document).ready(function(){ submitToDiv (document.orderlistform, 'tableframe'); });</script> -->
+  <script>
+    $(document).ready(function(){ submitToDiv (document.orderlistform, 'tableframe'); });
+  </script>
 </html>

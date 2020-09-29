@@ -1,10 +1,16 @@
 <%@ include file="/includes/core.jsp" %>
+<form name="homeform" action="https://vendors-new.bmtmicro.com/main.jsp"></form>
+<form action="https://vendors-new.bmtmicro.com/servlets/Vendors.ImportRipOrders" method="post" target="detailsPopUp">
+  <input type="hidden" name="ACTION" value="5" />
+  <input type="hidden" name="RIPCODE" value="${param.RIPCODE}" />
+  <input type="hidden" name="ORDERID" value="" />
+  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-authorize-sales-orderdetails.html" />
+</form>
 <form name="orderlistform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ImportRipOrders" method="post">
   <input type="hidden" name="ACTION" value="0" />
-  <input type="hidden" name="ACTION2" value="5" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-authorize-sales-table.jsp" />
-  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
-  <input type="hidden" name="SUBMISSIONID" value="${param.SUBMISSIONID}">
+  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+  <input type="hidden" name="SUBMISSIONID" value="${param.SUBMISSIONID}" />
   <input type="hidden" name="STARFILE" value="https://vendors-new.bmtmicro.com/images/star.gif" />
   <input type="hidden" name="BLANKFILE" value="https://vendors-new.bmtmicro.com/images/blank.gif" />
   <div class="table-header">
