@@ -1,6 +1,7 @@
 <%@ include file="/includes/core.jsp" %>
 <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="post">
-	<input type="hidden" name="ACTION" value="" />
+	<input type="hidden" name="ACTION" value="-1" />
+	<input type="hidden" name="MAXAMOUNT" value="" />
 	<input type="hidden" name="AFFILIATEID" value="" />
 	<input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/affiliates-manage-tablerow.html" />
 	<input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-manage-table.jsp" />
@@ -10,7 +11,7 @@
 			Affiliate ID:&nbsp;
 			<input type="text" name="AFFILIATEID_ADD" value=""/>
 		</span>
-		<button class="grey-btn" id="affiliate-btn" onclick="addAffiliate (affiliates.AFFILIATEID_ADD.value);" >Add New Affiliate</button>
+		<button class="grey-btn" onclick="addAffiliate (affiliates.AFFILIATEID_ADD.value);">Add New Affiliate</button>
 	</div> <!-- end .table-header -->
 	<div class="row table-responsive-lg" style="margin-left: auto; margin-right: auto;">
 		<table class="table" id="selection">
@@ -47,5 +48,5 @@
 				</tr>
 			</tfoot>
 		</table>
-	</div>
+	</div> <!-- end .row -->
 </form>

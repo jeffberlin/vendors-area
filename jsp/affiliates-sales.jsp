@@ -1,5 +1,4 @@
 <%@ include file="/includes/core.jsp" %>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -71,7 +70,7 @@
                     <span>
                       By:&nbsp;
                       <select name="REPORTTYPE" onchange="reportTypeChanged (affiliatesales);">
-                        <option value="0"<c:if test="${cookie['BMTMicro.Vendors.AffiliateSales.ReportType'].value==0}"> selected</c:if>>Product </option>
+                        <option value="0"<c:if test="${cookie['BMTMicro.Vendors.AffiliateSales.ReportType'].value==0}"> selected</c:if>>Product</option>
                         <option value="1"<c:if test="${cookie['BMTMicro.Vendors.AffiliateSales.ReportType'].value==1}"> selected</c:if>>Affiliate</option>
                         <option value="2"<c:if test="${cookie['BMTMicro.Vendors.AffiliateSales.ReportType'].value==2}"> selected</c:if>>Product & Affiliate</option>
                       </select>

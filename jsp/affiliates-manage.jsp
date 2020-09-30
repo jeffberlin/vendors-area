@@ -69,6 +69,9 @@
 					submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/affiliates-manage-edit.jsp", affiliateid);
 				}
 			</c:if>
+      function refreshReport (form) {
+        submitToDiv (form, 'tableframe');
+      }
     </script>
   </head>
   <body>
@@ -88,7 +91,7 @@
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
 									<jsp:include page="affiliates-manage-table.jsp" />
                 </div> <!-- end #tableframe -->
-                <div name="resultframe" id="resultframe"></div>
+                <div name="resultframe" id="resultframe" class="overflow-auto"></div>
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
@@ -98,7 +101,7 @@
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
-	<script>
-     $(document).ready(function(){ submitToDiv (document.affiliates, 'tableframe'); });
+  <script>
+    $(document).ready(function(){ refreshReport (); });
   </script>
 </html>

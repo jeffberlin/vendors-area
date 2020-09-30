@@ -42,7 +42,7 @@
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Affiliate&nbsp;Program</h4>
               <p>Terms&nbsp;&&nbsp;Conditions</p>
-              <div class="content-box" style="padding: 1rem;">
+              <div class="content-box overflow-auto" style="padding: 1rem;">
                 <ul style="padding-left: 1rem; margin-bottom: 0;">
                   <li>Any developer or vendor who has an active vendor account may use our affiliate program once they have received their first payment from BMT Micro.</li>
                   <li>There are no setup fees required to use our affiliate program.</li>

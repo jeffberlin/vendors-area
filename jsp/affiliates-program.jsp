@@ -53,7 +53,7 @@
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Affiliate&nbsp;Program</h4>
               <p>General affiliate program information.</p>
-              <div class="content-box" style="padding: 1rem;">
+              <div class="content-box overflow-auto" style="padding: 1rem;">
                 <p>Affiliate programs allow your product(s) to be distributed by many different people with different marketing techniques and target audiences.&nbsp;You control the percentage paid to your affiliates.</p>
                 <p style="margin-bottom: .5rem;"><strong>Why do affiliate programs work for developers and vendors?</strong></p>
                 <ul>
@@ -77,7 +77,7 @@
                 <h5>New&nbsp;Affiliates&nbsp;Sign&nbsp;Up</h5>
                 <p><a href="https://affiliates.bmtmicro.com/NewSignup/new_affiliate-signup.html" target="_blank">https://affiliates.bmtmicro.com/NewSignup/new_affiliate-signup.html</a></p>
                 <h5>Affiliate&nbsp;Login</h5>
-                <p><a href="https://affiliates.bmtmicro.com/" target="_blank">https://affiliates.bmtmicro.com/</a></p>
+                <p style="margin-bottom: 0;"><a href="https://affiliates.bmtmicro.com/" target="_blank">https://affiliates.bmtmicro.com/</a></p>
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->

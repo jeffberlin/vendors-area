@@ -114,7 +114,7 @@
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                   </form>
                 </div> <!-- end #tableframe -->
-                <div name="resultframe" id="resultframe" class="overflow-auto"></div> <!-- end #resultframe -->
+                <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-12 -->
           </div> <!-- end first .row -->
@@ -126,8 +126,8 @@
   </body>
   <script>
     $(document).ready(function(){ submitToDiv (document.tickets, 'tableframe'); });
-    // $('input[type=checkbox]').change(function(){
-    //   $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
-    // });
+    $('input[type=checkbox]').change(function(){
+      $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
+    });
   </script>
 </html>
