@@ -24,21 +24,6 @@
       }
     </style>
     <script>
-      function initForm (form) {
-        var showdetails = getCookieValue ("BMTMicro.Vendors.Tickets.ShowDetails");
-        if (showdetails != null) {
-          form.SHOWDETAILS.value = showdetails;
-          if (parseInt (showdetails) == -1) {
-            form.ROWTEMPLATEURL.value = "https://vendors-new.bmtmicro.com/customers-manage-tickets-tablerow-details.html";
-          }
-        }
-        form.submit ();
-        initField (form, "SHOWDETAILS", "${param.SHOWDETAILS}");
-        // initField (form, "FLT_PRODUCTNAME", "##FLT_PRODUCTNAME##");
-        // initField (form, "FLT_NAME", "##FLT_NAME##");
-        // initField (form, "FLT_EMAIL", "##FLT_EMAIL##");
-      }
-
       function submitForm (action, target, nextpage, ticketid) {
         var form = document.tickets;
         form.ACTION.value = action;
@@ -108,8 +93,13 @@
                     <input type="hidden" name="ACTION" value="-1" />
                     <input type="hidden" name="ROWSPERPAGE" value="500" />
                     <input type="hidden" name="PAGE" value="1" />
-                    <input type="hidden" name="SHOWDETAILS" value="0" />
-                    <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-manage-tickets-tablerow.html" />
+                    <input type="hidden" name="SHOWDETAILS" value="${cookie['BMTMicro.Vendors.Tickets.ShowDetails'].value}" />
+                    <c:if test="${cookie['BMTMicro.Vendors.Tickets.ShowDetails'].value==-1}">
+                      <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-manage-tickets-tablerow-details.html" />
+                    </c:if>
+                    <c:if test="${cookie['BMTMicro.Vendors.Tickets.ShowDetails'].value!=-1}">
+                      <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-manage-tickets-tablerow.html" />
+                    </c:if>
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-tickets-table.jsp" />
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                   </form>
