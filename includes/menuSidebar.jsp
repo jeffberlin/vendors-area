@@ -59,7 +59,7 @@
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/customers-manage-subscriptions.jsp">Manage Subscriptions</a>
         <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/customers-manage-tickets.jsp">Manage Tickets</a>
         <c:if test="${cookie['BMTMicro.Vendors.AuthMenu'].value==-1}">
-            <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/customers-authorize-sales.jsp">Authorize Sales</a>
+          <a class="dropdown-item" href="https://vendors-new.bmtmicro.com/customers-authorize-sales.jsp">Authorize Sales</a>
         </c:if>
       </div>
     </div> <!-- end .dropright -->
