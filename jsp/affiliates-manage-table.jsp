@@ -1,9 +1,8 @@
 <%@ include file="/includes/core.jsp" %>
 <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="post">
-	<input type="hidden" name="ACTION" value="-1" />
-	<input type="hidden" name="MAXAMOUNT" value="" />
+	<input type="hidden" name="ACTION" value="" />
 	<input type="hidden" name="AFFILIATEID" value="" />
-	<input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/affiliates-manage-tablerow.html" />
+	<input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
 	<input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-manage-table.jsp" />
 	<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
 	<div class="table-header">

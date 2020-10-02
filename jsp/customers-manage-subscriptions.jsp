@@ -1,4 +1,4 @@
-<%@ include file="/includes/core.jsp" %>
+refreshReport<%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -48,16 +48,16 @@
 
       function showExpiredChanged () {
         setCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired", queryField (document.subscriptions, "SHOWEXPIRED"), 1000);
-        refreshPage ();
+        refreshReport ();
       }
 
-      function refreshPage () {
+      function refreshReport () {
         submitForm (-1, "tableframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp");
       }
 
       function selectPage (p) {
         document.subscriptions.PAGE.value = p;
-        refreshPage ();
+        refreshReport ();
       }
 
       function cancelSubscription (subscriptionid) {

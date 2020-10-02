@@ -48,6 +48,9 @@
 				function removeAffiliate (affiliateid) {
 					alert ("You do not have permission to delete files.");
 				}
+        function submitEdit(form) {
+          alert("You do not have permission to make changes.");
+        }
 			</c:if>
 			<c:if test = "${ allowChanges == 1 }">
 				function addAffiliate (affiliateid) {
@@ -60,18 +63,16 @@
             submitForm (10, "_parent", "https://vendors-new.bmtmicro.com/affiliates-manage.jsp", affiliateid);
           }
 				}
-
 				function removeAffiliate (affiliateid) {
 					submitForm (12, "_parent", "https://vendors-new.bmtmicro.com/affiliates-manage.jsp", affiliateid);
 				}
-
 				function editAffiliate (affiliateid) {
 					submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/affiliates-manage-edit.jsp", affiliateid);
 				}
+        function submitEdit(form) {
+          submitToDiv(form, 'resultframe');
+        }
 			</c:if>
-      function refreshReport (form) {
-        submitToDiv (form, 'tableframe');
-      }
     </script>
   </head>
   <body>
@@ -89,9 +90,16 @@
               <p>Highlighted affiliates have joined within the last month.</p>
               <div class="content-box d-flex flex-column">
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
-									<jsp:include page="affiliates-manage-table.jsp" />
+                  <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="post">
+                    <input type="hidden" name="ACTION" value="-1" />
+                    <input type="hidden" name="MAXAMOUNT" value="" />
+                    <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/affiliates-manage-tablerow.html" />
+                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-manage-table.jsp">
+                    <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error-div.jsp">
+                  </form>
+									<!-- <jsp:include page="affiliates-manage-table.jsp" /> -->
                 </div> <!-- end #tableframe -->
-                <div name="resultframe" id="resultframe" class="overflow-auto"></div>
+                <div name="resultframe" id="resultframe"></div>
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
@@ -102,6 +110,6 @@
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
   <script>
-    $(document).ready(function(){ refreshReport (); });
+    $(document).ready(function(){ submitToDiv (document.affiliates, 'tableframe'); });
   </script>
 </html>
