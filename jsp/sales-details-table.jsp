@@ -64,7 +64,7 @@
     return ("Parameter COLUMNDATA is undefined");
   }
 %>
-<div class="table-responsive d-block">
+<div class="table-responsive" style="overflow-x: inherit;">
   <table class="table">
     <%= getTableData(request) %>
   </table>

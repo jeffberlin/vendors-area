@@ -19,9 +19,6 @@
     <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
-      .table-responsive {
-        overflow-y: scroll;
-      }
       td[text], td[number], td[date], td[info], td[money], th {
         border-right: 1px solid #a9a9a9;
       }
@@ -80,7 +77,7 @@
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Sales Detail Report</h4>
               <p>Filter Details using the input fields. Fields can be added or removed using the Settings link on the left side of this page.</p>
-              <div class="content-box overflow-auto">
+              <div class="content-box d-flex overflow-auto">
                 <form name="salesdetails" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetails" method="post">
                   <input type="hidden" name="ROWSPERPAGE" value="250" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-details-table.jsp" />
@@ -109,7 +106,7 @@
                       <button class="grey-btn" type="button" value="Get Report" onclick="refreshReport (document.salesdetails);">Get Sales Details</button>
                     </span>
                   </div> <!-- end .table-header -->
-                  <div name="tableframe" class="overflow-auto h-100" id="tableframe"></div> <!-- end #tableframe -->
+                  <div name="tableframe" id="tableframe"></div> <!-- end #tableframe -->
                 </form>
                 <div style="visibility:hidden;">
                   <form name="invoice" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Invoice" method="post" target="_blank">
@@ -125,6 +122,8 @@
       <jsp:include page="includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
-    <script>$(document).ready(function(){ submitToDiv (document.salesdetails, 'tableframe'); });</script>
+    <script>
+      $(document).ready(function(){ submitToDiv (document.salesdetails, 'tableframe'); });
+    </script>
   </body>
 </html>
