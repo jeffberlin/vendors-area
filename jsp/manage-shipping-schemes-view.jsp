@@ -49,14 +49,11 @@
     <div class="item-info">
       <label>First Item:&nbsp;</label>
       <span>${param.FIRSTITEM}</span>
-      <!-- <br> -->
       <label>Next Item:&nbsp;</label>
       <span>${param.NEXTITEM}</span>
-      <!-- <br> -->
       <label>Ship PID:&nbsp;</label>
       <span>${param.PRODUCTID}</span>
     </div>
-    <!-- <br clear="all"> -->
     <h6>Region Dependent Shipping Costs</h6>
     <div class="item-info" id="regions"></div>
   </form>

@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addTransfer.css"/>
     <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <style media="screen" type="text/css">
       .fa-plus-circle:hover {
         color: darkgreen;
@@ -88,6 +88,10 @@
       function regions () {
         submitForm (0, "_parent", "https://vendors-new.bmtmicro.com/manage-regions.jsp");
       }
+
+      function refreshReport () {
+        submitForm(-1, "tableframe", "https://vendors-new.bmtmicro.com/manage-shipping-schemes-table.jsp");
+      }
     </script>
   </head>
   <body>
@@ -105,14 +109,15 @@
               <p>Use this section to define shipping schemes that can be linked to products subject to a shipping charge.</p>
               <div class="content-box d-flex flex-column overflow-auto">
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
-                  <form name="shipping" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ShippingCost">
+                  <jsp:include page="manage-shipping-schemes-table.jsp" />
+                  <!-- <form name="shipping" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ShippingCost">
                     <input type="hidden" name="ACTION" value="-1" />
                     <input type="hidden" name="MAXAMOUNT" value="" />
-                    <input type="hidden" name="SCHEMEID" value="">
+                    <input type="hidden" name="SCHEMEID" value="" />
                     <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/manage-shipping-schemes-tablerow.html" />
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/manage-shipping-schemes-table.jsp" />
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
-                  </form>
+                  </form> -->
                 </div>
                 <div name="resultframe" id="resultframe"></div>
               </div> <!-- end .content-box -->
@@ -124,5 +129,8 @@
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
-  <script>$(document).ready(function(){ submitToDiv (document.shipping, 'tableframe'); });</script>
+  <script>
+    // $(document).ready(function(){ submitToDiv (document.shipping, 'tableframe'); });
+    $(document).ready(function(){ refreshReport(); });
+  </script>
 </html>

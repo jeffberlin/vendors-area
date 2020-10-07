@@ -32,3 +32,4 @@
       </tfoot>
     </table>
   </div> <!-- end .row -->
+</form>

@@ -17,7 +17,7 @@
     <div class="move" style="margin-bottom: 1rem;">
       <!-- we hardcode the style here since the classes are not visible. We can add class="content" to the "dd" tag to
            make the styles work, but then this will add whitespace on the sides which is not desired... -->
-      <button style="margin-right: 5px;" type="button" name="add" value="Add&nbsp;&gt;&gt;" class="light-btn" onclick="addCountry (regions);">
+      <button style="margin-right: 5px;" type="button" name="add" value="Add&nbsp;&gt;&gt;" class="light-btn" onclick="addCountry (this.form);">
         Add&nbsp;<i class="fas fa-angle-down"></i>
       </button>
       <button style="margin-right: 5px;" type="button" name="remove" value="&lt;&lt;&nbsp;Remove" class="light-btn" onclick="removeCountry (regions);">
@@ -35,7 +35,7 @@
     </select>
     <input type="hidden" name="SELECTEDCOUNTRIES" />
     <div class="controlbuttons">
-      <button type="button" class="save-btn" onclick="submitRegion (regions);" style="margin-right: .5rem;">Save</button>
+      <button type="button" class="save-btn" onclick="submitRegion (this.form);" style="margin-right: .5rem;">Save</button>
       <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
     </div>
   </form>

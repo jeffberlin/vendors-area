@@ -70,8 +70,7 @@
                   <li>Work at own pace</li>
                   <li>Choose what products they would like to promote</li>
                 </ul>
-                <p>All vendors who signed up with BMT Micro before January 1st, 2003 are eligible to participate in our
-                Affiliates Program. New Vendors must contact&nbsp;<a href="mailto:vendors@bmtmicro.com">vendors@bmtmicro.com</a>&nbsp;after receiving your first payment in order to have affiliate capabilities turned on.</p>
+                <p>To participate in the Affiliates Program, vendors are requested to contact&nbsp;<a href="mailto:vendors@bmtmicro.com">vendors@bmtmicro.com</a>&nbsp;to have affiliate capabilities turned on.</p>
                 <p>Set up your products to allow for affiliates in Edit Products by selecting Manage Products and clicking on the ProductID.&nbsp;If you need assistance, please read our&nbsp;<a href="https://help.bmtmicro.com/vendors/affiliate-program/" target="_blank">help</a>&nbsp;section.&nbsp;Once you have done this,&nbsp;contact&nbsp;<a href="mailto:vendors@bmtmicro.com">vendors@bmtmicro.com</a>&nbsp;to make sure your order forms have been updated to look for the Affiliate Information.</p>
                 <p>The following links can be used to signup or login to our affiliate program.&nbsp;Feel free to add these links to your website and let your customers become your sales team.</p>
                 <h5>New&nbsp;Affiliates&nbsp;Sign&nbsp;Up</h5>
