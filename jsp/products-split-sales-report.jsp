@@ -45,13 +45,6 @@
         return(true)
       }
 
-			function initForm (form){
-	      initField (form, "FLT_SPLITVENDORID", "${param.FLT_SPLITVENDORID}");
-	      initField (form, "FLT_NAME",          "${param.FLT_NAME}");
-	      initField (form, "FLT_PRODUCTNAME",   "${param.FLT_PRODUCTNAME}");
-	      initField (form, "FLT_PERCENTAGE",    "${param.FLT_PERCENTAGE}");
-      }
-
       function filterKeyPress(event) {
         if (event.keyCode == 13) {
           refreshReport (document.splitsalesreport);
@@ -60,7 +53,7 @@
       }
     </script>
   </head>
-  <body onload="initForm(document.splitsalesreport);">
+  <body>
     <!-- Blue background header -->
 		<div class="blue-bg"></div>
 		<!-- Start of the body -->
@@ -73,7 +66,7 @@
               <h4>Split&nbsp;Sales&nbsp;Report</h4>
               <p>Report should be run based on the Account Transactions dates.</p>
 							<div class="content-box overflow-auto d-flex flex-column">
-								<form name="splitsalesreport" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SplitSalesReport" method="post">
+                <form name="splitsalesreport" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SplitSalesReport" method="post">
                   <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-split-sales-report-tablerow.html" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-split-sales-report-table.jsp" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
@@ -100,9 +93,9 @@
                     <span>
                       <button type="button" class="grey-btn" value="Get Split Sales Summary" onclick="refreshReport (document.splitsalesreport);">Get Split Sales Summary</button>
                     </span>
-									</div> <!-- end .table-header -->
-								</form>
-								<div name="tableframe" class="h-100" id="tableframe"></div> <!-- end #tableframe -->
+                  </div> <!-- end .table-header -->
+									<div name="tableframe" class="h-100" id="tableframe"></div>
+                </form>
 							</div> <!-- end .content-box -->
 						</div> <!-- end .col-lg-10 page-title -->
 					</div> <!-- end first .row justify-content-start -->

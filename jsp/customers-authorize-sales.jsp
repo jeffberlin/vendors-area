@@ -22,7 +22,6 @@
         var form = document.orderlistform;
         form.ACTION.value = action;
         form.target = target;
-        // document.orderlistform.submit();
         if (target == "_parent") {
           form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
           form.submit ();
@@ -60,8 +59,7 @@
                     <input type="hidden" name="BLANKFILE" value="https://vendors-new.bmtmicro.com/images/blank.gif" />
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-authorize-sales-table.jsp" />
                   </form>
-                  <jsp:include page="customers-authorize-sales-table.jsp"/>
-                </div>
+                </div> <!-- end #tableframe -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->

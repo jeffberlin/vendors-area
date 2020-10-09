@@ -2,7 +2,7 @@
 <div class="transfer-section">
   <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ShippingCost">
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/manage-shipping-schemes.jsp" />
-    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
     <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
     <input type="hidden" name="ACTION" value="12" />
     <h5>Confirm Deletion of Shipping Scheme</h5>
