@@ -124,7 +124,7 @@
               <h4>Customer&nbsp;Search</h4>
               <p>Use fields below to enter search criteria.&nbsp;If email information has not changed since purchase you can resend the customer's email using the button provided.<br>You will be able to review the email before it is sent.</p>
               <div class="content-box overflow-auto d-flex flex-column">
-                <div name="tableframe" class="overflow-auto h-100" id="tableframe">
+                <div name="tableframe" class="h-100" id="tableframe">
                   <jsp:include page="customers-search-table.jsp" />
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->

@@ -1,10 +1,10 @@
 <%@ include file="/includes/core.jsp" %>
 <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post" onsubmit="return validateForm (document.forms[0]);">
   <input type="hidden" name="ORDERID" value="${param.ORDERID}" />
-  <input type="hidden" name="ITEMNR"  value="${param.ITEMNR}" />
-  <input type="hidden" name="ACTION"  value="2" />
+  <input type="hidden" name="ITEMNR" value="${param.ITEMNR}" />
+  <input type="hidden" name="ACTION" value="2" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-resent.jsp" />
-  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error_frame.jsp" />
+  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   <h5>Resend&nbsp;Customer&nbsp;Notification&nbsp;Email</h5>
   <span>
     <input type="checkbox" name="CC" value="${param.VENDORCSREMAIL}"> Send&nbsp;copy&nbsp;to&nbsp;${param.VENDORCSREMAIL}
@@ -24,7 +24,7 @@
     <textarea name="BODY" ROWS="15" COLS="78" style="margin-bottom: .5rem;" readonly>${param.MESSAGEBODY}</textarea>
   </span>
   <div class="controlbuttons">
-    <button type="submit" class="save-btn" style="margin-right: .5rem;">Resend Message</button>
+    <button type="button" class="save-btn" style="margin-right: .5rem;" onclick="submitForm (this.form);">Resend Message</button>
     <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
   </div>
 </form>
