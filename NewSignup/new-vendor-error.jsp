@@ -39,7 +39,7 @@
               </aside> <!-- end .sidebar -->
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
-              <h4>An Erro Has Occurred</h4>
+              <h4>An Error Has Occurred</h4>
               <p>${param.MESSAGE}</p>
             </div> <!-- end .col-lg-10 col-md-12 page-title  -->
           </div> <!-- end .row justify-content-start -->
@@ -47,7 +47,6 @@
       </div> <!-- end .container-fluid .body-content -->
       <jsp:include page="../includes/footer.jsp" />
     </div> <!-- end .main-raised -->
-
     <%@ include file="includes/bootstrap_bottom_scripts.html" %>
   </body>
 </html>

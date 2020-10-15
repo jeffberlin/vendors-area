@@ -12,6 +12,14 @@
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://secure.bmtmicro.com/servlets/System.Util"></script>
     <script src="https://secure.bmtmicro.com/servlets/CustomForms.CustomForm"></script>
+    <style media="screen" type="text/css">
+      .content-box {
+        padding: 1rem;
+      }
+      label {
+        color: #707070;
+      }
+    </style>
     <script>
       function getControlValue (control) {
         switch (control.type) {
@@ -113,109 +121,111 @@
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Vendor Submission Form</h4>
               <p>Please fill in your contact information below. This information is used for payment and not given to your customers.</p>
-              <form name="form1" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
-                <input type="hidden" name="ACTION" value="11" />
-                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/main.jsp" />
-                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/NewSignup/new-vendor-error.jsp" />
-                <span>
-                  <label>Vendor ID:&nbsp;</label>
-                  <input name="VENDORID" type="hidden" value="${param.VENDORID}" style="margin-bottom: 1rem;">
-                    ${param.VENDORID}
-                </span>
-                <br>
-                <span>
-                  <label>Company Name:&nbsp;</label>
-                  <input name="COMPANY" style="margin-bottom: 1rem;" />&nbsp;<img src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" title="Name of the company who develops the product." />
-                </span>
-                <br>
-                <span>
-                  <label>Contact Name:&nbsp;</label>
-                  <input name="NAME" style="margin-bottom: 1rem;" />&nbsp;<img src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" title="Name of the Developer or Contact person." />
-                </span>
-                <br>
-                <span>
-                  <label>Company Address:&nbsp;</label>
-                  <input name="ADDRESS1" style="margin-bottom: 1rem;" />&nbsp;<img title="Complete company (or individual) mailing address." src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" />
-                </span>
-                <br>
-                <span>
-                  <label>Address 2:&nbsp;</label>
-                  <input name="ADDRESS2" style="margin-bottom: 1rem;" />
-                </span>
-                <br>
-                <span>
-                  <label>City:&nbsp;</label>
-                  <input name="CITY" style="margin-bottom: 1rem; margin-right: 1.5rem;" />
-                </span>
-                <span>
-                  <label>State/Province:&nbsp;</label>
-                  <select name="STATE" style="margin-bottom: 1rem;">
-                    ##IMPORT("Import.StateOptions")##
-          				</select>
-                </span>
-                <br>
-                <span>
-                  <label>ZIP/Postal Code:&nbsp;</label>
-                  <input name="ZIP" style="margin-bottom: 1rem; margin-right: 1.5rem;">
-                </span>
-                <span>
-                  <label>Country:&nbsp;</label>
-                  <select name="COUNTRY" style="margin-bottom: 1rem;">
-                    <option value="">Select your Country</option>
-                    ${param.COUNTRYLIST}
-                  </select>
-                </span>
-                <br>
-                <p style="font-size: .9rem;">If using "free" email address, such as Yahoo!, HotMail, etc., please supply us with an alternate email address. This address will not be given to customers.</p>
-                <span>
-                  <label>Account Email:&nbsp;</label>
-                  <input name="EMAIL" value="${param.EMAIL}" style="margin-bottom: 1rem;" />
-                </span>
-                <br>
-                <span>
-                  <label>Alternate Email:&nbsp;</label>
-                  <input name="EMAIL2" style="margin-bottom: 1rem;" />&nbsp;<img title="Backup email if above unavailable." src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" />
-                </span>
-                <br>
-                <span>
-                  <label>Phone:&nbsp;</label>
-                  <input name="PHONE" style="margin-bottom: 1rem;" />&nbsp;<img title="Your information is not given out to the customer." src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" />
-                </span>
-                <br>
-                <span>
-                  <label>Fax:&nbsp;</label>
-                  <input name="FAX" style="margin-bottom: 1rem;" />
-                </span>
-                <br>
-                <p style="font-size: .9rem;">Your website is used to help verify your company information. If you are still working on your website, please include explanation in the Special Instructions field.</p>
-                <span>
-                  <label>Wesite Address:&nbsp;</label>
-                  <input name="WEB" style="margin-bottom: 1rem;" />&nbsp;<img title="Web address representing your company or products." src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" />
-                </span>
-                <br>
-                <span>
-                  <label><a href="https://www.bmtmicro.com/sign-up-plans/" target="_blank">Service Tier</a>:&nbsp;</label>
-                  <select name="SERVICETIER" style="margin-bottom: 1rem;">
-                    <option value="11" selected>Advanced Tier 9.5%&nbsp;flat rate</option>
-                    <option value="12">Advanced Tier 4.9%&nbsp;+ $2</option>
-                    <option value="9">Basic Tier 8.9% flat rate</option>
-                    <option value="10">Basic Tier 5.9% + $1</option>
-                  </select>&nbsp;<img title="Choose the service plan that best suits your needs." src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" />
-                </span>
-                <br>
-                <span>
-                  <label style="vertical-align: top;">Special Instructions:&nbsp;</label>
-                  <textarea name="CSRCOMMENTS" style="margin-bottom: 1rem;"></textarea>&nbsp;<img title="Any information that will aid us in setting up your account." src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark"  style="vertical-align: top;" />
-                </span>
-                <br>
-                <span>
-                  <label>Promotional Code:&nbsp;</label>
-                  <input name="PROMOCODE" style="margin-bottom: 2rem;" />&nbsp;<img title="If you received a code, please enter it here." src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" />
-                </span>
-                <br>
-                <button type="reset" name="reset" class="save-btn" style="margin-right: .5rem;">Reset</button>
-                <button type="button" name="button" class="save-btn" onclick="process(form)">Submit</button>
-              </form>
+              <div class="content-box overflow-auto">
+                <form name="form1" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
+                  <input type="hidden" name="ACTION" value="11" />
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/main.jsp" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/NewSignup/new-vendor-error.jsp" />
+                  <span>
+                    <label>Vendor ID:&nbsp;</label>
+                    <input name="VENDORID" type="hidden" value="${param.VENDORID}" style="margin-bottom: 1rem;">
+                      ${param.VENDORID}
+                  </span>
+                  <br>
+                  <span>
+                    <label>Company Name:&nbsp;</label>
+                    <input name="COMPANY" style="margin-bottom: 1rem;" />&nbsp;<img src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" title="Name of the company who develops the product." />
+                  </span>
+                  <br>
+                  <span>
+                    <label>Contact Name:&nbsp;</label>
+                    <input name="NAME" style="margin-bottom: 1rem;" />&nbsp;<img src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" title="Name of the Developer or Contact person." />
+                  </span>
+                  <br>
+                  <span>
+                    <label>Company Address:&nbsp;</label>
+                    <input name="ADDRESS1" style="margin-bottom: 1rem;" />&nbsp;<img title="Complete company (or individual) mailing address." src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" />
+                  </span>
+                  <br>
+                  <span>
+                    <label>Address 2:&nbsp;</label>
+                    <input name="ADDRESS2" style="margin-bottom: 1rem;" />
+                  </span>
+                  <br>
+                  <span>
+                    <label>City:&nbsp;</label>
+                    <input name="CITY" style="margin-bottom: 1rem; margin-right: 1.5rem;" />
+                  </span>
+                  <span>
+                    <label>State/Province:&nbsp;</label>
+                    <select name="STATE" style="margin-bottom: 1rem;">
+                      ##IMPORT("Import.StateOptions")##
+            				</select>
+                  </span>
+                  <br>
+                  <span>
+                    <label>ZIP/Postal Code:&nbsp;</label>
+                    <input name="ZIP" style="margin-bottom: 1rem; margin-right: 1.5rem;">
+                  </span>
+                  <span>
+                    <label>Country:&nbsp;</label>
+                    <select name="COUNTRY" style="margin-bottom: 1rem;">
+                      <option value="">Select your Country</option>
+                      ${param.COUNTRYLIST}
+                    </select>
+                  </span>
+                  <br>
+                  <p style="font-size: .9rem;">If using "free" email address, such as Yahoo!, HotMail, etc., please supply us with an alternate email address. This address will not be given to customers.</p>
+                  <span>
+                    <label>Account Email:&nbsp;</label>
+                    <input name="EMAIL" value="${param.EMAIL}" style="margin-bottom: 1rem;" />
+                  </span>
+                  <br>
+                  <span>
+                    <label>Alternate Email:&nbsp;</label>
+                    <input name="EMAIL2" style="margin-bottom: 1rem;" />&nbsp;<img title="Backup email if above unavailable." src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" />
+                  </span>
+                  <br>
+                  <span>
+                    <label>Phone:&nbsp;</label>
+                    <input name="PHONE" style="margin-bottom: 1rem;" />&nbsp;<img title="Your information is not given out to the customer." src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" />
+                  </span>
+                  <br>
+                  <span>
+                    <label>Fax:&nbsp;</label>
+                    <input name="FAX" style="margin-bottom: 1rem;" />
+                  </span>
+                  <br>
+                  <p style="font-size: .9rem;">Your website is used to help verify your company information. If you are still working on your website, please include explanation in the Special Instructions field.</p>
+                  <span>
+                    <label>Wesite Address:&nbsp;</label>
+                    <input name="WEB" style="margin-bottom: 1rem;" />&nbsp;<img title="Web address representing your company or products." src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" />
+                  </span>
+                  <br>
+                  <span>
+                    <label><a href="https://www.bmtmicro.com/sign-up-plans/" target="_blank">Service Tier</a>:&nbsp;</label>
+                    <select name="SERVICETIER" style="margin-bottom: 1rem;">
+                      <option value="11" selected>Advanced Tier 9.5%&nbsp;flat rate</option>
+                      <option value="12">Advanced Tier 4.9%&nbsp;+ $2</option>
+                      <option value="9">Basic Tier 8.9% flat rate</option>
+                      <option value="10">Basic Tier 5.9% + $1</option>
+                    </select>&nbsp;<img title="Choose the service plan that best suits your needs." src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" />
+                  </span>
+                  <br>
+                  <span>
+                    <label style="vertical-align: top;">Special Instructions:&nbsp;</label>
+                    <textarea name="CSRCOMMENTS" style="margin-bottom: 1rem;"></textarea>&nbsp;<img title="Any information that will aid us in setting up your account." src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark"  style="vertical-align: top;" />
+                  </span>
+                  <br>
+                  <span>
+                    <label>Promotional Code:&nbsp;</label>
+                    <input name="PROMOCODE" style="margin-bottom: 2rem;" />&nbsp;<img title="If you received a code, please enter it here." src='<c:url value="https://vendors-new.bmtmicro.com/images/questionMark.gif"></c:url>' alt="Question Mark" />
+                  </span>
+                  <br>
+                  <button type="reset" name="reset" class="save-btn" style="margin-right: .5rem;">Reset</button>
+                  <button type="button" name="button" class="save-btn" onclick="process(form)">Submit</button>
+                </form>
+              </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title  -->
           </div> <!-- end .row justify-content-start -->
         </article> <!-- end .section -->

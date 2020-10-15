@@ -17,6 +17,11 @@
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://secure.bmtmicro.com/servlets/System.Util"></script>
     <script src="https://secure.bmtmicro.com/servlets/CustomForms.CustomForm"></script>
+    <style media="screen" type="text/css">
+      label {
+        color: #707070;
+      }
+    </style>
     <script>
       function process(form) {
         form.LOGINNAME.value = trim (form.LOGINNAME.value);
@@ -82,8 +87,9 @@
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
               <form name="form1" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Signup">
-                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/NewSignup/new_vendorloginstart.html" />
-                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/NewSignup/newvendorerror.html" />
+                <input type="hidden" name="ACTION" value="1">
+                <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/NewSignup/new-vendor-submission-form.jsp" />
+                <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/NewSignup/new-vendor-error.jsp" />
                 <h4>Vendor Signup Form</h4>
                 <p>This form is for<strong> new vendors only</strong>. If you are an existing vendor, please add any new products under your vendor account login. If you do not know how to log in, please <a href="mailto:vendors@bmtmicro.com">contact us.</a></p>
                 <p>Please note that due to the increase in fraudulent products being submitted, BMT Micro is forced to delay the first royalty payment for one month. You will receive both your first and second month&#39;s payment after the end of the second month.</p>
