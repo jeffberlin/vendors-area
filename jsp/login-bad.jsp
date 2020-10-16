@@ -42,7 +42,7 @@
                 </button>
               </div>
               <div class="signup text-center">
-                <a href="https://vendors.bmtmicro.com/NewSignup/new-developer-signup.jsp">Sign Up</a>
+                <a href="https://vendors.bmtmicro.com/new-developer-signup.jsp">Sign Up</a>
               </div>
             </div>
           </div>

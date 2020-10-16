@@ -132,7 +132,7 @@
                   <span>
                     <label>State:&nbsp;</label>
                     <select NAME="STATE" style="margin-bottom: 1rem;">
-                      ##IMPORT("Import.StateOptions")##
+                      <c:import url="https://secure.bmtmicro.com/Templates/Import.StateOptions"/>
                     </select>
                   </span>
                   <br clear="all">
