@@ -1,4 +1,4 @@
-refreshReport<%@ include file="/includes/core.jsp" %>
+<%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -68,6 +68,13 @@ refreshReport<%@ include file="/includes/core.jsp" %>
           submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-cancel.jsp", subscriptionid);
         </c:if>
       }
+
+      function filterKeyPress(event) {
+        if (event.keyCode == 13) {
+          refreshReport ();
+          return (true);
+        }
+      }
     </script>
   </head>
   <body>
@@ -94,7 +101,6 @@ refreshReport<%@ include file="/includes/core.jsp" %>
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp"/>
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp"/>
                   </form>
-                  <!-- <jsp:include page="customers-manage-subscriptions-table.jsp" /> -->
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
               </div> <!-- end .content-box -->

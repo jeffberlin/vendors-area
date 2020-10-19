@@ -19,9 +19,6 @@
     <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
-      .table-responsive-lg {
-        overflow-y: scroll;
-      }
       td[text] {
         border-right: 1px solid #a9a9a9;
       }

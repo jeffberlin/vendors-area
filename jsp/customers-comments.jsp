@@ -21,7 +21,11 @@
     <script>
       function refreshReport (form) {
         if (CheckDateRange (form)) {
-          submitToDiv (form, 'tableframe');
+          if (form.FORMAT.selectedIndex == 0) {
+            submitToDiv (form, 'tableframe');
+          } else {
+            form.submit ();
+          }
         }
       }
 
@@ -46,17 +50,18 @@
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Customer&nbsp;Comments</h4>
               <p>This report displays customer comments and custom field values from your shopping cart.</p>
-              <div class="content-box overflow-auto">
-                <form name="customercomments" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Comments" method="post" onsubmit="return (CheckDateRange (this));">
-                  <!-- <input type="hidden" name="SESSIONID" value="${sessionid}" /> -->
+              <div class="content-box overflow-auto d-flex flex-column">
+                <form name="customercomments" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Comments" method="post">
                   <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-comments-tablerow.html" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-comments-table.jsp" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                   <div class="table-header">
-                    <span>From:&nbsp;<input id="DATEFROM" name="DATEFROM" value="${fromDate}" onkeypress="filterKeyPress(event)"/>
+                    <span>From:&nbsp;
+                      <input id="DATEFROM" name="DATEFROM" value="${fromDate}" onkeypress="filterKeyPress(event)"/>
                       <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
                     </span>
-                    <span>To:&nbsp;<input id="DATETO" name="DATETO" value="${toDate}" onkeypress="filterKeyPress(event)"/>
+                    <span>To:&nbsp;
+                      <input id="DATETO" name="DATETO" value="${toDate}" onkeypress="filterKeyPress(event)"/>
                       <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
                     </span>
                     <span>
@@ -66,10 +71,10 @@
                         <option value="2">XML</option>
                       </select>
                     </span>
-                    <button type="button" class="grey-btn" value="Get Report" onclick="refreshReport (document.customercomments);" />Get&nbsp;Report</button>
+                    <button type="button" class="grey-btn" onclick="refreshReport (document.customercomments);">Get&nbsp;Report</button>
                   </div> <!-- end .table-header -->
+                  <div name="tableframe" id="tableframe"></div> <!-- end #tableframe -->
                 </form>
-                <div name="tableframe" class="h-100" id="tableframe"></div> <!-- end #tableframe -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->

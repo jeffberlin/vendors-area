@@ -53,16 +53,16 @@
       </tr>
       <tr id="input-tr">
         <th number>
-          <input class="input-search" type="text" name="FLT_SUBSCRIPTIONID" value="" size="10" style="min-width: 80px" placeholder="Search">
+          <input class="input-search" type="text" name="FLT_SUBSCRIPTIONID" value="" size="10" style="min-width: 80px" placeholder="Search" onkeypress="filterKeyPress(event);">
         </th>
         <th info>
-          <input class="input-search" type="text" name="FLT_EMAIL" value="" size="16" placeholder="Search">
+          <input class="input-search" type="text" name="FLT_EMAIL" value="" size="16" placeholder="Search" onkeypress="filterKeyPress(event);">
         </th>
         <th text>
-          <input class="input-search" type="text" name="FLT_NAME" value="" size="16" placeholder="Search">
+          <input class="input-search" type="text" name="FLT_NAME" value="" size="16" placeholder="Search" onkeypress="filterKeyPress(event);">
         </th>
         <th text>
-          <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="" size="16" placeholder="Search">
+          <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="" size="16" placeholder="Search" onkeypress="filterKeyPress(event);">
         </th>
         <th money></th>
         <th date></th>

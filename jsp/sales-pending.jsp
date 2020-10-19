@@ -19,12 +19,8 @@
     <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
-      .table-responsive {
-        overflow-y: scroll;
-      }
       table > tbody th, #text {
         color: #707070;
-
       }
       table > tbody th {
         text-align: left;

@@ -53,6 +53,13 @@
         }
       }
 
+      function filterKeyPress(event) {
+        if (event.keyCode == 13) {
+          refreshReport (document.downloadpasswords);
+          return (true);
+        }
+      }
+
       // status page
       function submitForm (form, action) {
         form.ACTION.value = action;

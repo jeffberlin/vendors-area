@@ -1,5 +1,5 @@
 <%@ include file="/includes/core.jsp" %>
-<div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
+<div class="row table-responsive" style="margin-left: auto; margin-right: auto; overflow-x: inherit;">
   <table class="table" id="selection">
     <thead>
       <tr class="table-category text-center" id="center-th">

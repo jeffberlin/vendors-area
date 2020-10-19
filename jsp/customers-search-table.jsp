@@ -7,7 +7,7 @@
   <div class="table-header">
     <button type="button" class="grey-btn" value="Search for Customers" onclick="refreshReport (document.customersearch);">Search for Customers</button>
   </div> <!-- end .table-header -->
-  <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
+  <div class="row table-responsive" style="margin-left: auto; margin-right: auto; overflow-x: inherit;">
     <table class="table" id="selection">
       <thead>
         <tr class="table-category">

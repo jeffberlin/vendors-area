@@ -1,5 +1,5 @@
 <%@ include file="/includes/core.jsp" %>
-<div class="row table-responsive d-block" style="margin-left: auto; margin-right: auto;">
+<div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
   <table class="table" id="selection">
     <thead>
       <tr class="table-category">

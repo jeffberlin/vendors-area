@@ -73,6 +73,13 @@
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/customers-manage-tickets-add.jsp", ticketid);
         }
       </c:if>
+
+      function filterKeyPress(event) {
+        if (event.keyCode == 13) {
+          refreshReport ();
+          return (true);
+        }
+      }
     </script>
   </head>
   <body>

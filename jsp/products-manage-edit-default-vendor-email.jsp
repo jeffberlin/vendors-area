@@ -36,10 +36,13 @@
     tgtform.submit();
   }
 
-  function submitForm(form) {
-    if (allowChanges("You do not have permission to edit email templates.")) {
-      form.submit();
-    }
+  function submitVendorDefaultForm(form) {
+    <c:if test = "${ allowChanges == 0 }">
+      alert("You do not have permission to edit email templates.");
+    </c:if>
+    <c:if test = "${ allowChanges == 1 }">
+      form.submit ();
+    </c:if>
   }
 </script>
 <div class="transfer-section">
@@ -132,7 +135,7 @@
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
     <button type="button" class="save-btn" style="margin-right: .5rem;" onclick="closeResultFrame ();">Cancel</button>
     <button class="save-btn" type="button" onclick="showPreview (emailform);" style="margin-right: .5rem;">Preview</button>
-    <button class="save-btn" type="button" onclick="submitForm (emailform);">Save</button>
+    <button class="save-btn" type="button" onclick="submitVendorDefaultForm (emailform);">Save</button>
   </form>
   <form method="post" name="previewform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);" >
     <input type="hidden" name="ACTION" value="21" />

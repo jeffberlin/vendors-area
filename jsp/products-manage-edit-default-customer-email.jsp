@@ -46,7 +46,7 @@
   }
   function showPreview (form) {
     var tgtform = document.previewform;
-    tgtform.PREVIEWTEXT.value = form.CUSTOMEREMAILTEMPLATE.value;
+    tgtform.PREVIEWTEXT.value = form.DEFAULTCUSTOMEREMAILTEMPLATE.value;
     tgtform.submit ();
   }
 
@@ -157,11 +157,11 @@
     <button class="save-btn" type="button" onclick="showPreview (emailform);" style="margin-right: .5rem;">Preview</button>
     <button class="save-btn" type="button" onclick="submitEmailForm (emailform);">Save</button>
   </form>
-  <form method="post" name="previewform" action="https://vendors.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);">
+  <form method="post" name="previewform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);">
     <input type="hidden" name="ACTION" value="20">
     <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}">
     <input type="hidden" name="PREVIEWTEXT" value="">
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/previewtext.html">
-    <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error.html">
+    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
   </form>
 </div> <!-- end .transfer-section -->

@@ -60,13 +60,13 @@
       </tr>
       <tr id="input-tr">
         <th info>
-          <input class="input-search" type="text" name="FLT_EMAIL" value="" size="20" placeholder="Search">
+          <input class="input-search" type="text" name="FLT_EMAIL" value="" size="20" placeholder="Search" onkeypress="filterKeyPress(event);">
         </th>
         <th text>
-           <input class="input-search" type="text" name="FLT_NAME" value="" size="20" placeholder="Search">
+           <input class="input-search" type="text" name="FLT_NAME" value="" size="20" placeholder="Search" onkeypress="filterKeyPress(event);">
         </th>
         <th text>
-           <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="" size="20" placeholder="Search">
+           <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="" size="20" placeholder="Search" onkeypress="filterKeyPress(event);">
         </th>
         <c:if test = "${param.SHOWDETAILS != -1}">
           <th number></th>

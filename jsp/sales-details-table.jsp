@@ -65,7 +65,7 @@
   }
 %>
 <div class="table-responsive" style="overflow-x: inherit;">
-  <table class="table">
+  <table class="table" id="selection">
     <%= getTableData(request) %>
   </table>
 </div>
