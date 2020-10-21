@@ -113,8 +113,8 @@
     <input type="hidden" name="ACTION" value="13" />
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage.jsp" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
-    <button class="save-btn" type="button" onclick="submitVendorEmail (vendoremailform);">Save</button>
+    <button class="save-btn" type="button" onclick="submitVendorEmail (vendoremailform);" style="margin-right: .5rem;">Save</button>
     <button class="save-btn" type="button" style="margin-right: .5rem;" onclick="showPreview (21, vendoremailform.VENDOREMAILTEMPLATE.value, ${param.PRODUCTID});">Preview</button>
-    <button type="button" class="save-btn" onclick="closeResultFrame()" style="margin-right: .5rem;">Close</button>
+    <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
   </form>
 </div> <!-- end .transfer-section -->

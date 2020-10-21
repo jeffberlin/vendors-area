@@ -179,8 +179,8 @@
     <input type="hidden" name="ACTION" value="12" />
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage.jsp" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
-    <button class="save-btn" type="button" onclick="submitCustomerEmail (customeremailform);">Save</button>
+    <button class="save-btn" type="button" onclick="submitCustomerEmail (customeremailform);" style="margin-right: .5rem;">Save</button>
     <button class="save-btn" type="button" onclick="showPreview (20, customeremailform.CUSTOMEREMAILTEMPLATE.value, ${param.PRODUCTID});" style="margin-right: .5rem;" >Preview</button>
-    <button type="button" class="save-btn" onclick="closeResultFrame()" style="margin-right: .5rem;">Close</button>
+    <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
   </form>
 </div>

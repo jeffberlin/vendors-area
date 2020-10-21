@@ -179,8 +179,8 @@
     </span>
     <br>
     <textarea style="margin: .5rem 0; position:absolute;visibility:hidden;" rows="8" cols="100" name="DEFAULTSCREENDELIVERYTEMPLATE"></textarea>
-    <button class="save-btn" type="button" onclick="submitScreenTemplate (screenform);">Save</button>
-    <button class="save-btn" type="button" style="margin-right: .5rem;" onclick="showPreview (22, screenform.SCREENDELIVERYTEMPLATE.value, ${param.PRODUCTID});">Preview</button>
-    <button type="button" class="save-btn" style="margin-right: .5rem;" onclick="closeResultFrame ();">Cancel</button>
+    <button class="save-btn" type="button" onclick="submitScreenTemplate (screenform);" style="margin-right: .5rem;">Save</button>
+    <button class="save-btn" type="button" onclick="showPreview (22, screenform.SCREENDELIVERYTEMPLATE.value, ${param.PRODUCTID});" style="margin-right: .5rem;">Preview</button>
+    <button type="button" class="save-btn" onclick="closeResultFrame ();">Cancel</button>
   </form>
 </div>

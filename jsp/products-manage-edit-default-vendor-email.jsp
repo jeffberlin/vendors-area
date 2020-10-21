@@ -98,8 +98,8 @@
     </div>
     <textarea style="margin: .5rem 0;" id="template" name="DEFAULTVENDOREMAILTEMPLATE" rows="8" cols="80" placeholder="Type a message">${param.DEFAULTVENDOREMAILTEMPLATE}</textarea>
     <br>
-    <button class="save-btn" type="button" onclick="submitDefaultVendorEmailForm (defaultvendoremailform);">Save</button>
+    <button class="save-btn" type="button" onclick="submitDefaultVendorEmailForm (defaultvendoremailform);" style="margin-right: .5rem;">Save</button>
     <button class="save-btn" type="button" onclick="showPreview (21, defaultvendoremailform.DEFAULTVENDOREMAILTEMPLATE.value, 0);" style="margin-right: .5rem;">Preview</button>
-    <button type="button" class="save-btn" style="margin-right: .5rem;" onclick="closeResultFrame ();">Cancel</button>
+    <button type="button" class="save-btn" onclick="closeResultFrame ();">Cancel</button>
   </form>
 </div> <!-- end .transfer-section -->
