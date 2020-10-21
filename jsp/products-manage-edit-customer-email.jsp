@@ -1,6 +1,6 @@
 <%@ include file="/includes/core.jsp" %>
 <script>
-  function checkSyntax (form) {
+  function checkCustomerEmailSyntax (form) {
     var text = form.CUSTOMEREMAILTEMPLATE.value.toUpperCase ();
     if (text.indexOf ("#\#STDMESSAGE#\#") != -1) {
       return (true);
@@ -72,14 +72,21 @@
     form.CUSTOMEREMAILTEMPLATE.disabled = form.USEDEFAULTTEMPLATE.checked;
   }
 
-  function showPreview (form) {
-    var tgtform = document.previewform;
-    tgtform.PREVIEWTEXT.value = form.CUSTOMEREMAILTEMPLATE.value;
-    tgtform.submit ();
-  }
+  <c:if test = "${ allowChanges == 0 }">
+    function submitCustomerEmail (form) {
+      alert("You do not have permission to make changes.");
+    }
+  </c:if>
+  <c:if test = "${ allowChanges == 1 }">
+    function submitCustomerEmail (form) {
+      if (checkCustomerEmailSyntax (form)) {
+        form.submit();
+      }
+    }
+  </c:if>
 </script>
 <div class="transfer-section">
-  <form method="post" name="emailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
+  <form method="post" name="customeremailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
     <h5>Customer&nbsp;Email&nbsp;template&nbsp;for&nbsp;${param.PRODUCTNAME}</h5>
     <p class="text-section" style="margin-bottom: .5rem;">
       The template specified below will be used to override the global email template.
@@ -161,10 +168,10 @@
         </div>
       </div> <!-- end .dropdown -->
     </div>
-    <textarea style="margin: .5rem 0;" id="emailtemplate" name="CUSTOMEREMAILTEMPLATE" rows="8" cols="100">${param.CUSTOMEREMAILTEMPLATE}</textarea>
+    <textarea style="margin: .5rem 0;" id="template" name="CUSTOMEREMAILTEMPLATE" rows="8" cols="100"<c:if test="${empty param.CUSTOMEREMAILTEMPLATE}"> disabled</c:if>><c:choose><c:when test="${empty param.CUSTOMEREMAILTEMPLATE}">${param.DEFAULTCUSTOMEREMAILTEMPLATE}</c:when><c:otherwise>${param.CUSTOMEREMAILTEMPLATE}</c:otherwise></c:choose></textarea>
     <br>
     <span>
-      <input type="checkbox" name="USEDEFAULTTEMPLATE" onClick="useDefaultChanged (emailform);" style="margin-bottom: 1.2rem;"/>&nbsp;Use default/global template
+      <input type="checkbox" name="USEDEFAULTTEMPLATE" onClick="useDefaultChanged (customeremailform);" style="margin-bottom: 1.2rem;"<c:if test="${empty param.CUSTOMEREMAILTEMPLATE}"> checked</c:if>/>&nbsp;Use default/global template
     </span>
     <br>
     <textarea style="margin: .5rem 0; position: absolute; visibility: hidden;" rows="8" cols="100" name="DEFAULTCUSTOMEREMAILTEMPLATE">${param.DEFAULTCUSTOMEREMAILTEMPLATE}</textarea>
@@ -172,15 +179,8 @@
     <input type="hidden" name="ACTION" value="12" />
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage.jsp" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+    <button class="save-btn" type="button" onclick="submitCustomerEmail (customeremailform);">Save</button>
+    <button class="save-btn" type="button" onclick="showPreview (20, customeremailform.CUSTOMEREMAILTEMPLATE.value, ${param.PRODUCTID});" style="margin-right: .5rem;" >Preview</button>
     <button type="button" class="save-btn" onclick="closeResultFrame()" style="margin-right: .5rem;">Close</button>
-    <button class="save-btn" type="button" onclick="showPreview (emailform);"style="margin-right: .5rem;" >Preview</button>
-    <button class="save-btn" type="button" onclick="submitCustomerEmail (emailform);">Save</button>
-  </form>
-  <form method="post" name="previewform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);" >
-    <input type="hidden" name="ACTION" value="20" />
-    <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" />
-    <input type="hidden" name="PREVIEWTEXT" value="" />
-    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/previewtext.html" />
-    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
   </form>
 </div>

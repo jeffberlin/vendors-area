@@ -1,52 +1,21 @@
 <%@ include file="/includes/core.jsp" %>
 <script>
-  function insertAtCursor(myField, myValue) {
-    //IE support
-    if (document.selection) {
-      myField.focus();
-      sel = document.selection.createRange();
-      sel.text = myValue;
-    }
-    //MOZILLA/NETSCAPE support
-    else if (myField.selectionStart || myField.selectionStart == '0') {
-      var startPos = myField.selectionStart;
-      var endPos = myField.selectionEnd;
-      myField.value = myField.value.substring(0, startPos) + myValue + myField.value.substring(endPos, myField.value.length);
-    } else {
-      myField.value += myValue;
-    }
-  }
-
-  function makeToken(s) {
-    return ((s.charAt (0) == "#") ? s : ("##" + s + "##"));
-  }
-
-  function addToken(div) {
-    insertAtCursor(document.getElementById ("emailtemplate"), makeToken (div.title));
-  }
-
-  function fixTitle(div) {
-    div.title = makeToken (div.title);
-    return (false);
-  }
-
-  function showPreview(form) {
-    var tgtform = document.previewform;
-    tgtform.PREVIEWTEXT.value = form.DEFAULTVENDOREMAILTEMPLATE.value;
-    tgtform.submit();
-  }
-
-  function submitVendorDefaultForm(form) {
-    <c:if test = "${ allowChanges == 0 }">
+  <c:if test = "${ allowChanges == 0 }">
+    function submitDefaultVendorEmailForm(form) {
       alert("You do not have permission to edit email templates.");
-    </c:if>
-    <c:if test = "${ allowChanges == 1 }">
+    }
+  </c:if>
+  <c:if test = "${ allowChanges == 1 }">
+    function submitDefaultVendorEmailForm(form) {
       form.submit ();
-    </c:if>
-  }
+    }
+  </c:if>
 </script>
 <div class="transfer-section">
-  <form method="post" name="emailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="_parent">
+  <form method="post" name="defaultvendoremailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="_parent">
+    <input type="hidden" name="ACTION" value="16" />
+    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage.jsp" />
+    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
     <h5>Default&nbsp;Vendor&nbsp;Email&nbsp;template</h5>
     <p class="text-section" style="margin-bottom: .5rem;">
       This template will be used by all products that do not have a custom specific table set.
@@ -127,21 +96,10 @@
         </div>
       </div>
     </div>
-    <textarea style="margin: .5rem 0;" id="emailtemplate" name="DEFAULTVENDOREMAILTEMPLATE" rows="8" cols="80" placeholder="Type a message">${param.DEFAULTVENDOREMAILTEMPLATE}</textarea>
+    <textarea style="margin: .5rem 0;" id="template" name="DEFAULTVENDOREMAILTEMPLATE" rows="8" cols="80" placeholder="Type a message">${param.DEFAULTVENDOREMAILTEMPLATE}</textarea>
     <br>
-    <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" />
-    <input type="hidden" name="ACTION" value="15" />
-    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage.jsp" />
-    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+    <button class="save-btn" type="button" onclick="submitDefaultVendorEmailForm (defaultvendoremailform);">Save</button>
+    <button class="save-btn" type="button" onclick="showPreview (21, defaultvendoremailform.DEFAULTVENDOREMAILTEMPLATE.value, 0);" style="margin-right: .5rem;">Preview</button>
     <button type="button" class="save-btn" style="margin-right: .5rem;" onclick="closeResultFrame ();">Cancel</button>
-    <button class="save-btn" type="button" onclick="showPreview (emailform);" style="margin-right: .5rem;">Preview</button>
-    <button class="save-btn" type="button" onclick="submitVendorDefaultForm (emailform);">Save</button>
-  </form>
-  <form method="post" name="previewform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);" >
-    <input type="hidden" name="ACTION" value="21" />
-    <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" />
-    <input type="hidden" name="PREVIEWTEXT" value="" />
-    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/previewtext.html" />
-    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   </form>
 </div> <!-- end .transfer-section -->

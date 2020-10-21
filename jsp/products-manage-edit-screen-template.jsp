@@ -1,42 +1,6 @@
 <%@ include file="/includes/core.jsp" %>
 <script>
-  function insertAtCursor (myField, myValue) {
-    //IE support
-    if (document.selection) {
-      myField.focus();
-      sel = document.selection.createRange ();
-      sel.text = myValue;
-    }
-    //MOZILLA/NETSCAPE support
-    else if (myField.selectionStart || myField.selectionStart == '0') {
-      var startPos = myField.selectionStart;
-      var endPos = myField.selectionEnd;
-      myField.value = myField.value.substring(0, startPos) + myValue + myField.value.substring(endPos, myField.value.length);
-    } else {
-      myField.value += myValue;
-    }
-  }
-
-  function makeToken (s) {
-    return ((s.charAt (0) == "#") ? s : ("##" + s + "##"));
-  }
-
-  function addToken (div) {
-    insertAtCursor (document.getElementById ("screentemplate"), makeToken (div.title));
-  }
-
-  function fixTitle (div) {
-    div.title = makeToken (div.title);
-    return (false);
-  }
-
-  function showPreview (form) {
-    var tgtform = document.previewform;
-    tgtform.PREVIEWTEXT.value = form.SCREENDELIVERYTEMPLATE.value;
-    tgtform.submit ();
-  }
-
-  function checkSyntax (form) {
+  function checkScreenTemplateSyntax (form) {
     var text = form.SCREENDELIVERYTEMPLATE.value.toUpperCase ();
     if (text.indexOf ("#\#STDMESSAGE#\#") != -1) {
       return (true);
@@ -108,27 +72,21 @@
     form.SCREENDELIVERYTEMPLATE.disabled = form.USEDEFAULTTEMPLATE.checked;
   }
 
-  function initForm (form) {
-    if (isBlank (form.SCREENDELIVERYTEMPLATE.value)){
-      form.SCREENDELIVERYTEMPLATE.value = form.DEFAULTSCREENDELIVERYTEMPLATE.value;
-      form.SCREENDELIVERYTEMPLATE.disabled = true;
-      form.USEDEFAULTTEMPLATE.checked = true;
-    }
-  }
-
-  function submitChanges (form) {
-    <c:if test = "${ allowChanges == 0 }">
+  <c:if test = "${ allowChanges == 0 }">
+    function submitScreenTemplate(form) {
       alert("You do not have permission to make changes.");
-    </c:if>
-    <c:if test = "${ allowChanges == 1}">
-      if (checkSyntax (form)) {
+    }
+  </c:if>
+  <c:if test = "${ allowChanges == 1}">
+    function submitScreenTemplate(form) {
+      if (checkScreenTemplateSyntax (form)) {
         form.submit ();
       }
-    </c:if>
-  }
+    }
+  </c:if>
 </script>
 <div class="transfer-section">
-  <form method="post" name="emailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="_parent">
+  <form method="post" name="screenform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="_parent">
     <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" />
     <input type="hidden" name="ACTION" value="14" />
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage.jsp" />
@@ -214,22 +172,15 @@
         </div>
       </div> <!-- end .dropdown -->
     </div>
-    <textarea style="margin: .5rem 0;" id="screentemplate" name="SCREENDELIVERYTEMPLATE" rows="8" cols="100">${param.SCREENDELIVERYTEMPLATE}</textarea>
+    <textarea style="margin: .5rem 0;" id="template" name="SCREENDELIVERYTEMPLATE" rows="8" cols="100"<c:if test="${empty param.SCREENDELIVERYTEMPLATE}"> disabled</c:if>>${param.SCREENDELIVERYTEMPLATE}</textarea>
     <br>
     <span>
-      <input type="checkbox" onClick="useDefaultChanged (emailform);" style="margin-bottom: 1.2rem;"<c:if test="${param.USEDEFAULTTEMPLATE!=0}">checked</c:if>/>&nbsp;Use default template
+      <input type="checkbox" name="USEDEFAULTTEMPLATE" onClick="useDefaultChanged (screenform);" style="margin-bottom: 1.2rem;"<c:if test="${empty param.SCREENDELIVERYTEMPLATE}"> checked</c:if>/>&nbsp;Use default template
     </span>
     <br>
     <textarea style="margin: .5rem 0; position:absolute;visibility:hidden;" rows="8" cols="100" name="DEFAULTSCREENDELIVERYTEMPLATE"></textarea>
+    <button class="save-btn" type="button" onclick="submitScreenTemplate (screenform);">Save</button>
+    <button class="save-btn" type="button" style="margin-right: .5rem;" onclick="showPreview (22, screenform.SCREENDELIVERYTEMPLATE.value, ${param.PRODUCTID});">Preview</button>
     <button type="button" class="save-btn" style="margin-right: .5rem;" onclick="closeResultFrame ();">Cancel</button>
-    <button class="save-btn" type="button" style="margin-right: .5rem;" onclick="showPreview (emailform);">Preview</button>
-    <button class="save-btn" type="button" onclick="submitChanges (emailform);">Save</button>
-  </form>
-  <form method="post" name="previewform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);" >
-    <input type="hidden" name="ACTION" value="22" />
-    <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" />
-    <input type="hidden" name="PREVIEWTEXT" value="" />
-    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/previewtext.html" />
-    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
   </form>
 </div>

@@ -1,35 +1,5 @@
 <%@ include file="/includes/core.jsp" %>
 <script>
-  function insertAtCursor (myField, myValue) {
-    //IE support
-    if (document.selection) {
-      myField.focus();
-      sel = document.selection.createRange ();
-      sel.text = myValue;
-    }
-    //MOZILLA/NETSCAPE support
-    else if (myField.selectionStart || myField.selectionStart == '0') {
-      var startPos = myField.selectionStart;
-      var endPos = myField.selectionEnd;
-      myField.value = myField.value.substring(0, startPos) + myValue + myField.value.substring(endPos, myField.value.length);
-    } else {
-      myField.value += myValue;
-    }
-  }
-
-  function makeToken (s) {
-    return ((s.charAt (0) == "#") ? s : ("##" + s + "##"));
-  }
-
-  function addToken (div) {
-    insertAtCursor (document.getElementById ("emailtemplate"), makeToken (div.title));
-  }
-
-  function fixTitle (div) {
-    div.title = makeToken (div.title);
-    return (false);
-  }
-
   function useDefaultChanged (form) {
     if (form.USEDEFAULTTEMPLATE.checked) {
       form.CUSTOMEREMAILTEMPLATE.value = form.DEFAULTCUSTOMEREMAILTEMPLATE.value;
@@ -37,37 +7,25 @@
     form.CUSTOMEREMAILTEMPLATE.disabled = form.USEDEFAULTTEMPLATE.checked;
   }
 
-  function initForm (form) {
-    if (isBlank (form.CUSTOMEREMAILTEMPLATE.value)){
-      form.CUSTOMEREMAILTEMPLATE.value = form.DEFAULTCUSTOMEREMAILTEMPLATE.value;
-      form.CUSTOMEREMAILTEMPLATE.disabled = true;
-      form.USEDEFAULTTEMPLATE.checked = true;
-    }
-  }
-  function showPreview (form) {
-    var tgtform = document.previewform;
-    tgtform.PREVIEWTEXT.value = form.DEFAULTCUSTOMEREMAILTEMPLATE.value;
-    tgtform.submit ();
-  }
-
-  function submitEmailForm(form) {
-    if (isBlank(form.DEFAULTCUSTOMEREMAILTEMPLATE.value)) {
-      alert("Cannot leave default template blank! It must at least have the Standard Message token.");
-      form.DEFAULTCUSTOMEREMAILTEMPLATE.value = "\#\#STDMESSAGE\#\#";
-      form.DEFAULTCUSTOMEREMAILTEMPLATE.focus();
-      return (false);
-    }
-    <c:if test = "${ allowChanges == 0 }">
+  <c:if test = "${ allowChanges == 0 }">
+    function submitDefaultCustomerEmailForm(form) {
       alert("You do not have permission to edit email templates.");
-    </c:if>
-    <c:if test = "${ allowChanges == 1 }">
+    }
+  </c:if>
+  <c:if test = "${ allowChanges == 1 }">
+    function submitDefaultCustomerEmailForm(form) {
+      if (isBlank(form.DEFAULTCUSTOMEREMAILTEMPLATE.value)) {
+        alert("Cannot leave default template blank! It must at least have the Standard Message token.");
+        form.DEFAULTCUSTOMEREMAILTEMPLATE.value = "\#\#STDMESSAGE\#\#";
+        form.DEFAULTCUSTOMEREMAILTEMPLATE.focus();
+        return (false);
+      }
       form.submit();
-    </c:if>
-  }
+    }
+  </c:if>
 </script>
 <div class="transfer-section">
-  <form method="post" name="emailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="_parent">
-    <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" />
+  <form method="post" name="defaultcustomeremailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="_parent">
     <input type="hidden" name="ACTION" value="15" />
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage.jsp" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
@@ -151,17 +109,10 @@
         </div>
       </div>
     </div>
-    <textarea style="margin: .5rem 0;" id="emailtemplate" name="DEFAULTCUSTOMEREMAILTEMPLATE" rows="8" cols="80" placeholder="Type a message">${param.DEFAULTCUSTOMEREMAILTEMPLATE}</textarea>
+    <textarea style="margin: .5rem 0;" id="template" name="DEFAULTCUSTOMEREMAILTEMPLATE" rows="8" cols="80" placeholder="Type a message">${param.DEFAULTCUSTOMEREMAILTEMPLATE}</textarea>
     <br>
+    <button class="save-btn" type="button" onclick="submitDefaultCustomerEmailForm (defaultcustomeremailform);">Save</button>
+    <button class="save-btn" type="button" onclick="showPreview (20, defaultcustomeremailform.DEFAULTCUSTOMEREMAILTEMPLATE.value, 0);" style="margin-right: .5rem;">Preview</button>
     <button class="save-btn" type="button" onclick="closeResultFrame ();" style="margin-right: .5rem;">Cancel</button>
-    <button class="save-btn" type="button" onclick="showPreview (emailform);" style="margin-right: .5rem;">Preview</button>
-    <button class="save-btn" type="button" onclick="submitEmailForm (emailform);">Save</button>
-  </form>
-  <form method="post" name="previewform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);">
-    <input type="hidden" name="ACTION" value="20">
-    <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}">
-    <input type="hidden" name="PREVIEWTEXT" value="">
-    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/previewtext.html">
-    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
   </form>
 </div> <!-- end .transfer-section -->

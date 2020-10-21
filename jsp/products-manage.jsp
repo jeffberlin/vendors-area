@@ -51,12 +51,6 @@
         function addMultiple (productid) {
           alert ("You are not allowed to add products.");
         }
-        function submitCustomerEmail (form) {
-          alert("You do not have permission to make changes.");
-        }
-        function submitCustomerEmail (form) {
-          alert("You do not have permission to make changes.");
-        }
       </c:if>
 
       <c:if test = "${ allowChanges == 1 }">
@@ -65,16 +59,6 @@
         }
         function addMultiple (productid) {
           submitForm(7, "_parent", "https://vendors-new.bmtmicro.com/products-manage-add-multiple.jsp", productid);
-        }
-        function submitCustomerEmail (form) {
-          if (checkSyntax (form)) {
-            form.submit();
-          }
-        }
-        function submitCustomerEmail (form) {
-          if (checkSyntax (form)) {
-            form.submit ();
-          }
         }
       </c:if>
 
@@ -122,19 +106,6 @@
         refreshReport ();
       }
 
-      function addToken (div) {
-        insertAtCursor (document.getElementById ("emailtemplate"), makeToken (div.title));
-      }
-
-      function makeToken (s) {
-        return ((s.charAt (0) == "#") ? s : ("##" + s + "##"));
-      }
-
-      function fixTitle (div) {
-        div.title = makeToken (div.title);
-        return (false);
-      }
-
       function refreshReport () {
         submitForm(-1, "tableframe", "https://vendors-new.bmtmicro.com/products-manage-table.jsp");
       }
@@ -150,6 +121,44 @@
           return (true);
         }
       }
+
+      function insertAtCursor (myField, myValue) {
+        //IE support
+        if (document.selection) {
+          myField.focus();
+          sel = document.selection.createRange ();
+          sel.text = myValue;
+        }
+          //MOZILLA/NETSCAPE support
+          else if (myField.selectionStart || myField.selectionStart == '0') {
+            var startPos = myField.selectionStart;
+            var endPos = myField.selectionEnd;
+            myField.value = myField.value.substring(0, startPos) + myValue + myField.value.substring(endPos, myField.value.length);
+          } else {
+            myField.value += myValue;
+        }
+      }
+
+     function makeToken (s) {
+       return ((s.charAt (0) == "#") ? s : ("##" + s + "##"));
+     }
+
+     function addToken (div) {
+       insertAtCursor (document.getElementById ("template"), makeToken (div.title));
+     }
+
+     function fixTitle (div) {
+       div.title = makeToken (div.title);
+       return (false);
+     }
+
+     function showPreview (action, text, productid) {
+       var tgtform = document.previewform;
+       tgtform.ACTION.value = action;
+       tgtform.PREVIEWTEXT.value = text;
+       tgtform.PRODUCTID.value = productid;
+       tgtform.submit ();
+     }
     </script>
   </head>
   <body>
@@ -177,6 +186,13 @@
       </div> <!-- end .container-fluid -->
       <jsp:include page="includes/footer.jsp" />
     </div> <!-- end .main-raised -->
+    <form method="post" name="previewform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" target="previewPopUp" onsubmit="window.open ('', this.target, 'location=no,width=400,height=600,resizable=yes').focus(); return (true);" >
+      <input type="hidden" name="ACTION" value="" />
+      <input type="hidden" name="PRODUCTID" value="" />
+      <input type="hidden" name="PREVIEWTEXT" value="" />
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/previewtext.html" />
+      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+    </form>
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
   <script>
