@@ -18,7 +18,7 @@
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <style media="screen" type="text/css">
       .content-box {
-        min-height: 678px !important;
+        min-height: 652px !important;
       }
       ul li {
         color: #707070;

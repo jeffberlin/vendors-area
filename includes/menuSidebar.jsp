@@ -6,7 +6,7 @@
 </c:if>
 <div class="col-lg-2">
   <aside class="sidebar" role="complementary">
-    <img class="img-fluid" src="https://vendors-new.bmtmicro.com/images/bmt-micro-logo-new-min.png" alt="BMT Micro, Inc. logo">
+    <img class="img-fluid" src='<c:url value="https://vendors-new.bmtmicro.com/images/bmt-micro-logo-new-min.png"></c:url>' alt="BMT Micro, Inc. logo">
     <div class="dropright" style="padding-bottom: 0px;">
       <a class="dropdown-toggle vendor-name text-wrap text-break" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
         ${URLDecoder.decode(cookie['BMTMicro.Vendors.Name'].value)}
