@@ -2,10 +2,9 @@
 <form name="subscriptions" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Subscriptions" method="post">
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
-  <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
-  <input type="hidden" name="ROWSPERPAGE" value="${param.ROWSPERPAGE}" />
-  <input type="hidden" name="PAGE" value="${param.PAGE}" />
-  <input type="hidden" name="PAGECOUNT" value="${param.PAGECOUNT}" />
+  <input type="hidden" name="ROWSPERPAGE" value="${requestScope.ROWSPERPAGE}" />
+  <input type="hidden" name="PAGE" value="${requestScope.PAGE}" />
+  <input type="hidden" name="PAGECOUNT" value="${requestScope.PAGECOUNT}" />
   <input type="hidden" name="ACTION" value="" />
   <input type="hidden" name="SUBSCRIPTIONID" value="" />
   <div class="table-header">
@@ -71,15 +70,45 @@
         <th option></th>
       </tr>
       <tbody>
-        ${param.TABLEDATA}
+        <c:forEach var="row" items="${requestScope.TABLEDATA}">
+          <tr onclick="highlightLinks (this);">
+            <td number>${row.SUBSCRIPTIONID}</td>
+            <td text><a href="mailto:${requestScope.EMAIL}">${row.EMAIL}</a></td>
+            <td text>${row.NAME}</td>
+            <td info>${row.PRODUCTNAME}</td>
+            <td money>${row.PRICE}</td>
+            <td date>${row.EFFECTIVEDATE}</td>
+            <td date>
+              <c:choose>
+                <c:when test="${!empty requestScope.EXPIRATIONDATE}">
+                  Active
+                </c:when>
+                <c:otherwise>
+                  ${row.EXPIRATIONDATE}
+                </c:otherwise>
+              </c:choose>
+            </td>
+            <td date>${row.NEXTBILLINGDATE}</td>
+            <td option>
+              <c:choose>
+                <c:when test="${!empty requestScope.EXPIRATIONDATE}">
+                  <button class='save-btn' value='Cancel' onclick='cancelSubscription (${requestScope.SUBSCRIPTIONID});'>Cancel</button>
+                </c:when>
+                <c:otherwise>
+                  Cancelled
+                </c:otherwise>
+              </c:choose>
+            </td>
+          </tr>
+        </c:forEach>
       </tbody>
       <tfoot>
         <tr class="table-total">
           <th scope="row" colspan="9">
             <div id="pageselector">
-              <c:if test = "${param.PAGECOUNT > 1}">
+              <c:if test = "${requestScope.PAGECOUNT > 1}">
                 Pages:
-                <c:forEach var = "page" begin = "1" end = "${param.PAGECOUNT}">
+                <c:forEach var = "page" begin = "1" end = "${requestScope.PAGECOUNT}">
                   &nbsp;<a href="javascript:selectPage(${page});">${page}</a>&nbsp;
                 </c:forEach>
               </c:if>

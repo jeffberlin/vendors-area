@@ -2,10 +2,10 @@
 <form name="tickets" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Tickets" method="post">
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-tickets-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
-  <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
-  <input type="hidden" name="ROWSPERPAGE" value="${param.ROWSPERPAGE}" />
-  <input type="hidden" name="PAGE" value="${param.PAGE}" />
-  <input type="hidden" name="PAGECOUNT" value="${param.PAGECOUNT}" />
+  <input type="hidden" name="ROWTEMPLATEURL" value="${requestScope.ROWTEMPLATEURL}" />
+  <input type="hidden" name="ROWSPERPAGE" value="${requestScope.ROWSPERPAGE}" />
+  <input type="hidden" name="PAGE" value="${requestScope.PAGE}" />
+  <input type="hidden" name="PAGECOUNT" value="${requestScope.PAGECOUNT}" />
   <input type="hidden" name="ACTION" value="" />
   <input type="hidden" name="TICKETID" value="" />
   <div class="table-header">
@@ -28,7 +28,7 @@
           <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Product Name'" text>
             <a href="#" class="fdTableSortTrigger">Product&nbsp;Name</a>
           </th>
-          <c:if test = "${param.SHOWDETAILS != -1}">
+          <c:if test = "${requestScope.SHOWDETAILS != -1}">
             <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Granted'" number>
               <a href="#" class="fdTableSortTrigger">Granted</a>
             </th>
@@ -39,7 +39,7 @@
               <a href="#" class="fdTableSortTrigger">Available</a>
             </th>
           </c:if>
-          <c:if test = "${param.SHOWDETAILS == -1}">
+          <c:if test = "${requestScope.SHOWDETAILS == -1}">
             <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Order ID'" number>
               <a href="#" class="fdTableSortTrigger">Order ID</a>
             </th>
@@ -68,12 +68,12 @@
         <th text>
            <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="" size="20" placeholder="Search" onkeypress="filterKeyPress(event);">
         </th>
-        <c:if test = "${param.SHOWDETAILS != -1}">
+        <c:if test = "${requestScope.SHOWDETAILS != -1}">
           <th number></th>
           <th number></th>
           <th number></th>
         </c:if>
-        <c:if test = "${param.SHOWDETAILS == -1}">
+        <c:if test = "${requestScope.SHOWDETAILS == -1}">
           <th number></th>
           <th date></th>
           <th text></th>
@@ -82,16 +82,16 @@
       </tr>
       <tbody>
         <tr>
-          ${param.TABLEDATA}
+          ${requestScope.TABLEDATA}
         </tr>
       </tbody>
       <tfoot>
         <tr class="table-total">
           <th scope="row" colspan="10">
             <div id="pageselector">
-              <c:if test = "${param.PAGECOUNT > 1}">
+              <c:if test = "${requestScope.PAGECOUNT > 1}">
                 Pages:
-                <c:forEach var = "page" begin = "1" end = "${param.PAGECOUNT}">
+                <c:forEach var = "page" begin = "1" end = "${requestScope.PAGECOUNT}">
                   &nbsp;<a href="javascript:selectPage(${page});">${page}</a>&nbsp;
                 </c:forEach>
               </c:if>

@@ -63,7 +63,7 @@
                 <div class="login-btn text-center">
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/login-reset-password-success.jsp">
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
-                  <input type="hidden" name="PWRID" value="${param.PWRID}">
+                  <input type="hidden" name="PWRID" value="${requestScope.PWRID}">
                   <button type="button" name="SET" value="Set Password" onclick="submitForm (resetform);">Set Password</button>
                 </div>
               </form>

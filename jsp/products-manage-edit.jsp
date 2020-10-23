@@ -316,11 +316,11 @@
                     Product Format
                   </a>
                 </li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                   <a class="nav-link" id="options-tab" data-toggle="tab" href="#options" role="tab" aria-controls="shopping cart options" aria-selected="true">
                     Shopping Cart
                   </a>
-                </li> -->
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" id="fulfillment-tab" data-toggle="tab" href="#fulfillment" role="tab" aria-controls="fulfillment info" aria-selected="true">
                     Fulfillment
@@ -488,20 +488,8 @@
                         <input type="checkbox"<c:if test="${param.PRICEINCLUDESVAT != 0}"> checked</c:if>/>&nbsp;The price includes VAT&nbsp;&nbsp;&nbsp;&nbsp;
                         <input type="hidden" name="PRICEINCLUDESGST" value="${param.PRICEINCLUDESGST}" />
                         <input type="checkbox" style="margin-bottom: .5rem;"<c:if test="${param.PRICEINCLUDESGST != 0}"> checked</c:if>/>&nbsp;The price includes GST
-                        <p style="font-size: .9rem; font-style: italic; margin-bottom: 2rem;">Check the respective checkbox to indicate that the price includes European Union VAT and/or Australian GST. When checked, the customer will pay the prices listed above and any tax due is deducted from the sales royalty. When not checked, the customer will see tax added to the price specified above if applicable.</p>
+                        <p style="font-size: .9rem; font-style: italic;">Check the respective checkbox to indicate that the price includes European Union VAT and/or Australian GST. When checked, the customer will pay the prices listed above and any tax due is deducted from the sales royalty. When not checked, the customer will see tax added to the price specified above if applicable.</p>
                       </span>
-                      <h5>Shopping&nbsp;Cart&nbsp;Options</h5>
-                      <p style="margin-bottom: .2rem;">Unchecking the boxes will hide these options in your shopping cart.</p>
-                      <p style="font-size: .9rem; font-style: italic;">Note that the account settings have additional shopping cart options.</p>
-                      <span>
-                        <input type="hidden" name="SHOWCDOPTION" value="${param.SHOWCDOPTION}" />
-                        <input type="checkbox" style="margin-bottom: .1rem;"<c:if test="${param.SHOWCDOPTION != 0}"> checked</c:if>/>&nbsp;Show Backup CD option
-                        <p style="font-size: .9rem; font-style: italic;">(Backup CD will be created by BMT Micro and sent to the customer).</p>
-                      </span>
-                      <p>
-                        <input type="hidden" name="SHOWDISCOUNTFIELD" value="${param.SHOWDISCOUNTFIELD}" />
-                        <input type="checkbox"<c:if test="${param.SHOWDISCOUNTFIELD != 0}"> checked</c:if>/>&nbsp;Show Discount/Gift Certificate field
-                      </p>
                       <span>
                         <input type="hidden" name="SHIPPED" value="${param.SHIPPED}" />
                         <input type="checkbox" name="SHIPPED_CHK" onchange="setFieldVisible ('shipping', this.checked);"<c:if test="${param.SHIPPED != 0}"> checked</c:if>/>&nbsp;Product is shipped
@@ -515,29 +503,7 @@
                         <p style="font-size: .9rem; font-style: italic; margin-bottom: .2rem;">If shipping is free or included in product price, please leave this field blank!</p>
                         <p style="font-size: .9rem; font-style: italic;">Click&nbsp;<a href="https://vendors-new.bmtmicro.com/manage-shipping-schemes.jsp">here</a>&nbsp;to set up or configure shipping schemes and regions.</p>
                       </div>
-                      <h6>Fields for allowing gift purchases</h6>
-                      <span>
-                        <input type="hidden" name="SHOWREGNAMEFIELD" value="${param.SHOWREGNAMEFIELD}" />
-                        <input type="checkbox"<c:if test="${param.SHOWREGNAMEFIELD != 0}"> checked</c:if>/>&nbsp;Show Registername field
-                        <p style="font-size: .9rem; font-style: italic;">Allow buyer to purchase for third party (gift for friend/colleague/etc).</p>
-                      </span>
-                      <span>
-                        <input type="hidden" name="SHOWEMAILFIELD" value="${param.SHOWEMAILFIELD}" />
-                        <input type="checkbox"<c:if test="${param.SHOWEMAILFIELD != 0}"> checked</c:if>/>&nbsp;Show Delivery Email field
-                        <p style="font-size: .9rem; font-style: italic;">Allow product information email to be sent to third party (gift for friend/colleague/etc).</p>
-                      </span>
-                      <h6>Cart&nbsp;parameter&nbsp;checks</h6>
-                      <span>
-                        <input type="hidden" name="QUANTITYFIXED" value="${param.QUANTITYFIXED}" />
-                        <input type="checkbox"<c:if test="${param.QUANTITYFIXED != 0}"> checked</c:if>/>&nbsp;Quantity is fixed
-                        <p style="font-size: .9rem; font-style: italic;">Enabling this option will prevent the customer from changing the quantity in the shopping cart.</p>
-                      </span>
-                      <span>
-                        <input type="hidden" name="NEEDSORDERPARAMETERS" value="${param.NEEDSORDERPARAMETERS}" />
-                        <input type="checkbox"<c:if test="${param.NEEDSORDERPARAMETERS != 0}"> checked</c:if>/>&nbsp;Order Parameters must not be blank
-                        <p style="font-size: .9rem; font-style: italic; margin-bottom: 2rem;">Enabling this option will prevent the customer from completing an order if the ORDERPARAMETERS value is missing in the shopping cart.</p>
-                      </span>
-                      <button id="backToBasic" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
+                      <button id="backToBasic" class="save-btn" type="button" style="margin-right: .5rem; margin-top: 1rem;">Previous</button>
                       <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" >Save</button>
                       <button id="toProductFormat" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
@@ -589,6 +555,45 @@
                       </span>
                       <br>
                       <button id="backToPricing" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
+                      <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" >Save</button>
+                      <button id="toCartOptions" class="save-btn" type="button">Next</button>
+                    </div> <!-- end .tab-pane -->
+                    <div class="tab-pane fade" id="options" role="tabpanel" aria-labelledby="options-tab">
+                      <h5>Shopping&nbsp;Cart&nbsp;Options</h5>
+                      <p style="margin-bottom: .2rem;">Unchecking the boxes will hide these options in your shopping cart.</p>
+                      <p style="font-size: .9rem; font-style: italic;">Note that the account settings have additional shopping cart options.</p>
+                      <span>
+                        <input type="hidden" name="SHOWCDOPTION" value="${param.SHOWCDOPTION}" />
+                        <input type="checkbox" style="margin-bottom: .1rem;"<c:if test="${param.SHOWCDOPTION != 0}"> checked</c:if>/>&nbsp;Show Backup CD option
+                        <p style="font-size: .9rem; font-style: italic;">(Backup CD will be created by BMT Micro and sent to the customer).</p>
+                      </span>
+                      <p>
+                        <input type="hidden" name="SHOWDISCOUNTFIELD" value="${param.SHOWDISCOUNTFIELD}" />
+                        <input type="checkbox"<c:if test="${param.SHOWDISCOUNTFIELD != 0}"> checked</c:if>/>&nbsp;Show Discount/Gift Certificate field
+                      </p>
+                      <h6>Fields for allowing gift purchases</h6>
+                      <span>
+                        <input type="hidden" name="SHOWREGNAMEFIELD" value="${param.SHOWREGNAMEFIELD}" />
+                        <input type="checkbox"<c:if test="${param.SHOWREGNAMEFIELD != 0}"> checked</c:if>/>&nbsp;Show Registername field
+                        <p style="font-size: .9rem; font-style: italic;">Allow buyer to purchase for third party (gift for friend/colleague/etc).</p>
+                      </span>
+                      <span>
+                        <input type="hidden" name="SHOWEMAILFIELD" value="${param.SHOWEMAILFIELD}" />
+                        <input type="checkbox"<c:if test="${param.SHOWEMAILFIELD != 0}"> checked</c:if>/>&nbsp;Show Delivery Email field
+                        <p style="font-size: .9rem; font-style: italic;">Allow product information email to be sent to third party (gift for friend/colleague/etc).</p>
+                      </span>
+                      <h6>Cart&nbsp;parameter&nbsp;checks</h6>
+                      <span>
+                        <input type="hidden" name="QUANTITYFIXED" value="${param.QUANTITYFIXED}" />
+                        <input type="checkbox"<c:if test="${param.QUANTITYFIXED != 0}"> checked</c:if>/>&nbsp;Quantity is fixed
+                        <p style="font-size: .9rem; font-style: italic;">Enabling this option will prevent the customer from changing the quantity in the shopping cart.</p>
+                      </span>
+                      <span>
+                        <input type="hidden" name="NEEDSORDERPARAMETERS" value="${param.NEEDSORDERPARAMETERS}" />
+                        <input type="checkbox"<c:if test="${param.NEEDSORDERPARAMETERS != 0}"> checked</c:if>/>&nbsp;Order Parameters must not be blank
+                        <p style="font-size: .9rem; font-style: italic; margin-bottom: 2rem;">Enabling this option will prevent the customer from completing an order if the ORDERPARAMETERS value is missing in the shopping cart.</p>
+                      </span>
+                      <button id="backToProductFormat" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
                       <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" style="margin-right: .5rem;" >Save</button>
                       <button id="toFulfillment" class="save-btn" type="button">Next</button>
                     </div> <!-- end .tab-pane -->
@@ -765,7 +770,7 @@
                         </span>
                       </div>
                       <p style="margin-top: 2rem;">Click 'Save' button to save changes, or 'Previous' to go back.</p>
-                      <button id="backToProductFormat" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
+                      <button id="backToCartOptions" class="save-btn" type="button" style="margin-right: .5rem;">Previous</button>
                       <button id="update" class="save-btn" type="button" onclick="return (submitForm (productform));" >Save</button>
                     </div> <!-- end .tab-pane -->
                   </div> <!-- end .tab-content -->
@@ -804,16 +809,28 @@
         $("#pricing-tab").addClass('active');
         $("#productFormat-tab").removeClass('active');
       });
-      // 'Next' to Fulfillment
-      $("#toFulfillment").click(function(){
-        $("#fulfillment-tab").tab('show');
-        $("#fulfillment-tab").addClass('active');
+      // 'Next' to Shopping Cart Options
+      $("#toCartOptions").click(function(){
+        $("#options-tab").tab('show');
+        $("#options-tab").addClass('active');
         $("#productFormat-tab").removeClass('active');
       });
       // 'Previous' to Product Format
       $("#backToProductFormat").click(function(){
         $("#productFormat-tab").tab('show');
         $("#productFormat-tab").addClass('active');
+        $("#options-tab").removeClass('active');
+      });
+      // 'Next' to Fulfillment Info
+      $("#toFulfillment").click(function(){
+        $("#fulfillment-tab").tab('show');
+        $("#fulfillment-tab").addClass('active');
+        $("#options-tab").removeClass('active');
+      });
+      // 'Previous' to Shopping Cart Options
+      $("#backToCartOptions").click(function(){
+        $("#options-tab").tab('show');
+        $("#options-tab").addClass('active');
         $("#fulfillment-tab").removeClass('active');
       });
 

@@ -102,7 +102,7 @@
         <article class="section">
           <div class="row justify-content-start">
             <jsp:include page="includes/menuSidebar.jsp" />
-            <div id="account-page" class="col-lg-10 col-md-12 page-title" id="account-page">
+            <div class="col-lg-10 col-md-12 page-title" id="account-page">
               <form name="account" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" method="post">
                 <input type="hidden" name = "ACTION" value = "1"/>
                 <input type="hidden" name = "NEXT_PAGE" value = "https://vendors-new.bmtmicro.com/account-page.jsp"/>

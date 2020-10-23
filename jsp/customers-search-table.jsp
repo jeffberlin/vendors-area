@@ -50,29 +50,29 @@
       <tr id="input-tr">
         <th></th>
         <th id="input-tooltip" data-toggle="tooltip" data-placement="top" title="Filter results" number>
-          <input class="input-search" type="text" name="FLT_ORDERID" value="${param.FLT_ORDERID}" size="8" onkeypress="filterKeyPress(event)" onkeydown="javascript:stripspaces(this)" placeholder="Search">
+          <input class="input-search" type="text" name="FLT_ORDERID" value="${requestScope.FLT_ORDERID}" size="8" onkeypress="filterKeyPress(event)" onkeydown="javascript:stripspaces(this)" placeholder="Search">
         </th>
         <th id="input-tooltip" data-toggle="tooltip" data-placement="top" title="Filter results" text>
-          <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="${param.FLT_PRODUCTNAME}" size="10" placeholder="Search" onkeypress="filterKeyPress(event)">
+          <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="${requestScope.FLT_PRODUCTNAME}" size="10" placeholder="Search" onkeypress="filterKeyPress(event)">
         </th>
         <th date></th>
         <th number></th>
         <th money></th>
         <th info></th>
         <th id="input-tooltip" data-toggle="tooltip" data-placement="top" title="Filter results" info>
-          <input class="input-search" type="text" name="FLT_NAME" value="${param.FLT_NAME}" size="14" placeholder="Search" onkeypress="filterKeyPress(event)">
+          <input class="input-search" type="text" name="FLT_NAME" value="${requestScope.FLT_NAME}" size="14" placeholder="Search" onkeypress="filterKeyPress(event)">
         </th>
         <th id="input-tooltip" data-toggle="tooltip" data-placement="top" title="Filter results" info>
-          <input class="input-search" type="text" name="FLT_ADDRESS" value="${param.FLT_ADDRESS}" size="14" placeholder="Search" onkeypress="filterKeyPress(event)">
+          <input class="input-search" type="text" name="FLT_ADDRESS" value="${requestScope.FLT_ADDRESS}" size="14" placeholder="Search" onkeypress="filterKeyPress(event)">
         </th>
         <th text></th>
         <th id="input-tooltip" data-toggle="tooltip" data-placement="top" title="Filter results" info>
-          <input class="input-search" type="text" name="FLT_EMAIL" value="${param.FLT_EMAIL}" size="14" onkeypress="filterKeyPress(event)" onkeydown="javascript:stripspaces(this)" placeholder="Search">
+          <input class="input-search" type="text" name="FLT_EMAIL" value="${requestScope.FLT_EMAIL}" size="14" onkeypress="filterKeyPress(event)" onkeydown="javascript:stripspaces(this)" placeholder="Search">
         </th>
       </tr>
       <tbody>
         <tr>
-          ${param.TABLEDATA}
+          ${requestScope.TABLEDATA}
         </tr>
       </tbody>
       <tfoot>

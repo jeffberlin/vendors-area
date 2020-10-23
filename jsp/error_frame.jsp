@@ -35,8 +35,8 @@
               <h4>Error</h4>
               <p>An error has occurred.</p>
               <div class="content-box">
-                <p>${ param.MESSAGE }
-                  <c:if test = "${ param.MESSAGE == null }">
+                <p>${ requestScope.MESSAGE }
+                  <c:if test = "${ requestScope.MESSAGE == null }">
                     We are unable to complete your request at this time. The system may be down at this time. Please wait 60 minutes and try your report again. If you continue to have difficulties, please contact <a href="mailto:vendors@bmtmicro.com">vendors@bmtmicro.com</a> for assistance.
                   </c:if>
                 </p>

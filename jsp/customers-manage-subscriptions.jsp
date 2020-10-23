@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addTransfer.css"/>
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <style media="screen" type="text/css">
+      td[date], td[option] {
+        text-align: center;
+      }
+    </style>
     <script>
       function initForm (form) {
         var showexpired = getCookieValue ("BMTMicro.Vendors.Subscriptions.ShowExpired");
@@ -24,11 +29,7 @@
           form.SHOWEXPIRED.value = showexpired;
         }
         form.submit ();
-        initField (form, "SHOWEXPIRED", "${param.SHOWEXPIRED}");
-        // initField (form, "FLT_SUBSCRIPTIONID",  "${param.FLT_SUBSCRIPTIONID}");
-        // initField (form, "FLT_PRODUCTNAME",     "${param.FLT_PRODUCTNAME}");
-        // initField (form, "FLT_NAME",            "${param.FLT_NAME}");
-        // initField (form, "FLT_EMAIL",           "${param.FLT_EMAIL}");
+        initField (form, "SHOWEXPIRED", "${requestScope.SHOWEXPIRED}");
       }
 
       function submitForm (action, target, nextpage, subscriptionid) {
@@ -61,10 +62,10 @@
       }
 
       function cancelSubscription (subscriptionid) {
-        <c:if test="${allowResend == 0}">
+        <c:if test="${!allowResend}">
           alert("You do not have permission to cancel subscriptions.")
         </c:if>
-        <c:if test="${allowResend == 1}">
+        <c:if test="${allowResend}">
           submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/customers-manage-subscriptions-cancel.jsp", subscriptionid);
         </c:if>
       }
@@ -97,7 +98,6 @@
                     <input type="hidden" name="ROWSPERPAGE" value="500" />
                     <input type="hidden" name="PAGE" value="1" />
                     <input type="hidden" name="SHOWEXPIRED" value="0" />
-                    <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-tablerow.html" />
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp"/>
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp"/>
                   </form>

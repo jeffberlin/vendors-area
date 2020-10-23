@@ -38,7 +38,7 @@
 					submitToDiv (form, target);
 				}
       }
-			<c:if test = "${ allowChanges == 0 }">
+			<c:if test = "${ !allowChanges }">
 				function addAffiliate () {
 					alert ("You do not have permission to upload files.");
 				}
@@ -52,7 +52,7 @@
           alert("You do not have permission to make changes.");
         }
 			</c:if>
-			<c:if test = "${ allowChanges == 1 }">
+			<c:if test = "${ allowChanges }">
 				function addAffiliate (affiliateid) {
 					if (isBlank (affiliateid) || isNaN (affiliateid) || (parseInt (affiliateid) < 1)) {
             alert ("Please specify an Affiliate ID!");
@@ -93,11 +93,9 @@
                   <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="post">
                     <input type="hidden" name="ACTION" value="-1" />
                     <input type="hidden" name="MAXAMOUNT" value="" />
-                    <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/affiliates-manage-tablerow.html" />
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-manage-table.jsp">
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error-div.jsp">
                   </form>
-									<!-- <jsp:include page="affiliates-manage-table.jsp" /> -->
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div>
               </div> <!-- end .content-box -->

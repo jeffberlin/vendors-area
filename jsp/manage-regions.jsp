@@ -49,19 +49,19 @@
       }
 
       function addRegion() {
-        <c:if test="${ allowChanges == 0 }">
+        <c:if test="${ !allowChanges }">
           alert("You do not have permission to add regions.");
         </c:if>
-        <c:if test = "${ allowChanges != 0 }">
+        <c:if test = "${ allowChanges }">
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/manage-regions-add.jsp");
         </c:if>
       }
 
       function deleteRegion (regionid) {
-        <c:if test="${ allowChanges == 0 }">
+        <c:if test="${ !allowChanges }">
           alert("You do not have permission to delete regions.");
         </c:if>
-        <c:if test = "${ allowChanges != 0 }">
+        <c:if test = "${ allowChanges }">
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/manage-regions-delete.jsp", regionid);
         </c:if>
       }
@@ -88,7 +88,7 @@
           form.NAME.focus ();
           return (false);
         }
-        if ((form.NAME.value != "${param.NAME}") && ("${param.NAMELIST}".split ("\t").indexOf (form.NAME.value) != -1)) {
+        if ((form.NAME.value != "${requestScope.NAME}") && ("${requestScope.NAMELIST}".split ("\t").indexOf (form.NAME.value) != -1)) {
           alert ("A region with that name already exists!");
           form.NAME.focus ();
           return (false);
@@ -134,7 +134,7 @@
                   <form name="regions" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.WorldRegions">
                     <input type="hidden" name="ACTION" value="-1" />
                     <input type="hidden" name="MAXAMOUNT" value="" />
-                    <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/manage-regions-tablerow.html" />
+                    <!-- <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/manage-regions-tablerow.html" /> -->
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/manage-regions-table.jsp" />
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                   </form>
@@ -149,7 +149,5 @@
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
-  <script>
-    $(document).ready(function(){ submitToDiv (document.regions, 'tableframe'); });
-  </script>
+  <script>$(document).ready(function(){ submitToDiv (document.regions, 'tableframe'); });</script>
 </html>

@@ -12,14 +12,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        ${param.TABLEDATA}
-      </tr>
+      <c:forEach var="row" items="${requestScope.TABLEDATA}">
+        <tr onclick="highlightLinks(this);">
+          <td text>${row.COUNTRYNAME}</td>
+          <td money>${row.AMOUNT}</td>
+        </tr>
+      </c:forEach>
     </tbody>
     <tfoot>
       <tr class="table-total">
         <th scope="row">Total</th>
-        <th scope="row" class="text-right" money>${param.TOTALAMOUNT}</th>
+        <th scope="row" class="text-right" money>${requestScope.TOTALAMOUNT}</th>
       </tr>
     </tfoot>
   </table>

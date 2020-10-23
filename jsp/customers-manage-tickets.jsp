@@ -56,7 +56,7 @@
         refreshReport ();
       }
 
-      <c:if test = "${ allowResend == 0 }">
+      <c:if test = "${ !allowResend }">
         function expireTicket (ticketid) {
           alert("You do not have permission to expire tickets.");
         }
@@ -65,7 +65,7 @@
         }
       </c:if>
 
-      <c:if test = "${ allowResend == 1 }">
+      <c:if test = "${ allowResend }">
         function expireTicket (ticketid) {
           submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/customers-manage-tickets-expire.jsp", ticketid);
         }

@@ -52,7 +52,6 @@
               <p>This report displays customer comments and custom field values from your shopping cart.</p>
               <div class="content-box overflow-auto d-flex flex-column">
                 <form name="customercomments" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Comments" method="post">
-                  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-comments-tablerow.html" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-comments-table.jsp" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                   <div class="table-header">

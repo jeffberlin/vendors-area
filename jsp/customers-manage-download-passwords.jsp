@@ -29,20 +29,25 @@
         return (true);
       }
 
-      function sendPassword (form) {
-        if (!allowResend ("You do not have permission to resend information.")) {
+      <c:if test="${!allowResend}">
+        function sendPassword (form) {
+          alert ("You do not have permission to resend information.");
           return (false);
         }
-        if (!isValidEmail (form.EMAIL.value)) {
-          alert ("You must provide a valid email address!");
-          form.EMAIL.focus ();
-          return (false);
+      </c:if>
+      <c:if test="${allowResend}">
+        function sendPassword (form) {
+          if (!isValidEmail (form.EMAIL.value)) {
+            alert ("You must provide a valid email address!");
+            form.EMAIL.focus ();
+            return (false);
+          }
+          form.ACTION.value = "-1";
+          form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/customers-manage-download-passwords-sent.jsp";
+          form.submit ();
+          return (true);
         }
-        form.ACTION.value = "-1";
-        form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/customers-manage-download-passwords-sent.jsp";
-        form.submit ();
-        return (true);
-      }
+      </c:if>
 
       function initForm (form) {
         if (form.PRODUCTID.options.length === 0) {
@@ -50,13 +55,6 @@
           disableButton ('password');
         } else {
           form.PRODUCTID.selectedIndex = 0;
-        }
-      }
-
-      function filterKeyPress(event) {
-        if (event.keyCode == 13) {
-          refreshReport (document.downloadpasswords);
-          return (true);
         }
       }
 
@@ -89,7 +87,7 @@
                     <label>Product&nbsp;List:</label>
                     <br>
                     <select name="PRODUCTID" size=10 style="width:60%; margin-bottom: 1rem;">
-                      ${param.PRODUCTLIST}
+                      ${requestScope.PRODUCTLIST}
                     </select>
                   </span>
                   <h5>Get&nbsp;Password&nbsp;Status</h5>
@@ -114,7 +112,7 @@
                   </span>
                   <br clear="all">
                   <span>
-                    <input type="checkbox" name="CCEMAIL" value="${param.CCEMAIL}" style="margin-bottom: 1rem;"/>&nbsp;Send copy to:&nbsp;<strong>${param.CCEMAIL}</strong>
+                    <input type="checkbox" name="CCEMAIL" value="${requestScope.CCEMAIL}" style="margin-bottom: 1rem;"/>&nbsp;Send copy to:&nbsp;<strong>${requestScope.CCEMAIL}</strong>
                   </span>
                   <div class="controlbuttons">
                     <button id="password" type="button" class="save-btn" value="Save" onclick="sendPassword (downloadpasswords);">Send Password</button>

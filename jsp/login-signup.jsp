@@ -102,11 +102,11 @@
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
               <form name="signup" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" />
-                <input type="hidden" name="VENDORID" value="${param.VENDORID}">
+                <input type="hidden" name="VENDORID" value="${requestScope.VENDORID}">
                 <input type="hidden" name="ACTION" value="11" />
                 <input type="hidden" name="NEXT_PAGE" VALUE="https://vendors-new.bmtmicro.com/main.jsp">
                 <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/login-error.jsp" />
-                <h4>Please complete your registration (Vendor ${param.VENDORID})</h4>
+                <h4>Please complete your registration (Vendor ${requestScope.VENDORID})</h4>
                 <p>We need more information before we can allow you to log in. Please complete the form below.</p>
                 <div class="content-box overflow-auto">
                   <span>
@@ -144,13 +144,13 @@
                     <label>Country:&nbsp;</label>
                     <select NAME="COUNTRY" style="margin-bottom: 1rem;">
                       <option value="">Select your Country</option>
-                      ${param.COUNTRYLIST}
+                      ${requestScope.COUNTRYLIST}
                     </select>
                   </span>
                   <br clear="all">
                   <span>
                     <label>Email:&nbsp;</label>
-                    <input name="EMAIL" size="35" value="${param.EMAIL}" />
+                    <input name="EMAIL" size="35" value="${requestScope.EMAIL}" />
                     <p style="font-size: .9rem;"><em>If using "free" email address, such as Yahoo!, HotMail, etc., please supply us with an alternate email address. This address will not be given to customers.</em></p>
                   </span>
                   <span>

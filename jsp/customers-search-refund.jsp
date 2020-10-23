@@ -1,22 +1,22 @@
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
   <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post">
-    <input type="hidden" name="ORDERID" value="${param.ORDERID}">
-    <input type="hidden" name="ITEMNR" value="${param.ITEMNR}">
+    <input type="hidden" name="ORDERID" value="${requestScope.ORDERID}">
+    <input type="hidden" name="ITEMNR" value="${requestScope.ITEMNR}">
     <input type="hidden" name="ACTION" value="3">
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-refunded.jsp">
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
     <h5>Initiate Refund</h5>
     <span>
-      <label style="margin-bottom: .5rem;">Order ID:&nbsp;</label>${param.ORDERID}
+      <label style="margin-bottom: .5rem;">Order ID:&nbsp;</label>${requestScope.ORDERID}
     </span>
     <br>
     <span>
-      <label style="margin-bottom: .5rem;">Customer:&nbsp;</label>${param.NAME}
+      <label style="margin-bottom: .5rem;">Customer:&nbsp;</label>${requestScope.NAME}
     </span>
     <br>
     <span>
-      <label style="margin-bottom: .5rem;">Product:&nbsp;</label>${param.PRODUCTNAME}
+      <label style="margin-bottom: .5rem;">Product:&nbsp;</label>${requestScope.PRODUCTNAME}
     </span>
     <br>
     <label style="margin-bottom: .3rem;">Please enter the reason this order is being refunded:</label>
