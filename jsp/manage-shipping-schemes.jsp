@@ -213,18 +213,20 @@
       }
 
       function submitScheme (form) {
+        <c:if test = "${ !allowChanges }">
+          alert ("You do not have permission to edit shipping costs.");
+          return (false);
+        </c:if>
+        <c:if test = "${ allowChanges }">
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
         form.NAME.value = trim (form.NAME.value);
-        if (!allowChanges ("You do not have permission to edit shipping costs.")) {
-          return (false);
-        }
         if (isBlank (form.NAME.value)) {
           alert ("You must name the shipping scheme!");
           form.NAME.focus ();
           return (false);
         }
-        if ((form.NAME.value != "${param.NAME}") && ("${param.NAMELIST}".split ("\t").indexOf (form.NAME.value) != -1)) {
+        if ((form.NAME.value != "${requestScope.NAME}") && ("${requestScope.NAMELIST}".split ("\t").indexOf (form.NAME.value) != -1)) {
           alert ("A shipping scheme with that name already exists!");
           form.NAME.focus ();
           return (false);
@@ -239,6 +241,7 @@
         }
         form.submit ();
         return (true);
+        </c:if>
       }
 
       function submitForm (action, target, nextpage, schemeid) {
@@ -257,19 +260,19 @@
       }
 
       function addScheme() {
-        <c:if test = "${ allowChanges == 0 }">
+        <c:if test = "${ !allowChanges }">
           alert("You do not have permission to add shipping cost schemes.");
         </c:if>
-        <c:if test = "${ allowChanges != 0 }">
+        <c:if test = "${ allowChanges }">
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/manage-shipping-schemes-add.jsp");
         </c:if>
       }
 
       function deleteScheme(schemeid) {
-        <c:if test = "${ allowChanges == 0 }">
+        <c:if test = "${ !allowChanges }">
           alert("You do not have permission to delete shipping cost schemes.");
         </c:if>
-        <c:if test = "${ allowChanges != 0 }">
+        <c:if test = "${ allowChanges }">
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/manage-shipping-schemes-delete.jsp", schemeid);
         </c:if>
       }

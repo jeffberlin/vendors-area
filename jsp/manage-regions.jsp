@@ -48,23 +48,23 @@
 				}
       }
 
-      function addRegion() {
-        <c:if test="${ !allowChanges }">
+      <c:if test="${ !allowChanges }">
+        function addRegion() {
           alert("You do not have permission to add regions.");
-        </c:if>
-        <c:if test = "${ allowChanges }">
-          submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/manage-regions-add.jsp");
-        </c:if>
-      }
-
-      function deleteRegion (regionid) {
-        <c:if test="${ !allowChanges }">
+        }
+        function deleteRegion(regionid) {
           alert("You do not have permission to delete regions.");
-        </c:if>
-        <c:if test = "${ allowChanges }">
+        }
+      </c:if>
+
+      <c:if test="${ allowChanges }">
+        function addRegion() {
+          submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/manage-regions-add.jsp");
+        }
+        function deleteRegion(regionid) {
           submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/manage-regions-delete.jsp", regionid);
-        </c:if>
-      }
+        }
+      </c:if>
 
       function editRegion (regionid) {
         submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/manage-regions-edit.jsp", regionid);
@@ -134,7 +134,6 @@
                   <form name="regions" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.WorldRegions">
                     <input type="hidden" name="ACTION" value="-1" />
                     <input type="hidden" name="MAXAMOUNT" value="" />
-                    <!-- <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/manage-regions-tablerow.html" /> -->
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/manage-regions-table.jsp" />
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
                   </form>

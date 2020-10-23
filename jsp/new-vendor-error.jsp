@@ -40,7 +40,7 @@
             </div> <!-- end .col-lg-2 -->
             <div class="col-lg-10 col-md-12 page-title">
               <h4>An Error Has Occurred</h4>
-              <p>${param.MESSAGE}</p>
+              <p>${requestScope.MESSAGE}</p>
             </div> <!-- end .col-lg-10 col-md-12 page-title  -->
           </div> <!-- end .row justify-content-start -->
         </article> <!-- end .section -->

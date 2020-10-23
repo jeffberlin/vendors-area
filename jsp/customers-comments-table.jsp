@@ -75,7 +75,7 @@
           <td info>${row.CCOM1}</td>
           <td info>${row.CCOM2}</td>
           <td info><p>${row.NAME}</p></td>
-          <td info><a href="mailto:${requestScope.EMAIL}">${row.EMAIL}</a></td>
+          <td info><a href="mailto:${row.EMAIL}">${row.EMAIL}</a></td>
         </tr>
       </c:forEach>
     </tbody>

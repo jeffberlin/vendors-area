@@ -1,7 +1,6 @@
 <%@ include file="/includes/core.jsp" %>
 <form name="discounts" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes">
 	<input type="hidden" name="ACTION" value="-1" />
-	<input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-discounts-schemes-tablerow.html" />
 	<input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes-table.jsp" />
 	<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
 	<input type="hidden" name="SCHEMEID" value="" />
@@ -32,7 +31,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				${param.TABLEDATA}
+				<c:forEach var="row" items="${requestScope.TABLEDATA}">
+					<tr onclick="highlightLinks (this);" ${row.CLASS}>
+					  <td mtext><a href="javascript:editDiscount (${row.SCHEMEID}, ${row.SCHEMETYPE});">${row.NAME}</a></td>
+					  <td mnumber>${row.USECOUNT}</td>
+					  <td option><button type="button" class="save-btn" onclick="viewCodes (${row.SCHEMEID}, ${row.SCHEMETYPE});">View Code</button></td>
+					  <td option><button type="button" class="save-btn" onclick="generateCodes (${row.SCHEMEID}, ${row.SCHEMETYPE});">Generate Code</button></td>
+					  <td option><button type="button" class="remove" onclick="deleteDiscount (${row.SCHEMEID}, ${row.SCHEMETYPE});"></button></td>
+					</tr>
+				</c:forEach>
 			</tbody>
 			<tfoot>
 				<tr class="table-total">

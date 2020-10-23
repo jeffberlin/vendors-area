@@ -37,7 +37,7 @@
 					submitToDiv (form, target);
 				}
 			}
-			<c:if test = "${ allowChanges == 0 }">
+			<c:if test = "${ !allowChanges }">
 				function addDiscount (form) {
 					alert ("You do not have permission to add new schemes.");
 				}
@@ -51,7 +51,7 @@
 					alert ("You do not have permission to generate codes.");
 				}
 			</c:if>
-			<c:if test = "${ allowChanges == 1 }">
+			<c:if test = "${ allowChanges }">
 				function addDiscount (form) {
 					submitForm (0, "_parent", "https://vendors-new.bmtmicro.com/products-discounts-schemes-add.jsp");
 				}

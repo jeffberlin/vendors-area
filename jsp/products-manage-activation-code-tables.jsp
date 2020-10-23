@@ -48,7 +48,7 @@
         }
       }
 
-      <c:if test = "${ allowChanges == 0 }">
+      <c:if test = "${ !allowChanges }">
         function addTable () {
           alert("You do not have permission to add new tables.");
         }
@@ -66,7 +66,7 @@
         }
       </c:if>
 
-      <c:if test = "${ allowChanges == 1 }">
+      <c:if test = "${ allowChanges }">
         function addTable () {
           submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-add.jsp");
         }
@@ -76,7 +76,7 @@
         function addKeys (keytableid) {
           submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-add-keys.jsp", keytableid);
         }
-        
+
         function submitKeys (form) {
           form.NAME.value = trim (form.NAME.value);
           if (isBlank (form.NAME.value)) {
@@ -206,7 +206,7 @@
                   <form name="keytables" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys">
                     <input type="hidden" name="ACTION" value="-1" />
                     <input type="hidden" name="KEYTABLEID" value="" />
-                    <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-tablerow.html" />
+                    <!-- <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-tablerow.html" /> -->
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-table.jsp">
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp">
                   </form>

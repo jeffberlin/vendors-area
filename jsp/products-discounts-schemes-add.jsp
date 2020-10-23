@@ -49,8 +49,8 @@
         if (parseInt (form.MAXUSECOUNT.value) == 0) {
           form.MAXUSECOUNT.value = "";
         }
-        setFieldVisible ("expiration", ${param.SCHEMETYPE} == 0);
-        setFieldVisible ("expirationdays", ${param.SCHEMETYPE} != 1);
+        setFieldVisible ("expiration", ${requestScope.SCHEMETYPE} == 0);
+        setFieldVisible ("expirationdays", ${requestScope.SCHEMETYPE} != 1);
       }
 
       function submitForm (form) {
@@ -61,7 +61,7 @@
           form.NAME.focus ();
           return (false);
         }
-        if ((form.NAME.value != "${param.NAME}") && ("${param.NAMELIST}".split ("\t").indexOf (form.NAME.value) != -1)) {
+        if ((form.NAME.value != "${requestScope.NAME}") && ("${requestScope.NAMELIST}".split ("\t").indexOf (form.NAME.value) != -1)) {
           alert ("A discount scheme with that name already exists!");
           form.NAME.focus ();
           return (false);
@@ -158,17 +158,17 @@
                 <form method="post" name="discform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes">
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes.jsp" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-                  <input type="hidden" name="SCHEMEID" value="${param.SCHEMEID}" />
+                  <input type="hidden" name="SCHEMEID" value="${requestScope.SCHEMEID}" />
                   <input type="hidden" name="ACTION" value="10" />
                   <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="nameTab" role="tabpanel" aria-labelledby="name-tab">
                       <p>Discount scheme name will not be seen by your customers.</p>
                       <span>
                         <label>Name:&nbsp;</label>
-                        <input id="NAME" name="NAME" maxlength="80" value="${param.NAME}" type="text" style="margin-bottom: 2rem;">
+                        <input id="NAME" name="NAME" maxlength="80" value="${requestScope.NAME}" type="text" style="margin-bottom: 2rem;">
                         &nbsp;&nbsp;
-                        <input type="hidden" name="ACTIVE" value="${param.ACTIVE}" />
-                        <input type="checkbox" <c:if test="${param.ACTIVE!=0}">checked</c:if> />&nbsp;Active
+                        <input type="hidden" name="ACTIVE" value="${requestScope.ACTIVE}" />
+                        <input type="checkbox" <c:if test="${requestScope.ACTIVE!=0}">checked</c:if> />&nbsp;Active
                       </span>
                       <br>
                       <button id="toDiscountType" class="save-btn" type="button">Next</button>
@@ -177,7 +177,7 @@
                       <h5>Discount&nbsp;Type</h5>
                       <p>Choose&nbsp;discount&nbsp;type.</p>
                       <span>
-                        <input type="radio" onclick="setFieldVisible('expiration',true); setFieldVisible('expirationdays',true);" style="margin-bottom: 1rem;" <c:if test="${param.SCHEMETYPE!=0}">checked</c:if> />&nbsp;Codes required (customer needs to enter a discount code)
+                        <input type="radio" onclick="setFieldVisible('expiration',true); setFieldVisible('expirationdays',true);" style="margin-bottom: 1rem;" <c:if test="${requestScope.SCHEMETYPE!=0}">checked</c:if> />&nbsp;Codes required (customer needs to enter a discount code)
                       </span>
                       <br>
                       <div id="expiration" style="display: none;">
@@ -186,20 +186,20 @@
                         <div id="maxuse" style="display: none;">
                           <span>
                             This code can be used
-                            <input name="MAXUSECOUNT" size="3" value="${param.MAXUSECOUNT}" />&nbsp;times
+                            <input name="MAXUSECOUNT" size="3" value="${requestScope.MAXUSECOUNT}" />&nbsp;times
                           </span>
                         </div>
                         <span>
-                          <input type="hidden" name="STOPORDER" value="${param.STOPORDER}" />
-                          <input type="checkbox" style="margin-bottom: 1rem; margin-left: 1rem;" <c:if test="${param.STOPORDER!=0}">checked</c:if> />&nbsp;Stop order if code cannot be used
+                          <input type="hidden" name="STOPORDER" value="${requestScope.STOPORDER}" />
+                          <input type="checkbox" style="margin-bottom: 1rem; margin-left: 1rem;" <c:if test="${requestScope.STOPORDER!=0}">checked</c:if> />&nbsp;Stop order if code cannot be used
                         </span>
                       </div>
                       <span>
-                        <input type="radio" onclick="setFieldVisible('expiration',false); setFieldVisible('expirationdays',false);" style="margin-bottom: 1rem;" <c:if test="${param.SCHEMETYPE!=0}">checked</c:if> />&nbsp;Automatic discount (no codes required, all customers will get the discount)
+                        <input type="radio" onclick="setFieldVisible('expiration',false); setFieldVisible('expirationdays',false);" style="margin-bottom: 1rem;" <c:if test="${requestScope.SCHEMETYPE!=0}">checked</c:if> />&nbsp;Automatic discount (no codes required, all customers will get the discount)
                       </span>
                       <br>
                       <span>
-                        <input type="radio" onclick="setFieldVisible('expiration', false); setFieldVisible('expirationdays',true);" style="margin-bottom: 2rem;" <c:if test="${param.SCHEMETYPE!=0}">checked</c:if> />&nbsp;Recurring billing (automatic discount on subscriptions)
+                        <input type="radio" onclick="setFieldVisible('expiration', false); setFieldVisible('expirationdays',true);" style="margin-bottom: 2rem;" <c:if test="${requestScope.SCHEMETYPE!=0}">checked</c:if> />&nbsp;Recurring billing (automatic discount on subscriptions)
                       </span>
                       <br>
                       <button id="backToNameTab" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
@@ -209,17 +209,17 @@
                       <h5>Amount</h5>
                       <span>
                         <label>Amount:&nbsp;</label>
-                        <input id="AMOUNT" name="AMOUNT" type="text" value="${param.AMOUNT}" style="margin-bottom: 1rem;" />
+                        <input id="AMOUNT" name="AMOUNT" type="text" value="${requestScope.AMOUNT}" style="margin-bottom: 1rem;" />
                       </span>
                       <br>
                       <span>
                         <label>Method:&nbsp;</label>
                         <select name="DISCOUNTTYPE" style="margin-bottom: 1rem;">
-                          <option value="0"<c:if test="${param.DISCOUNTTYPE==0}">selected</c:if>>Percent Off</option>
-                          <option value="1"<c:if test="${param.DISCOUNTTYPE==1}">selected</c:if>>Amount Off</option>
-                          <option value="2"<c:if test="${param.DISCOUNTTYPE==2}">selected</c:if>>Set New Price</option>
-                          <option value="3"<c:if test="${param.DISCOUNTTYPE==3}">selected</c:if>>Percent Off Full Price</option>
-                          <option value="4"<c:if test="${param.DISCOUNTTYPE==4}">selected</c:if>>Amount Off Full Price</option>
+                          <option value="0"<c:if test="${requestScope.DISCOUNTTYPE==0}">selected</c:if>>Percent Off</option>
+                          <option value="1"<c:if test="${requestScope.DISCOUNTTYPE==1}">selected</c:if>>Amount Off</option>
+                          <option value="2"<c:if test="${requestScope.DISCOUNTTYPE==2}">selected</c:if>>Set New Price</option>
+                          <option value="3"<c:if test="${requestScope.DISCOUNTTYPE==3}">selected</c:if>>Percent Off Full Price</option>
+                          <option value="4"<c:if test="${requestScope.DISCOUNTTYPE==4}">selected</c:if>>Amount Off Full Price</option>
                         </select>
                       </span>
                       <br clear="all">
@@ -227,34 +227,34 @@
                         <label>Currency:&nbsp;</label>
                         <select name="CURRENCY" style="margin-bottom: 1rem;">
                           <option value="" selected>All Currencies</option>
-                          <option value="USD"<c:if test="${param.CURRENCY=='USD'}">selected</c:if>>USD</option>
-                          <option value="EUR"<c:if test="${param.CURRENCY=='EUR'}">selected</c:if>>EUR</option>
-                          <option value="GBP"<c:if test="${param.CURRENCY=='GBP'}">selected</c:if>>GBP</option>
-                          <option value="CAD"<c:if test="${param.CURRENCY=='CAD'}">selected</c:if>>CAD</option>
-                          <option value="AUD"<c:if test="${param.CURRENCY=='AUD'}">selected</c:if>>AUD</option>
+                          <option value="USD"<c:if test="${requestScope.CURRENCY=='USD'}">selected</c:if>>USD</option>
+                          <option value="EUR"<c:if test="${requestScope.CURRENCY=='EUR'}">selected</c:if>>EUR</option>
+                          <option value="GBP"<c:if test="${requestScope.CURRENCY=='GBP'}">selected</c:if>>GBP</option>
+                          <option value="CAD"<c:if test="${requestScope.CURRENCY=='CAD'}">selected</c:if>>CAD</option>
+                          <option value="AUD"<c:if test="${requestScope.CURRENCY=='AUD'}">selected</c:if>>AUD</option>
                         </select>
                       </span>
                       <br>
                       <span>
                         <label>Rounding:&nbsp;</label>
                         <select name="ROUNDING" style="margin-bottom: 1rem;">
-                          <option value="-1.00"<c:if test="${param.ROUNDING=='-1.00'}">selected</c:if>>Round discount to nearest 1.00</option>
-                          <option value="-0.50"<c:if test="${param.ROUNDING=='-0.50'}">selected</c:if>>Round discount to nearest 0.50</option>
-                          <option value="-0.25"<c:if test="${param.ROUNDING=='-0.25'}">selected</c:if>>Round discount to nearest 0.25</option>
-                          <option value="-0.10"<c:if test="${param.ROUNDING=='-0.10'}">selected</c:if>>Round discount to nearest 0.10</option>
-                          <option value="-0.05"<c:if test="${param.ROUNDING=='-0.05'}">selected</c:if>>Round discount to nearest 0.05</option>
-                          <option value="0.00" selected="selected"<c:if test="${param.ROUNDING=='0.00'}">selected</c:if>>No Rounding</option>
-                          <option value="0.05"<c:if test="${param.ROUNDING=='0.05'}">selected</c:if>>Round price to nearest 0.05</option>
-                          <option value="0.10"<c:if test="${param.ROUNDING=='0.10'}">selected</c:if>>Round price to nearest 0.10</option>
-                          <option value="0.25"<c:if test="${param.ROUNDING=='0.25'}">selected</c:if>>Round price to nearest 0.25</option>
-                          <option value="0.50"<c:if test="${param.ROUNDING=='0.50'}">selected</c:if>>Round price to nearest 0.50</option>
-                          <option value="1.00"<c:if test="${param.ROUNDING=='1.00'}">selected</c:if>>Round price to nearest 1.00</option>
+                          <option value="-1.00"<c:if test="${requestScope.ROUNDING=='-1.00'}">selected</c:if>>Round discount to nearest 1.00</option>
+                          <option value="-0.50"<c:if test="${requestScope.ROUNDING=='-0.50'}">selected</c:if>>Round discount to nearest 0.50</option>
+                          <option value="-0.25"<c:if test="${requestScope.ROUNDING=='-0.25'}">selected</c:if>>Round discount to nearest 0.25</option>
+                          <option value="-0.10"<c:if test="${requestScope.ROUNDING=='-0.10'}">selected</c:if>>Round discount to nearest 0.10</option>
+                          <option value="-0.05"<c:if test="${requestScope.ROUNDING=='-0.05'}">selected</c:if>>Round discount to nearest 0.05</option>
+                          <option value="0.00" selected="selected"<c:if test="${requestScope.ROUNDING=='0.00'}">selected</c:if>>No Rounding</option>
+                          <option value="0.05"<c:if test="${requestScope.ROUNDING=='0.05'}">selected</c:if>>Round price to nearest 0.05</option>
+                          <option value="0.10"<c:if test="${requestScope.ROUNDING=='0.10'}">selected</c:if>>Round price to nearest 0.10</option>
+                          <option value="0.25"<c:if test="${requestScope.ROUNDING=='0.25'}">selected</c:if>>Round price to nearest 0.25</option>
+                          <option value="0.50"<c:if test="${requestScope.ROUNDING=='0.50'}">selected</c:if>>Round price to nearest 0.50</option>
+                          <option value="1.00"<c:if test="${requestScope.ROUNDING=='1.00'}">selected</c:if>>Round price to nearest 1.00</option>
                         </select>
                       </span>
                       <br clear="all">
                       <span>
-                        <input type="hidden" name="FREESHIPPING" value="${param.FREESHIPPING}" />
-                        <input type="checkbox" style="margin-bottom: 2rem;" <c:if test="${param.FREESHIPPING!=0}">checked</c:if> />&nbsp;Free shipping
+                        <input type="hidden" name="FREESHIPPING" value="${requestScope.FREESHIPPING}" />
+                        <input type="checkbox" style="margin-bottom: 2rem;" <c:if test="${requestScope.FREESHIPPING!=0}">checked</c:if> />&nbsp;Free shipping
                       </span>
                       <br>
                       <button id="backToType" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
@@ -265,18 +265,18 @@
                       <p>Set date range for scheme to apply, or leave blank for no automatic expiration.</p>
                       <span>
                         <label>Date&nbsp;Start:&nbsp;</label>
-                        <input id="DATEFROM" name="DATEFROM" value="${param.DATEFROM}" type="text" style="max-width: 150px; margin-bottom: 1rem;">
+                        <input id="DATEFROM" name="DATEFROM" value="${requestScope.DATEFROM}" type="text" style="max-width: 150px; margin-bottom: 1rem;">
                         <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
                       </span>
                       <br>
                       <span>
                         <label>Date&nbsp;End:&nbsp;</label>
-                        <input id="DATETO" name="DATETO" value="${param.DATETO}" type="text" style="max-width: 150px; margin-bottom: 1rem;">
+                        <input id="DATETO" name="DATETO" value="${requestScope.DATETO}" type="text" style="max-width: 150px; margin-bottom: 1rem;">
                         <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
                       </span>
                       <div id="expirationdays" style="display: none;">
                         <span>
-                          Discount&nbsp;ends&nbsp;<input name="EXPIRATIONDAYS" size="3" value="${param.EXPIRATIONDAYS}" maxlength="3" style="margin-bottom: .2rem;" />&nbsp;days from date of issue.
+                          Discount&nbsp;ends&nbsp;<input name="EXPIRATIONDAYS" size="3" value="${requestScope.EXPIRATIONDAYS}" maxlength="3" style="margin-bottom: .2rem;" />&nbsp;days from date of issue.
                         </span>
                         <br clear="all">
                         <p style="font-size: .9rem; font-style: italic;">
@@ -292,11 +292,11 @@
                       <p>Set minimum quantity required before discount applied. If none, leave blank.</p>
                       <span>
                         <label>Minimum&nbsp;Quantity:&nbsp;</label>
-                        <input id="QUALIFYINGQUANTITY" name="QUALIFYINGQUANTITY" value="${param.QUALIFYINGQUANTITY}" type="text" style="max-width: 75px;">
+                        <input id="QUALIFYINGQUANTITY" name="QUALIFYINGQUANTITY" value="${requestScope.QUALIFYINGQUANTITY}" type="text" style="max-width: 75px;">
                         <select name="QUALIFYINGTYPE">
-                          <option value="0"<c:if test="${param.QUALIFYINGTYPE==0}">selected</c:if>>Items</option>
-                          <option value="1"<c:if test="${param.QUALIFYINGTYPE==1}">selected</c:if>>Amount</option>
-                          <option value="2"<c:if test="${param.QUALIFYINGTYPE==2}">selected</c:if>>Unique Items</option>
+                          <option value="0"<c:if test="${requestScope.QUALIFYINGTYPE==0}">selected</c:if>>Items</option>
+                          <option value="1"<c:if test="${requestScope.QUALIFYINGTYPE==1}">selected</c:if>>Amount</option>
+                          <option value="2"<c:if test="${requestScope.QUALIFYINGTYPE==2}">selected</c:if>>Unique Items</option>
                         </select>
                       </span>
                       <br clear="all">
@@ -304,8 +304,8 @@
                         Discount amounts are applied to <strong>each item</strong>, not the order total. Checking the box below will limit the discount to one item in the order only. However, note that this setting has no effect on the Free shipping option. When Free shipping is enabled, all items will get free shipping regardless of this setting.
                       </p>
                       <span>
-                        <input type="hidden" name="FIRSTONLY" value="${param.FIRSTONLY}" />
-                        <input type="checkbox" style="margin-bottom: 2rem;" <c:if test="${param.FIRSTONLY!=0}">checked</c:if> />&nbsp;Discount allowed on one item only
+                        <input type="hidden" name="FIRSTONLY" value="${requestScope.FIRSTONLY}" />
+                        <input type="checkbox" style="margin-bottom: 2rem;" <c:if test="${requestScope.FIRSTONLY!=0}">checked</c:if> />&nbsp;Discount allowed on one item only
                       </span>
                       <br>
                       <button id="backToExpiration" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
@@ -315,7 +315,7 @@
                       <h5>Discounted&nbsp;Products</h5>
                       <p>Select products eligible for discount under this discount scheme. Selected products are listed in the bottom text area.</p>
                       <select id="PRODUCTLIST" name="PRODUCTLIST" multiple="multiple" ondblclick="addProduct (discform);return (false);" style="min-width: 500px; margin-bottom: 1rem;">
-												${param.PRODUCTLIST}
+												${requestScope.PRODUCTLIST}
                       </select>
                       <br>
                       <div class="move">
@@ -325,7 +325,7 @@
                         <button type="button" name="removeall" value="&lt;&lt;&nbsp;Remove" onclick="removeAllProducts (discform);"><i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All</button>
                       </div>
                       <select id="SELECTEDLIST" name="SELECTEDLIST" multiple="multiple" ondblclick="removeProduct (discform);return (false);" style="min-width: 500px; margin-bottom: 2rem;">
-												${param.SELECTEDPRODUCTS}
+												${requestScope.SELECTEDPRODUCTS}
                       </select>
                       <input type="hidden" name="SELECTEDPRODUCTS" value="" />
                       <br>

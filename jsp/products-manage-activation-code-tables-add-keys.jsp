@@ -1,9 +1,9 @@
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
   <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys">
-    <h5>Add&nbsp;Activation&nbsp;Codes&nbsp;to&nbsp;${param.NAME}</h5>
+    <h5>Add&nbsp;Activation&nbsp;Codes&nbsp;to&nbsp;${requestScope.NAME}</h5>
     <span>
-      <input type="checkbox" style="margin-bottom: 1rem;"<c:if test="${param.REPLACEKEYS!=0}"> checked</c:if>/>&nbsp;Replace&nbsp;existing&nbsp;codes
+      <input type="checkbox" style="margin-bottom: 1rem;"<c:if test="${requestScope.REPLACEKEYS!=0}"> checked</c:if>/>&nbsp;Replace&nbsp;existing&nbsp;codes
     </span>
     <br>
     <span>
@@ -14,28 +14,28 @@
     <br>
     <div>
       <p>Each row contains one code.
-      <c:if test="${param.KEYPARTS==1}">
-        (The codes are single-part. The separator character is not used).
-      </c:if>
-      <c:if test="${param.KEYPARTS!=1}">
-        Each code should have ${param.KEYPARTS} parts. Each part should be separated by
-        <c:choose>
-          <c:when test="${param.SEPARATOR==' '}"> a space character ('&nbsp;').</c:when>
-          <c:when test="${param.SEPARATOR==','}"> a comma (',').</c:when>
-          <c:when test="${param.SEPARATOR==';'}"> a semicolon (';').</c:when>
-          <c:otherwise> the character '${param.SEPARATOR}'.</c:otherwise>
-        </c:choose>
-        </p>
-      </c:if>
+        <c:if test="${requestScope.KEYPARTS==1}">
+          (The codes are single-part. The separator character is not used).
+        </c:if>
+        <c:if test="${requestScope.KEYPARTS!=1}">
+          Each code should have ${requestScope.KEYPARTS} parts. Each part should be separated by
+          <c:choose>
+            <c:when test="${requestScope.SEPARATOR==' '}"> a space character ('&nbsp;').</c:when>
+            <c:when test="${requestScope.SEPARATOR==','}"> a comma (',').</c:when>
+            <c:when test="${requestScope.SEPARATOR==';'}"> a semicolon (';').</c:when>
+            <c:otherwise> the character '${requestScope.SEPARATOR}'.</c:otherwise>
+          </c:choose>
+        </c:if>
+      </p>
     </div>
     <span>
       <button type="button" class="save-btn" onclick="submitNewKeysCodes (this.form);" style="margin-right: .5rem;">Add Codes</button>
       <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
     </span>
     <input type="hidden" name="ACTION" value="13" />
-    <input type="hidden" name="KEYPARTS" value="${param.KEYPARTS}" />
-    <input type="hidden" name="SEPARATOR" value="${param.SEPARATOR}" />
-    <input type="hidden" name="KEYTABLEID" value="${param.KEYTABLEID}" />
+    <input type="hidden" name="KEYPARTS" value="${requestScope.KEYPARTS}" />
+    <input type="hidden" name="SEPARATOR" value="${requestScope.SEPARATOR}" />
+    <input type="hidden" name="KEYTABLEID" value="${requestScope.KEYTABLEID}" />
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-add-keys-progress.jsp" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   </form>

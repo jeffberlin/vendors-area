@@ -80,7 +80,7 @@
             <td date>${row.EFFECTIVEDATE}</td>
             <td date>
               <c:choose>
-                <c:when test="${!empty requestScope.EXPIRATIONDATE}">
+                <c:when test="${!emptyrow.EXPIRATIONDATE}">
                   Active
                 </c:when>
                 <c:otherwise>
@@ -91,8 +91,8 @@
             <td date>${row.NEXTBILLINGDATE}</td>
             <td option>
               <c:choose>
-                <c:when test="${!empty requestScope.EXPIRATIONDATE}">
-                  <button class='save-btn' value='Cancel' onclick='cancelSubscription (${requestScope.SUBSCRIPTIONID});'>Cancel</button>
+                <c:when test="${!emptyrow.EXPIRATIONDATE}">
+                  <button class='save-btn' value='Cancel' onclick='cancelSubscription (${row.SUBSCRIPTIONID});'>Cancel</button>
                 </c:when>
                 <c:otherwise>
                   Cancelled

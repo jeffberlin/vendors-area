@@ -1,2 +1,2 @@
 <%@ include file="/includes/core.jsp" %>
-<p>${param.TWEET}</p>
+<p>${requestScope.TWEET}</p>

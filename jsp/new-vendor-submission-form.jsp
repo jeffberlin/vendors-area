@@ -128,8 +128,8 @@
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/new-vendor-error.jsp" />
                   <span>
                     <label>Vendor ID:&nbsp;</label>
-                    <input name="VENDORID" type="hidden" value="${param.VENDORID}" style="margin-bottom: 1rem;">
-                      ${param.VENDORID}
+                    <input name="VENDORID" type="hidden" value="${requestScope.VENDORID}" style="margin-bottom: 1rem;">
+                      ${requestScope.VENDORID}
                   </span>
                   <br>
                   <span>
@@ -171,14 +171,14 @@
                     <label>Country:&nbsp;</label>
                     <select name="COUNTRY" style="margin-bottom: 1rem;">
                       <option value="">Select your Country</option>
-                      ${param.COUNTRYLIST}
+                      ${requestScope.COUNTRYLIST}
                     </select>
                   </span>
                   <br>
                   <p style="font-size: .9rem;">If using "free" email address, such as Yahoo!, HotMail, etc., please supply us with an alternate email address. This address will not be given to customers.</p>
                   <span>
                     <label>Account Email:&nbsp;</label>
-                    <input name="EMAIL" value="${param.EMAIL}" style="margin-bottom: 1rem;" />
+                    <input name="EMAIL" value="${requestScope.EMAIL}" style="margin-bottom: 1rem;" />
                   </span>
                   <br>
                   <span>
