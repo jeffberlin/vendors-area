@@ -33,7 +33,7 @@
 					submitToDiv (form, target);
 				}
 			}
-			<c:if test = "${ allowChanges == 0 }">
+			<c:if test = "${ !allowChanges }">
 				function uploadFile () {
 					alert ("You do not have permission to upload files.");
 				}
@@ -44,7 +44,7 @@
 					alert ("You do not have permission to delete files.");
 				}
 			</c:if>
-			<c:if test = "${ allowChanges == 1 }">
+			<c:if test = "${ allowChanges }">
 				function uploadFile () {
 					document.location.href = "https://vendors-new.bmtmicro.com/products-manage-files-upload.jsp";
 				}

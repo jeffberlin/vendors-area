@@ -2,7 +2,6 @@
 <form name="tickets" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Tickets" method="post">
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-tickets-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
-  <input type="hidden" name="ROWTEMPLATEURL" value="${requestScope.ROWTEMPLATEURL}" />
   <input type="hidden" name="ROWSPERPAGE" value="${requestScope.ROWSPERPAGE}" />
   <input type="hidden" name="PAGE" value="${requestScope.PAGE}" />
   <input type="hidden" name="PAGECOUNT" value="${requestScope.PAGECOUNT}" />
@@ -81,9 +80,16 @@
         </c:if>
       </tr>
       <tbody>
-        <tr>
-          ${requestScope.TABLEDATA}
-        </tr>
+        <c:forEach var="row" items="${requestScope.TABLEDATA}">
+          <tr onclick="highlightLinks (this);">
+            <td text><a href="mailto:${row.EMAIL}">${row.EMAIL}</a></td>
+            <td text>${row.NAME}</td>
+            <td info>${row.PRODUCTNAME}</td>
+            <td number>${row.TICKETCOUNT}</td>
+            <td number>${row.REDEEMCOUNT}</td>
+            <td number>${row.AVAILABLECOUNT}</td>
+          </tr>
+        </c:forEach>
       </tbody>
       <tfoot>
         <tr class="table-total">

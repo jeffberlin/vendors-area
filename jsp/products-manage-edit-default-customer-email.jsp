@@ -109,7 +109,7 @@
         </div>
       </div>
     </div>
-    <textarea style="margin: .5rem 0;" id="template" name="DEFAULTCUSTOMEREMAILTEMPLATE" rows="8" cols="80" placeholder="Type a message">${param.DEFAULTCUSTOMEREMAILTEMPLATE}</textarea>
+    <textarea style="margin: .5rem 0;" id="template" name="DEFAULTCUSTOMEREMAILTEMPLATE" rows="8" cols="80" placeholder="Type a message">${requestScope.DEFAULTCUSTOMEREMAILTEMPLATE}</textarea>
     <br>
     <button class="save-btn" type="button" onclick="submitDefaultCustomerEmailForm (defaultcustomeremailform);" style="margin-right: .5rem;">Save</button>
     <button class="save-btn" type="button" onclick="showPreview (20, defaultcustomeremailform.DEFAULTCUSTOMEREMAILTEMPLATE.value, 0);" style="margin-right: .5rem;">Preview</button>

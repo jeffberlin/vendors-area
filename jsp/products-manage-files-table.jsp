@@ -2,16 +2,15 @@
 <form id="files" name="files" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadFiles" method="post">
   <input type="hidden" name="ACTION" value="-1" />
   <input type="hidden" name="DOWNLOADFILEID" value="" />
-  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-files-tablerow.html" />
   <input type="hidden" name="ROWSPERPAGE" value="500" />
-  <input type="hidden" name="PAGE" value="${param.PAGE}" />
-  <input type="hidden" name="PAGECOUNT" value="${param.PAGECOUNT}" />
+  <input type="hidden" name="PAGE" value="${requestScope.PAGE}" />
+  <input type="hidden" name="PAGECOUNT" value="${requestScope.PAGECOUNT}" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   <div class="table-header">
     <span>
       Filter&nbsp;by&nbsp;File&nbsp;Name:
-      <input type="text" name="FILTER" value="${param.FILTER}"/>&nbsp;
+      <input type="text" name="FILTER" value="${requestScope.FILTER}"/>&nbsp;
       <script>
         catchEnter (document.files.FILTER, filterChanged);
       </script>
@@ -19,7 +18,7 @@
     </span>
 		<button type="button" class="grey-btn float-right" onclick="uploadFile ();">Upload File</button>
 		<span>
-			${param.TOTALCOUNT} files, ${param.TOTALSIZE}
+			${requestScope.TOTALCOUNT} files, ${requestScope.TOTALSIZE}
     </span>
   </div> <!-- end .table-header -->
   <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
@@ -54,15 +53,43 @@
         </tr>
       </thead>
       <tbody>
-        ${param.TABLEDATA}
+        <c:forEach var="row" items="${requestScope.TABLEDATA}">
+          <tr onclick="highlightLinks(this)" <c:choose><c:when test="${row.DEMO == -1}">demo</c:when></c:choose>>
+            <td mtext>${row.NAME}</td>
+            <td mnumber>${row.SIZE}</td>
+            <td option><span style="white-space: nowrap">${row.TIME}</span></td>
+            <td mnumber>${row.DOWNLOADCOUNT}</td>
+            <td option>
+              <input type="checkbox" name="Demo" class="demo" onchange="toggleDemo(${row.FILEID});" <c:choose><c:when test="${row.DEMO == -1}">checked</c:when></c:choose>/>
+            </td>
+            <td option>
+              <button type="button" name="Download" class="save-btn" onclick="<c:choose><c:when test='${row.DEMO == -1}'>showDemoURL(${row.FILEID})</c:when><c:otherwise>downloadFile(${row.FILEID})</c:otherwise></c:choose>">
+                <c:choose>
+                  <c:when test="${row.DEMO == -1}">
+                    Show URL
+                  </c:when>
+                  <c:otherwise>
+                    Download File
+                  </c:otherwise>
+                </c:choose>
+              </button>
+            </td>
+            <td option>
+              <button type="button" name="View File" class="save-btn" onclick="viewFile(${row.FILEID});">View Associations</button>
+            </td>
+            <td option>
+              <button type="button" name="Delete" class="remove" onclick="deleteFile(${row.FILEID});"></button>
+            </td>
+          </tr>
+        </c:forEach>
       </tbody>
       <tfoot>
         <tr class="table-total">
           <th scope="row" colspan="8">
             <div id="pageselector">
-              <c:if test = "${param.PAGECOUNT > 1}">
+              <c:if test = "${requestScope.PAGECOUNT > 1}">
                 Pages:
-                <c:forEach var = "page" begin = "1" end = "${param.PAGECOUNT}">
+                <c:forEach var = "page" begin = "1" end = "${requestScope.PAGECOUNT}">
                   &nbsp;<a href="javascript:selectPage(${page});">${page}</a>&nbsp;
                 </c:forEach>
               </c:if>

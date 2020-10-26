@@ -36,22 +36,22 @@
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Create Multiple Products</h4>
               <div class="content-box" style="padding: 1rem;">
-                <c:if test="${param.COUNT == param.TOTAL}">
+                <c:if test="${requestScope.COUNT == requestScope.TOTAL}">
                   <div class="content">
                     <h6>Add Multiple Products</h6>
-                    <p>Processing Complete. ${param.COUNT} products were set up.</p>
-                    <p>${param.MESSAGE}</p>
+                    <p>Processing Complete. ${requestScope.COUNT} products were set up.</p>
+                    <p>${requestScope.MESSAGE}</p>
                     <form action="https://vendors-new.bmtmicro.com/products-manage.jsp" method="get" target="_parent">
                       <button type="submit" class="save-btn">Close</button>
                     </form>
                   </div>
                 </c:if>
-                <c:if test="${param.COUNT != param.TOTAL}">
+                <c:if test="${requestScope.COUNT != requestScope.TOTAL}">
                   <div class="content">
                     <h6>Add&nbsp;Multiple&nbsp;Products</h6>
                     <p style="margin-bottom: .2rem;">Please wait, adding products.</p>
                     <p style="margin-bottom: .2rem;">This process can take several minutes depending on the number of products you are setting up.</p>
-                    <p style="margin-bottom: .2rem;"><strong>${param.COUNT} products of ${param.TOTAL} have been set up so far.</strong></p>
+                    <p style="margin-bottom: .2rem;"><strong>${requestScope.COUNT} products of ${requestScope.TOTAL} have been set up so far.</strong></p>
                     <p style="color: #FF0000;">Please do not exit this window until complete as this will stop the setup process.</p>
                   </div> <!-- end .content -->
                   <form method="post" name="progress" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">

@@ -38,20 +38,20 @@
               <h4>File&nbsp;Upload&nbsp;Result</h4>
               <p>File Scan results are displayed below. If there is a problem with your file, please email us at&nbsp;<a href="mailto:vendors@bmtmicro.com">vendors@bmtmicro.com</a>.</p>
               <div class="content-box overflow-auto">
-                <h6>${param.FILECOUNT} files scanned.</h6>
-                <% { String addCount = ${param.ADDCOUNT}; if ((addCount != null) && (Integer.parseInt (addCount) > 0)) { %>
+                <h6>${requestScope.FILECOUNT} files scanned.</h6>
+                <% { String addCount = ${requestScope.ADDCOUNT}; if ((addCount != null) && (Integer.parseInt (addCount) > 0)) { %>
                 <br clear="all" /><span><%= addCount %> files added.</span>
                 <% }} %>
                 <br>
-                <% { String updateCount = ${param.UPDATECOUNT}; if ((updateCount != null) && (Integer.parseInt (updateCount) > 0)) { %>
+                <% { String updateCount = ${requestScope.UPDATECOUNT}; if ((updateCount != null) && (Integer.parseInt (updateCount) > 0)) { %>
                 <br clear="all" /><span><%= updateCount %> files updated.</span>
                 <% }} %>
                 <br>
-                <% { String virusCount = ${param.VIRUSCOUNT}; if ((virusCount != null) && (Integer.parseInt (virusCount) > 0)) { %>
+                <% { String virusCount = ${requestScope.VIRUSCOUNT}; if ((virusCount != null) && (Integer.parseInt (virusCount) > 0)) { %>
                 <br clear="all" /><span><font color="red"><%= virusCount %> files do not pass the virus check. The files are put in quarantine for further examination by a customer service representative. If we find that the files check out good, we will put them on-line. Otherwise, if we find issues with the files we will contact you in order to solve the problem. Please see virus scan below for details.</font></span>
                 <% }} %>
                 <br>
-                <% { String errorCount = ${param.ERRORCOUNT}; if ((errorCount != null) && (Integer.parseInt (errorCount) > 0)) { %>
+                <% { String errorCount = ${requestScope.ERRORCOUNT}; if ((errorCount != null) && (Integer.parseInt (errorCount) > 0)) { %>
                 <br clear="all" /><span><font color="red"><%= errorCount %> files have errors. These files are rejected. Please fix the errors listed below and reupload.</font></span>
                 <% }} %>
                 <br clear="all">
@@ -59,7 +59,7 @@
                   <label style="margin-bottom: .1rem;">File&nbsp;Scan&nbsp;Details:</label>
                 </span>
                 <br>
-                <textarea style="width: 650px; height: 350px; margin-bottom: 1rem;" rows="10" cols="20" name="SCANREPORT" readonly>${param.SCANREPORT}</textarea>
+                <textarea style="width: 650px; height: 350px; margin-bottom: 1rem;" rows="10" cols="20" name="SCANREPORT" readonly>${requestScope.SCANREPORT}</textarea>
                 <span>
                   <form action="https://vendors-new.bmtmicro.com/products-manage-files.jsp" method="get" target="_parent">
                     <button type="submit" name="Refresh" value="submit" class="save-btn" style="margin-right: .5rem;" >Done</button>

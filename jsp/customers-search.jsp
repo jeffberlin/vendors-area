@@ -124,33 +124,33 @@
               <h4>Customer&nbsp;Search</h4>
               <p>Use fields below to enter search criteria.&nbsp;If email information has not changed since purchase you can resend the customer's email using the button provided.<br>You will be able to review the email before it is sent.</p>
               <div class="content-box overflow-auto d-flex flex-column">
-                <div name="tableframe" class="h-100" id="tableframe">
+                <div name="tableframe" class="overflow-auto h-100" id="tableframe">
                   <jsp:include page="customers-search-table.jsp" />
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
                 <div style="visibility:hidden;">
-                  <form name="CommentsForm" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post" target="resultframe">
+                  <form name="CommentsForm" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post">
                     <input type="hidden" name="ORDERID" value="">
                     <input type="hidden" name="ITEMNR" value="">
-                    <input type="hidden" name="ACTION"  value="1">
+                    <input type="hidden" name="ACTION" value="1">
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-comments.jsp">
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                   </form>
                 </div>
                 <div style="visibility:hidden;">
-                  <form name="ResendInfoForm" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post" target="resultframe">
+                  <form name="ResendInfoForm" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post">
                     <input type="hidden" name="ORDERID" value="">
                     <input type="hidden" name="ITEMNR" value="">
-                    <input type="hidden" name="ACTION"  value="2">
+                    <input type="hidden" name="ACTION" value="2">
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-resend.jsp">
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                   </form>
                 </div>
                 <div style="visibility:hidden;">
-                  <form name="RefundItem" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post" target="resultframe">
+                  <form name="RefundItem" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post">
                     <input type="hidden" name="ORDERID" value="">
                     <input type="hidden" name="ITEMNR" value="">
-                    <input type="hidden" name="ACTION"  value="3">
+                    <input type="hidden" name="ACTION" value="3">
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-refund.jsp">
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                   </form>

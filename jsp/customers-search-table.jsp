@@ -1,13 +1,12 @@
 <%@ include file="/includes/core.jsp" %>
 <form method="post" name="customersearch" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch">
-  <input type="hidden" name="ACTION"  value="0" />
-  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/customers-search-tablerow.html" />
+  <input type="hidden" name="ACTION" value="0" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   <div class="table-header">
     <button type="button" class="grey-btn" value="Search for Customers" onclick="refreshReport (document.customersearch);">Search for Customers</button>
   </div> <!-- end .table-header -->
-  <div class="row table-responsive" style="margin-left: auto; margin-right: auto; overflow-x: inherit;">
+  <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
     <table class="table" id="selection">
       <thead>
         <tr class="table-category">
@@ -71,9 +70,33 @@
         </th>
       </tr>
       <tbody>
-        <tr>
-          ${requestScope.TABLEDATA}
-        </tr>
+        <c:forEach var="row" items="${requestScope.TABLEDATA}">
+          <tr onclick="highlightLinks(this)">
+            <td>
+              <button class="save-btn" onclick="editComments(${row.ORDERID},${row.ITEMNUMBER});return(false);">Comment</button>
+              <c:choose>
+                <c:when test="${row.RESENDBUTTON == -1}">
+                  <button class="save-btn" onclick="resendInfo(${row.ORDERID},${row.ITEMNUMBER});return(false);">Resend</button>
+                </c:when>
+              </c:choose>
+              <c:choose>
+                <c:when test="${row.REFUNDBUTTON == -1}">
+                  <br><button class="save-btn" onclick="refund(${row.ORDERID},${row.ITEMNUMBER});return(false);">Refund</button>
+                </c:when>
+              </c:choose>
+            </td>
+            <td number>${row.ORDERID}</td>
+            <td text>${row.PRODUCTNAME}</td>
+            <td date style="text-align: center;"><span style="white-space: nowrap;">${row.ORDERDATE}</span></td>
+            <td number style="text-align: center;">${row.QUANTITY}</td>
+            <td money style="text-align: right;">${row.VENDORROYALTY}</td>
+            <td info><p>${row.ITEMCOMMENTS}</p></td>
+            <td info style="text-align: center;"><p>${row.NAME}</p></td>
+            <td info><p>${row.ADDRESS}</p></td>
+            <td info style="text-align: center;">${row.PHONE}</td>
+            <td info><a href="mailto:${row.EMAIL}">${row.EMAIL}</a></td>
+          </tr>
+        </c:forEach>
       </tbody>
       <tfoot>
         <tr class="table-total">

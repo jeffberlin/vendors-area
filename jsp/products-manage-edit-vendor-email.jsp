@@ -7,12 +7,12 @@
     form.VENDOREMAILTEMPLATE.disabled = form.USEDEFAULTTEMPLATE.checked;
   }
 
-  <c:if test = "${ allowChanges == 0 }">
+  <c:if test = "${ !allowChanges }">
     function submitVendorEmail (form) {
       alert("You do not have permission to make changes.");
     }
   </c:if>
-  <c:if test = "${ allowChanges == 1 }">
+  <c:if test = "${ allowChanges }">
     function submitVendorEmail (form) {
       form.submit ();
     }
@@ -20,7 +20,7 @@
 </script>
 <div class="transfer-section">
   <form method="post" name="vendoremailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
-    <h5>Vendor&nbsp;Email&nbsp;template&nbsp;for&nbsp;${param.PRODUCTNAME}</h5>
+    <h5>Vendor&nbsp;Email&nbsp;template&nbsp;for&nbsp;${requestScope.PRODUCTNAME}</h5>
     <p class="text-section" style="margin-bottom: .5rem;">
       The template specified below will be used to override the global email template.
       <br>
@@ -102,19 +102,19 @@
         </div>
       </div>
     </div> <!-- end .toolbar -->
-    <textarea style="margin: .5rem 0;" rows="8" cols="100" id="template" name="VENDOREMAILTEMPLATE"<c:if test="${empty param.VENDOREMAILTEMPLATE}"> disabled</c:if>><c:choose><c:when test="${empty param.VENDOREMAILTEMPLATE}">${param.DEFAULTVENDOREMAILTEMPLATE}</c:when><c:otherwise>${param.VENDOREMAILTEMPLATE}</c:otherwise></c:choose></textarea>
+    <textarea style="margin: .5rem 0;" rows="8" cols="100" id="template" name="VENDOREMAILTEMPLATE"<c:if test="${empty requestScope.VENDOREMAILTEMPLATE}"> disabled</c:if>><c:choose><c:when test="${empty requestScope.VENDOREMAILTEMPLATE}">${requestScope.DEFAULTVENDOREMAILTEMPLATE}</c:when><c:otherwise>${requestScope.VENDOREMAILTEMPLATE}</c:otherwise></c:choose></textarea>
     <br>
     <span>
-      <input type="checkbox" name="USEDEFAULTTEMPLATE" onClick="useDefaultChanged (vendoremailform);" style="margin-bottom: 1.2rem;"<c:if test="${empty param.VENDOREMAILTEMPLATE}"> checked</c:if>/>&nbsp;Use default/global template
+      <input type="checkbox" name="USEDEFAULTTEMPLATE" onClick="useDefaultChanged (vendoremailform);" style="margin-bottom: 1.2rem;"<c:if test="${empty requestScope.VENDOREMAILTEMPLATE}"> checked</c:if>/>&nbsp;Use default/global template
     </span>
     <br>
-    <textarea style="margin: .5rem 0; position: absolute; visibility: hidden;" rows="8" cols="100" name="DEFAULTVENDOREMAILTEMPLATE">${param.DEFAULTVENDOREMAILTEMPLATE}</textarea>
-    <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" />
+    <textarea style="margin: .5rem 0; position: absolute; visibility: hidden;" rows="8" cols="100" name="DEFAULTVENDOREMAILTEMPLATE">${requestScope.DEFAULTVENDOREMAILTEMPLATE}</textarea>
+    <input type="hidden" name="PRODUCTID" value="${requestScope.PRODUCTID}" />
     <input type="hidden" name="ACTION" value="13" />
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage.jsp" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
     <button class="save-btn" type="button" onclick="submitVendorEmail (vendoremailform);" style="margin-right: .5rem;">Save</button>
-    <button class="save-btn" type="button" style="margin-right: .5rem;" onclick="showPreview (21, vendoremailform.VENDOREMAILTEMPLATE.value, ${param.PRODUCTID});">Preview</button>
+    <button class="save-btn" type="button" style="margin-right: .5rem;" onclick="showPreview (21, vendoremailform.VENDOREMAILTEMPLATE.value, ${requestScope.PRODUCTID});">Preview</button>
     <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
   </form>
 </div> <!-- end .transfer-section -->

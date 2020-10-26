@@ -1,11 +1,11 @@
 <%@ include file="/includes/core.jsp" %>
 <script>
-  <c:if test = "${ allowChanges == 0 }">
+  <c:if test = "${ !allowChanges }">
     function submitDefaultVendorEmailForm(form) {
       alert("You do not have permission to edit email templates.");
     }
   </c:if>
-  <c:if test = "${ allowChanges == 1 }">
+  <c:if test = "${ allowChanges }">
     function submitDefaultVendorEmailForm(form) {
       form.submit ();
     }
@@ -96,7 +96,7 @@
         </div>
       </div>
     </div>
-    <textarea style="margin: .5rem 0;" id="template" name="DEFAULTVENDOREMAILTEMPLATE" rows="8" cols="80" placeholder="Type a message">${param.DEFAULTVENDOREMAILTEMPLATE}</textarea>
+    <textarea style="margin: .5rem 0;" id="template" name="DEFAULTVENDOREMAILTEMPLATE" rows="8" cols="80" placeholder="Type a message">${requestScope.DEFAULTVENDOREMAILTEMPLATE}</textarea>
     <br>
     <button class="save-btn" type="button" onclick="submitDefaultVendorEmailForm (defaultvendoremailform);" style="margin-right: .5rem;">Save</button>
     <button class="save-btn" type="button" onclick="showPreview (21, defaultvendoremailform.DEFAULTVENDOREMAILTEMPLATE.value, 0);" style="margin-right: .5rem;">Preview</button>

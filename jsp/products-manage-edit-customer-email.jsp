@@ -8,15 +8,15 @@
     if ((text.indexOf ("#\#IMPORTFILE") != -1) && confirm ("If you are certain you have the correct tokens in the message, click 'OK' to continue. Otherwise, click 'Cancel' and contact us for further assistance.\n\n****IMPORTANT*****\n\nPlease note that clicking 'OK' will bypass checks that ensure the message is using the proper tokens.\n\n")) {
       return (true);
     }
-    if (${param.DOWNLOADFILE} == -1) {
+    if (${requestScope.DOWNLOADFILE} == -1) {
       if ((text.indexOf ("#\#DOWNLOADINSTRUCTIONS#\#") == -1) &&
       ((text.indexOf ("#\#PRODUCTID#\#") == -1) || (text.indexOf ("#\#DOWNLOADPASSWORD#\#") == -1))) {
         alert ("Download instructions are required. Please make sure that the message contains the #\#DOWNLOADINSTRUCTIONS#\# token.");
         return (false);
       }
     }
-    if (${param.PULLKEY} == -1) {
-      if (${param.KEYPARTS} == 1) {
+    if (${requestScope.PULLKEY} == -1) {
+      if (${requestScope.KEYPARTS} == 1) {
         if ((text.indexOf ("#\#STDREGINFO#\#") == -1) && (text.indexOf ("#\#REGKEY1#\#") == -1) && (text.indexOf ("#\#REGKEYINFO#\#") == -1) && (text.indexOf ("#\#REGKEYLIST#\#") == -1)) {
           alert ("Activation Code information is required. Please make sure that the message contains the #\#STDREGINFO#\# token.");
           return (false);
@@ -31,15 +31,15 @@
             alert ("Please make sure that the message contains the #\#REGKEY1#\# token.");
             return (false);
           }
-          if ((${param.KEYPARTS} >= 2) && (text.indexOf ("#\#REGKEY2#\#") == -1)) {
+          if ((${requestScope.KEYPARTS} >= 2) && (text.indexOf ("#\#REGKEY2#\#") == -1)) {
             alert ("Please make sure that the message contains the #\#REGKEY2#\# token.");
             return (false);
           }
-          if ((${param.KEYPARTS} >= 3) && (text.indexOf ("#\#REGKEY3#\#") == -1)) {
+          if ((${requestScope.KEYPARTS} >= 3) && (text.indexOf ("#\#REGKEY3#\#") == -1)) {
             alert ("Please make sure that the message contains the #\#REGKEY3#\# token.");
             return (false);
           }
-          if ((${param.KEYPARTS} >= 4) && (text.indexOf ("#\#REGKEY4#\#") == -1)) {
+          if ((${requestScope.KEYPARTS} >= 4) && (text.indexOf ("#\#REGKEY4#\#") == -1)) {
             alert ("Please make sure that the message contains the #\#REGKEY4#\# token.");
             return (false);
           }
@@ -49,14 +49,14 @@
         }
       }
     }
-    if (${param.GENERATEKEY} == -1) {
+    if (${requestScope.GENERATEKEY} == -1) {
       if ((text.indexOf ("#\#STDREGINFO#\#") == -1) && (text.indexOf ("#\#REGKEY1#\#") == -1) && (text.indexOf ("#\#REGKEYINFO#\#") == -1) && (text.indexOf ("#\#GIFTCERTIFICATES#\#") == -1) && (text.indexOf ("#\#REGKEYLIST#\#") == -1) &&
       ("#\#KEYGENERATOR#\#".indexOf ("ticket ") != 0))  {
         alert ("Activation Code or Gift Certificate information is required. Please make sure that the message contains the #\#STDREGINFO#\# or #\#GIFTCERTIFICATES#\# token.");
         return (false);
       }
     }
-    if (${param.KEYLIST} == -1) {
+    if (${requestScope.KEYLIST} == -1) {
       if ((text.indexOf ("#\#REGKEYINFO#\#") == -1) && (text.indexOf ("#\#GIFTCERTIFICATES#\#") == -1) && (text.indexOf ("#\#REGKEYLIST#\#") == -1)) {
         alert ("This product is configured to send out more than one key. Because of this, a key list is required. Please make sure that the message contains the #\#REGKEYINFO#\# or #\#GIFTCERTIFICATES#\# token.");
         return (false);
@@ -72,12 +72,12 @@
     form.CUSTOMEREMAILTEMPLATE.disabled = form.USEDEFAULTTEMPLATE.checked;
   }
 
-  <c:if test = "${ allowChanges == 0 }">
+  <c:if test = "${ !allowChanges }">
     function submitCustomerEmail (form) {
       alert("You do not have permission to make changes.");
     }
   </c:if>
-  <c:if test = "${ allowChanges == 1 }">
+  <c:if test = "${ allowChanges }">
     function submitCustomerEmail (form) {
       if (checkCustomerEmailSyntax (form)) {
         form.submit();
@@ -87,7 +87,7 @@
 </script>
 <div class="transfer-section">
   <form method="post" name="customeremailform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
-    <h5>Customer&nbsp;Email&nbsp;template&nbsp;for&nbsp;${param.PRODUCTNAME}</h5>
+    <h5>Customer&nbsp;Email&nbsp;template&nbsp;for&nbsp;${requestScope.PRODUCTNAME}</h5>
     <p class="text-section" style="margin-bottom: .5rem;">
       The template specified below will be used to override the global email template.
       <br>
@@ -168,19 +168,19 @@
         </div>
       </div> <!-- end .dropdown -->
     </div>
-    <textarea style="margin: .5rem 0;" id="template" name="CUSTOMEREMAILTEMPLATE" rows="8" cols="100"<c:if test="${empty param.CUSTOMEREMAILTEMPLATE}"> disabled</c:if>><c:choose><c:when test="${empty param.CUSTOMEREMAILTEMPLATE}">${param.DEFAULTCUSTOMEREMAILTEMPLATE}</c:when><c:otherwise>${param.CUSTOMEREMAILTEMPLATE}</c:otherwise></c:choose></textarea>
+    <textarea style="margin: .5rem 0;" id="template" name="CUSTOMEREMAILTEMPLATE" rows="8" cols="100"<c:if test="${empty requestScope.CUSTOMEREMAILTEMPLATE}"> disabled</c:if>><c:choose><c:when test="${empty requestScope.CUSTOMEREMAILTEMPLATE}">${requestScope.DEFAULTCUSTOMEREMAILTEMPLATE}</c:when><c:otherwise>${requestScope.CUSTOMEREMAILTEMPLATE}</c:otherwise></c:choose></textarea>
     <br>
     <span>
-      <input type="checkbox" name="USEDEFAULTTEMPLATE" onClick="useDefaultChanged (customeremailform);" style="margin-bottom: 1.2rem;"<c:if test="${empty param.CUSTOMEREMAILTEMPLATE}"> checked</c:if>/>&nbsp;Use default/global template
+      <input type="checkbox" name="USEDEFAULTTEMPLATE" onClick="useDefaultChanged (customeremailform);" style="margin-bottom: 1.2rem;"<c:if test="${empty requestScope.CUSTOMEREMAILTEMPLATE}"> checked</c:if>/>&nbsp;Use default/global template
     </span>
     <br>
-    <textarea style="margin: .5rem 0; position: absolute; visibility: hidden;" rows="8" cols="100" name="DEFAULTCUSTOMEREMAILTEMPLATE">${param.DEFAULTCUSTOMEREMAILTEMPLATE}</textarea>
-    <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" />
+    <textarea style="margin: .5rem 0; position: absolute; visibility: hidden;" rows="8" cols="100" name="DEFAULTCUSTOMEREMAILTEMPLATE">${requestScope.DEFAULTCUSTOMEREMAILTEMPLATE}</textarea>
+    <input type="hidden" name="PRODUCTID" value="${requestScope.PRODUCTID}" />
     <input type="hidden" name="ACTION" value="12" />
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage.jsp" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
     <button class="save-btn" type="button" onclick="submitCustomerEmail (customeremailform);" style="margin-right: .5rem;">Save</button>
-    <button class="save-btn" type="button" onclick="showPreview (20, customeremailform.CUSTOMEREMAILTEMPLATE.value, ${param.PRODUCTID});" style="margin-right: .5rem;" >Preview</button>
+    <button class="save-btn" type="button" onclick="showPreview (20, customeremailform.CUSTOMEREMAILTEMPLATE.value, ${requestScope.PRODUCTID});" style="margin-right: .5rem;" >Preview</button>
     <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
   </form>
 </div>

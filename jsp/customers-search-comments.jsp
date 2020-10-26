@@ -1,9 +1,9 @@
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
-  <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post"  target="">
+  <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post" target="">
     <input type="hidden" name="ORDERID" value="${requestScope.ORDERID}">
-    <input type="hidden" name="ITEMNR"  value="${requestScope.ITEMNR}">
-    <input type="hidden" name="ACTION"  value="1">
+    <input type="hidden" name="ITEMNR" value="${requestScope.ITEMNR}">
+    <input type="hidden" name="ACTION" value="1">
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-search-comments-updated.jsp">
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
     <h5>Edit&nbsp;Item&nbsp;Comments</h5>

@@ -79,13 +79,13 @@
       function conditionalToggleField (field) {
         switch (field) {
           case "downloadfile":
-            if (isBlank ("${param.DOWNLOADFILEID}")) {
+            if (isBlank ("${requestScope.DOWNLOADFILEID}")) {
               alert ("Template product does not specify a download file. Please choose a different template product if you wish to provide a download file list.");
               return;
             }
           break;
           case "keygenerator":
-            if (isBlank ("${param.KEYGENERATOR}")) {
+            if (isBlank ("${requestScope.KEYGENERATOR}")) {
               alert ("Template product does not specify a key generator. Please choose a different template product if you wish to provide a key generator list.");
               return;
             }
@@ -95,8 +95,8 @@
       }
 
       // function initForm (form) {
-      //   setFieldVisible ("downloadfile", !isBlank ("${param.DOWNLOADFILEID}"));
-      //   setFieldVisible ("keygenerator", !isBlank ("${param.KEYGENERATOR}"));
+      //   setFieldVisible ("downloadfile", !isBlank ("${requestScope.DOWNLOADFILEID}"));
+      //   setFieldVisible ("keygenerator", !isBlank ("${requestScope.KEYGENERATOR}"));
       // }
 
       function submitNewMultipleProduct (form) {
@@ -126,7 +126,7 @@
             }
           }
         }
-        var dlExpected = !isBlank ("${param.DOWNLOADFILEID}");
+        var dlExpected = !isBlank ("${requestScope.DOWNLOADFILEID}");
         lc = getLineCount (form.DOWNLOADFILENAME.value);
         if (lc == 0) {
           if (dlExpected) {
@@ -149,7 +149,7 @@
             return (false);
           }
         }
-        var kgExpected = !isBlank ("${param.KEYGENERATOR}");
+        var kgExpected = !isBlank ("${requestScope.KEYGENERATOR}");
         lc = getLineCount (form.KEYGENERATOR.value);
         if (lc == 0) {
           if (kgExpected) {
@@ -174,14 +174,10 @@
         }
         lc = getLineCount (form.NOTIFICATIONEMAILS.value);
         if ((lc != 0) && (lc != productCount)) {
-          // setFieldVisible ("ordernotifications");
           alert ("You have specified " + lc + " notification emails. If specified, the number of notification emails must match the number of products (" + productCount + ")");
           form.NOTIFICATIONEMAIL.focus ();
           return (false);
         }
-        // setFieldVisible ("submitbutton", false);
-        // setFieldVisible ("progress", true);
-        // document.getElementById('progress').style.display = "block";
         form.submit ();
         return (true);
       }
@@ -217,7 +213,7 @@
                 </ul>
                 <div class="tab-box">
                   <form name="productform" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
-                    <input type="hidden" name="PRODUCTID" value="${param.PRODUCTID}" />
+                    <input type="hidden" name="PRODUCTID" value="${requestScope.PRODUCTID}" />
                     <input type="hidden" name="ACTION" value="17" />
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-add-multiple-progress.jsp" />
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
@@ -225,7 +221,7 @@
                       <div class="tab-pane fade show active" id="productInfo" role="tabpanel" aria-labelledby="productInfo-tab">
                         <h5>Product Info</h5>
                         <p>Insert Product Information below.&nbsp;Values should be separated by a comma (",") or use new lines.</p>
-                        <p>Defaults will be based on ${param.PRODUCTNAME}</p>
+                        <p>Defaults will be based on ${requestScope.PRODUCTNAME}</p>
                         <div class="row" style="margin-bottom: 1rem;">
                           <span>
                             <label>Product&nbsp;Name:</label>
@@ -234,7 +230,7 @@
                           </span>
                           <span>
                             <label>Product&nbsp;Price:</label>
-                            <span style="font-size: .8rem;">(Leave blank to use same price as ${param.PRODUCTNAME})</span>
+                            <span style="font-size: .8rem;">(Leave blank to use same price as ${requestScope.PRODUCTNAME})</span>
                             <br>
                             <textarea name="PRODUCTPRICE" rows="15" cols="70"></textarea>
                           </span>
@@ -247,7 +243,7 @@
                         <h6>Download&nbsp;File&nbsp;List</h6>
                         <p>If these products should be associated with download files already uploaded through the Manage Files interface, click button to add product file list.</p>
                         <button type="button" class="grey-btn" onclick="conditionalToggleField('downloadfile');" style="margin-bottom: .7rem;">Add Download File list</button>
-                        <div id="downloadfile" class="toggle-section"<c:if test="${empty param.DOWNLOADFILEID}">style="display: none;"</c:if>>
+                        <div id="downloadfile" class="toggle-section"<c:if test="${empty requestScope.DOWNLOADFILEID}">style="display: none;"</c:if>>
                           <h6>Create Multiple Products&nbsp;-&nbsp;Add Download File List</h6>
                           <p>To associated download files, add list below.&nbsp;There must be a download file for every product name above.</p>
                           <span>
@@ -259,7 +255,7 @@
                         <h6>Generated&nbsp;Codes/Gift&nbsp;Certificates/Subscription Credits</h6>
                         <p>If activation code, gift certificate or subscription credit should be generated on the fly, select Add Code Generator Information.</p>
                         <button type="button" class="grey-btn" onclick="conditionalToggleField('keygenerator');" style="margin-bottom: 1rem;">Add Code Generator list</button>
-                        <div id="keygenerator" class="toggle-section"<c:if test="${empty param.KEYGENERATOR}">style="display: none;"</c:if>>
+                        <div id="keygenerator" class="toggle-section"<c:if test="${empty requestScope.KEYGENERATOR}">style="display: none;"</c:if>>
                           <h6>Create Product&nbsp;-&nbsp;Codes Generated On-the-Fly</h6>
                           <p>Add code generation information for these products below.&nbsp;Separate value must be added for each product name listed above.</p>
                           <span>
