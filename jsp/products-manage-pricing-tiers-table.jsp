@@ -1,6 +1,5 @@
 <%@ include file="/includes/core.jsp" %>
 <form name="tiers" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.TieredPricing">
-  <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
   <input type="hidden" name="ACTION" value="" />
   <input type="hidden" name="TIERID" value="" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-pricing-tiers-table.jsp" />
@@ -26,7 +25,16 @@
         </tr>
       </thead>
       <tbody>
-        ${param.TABLEDATA}
+        <c:forEach var="row" items="${requestScope.TABLEDATA}">
+          <tr onclick="highlightLinks (this);">
+            <td mtext>
+              <a href="javascript:editTier (${row.TIERID});">${row.NAME}</a>
+            </td>
+            <td option>
+              <button type="button" name="Remove" class="remove" onclick="deleteTier (${row.TIERID});"></button>
+            </td>
+          </tr>
+        </c:forEach>
       </tbody>
       <tfoot>
         <tr class="table-total">

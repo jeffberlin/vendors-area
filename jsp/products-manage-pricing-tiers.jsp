@@ -22,14 +22,14 @@
       }
     </style>
     <script>
-      function initForm (form) {
-        var showinactive = getCookieValue("BMTMicro.Vendors.Tiers.ShowInactive");
-        if (showinactive != null) {
-          form.SHOWINACTIVE.value = showinactive;
-        }
-        form.submit();
-        initField (form, "SHOWINACTIVE", "${param.SHOWINACTIVE}");
-      }
+      // function initForm (form) {
+      //   var showinactive = getCookieValue("BMTMicro.Vendors.Tiers.ShowInactive");
+      //   if (showinactive != null) {
+      //     form.SHOWINACTIVE.value = showinactive;
+      //   }
+      //   form.submit();
+      //   initField (form, "SHOWINACTIVE", "${requestScope.SHOWINACTIVE}");
+      // }
 
       function submitForm (action, target, nextpage, tierid) {
         var form = document.tiers;
@@ -45,7 +45,7 @@
 				}
       }
 
-      <c:if test="${ allowChanges == 0 }">
+      <c:if test="${ !allowChanges }">
         function addTier() {
           alert("You do not have permission to add tiers.");
         }
@@ -54,7 +54,7 @@
         }
       </c:if>
 
-      <c:if test="${ allowChanges == 1 }">
+      <c:if test="${ allowChanges }">
         function addTier() {
           submitForm (0, "_parent", "https://vendors-new.bmtmicro.com/products-manage-pricing-tiers-add.jsp");
         }
@@ -91,7 +91,6 @@
                     <input type="hidden" name="ACTION" value="-1" />
                     <input type="hidden" name="SHOWINACTIVE" value="0" />
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-pricing-tiers-table.jsp" />
-                    <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-pricing-tiers-tablerow.html" />
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                   </form>
 								</div>

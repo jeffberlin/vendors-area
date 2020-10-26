@@ -27,29 +27,31 @@
           <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Product Name'" text>
             <a href="#" class="fdTableSortTrigger">Product&nbsp;Name</a>
           </th>
-          <c:if test = "${requestScope.SHOWDETAILS != -1}">
-            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Granted'" number>
-              <a href="#" class="fdTableSortTrigger">Granted</a>
-            </th>
-            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Redeemed'" number>
-              <a href="#" class="fdTableSortTrigger">Redeemed</a>
-            </th>
-            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Available'" number>
-              <a href="#" class="fdTableSortTrigger">Available</a>
-            </th>
-          </c:if>
-          <c:if test = "${requestScope.SHOWDETAILS == -1}">
-            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Order ID'" number>
-              <a href="#" class="fdTableSortTrigger">Order ID</a>
-            </th>
-            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Expires'" date>
-              <a href="#" class="fdTableSortTrigger">Expires</a>
-            </th>
-            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Status'" text>
-              <a href="#" class="fdTableSortTrigger">Status</a>
-            </th>
-            <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Status'" option></th>
-          </c:if>
+          <c:choose>
+            <c:when test = "${requestScope.SHOWDETAILS == -1}">
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Order ID'" number>
+                <a href="#" class="fdTableSortTrigger">Order ID</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Expires'" date>
+                <a href="#" class="fdTableSortTrigger">Expires</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Status'" text>
+                <a href="#" class="fdTableSortTrigger">Status</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Status'" option></th>
+            </c:when>
+            <c:otherwise>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Granted'" number>
+                <a href="#" class="fdTableSortTrigger">Granted</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Redeemed'" number>
+                <a href="#" class="fdTableSortTrigger">Redeemed</a>
+              </th>
+              <th scope="col" class="sort-column sortable sort text-center" title="Sort on 'Available'" number>
+                <a href="#" class="fdTableSortTrigger">Available</a>
+              </th>
+            </c:otherwise>
+          </c:choose>
         </tr>
       </thead>
       <tr>
@@ -62,22 +64,24 @@
           <input class="input-search" type="text" name="FLT_EMAIL" value="" size="20" placeholder="Search" onkeypress="filterKeyPress(event);">
         </th>
         <th text>
-           <input class="input-search" type="text" name="FLT_NAME" value="" size="20" placeholder="Search" onkeypress="filterKeyPress(event);">
+          <input class="input-search" type="text" name="FLT_NAME" value="" size="20" placeholder="Search" onkeypress="filterKeyPress(event);">
         </th>
         <th text>
-           <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="" size="20" placeholder="Search" onkeypress="filterKeyPress(event);">
+          <input class="input-search" type="text" name="FLT_PRODUCTNAME" value="" size="20" placeholder="Search" onkeypress="filterKeyPress(event);">
         </th>
-        <c:if test = "${requestScope.SHOWDETAILS != -1}">
-          <th number></th>
-          <th number></th>
-          <th number></th>
-        </c:if>
-        <c:if test = "${requestScope.SHOWDETAILS == -1}">
-          <th number></th>
-          <th date></th>
-          <th text></th>
-          <th option></th>
-        </c:if>
+        <c:choose>
+          <c:when test = "${requestScope.SHOWDETAILS == -1}">
+            <th number></th>
+            <th date></th>
+            <th text></th>
+            <th option></th>
+          </c:when>
+          <c:otherwise>
+            <th number></th>
+            <th number></th>
+            <th number></th>
+          </c:otherwise>
+        </c:choose>
       </tr>
       <tbody>
         <c:forEach var="row" items="${requestScope.TABLEDATA}">
@@ -85,9 +89,40 @@
             <td text><a href="mailto:${row.EMAIL}">${row.EMAIL}</a></td>
             <td text>${row.NAME}</td>
             <td info>${row.PRODUCTNAME}</td>
-            <td number>${row.TICKETCOUNT}</td>
-            <td number>${row.REDEEMCOUNT}</td>
-            <td number>${row.AVAILABLECOUNT}</td>
+            <c:choose>
+              <c:when test = "${requestScope.SHOWDETAILS == -1}">
+                <td number class="text-center">${row.GRANTORDERID}</td>
+                <td date class="text-center">${row.EXPIRATIONDATE}</td>
+                <td text class="text-center">
+                  <c:choose>
+                    <c:when test="${row.STATUS=='2'}">
+                      <font color="red">Expired</font>
+                    </c:when>
+                    <c:when test="${row.STATUS=='1'}">
+                      ${row.REDEEMORDERID}
+                    </c:when>
+                    <c:otherwise>
+                      <font color="green">Available</font>
+                    </c:otherwise>
+                  </c:choose>
+                </td>
+                <td class="text-center">
+                  <c:choose>
+                    <c:when test="${row.STATUS=='2'}">
+                      <button class="save-btn" type="button" value="Expire" onclick="expireTicket ({row.TICKETID});">Expire</button>
+                    </c:when>
+                    <c:otherwise>
+                      <button class="save-btn" type="button" value="Grant" onclick="addTicket (%%TICKETID%%);">Grant</button>
+                    </c:otherwise>
+                  </c:choose>
+                </td>
+              </c:when>
+              <c:otherwise>
+                <td number>${row.TICKETCOUNT}</td>
+                <td number>${row.REDEEMCOUNT}</td>
+                <td number>${row.AVAILABLECOUNT}</td>
+              </c:otherwise>
+            </c:choose>
           </tr>
         </c:forEach>
       </tbody>

@@ -51,25 +51,9 @@
         moveAllListItems (form.DISCOUNTPRODUCTLIST, form.DISCOUNTSELECTEDLIST);
       }
 
-      // function initForm (form){
-        // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
-        // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        // initField (form, "ACTIVE_CHK",     "##ACTIVE##");
-        // initField (form, "SHOWINCART_CHK", "##SHOWINCART##");
-        // initField (form, "ROUNDING",       "##ROUNDING##");
-        // initField (form, "DISCOUNTTYPE",   "##DISCOUNTTYPE##");
-        // initField (form, "QUALIFYINGTYPE", "##QUALIFYINGTYPE##");
-        // initField (form, "APPLYTYPE",      "##APPLYTYPE##");
-        // initField (form, "CURRENCY",       "##CURRENCY##");
-        // initField (form, "RUNLEVEL",       "##RUNLEVEL##");
-        // initField (form, "APPLYORDER",     "##APPLYORDER##");
-      // }
-
       function submitForm (form) {
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
-        // copyField (form, "ACTIVE",     "ACTIVE_CHK");
-        // copyField (form, "SHOWINCART", "SHOWINCART_CHK");
         form.NAME.value = trim (form.NAME.value);
 
         if (!allowChanges ("You do not have permission to edit pricing tiers.")) {
@@ -80,7 +64,7 @@
           form.NAME.focus ();
           return (false);
         }
-        if ((form.NAME.value != "${param.NAME}") && ("${param.NAMELIST}".split ("\t").indexOf (form.NAME.value) != -1)) {
+        if ((form.NAME.value != "${requestScope.NAME}") && ("${requestScope.NAMELIST}".split ("\t").indexOf (form.NAME.value) != -1)) {
           alert ("A pricing tier with that name already exists!");
           form.NAME.focus ();
           return (false);
@@ -154,7 +138,7 @@
                 <form method="post" name="tierform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.TieredPricing">
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-pricing-tiers.jsp" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-                  <input type="hidden" name="TIERID" value="${param.TIERID}" />
+                  <input type="hidden" name="TIERID" value="${requestScope.TIERID}" />
                   <input type="hidden" name="ACTION" value="11" />
                   <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="basicTab" role="tabpanel" aria-labelledby="basic-tab">
@@ -162,11 +146,11 @@
                       <p>Enter primary tier settings in fields below.</p>
                       <span>
                         <label>Name:&nbsp;</label>
-                        <input type="text" id="NAME" name="NAME" maxlength="80" value="${param.NAME}" style="width: 275px; margin-bottom: 2rem;" />&nbsp;
-                        <input type="hidden" name="ACTIVE" value="${param.ACTIVE}" />
-                        <input type="checkbox"<c:if test="${param.ACTIVE!=0}"> checked</c:if>/>&nbsp;Active&nbsp;
-                        <input type="hidden" name="SHOWINCART" value="${param.SHOWINCART}" />
-                        <input type="checkbox"<c:if test="${param.SHOWINCART!=0}"> checked</c:if>/>&nbsp;Show in Cart
+                        <input type="text" id="NAME" name="NAME" maxlength="80" value="${requestScope.NAME}" style="width: 275px; margin-bottom: 2rem;" />&nbsp;
+                        <input type="hidden" name="ACTIVE" value="${requestScope.ACTIVE}" />
+                        <input type="checkbox"<c:if test="${requestScope.ACTIVE!=0}"> checked</c:if>/>&nbsp;Active&nbsp;
+                        <input type="hidden" name="SHOWINCART" value="${requestScope.SHOWINCART}" />
+                        <input type="checkbox"<c:if test="${requestScope.SHOWINCART!=0}"> checked</c:if>/>&nbsp;Show in Cart
                       </span>
                       <br>
                       <button id="toAmount" class="save-btn" type="button">Next</button>
@@ -176,44 +160,44 @@
                       <p>Set amount or percentage off of full or discounted price.</p>
                       <span>
                         <label>Amount:&nbsp;</label>
-                        <input id="AMOUNT" name="AMOUNT" type="text" value="${param.AMOUNT}" style="margin-right: 1rem;" />
+                        <input id="AMOUNT" name="AMOUNT" type="text" value="${requestScope.AMOUNT}" style="margin-right: 1rem;" />
                       </span>
                       <span>
                         <label>Method:&nbsp;</label>
                         <select name="DISCOUNTTYPE" style="margin-bottom: 1rem;">
-                          <option value="0"<c:if test="${param.DISCOUNTTYPE=='0'}"> selected</c:if>>Percent Off</option>
-                          <option value="1"<c:if test="${param.DISCOUNTTYPE=='1'}"> selected</c:if>>Amount Off</option>
-                          <option value="2"<c:if test="${param.DISCOUNTTYPE=='2'}"> selected</c:if>>Set New Price</option>
-                          <option value="3"<c:if test="${param.DISCOUNTTYPE=='3'}"> selected</c:if>>Percent Off Full Price</option>
-                          <option value="4"<c:if test="${param.DISCOUNTTYPE=='4'}"> selected</c:if>>Amount Off Full Price</option>
+                          <option value="0"<c:if test="${requestScope.DISCOUNTTYPE=='0'}"> selected</c:if>>Percent Off</option>
+                          <option value="1"<c:if test="${requestScope.DISCOUNTTYPE=='1'}"> selected</c:if>>Amount Off</option>
+                          <option value="2"<c:if test="${requestScope.DISCOUNTTYPE=='2'}"> selected</c:if>>Set New Price</option>
+                          <option value="3"<c:if test="${requestScope.DISCOUNTTYPE=='3'}"> selected</c:if>>Percent Off Full Price</option>
+                          <option value="4"<c:if test="${requestScope.DISCOUNTTYPE=='4'}"> selected</c:if>>Amount Off Full Price</option>
                         </select>
                       </span>
                       <br>
                       <span>
                         <label>Currency:&nbsp;</label>
                         <select name="CURRENCY" style="margin-right: 1rem;">
-                          <option value=""<c:if test="${param.CURRENCY==''}"> selected</c:if>>All Currencies</option>
-                          <option value="USD"<c:if test="${param.CURRENCY=='USD'}"> selected</c:if>>USD</option>
-                          <option value="EUR"<c:if test="${param.CURRENCY=='EUR'}"> selected</c:if>>EUR</option>
-                          <option value="GBP"<c:if test="${param.CURRENCY=='GBP'}"> selected</c:if>>GBP</option>
-                          <option value="CAD"<c:if test="${param.CURRENCY=='CAD'}"> selected</c:if>>CAD</option>
-                          <option value="AUD"<c:if test="${param.CURRENCY=='AUD'}"> selected</c:if>>AUD</option>
+                          <option value=""<c:if test="${requestScope.CURRENCY==''}"> selected</c:if>>All Currencies</option>
+                          <option value="USD"<c:if test="${requestScope.CURRENCY=='USD'}"> selected</c:if>>USD</option>
+                          <option value="EUR"<c:if test="${requestScope.CURRENCY=='EUR'}"> selected</c:if>>EUR</option>
+                          <option value="GBP"<c:if test="${requestScope.CURRENCY=='GBP'}"> selected</c:if>>GBP</option>
+                          <option value="CAD"<c:if test="${requestScope.CURRENCY=='CAD'}"> selected</c:if>>CAD</option>
+                          <option value="AUD"<c:if test="${requestScope.CURRENCY=='AUD'}"> selected</c:if>>AUD</option>
                         </select>
                       </span>
                       <span>
                         <label>Rounding:&nbsp;</label>
                         <select name="ROUNDING" style="margin-bottom: 2rem;">
-                          <option value="-1.00"<c:if test="${param.ROUNDING=='-1.00'}"> selected</c:if>>Round discount to nearest 1.00</option>
-                          <option value="-0.50"<c:if test="${param.ROUNDING=='-0.50'}"> selected</c:if>>Round discount to nearest 0.50</option>
-                          <option value="-0.25"<c:if test="${param.ROUNDING=='-0.25'}"> selected</c:if>>Round discount to nearest 0.25</option>
-                          <option value="-0.10"<c:if test="${param.ROUNDING=='-0.10'}"> selected</c:if>>Round discount to nearest 0.10</option>
-                          <option value="-0.05"<c:if test="${param.ROUNDING=='-0.05'}"> selected</c:if>>Round discount to nearest 0.05</option>
-                          <option value="0.00"<c:if test="${param.ROUNDING=='0.00'}"> selected</c:if>>No Rounding</option>
-                          <option value="0.05"<c:if test="${param.ROUNDING=='0.05'}"> selected</c:if>>Round price to nearest 0.05</option>
-                          <option value="0.10"<c:if test="${param.ROUNDING=='0.10'}"> selected</c:if>>Round price to nearest 0.10</option>
-                          <option value="0.25"<c:if test="${param.ROUNDING=='0.25'}"> selected</c:if>>Round price to nearest 0.25</option>
-                          <option value="0.50"<c:if test="${param.ROUNDING=='0.50'}"> selected</c:if>>Round price to nearest 0.50</option>
-                          <option value="1.00"<c:if test="${param.ROUNDING=='1.00'}"> selected</c:if>>Round price to nearest 1.00</option>
+                          <option value="-1.00"<c:if test="${requestScope.ROUNDING=='-1.00'}"> selected</c:if>>Round discount to nearest 1.00</option>
+                          <option value="-0.50"<c:if test="${requestScope.ROUNDING=='-0.50'}"> selected</c:if>>Round discount to nearest 0.50</option>
+                          <option value="-0.25"<c:if test="${requestScope.ROUNDING=='-0.25'}"> selected</c:if>>Round discount to nearest 0.25</option>
+                          <option value="-0.10"<c:if test="${requestScope.ROUNDING=='-0.10'}"> selected</c:if>>Round discount to nearest 0.10</option>
+                          <option value="-0.05"<c:if test="${requestScope.ROUNDING=='-0.05'}"> selected</c:if>>Round discount to nearest 0.05</option>
+                          <option value="0.00"<c:if test="${requestScope.ROUNDING=='0.00'}"> selected</c:if>>No Rounding</option>
+                          <option value="0.05"<c:if test="${requestScope.ROUNDING=='0.05'}"> selected</c:if>>Round price to nearest 0.05</option>
+                          <option value="0.10"<c:if test="${requestScope.ROUNDING=='0.10'}"> selected</c:if>>Round price to nearest 0.10</option>
+                          <option value="0.25"<c:if test="${requestScope.ROUNDING=='0.25'}"> selected</c:if>>Round price to nearest 0.25</option>
+                          <option value="0.50"<c:if test="${requestScope.ROUNDING=='0.50'}"> selected</c:if>>Round price to nearest 0.50</option>
+                          <option value="1.00"<c:if test="${requestScope.ROUNDING=='1.00'}"> selected</c:if>>Round price to nearest 1.00</option>
                         </select>
                       </span>
                       <br>
@@ -225,40 +209,40 @@
                       <p>To apply to all but 1 enter -1 in the discounted quantity field.</p>
                       <span>
                         <label>Minimum purchase:&nbsp;</label>
-                        <input type="text" id="QUALIFYINGQUANTITY" name="QUALIFYINGQUANTITY" value="${param.QUALIFYINGQUANTITY}" style="margin-bottom: 1rem;" />
+                        <input type="text" id="QUALIFYINGQUANTITY" name="QUALIFYINGQUANTITY" value="${requestScope.QUALIFYINGQUANTITY}" style="margin-bottom: 1rem;" />
                         <select name="QUALIFYINGTYPE">
-                          <option value="0"<c:if test="${param.QUALIFYINGTYPE=='0'}"> selected</c:if>>Items</option>
-                          <option value="1"<c:if test="${param.QUALIFYINGTYPE=='1'}"> selected</c:if>>Amount</option>
-                          <option value="2"<c:if test="${param.QUALIFYINGTYPE=='2'}"> selected</c:if>>Unique Items</option>
+                          <option value="0"<c:if test="${requestScope.QUALIFYINGTYPE=='0'}"> selected</c:if>>Items</option>
+                          <option value="1"<c:if test="${requestScope.QUALIFYINGTYPE=='1'}"> selected</c:if>>Amount</option>
+                          <option value="2"<c:if test="${requestScope.QUALIFYINGTYPE=='2'}"> selected</c:if>>Unique Items</option>
                         </select>
                       </span>
                       <br>
                       <span>
                         <label>Discounted Quantity:&nbsp;</label>
-                        <input type="text" id="DISCOUNTQUANTITY" name="DISCOUNTQUANTITY" value="${param.DISCOUNTQUANTITY}" style="margin-bottom: 1rem;" />
+                        <input type="text" id="DISCOUNTQUANTITY" name="DISCOUNTQUANTITY" value="${requestScope.DISCOUNTQUANTITY}" style="margin-bottom: 1rem;" />
                         <select name="APPLYTYPE">
-                          <option value="0"<c:if test="${param.APPLYTYPE=='0'}"> selected</c:if>>Items</option>
-                          <option value="2"<c:if test="${param.APPLYTYPE=='2'}"> selected</c:if>>Unique Items</option>
+                          <option value="0"<c:if test="${requestScope.APPLYTYPE=='0'}"> selected</c:if>>Items</option>
+                          <option value="2"<c:if test="${requestScope.APPLYTYPE=='2'}"> selected</c:if>>Unique Items</option>
                         </select>
                       </span>
                       <br>
                       <span>
                         <label>Apply&nbsp;Order:&nbsp;</label>
                         <select name="APPLYORDER" style="margin-bottom: 1rem;">
-                          <option value="0"<c:if test="${param.APPLYORDER=='0'}"> selected</c:if>>By Row Number</option>
-                          <option value="1"<c:if test="${param.APPLYORDER=='1'}"> selected</c:if>>By Lowest Price</option>
-                          <option value="2"<c:if test="${param.APPLYORDER=='2'}"> selected</c:if>>By Highest Price</option>
+                          <option value="0"<c:if test="${requestScope.APPLYORDER=='0'}"> selected</c:if>>By Row Number</option>
+                          <option value="1"<c:if test="${requestScope.APPLYORDER=='1'}"> selected</c:if>>By Lowest Price</option>
+                          <option value="2"<c:if test="${requestScope.APPLYORDER=='2'}"> selected</c:if>>By Highest Price</option>
                         </select>
                       </span>
                       <br>
                       <span>
                         <label>Tier&nbsp;Level:&nbsp;</label>
                         <select name="RUNLEVEL" style="margin-bottom: 2rem;">
-                          <option value="0"<c:if test="${param.RUNLEVEL=='0'}"> selected</c:if>>0</option>
-                          <option value="1"<c:if test="${param.RUNLEVEL=='1'}"> selected</c:if>>1</option>
-                          <option value="2"<c:if test="${param.RUNLEVEL=='2'}"> selected</c:if>>2</option>
-                          <option value="3"<c:if test="${param.RUNLEVEL=='3'}"> selected</c:if>>3</option>
-                          <option value="4"<c:if test="${param.RUNLEVEL=='4'}"> selected</c:if>>4</option>
+                          <option value="0"<c:if test="${requestScope.RUNLEVEL=='0'}"> selected</c:if>>0</option>
+                          <option value="1"<c:if test="${requestScope.RUNLEVEL=='1'}"> selected</c:if>>1</option>
+                          <option value="2"<c:if test="${requestScope.RUNLEVEL=='2'}"> selected</c:if>>2</option>
+                          <option value="3"<c:if test="${requestScope.RUNLEVEL=='3'}"> selected</c:if>>3</option>
+                          <option value="4"<c:if test="${requestScope.RUNLEVEL=='4'}"> selected</c:if>>4</option>
                         </select>
                       </span>
                       <br>
@@ -269,7 +253,7 @@
                       <h5>Qualifying products</h5>
                       <p>Choose Qualifying products necessary to apply this tier.</p>
                       <select id="PRODUCTLIST" name="QUALIFYINGPRODUCTLIST" multiple="multiple" ondblclick="addQualifyingProduct(tierform);return (false);" style="min-width: 500px; height: 100px; margin-bottom: 1rem;">
-                         ${param.QUALIFYINGPRODUCTLIST}
+                         ${requestScope.QUALIFYINGPRODUCTLIST}
                       </select>
                       <div class="move">
                         <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addQualifyingProduct(tierform);return (false);">
@@ -286,7 +270,7 @@
                         </button>
                       </div> <!-- end .move -->
                       <select id="SELECTEDLIST" name="QUALIFYINGSELECTEDLIST" multiple="multiple" ondblclick="removeQualifyingProduct (tierform);return (false);" style="min-width: 500px; height: 100px; margin-bottom: 2rem;" >
-                         ${param.QUALIFYINGPRODUCTS}
+                         ${requestScope.QUALIFYINGPRODUCTS}
                       </select>
                       <input type="hidden" name="QUALIFYINGPRODUCTS" />
                       <br>
@@ -297,7 +281,7 @@
                       <h5>Discounted Products</h5>
                       <p>Choose Products to which discount will be applied.</p>
                       <select id="PRODUCTLIST" name="DISCOUNTPRODUCTLIST" multiple="multiple" ondblclick="addDiscountProduct(tierform);return (false);" style="min-width: 500px; height: 100px; margin-bottom: 1rem;" >
-                         ${param.DISCOUNTPRODUCTLIST}
+                         ${requestScope.DISCOUNTPRODUCTLIST}
                       </select>
                       <div class="move">
                         <button style="margin-right: 5px;" name="Add" value="Add&nbsp;&gt;&gt;" onclick="addDiscountProduct (tierform);return (false);">
@@ -314,7 +298,7 @@
                         </button>
                       </div> <!-- end .move -->
                       <select id="SELECTEDLIST" name="DISCOUNTSELECTEDLIST" multiple="multiple" ondblclick="removeDiscountProduct (tierform);return (false);" style="min-width: 500px; height: 100px; margin-bottom: 2rem;">
-                         ${param.DISCOUNTPRODUCTS}
+                         ${requestScope.DISCOUNTPRODUCTS}
                       </select>
                       <input type="hidden" name="DISCOUNTPRODUCTS" />
                       <div class="controlbuttons">

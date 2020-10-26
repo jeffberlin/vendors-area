@@ -43,7 +43,6 @@
         var form = document.tickets;
         var value = queryField (form, "SHOWDETAILS");
         setCookieValue ("BMTMicro.Vendors.Tickets.ShowDetails", value, 1000);
-        // form.ROWTEMPLATEURL.value = (value == -1) ? "https://vendors-new.bmtmicro.com/customers-manage-tickets-tablerow-details.html" : "https://vendors-new.bmtmicro.com/customers-manage-tickets-tablerow.html";
         refreshReport ();
       }
 
@@ -111,10 +110,10 @@
                           <td date class="text-center">${row.EXPIRATIONDATE}</td>
                           <td text class="text-center">
                             <c:choose>
-                              <c:when test="${row.STATUS == 2}">
+                              <c:when test="${row.STATUS == '2'}">
                                 <font color="red">Expired</font>
                               </c:when>
-                              <c:when test="${row.STATUS == 1}">
+                              <c:when test="${row.STATUS == '1'}">
                                 ${row.REDEEMORDERID}
                               </c:when>
                               <c:otherwise>
@@ -124,7 +123,7 @@
                           </td>
                           <td class="text-center">
                             <c:choose>
-                              <c:when test="${row.STATUS != 0}">
+                              <c:when test="${row.STATUS == '0'}">
                                 <button class="save-btn" type="button" onclick="addTicket (${row.TICKETID});">Grant</button>
                               </c:when>
                               <c:otherwise>
