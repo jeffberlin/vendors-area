@@ -22,15 +22,6 @@
       }
     </style>
     <script>
-      // function initForm (form) {
-      //   var showinactive = getCookieValue("BMTMicro.Vendors.Tiers.ShowInactive");
-      //   if (showinactive != null) {
-      //     form.SHOWINACTIVE.value = showinactive;
-      //   }
-      //   form.submit();
-      //   initField (form, "SHOWINACTIVE", "${requestScope.SHOWINACTIVE}");
-      // }
-
       function submitForm (action, target, nextpage, tierid) {
         var form = document.tiers;
         form.ACTION.value = action;

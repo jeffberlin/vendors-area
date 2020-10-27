@@ -52,16 +52,27 @@
       <th text></th>
     </tr>
     <tbody>
-      ${param.TABLEDATA}
+      <c:forEach var="row" items="${requestScope.TABLEDATA}">
+        <tr onclick="highlightLinks(this);">
+          <td number>${row.SPLITVENDORID}</td>
+          <td text>${row.NAME}</td>
+          <td text>${row.PRODUCTNAME}</td>
+          <td number>${row.QUANTITY}</td>
+          <td money>${row.VENDORUNITROYALTY}</td>
+          <td money>${row.VENDORROYALTY}</td>
+          <td number>${row.PERCENTAGE}</td>
+          <td money>${row.SPLITROYALTY}</td>
+        </tr>
+      </c:forEach>
     </tbody>
     <tfoot>
       <tr class="table-total">
         <th scope="row" colspan="3">Total</th>
-        <th scope="row" class="text-center" number>${param.TOTALQUANTITY}</th>
+        <th scope="row" class="text-center" number>${requestScope.TOTALQUANTITY}</th>
         <th></th>
-        <th scope="row" class="text-right" money>${param.TOTALVENDORROYALTY}</th>
+        <th scope="row" class="text-right" money>${requestScope.TOTALVENDORROYALTY}</th>
         <th></th>
-        <th scope="row" class="text-right" money>${param.TOTALSPLITROYALTY}</th>
+        <th scope="row" class="text-right" money>${requestScope.TOTALSPLITROYALTY}</th>
       </tr>
     </tfoot>
   </table>

@@ -7,9 +7,9 @@
   }
 
   function submitShortLink (form) {
-    if (isBlank (form.PARAMETERS.value)) {
-      alert ("You must provide custom parameters for short links!");
-      form.PARAMETERS.focus ();
+    if (isBlank (form.requestScopeETERS.value)) {
+      alert ("You must provide custom requestScopeeters for short links!");
+      form.requestScopeETERS.focus ();
       return (false);
     }
     // form.submit ();
@@ -18,9 +18,9 @@
   }
 </script>
 <div class="transfer-section">
-  <h5>The&nbsp;secure&nbsp;order&nbsp;link&nbsp;for&nbsp;${param.PRODUCTNAME}</h5>
+  <h5>The&nbsp;secure&nbsp;order&nbsp;link&nbsp;for&nbsp;${requestScope.PRODUCTNAME}</h5>
   <p class="text-section" style="margin-bottom: .5rem;">
-    https://secure.bmtmicro.com/cart?CID=${param.VENDORID}&amp;PRODUCTID=${param.PRODUCTID}
+    https://secure.bmtmicro.com/cart?CID=${requestScope.VENDORID}&amp;PRODUCTID=${requestScope.PRODUCTID}
   </p>
   <p style="font-size: .9rem; font-style: italic; color: #707070; letter-spacing: .5px;">
     <strong>Please&nbsp;note:</strong>
@@ -31,32 +31,32 @@
     <br>
     If you are testing your cart other tested products may appear in a single shopping cart link.
     <br>
-    To clear all products from the shopping cart each time,add a <b>CLR=0</b> parameter to the link, like this:
+    To clear all products from the shopping cart each time,add a <b>CLR=0</b> requestScopeeter to the link, like this:
   </p>
   <p style="padding-left: 10px; color: #195a7c !important;">
-    https://secure.bmtmicro.com/cart?CID=${param.VENDORID}&amp;CLR=0&amp;PRODUCTID=${param.PRODUCTID}
+    https://secure.bmtmicro.com/cart?CID=${requestScope.VENDORID}&amp;CLR=0&amp;PRODUCTID=${requestScope.PRODUCTID}
   </p>
   <h5>Short&nbsp;Links:</h5>
   <table class="table" style="margin-bottom: 1rem; width: 70%; border: 1px solid #a9a9a9;">
     <thead>
       <tr class="table-category">
         <th class="sort-column text-center">URL</th>
-        <th class="sort-column text-center">Parameters</th>
+        <th class="sort-column text-center">requestScopeeters</th>
         <th class="sort-column text-center">Expiration Date</th>
       </tr>
     </thead>
     <tbody>
-      ${param.SHORTLINKLIST}
+      ${requestScope.SHORTLINKLIST}
     </tbody>
-  </table>  
-  <p class="text-section" style="margin-bottom: .5rem;">To create short links with custom parameters, please enter parameters below.</p>
+  </table>
+  <p class="text-section" style="margin-bottom: .5rem;">To create short links with custom requestScopeeters, please enter requestScopeeters below.</p>
   <form name="short" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products">
     <input type="hidden" name="ACTION" value="18" />
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-generated-short-link-short-link.jsp" />
     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
     <span>
-      Link&nbsp;Parameters:&nbsp;
-      <input type="text" name="PARAMETERS" value="CID=${param.VENDORID}&amp;CLR=0&amp;PRODUCTID=${param.PRODUCTID}" size=70 style="margin-bottom: 1rem;" />
+      Link&nbsp;requestScopeeters:&nbsp;
+      <input type="text" name="requestScopeETERS" value="CID=${requestScope.VENDORID}&amp;CLR=0&amp;PRODUCTID=${requestScope.PRODUCTID}" size=70 style="margin-bottom: 1rem;" />
     </span>
     <br clear="all">
     <p>If you would like to choose a specific expiration date, please enter date below.</p>

@@ -10,15 +10,22 @@
     <td width="15%">Amount</td>
     <td width="25%">Notes</td>
   </tr>
-  ${param.TABLEDATA}
+    <c:forEach var="row" items="${requestScope.TABLEDATA}">
+      <tr>
+        <td>${row.TIME}</td>
+        <td>${row.DESCRIPTION}</td>
+        <td align=right>${row.AMOUNT}</td>
+        <td>${row.NOTES}&nbsp;</td>
+      </tr>
+    </c:forEach>
   <tr>
     <td colspan=2 align=right>
       <strong>Total:</strong>&nbsp;
     </td>
     <td align=right>
-      <strong>${param.TOTALAMOUNT}</strong>
+      <strong>${requestScope.TOTALAMOUNT}</strong>
     </td>
-    <td >
+    <td>
       &nbsp;
     </td>
   </tr>

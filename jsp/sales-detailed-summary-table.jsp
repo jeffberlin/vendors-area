@@ -27,14 +27,24 @@
   </thead>
   <tbody>
     <tr>
-      ${param.TABLEDATA}
+      <c:forEach var="row" items="${requestScope.TABLEDATA}">
+        <tr onclick="highlightLinks(this);">
+          <td text>${row.PRODUCTNAME}</td>
+          <td number>${row.BATCHSIZE}</td>
+          <td money>${row.BATCHPRICE}</td>
+          <td money>${row.BATCHDISCOUNT}</td>
+          <td money>${row.BATCHROYALTY}</td>
+          <td number>${row.QUANTITY}</td>
+          <td money>${row.TOTALROYALTY}</td>
+        </tr>
+      </c:forEach>
     </tr>
   </tbody>
   <tfoot>
     <tr class="table-total">
       <th scope="row" colspan="5">Total</th>
-      <th scope="row" class="text-center" number>${param.TOTALQUANTITY}</th>
-      <th scope="row" class="text-right" money>${param.TOTALAMOUNT}</th>
+      <th scope="row" class="text-center" number>${requestScope.TOTALQUANTITY}</th>
+      <th scope="row" class="text-right" money>${requestScope.TOTALAMOUNT}</th>
     </tr>
   </tfoot>
 </table>

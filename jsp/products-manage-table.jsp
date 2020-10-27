@@ -2,8 +2,7 @@
 <form id="products" name="products" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" method="post">
   <input type="hidden" name="ACTION" value="-1" />
   <input type="hidden" name="ROWSPERPAGE" value="500" />
-  <input type="hidden" name="PAGE" value="${param.PAGE}" />
-  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-tablerow.html" />
+  <input type="hidden" name="PAGE" value="${requestScope.PAGE}" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   <input type="hidden" name="PRODUCTID" value="" />
@@ -11,7 +10,7 @@
     <input type="checkbox" name="SHOWINACTIVE" value="-1" onClick="showInactiveChanged ();"<c:if test = "${ cookie['BMTMicro.Vendors.Products.ShowInactive'].value == -1 }"> checked</c:if>/><span>&nbsp;Show inactive products</span>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <span>Filter by Product ID/Name:
-      <input type="text" name="FILTER" value="${param.FILTER}" placeholder="Search" style="margin-bottom: 1rem;" />&nbsp;
+      <input type="text" name="FILTER" value="${requestScope.FILTER}" placeholder="Search" style="margin-bottom: 1rem;" />&nbsp;
       <script>
         catchEnter (document.products.FILTER, refreshReport);
       </script>
@@ -49,17 +48,43 @@
         </tr>
       </thead>
       <tbody>
-        ${param.TABLEDATA}
+        <c:forEach var="row" items="${requestScope.TABLEDATA}">
+          <tr onclick="highlightLinks(this)" ${row.CLASS}>
+            <td mnumber><a href="javascript:editProduct (${row.PRODUCTID});">${row.PRODUCTID}</a></td>
+            <td mtext>${row.PRODUCTNAME}</td>
+            <td class="td-button">
+              <button type="button" name-"Edit On-screen Template" onclick="editScreenTemplate (${row.PRODUCTID});">Screen</button>
+            </td>
+            <td class="td-button">
+              <button type="button" name="Edit Customer Email" onclick="editCustomerEMail (${row.PRODUCTID});">Customer</button>
+            </td>
+            <td class="td-button">
+              <button type="button" name="Edit Vendor Email" onclick="editVendorEMail (${row.PRODUCTID});">Vendor</button>
+            </td>
+            <td class="td-button">
+              <button type="button" name="Place Test Order" onclick="testOrder (${row.PRODUCTID});">Test</button>
+            </td>
+            <td class="td-button">
+              <button type="button" name="View" onclick="viewLink (${row.PRODUCTID});">View</button>
+            </td>
+            <td class="td-button">
+              <button type="button" name="Duplicate" onclick="addNewProduct (${row.PRODUCTID});">One</button>
+            </td>
+            <td class="td-button">
+              <button type="button" name="Add Multiple Products" onclick="addMultiple (${row.PRODUCTID});">Multiple</button>
+            </td>
+          </tr>
+        </c:forEach>
       </tbody>
       <tfoot class="table-total">
         <th scope="col" colspan="20">
           <div id="pageselector">
-              <c:if test = "${param.PAGECOUNT > 1}">
-                Pages:
-                <c:forEach var = "page" begin = "1" end = "${param.PAGECOUNT}">
-                  &nbsp;<a href="javascript:selectPage(${page});">${page}</a>&nbsp;
-                </c:forEach>
-              </c:if>
+            <c:if test = "${requestScope.PAGECOUNT > 1}">
+              Pages:
+              <c:forEach var = "page" begin = "1" end = "${requestScope.PAGECOUNT}">
+                &nbsp;<a href="javascript:selectPage(${page});">${page}</a>&nbsp;
+              </c:forEach>
+            </c:if>
           </div>
         </th>
       </tfoot>

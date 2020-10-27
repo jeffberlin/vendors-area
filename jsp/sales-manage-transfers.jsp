@@ -44,7 +44,7 @@
 
       function addVendorTransfer() {
         <c:choose>
-          <c:when test = "${ allowChanges == 0 }">
+          <c:when test = "${ !allowChanges }">
             alert ("You do not have permission to add vendor transfers.");
           </c:when>
           <c:when test = "${ payDay == 1 }">
@@ -58,7 +58,7 @@
 
       function addAffiliateTransfer() {
         <c:choose>
-          <c:when test = "${ allowChanges == 0 }">
+          <c:when test = "${ !allowChanges }">
             alert ("You do not have permission to add affiliate transfers.");
           </c:when>
           <c:when test = "${ payDay == -1 }">
@@ -72,7 +72,7 @@
 
       function editTransfer(transferid, toaffiliateid) {
         <c:choose>
-          <c:when test = "${ allowChanges == 0 }">
+          <c:when test = "${ !allowChanges }">
             alert ("You do not have permission to edit transfers.");
           </c:when>
           <c:when test = "${ payDay == 1 }">
@@ -86,7 +86,7 @@
 
       function cancelTransfer(transferid) {
         <c:choose>
-          <c:when test = "${ allowChanges == 0 }">
+          <c:when test = "${ !allowChanges }">
             alert ("You do not have permission to cancel vendor transfers.");
           </c:when>
           <c:when test = "${ payDay == 1 }">
@@ -102,7 +102,7 @@
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
         <c:choose>
-          <c:when test = "${ allowChanges == 0 }">
+          <c:when test = "${ !allowChanges }">
             alert ("You do not have permission to make vendor transfers."):
           </c:when>
           <c:when test = "${ payDay == 1 }">
@@ -132,7 +132,7 @@
         // Important: We need to use hidden fields to submit checkbox values, as the servlets will use default values if the
         // field is not present. (An unchecked checkbox constitutes a non-existent field).
         <c:choose>
-          <c:when test = "${ allowChanges == 0 }">
+          <c:when test = "${ !allowChanges }">
             alert ("You do not have permission to make affiliate transfers."):
           </c:when>
           <c:when test = "${ payDay == 1 }">
@@ -180,7 +180,6 @@
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
                   <form name="transfers" method=post action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer">
                     <input type="hidden" name="ACTION" value="-1" />
-                    <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-manage-transfers-tablerow.html" />
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-manage-transfers-table.jsp">
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp">
                   </form>

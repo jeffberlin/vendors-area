@@ -44,7 +44,7 @@
         }
       }
 
-      <c:if test = "${ allowChanges == 0 }">
+      <c:if test = "${ !allowChanges }">
         function addNewProduct (productid) {
           alert("You are not allowed to add products.");
         }
@@ -53,7 +53,7 @@
         }
       </c:if>
 
-      <c:if test = "${ allowChanges == 1 }">
+      <c:if test = "${ allowChanges }">
         function addNewProduct (productid) {
           submitForm(0, "_parent", "https://vendors-new.bmtmicro.com/products-manage-add.jsp", productid);
         }
@@ -91,10 +91,10 @@
       }
 
       function testOrder(productid) {
-        <c:if test = "${ allowTestOrders == 0 }">
+        <c:if test = "${ !allowTestOrders }">
           alert ("You do not have permission to place test orders.");
         </c:if>
-        <c:if test = "${ allowTestOrders == 1 }">
+        <c:if test = "${ allowTestOrders }">
           var pin = getCookieValue("BMTMicro.Vendors.SessionID");
           var vid = getCookieValue("BMTMicro.Vendors.VendorID");
           window.open("https://secure.bmtmicro.com/cart?CID=" + vid + "&CLR=0&PRODUCTID=" + productid + "&PAYMENTMETHOD=1&CCNUMBER=pin=" + encodeURIComponent(pin), "OrderTestPopUp", "location=no,menubar=1,scrollbars=yes,width=980,height=900,resizable=yes").focus();
@@ -197,8 +197,5 @@
   </body>
   <script>
     $(document).ready(function(){ refreshReport (); });
-    // $('input[type=checkbox]').change(function(){
-    //   $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
-    // });
   </script>
 </html>

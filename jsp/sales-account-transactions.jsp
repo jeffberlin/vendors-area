@@ -33,27 +33,22 @@
       }
     </style>
 		<script>
-			function submitForm (form) {
+			function refreshReport (form) {
 				if (!CheckDateRange (form)) {
 					return (false);
 				}
 				if (parseInt (form.FORMAT.value) == 0) { // If printable HTML is selected we use a different row template and landing page
 					form.target = "_blank"; // Open up in new window
 					form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print.jsp";
-					form.ROWTEMPLATEURL.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print-tablerow.html";
+					form.submit ();
 				} else {
 					form.target = "";
 					form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-table.jsp";
-					form.ROWTEMPLATEURL.value = "${param.ROWTEMPLATEURL}";
+					submitToDiv(form, 'tableframe');
 				}
-				form.submit ();
 				return (true);
 			}
-      function refreshReport (form) {
-				if (CheckDateRange (form)) {
-					submitToDiv (form, 'tableframe');
-				}
-      }
+
       function filterKeyPress(event) {
         if (event.keyCode == 13) {
           refreshReport (document.transactions);
@@ -76,7 +71,6 @@
               <p>Vendor payments are made on the first of each month.</p>
 							<div class="content-box overflow-auto d-flex flex-column">
                 <form name="transactions" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Transactions" method="post">
-                  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-account-transactions-tablerow.html" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-account-transactions-table.jsp" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                   <div class="table-header">
@@ -90,11 +84,11 @@
                     </span>
                     <span>
                       <select name="FORMAT">
-                        <option value="-1" selected="selected">HTML (refresh)</option>
-                        <option value="0">HTML (printable)</option>
-                        <option value="1">CSV</option>
-                        <option value="2">XML</option>
-                        <option value="3">PDF</option>
+                        <option value="-1"<c:if test="${requestScope.FORMAT=='-1'}"> selected</c:if>>HTML (refresh)</option>
+                        <option value="0"<c:if test="${requestScope.FORMAT=='0'}"> selected</c:if>>HTML (printable)</option>
+                        <option value="1"<c:if test="${requestScope.FORMAT=='1'}"> selected</c:if>>CSV</option>
+                        <option value="2"<c:if test="${requestScope.FORMAT=='2'}"> selected</c:if>>XML</option>
+                        <option value="3"<c:if test="${requestScope.FORMAT=='3'}"> selected</c:if>>PDF</option>
                       </select>
                     </span>
                     <span>

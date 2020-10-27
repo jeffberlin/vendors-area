@@ -34,12 +34,10 @@
         if (parseInt (form.FORMAT.value) == 0) {
           form.target = "_blank";
           form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/products-split-sales-report-print.jsp";
-          form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/products-split-sales-report-print-tablerow.html";
           form.submit();
         } else {
           form.target = "";
           form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/products-split-sales-report-table.jsp";
-          form.ERROR_PAGE.value = "${param.ROWTEMPLATEURL}";
           submitToDiv(form, 'tableframe')
         }
         return(true)
@@ -67,7 +65,6 @@
               <p>Report should be run based on the Account Transactions dates.</p>
 							<div class="content-box overflow-auto d-flex flex-column">
                 <form name="splitsalesreport" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SplitSalesReport" method="post">
-                  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-split-sales-report-tablerow.html" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-split-sales-report-table.jsp" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                   <div class="table-header">
@@ -83,11 +80,11 @@
                     </span>
                     <span>
                       <select name="FORMAT">
-                        <option value="-1"<c:if test="${param.FORMAT=='-1'}"> selected</c:if>>HTML (refresh)</option>
-                        <option value="0"<c:if test="${param.FORMAT=='0'}"> selected</c:if>>HTML (printable)</option>
-                        <option value="1"<c:if test="${param.FORMAT=='1'}"> selected</c:if>>CSV</option>
-                        <option value="2"<c:if test="${param.FORMAT=='2'}"> selected</c:if>>XML</option>
-                        <option value="3"<c:if test="${param.FORMAT=='3'}"> selected</c:if>>PDF</option>
+                        <option value="-1"<c:if test="${requestScope.FORMAT=='-1'}"> selected</c:if>>HTML (refresh)</option>
+                        <option value="0"<c:if test="${requestScope.FORMAT=='0'}"> selected</c:if>>HTML (printable)</option>
+                        <option value="1"<c:if test="${requestScope.FORMAT=='1'}"> selected</c:if>>CSV</option>
+                        <option value="2"<c:if test="${requestScope.FORMAT=='2'}"> selected</c:if>>XML</option>
+                        <option value="3"<c:if test="${requestScope.FORMAT=='3'}"> selected</c:if>>PDF</option>
                       </select>
                     </span>
                     <span>

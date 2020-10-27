@@ -1,11 +1,10 @@
 <%@ include file="/includes/core.jsp" %>
 <form name="splits" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SplitSchemes" method="post">
-  <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-splits-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   <input type="hidden" name="ACTION" value="" />
   <input type="hidden" name="SCHEMEID" value="" />
-  <input type="hidden" name="PAYDAY" value="${param.PAYDAY}" />
+  <input type="hidden" name="PAYDAY" value="${requestScope.PAYDAY}" />
   <div class="table-header">
     <button type="button" class="grey-btn" onclick="addSplit ();" >Add&nbsp;New&nbsp;Split</button>
   </div> <!-- end .table-header -->
@@ -25,7 +24,19 @@
         </tr>
       </thead>
       <tbody>
-        ${param.TABLEDATA}
+        <c:forEach var="row" items="${requestScope.TABLEDATA}">
+          <tr onclick="highlightLinks (this);" >
+            <td mtext>
+              <a href="javascript:editSplit (${row.SCHEMEID});">${row.NAME}</a>
+            </td>
+            <td option>
+              <button type="button" class="save-btn" onclick="viewSplit (${row.SCHEMEID});">View&nbsp;Split</button>
+            </td>
+            <td option>
+              <button type="button" class="remove" onclick="deleteSplit (${row.SCHEMEID});"></button>
+            </td>
+          </tr>
+        </c:forEach>
       </tbody>
       <tfoot>
         <tr class="table-total">

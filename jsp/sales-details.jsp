@@ -92,14 +92,14 @@
                       <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
                     </span>
                     <span>
-                      <input type="checkbox" name="EXACTMATCH" value="-1"<c:if test="${cookie['BMTMicro.Vendors.SalesDetails.ExactMatch'].value==-1}"> checked</c:if> onclick="exactMatch(salesdetails);" title="Check for exact matches"  >&nbsp;Use exact match when filtering
+                      <input type="checkbox" name="EXACTMATCH" value="-1"<c:if test="${cookie['BMTMicro.Vendors.SalesDetails.ExactMatch'].value==-1}"> checked</c:if> onclick="exactMatch(salesdetails);" title="Check for exact matches">&nbsp;Use exact match when filtering
                     </span>
                     <span>
                       <select name="FORMAT">
-                        <option value="0" selected="selected">HTML</option>
-                        <option value="1">CSV</option>
-                        <option value="2">XML</option>
-                        <option value="3">PDF</option>
+                        <option value="0"<c:if test="${requestScope.FORMAT == '0'}"> selected</c:if>>HTML</option>
+                        <option value="1"<c:if test="${requestScope.FORMAT == '1'}"> selected</c:if>>CSV</option>
+                        <option value="2"<c:if test="${requestScope.FORMAT == '2'}"> selected</c:if>>XML</option>
+                        <option value="3"<c:if test="${requestScope.FORMAT == '3'}"> selected</c:if>>PDF</option>
                       </select>
                     </span>
                     <span>
@@ -111,7 +111,7 @@
                 <div style="visibility:hidden;">
                   <form name="invoice" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Invoice" method="post" target="_blank">
                     <input name="ORDERID" type="hidden" value="0">
-                    <input name="VENDORID" type="hidden" value="${param.VENDORID}">
+                    <input name="VENDORID" type="hidden" value="${requestScope.VENDORID}">
                   </form>
                 </div>
               </div> <!-- end .content-box -->

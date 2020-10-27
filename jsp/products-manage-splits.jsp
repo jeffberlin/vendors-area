@@ -49,7 +49,7 @@
 
       function addSplit () {
         <c:choose>
-          <c:when test = "${ allowChanges == 0 }">
+          <c:when test = "${ !allowChanges }">
             alert ("You do not have permission to add vendor splits.");
           </c:when>
           <c:when test = "${ payDay == 1 }">
@@ -67,7 +67,7 @@
 
       function deleteSplit (schemeid) {
         <c:choose>
-          <c:when test = "${ allowChanges == 0 }">
+          <c:when test = "${ !allowChanges }">
             alert ("You do not have permission to delete vendor splits.");
           </c:when>
           <c:when test = "${ payDay == 1 }">
@@ -93,7 +93,7 @@
           form.NAME.focus ();
           return (false);
         }
-        if ((form.NAME.value != "${param.NAME}") && ("${param.NAMELIST}".split ("\t").indexOf (form.NAME.value) != -1)) {
+        if ((form.NAME.value != "${requestScope.NAME}") && ("${requestScope.NAMELIST}".split ("\t").indexOf (form.NAME.value) != -1)) {
           alert ("A vendor split scheme with that name already exists!");
           form.NAME.focus ();
           return (false);
@@ -141,7 +141,6 @@
                   <form name="splits" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SplitSchemes">
                     <input type="hidden" name="ACTION" value="-1" />
                     <input type="hidden" name="MAXAMOUNT" value="" />
-                    <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/products-manage-splits-tablerow.html" />
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-splits-table.jsp">
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
                   </form>

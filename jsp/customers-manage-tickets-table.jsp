@@ -109,10 +109,10 @@
                 <td class="text-center">
                   <c:choose>
                     <c:when test="${row.STATUS=='2'}">
-                      <button class="save-btn" type="button" value="Expire" onclick="expireTicket ({row.TICKETID});">Expire</button>
+                      <button class="save-btn" type="button" value="Expire" onclick="expireTicket (${row.TICKETID});">Expire</button>
                     </c:when>
                     <c:otherwise>
-                      <button class="save-btn" type="button" value="Grant" onclick="addTicket (%%TICKETID%%);">Grant</button>
+                      <button class="save-btn" type="button" value="Grant" onclick="addTicket (${row.TICKETID});">Grant</button>
                     </c:otherwise>
                   </c:choose>
                 </td>
