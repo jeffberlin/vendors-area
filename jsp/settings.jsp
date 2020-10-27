@@ -120,10 +120,10 @@
       }
 
       function submitForm (form) {
-        <c:if test = "${ allowChanges == 0 }">
+        <c:if test = "${ !allowChanges }">
           alert ("You do not have permission to make changes.");
         </c:if>
-        <c:if test = "${ allowChanges != 0 }">
+        <c:if test = "${ allowChanges }">
           submitToAlert (form, 'The settings have been saved');
         </c:if>
       }

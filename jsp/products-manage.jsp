@@ -180,7 +180,7 @@
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
               </div> <!-- end .content-box -->
-            </div> <!-- end .col-lg-12 -->
+            </div> <!-- end .col-lg-10 -->
           </div> <!-- end first .row -->
         </article>
       </div> <!-- end .container-fluid -->
@@ -190,7 +190,7 @@
       <input type="hidden" name="ACTION" value="" />
       <input type="hidden" name="PRODUCTID" value="" />
       <input type="hidden" name="PREVIEWTEXT" value="" />
-      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/previewtext.html" />
+      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/previewtext.jsp" />
       <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
     </form>
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>

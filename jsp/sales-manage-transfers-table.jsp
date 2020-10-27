@@ -38,7 +38,7 @@
             <td option>
               <c:choose>
                 <c:when test="${row.EDITABLE == -1}">
-                  <button class='save-btn' value='Edit' onclick='editTransfer (${row.TRANSFERID},${row.TOAFFILIATEID});'>Edit</button>
+                  <button type="button" class='save-btn' onclick='editTransfer (${row.TRANSFERID},${row.TOAFFILIATEID});'>Edit</button>
                 </c:when>
                 <c:otherwise></c:otherwise>
               </c:choose>

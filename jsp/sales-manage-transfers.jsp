@@ -34,12 +34,19 @@
       }
     </style>
     <script>
-      function submitTransfer (action, nextpage, transferid) {
+      function submitTransfer (action, target, nextpage, transferid) {
         var form = document.transfers;
         form.ACTION.value = action;
+        form.target = target;
         form.NEXT_PAGE.value = nextpage;
         form.TRANSFERID.value = transferid;
-        submitToDiv (form, "resultframe");
+        if (target == "_parent") {
+          form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
+          form.submit ();
+        } else {
+          form.target = "";
+          submitToDiv (form, target);
+        }
       }
 
       function addVendorTransfer() {
@@ -51,7 +58,7 @@
             alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
           </c:when>
           <c:otherwise>
-            submitTransfer (0, "https://vendors-new.bmtmicro.com/sales-manage-vendors-transfers-add.jsp");
+            submitTransfer (0, "resultframe", "https://vendors-new.bmtmicro.com/sales-manage-vendors-transfers-add.jsp");
           </c:otherwise>
         </c:choose>
       }
@@ -65,7 +72,7 @@
             alert ("Transfers cannot be added on a pay day. Please try again tomorrow.");
           </c:when>
           <c:otherwise>
-            submitTransfer (0, "https://vendors-new.bmtmicro.com/sales-manage-affiliates-transfers-add.jsp");
+            submitTransfer (0, "resultframe", "https://vendors-new.bmtmicro.com/sales-manage-affiliates-transfers-add.jsp");
           </c:otherwise>
         </c:choose>
       }
@@ -75,11 +82,11 @@
           <c:when test = "${ !allowChanges }">
             alert ("You do not have permission to edit transfers.");
           </c:when>
-          <c:when test = "${ payDay == 1 }">
+          <c:when test = "${ payDay == -1 }">
             alert ("Transfers cannot be edited on a pay day. Please try again tomorrow.");
           </c:when>
           <c:otherwise>
-            submitTransfer (1, (toaffiliateid == 0) ? "https://vendors-new.bmtmicro.com/sales-manage-vendors-transfers-edit.jsp" : "https://vendors-new.bmtmicro.com/sales-manage-affiliate-transfers-edit.jsp", transferid);
+            submitTransfer (1, "resultframe", (toaffiliateid == 0) ? "https://vendors-new.bmtmicro.com/sales-manage-vendors-transfers-edit.jsp" : "https://vendors-new.bmtmicro.com/sales-manage-affiliate-transfers-edit.jsp", transferid);
           </c:otherwise>
         </c:choose>
       }
@@ -93,7 +100,7 @@
             alert ("Transfers cannot be cancelled on a pay day. Please try again tomorrow.");
           </c:when>
           <c:otherwise>
-            submitTransfer (2, "https://vendors-new.bmtmicro.com/sales-manage-transfers-delete.jsp", transferid);
+            submitTransfer (2, "resultframe", "https://vendors-new.bmtmicro.com/sales-manage-transfers-delete.jsp", transferid);
           </c:otherwise>
         </c:choose>
       }
@@ -159,7 +166,7 @@
       }
 
       function viewTransfer(transferid) {
-        submitTransfer (3, "https://vendors-new.bmtmicro.com/sales-manage-transfers-view.jsp", transferid);
+        submitTransfer (3, "resultframe", "https://vendors-new.bmtmicro.com/sales-manage-transfers-view.jsp", transferid);
       }
     </script>
   </head>
@@ -178,15 +185,15 @@
               <p>Transfers will be completed on vendor paydays.&nbsp;You may add or cancel transfers up until that date.</p>
               <div class="content-box overflow-auto d-flex flex-column">
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
-                  <form name="transfers" method=post action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer">
+                  <form name="transfers" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer">
                     <input type="hidden" name="ACTION" value="-1" />
-                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-manage-transfers-table.jsp">
-                    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp">
+                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-manage-transfers-table.jsp"/>
+                    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp"/>
                   </form>
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
               </div> <!-- end .content-box -->
-            </div> <!-- end .col-lg-12 -->
+            </div> <!-- end .col-lg-10 -->
           </div> <!-- end first .row -->
         </article>
       </div> <!-- end .container-fluid -->

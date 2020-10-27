@@ -51,14 +51,41 @@
       </tr>
     </thead>
     <tbody class="text-center">
-      ${param.TABLEDATA}
+      <c:forEach var="row" items="${requestScope.TABLEDATA}">
+        <c:choose>
+          <c:when test="${!empty row.TEXT}">
+            <tr>
+              <th colspan="16">${row.TEXT}</th>
+            </tr>
+          </c:when>
+          <c:otherwise>
+            <tr onclick="highlightLinks (this);">
+              <td number class="text-left"><a href="javascript:showInvoice (${row.ORDERID})">${row.ORDERID}</a></td>
+              <td number>${row.PONUMBER}</td>
+              <td info>${row.PRODUCTNAME}</td>
+              <td date>${row.ORDERDATE}</td>
+              <td number>${row.QUANTITY}</td>
+              <td money class="text-right">${row.VENDORROYALTY}</td>
+              <td info>${row.ITEMCOMMENTS}</td>
+              <td info><p>${row.NAME}</p></td>
+              <td info><p>${row.ADDRESS}</p></td>
+              <td info>${row.PHONE}</td>
+              <td info><a href="mailto:${row.EMAIL}">${row.EMAIL}</a></td>
+              <td info>${row.IPADDRESS}</td>
+              <td info>${row.REFERRAL}</td>
+              <td info>${row.PAYMENTMETHOD}</td>
+              <td info>${row.FULFILLMENTMESSAGE}</td>
+            </tr>
+          </c:otherwise>
+        </c:choose>
+      </c:forEach>
     </tbody>
     <tfoot>
       <tr class="table-total">
         <th colspan="100%">
-          Total Number of Units pending: ${param.TOTALQUANTITY}
+          Total Number of Units pending: ${requestScope.TOTALQUANTITY}
           <br>
-          Total Amount Due Vendor pending: ${param.TOTALAMOUNT}
+          Total Amount Due Vendor pending: ${requestScope.TOTALAMOUNT}
         </th>
       </tr>
     </tfoot>

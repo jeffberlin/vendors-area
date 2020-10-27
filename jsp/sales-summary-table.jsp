@@ -15,13 +15,19 @@
       </tr>
     </thead>
     <tbody>
-      ${param.TABLEDATA}
+      <c:forEach var="row" items="${requestScope.TABLEDATA}">
+        <tr onclick="highlightLinks(this);">
+          <td text>${row.PRODUCTNAME}</td>
+          <td number>${row.QUANTITY}</td>
+          <td money>${row.VENDORROYALTY}</td>
+        </tr>
+      </c:forEach>
     </tbody>
     <tfoot>
       <tr class="table-total">
         <th scope="row">Total</th>
-        <th scope="row" class="text-center" number>${param.TOTALQUANTITY}</th>
-        <th scope="row" class="text-right" money>${param.TOTALAMOUNT}</th>
+        <th scope="row" class="text-center" number>${requestScope.TOTALQUANTITY}</th>
+        <th scope="row" class="text-right" money>${requestScope.TOTALAMOUNT}</th>
       </tr>
     </tfoot>
   </table>

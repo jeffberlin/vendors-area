@@ -68,8 +68,6 @@
               <p>Click on Order ID to retrieve a pdf Invoice for that pending order.</p>
 							<div class="content-box overflow-auto d-flex flex-column">
                 <form name="pendingsales" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesPending">
-                  <input type="hidden" name="ROWHEADERTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-pending-rowheader.html" />
-                  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/sales-pending-tablerow.html" />
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-pending-table.jsp">
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp">
                   <div class="table-header">
@@ -88,7 +86,7 @@
                 </form>
                 <form name="invoice" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Invoice" method="post" target="_blank">
                   <input name="ORDERID" type="hidden" value="0">
-                  <input name="VENDORID" type="hidden" value="${param.VENDORID}">
+                  <input name="VENDORID" type="hidden" value="${requestScope.VENDORID}">
                 </form>
                 <div name="tableframe" class="h-100" id="tableframe"></div>
 							</div> <!-- end .content-box -->

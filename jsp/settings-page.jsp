@@ -1,9 +1,9 @@
 <%@ include file="/includes/core.jsp" %>
 <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
-  <input type="hidden" name="VENDORID"   value="${param.VENDORID}" />
-  <input type="hidden" name="ACTION"     value="11" />
-  <input type="hidden" name="NEXT_PAGE"  value="${param.NEXT_PAGE}" />
-  <input type="hidden" name="ERROR_PAGE" value="${param.ERROR_PAGE}" />
+  <input type="hidden" name="VENDORID" value="${requestScope.VENDORID}" />
+  <input type="hidden" name="ACTION" value="11" />
+  <input type="hidden" name="NEXT_PAGE" value="${requestScope.NEXT_PAGE}" />
+  <input type="hidden" name="ERROR_PAGE" value="${requestScope.ERROR_PAGE}" />
   <ul class="nav nav-tabs flex-nowrap" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="account-tab" data-toggle="tab" href="#account" role="tab" aria-controls="account" aria-selected="true">Settings</a>
@@ -42,6 +42,6 @@
   </div>
 </form>
 <script>
-    initFields ('${param.FIELDIDLIST}','${param.FIELDNAMELIST}');
+    initFields ('${requestScope.FIELDIDLIST}','${requestScope.FIELDNAMELIST}');
     $('input[type=checkbox]').change(function(){ $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0); });
 </script>

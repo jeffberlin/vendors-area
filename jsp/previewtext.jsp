@@ -1,3 +1,4 @@
+<%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -177,7 +178,7 @@
                     <tbody>
                       <tr>
                         <td class="em_body_text" style="font-size:12pt !important; letter-spacing: .5px !important; color:#707070; font-weight: 300 !important;">
-                          <span class="em_span" style="margin-bottom:16px;">##PREVIEWTEXT##</span>
+                          <span class="em_span" style="margin-bottom:16px;">${requestScope.PREVIEWTEXT}</span>
                         </td>
                       </tr>
                     </tbody>
@@ -201,8 +202,8 @@
                       <tr>
                         <td class="em_footer em_footer_text" style="color:#ffffff; padding-top:16px !important; line-height:1.2 !important;" align="center">
                           BMT Micro, Inc.<br />
-                          PO Box 15016, W&zwnj;ilmington, N&zwnj;C 28408, United States<br />
-                          EU VAT#: EU826001142 | ATO ARN#: 3&zwnj;00013716050
+                          PO Box 15016, Wilmington, NC 28408, United States<br />
+                          EU VAT#: EU826001142 | ATO ARN#: 300013716050
                         </td>
                       </tr>
                     </tbody>

@@ -16,19 +16,19 @@ type list is passed an array of integers. This ensures that ${coltypemap[coltype
 --%>
 
 <jsp:useBean id="coltypemap" class="java.util.HashMap" />
-<c:set target="${coltypemap}" property="0" value="text"   />
+<c:set target="${coltypemap}" property="0" value="text" />
 <c:set target="${coltypemap}" property="1" value="number" />
-<c:set target="${coltypemap}" property="2" value="money"  />
-<c:set target="${coltypemap}" property="3" value="money"  />
-<c:set target="${coltypemap}" property="4" value="date"   />
-<c:set target="${coltypemap}" property="5" value="info"   />
+<c:set target="${coltypemap}" property="2" value="money" />
+<c:set target="${coltypemap}" property="3" value="money" />
+<c:set target="${coltypemap}" property="4" value="date" />
+<c:set target="${coltypemap}" property="5" value="info" />
 <c:set target="${coltypemap}" property="6" value="number" />
 
-<c:set var="coltypes"    value="${requestScope.COLTYPELIST}" />
-<c:set var="colheaders"  value="${requestScope.COLHEADER}" />
-<c:set var="colfilters"  value="${requestScope.COLFLTLIST}" />
+<c:set var="coltypes" value="${requestScope.COLTYPELIST}" />
+<c:set var="colheaders" value="${requestScope.COLHEADER}" />
+<c:set var="colfilters" value="${requestScope.COLFLTLIST}" />
 <c:set var="coldatarows" value="${requestScope.COLDATALIST}" />
-<c:set var="coltotals"   value="${requestScope.COLTOTALLIST}" />
+<c:set var="coltotals" value="${requestScope.COLTOTALLIST}" />
 
 <div class="table-responsive" style="overflow-x: inherit;">
   <table class="table" id="selection">

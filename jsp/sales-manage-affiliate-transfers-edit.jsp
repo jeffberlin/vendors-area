@@ -22,7 +22,7 @@
             <option value="EUR"<c:if test="${requestScope.CURRENCY=='EUR'}"> selected</c:if>>EUR</option>
           </select>
         </span>
-      </when>
+      </c:when>
       <c:otherwise>
         <input type="hidden" name="CURRENCY" value="${requestScope.CURRENCY}">
       </c:otherwise>

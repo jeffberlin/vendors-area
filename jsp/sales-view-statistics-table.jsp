@@ -3,8 +3,8 @@
   <table class="table" id="selection">
     <thead>
       <tr class="table-category">
-        <th scope="col" class="sort-column text-center sortable sort" title="Sort on '${param.FIELDNAME}'">
-          <a href="#" class="fdTableSortTrigger">${param.FIELDNAME}</a>
+        <th scope="col" class="sort-column text-center sortable sort" title="Sort on '${requestScope.FIELDNAME}'">
+          <a href="#" class="fdTableSortTrigger">${requestScope.FIELDNAME}</a>
         </th>
         <th scope="col" class="sort-column text-center sortable sort" title="Sort on 'Occurrence'">
           <a href="#" class="fdTableSortTrigger">Occurrence</a>
@@ -12,7 +12,12 @@
       </tr>
     </thead>
     <tbody>
-      ${param.TABLEDATA}
+      <c:forEach var="row" items="${requestScope.TABLEDATA}">
+        <tr onclick="highlightLinks(this);">
+          <td text>${row.DATA}</td>
+          <td number>${row.COUNT}</td>
+        </tr>
+      </c:forEach>
     </tbody>
     <tfoot>
       <tr class="table-total">
