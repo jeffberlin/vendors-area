@@ -64,7 +64,7 @@
                   <div class="tab-pane fade" id="resultTab">
                     <h5 style="color: #efa900; letter-spacing: .5px;">File&nbsp;Upload&nbsp;Result</h5>
                     <p>File Scan results are displayed below. If there is a problem with your file, please email us at <a href="mailto:vendors@bmtmicro.com" class="email-link">vendors@bmtmicro.com</a>.</p>
-                    <iframe src="" name="resultframe" id="resultframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; height: 520px; padding: 0px; margin: 0px; background: #FFFFFF;" >
+                    <iframe src="" name="scanframe" id="scanframe" frameborder="0" border="0" cellspacing="0" style="border-style: none; width: 100%; height: 520px; padding: 0px; margin: 0px; background: #FFFFFF;" >
                        [Your user agent does not support frames or is currently configured not to display frames. In order to use this area, frames are required.]
                     </iframe>
                     <input type="button" class="save-btn" onclick="window.location = 'https://vendors-new.bmtmicro.com/products-manage-files.jsp';" value="Back to Files" >
