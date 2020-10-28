@@ -8,9 +8,11 @@
     <label>Update all products using file <strong>${ requestScope.DOWNLOADFILENAME }</strong> to use the following file:&nbsp;</label><br>
     <select name="NEWDOWNLOADFILEID" style="margin-bottom: 1rem;">
       <option value="0">No file</option>
-      ${ requestScope.TABLEDATA }
+      <c:forEach var="row" items="${ requestScope.TABLEDATA }">
+        <option value="${row.FILEID}">${row.NAME} (${row.SIZE} bytes ${row.TIME})</option>
+      </c:forEach>
     </select><br>
-    <button type="button" class="light-btn" onclick="submitToResultFrame()" style="margin-right: .5rem;" >Apply</button>
-    <button type="button" class="light-btn" onclick="closeResultFrame()">Cancel</button>
+    <button type="button" class="save-btn" onclick="submitToResultFrame()" style="margin-right: .5rem;" >Apply</button>
+    <button type="button" class="save-btn" onclick="closeResultFrame()">Cancel</button>
   </form>
 </div> <!-- end .transfer-section -->

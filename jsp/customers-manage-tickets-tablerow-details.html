@@ -1,9 +1,0 @@
-<tr onclick="highlightLinks (this);">
-  <td text><a href="mailto:##EMAIL##">##EMAIL##</a></td>
-  <td text>##NAME##</td>
-  <td info>##PRODUCTNAME##</td>
-  <td number class="text-center">##GRANTORDERID##</td>
-  <td date class="text-center">##EXPIRATIONDATE##</td>
-  <td text class="text-center">##SELECT(STATUS,2,<font color="red">Expired</font>,1,%%REDEEMORDERID%%,<font color="green">Available</font>)##</td>
-  <td class="text-center">##SELECT(STATUS,0,<button class="save-btn" type="button" value="Expire" onclick="expireTicket (%%TICKETID%%);">Expire</button>,<button class="save-btn" type="button" value="Grant" onclick="addTicket (%%TICKETID%%);">Grant</button>)##</td>
-</tr>

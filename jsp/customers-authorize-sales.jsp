@@ -49,10 +49,10 @@
           <div class="row justify-content-start">
             <jsp:include page="includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
-              <h4>${param.TITLE}</h4>
               <div class="content-box d-flex flex-column">
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
                   <form name="orderlistform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ImportRipOrders" method="post">
+                    <h4>${requestScope.TITLE}</h4>
                     <input type="hidden" name="ACTION" value="1">
                     <input type="hidden" name="ACTION2" value="5">
                     <input type="hidden" name="STARFILE" value="https://vendors-new.bmtmicro.com/images/star.gif" />

@@ -1,3 +1,4 @@
+<%@ include file="/includes/core.jsp" %>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -27,78 +28,78 @@
                           </tr>
                           <tr bgcolor="#ffffff">
                             <td>Company: </td>
-                            <td class="detailfont"><b>##COMPANY##</b></td>
+                            <td class="detailfont"><b>${requestScope.COMPANY}</b></td>
                             <td>Ship Company: </td>
-                            <td class="detailfont"><b>##SHIP_COMPANY##</b></td>
+                            <td class="detailfont"><b>${requestScope.SHIP_COMPANY}</b></td>
                           </tr>
                           <tr class="altrow">
                             <td>VAT Number: </td>
-                            <td class="detailfont"><b>##VATNUMBER##</b></td>
+                            <td class="detailfont"><b>${requestScope.VATNUMBER}</b></td>
                             <td>Ship Name: </td>
-                            <td class="detailfont"><b>##SHIP_FIRSTNAME## ##SHIP_LASTNAME##</b></td>
+                            <td class="detailfont"><b>${requestScope.SHIP_FIRSTNAME} ${requestScope.SHIP_LASTNAME}</b></td>
                           </tr>
                           <tr bgcolor="#ffffff">
                             <td>Name: </td>
-                            <td class="detailfont"><b>##FIRSTNAME## ##LASTNAME##</b></td>
+                            <td class="detailfont"><b>${requestScope.FIRSTNAME} ${requestScope.LASTNAME}</b></td>
                             <td>Ship Address 1:  </td>
-                            <td class="detailfont"><b>##SHIP_ADDRESS1##</b></td>
+                            <td class="detailfont"><b>${requestScope.SHIP_ADDRESS1}</b></td>
                           </tr>
                           <tr class="altrow">
                             <td>Registered To: </td>
-                            <td class="detailfont"><b>##REGISTERNAME##</b></td>
+                            <td class="detailfont"><b>${requestScope.REGISTERNAME}</b></td>
                             <td>Ship Address 2: </td>
-                            <td class="detailfont"><b>##SHIP_ADDRESS2##</b></td>
+                            <td class="detailfont"><b>${requestScope.SHIP_ADDRESS2}</b></td>
                           </tr>
                           <tr bgcolor="#ffffff">
                             <td>Address 1: </td>
-                            <td class="detailfont"><b>##ADDRESS1##</b></td>
+                            <td class="detailfont"><b>${requestScope.ADDRESS1}</b></td>
                             <td>Ship City/St/Zip: </td>
-                            <td class="detailfont"><b>##SHIP_CITY##, ##SHIP_STATE## ##SHIP_ZIP##</b></td>
+                            <td class="detailfont"><b>${requestScope.SHIP_CITY}, ${requestScope.SHIP_STATE} ${requestScope.SHIP_ZIP}</b></td>
                           </tr>
                           <tr class="altrow">
                             <td>Address 2: </td>
-                            <td class="detailfont"><b>##ADDRESS2##</b></td>
+                            <td class="detailfont"><b>${requestScope.ADDRESS2}</b></td>
                             <td>Ship Country: </td>
-                            <td class="detailfont"><b>##SHIP_COUNTRY##</b></td>
+                            <td class="detailfont"><b>${requestScope.SHIP_COUNTRY}</b></td>
                           </tr>
                           <tr bgcolor="#ffffff">
                             <td>City/St/Zip: </td>
-                            <td class="detailfont"><b>##CITY##, ##STATE## ##ZIP##</b></td>
+                            <td class="detailfont"><b>${requestScope.CITY}, ${requestScope.STATE} ${requestScope.ZIP}</b></td>
                             <td>Ship Phone: </td>
-                            <td class="detailfont"><b>##SHIP_PHONE##</b></td>
+                            <td class="detailfont"><b>${requestScope.SHIP_PHONE}</b></td>
                           </tr>
                           <tr class="altrow">
                             <td>Country: </td>
-                            <td class="detailfont"><b>##COUNTRY##</b></td>
+                            <td class="detailfont"><b>${requestScope.COUNTRY}</b></td>
                             <td>Ship EMail: </td>
-                            <td class="detailfont"><b>##SHIP_EMAIL##</b></td>
+                            <td class="detailfont"><b>${requestScope.SHIP_EMAIL}</b></td>
                           </tr>
                           <tr bgcolor="#ffffff">
                             <td>IP (Origin): </td>
-                            <td class="detailfont"><b>##IPADDRESS## (##ORIGIN##)</b></td>
+                            <td class="detailfont"><b>${requestScope.IPADDRESS} (${requestScope.ORIGIN})</b></td>
                             <td COLSPAN=2 class=accentrow>Fulfillment Information</td>
                           </tr>
                           <tr class="altrow">
                             <td>Phone: </td>
-                            <td class="detailfont"><b>##PHONE##</b></td>
+                            <td class="detailfont"><b>${requestScope.PHONE}</b></td>
                             <td>Comments: </td>
-                            <td class="detailfont"><b>##ITEMCOMMENTS##</b></td>
+                            <td class="detailfont"><b>${requestScope.ITEMCOMMENTS}</b></td>
                           </tr>
                           <tr bgcolor="#ffffff">
                             <td>EMail: </td>
-                            <td class="detailfont"><b>##EMAIL##</b></td>
+                            <td class="detailfont"><b>${requestScope.EMAIL}</b></td>
                             <td>Error Message: </td>
-                            <td class="detailfont"><b>##FULFILLMENTMESSAGE##</b></td>
+                            <td class="detailfont"><b>${requestScope.FULFILLMENTMESSAGE}</b></td>
                           </tr>
                           <tr class="altrow">
                             <td>2nd EMail: </td>
-                            <td class="detailfont"><b>##ALTEMAIL##</b></td>
+                            <td class="detailfont"><b>${requestScope.ALTEMAIL}</b></td>
                             <td>Error Code: </td>
-                            <td class="detailfont"><b>##FULFILLMENTERROR##</b></td>
+                            <td class="detailfont"><b>${requestScope.FULFILLMENTERROR}</b></td>
                           </tr>
                           <tr bgcolor="#ffffff">
                             <td>Comment: </td>
-                            <td colspan=3 class="detailfont"><b>##COMMENTS##</b></td>
+                            <td colspan=3 class="detailfont"><b>${requestScope.COMMENTS}</b></td>
                           </tr>
                         </table>
                       </td>
@@ -109,23 +110,23 @@
                           </tr>
                           <tr bgcolor="#ffffff">
                             <td>Product: </td>
-                            <td class="detailfont"><b>##PRODUCTNAME##</b></td>
+                            <td class="detailfont"><b>${requestScope.PRODUCTNAME}</b></td>
                           </tr>
                           <tr class="altrow">
                             <td>Product ID: </td>
-                            <td class="detailfont"><b>##PRODUCTID##</b></td>
+                            <td class="detailfont"><b>${requestScope.PRODUCTID}</b></td>
                           </tr>
                           <tr bgcolor="#ffffff">
                             <td>Product Price: </td>
-                            <td class="detailfont"><b>##PRODUCTPRICE##</b></td>
+                            <td class="detailfont"><b>${requestScope.PRODUCTPRICE}</b></td>
                           </tr>
                           <tr class="altrow">
                             <td>Sales Tax: </td>
-                            <td class="detailfont"><b>##SALESTAX##</b></td>
+                            <td class="detailfont"><b>${requestScope.SALESTAX}</b></td>
                           </tr>
                           <tr bgcolor="#ffffff">
                             <td>Shipping: </td>
-                            <td class="detailfont"><b>##SHIPPINGPRICE## ##SHIPPINGMETHOD##</b></td>
+                            <td class="detailfont"><b>${requestScope.SHIPPINGPRICE} ${requestScope.SHIPPINGMETHOD}</b></td>
                           </tr>
                           <tr class="altrow">
                             <td></td>
@@ -133,34 +134,34 @@
                           </tr>
                           <tr class="altrow">
                             <td>Order ID:</td>
-                            <td class="detailfont"><b>##ORDERID##</b></td>
+                            <td class="detailfont"><b>${requestScope.ORDERID}</b></td>
                           </tr>
                           <tr bgcolor="#ffffff">
                             <td>Order Number: </td>
-                            <td class="detailfont"><b>##ORDERNUMBER##</b></td>
+                            <td class="detailfont"><b>${requestScope.ORDERNUMBER}</b></td>
                           </tr>
                           <tr>
                             <td colspan="2" class="accentrow">Payment Information</td>
                           </tr>
                           <tr bgcolor="#ffffff">
                             <td>Payment Method: </td>
-                            <td class="detailfont"><b>##CARDTYPE##</b></td>
+                            <td class="detailfont"><b>${requestScope.CARDTYPE}</b></td>
                           </tr>
                           <tr class="altrow">
                             <td>Card Number: </td>
-                            <td class="detailfont"><b>##CREDITCARD##</b></td>
+                            <td class="detailfont"><b>${requestScope.CREDITCARD}</b></td>
                           </tr>
                           <tr bgcolor="#ffffff">
                             <td>Expiration: </td>
-                            <td class="detailfont"><b>##EXPIRATION##</b></td>
+                            <td class="detailfont"><b>${requestScope.EXPIRATION}</b></td>
                           </tr>
                           <tr class="altrow">
                             <td>AVS Code: </td>
-                            <td class="detailfont"><b>##AVSCODE## ##AVSINFO##</b></td>
+                            <td class="detailfont"><b>${requestScope.AVSCODE} ${requestScope.AVSINFO}</b></td>
                           </tr>
                           <tr bgcolor="#ffffff">
                             <td>CVV Code: </td>
-                            <td class="detailfont"><b>##CVVCODE## ##CVVINFO##</b></td>
+                            <td class="detailfont"><b>${requestScope.CVVCODE} ${requestScope.CVVINFO}</b></td>
                           </tr>
                         </table>
                       </td>
