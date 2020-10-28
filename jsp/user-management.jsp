@@ -33,7 +33,7 @@
         form.USERID.value = userid;
         if (target == "_parent") {
 					form.target = target;
-					form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/result-error.jsp";
+					form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
 					form.submit ();
 				} else {
 					submitToDiv (form, target);

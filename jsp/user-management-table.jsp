@@ -1,7 +1,6 @@
 <%@ include file="/includes/core.jsp" %>
 <form name="users" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Users" method="post">
   <input type="hidden" name="ACTION" value="-1" />
-  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/user-management-tablerow.html" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/user-management-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   <input type="hidden" name="USERID" value="" />
@@ -27,9 +26,22 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          ${param.TABLEDATA}
-        </tr>
+        <c:forEach var="row" items="${requestScope.TABLEDATA}">
+          <tr onclick="highlightLinks(this);">
+            <td text>
+              <a href="javascript:editUser (${row.USERID});">${row.LOGINNAME}</a>
+            </td>
+            <td text>
+              ${row.EMAIL}
+            </td>
+            <td text>
+              ${row.NAME}
+            </td>
+            <td option>
+              <button type="button" name="Remove" class="remove" onclick="deleteUser (${row.USERID});"></button>
+            </td>
+          </tr>
+        </c:forEach>
       </tbody>
       <tfoot>
         <tr class="table-total">

@@ -25,7 +25,7 @@
     </style>
     <script>
       function initForm (form) {
-        setFieldVisible ("explanation1", (${param.FAILEDLOGINS} != 0));
+        setFieldVisible ("explanation1", (${requestScope.FAILEDLOGINS} != 0));
         for (var i = 0; i < 32; i++) {
           var checkbox = form["FEATURE_CHK(" + i + ")"];
           if (checkbox != null) {
@@ -42,7 +42,7 @@
           form.LOGINNAME.focus ();
           return (false);
         }
-        if ((form.LOGINNAME.value != "${param.LOGINNAME}") && ("${param.LOGINNAMELIST}".split ("\t").indexOf (form.LOGINNAME.value) != -1)) {
+        if ((form.LOGINNAME.value != "${requestScope.LOGINNAME}") && ("${requestScope.LOGINNAMELIST}".split ("\t").indexOf (form.LOGINNAME.value) != -1)) {
           alert ("This login name already exists!");
           form.NAME.focus ();
           return (false);
@@ -117,34 +117,33 @@
               <div class="content-box" id="contentBox">
                 <form method="post" name="users" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Users">
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/user-management.jsp" />
-                  <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/user-management-tablerow.html" />
                   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
-                  <input type="hidden" name="FEATUREFLAGS" value="${param.FEATUREFLAGS}" />
+                  <input type="hidden" name="FEATUREFLAGS" value="${requestScope.FEATUREFLAGS}" />
                   <input type="hidden" name="ACTION" value="10" />
-                  <input type="hidden" name="USERID" value="${param.USERID}" />
+                  <input type="hidden" name="USERID" value="${requestScope.USERID}" />
                   <span>
                     <label>Name:&nbsp;</label>
-                    <input id="NAME" name="NAME" value="${param.NAME}" style="margin-bottom: 1rem;" size="35" />
+                    <input id="NAME" name="NAME" value="${requestScope.NAME}" style="margin-bottom: 1rem;" size="35" />
                   </span>
                   <br>
                   <span>
                     <label>Email:&nbsp;</label>
-                    <input id="EMAIL" name="EMAIL" value="${param.EMAIL}" style="margin-bottom: 1rem;" size="35" />
+                    <input id="EMAIL" name="EMAIL" value="${requestScope.EMAIL}" style="margin-bottom: 1rem;" size="35" />
                   </span>
                   <br clear="all">
                   <span>
                     <label>Login&nbsp;Name:&nbsp;</label>
-                    <input id="LOGINNAME" name="LOGINNAME" maxlength="20" value="${param.LOGINNAME}" style="margin-bottom: 1rem;" size="35" />
+                    <input id="LOGINNAME" name="LOGINNAME" maxlength="20" value="${requestScope.LOGINNAME}" style="margin-bottom: 1rem;" size="35" />
                   </span>
                   <br clear="all">
                   <span>
                     <label>Password:&nbsp;</label>
-                    <input id="PASSWORD" name="PASSWORD" type="password" value="${param.PASSWORD}" maxlength="16" autocomplete="off" style="margin-bottom: 1rem;" size="35" />
+                    <input id="PASSWORD" name="PASSWORD" type="password" value="${requestScope.PASSWORD}" maxlength="16" autocomplete="off" style="margin-bottom: 1rem;" size="35" />
                   </span>
                   <br clear="all">
                   <span>
                     <label>Re-type&nbsp;Password:&nbsp;</label>
-                    <input id="PASSWORDAGAIN" name="PASSWORDAGAIN" type="password" value="${param.PASSWORD}" autocomplete="off" style="margin-bottom: 1rem;" size="35" />
+                    <input id="PASSWORDAGAIN" name="PASSWORDAGAIN" type="password" value="${requestScope.PASSWORD}" autocomplete="off" style="margin-bottom: 1rem;" size="35" />
                   </span>
                   <br clear="all">
                   <span>
