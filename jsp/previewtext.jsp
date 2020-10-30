@@ -195,7 +195,7 @@
                           <a href="https://www.facebook.com/bmt.micro/" target="_blank"><img src="https://www.bmtmicro.com/email-images/facebook-logo-circle-white.png" alt="Facebook"></a>
                           <a href="https://twitter.com/BMTMicro" target="_blank"><img src="https://www.bmtmicro.com/email-images/twitter-3-logo-png-transparent.png" alt="Twitter"></a>
                           <a href="https://www.linkedin.com/company/bmt-micro-wilmington-nc-usa/" target="_blank"><img src="https://www.bmtmicro.com/email-images/linkedin-icon-logo-white.png" alt="LinkedIn"></a>
-                          <a href="https://www.instagram.com/bmtmicro/" target="_blank"><img src="https://www.bmtmicro.com/email-images/instagram-logo-white.png" alt="Google+"></a>
+                          <a href="https://www.instagram.com/bmtmicro/" target="_blank"><img src="https://www.bmtmicro.com/email-images/instagram-logo-white.png" alt="Instagram"></a>
                           <a href="https://www.pinterest.com/bmtmicro/" target="_blank"><img src="https://www.bmtmicro.com/email-images/pinterest-3-logo-png-transparent.png" alt="Pinterest"></a>
                         </td>
                       </tr>
