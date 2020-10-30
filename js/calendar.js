@@ -157,8 +157,18 @@ function cal_error (str_message) {
 	return null;
 }
 
-function show_calendar (datefieldid) {
-   var cal = new calendar1 (document.getElementById (datefieldid));
+function show_calendar (elem) {
+   if (typeof elem == 'string' || elem instanceof String) {
+      elem = document.getElementById (elem);
+      }
+   while ((elem.tagName != 'INPUT') || (elem.type != 'text')) {
+      elem = elem.previousSibling;
+      if (elem == null) {
+         alert ("Text entry field not found");
+         return;
+         }
+      }
+   var cal = new calendar1 (elem);
    cal.year_scroll = true;
    cal.time_comp = false;
    cal.popup ();
