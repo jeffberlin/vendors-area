@@ -54,11 +54,11 @@
                   <input type="hidden" name="BADLOGIN_PAGE" value="https://vendors-new.bmtmicro.com/login-bad.jsp">
                   <input type="hidden" name="LOCKOUT_PAGE" value="https://vendors-new.bmtmicro.com/login-lockout.jsp">
                   <input type="hidden" name="EXPIRED_PAGE" value="https://vendors-new.bmtmicro.com/login-expired.jsp">
-                  <input type="hidden" name="SIGNUP_PAGE" value="https://vendors-new.bmtmicro.com/new-developer-signup.jsp">
+                  <input type="hidden" name="SIGNUP_PAGE" value="https://vendors-new.bmtmicro.com/new-vendor-signup.jsp">
                   <button type="submit" value="Login" autocomplete="off">Login</button>
                 </div>
                 <div class="signup text-center">
-                  <a href="https://vendors-new.bmtmicro.com/new-developer-signup.jsp">Sign Up</a>
+                  <a href="https://vendors-new.bmtmicro.com/new-vendor-signup.jsp">Sign Up</a>
                 </div>
               </form>
             </div>
