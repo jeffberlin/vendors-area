@@ -8,18 +8,10 @@
     <title>BMT Micro Developers Center</title>
     <%@ include file="includes/bootstrap_top_script.html" %>
     <%@ include file="includes/style_menu_footer_css.html" %>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/menuSidebar.css"/>
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://secure.bmtmicro.com/servlets/System.Util"></script>
     <script src="https://secure.bmtmicro.com/servlets/CustomForms.CustomForm"></script>
-    <style media="screen" type="text/css">
-      .content-box {
-        padding: 1rem;
-      }
-      label {
-        color: #707070;
-      }
-    </style>
     <script>
       function getControlValue (control) {
         switch (control.type) {
@@ -178,7 +170,7 @@
                   <p style="font-size: .9rem;">If using "free" email address, such as Yahoo!, HotMail, etc., please supply us with an alternate email address. This address will not be given to customers.</p>
                   <span>
                     <label>Account Email:&nbsp;</label>
-                    <input name="EMAIL" value="${requestScope.EMAIL}" style="margin-bottom: 1rem;" />
+                    <input name="EMAIL" value="${requestScope.EMAIL}" style="margin-bottom: 1rem;" size="30" />
                   </span>
                   <br>
                   <span>
@@ -199,7 +191,7 @@
                   <p style="font-size: .9rem;">Your website is used to help verify your company information. If you are still working on your website, please include explanation in the Special Instructions field.</p>
                   <span>
                     <label>Wesite Address:&nbsp;</label>
-                    <input name="WEB" style="margin-bottom: 1rem;" />&nbsp;<img title="Web address representing your company or products." src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" />
+                    <input name="WEB" style="margin-bottom: 1rem;" size="35" />&nbsp;<img title="Web address representing your company or products." src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" />
                   </span>
                   <br>
                   <span>
