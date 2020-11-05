@@ -12,7 +12,20 @@
           <th class="sort-column transfer-edit-th">Default&nbsp;Percentage</th>
           <th class="sort-column transfer-edit-th">Custom&nbsp;Percentage</th>
         </tr>
-        ${param.TABLEDATA}
+        <tbody>
+          <tr class="altrow">
+            <td>All products (unless otherwise specified)</td>
+            <td align="center">N/A</td>
+            <td align="center"><input type="text" name="GPERCENTAGE" value="${requestScope.GPERCENTAGE}" style="width: 50px; text-align: center" />%</td>
+          </tr>
+          <c:forEach var="row" items="${requestScope.TABLEDATA}">
+            <tr>
+              <td><input type="hidden" name="PRODUCTID" value="${requestScope.PRODUCTID}" />${requestScope.PRODUCTNAME}</td>
+              <td align="center">${requestScope.AFFILIATEPERCENTAGE}%</td>
+              <td align="center"><input type="text" name="PERCENTAGE" value="${requestScope.PERCENTAGE}" style="width: 50px; text-align: center" />%</td>
+            </tr>
+          </c:forEach>
+        </tbody>
       </thead>
     </table>
     <p>To use Standard Percentages - Leave Custom Percentage field blank.</p>
