@@ -86,7 +86,7 @@
 						<div class="col-lg-10 col-md-12 page-title">
 							<h4>Manage&nbsp;Discount&nbsp;Schemes</h4>
 							<p>Click on Discount Scheme Name to edit discount schemes.</p>
-							<div class="content-box d-flex flex-column">
+							<div class="content-box overflow-auto d-flex flex-column">
 								<div name="tableframe" class="overflow-auto h-100" id="tableframe">
 									<jsp:include page="products-discounts-schemes-table.jsp" />
 								</div>
