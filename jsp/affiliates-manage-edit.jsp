@@ -20,9 +20,9 @@
           </tr>
           <c:forEach var="row" items="${requestScope.TABLEDATA}">
             <tr>
-              <td><input type="hidden" name="PRODUCTID" value="${requestScope.PRODUCTID}" />${requestScope.PRODUCTNAME}</td>
-              <td align="center">${requestScope.AFFILIATEPERCENTAGE}%</td>
-              <td align="center"><input type="text" name="PERCENTAGE" value="${requestScope.PERCENTAGE}" style="width: 50px; text-align: center" />%</td>
+              <td><input type="hidden" name="PRODUCTID" value="${row.PRODUCTID}" />${row.PRODUCTNAME}</td>
+              <td align="center">${row.AFFILIATEPERCENTAGE}%</td>
+              <td align="center"><input type="text" name="PERCENTAGE" value="${row.PERCENTAGE}" style="width: 50px; text-align: center" />%</td>
             </tr>
           </c:forEach>
         </tbody>

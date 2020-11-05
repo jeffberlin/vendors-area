@@ -9,7 +9,12 @@
       </tr>
     </thead>
     <tbody>
-      ${requestScope.TABLEDATA}
+      <c:forEach var="row" items="${requestScope.TABLEDATA}">
+        <tr>
+          <td>${row.PRODUCTID}</td>
+          <td>${row.PRODUCTNAME}</td>
+        </tr>
+      </c:forEach>
     </tbody>
   </table>
   <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>

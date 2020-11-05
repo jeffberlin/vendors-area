@@ -2,7 +2,6 @@
 <div class="transfer-section">
   <h5>Short Order Link</h5>
   <p><strong>https://secure.bmtmicro.com/SCL/${requestScope.LINKID}</strong></p>
-  <!--##SELECT(EXPIRATIONDATE,"","","<p>This link expires on %%EXPIRATIONDATE%%.</p>")##-->
   <c:if test="${requestScope.EXPIRATIONDATE!=''}">
     <p>This link expires on ${requestScope.EXPIRATIONDATE}.</p>
   </c:if>
