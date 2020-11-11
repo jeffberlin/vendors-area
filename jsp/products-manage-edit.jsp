@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
     <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/upsellutil.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/upsellutil.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
       .fa-plus-circle:hover {
         color: darkgreen;
@@ -603,8 +603,7 @@
                       <h6>Associate&nbsp;Download&nbsp;File</h6>
                       <p style="margin-bottom: .5rem;">If order should be fulfilled via secure download from BMT&nbsp;Micro, use selector below to associate a file already uploaded using the Manage Files interface.</p>
                       <button type="button" class="grey-btn" onclick="toggleField('downloadfile');" style="margin-bottom: 1rem;">Choose File</button>
-                      <div id="downloadfile"
-                        class="toggle-section"<c:if test="${requestScope.PRODUCTDFL=='[]'}">style="display: none;"</c:if>>
+                      <div id="downloadfile" class="toggle-section"<c:if test="${requestScope.PRODUCTDFL=='[]'}">style="display: none;"</c:if>>
                         <h6>Choose&nbsp;File</h6>
                         <div id="fileFields"></div>
                         <br clear="all">
