@@ -21,9 +21,24 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        ${param.TABLEDATA}
-      </tr>
+      <c:forEach var="row" items="${requestScope.TABLEDATA}">
+        <c:choose>
+          <c:when test="${!empty row.TEXT}">
+            <tr>
+              <th colspan="5">${row.TEXT}</th>
+            </tr>
+          </c:when>
+          <c:otherwise>
+            <tr onclick="highlightLinks (this);">
+              <td number><c:choose><c:when test="${!empty row.AFFILIATEID}">${row.AFFILIATEID}</c:when><c:otherwise>${row.PRODUCTID}</c:otherwise></c:choose></td>
+              <td text>${row.NAME}</td>
+              <td class="text-center" number>${row.UNITSSOLD}</td>
+              <td class="text-right" money>${row.GROSSSALES}</td>
+              <td class="text-right" money>${row.AFFILIATESALES}</td>
+            </tr>
+          </c:otherwise>
+        </c:choose>
+      </c:forEach>
     </tbody>
     <tfoot>
       <tr class="table-total">
