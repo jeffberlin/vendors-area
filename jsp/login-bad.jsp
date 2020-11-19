@@ -51,7 +51,7 @@
       <footer class="footer container-fluid">
         <div class="bottom-footer-content row text-center align-items-center">
           <div class="copyright col">
-            <p>BMT Micro, Inc. Copyright © 1992 - ${yearNow}</p>
+            <p>BMT Micro, Inc. Copyright &copy 1992 - ${yearNow}</p>
           </div>
         </div>
       </footer>
