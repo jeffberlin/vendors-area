@@ -51,7 +51,7 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <jsp:include page="includes/menuSidebar.jsp" />
+            <jsp:include page="/includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Affiliate&nbsp;Sales&nbsp;Report</h4>
               <div class="content-box overflow-auto d-block" style="min-height: 350px;">
@@ -81,21 +81,24 @@
                   </div> <!-- end .table-header -->
                 </form>
                 <div name="tableframe" class="h-100" id="tableframe">
-                  <c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.AffiliateReports">
-                    <c:param name="SESSIONID" value="${sessionid}" />
-                    <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-sales-table.jsp" />
-                    <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
-                    <c:param name="DATEFROM" value="${fromDate}" />
-                    <c:param name="DATETO" value="${toDate}" />
-                    <c:param name="REPORTTYPE" value="${cookie['BMTMicro.Vendors.AffiliateSales.ReportType'].value}" />
-                  </c:import>
+                  <c:catch var="errormsg">
+                    <c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.AffiliateReports">
+                      <c:param name="SESSIONID" value="${sessionid}" />
+                      <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-sales-table.jsp" />
+                      <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+                      <c:param name="DATEFROM" value="${fromDate}" />
+                      <c:param name="DATETO" value="${toDate}" />
+                      <c:param name="REPORTTYPE" value="${cookie['BMTMicro.Vendors.AffiliateSales.ReportType'].value}" />
+                    </c:import>
+                  </c:catch>
+                  <%@ include file="/includes/catch.jsp" %>
                 </div> <!-- end #tableframe -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
-      <jsp:include page="includes/footer.jsp" />
+      <jsp:include page="/includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>

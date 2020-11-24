@@ -1,5 +1,5 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +18,7 @@
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <style media="screen" type="text/css">
       .content-box {
-        min-height: 652px !important;
+        min-height: 678px !important;
       }
       ul li {
         color: #707070;
@@ -49,7 +49,7 @@
       <div class="container-fluid body-content" id="primary">
         <article class="section">
           <div class="row justify-content-start">
-            <jsp:include page="includes/menuSidebar.jsp" />
+            <jsp:include page="/includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Affiliate&nbsp;Program</h4>
               <p>General affiliate program information.</p>
@@ -82,7 +82,7 @@
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
-      <jsp:include page="includes/footer.jsp" />
+      <jsp:include page="/includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>

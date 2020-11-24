@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <form name="homeform" action="https://vendors-new.bmtmicro.com/main.jsp"></form>
 <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.ImportRipOrders" method="post" target="detailsPopUp">
