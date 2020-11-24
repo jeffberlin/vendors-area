@@ -14,11 +14,12 @@
     <%@ include file="/includes/bootstrap_top_script.html" %>
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/main.css"/>
-    <script language="javascript" type="text/javascript" src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script language="javascript" type="text/javascript" src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/calendar.css"/>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <!-- Begin charts -->
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/newChart.css"/>
-    <script src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
+    <%@ include file="/js/calendar.js" %>
     <!-- End charts -->
     <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
   </head>
@@ -31,7 +32,7 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <jsp:include page="includes/menuSidebar.jsp" />
+            <jsp:include page="/includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12">
               <div class="news-feed">
                 <h4>News Feed</h4>
@@ -46,7 +47,7 @@
           </div> <!-- end first .row -->
         </article>
       </div> <!-- end .container-fluid -->
-      <jsp:include page="includes/footer.jsp" />
+      <jsp:include page="/includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>

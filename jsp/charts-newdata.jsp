@@ -12,7 +12,6 @@
     }
   }
 </script>
-
 <form name="chartform${param.DIV_ID}" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesGraph" method="post">
   <div class="section">
     <span>
@@ -26,7 +25,6 @@
       <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
     </span>
   </div>
-
   <div class="dropdown-select section">
     <span>
       <label>Report Type:</label>
@@ -47,7 +45,6 @@
       </select>
     </span>
   </div>
-
   <div class="dropdown-select section">
     <span>
       <label>Frequency:</label>
@@ -69,17 +66,14 @@
       </select>
     </span>
   </div>
-
   <span style="font-size: .9rem;">Choose Products for this report:&nbsp;</span>
   <br>
   <select id="PRODUCTLIST" name="PRODUCTLIST" multiple="multiple" style="width: 85%;" ondblclick="addProduct (chartform${param.DIV_ID});" onchange="showSelection (this, 'currentsel');">
   ${param.PRODUCTLIST}
   </select>
-
   <div class="currentSelected">
     <i class="fas fa-angle-double-right"></i>&nbsp;<span id="currentsel"></span>
   </div>
-
   <div class="move">
     <!-- we hardcode the style here since the classes are not visible. We can add class="content" to the "dd" tag to
     make the styles work, but then this will add whitespace on the sides which is not desired... -->
@@ -88,11 +82,9 @@
     <button style="margin-right: 5px;" type="button" name="addall" value="Add&nbsp;&gt;&gt;" onclick="addAllProducts (chartform${param.DIV_ID});">Add&nbsp;All&nbsp;<i class="fas fa-angle-down"></i></button>
     <button type="button" name="removeall" value="&lt;&lt;&nbsp;Remove" onclick="removeAllProducts (chartform${param.DIV_ID});"><i class="fas fa-angle-up"></i>&nbsp;Remove&nbsp;All</button>
   </div>
-
   <select id="SELECTEDLIST" name="SELECTEDLIST" style="width: 85%;" multiple="multiple" ondblclick="removeProduct (chartform${param.DIV_ID});" onchange="showSelection (this, 'currentsel');">
   ${param.SELECTEDPRODUCTS}
   </select>
-
   <div class="controlbuttons">
     <input type="hidden" name="DIV_ID" value="${param.DIV_ID}" />
     <input type="hidden" name="CHARTTYPE" value="${param.CHARTTYPE}" />
@@ -104,7 +96,6 @@
     <button type="button" name="button" onclick="refreshChart(revertform${param.DIV_ID},false);">Cancel</button>
   </div>
 </form>
-
 <div style="display: none;">
   <form name="revertform${param.DIV_ID}" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesGraph">
     <input type="hidden" name="DIV_ID"     value="${param.DIV_ID}" />

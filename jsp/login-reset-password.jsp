@@ -22,8 +22,8 @@
           form.PASSWORD.focus ();
           return (false);
         }
-        if (form.PASSWORDAGAIN.value.length > 15) {
-          alert ("The password must not be more than 15 characters.");
+        if (form.PASSWORD.value.length > 16) {
+          alert ("The password must not be more than 16 characters.");
           form.PASSWORD.focus ();
           return (false);
         }

@@ -1,0 +1,53 @@
+table.calendar {
+	width: auto;
+	table-layout: fixed; border-collapse: separate;
+ 	border-spacing: 1px;
+ 	background: #EFEFEF;
+	text-align: center;
+	font: 13px/18px "Lucida Grande", "Lucida Sans Unicode";
+}
+
+table.calendar caption {
+	color: #888; font-size: 1.5em; line-height: 1.7em; font-weight: normal;
+	background: #EEE; background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEEEEE)); background: -moz-linear-gradient(top, #FFF, #EEEEEE); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#EEEEEE');
+}
+table.calendar button { position: aboslute; top: 0px;}
+
+table.calendar th {
+	font-size: .8em; line-height: 1em; font-weight: normal; border: #dddddd solid 0px; background: #EEE; background: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#E4E4E4)); background: -moz-linear-gradient(top, #EEEEEE, #E4E4E4); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEEEEE', endColorstr='#E4E4E4');
+	text-shadow: 0px 1px 0px rgba(255,255,255,0.8);
+}
+
+table.calendar td {
+	background: #EFEFEF; padding: 7px; font-size: 1.3em;
+	border: 1px solid #fff;
+	outline: solid #CCC 1px;
+	text-shadow: 0px 1px 0px rgba(255,255,255,0.8);
+	color: #555;
+}
+table.calendar td:not([other]) {
+	cursor: pointer;
+}
+table.calendar td[other] {
+	cursor: default;
+	color: #BBB;
+}
+table.calendar td[today] {
+	background: #AAA;
+	border: 1px solid #555;
+	color: #FFF;
+	text-shadow: 0px 1px 0px rgba(0,0,0,0.8);
+	-webkit-box-shadow: inset rgba(0,0,0,0.65) 0px 1px 4px;
+	-moz-box-shadow: inset rgba(0,0,0,0.65) 0px 1px 4px;
+}
+table.calendar td:not([other]):active {
+	background: #AAA;
+	border: 0px;
+	color: #FFF;
+	text-shadow: 0px 1px 0px rgba(0,0,0,0.8);
+	background: #0056a6;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.50)), color-stop(0.5, rgba(255,255,255,0.30)), color-stop(0.5, rgba(150,150,150,0.0)), to(rgba(255,255,255,0.35)));
+	background-image: -moz-linear-gradient(top, rgba(255,255,255,0.50), rgba(255,255,255,0.30) 50%, rgba(150,150,150,0.0) 50%, rgba(255,255,255,0.35));
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+}

@@ -11,10 +11,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <title>BMT Micro Developers Center</title>
-    <%@ include file="includes/bootstrap_top_script.html" %>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css" type="text/css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/login.css" type="text/css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css" type="text/css"/>
+    <%@ include file="/includes/bootstrap_top_script.html" %>
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css"/>
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/login.css"/>
+    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css"/>
   </head>
   <body>
     <div class="container-fluid">
@@ -38,7 +38,6 @@
           </div>
         </div>
       </div>
-
       <footer class="footer container-fluid">
         <div class="bottom-footer-content row text-center align-items-center">
           <div class="copyright col">
@@ -47,6 +46,6 @@
         </div>
       </footer>
     </div> <!-- end .container-fluid -->
-    <%@ include file="includes/bootstrap_bottom_scripts.html" %>
+    <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
 </html>

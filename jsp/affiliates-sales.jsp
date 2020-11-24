@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,6 @@
     <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
-    <script src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
       .content-box {
         min-height: 290px;
@@ -75,14 +75,21 @@
                         <option value="2"<c:if test="${cookie['BMTMicro.Vendors.AffiliateSales.ReportType'].value==2}"> selected</c:if>>Product & Affiliate</option>
                       </select>
                     </span>
-                    <input type="hidden" name="ROWTEMPLATEURL" value="https://vendors-new.bmtmicro.com/affiliates-sales-tablerow.html" />
-                    <input type="hidden" name="ROWHEADERTEMPLATEURL" value="https://vendors-new.bmtmicro.com/affiliates-sales-rowheader.html" />
                     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-sales-table.jsp" />
                     <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                     <button type="button" class="grey-btn" onclick="refreshReport (affiliatesales);" value="Get Affiliate Sales">Get Affiliate Sales</button>
                   </div> <!-- end .table-header -->
                 </form>
-                <div name="tableframe" class="h-100" id="tableframe"></div> <!-- end #tableframe -->
+                <div name="tableframe" class="h-100" id="tableframe">
+                  <c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.AffiliateReports">
+                    <c:param name="SESSIONID" value="${sessionid}" />
+                    <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-sales-table.jsp" />
+                    <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+                    <c:param name="DATEFROM" value="${fromDate}" />
+                    <c:param name="DATETO" value="${toDate}" />
+                    <c:param name="REPORTTYPE" value="${cookie['BMTMicro.Vendors.AffiliateSales.ReportType'].value}" />
+                  </c:import>
+                </div> <!-- end #tableframe -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
@@ -92,5 +99,4 @@
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
-	<script>$(document).ready(function(){ submitToDiv (document.affiliatesales, 'tableframe'); });</script>
 </html>
