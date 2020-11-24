@@ -1,9 +1,12 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ include file="/includes/core.jsp" %>
 <div id="vendor-balance-result">
-  <form name="vendorbalance" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Balance" method="post">
-    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/balance-result.jsp" />
-    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.html" />
-  </form>
+  <c:catch var ="errormsg">
+    <c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.Balance">
+      <c:param name="SESSIONID" value="${sessionid}" />
+      <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/balance-result.jsp" />
+      <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+    </c:import>
+  </c:catch>
+  <%@ include file="/includes/catch.jsp" %>
 </div>
-<script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script>$(document).ready(function(){ submitToDiv (document.vendorbalance, 'vendor-balance-result'); });</script>

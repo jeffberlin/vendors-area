@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
   <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="post">

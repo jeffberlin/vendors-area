@@ -1,8 +1,8 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <form name="affiliates" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Affiliates" method="post">
 	<input type="hidden" name="ACTION" value="" />
 	<input type="hidden" name="AFFILIATEID" value="" />
-	<!-- <input type="hidden" name="ROWTEMPLATEURL" value="${param.ROWTEMPLATEURL}" /> -->
 	<input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/affiliates-manage-table.jsp" />
 	<input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
 	<div class="table-header">
@@ -38,15 +38,15 @@
 			</thead>
 			<tbody>
 				<c:forEach var="row" items="${requestScope.TABLEDATA}">
-					<tr onclick="highlightLinks (this);" ${requestScope.CLASS}>
+					<tr onclick="highlightLinks (this);" ${row.CLASS}>
 					  <td number>
-							<a href="javascript:editAffiliate (${requestScope.AFFILIATEID})">${row.AFFILIATEID}</a>
+							<a href="javascript:editAffiliate (${row.AFFILIATEID})">${row.AFFILIATEID}</a>
 						</td>
 					  <td text>${row.NAME}</td>
 					  <td date>${row.JOINDATE}</td>
-					  <td text><a href="mailto:${requestScope.EMAIL}">${row.EMAIL}</a></td>
-					  <td text><a href="${requestScope.WEBADDRESS}" target="_blank">${row.WEBADDRESS}</a></td>
-					  <td option><button type="button" class="remove" onclick="removeAffiliate (${requestScope.AFFILIATEID});"></button></td>
+					  <td text><a href="mailto:${row.EMAIL}">${row.EMAIL}</a></td>
+					  <td text><a href="${row.WEBADDRESS}" target="_blank">${row.WEBADDRESS}</a></td>
+					  <td option><button type="button" class="remove" onclick="removeAffiliate (${row.AFFILIATEID});"></button></td>
 					</tr>
 				</c:forEach>
 			</tbody>

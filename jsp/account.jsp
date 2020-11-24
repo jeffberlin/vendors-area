@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,17 +43,17 @@
 
       function submitForm (form) {
         <c:choose>
-          <c:when test = "${ allowChanges == 0 }">
+          <c:when test = "${ !allowChanges }">
             alert ("You do not have permission to make changes.");
           </c:when>
           <c:when test = "${ payDay == 1 }">
             alert ("Changes cannot be made on a vendor pay day. Please try again tomorrow.");
           </c:when>
           <c:otherwise>
-            if (!(checkPayOutMinAmt (form.PAYOUTMINAMT, ${param.PAYOUTMETHOD}) &&
-              checkPayOutMinAmt (form.PAYOUTMINAMT_USD, ${param.PAYOUTMETHOD_USD}) &&
-              checkPayOutMinAmt (form.PAYOUTMINAMT_EUR, ${param.PAYOUTMETHOD_EUR}) &&
-              checkPayOutMinAmt (form.PAYOUTMINAMT_GBP, ${param.PAYOUTMETHOD_GBP}))) {
+            if (!(checkPayOutMinAmt (form.PAYOUTMINAMT, ${requestScope.PAYOUTMETHOD}) &&
+              checkPayOutMinAmt (form.PAYOUTMINAMT_USD, ${requestScope.PAYOUTMETHOD_USD}) &&
+              checkPayOutMinAmt (form.PAYOUTMINAMT_EUR, ${requestScope.PAYOUTMETHOD_EUR}) &&
+              checkPayOutMinAmt (form.PAYOUTMINAMT_GBP, ${requestScope.PAYOUTMETHOD_GBP}))) {
               // Bad min amount
             } else if ((form.EMAIL.value.indexOf (",") != -1) || (form.EMAIL.value.indexOf (" ") != -1)) {
               alert("The e-mail address must not contain a space or a comma (only one address is allowed here)!");
@@ -101,20 +102,23 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <jsp:include page="includes/menuSidebar.jsp" />
-            <div class="col-lg-10 col-md-12 page-title" id="account-page">
-              <form name="account" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" method="post">
-                <input type="hidden" name = "ACTION" value = "1"/>
-                <input type="hidden" name = "NEXT_PAGE" value = "https://vendors-new.bmtmicro.com/account-page.jsp"/>
-                <input type="hidden" name = "ERROR_PAGE" value = "https://vendors-new.bmtmicro.com/error-div.jsp"/>
-              </form>
+            <jsp:include page="/includes/menuSidebar.jsp" />
+            <div id="account-page" class="col-lg-10 col-md-12 page-title" id="account-page">
+              <c:catch var="errormsg">
+                <c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
+                  <c:param name="SESSIONID" value="${sessionid}" />
+                  <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/account-page.jsp" />
+                  <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+                  <c:param name="ACTION" value="1" />
+                </c:import>
+              </c:catch>
+              <%@ include file="/includes/catch.jsp" %>
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
-      <jsp:include page="includes/footer.jsp" />
+      <jsp:include page="/includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   <body>
-  <script>$(document).ready(function(){ submitToDiv (document.account, 'account-page'); });</script>
 </html>

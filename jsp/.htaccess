@@ -1,0 +1,16 @@
+ErrorDocument 403 /ErrorDocuments/403.jsp
+ErrorDocument 404 /ErrorDocuments/404.jsp
+ErrorDocument 408 /ErrorDocuments/408.jsp
+ErrorDocument 410 /ErrorDocuments/410.jsp
+ErrorDocument 500 /ErrorDocuments/500.jsp
+ErrorDocument 504 /ErrorDocuments/504.jsp
+
+DirectoryIndex login.jsp
+
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^xmlrequest? /servlets/Vendors.XMLRequest [L]
+RewriteRule ^Affiliates$ https://affiliates.bmtmicro.com/ [L]
+RewriteRule ^Affiliates/(.+)$ https://affiliates.bmtmicro.com/$1 [QSA,L]
+RewriteRule ^ResetPassword/(.+)$ /servlets/Vendors.ResetPassword?PWRID=$1 [L]

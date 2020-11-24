@@ -1,8 +1,9 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <c:if test="${empty cookie['BMTMicro.Vendors.VendorID'].value}">
-   <script>
-      window.location = "https://vendors-new.bmtmicro.com/"; // Redirect to login page if this page is accessed and the vendor is not logged in
-   </script>
+  <script>
+    window.location = "https://vendors-new.bmtmicro.com/"; // Redirect to login page if this page is accessed and the vendor is not logged in
+  </script>
 </c:if>
 <div class="col-lg-2">
   <aside class="sidebar" role="complementary">

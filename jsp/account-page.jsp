@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <h4>Account</h4>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -18,7 +19,7 @@
   </li>
 </ul>
 <div class="tab-box">
-  <form name="account" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
+  <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
     <input type="hidden" name="ACTION" value="11" />
     <input type="hidden" name="NEXT_PAGE" value="${requestScope.NEXT_PAGE}" />
     <input type="hidden" name="ERROR_PAGE" value="${requestScope.ERROR_PAGE}" />
