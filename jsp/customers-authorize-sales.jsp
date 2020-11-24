@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,29 +48,31 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <jsp:include page="includes/menuSidebar.jsp" />
+            <jsp:include page="/includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <div class="content-box d-flex flex-column">
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
-                  <form name="orderlistform" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ImportRipOrders" method="post">
-                    <h4>${requestScope.TITLE}</h4>
-                    <input type="hidden" name="ACTION" value="1">
-                    <input type="hidden" name="ACTION2" value="5">
-                    <input type="hidden" name="STARFILE" value="https://vendors-new.bmtmicro.com/images/star.gif" />
-                    <input type="hidden" name="BLANKFILE" value="https://vendors-new.bmtmicro.com/images/blank.gif" />
-                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-authorize-sales-table.jsp" />
-                  </form>
+                  <h4>${requestScope.TITLE}</h4>
+                  <c:catch var="errormsg">
+                    <c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.ImportRipOrders">
+                      <c:param name="SESSIONID" value="${sessionid}" />
+                      <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-authorize-sales-table.jsp"/>
+                      <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp"/>
+                      <c:param name="ACTION" value="1" />
+                      <c:param name="ACTION2" value="5" />
+                      <c:param name="STARFILE" value="https://vendors-new.bmtmicro.com/images/star.gif" />
+                      <c:param name="BLANKFILE" value="https://vendors-new.bmtmicro.com/images/blank.gif" />
+                    </c:import>
+                  </c:catch>
+                  <%@ include file="/includes/catch.jsp" %>
                 </div> <!-- end #tableframe -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
-      <jsp:include page="includes/footer.jsp" />
+      <jsp:include page="/includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
-  <script>
-    $(document).ready(function(){ submitToDiv (document.orderlistform, 'tableframe'); });
-  </script>
 </html>

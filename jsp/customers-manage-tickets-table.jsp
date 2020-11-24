@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <form name="tickets" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Tickets" method="post">
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-tickets-table.jsp" />
@@ -8,7 +9,7 @@
   <input type="hidden" name="ACTION" value="" />
   <input type="hidden" name="TICKETID" value="" />
   <div class="table-header">
-    <input type="checkbox" name="SHOWDETAILS" value="-1" onClick="showDetailsChanged ();"<c:if test = "${ cookie['BMTMicro.Vendors.Tickets.ShowDetails'].value == -1 }">checked</c:if> />
+    <input type="checkbox" name="SHOWDETAILS" value="-1" onClick="showDetailsChanged ();"<c:if test = "${requestScope.SHOWDETAILS == -1}">checked</c:if> />
     <span>
       Show details
     </span>

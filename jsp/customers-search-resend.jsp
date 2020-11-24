@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch" method="post" onsubmit="return validateForm (document.forms[0]);">
   <input type="hidden" name="ORDERID" value="${requestScope.ORDERID}" />

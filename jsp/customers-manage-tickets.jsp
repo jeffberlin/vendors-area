@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,65 +91,22 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <jsp:include page="includes/menuSidebar.jsp" />
+            <jsp:include page="/includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Manage&nbsp;Tickets</h4>
               <div class="content-box d-flex flex-column">
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
-                  <form name="tickets" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Tickets" method="post">
-                    <input type="hidden" name="ACTION" value="-1" />
-                    <input type="hidden" name="ROWSPERPAGE" value="500" />
-                    <input type="hidden" name="PAGE" value="1" />
-                    <input type="hidden" name="SHOWDETAILS" value="${cookie['BMTMicro.Vendors.Tickets.ShowDetails'].value}" />
-                    <c:if test="${cookie['BMTMicro.Vendors.Tickets.ShowDetails'].value==-1}">
-                      <c:forEach var="row" items="${requestScope.TABLEDATA}">
-                        <tr onclick="highlightLinks (this);">
-                          <td text><a href="mailto:${row.EMAIL}">${row.EMAIL}</a></td>
-                          <td text>${row.NAME}</td>
-                          <td info>${row.PRODUCTNAME}</td>
-                          <td number class="text-center">${row.GRANTORDERID}</td>
-                          <td date class="text-center">${row.EXPIRATIONDATE}</td>
-                          <td text class="text-center">
-                            <c:choose>
-                              <c:when test="${row.STATUS == '2'}">
-                                <font color="red">Expired</font>
-                              </c:when>
-                              <c:when test="${row.STATUS == '1'}">
-                                ${row.REDEEMORDERID}
-                              </c:when>
-                              <c:otherwise>
-                                <font color="green">Available</font>
-                              </c:otherwise>
-                            </c:choose>
-                          </td>
-                          <td class="text-center">
-                            <c:choose>
-                              <c:when test="${row.STATUS == '0'}">
-                                <button class="save-btn" type="button" onclick="addTicket (${row.TICKETID});">Grant</button>
-                              </c:when>
-                              <c:otherwise>
-                                <button class="save-btn" type="button" onclick="expireTicket (${row.TICKETID});">Expire</button>
-                              </c:otherwise>
-                            </c:choose>
-                          </td>
-                        </tr>
-                      </c:forEach>
-                    </c:if>
-                    <c:if test="${cookie['BMTMicro.Vendors.Tickets.ShowDetails'].value!=-1}">
-                      <c:forEach var="row" items="${requestScope.TABLEDATA}">
-                        <tr onclick="highlightLinks (this);">
-                          <td text><a href="mailto:${row.EMAIL}">${row.EMAIL}</a></td>
-                          <td text>${row.NAME}</td>
-                          <td info>${row.PRODUCTNAME}</td>
-                          <td number>${row.TICKETCOUNT}</td>
-                          <td number>${row.REDEEMCOUNT}</td>
-                          <td number>${row.AVAILABLECOUNT}</td>
-                        </tr>
-                      </c:forEach>
-                    </c:if>
-                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-tickets-table.jsp" />
-                    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
-                  </form>
+                  <c:catch var="errormsg">
+                    <c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.Tickets">
+                      <c:param name="SESSIONID" value="${sessionid}" />
+                      <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-tickets-table.jsp" />
+                      <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+                      <c:param name="ACTION" value="-1" />
+                      <c:param name="ROWSPERPAGE" value="500" />
+                      <c:param name="SHOWDETAILS" value="${cookie['BMTMicro.Vendors.Tickets.ShowDetails'].value}" />
+                    </c:import>
+                  </c:catch>
+                  <%@ include file="/includes/catch.jsp" %>
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
               </div> <!-- end .content-box -->
@@ -156,12 +114,11 @@
           </div> <!-- end first .row -->
         </article>
       </div> <!-- end .container-fluid -->
-      <jsp:include page="includes/footer.jsp" />
+      <jsp:include page="/includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
   <script>
-    $(document).ready(function(){ submitToDiv (document.tickets, 'tableframe'); });
     $('input[type=checkbox]').change(function(){
       $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
     });

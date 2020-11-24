@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <form method="post" name="customersearch" action="https://vendors-new.bmtmicro.com/servlets/Vendors.OrderSearch">
   <input type="hidden" name="ACTION" value="0" />
@@ -73,15 +74,15 @@
         <c:forEach var="row" items="${requestScope.TABLEDATA}">
           <tr onclick="highlightLinks(this)">
             <td>
-              <button class="save-btn" onclick="editComments(${row.ORDERID},${row.ITEMNUMBER});return(false);">Comment</button>
+              <button class="save-btn" value="Comment" onclick="editComments(${row.ORDERID},${row.ITEMNUMBER});return(false);">Comment</button>
               <c:choose>
                 <c:when test="${row.RESENDBUTTON == -1}">
-                  <button class="save-btn" onclick="resendInfo(${row.ORDERID},${row.ITEMNUMBER});return(false);">Resend</button>
+                  <button class="save-btn" value="Resend" onclick="resendInfo(${row.ORDERID},${row.ITEMNUMBER});return(false);">Resend</button>
                 </c:when>
               </c:choose>
               <c:choose>
                 <c:when test="${row.REFUNDBUTTON == -1}">
-                  <br><button class="save-btn" onclick="refund(${row.ORDERID},${row.ITEMNUMBER});return(false);">Refund</button>
+                  <br><button class="save-btn" value="Refund" onclick="refund(${row.ORDERID},${row.ITEMNUMBER});return(false);">Refund</button>
                 </c:when>
               </c:choose>
             </td>

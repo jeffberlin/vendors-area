@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,20 +88,24 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <jsp:include page="includes/menuSidebar.jsp" />
+            <jsp:include page="/includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Manage&nbsp;Subscriptions</h4>
               <p>Check box to show inactive subscriptions.&nbsp;Use search fields to filter results.</p>
               <div class="content-box overflow-auto d-flex flex-column">
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
-                  <form name="subscriptions" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Subscriptions">
-                    <input type="hidden" name="ACTION" value="-1" />
-                    <input type="hidden" name="ROWSPERPAGE" value="500" />
-                    <input type="hidden" name="PAGE" value="1" />
-                    <input type="hidden" name="SHOWEXPIRED" value="0" />
-                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp"/>
-                    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp"/>
-                  </form>
+                  <c:catch var="errormsg">
+                    <c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.Subscriptions">
+                      <c:param name="SESSIONID" value="${sessionid}" />
+                      <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp"/>
+                      <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp"/>
+                      <c:param name="ACTION" value="-1" />
+                      <c:param name="ROWSPERPAGE" value="500" />
+                      <c:param name="PAGE" value="1" />
+                      <c:param name="SHOWEXPIRED" value="${cookie['BMTMicro.Vendors.Subscriptions.ShowExpired'].value}" />
+                    </c:import>
+                  </c:catch>
+                  <%@ include file="/includes/catch.jsp" %>
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
               </div> <!-- end .content-box -->
@@ -108,12 +113,11 @@
           </div> <!-- end first .row -->
         </article>
       </div> <!-- end .container-fluid -->
-      <jsp:include page="includes/footer.jsp" />
+      <jsp:include page="/includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
   <script>
-    $(document).ready(function(){ submitToDiv (document.subscriptions, 'tableframe'); });
     $('input[type=checkbox]').change(function(){
       $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
     });

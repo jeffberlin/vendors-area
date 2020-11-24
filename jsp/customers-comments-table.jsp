@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
   <table class="table" id="selection">

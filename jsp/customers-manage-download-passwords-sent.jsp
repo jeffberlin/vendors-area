@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <div class="page-title text-center" style="padding: 3rem;">
   <h5>Password&nbsp;Sent</h5>

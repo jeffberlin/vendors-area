@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <form name="subscriptions" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Subscriptions" method="post">
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-manage-subscriptions-table.jsp" />
@@ -8,7 +9,7 @@
   <input type="hidden" name="ACTION" value="" />
   <input type="hidden" name="SUBSCRIPTIONID" value="" />
   <div class="table-header">
-    <input type="checkbox" name="SHOWEXPIRED" value="-1" onClick="showExpiredChanged ();"<c:if test = "${ cookie['BMTMicro.Vendors.Subscriptions.ShowExpired'].value == -1 }">checked</c:if> />
+    <input type="checkbox" name="SHOWEXPIRED" value="-1" onClick="showExpiredChanged ();"<c:if test="${requestScope.SHOWEXPIRED == -1 }">checked</c:if> />
     <span>
       Show expired subscriptions
     </span>

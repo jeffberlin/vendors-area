@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -119,13 +120,13 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <jsp:include page="includes/menuSidebar.jsp" />
+            <jsp:include page="/includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Customer&nbsp;Search</h4>
               <p>Use fields below to enter search criteria.&nbsp;If email information has not changed since purchase you can resend the customer's email using the button provided.<br>You will be able to review the email before it is sent.</p>
               <div class="content-box overflow-auto d-flex flex-column">
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
-                  <jsp:include page="customers-search-table.jsp" />
+                  <jsp:include page="/customers-search-table.jsp" />
                 </div> <!-- end #tableframe -->
                 <div name="resultframe" id="resultframe"></div> <!-- end #resultframe -->
                 <div style="visibility:hidden;">
@@ -160,7 +161,7 @@
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
-      <jsp:include page="includes/footer.jsp" />
+      <jsp:include page="/includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>

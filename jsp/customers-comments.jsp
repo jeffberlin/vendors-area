@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,6 @@
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
-    <%@ include file="/js/calendar.js" %>
     <script>
       function refreshReport (form) {
         if (CheckDateRange (form)) {
@@ -46,14 +46,14 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <jsp:include page="includes/menuSidebar.jsp" />
+            <jsp:include page="/includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Customer&nbsp;Comments</h4>
               <p>This report displays customer comments and custom field values from your shopping cart.</p>
               <div class="content-box overflow-auto d-flex flex-column">
                 <form name="customercomments" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Comments" method="post">
                   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-comments-table.jsp" />
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
                   <div class="table-header">
                     <span>From:&nbsp;
                       <input id="DATEFROM" name="DATEFROM" value="${fromDate}" onkeypress="filterKeyPress(event)"/>
@@ -72,16 +72,27 @@
                     </span>
                     <button type="button" class="grey-btn" onclick="refreshReport (document.customercomments);">Get&nbsp;Report</button>
                   </div> <!-- end .table-header -->
-                  <div name="tableframe" id="tableframe"></div> <!-- end #tableframe -->
+                  <div name="tableframe" id="tableframe">
+                    <c:catch var="errormsg">
+                      <c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.Comments">
+                        <c:param name="SESSIONID" value="${sessionid}" />
+                        <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/customers-comments-table.jsp"/>
+                        <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp"/>
+                        <c:param name="DATEFROM" value="${fromDate}"/>
+                        <c:param name="DATETO" value="${toDate}"/>
+                        <c:param name="FORMAT" value="0" />
+                      </c:import>
+                    </c:catch>
+                    <%@ include file="/includes/catch.jsp" %>
+                  </div> <!-- end #tableframe -->
                 </form>
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
-      <jsp:include page="includes/footer.jsp" />
+      <jsp:include page="/includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
-  <script>$(document).ready(function(){ submitToDiv (document.customercomments, 'tableframe'); });</script>
 </html>
