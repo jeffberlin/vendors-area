@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <script>
   function checkScreenTemplateSyntax (form) {
@@ -77,7 +78,7 @@
       alert("You do not have permission to make changes.");
     }
   </c:if>
-  <c:if test = "${ allowChanges }">
+  <c:if test = "${ allowChanges}">
     function submitScreenTemplate(form) {
       if (checkScreenTemplateSyntax (form)) {
         form.submit ();

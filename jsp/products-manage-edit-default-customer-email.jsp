@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <script>
   function useDefaultChanged (form) {
@@ -7,12 +8,12 @@
     form.CUSTOMEREMAILTEMPLATE.disabled = form.USEDEFAULTTEMPLATE.checked;
   }
 
-  <c:if test = "${ allowChanges == 0 }">
+  <c:if test = "${ !allowChanges }">
     function submitDefaultCustomerEmailForm(form) {
       alert("You do not have permission to edit email templates.");
     }
   </c:if>
-  <c:if test = "${ allowChanges == 1 }">
+  <c:if test = "${ allowChanges }">
     function submitDefaultCustomerEmailForm(form) {
       if (isBlank(form.DEFAULTCUSTOMEREMAILTEMPLATE.value)) {
         alert("Cannot leave default template blank! It must at least have the Standard Message token.");
