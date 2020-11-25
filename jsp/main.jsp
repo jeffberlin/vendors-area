@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,12 +15,10 @@
     <%@ include file="/includes/bootstrap_top_script.html" %>
     <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/main.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/calendar.css"/>
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <!-- Begin charts -->
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/newChart.css"/>
-    <%@ include file="/js/calendar.js" %>
     <!-- End charts -->
     <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
   </head>
@@ -37,11 +36,11 @@
               <div class="news-feed">
                 <h4>News Feed</h4>
                 <div class="col-12">
-                  <jsp:include page="newsfeed.jsp" />
+                  <jsp:include page="/newsfeed.jsp" />
                 </div>
               </div> <!-- end .news-feed -->
               <div class="row charts" style="margin-bottom: 8rem;">
-                <jsp:include page="charts.jsp"/>
+                <jsp:include page="/charts.jsp"/>
               </div> <!-- end .charts/row -->
             </div> <!-- end .col-lg-10 -->
           </div> <!-- end first .row -->
