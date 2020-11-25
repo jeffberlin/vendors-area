@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
   <input type="hidden" name="VENDORID" value="${requestScope.VENDORID}" />
@@ -24,24 +25,24 @@
   <div class="tab-box">
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab">
-         <%@ include file="./settings-account.jsp" %>
+        <%@ include file="./settings-account.jsp" %>
       </div>
       <div class="tab-pane fade" id="cart" role="tabpanel" aria-labelledby="cart-tab">
-         <%@ include file="./settings-cart.jsp" %>
+        <%@ include file="./settings-cart.jsp" %>
       </div>
       <div class="tab-pane fade" id="tracking" role="tabpanel" aria-labelledby="tracking-tab">
-         <%@ include file="./settings-tracking.jsp" %>
+        <%@ include file="./settings-tracking.jsp" %>
       </div>
       <div class="tab-pane fade" id="apitoken" role="tabpanel" aria-labelledby="apitoken-tab">
-         <%@ include file="./settings-apitoken.jsp" %>
+        <%@ include file="./settings-apitoken.jsp" %>
       </div>
       <div class="tab-pane fade" id="fields" role="tabpanel" aria-labelledby="fields-tab">
-         <%@ include file="./settings-fields.jsp" %>
+        <%@ include file="./settings-fields.jsp" %>
       </div>
     </div>
   </div>
 </form>
 <script>
-    initFields ('${requestScope.FIELDIDLIST}','${requestScope.FIELDNAMELIST}');
-    $('input[type=checkbox]').change(function(){ $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0); });
+  initFields ('${requestScope.FIELDIDLIST}','${requestScope.FIELDNAMELIST}');
+  $('input[type=checkbox]').change(function(){ $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0); });
 </script>

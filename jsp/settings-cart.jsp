@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <h5>Shopping&nbsp;Cart&nbsp;Options</h5>
 <p style="margin-bottom: .2rem;">Unchecking the boxes will hide these options in your shopping cart.</p>
 <p class="shrinkText"><em>Note that the product settings have additional shopping cart options.</em></p>

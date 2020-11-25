@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
   <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer">
@@ -42,5 +43,4 @@
       <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
     </span>
   </form>
-
 </div> <!-- end .transfer-section -->

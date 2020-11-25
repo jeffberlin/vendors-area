@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <input type="hidden" name="VENDORID" value="${requestScope.VENDORID}" />
 <input type="hidden" name="ACTION" value="11" />
 <input type="hidden" name="NEXT_PAGE" value="${requestScope.NEXT_PAGE}" />

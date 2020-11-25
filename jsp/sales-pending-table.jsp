@@ -1,4 +1,26 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
+<form name="pendingsales" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesPending">
+  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-pending-table.jsp">
+  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp">
+  <div class="table-header">
+    <span>From:&nbsp;
+      <input id="DATEFROM" name="DATEFROM" value="${requestScope.DATEFROM}" onkeypress="filterKeyPress(event)"/>&nbsp;
+      <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
+    </span>
+    <span>To:&nbsp;
+      <input id="DATETO" name="DATETO" value="${requestScope.DATETO}" onkeypress="filterKeyPress(event)"/>&nbsp;
+      <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
+    </span>
+    <span>
+      <button type="button" class="grey-btn" value="Get Sales Summary" onclick="refreshReport (document.pendingsales);">Update Sales</button>
+    </span>
+  </div>
+</form>
+<form name="invoice" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Invoice" method="post" target="_blank">
+  <input name="ORDERID" type="hidden" value="0">
+  <input name="VENDORID" type="hidden" value="${requestScope.VENDORID}">
+</form>
 <div class="row table-responsive" style="margin-left: auto; margin-right: auto;">
   <table class="table" id="selection">
     <thead>

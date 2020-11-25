@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <form name="users" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Users" method="post">
   <input type="hidden" name="ACTION" value="-1" />

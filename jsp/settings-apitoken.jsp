@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <h5>API&nbsp;Token</h5>
 <p>Token for XML connection.</p>
 <span>

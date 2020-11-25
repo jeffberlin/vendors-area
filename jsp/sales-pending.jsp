@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,41 +63,29 @@
 			<div class="container-fluid body-content">
 				<article class="section">
 					<div class="row justify-content-start">
-						<jsp:include page="includes/menuSidebar.jsp" />
+						<jsp:include page="/includes/menuSidebar.jsp" />
 						<div class="col-lg-10 col-md-12 page-title">
-              <h4>Pending Sales Report</h4>
-              <p>Click on Order ID to retrieve a pdf Invoice for that pending order.</p>
+							<h4>Pending Sales Report</h4>
+							<p>Click on Order ID to retrieve a pdf Invoice for that pending order.</p>
 							<div class="content-box overflow-auto d-flex flex-column">
-                <form name="pendingsales" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesPending">
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-pending-table.jsp">
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp">
-                  <div class="table-header">
-                    <span>From:&nbsp;
-                      <input id="DATEFROM" name="DATEFROM" value="${fromDate90}" onkeypress="filterKeyPress(event)"/>&nbsp;
-											<img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
-                    </span>
-                    <span>To:&nbsp;
-                      <input id="DATETO" name="DATETO" value="${toDate}" onkeypress="filterKeyPress(event)"/>&nbsp;
-											<img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
-                    </span>
-                    <span>
-                      <button type="button" class="grey-btn" value="Get Sales Summary" onclick="refreshReport (document.pendingsales);">Update Sales</button>
-                    </span>
-                  </div>
-                </form>
-                <form name="invoice" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Invoice" method="post" target="_blank">
-                  <input name="ORDERID" type="hidden" value="0">
-                  <input name="VENDORID" type="hidden" value="${requestScope.VENDORID}">
-                </form>
-                <div name="tableframe" class="h-100" id="tableframe"></div>
+								<div name="tableframe" class="h-100" id="tableframe">
+									<c:catch var="errormsg">
+										<c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesPending">
+											<c:param name="SESSIONID" value="${sessionid}" />
+											<c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-pending-table.jsp"/>
+											<c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp"/>
+											<c:param name="DATEFROM" value="${fromDate90}"/>
+											<c:param name="DATETO" value="${toDate}"/>
+										</c:import>
+									</c:catch>
+								</div> <!-- end #tableframe -->
 							</div> <!-- end .content-box -->
 						</div> <!-- end .col-lg-10 page-title -->
 					</div> <!-- end first .row justify-content-start -->
 				</article>
 			</div> <!-- end .container-fluid -->
-			<jsp:include page="includes/footer.jsp" />
+			<jsp:include page="/includes/footer.jsp" />
 		</div> <!-- end .main-raised -->
 		<%@ include file="/includes/bootstrap_bottom_scripts.html" %>
 	</body>
-	<script>$(document).ready(function(){ submitToDiv (document.pendingsales, 'tableframe'); });</script>
 </html>

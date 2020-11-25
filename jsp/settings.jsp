@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -138,20 +139,23 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <jsp:include page="includes/menuSidebar.jsp" />
+            <jsp:include page="/includes/menuSidebar.jsp" />
             <div id="settings-page" class="col-lg-10 col-md-12 page-title">
-              <form name="settings" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" method="post">
-                <input type="hidden" name = "ACTION" value = "1"/>
-                <input type="hidden" name = "NEXT_PAGE" value = "https://vendors-new.bmtmicro.com/settings-page.jsp"/>
-                <input type="hidden" name = "ERROR_PAGE" value = "https://vendors-new.bmtmicro.com/error-div.jsp"/>
-              </form>
+              <c:catch var="errormsg">
+                <c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
+                  <c:param name="SESSIONID" value="${sessionid}" />
+                  <c:param name="NEXT_PAGE" value = "https://vendors-new.bmtmicro.com/settings-page.jsp"/>
+                  <c:param name="ERROR_PAGE" value = "https://vendors-new.bmtmicro.com/error-div.jsp"/>
+                  <c:param name="ACTION" value = "1"/>
+                </c:import>
+              </c:catch>
+              <%@ include file="/includes/catch.jsp" %>
             </div> <!-- end .col-lg-10 col-md-12 page-title -->
           </div> <!-- end .row justify-content-start -->
         </article>
       </div> <!-- end .container-fluid -->
-      <jsp:include page="includes/footer.jsp" />
+      <jsp:include page="/includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
-  <script>$(document).ready(function(){ submitToDiv (document.settings, 'settings-page'); });</script>
 </html>

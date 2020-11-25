@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,59 +64,32 @@
 			<div class="container-fluid body-content">
 				<article class="section">
 					<div class="row justify-content-start">
-						<jsp:include page="includes/menuSidebar.jsp" />
+						<jsp:include page="/includes/menuSidebar.jsp" />
 						<div class="col-lg-10 col-md-12 page-title">
-              <h4>View Statistics</h4>
-              <p>Select field to display occurrences.</p>
+							<h4>View Statistics</h4>
+							<p>Select field to display occurrences.</p>
 							<div class="content-box overflow-auto d-flex flex-column">
-                <form name="statistics" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Statistics" method="post">
-									<div class="table-header">
-								    <span>From:&nbsp;<input id="DATEFROM" name="DATEFROM" value="${fromDate}" onkeypress="filterKeyPress(event)" />
-											<img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
-								    </span>
-								    <span>To:&nbsp;
-								      <input id="DATETO" name="DATETO" value="${toDate}" style="margin-bottom: 1rem;" onkeypress="filterKeyPress(event)" />
-											<img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
-								    </span>
-								    <br>
-								    <span>Consolidate By:&nbsp;
-								      <select name="CONSOLIDATEBY"<c:if test="${cookie['BMTMicro.Vendors.SalesDetails.ConsolidateBy'].value==1}"> selected</c:if> onchange="consolidateByChanged (statistics);">
-								        <option value="0"<c:if test="${requestScope.CONSOLIDATEBY=='0'}"> selected</c:if>>Product Name</option>
-								        <option value="1"<c:if test="${requestScope.CONSOLIDATEBY=='1'}"> selected</c:if>>Product ID</option>
-								        <option value="2"<c:if test="${requestScope.CONSOLIDATEBY=='2'}"> selected</c:if>>Payment Date</option>
-								        <option value="3"<c:if test="${requestScope.CONSOLIDATEBY=='3'}"> selected</c:if>>Number of Items Ordered</option>
-								        <option value="4"<c:if test="${requestScope.CONSOLIDATEBY=='4'}"> selected</c:if>>Price of Item Ordered</option>
-								        <option value="5"<c:if test="${requestScope.CONSOLIDATEBY=='5'}"> selected</c:if>>Payment Method</option>
-								        <option value="6"<c:if test="${requestScope.CONSOLIDATEBY=='6'}"> selected</c:if>>Country</option>
-								        <option value="7"<c:if test="${requestScope.CONSOLIDATEBY=='7'}"> selected</c:if>>Comments</option>
-								        <option value="8"<c:if test="${requestScope.CONSOLIDATEBY=='8'}"> selected</c:if>>Howheard</option>
-								        <option value="9"<c:if test="${requestScope.CONSOLIDATEBY=='9'}"> selected</c:if>>Vendor specific info 1</option>
-								        <option value="10"<c:if test="${requestScope.CONSOLIDATEBY=='10'}"> selected</c:if>>Vendor specific info 2</option>
-								        <option value="11"<c:if test="${requestScope.CONSOLIDATEBY=='11'}"> selected</c:if>>Vendor specific info 3</option>
-								      </select>
-								    </span>
-								    <span>
-								      <select name="DIRECTION"<c:if test="${cookie['BMTMicro.Vendors.SalesDetails.Direction'].value==0}"> selected</c:if> onchange="directionChanged (statistics);">
-								        <option value="0"<c:if test="${requestScope.DIRECTION=='0'}"> selected</c:if>>Ascending order</option>
-								        <option value="1"<c:if test="${requestScope.DIRECTION=='1'}"> selected</c:if>>Descending order</option>
-								      </select>
-								    </span>
-								    <span>
-								      <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-view-statistics-table.jsp" />
-								      <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
-								      <button type="button" class="grey-btn" value="Get Sales Summary" onclick="refreshReport (document.statistics);">Get Statistics</button>
-								    </span>
-								  </div> <!-- end .table-header -->
-                </form>
-                <div name="tableframe" class="h-100" id="tableframe"></div>
+								<div name="tableframe" class="h-100" id="tableframe">
+									<c:catch var="errormsg">
+										<c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.Statistics">
+											<c:param name="SESSIONID" value="${sessionid}" />
+											<c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-view-statistics-table.jsp"/>
+											<c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp"/>
+											<c:param name="DATEFROM" value="${fromDate}"/>
+											<c:param name="DATETO" value="${toDate}"/>
+											<c:param name="CONSOLIDATEBY" value="${cookie['BMTMicro.Vendors.Statistics.ConsolidateBy'].value}"/>
+											<c:param name="DIRECTION" value="${cookie['BMTMicro.Vendors.Statistics.Direction'].value}"/>
+										</c:import>
+									</c:catch>
+									<%@ include file="/includes/catch.jsp" %>
+								</div> <!-- end #tableframe -->
 							</div> <!-- end .content-box -->
 						</div> <!-- end .col-lg-10 page-title -->
 					</div> <!-- end first .row justify-content-start -->
 				</article>
 			</div> <!-- end .container-fluid -->
-			<jsp:include page="includes/footer.jsp" />
+			<jsp:include page="/includes/footer.jsp" />
 		</div> <!-- end .main-raised -->
 		<%@ include file="/includes/bootstrap_bottom_scripts.html" %>
 	</body>
-	<script>$(document).ready(function(){ submitToDiv (document.statistics, 'tableframe'); });</script>
 </html>

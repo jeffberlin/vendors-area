@@ -1,6 +1,7 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <h5>Personalize&nbsp;Sales&nbsp;Details&nbsp;Fields</h5>
 <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
-	<input type="hidden" name="NEXT_PAGE" value="${requestScope.NEXT_PAGE}" />
+	<input type="hidden" name="NEXT_PAGE"  value="${requestScope.NEXT_PAGE}" />
 	<input type="hidden" name="ERROR_PAGE" value="${requestScope.ERROR_PAGE}" />
 	<div id="fieldslist" class="row"></div>
 	<span>
