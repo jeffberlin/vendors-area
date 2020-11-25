@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <form name="shipping" action="https://vendors-new.bmtmicro.com/servlets/Vendors.ShippingCost" method="post">
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/manage-shipping-schemes-table.jsp" />
