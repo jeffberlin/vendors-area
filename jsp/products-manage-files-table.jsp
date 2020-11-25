@@ -1,8 +1,9 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <form id="files" name="files" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DownloadFiles" method="post">
   <input type="hidden" name="ACTION" value="-1" />
   <input type="hidden" name="DOWNLOADFILEID" value="" />
-  <input type="hidden" name="ROWSPERPAGE" value="500" />
+  <input type="hidden" name="ROWSPERPAGE" value="${requestScope.ROWSPERPAGE}" />
   <input type="hidden" name="PAGE" value="${requestScope.PAGE}" />
   <input type="hidden" name="PAGECOUNT" value="${requestScope.PAGECOUNT}" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-files-table.jsp" />
