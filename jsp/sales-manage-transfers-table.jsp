@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <form name="transfers" action="https://vendors-new.bmtmicro.com/servlets/Vendors.V2VTransfer" method="post">
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-manage-transfers-table.jsp" />
@@ -38,7 +39,7 @@
             <td option>
               <c:choose>
                 <c:when test="${row.EDITABLE == -1}">
-                  <button type="button" class='save-btn' onclick='editTransfer (${row.TRANSFERID},${row.TOAFFILIATEID});'>Edit</button>
+                  <button type="button" class="save-btn" onclick="editTransfer (${row.TRANSFERID},${row.TOAFFILIATEID});">Edit</button>
                 </c:when>
                 <c:otherwise></c:otherwise>
               </c:choose>
