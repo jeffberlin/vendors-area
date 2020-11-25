@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <p align="right">
   <input type="image" src="https://vendors-new.bmtmicro.com/images/print.gif" border="0" alt="Print Report" onclick="window.print (); return (false);" />
@@ -10,14 +11,14 @@
     <td width="15%">Amount</td>
     <td width="25%">Notes</td>
   </tr>
-    <c:forEach var="row" items="${requestScope.TABLEDATA}">
-      <tr>
-        <td>${row.TIME}</td>
-        <td>${row.DESCRIPTION}</td>
-        <td align=right>${row.AMOUNT}</td>
-        <td>${row.NOTES}&nbsp;</td>
-      </tr>
-    </c:forEach>
+  <c:forEach var="row" items="${requestScope.TABLEDATA}">
+    <tr>
+      <td>${row.TIME}</td>
+      <td>${row.DESCRIPTION}</td>
+      <td align=right>${row.AMOUNT}</td>
+      <td>${row.NOTES}&nbsp;</td>
+    </tr>
+  </c:forEach>
   <tr>
     <td colspan=2 align=right>
       <strong>Total:</strong>&nbsp;

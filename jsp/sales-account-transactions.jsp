@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,14 +38,14 @@
 				if (!CheckDateRange (form)) {
 					return (false);
 				}
-				if (parseInt (form.FORMAT.value) == 0) { // If printable HTML is selected we use a different row template and landing page
-					form.target = "_blank"; // Open up in new window
-					form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print.jsp";
-					form.submit ();
-				} else {
+				if (parseInt (form.FORMAT.value) == -1) { // If printable HTML is selected we use a different row template and landing page
 					form.target = "";
 					form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-table.jsp";
 					submitToDiv(form, 'tableframe');
+				} else {
+					form.target = "_blank"; // Open up in new window
+					form.NEXT_PAGE.value = "https://vendors-new.bmtmicro.com/sales-account-transactions-print.jsp";
+					form.submit ();
 				}
 				return (true);
 			}
@@ -65,46 +66,31 @@
 			<div class="container-fluid body-content">
 				<article class="section">
 					<div class="row justify-content-start">
-						<jsp:include page="includes/menuSidebar.jsp" />
+						<jsp:include page="/includes/menuSidebar.jsp" />
 						<div class="col-lg-10 col-md-12 page-title">
-              <h4>Account Transactions</h4>
-              <p>Vendor payments are made on the first of each month.</p>
+							<h4>Account Transactions</h4>
+							<p>Vendor payments are made on the first of each month.</p>
 							<div class="content-box overflow-auto d-flex flex-column">
-                <form name="transactions" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Transactions" method="post">
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-account-transactions-table.jsp" />
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
-                  <div class="table-header">
-                    <span>From:&nbsp;
-                      <input id="DATEFROM" name="DATEFROM" value="${bomDate}" onkeypress="filterKeyPress(event)"/>&nbsp;
-											<img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
-                    </span>
-                    <span>To:&nbsp;
-                      <input id="DATETO" name="DATETO" value="${toDate}" onkeypress="filterKeyPress(event)"/>&nbsp;
-											<img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
-                    </span>
-                    <span>
-                      <select name="FORMAT">
-                        <option value="-1"<c:if test="${requestScope.FORMAT=='-1'}"> selected</c:if>>HTML (refresh)</option>
-                        <option value="0"<c:if test="${requestScope.FORMAT=='0'}"> selected</c:if>>HTML (printable)</option>
-                        <option value="1"<c:if test="${requestScope.FORMAT=='1'}"> selected</c:if>>CSV</option>
-                        <option value="2"<c:if test="${requestScope.FORMAT=='2'}"> selected</c:if>>XML</option>
-                        <option value="3"<c:if test="${requestScope.FORMAT=='3'}"> selected</c:if>>PDF</option>
-                      </select>
-                    </span>
-                    <span>
-                      <button type="button" class="grey-btn" value="Get Sales Summary" onclick="refreshReport (document.transactions);">Update Transactions</button>
-                    </span>
-                  </div> <!-- end .table-header -->
-								</form>
-                <div name="tableframe" class="h-100" id="tableframe"></div>
+								<div name="tableframe" class="h-100" id="tableframe">
+									<c:catch var="errormsg">
+										<c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.Transactions">
+											<c:param name="SESSIONID" value="${sessionid}" />
+											<c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-account-transactions-table.jsp"/>
+											<c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp"/>
+											<c:param name="DATEFROM" value="${bomDate}"/>
+											<c:param name="DATETO" value="${toDate}"/>
+											<c:param name="FORMAT" value="-1" />
+										</c:import>
+									</c:catch>
+									<%@ include file="/includes/catch.jsp" %>
+								</div> <!-- end #tableframe -->
 							</div> <!-- end .content-box -->
 						</div> <!-- end .col-lg-10 page-title -->
 					</div> <!-- end first .row justify-content-start -->
 				</article>
 			</div> <!-- end .container-fluid -->
-			<jsp:include page="includes/footer.jsp" />
+			<jsp:include page="/includes/footer.jsp" />
 		</div> <!-- end .main-raised -->
 		<%@ include file="/includes/bootstrap_bottom_scripts.html" %>
 	</body>
-	<script>$(document).ready(function(){ submitToDiv (document.transactions, 'tableframe'); });</script>
 </html>

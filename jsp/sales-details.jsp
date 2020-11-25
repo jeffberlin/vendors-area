@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,57 +74,32 @@
       <div class="container-fluid body-content">
         <article class="section">
           <div class="row justify-content-start">
-            <jsp:include page="includes/menuSidebar.jsp" />
+            <jsp:include page="/includes/menuSidebar.jsp" />
             <div class="col-lg-10 col-md-12 page-title">
               <h4>Sales Detail Report</h4>
               <p>Filter Details using the input fields. Fields can be added or removed using the Settings link on the left side of this page.</p>
               <div class="content-box d-flex overflow-auto">
-                <form name="salesdetails" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetails" method="post">
-                  <input type="hidden" name="ROWSPERPAGE" value="250" />
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-details-table.jsp" />
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
-                  <div class="table-header">
-                    <span>From:&nbsp;
-                      <input id="DATEFROM" name="DATEFROM" value="${fromDate}" onkeypress="filterKeyPress(event)"/>&nbsp;
-                      <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
-                    </span>
-                    <span>To:&nbsp;
-                      <input id="DATETO" name="DATETO" value="${toDate}" onkeypress="filterKeyPress(event)"/>&nbsp;
-                      <img class="calendar" alt="Click Here to Pick the date" title="Click Here to Pick the date" onclick="show_calendar (this)" />
-                    </span>
-                    <span>
-                      <input type="checkbox" name="EXACTMATCH" value="-1"<c:if test="${cookie['BMTMicro.Vendors.SalesDetails.ExactMatch'].value==-1}"> checked</c:if> onclick="exactMatch(salesdetails);" title="Check for exact matches">&nbsp;Use exact match when filtering
-                    </span>
-                    <span>
-                      <select name="FORMAT">
-                        <option value="0"<c:if test="${requestScope.FORMAT == '0'}"> selected</c:if>>HTML</option>
-                        <option value="1"<c:if test="${requestScope.FORMAT == '1'}"> selected</c:if>>CSV</option>
-                        <option value="2"<c:if test="${requestScope.FORMAT == '2'}"> selected</c:if>>XML</option>
-                        <option value="3"<c:if test="${requestScope.FORMAT == '3'}"> selected</c:if>>PDF</option>
-                      </select>
-                    </span>
-                    <span>
-                      <button class="grey-btn" type="button" value="Get Report" onclick="refreshReport (document.salesdetails);">Get Sales Details</button>
-                    </span>
-                  </div> <!-- end .table-header -->
-                  <div name="tableframe" id="tableframe"></div> <!-- end #tableframe -->
-                </form>
-                <div style="visibility:hidden;">
-                  <form name="invoice" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Invoice" method="post" target="_blank">
-                    <input name="ORDERID" type="hidden" value="0">
-                    <input name="VENDORID" type="hidden" value="${requestScope.VENDORID}">
-                  </form>
-                </div>
+                <div name="tableframe" id="tableframe">
+                  <c:catch var="errormsg">
+                    <c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetails">
+                      <c:param name="SESSIONID" value="${sessionid}" />
+                      <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/sales-details-table.jsp"/>
+                      <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp"/>
+                      <c:param name="DATEFROM" value="${bomDate}"/>
+                      <c:param name="DATETO" value="${toDate}"/>
+                      <c:param name="EXACTMATCH" value="${cookie['BMTMicro.Vendors.SalesDetails.ExactMatch'].value}" />
+                      <c:param name="FORMAT" value="0" />
+                    </c:import>
+                  </c:catch>
+                  <%@ include file="/includes/catch.jsp" %>
+                </div> <!-- end #tableframe -->
               </div> <!-- end .content-box -->
             </div> <!-- end .col-lg-10 -->
           </div> <!-- end first .row -->
         </article>
       </div> <!-- end .container-fluid -->
-      <jsp:include page="includes/footer.jsp" />
+      <jsp:include page="/includes/footer.jsp" />
     </div> <!-- end .main-raised -->
     <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
-    <script>
-      $(document).ready(function(){ submitToDiv (document.salesdetails, 'tableframe'); });
-    </script>
   </body>
 </html>

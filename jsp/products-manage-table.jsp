@@ -1,7 +1,8 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <form id="products" name="products" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Products" method="post">
   <input type="hidden" name="ACTION" value="-1" />
-  <input type="hidden" name="ROWSPERPAGE" value="500" />
+  <input type="hidden" name="ROWSPERPAGE" value="${requestScope.ROWSPERPAGE}" />
   <input type="hidden" name="PAGE" value="${requestScope.PAGE}" />
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />

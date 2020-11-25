@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -132,26 +133,29 @@
 			<div class="container-fluid body-content">
 				<article class="section">
 					<div class="row justify-content-start">
-						<jsp:include page="includes/menuSidebar.jsp" />
+						<jsp:include page="/includes/menuSidebar.jsp" />
 						<div class="col-lg-10 col-md-12 page-title">
               <h4>Manage&nbsp;Splits</h4>
               <p>Splits changed in the middle of the month will be applied to complete months sales.&nbsp;Splits cannot be changed on vendor paydays.</p>
 							<div class="content-box d-flex flex-column">
 								<div name="tableframe" class="overflow-auto h-100" id="tableframe">
-                  <form name="splits" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.SplitSchemes">
-                    <input type="hidden" name="ACTION" value="-1" />
-                    <input type="hidden" name="MAXAMOUNT" value="" />
-                    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-splits-table.jsp">
-                    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp">
-                  </form>
-								</div>
+									<c:catch var="errormsg">
+										<c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.SplitSchemes">
+											<c:param name="SESSIONID" value="${sessionid}" />
+											<c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-splits-table.jsp" />
+											<c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+											<c:param name="ACTION" value="-1" />
+										</c:import>
+									</c:catch>
+									<%@ include file="/includes/catch.jsp" %>
+								</div> <!-- end #tableframe -->
 								<div name="resultframe" id="resultframe" class="overflow-auto"></div>
 							</div> <!-- end .content-box -->
 						</div> <!-- end .col-lg-10 page-title -->
 					</div> <!-- end first .row justify-content-start -->
 				</article>
 			</div> <!-- end .container-fluid -->
-			<jsp:include page="includes/footer.jsp" />
+			<jsp:include page="/includes/footer.jsp" />
 		</div> <!-- end .main-raised -->
 		<%@ include file="/includes/bootstrap_bottom_scripts.html" %>
 	</body>
@@ -159,7 +163,6 @@
 		if (window.history.replaceState) {
 			window.history.replaceState (null, null, "https://vendors-new.bmtmicro.com/products-manage-splits.jsp");
 		}
-		$(document).ready(function(){ submitToDiv (document.splits, 'tableframe'); });
     $('input[type=checkbox]').change(function(){
       $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);
     });
