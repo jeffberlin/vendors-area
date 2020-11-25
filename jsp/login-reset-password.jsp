@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -11,7 +12,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <title>BMT Micro Developers Center</title>
-    <%@ include file="includes/bootstrap_top_script.html" %>
+    <%@ include file="/includes/bootstrap_top_script.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/login.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/responsive.css"/>
@@ -79,6 +80,6 @@
         </div>
       </footer>
     </div>
-    <%@ include file="includes/bootstrap_bottom_scripts.html" %>
+    <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
 </html>
