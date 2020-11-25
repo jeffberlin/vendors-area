@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <form name="tiers" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.TieredPricing">
   <input type="hidden" name="ACTION" value="" />
@@ -5,7 +6,7 @@
   <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-pricing-tiers-table.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
   <div class="table-header">
-    <input type="checkbox" name="SHOWINACTIVE" value="-1" onClick="showInactiveChanged ();" style="margin-bottom: 1rem;"<c:if test = "${ cookie['BMTMicro.Vendors.Tiers.ShowInactive'].value == -1 }">checked</c:if> />
+    <input type="checkbox" name="SHOWINACTIVE" value="-1" onClick="showInactiveChanged ();" style="margin-bottom: 1rem;"<c:if test="${requestScope.SHOWINACTIVE == -1}">checked</c:if> />
     <span>
       Show inactive tiers
     </span>
