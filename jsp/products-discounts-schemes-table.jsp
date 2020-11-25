@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <form name="discounts" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes">
 	<input type="hidden" name="ACTION" value="-1" />
@@ -6,7 +7,7 @@
 	<input type="hidden" name="SCHEMEID" value="" />
 	<input type="hidden" name="SCHEMETYPE" value="" />
 	<div class="table-header">
-		<input type="checkbox" name="SHOWINACTIVE" value="-1" onClick="showInactiveChanged ();"<c:if test = "${ cookie['BMTMicro.Vendors.Discounts.ShowInactive'].value == -1 }">checked</c:if> />
+		<input type="checkbox" name="SHOWINACTIVE" value="-1" onClick="showInactiveChanged ();"<c:if test = "${ requestScope.SHOWINACTIVE == -1 }">checked</c:if> />
 		<span>
 			Show inactive/expired schemes
 		</span>

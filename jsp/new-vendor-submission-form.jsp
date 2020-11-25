@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -6,8 +7,8 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>BMT Micro Developers Center</title>
-    <%@ include file="includes/bootstrap_top_script.html" %>
-    <%@ include file="includes/style_menu_footer_css.html" %>
+    <%@ include file="/includes/bootstrap_top_script.html" %>
+    <%@ include file="/includes/style_menu_footer_css.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://secure.bmtmicro.com/servlets/System.Util"></script>
@@ -126,27 +127,27 @@
                   <br>
                   <span>
                     <label>Company Name:&nbsp;</label>
-                    <input name="COMPANY" style="margin-bottom: 1rem;" />&nbsp;<img src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" title="Name of the company who develops the product." />
+                    <input name="COMPANY" value="${requestScope.COMPANY}" style="margin-bottom: 1rem;" />&nbsp;<img src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" title="Name of the company who develops the product." />
                   </span>
                   <br>
                   <span>
                     <label>Contact Name:&nbsp;</label>
-                    <input name="NAME" style="margin-bottom: 1rem;" />&nbsp;<img src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" title="Name of the Developer or Contact person." />
+                    <input name="NAME" value="${requestScope.NAME}" style="margin-bottom: 1rem;" />&nbsp;<img src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" title="Name of the Developer or Contact person." />
                   </span>
                   <br>
                   <span>
                     <label>Company Address:&nbsp;</label>
-                    <input name="ADDRESS1" style="margin-bottom: 1rem;" />&nbsp;<img title="Complete company (or individual) mailing address." src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" />
+                    <input name="ADDRESS1" value="${requestScope.ADDRESS1}" style="margin-bottom: 1rem;" />&nbsp;<img title="Complete company (or individual) mailing address." src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" />
                   </span>
                   <br>
                   <span>
                     <label>Address 2:&nbsp;</label>
-                    <input name="ADDRESS2" style="margin-bottom: 1rem;" />
+                    <input name="ADDRESS2" value="${requestScope.ADDRESS2}" style="margin-bottom: 1rem;" />
                   </span>
                   <br>
                   <span>
                     <label>City:&nbsp;</label>
-                    <input name="CITY" style="margin-bottom: 1rem; margin-right: 1.5rem;" />
+                    <input name="CITY" value="${requestScope.CITY}" style="margin-bottom: 1rem; margin-right: 1.5rem;" />
                   </span>
                   <span>
                     <label>State/Province:&nbsp;</label>
@@ -157,7 +158,7 @@
                   <br>
                   <span>
                     <label>ZIP/Postal Code:&nbsp;</label>
-                    <input name="ZIP" style="margin-bottom: 1rem; margin-right: 1.5rem;">
+                    <input name="ZIP" value="${requestScope.ZIP}" style="margin-bottom: 1rem; margin-right: 1.5rem;">
                   </span>
                   <span>
                     <label>Country:&nbsp;</label>
@@ -175,23 +176,23 @@
                   <br>
                   <span>
                     <label>Alternate Email:&nbsp;</label>
-                    <input name="EMAIL2" style="margin-bottom: 1rem;" />&nbsp;<img title="Backup email if above unavailable." src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" />
+                    <input name="EMAIL2" value="${requestScope.EMAIL2}" style="margin-bottom: 1rem;" />&nbsp;<img title="Backup email if above unavailable." src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" />
                   </span>
                   <br>
                   <span>
                     <label>Phone:&nbsp;</label>
-                    <input name="PHONE" style="margin-bottom: 1rem;" />&nbsp;<img title="Your information is not given out to the customer." src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" />
+                    <input name="PHONE" value="${requestScope.PHONE}" style="margin-bottom: 1rem;" />&nbsp;<img title="Your information is not given out to the customer." src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" />
                   </span>
                   <br>
                   <span>
                     <label>Fax:&nbsp;</label>
-                    <input name="FAX" style="margin-bottom: 1rem;" />
+                    <input name="FAX" value="${requestScope.FAX}" style="margin-bottom: 1rem;" />
                   </span>
                   <br>
                   <p style="font-size: .9rem;">Your website is used to help verify your company information. If you are still working on your website, please include explanation in the Special Instructions field.</p>
                   <span>
                     <label>Wesite Address:&nbsp;</label>
-                    <input name="WEB" style="margin-bottom: 1rem;" size="35" />&nbsp;<img title="Web address representing your company or products." src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" />
+                    <input name="WEB" value="${requestScope.WEB}" style="margin-bottom: 1rem;" size="35" />&nbsp;<img title="Web address representing your company or products." src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" />
                   </span>
                   <br>
                   <span>
@@ -206,12 +207,12 @@
                   <br>
                   <span>
                     <label style="vertical-align: top;">Special Instructions:&nbsp;</label>
-                    <textarea name="CSRCOMMENTS" style="margin-bottom: 1rem;"></textarea>&nbsp;<img title="Any information that will aid us in setting up your account." src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark"  style="vertical-align: top;" />
+                    <textarea name="CSRCOMMENTS" value="${requestScope.CSRCOMMENTS}" style="margin-bottom: 1rem;"></textarea>&nbsp;<img title="Any information that will aid us in setting up your account." src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark"  style="vertical-align: top;" />
                   </span>
                   <br>
                   <span>
                     <label>Promotional Code:&nbsp;</label>
-                    <input name="PROMOCODE" style="margin-bottom: 2rem;" />&nbsp;<img title="If you received a code, please enter it here." src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" />
+                    <input name="PROMOCODE" value="${requestScope.PROMOCODE}" style="margin-bottom: 2rem;" />&nbsp;<img title="If you received a code, please enter it here." src="https://vendors-new.bmtmicro.com/images/questionMark.gif" alt="Question Mark" />
                   </span>
                   <br>
                   <button type="reset" name="reset" class="save-btn" style="margin-right: .5rem;">Reset</button>
@@ -222,8 +223,8 @@
           </div> <!-- end .row justify-content-start -->
         </article> <!-- end .section -->
       </div> <!-- end .container-fluid .body-content -->
-      <jsp:include page="includes/footer.jsp" />
+      <jsp:include page="/includes/footer.jsp" />
     </div> <!-- end .main-raised -->
-    <%@ include file="includes/bootstrap_bottom_scripts.html" %>
+    <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
   </body>
 </html>

@@ -1,10 +1,12 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
   <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys">
     <input type="hidden" name="ACTION" value="10" />
     <input type="hidden" name="KEYTABLEID" value="${requestScope.KEYTABLEID}" />
+    <input type="hidden" name="NAMELIST" value="${requestScope.NAMELIST}" />
     <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables.jsp" />
-    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error.jsp" />
     <h5>Add&nbsp;Activation&nbsp;Code&nbsp;Table</h5>
     <span>
       <label>Table&nbsp;Name:</label>
@@ -19,10 +21,10 @@
         <option value="3"<c:if test="${requestScope.KEYPARTS==3}"> selected</c:if>>3</option>
         <option value="4"<c:if test="${requestScope.KEYPARTS==4}"> selected</c:if>>4</option>
         <option value="5"<c:if test="${requestScope.KEYPARTS==5}"> selected</c:if>>5</option>
-        <!-- <option value="6"<c:if test="${requestScope.KEYPARTS==6}"> selected</c:if>>6</option>
-        <option value="7"<c:if test="${requestScope.KEYPARTS==7}"> selected</c:if>>7</option>
-        <option value="8"<c:if test="${requestScope.KEYPARTS==8}"> selected</c:if>>8</option>
-        <option value="9"<c:if test="${requestScope.KEYPARTS==9}"> selected</c:if>>9</option> -->
+        <!-- <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option> -->
       </select>
     </span>
     <br clear="all">

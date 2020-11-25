@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,13 +83,22 @@
 			<div class="container-fluid body-content">
 				<article class="section">
 					<div class="row justify-content-start">
-						<jsp:include page="includes/menuSidebar.jsp" />
+						<jsp:include page="/includes/menuSidebar.jsp" />
 						<div class="col-lg-10 col-md-12 page-title">
 							<h4>Manage&nbsp;Discount&nbsp;Schemes</h4>
 							<p>Click on Discount Scheme Name to edit discount schemes.</p>
 							<div class="content-box overflow-auto d-flex flex-column">
 								<div name="tableframe" class="overflow-auto h-100" id="tableframe">
-									<jsp:include page="products-discounts-schemes-table.jsp" />
+									<c:catch var="errormsg">
+										<c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.DiscountSchemes">
+											<c:param name="SESSIONID" value="${sessionid}" />
+											<c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-discounts-schemes-table.jsp" />
+											<c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+											<c:param name="ACTION" value="-1" />
+											<c:param name="SHOWINACTIVE" value="${cookie['BMTMicro.Vendors.Discounts.ShowInactive'].value}" />
+										</c:import>
+									</c:catch>
+									<%@ include file="/includes/catch.jsp" %>
 								</div>
 								<div name="resultframe" id="resultframe"></div>
 							</div> <!-- end .content-box -->
@@ -96,7 +106,7 @@
 					</div> <!-- end first .row justify-content-start -->
 				</article>
 			</div> <!-- end .container-fluid -->
-			<jsp:include page="includes/footer.jsp" />
+			<jsp:include page="/includes/footer.jsp" />
 		</div> <!-- end .main-raised -->
 		<%@ include file="/includes/bootstrap_bottom_scripts.html" %>
 	</body>
@@ -104,6 +114,5 @@
 		if (window.history.replaceState) {
 			window.history.replaceState (null, null, "https://vendors-new.bmtmicro.com/products-discounts-schemes.jsp");
 		}
-		$(document).ready(function(){ submitToDiv (document.discounts, 'tableframe'); });
 	</script>
 </html>

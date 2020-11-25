@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <div class="content">
   <c:if test=“${requestScope.COUNT==requestScope.TOTAL}”>

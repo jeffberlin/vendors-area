@@ -1,10 +1,13 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ include file="/includes/core.jsp" %>
 <div id="newsfeed-result">
-  <form name="newsfeed" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account" method="post">
-    <input type="hidden" name="ACTION" value="9" />
-    <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/newsfeed-result.jsp" />
-    <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.html" />
-  </form>
+  <c:catch var="errormsg">
+    <c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
+      <c:param name="SESSIONID" value="${sessionid}" />
+      <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/newsfeed-result.jsp" />
+      <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+      <c:param name="ACTION" value="9" />
+    </c:import>
+  </c:catch>
+  <%@ include file="/includes/catch.jsp" %>
 </div>
-<script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script>$(document).ready(function(){ submitToDiv (document.newsfeed, 'newsfeed-result'); });</script>

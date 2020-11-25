@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section" id="main">
   <h5>View Products Using Activation Code Table - ${requestScope.NAME}</h5>

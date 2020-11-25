@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
 <div class="transfer-section">
   <c:if test = "${ requestScope.USECOUNT == 0 }">
