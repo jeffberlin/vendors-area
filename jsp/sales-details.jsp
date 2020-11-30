@@ -79,7 +79,7 @@
               <h4>Sales Detail Report</h4>
               <p>Filter Details using the input fields. Fields can be added or removed using the Settings link on the left side of this page.</p>
               <div class="content-box d-flex overflow-auto">
-                <div name="tableframe" id="tableframe">
+                <div name="tableframe" id="tableframe" class="h-100">
                   <c:catch var="errormsg">
                     <c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.SalesDetails">
                       <c:param name="SESSIONID" value="${sessionid}" />

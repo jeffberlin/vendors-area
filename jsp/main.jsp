@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/main.css"/>
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <!-- Begin charts -->
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/newChart.css"/>
     <!-- End charts -->
