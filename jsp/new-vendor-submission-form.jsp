@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://secure.bmtmicro.com/servlets/System.Util"></script>
-    <script src="https://secure.bmtmicro.com/servlets/CustomForms.CustomForm"></script>
     <script>
       function getControlValue (control) {
         switch (control.type) {

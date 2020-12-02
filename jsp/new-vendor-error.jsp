@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/menuSidebar.css"/>
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://secure.bmtmicro.com/servlets/System.Util"></script>
-    <script src="https://secure.bmtmicro.com/servlets/CustomForms.CustomForm"></script>
   </head>
   <body>
     <!-- Blue background header -->
