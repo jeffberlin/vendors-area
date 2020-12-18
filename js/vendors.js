@@ -133,3 +133,57 @@ function insertAtCursor (myField, myValue) {
     myField.value += myValue;
   }
 }
+
+function closeDiv(id) {
+   $('#' + id).css ("display", "none");
+   }
+
+function submitToDiv (form, id) {
+   $.ajax({
+      url: $(form).attr('action'), // the file to call
+      data: $(form).serialize(), // get the form data
+      type: $(form).attr('method'), // GET or POST
+      invokedata: { targetDiv: '#' + id },
+      success: function (data, status) {
+         $(this.invokedata.targetDiv).html (data); //content loads here
+         $(this.invokedata.targetDiv).css ("display", "block");
+         },
+      error: function (xhr, desc, err) {
+         if (xhr.status == 440) { // Session expired
+            window.location.href = '/';
+            }
+         else {
+            console.log ("error");
+            }
+         }
+      });
+   }
+
+function submitToAlert (form, message) {
+   $.ajax({
+      url: $(form).attr('action'), // the file to call
+      data: $(form).serialize(), // get the form data
+      type: $(form).attr('method'), // GET or POST
+      success: function (data, status) {
+         if (message != '') {
+            alert (message);
+            }
+         },
+      error: function (xhr, desc, err) {
+         if (xhr.status == 440) { // Session expired
+            window.location.href = '/';
+            }
+         else {
+            console.log ("error");
+            }
+         }
+      });
+   }
+
+function closeResultFrame() {
+   closeDiv ('resultframe');
+   }
+
+function submitToResultFrame(form) {
+   submitToDiv (form, 'resultframe');
+   }

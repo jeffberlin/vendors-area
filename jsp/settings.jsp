@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addPages.css"/>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/tabOptions.css"/>
     <script src="https://kit.fontawesome.com/35c40e6698.js"></script>
-    <scriptsrc="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <scriptsrc="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
       .fa-plus-circle:hover {
         color: darkgreen;

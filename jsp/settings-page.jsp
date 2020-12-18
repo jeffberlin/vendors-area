@@ -3,7 +3,7 @@
 <form method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Account">
   <input type="hidden" name="VENDORID" value="${requestScope.VENDORID}" />
   <input type="hidden" name="ACTION" value="11" />
-  <input type="hidden" name="NEXT_PAGE" value="${requestScope.NEXT_PAGE}" />
+  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/settings.jsp" />
   <input type="hidden" name="ERROR_PAGE" value="${requestScope.ERROR_PAGE}" />
   <ul class="nav nav-tabs flex-nowrap" id="myTab" role="tablist">
     <li class="nav-item">
