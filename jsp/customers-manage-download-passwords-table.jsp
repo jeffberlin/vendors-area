@@ -21,7 +21,7 @@
       <option value="2">Order Number:</option>
     </select>
   </span>
-  <input type="text" name="PASSWORD" value=""  style="margin-bottom: 1rem;" placeholder="Search"/>
+  <input type="text" name="PASSWORD" value="" style="margin-bottom: 1rem;" placeholder="Search"/>
   <div class="controlbuttons">
     <button id="status" type="button" class="save-btn" value="Save" onclick="getStatus (downloadpasswords);" style="margin-bottom: 1rem;">Get Status</button>
   </div>
@@ -38,4 +38,4 @@
   <div class="controlbuttons">
     <button id="password" type="button" class="save-btn" value="Save" onclick="sendPassword (downloadpasswords);">Send Password</button>
   </div>
-</form>               
+</form>
