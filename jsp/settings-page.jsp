@@ -44,5 +44,4 @@
 </form>
 <script>
   initFields ('${requestScope.FIELDIDLIST}','${requestScope.FIELDNAMELIST}');
-  $('input[type=checkbox]').change(function(){ $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0); });
 </script>
