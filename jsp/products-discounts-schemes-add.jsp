@@ -178,7 +178,7 @@
                       <h5>Discount&nbsp;Type</h5>
                       <p>Choose&nbsp;discount&nbsp;type.</p>
                       <span>
-                        <input type="radio" onclick="setFieldVisible('expiration',true); setFieldVisible('expirationdays',true);" style="margin-bottom: 1rem;" <c:if test="${requestScope.SCHEMETYPE!=0}">checked</c:if> />&nbsp;Codes required (customer needs to enter a discount code)
+                        <input type="radio" name="SCHEMETYPE" value="0" onclick="setFieldVisible('expiration',true); setFieldVisible('expirationdays',true);" style="margin-bottom: 1rem;" <c:if test="${requestScope.SCHEMETYPE==0}">checked</c:if> />&nbsp;Codes required (customer needs to enter a discount code)
                       </span>
                       <br>
                       <div id="expiration" style="display: none;">
@@ -196,11 +196,11 @@
                         </span>
                       </div>
                       <span>
-                        <input type="radio" onclick="setFieldVisible('expiration',false); setFieldVisible('expirationdays',false);" style="margin-bottom: 1rem;" <c:if test="${requestScope.SCHEMETYPE!=0}">checked</c:if> />&nbsp;Automatic discount (no codes required, all customers will get the discount)
+                        <input type="radio" name="SCHEMETYPE" value="1" onclick="setFieldVisible('expiration',false); setFieldVisible('expirationdays',false);" style="margin-bottom: 1rem;" <c:if test="${requestScope.SCHEMETYPE==1}">checked</c:if> />&nbsp;Automatic discount (no codes required, all customers will get the discount)
                       </span>
                       <br>
                       <span>
-                        <input type="radio" onclick="setFieldVisible('expiration', false); setFieldVisible('expirationdays',true);" style="margin-bottom: 2rem;" <c:if test="${requestScope.SCHEMETYPE!=0}">checked</c:if> />&nbsp;Recurring billing (automatic discount on subscriptions)
+                        <input type="radio" name="SCHEMETYPE" value="2" onclick="setFieldVisible('expiration', false); setFieldVisible('expirationdays',true);" style="margin-bottom: 2rem;" <c:if test="${requestScope.SCHEMETYPE==2}">checked</c:if> />&nbsp;Recurring billing (automatic discount on subscriptions)
                       </span>
                       <br>
                       <button id="backToNameTab" class="save-btn" type="button" style="margin-right: .2rem;">Previous</button>
