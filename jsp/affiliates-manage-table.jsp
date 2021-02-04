@@ -10,7 +10,7 @@
 			Affiliate ID:&nbsp;
 			<input type="text" name="AFFILIATEID_ADD" value=""/>
 		</span>
-		<button class="grey-btn" onclick="addAffiliate (affiliates.AFFILIATEID_ADD.value);">Add New Affiliate</button>
+		<button class="grey-btn" type="button" onclick="addAffiliate (affiliates.AFFILIATEID_ADD.value);">Add New Affiliate</button>
 	</div> <!-- end .table-header -->
 	<div class="row table-responsive-lg" style="margin-left: auto; margin-right: auto;">
 		<table class="table" id="selection">

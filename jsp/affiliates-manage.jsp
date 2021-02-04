@@ -58,8 +58,6 @@
 					if (isBlank (affiliateid) || isNaN (affiliateid) || (parseInt (affiliateid) < 1)) {
             alert ("Please specify an Affiliate ID!");
             document.affiliates.AFFILIATEID_ADD.focus ();
-            // return false;
-            window.top.location.reload();
           } else {
             submitForm (10, "_parent", "https://vendors-new.bmtmicro.com/affiliates-manage.jsp", affiliateid);
           }
