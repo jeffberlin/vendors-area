@@ -32,46 +32,53 @@
         form.NEXT_PAGE.value = nextpage;
         form.AFFILIATEID.value = affiliateid;
         if (target == "_parent") {
-					form.target = target;
-					form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
-					form.submit ();
-				} else {
-					submitToDiv (form, target);
-				}
+          form.target = target;
+          form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
+          form.submit ();
+        } else {
+          submitToDiv (form, target);
+        }
       }
-			<c:if test = "${ !allowChanges }">
-				function addAffiliate () {
-					alert ("You do not have permission to upload files.");
-				}
-				function editAffiliate (affiliateid) {
-					alert ("You do not have permission to download files.");
-				}
-				function removeAffiliate (affiliateid) {
-					alert ("You do not have permission to delete files.");
-				}
+      <c:if test = "${ !allowChanges }">
+        function addAffiliate () {
+          alert ("You do not have permission to upload files.");
+        }
+        function editAffiliate (affiliateid) {
+          alert ("You do not have permission to download files.");
+        }
+        function removeAffiliate (affiliateid) {
+          alert ("You do not have permission to delete files.");
+        }
         function submitEdit(form) {
           alert("You do not have permission to make changes.");
         }
-			</c:if>
-			<c:if test = "${ allowChanges }">
-				function addAffiliate (affiliateid) {
-					if (isBlank (affiliateid) || isNaN (affiliateid) || (parseInt (affiliateid) < 1)) {
+      </c:if>
+      <c:if test = "${ allowChanges }">
+        function addAffiliate (affiliateid) {
+          if (isBlank (affiliateid) || isNaN (affiliateid) || (parseInt (affiliateid) < 1)) {
             alert ("Please specify an Affiliate ID!");
             document.affiliates.AFFILIATEID_ADD.focus ();
           } else {
             submitForm (10, "_parent", "https://vendors-new.bmtmicro.com/affiliates-manage.jsp", affiliateid);
           }
-				}
-				function removeAffiliate (affiliateid) {
-					submitForm (12, "_parent", "https://vendors-new.bmtmicro.com/affiliates-manage.jsp", affiliateid);
-				}
-				function editAffiliate (affiliateid) {
-					submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/affiliates-manage-edit.jsp", affiliateid);
-				}
+        }
+        function removeAffiliate (affiliateid) {
+          submitForm (12, "_parent", "https://vendors-new.bmtmicro.com/affiliates-manage.jsp", affiliateid);
+        }
+        function editAffiliate (affiliateid) {
+          submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/affiliates-manage-edit.jsp", affiliateid);
+        }
         function submitEdit(form) {
           submitToDiv(form, 'resultframe');
         }
-			</c:if>
+      </c:if>
+      function filterKeyPress(event) {
+        if (event.keyCode == 13) {
+          addAffiliate (affiliates.AFFILIATEID_ADD.value);
+          return (false);
+        }
+        return (true);
+      }
     </script>
   </head>
   <body>

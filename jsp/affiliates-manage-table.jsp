@@ -8,7 +8,7 @@
 	<div class="table-header">
 		<span style="color: #ffffff;">
 			Affiliate ID:&nbsp;
-			<input type="text" name="AFFILIATEID_ADD" value=""/>
+			<input type="text" name="AFFILIATEID_ADD" value="" onkeypress="return filterKeyPress(event);"/>
 		</span>
 		<button class="grey-btn" type="button" onclick="addAffiliate (affiliates.AFFILIATEID_ADD.value);">Add New Affiliate</button>
 	</div> <!-- end .table-header -->
