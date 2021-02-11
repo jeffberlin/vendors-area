@@ -12,6 +12,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <%@ include file="/includes/favicon-meta.html" %>
     <title>BMT Micro Developers Center</title>
     <%@ include file="/includes/bootstrap_top_script.html" %>
     <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/style.css"/>
@@ -22,6 +23,15 @@
         text-align: left;
       }
     </style>
+    <script>
+      function filterKeyPress(event) {
+        var form = document.login;
+        if (event.keyCode == 13) {
+          form.submit();
+          return (true);
+        }
+      }
+    </script>
   </head>
   <body>
     <div class="container-fluid" style="height: calc(100vh - 350px);">
@@ -36,7 +46,7 @@
         <div class="row justify-content-center">
           <div class="box-style">
             <div class="vendor-login-box" style="background-color: rgba(255,255,255,0.3);">
-              <form action="https://vendors-new.bmtmicro.com/servlets/Vendors.Login" method="post">
+              <form name="login" action="https://vendors-new.bmtmicro.com/servlets/Vendors.Login" method="post">
                 <h4 class="text-center">Vendor Log In</h4>
                 <div class="username">
                   <label>Login:</label>
@@ -44,7 +54,7 @@
                 </div>
                 <div class="password">
                   <label>Password:</label>
-                  <input id="PASSWORD" name="PASSWORD" value="" type="password" maxlength="50" autocomplete="off" class="vendor-input">
+                  <input id="PASSWORD" name="PASSWORD" value="" type="password" maxlength="50" autocomplete="off" class="vendor-input" onkeypress="return filterKeyPress(event);">
                 </div>
                 <div class="forgot-password">
                   <a href="https://vendors-new.bmtmicro.com/login-lost-password.jsp">Forgot Password?</a>
@@ -56,7 +66,7 @@
                   <input type="hidden" name="LOCKOUT_PAGE" value="https://vendors-new.bmtmicro.com/login-lockout.jsp">
                   <input type="hidden" name="EXPIRED_PAGE" value="https://vendors-new.bmtmicro.com/login-expired.jsp">
                   <input type="hidden" name="SIGNUP_PAGE" value="https://vendors-new.bmtmicro.com/new-vendor-signup.jsp">
-                  <button type="submit" value="Login" autocomplete="off">Login</button>
+                  <button type="button" value="Login" autocomplete="off" onclick="this.form.submit();">Login</button>
                 </div>
                 <div class="signup text-center">
                   <a href="https://vendors-new.bmtmicro.com/new-vendor-signup.jsp">Sign Up</a>

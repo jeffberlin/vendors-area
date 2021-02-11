@@ -25,6 +25,9 @@
     <div class="vendor-balance">
       <jsp:include page="../balance.jsp"/>
     </div>
+    <div style="padding-bottom: .5rem;">
+      <a class="sidebar-group" href="https://vendors-new.bmtmicro.com/main.jsp">Home</a>
+    </div>
     <div class="dropright">
       <a class="dropdown-toggle sidebar-group" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Your Sales</a>
       <div class="dropdown-menu dropdown-menu-right text-center sidebar-options" aria-labelledby="dropdownMenuButton">
