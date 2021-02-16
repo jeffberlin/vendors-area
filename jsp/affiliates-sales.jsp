@@ -19,6 +19,7 @@
     <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
     <script src="https://vendors-new.bmtmicro.com/js/tablesort.js"></script>
+    <script src="https://vendors-new.bmtmicro.com/js/calendar.js"></script>
     <style media="screen" type="text/css">
       .content-box {
         min-height: 290px;
