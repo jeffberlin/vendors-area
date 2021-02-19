@@ -60,12 +60,13 @@
                   <a href="https://vendors-new.bmtmicro.com/login-lost-password.jsp">Forgot Password?</a>
                 </div>
                 <div class="login-btn text-center" style="margin-bottom: 10px;">
-                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/main.jsp">
-                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/login-error.jsp">
-                  <input type="hidden" name="BADLOGIN_PAGE" value="https://vendors-new.bmtmicro.com/login-bad.jsp">
-                  <input type="hidden" name="LOCKOUT_PAGE" value="https://vendors-new.bmtmicro.com/login-lockout.jsp">
-                  <input type="hidden" name="EXPIRED_PAGE" value="https://vendors-new.bmtmicro.com/login-expired.jsp">
-                  <input type="hidden" name="SIGNUP_PAGE" value="https://vendors-new.bmtmicro.com/new-vendor-signup.jsp">
+                  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/main.jsp" />
+                  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/login-error.jsp" />
+                  <input type="hidden" name="LOGINCODE_PAGE" value="https://vendors-new.bmtmicro.com/login-code.jsp" />
+                  <input type="hidden" name="BADLOGIN_PAGE" value="https://vendors-new.bmtmicro.com/login-bad.jsp" />
+                  <input type="hidden" name="LOCKOUT_PAGE" value="https://vendors-new.bmtmicro.com/login-lockout.jsp" />
+                  <input type="hidden" name="EXPIRED_PAGE" value="https://vendors-new.bmtmicro.com/login-expired.jsp" />
+                  <input type="hidden" name="SIGNUP_PAGE" value="https://vendors-new.bmtmicro.com/new-vendor-signup.jsp" />
                   <button type="button" value="Login" autocomplete="off" onclick="this.form.submit();">Login</button>
                 </div>
                 <div class="signup text-center">
