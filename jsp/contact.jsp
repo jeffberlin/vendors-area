@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=1600, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -91,7 +91,7 @@
               <h4>Vendor&nbsp;Support&nbsp;Request&nbsp;Form</h4>
               <p>If you are unable to find answers to your questions in the&nbsp;<a href="https://help.bmtmicro.com/vendors/" target="_blank">FAQ/Help section</a>,&nbsp;or you have a special request,&nbsp;please contact us using the form below.</p>
               <div class="content-box overflow-auto">
-                <form name="contactbmt" method="get" action="https://vendors-new.bmtmicro.com/servlets/System.EMailTemplate">
+                <form name="contactbmt" method="post" action="https://vendors-new.bmtmicro.com/servlets/System.EMailTemplate">
                   <input type="hidden" name="VENDORID" value="${cookie['BMTMicro.Vendors.VendorID'].value}" />
                   <input type="hidden" name="RECIPIENT" value="mdaemon@bmtmicro.com" />
                   <input type="hidden" name="SUBJECT" value="BMT Micro Vendor Support Request" />
