@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=1600, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -15,10 +15,10 @@
     <title>BMT Micro Developers Center</title>
     <%@ include file="/includes/bootstrap_top_script.html" %>
     <%@ include file="/includes/style_menu_footer_css.html" %>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/table.css"/>
-    <link rel="stylesheet" href="https://vendors-new.bmtmicro.com/css/addTransfer.css"/>
+    <link rel="stylesheet" href="https://vendors.bmtmicro.com/css/table.css"/>
+    <link rel="stylesheet" href="https://vendors.bmtmicro.com/css/addTransfer.css"/>
     <script src="https://secure.bmtmicro.com/Templates/util.js"></script>
-    <script src="https://vendors-new.bmtmicro.com/js/vendors.js"></script>
+    <script src="https://vendors.bmtmicro.com/js/vendors.js"></script>
     <style media="screen" type="text/css">
       td[mnumber], td[info], td[option] {
         text-align: center;
@@ -38,14 +38,10 @@
         form.ACTION.value = action;
         form.target = target;
         form.NEXT_PAGE.value  = nextpage;
-        // form.ERROR_PAGE.value = (target == "_parent") ? "https://vendors-new.bmtmicro.com/error.jsp" : "https://vendors-new.bmtmicro.com/error-div.jsp";
         form.KEYTABLEID.value = keytableid;
-        // submitToDiv (form, "resultframe");
-        if (target == "_parent") {
-          form.ERROR_PAGE.value = "https://vendors-new.bmtmicro.com/error.jsp";
+        if (target == "") {
           form.submit ();
         } else {
-          form.target = "";
           submitToDiv (form, target);
         }
       }
@@ -70,13 +66,13 @@
 
       <c:if test = "${ allowChanges }">
         function addTable () {
-          submitForm (0, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-add.jsp");
+          submitForm (0, "resultframe", "https://vendors.bmtmicro.com/products-manage-activation-code-tables-add.jsp");
         }
         function deleteTable (keytableid) {
-          submitForm (2, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-delete.jsp", keytableid);
+          submitForm (2, "resultframe", "https://vendors.bmtmicro.com/products-manage-activation-code-tables-delete.jsp", keytableid);
         }
         function addKeys (keytableid) {
-          submitForm (3, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-add-keys.jsp", keytableid);
+          submitForm (3, "resultframe", "https://vendors.bmtmicro.com/products-manage-activation-code-tables-add-keys.jsp", keytableid);
         }
 
         function submitKeys (form) {
@@ -170,23 +166,23 @@
             form.KEYLIST.focus ();
             return (false);
           }
-          setFieldVisible ("main", false);
+          // setFieldVisible ("main", false);
           setFieldVisible ("progress", true);
-          form.submit ();
+          submitToDiv (form, "resultframe");
           return (true);
         }
       </c:if>
 
       function editTable (keytableid) {
-        submitForm (1, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-edit.jsp", keytableid);
+        submitForm (1, "resultframe", "https://vendors.bmtmicro.com/products-manage-activation-code-tables-edit.jsp", keytableid);
       }
 
       function viewProducts (keytableid) {
-        submitForm (4, "resultframe", "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-view-products.jsp", keytableid);
+        submitForm (4, "resultframe", "https://vendors.bmtmicro.com/products-manage-activation-code-tables-view-products.jsp", keytableid);
       }
 
       function downloadKeys (keytableid) {
-        submitForm (5, "", "https://vendors-new.bmtmicro.com/products-manage-code-activation-tables.jsp", keytableid);
+        submitForm (5, "", "https://vendors.bmtmicro.com/products-manage-code-activation-tables.jsp", keytableid);
       }
     </script>
   </head>
@@ -206,10 +202,10 @@
               <div class="content-box overflow-auto d-flex flex-column">
                 <div name="tableframe" class="overflow-auto h-100" id="tableframe">
                   <c:catch var="errormsg">
-                    <c:import url="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys">
+                    <c:import url="https://vendors.bmtmicro.com/servlets/Vendors.RegistrationKeys">
                       <c:param name="SESSIONID" value="${sessionid}" />
-                      <c:param name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-table.jsp" />
-                      <c:param name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+                      <c:param name="NEXT_PAGE" value="https://vendors.bmtmicro.com/products-manage-activation-code-tables-table.jsp" />
+                      <c:param name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error-div.jsp" />
                       <c:param name="ACTION" value="-1" />
                     </c:import>
                   </c:catch>
@@ -227,7 +223,7 @@
   </body>
   <script>
     if (window.history.replaceState) {
-      window.history.replaceState (null, null, "https://vendors-new.bmtmicro.com/products-manage-activation-code-tables.jsp");
+      window.history.replaceState (null, null, "https://vendors.bmtmicro.com/products-manage-activation-code-tables.jsp");
     }
     $('input[type=checkbox]').change(function(){
       $(this).prev('input[type=hidden]').val (this.checked ? -1 : 0);

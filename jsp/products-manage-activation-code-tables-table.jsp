@@ -1,10 +1,10 @@
 <%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/includes/core.jsp" %>
-<form name="keytables" method="post" action="https://vendors-new.bmtmicro.com/servlets/Vendors.RegistrationKeys">
+<form name="keytables" method="post" action="https://vendors.bmtmicro.com/servlets/Vendors.RegistrationKeys">
   <input type="hidden" name="ACTION" value="-1" />
   <input type="hidden" name="KEYTABLEID" value="" />
-  <input type="hidden" name="NEXT_PAGE" value="https://vendors-new.bmtmicro.com/products-manage-activation-code-tables-table.jsp" />
-  <input type="hidden" name="ERROR_PAGE" value="https://vendors-new.bmtmicro.com/error-div.jsp" />
+  <input type="hidden" name="NEXT_PAGE" value="https://vendors.bmtmicro.com/products-manage-activation-code-tables-table.jsp" />
+  <input type="hidden" name="ERROR_PAGE" value="https://vendors.bmtmicro.com/error-div.jsp" />
   <div class="table-header">
     <button type="button" class="grey-btn" onclick="addTable ();">Add&nbsp;New&nbsp;Table</button>
   </div> <!-- end .table-header -->

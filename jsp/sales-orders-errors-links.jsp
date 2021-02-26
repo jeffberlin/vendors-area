@@ -1,0 +1,45 @@
+<%@ page pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ include file="/includes/core.jsp" %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=1600, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <%@ include file="/includes/favicon-meta.html" %>
+    <title>BMT Micro Developers Center</title>
+    <%@ include file="/includes/bootstrap_top_script.html" %>
+    <%@ include file="/includes/style_menu_footer_css.html" %>
+    <link rel="stylesheet" href="https://vendors.bmtmicro.com/css/addPages.css"/>
+  </head>
+  <body>
+    <!-- Blue background header -->
+    <div class="blue-bg"></div>
+
+    <!-- Start of body content -->
+    <div class="main-raised">
+      <div class="container-fluid body-content">
+        <article class="section">
+          <div class="row justify-content-start">
+            <jsp:include page="/includes/menuSidebar.jsp" />
+            <div class="col-lg-10 col-md-12 page-title">
+              <h4>Sales Error Links</h4>
+              <div class="content-box overflow-auto">
+                <p>You can view any sales errors in our system with the following links:</p>
+                <p><a href="https://vendors.bmtmicro.com/system-error-orders.jsp">System Error report for XML Registration Key generation</a></p>
+                <p><a href="https://vendors.bmtmicro.com/system-error-notifications.jsp">System Error report for XML Order Notifications</a></p>
+              </div> <!-- end .content-box -->
+            </div> <!-- end .col-lg-10 -->
+          </div> <!-- end first .row -->
+        </article>
+      </div> <!-- end .container-fluid -->
+      <jsp:include page="/includes/footer.jsp" />
+    </div> <!-- end .main-raised -->
+    <%@ include file="/includes/bootstrap_bottom_scripts.html" %>
+  </body>
+</html>
