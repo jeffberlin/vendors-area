@@ -3,5 +3,5 @@
 <div class="transfer-section">
   <h5>Subscription Canceled</h5>
   <p>You have successfully canceled this subscription.</p>
-  <button type="button" class="save-btn" onclick="closeResultFrame()">Close</button>
+  <button type="button" class="save-btn" onclick="closeResultFrame();">Close</button>
 </div> <!-- end .transfer-section -->
