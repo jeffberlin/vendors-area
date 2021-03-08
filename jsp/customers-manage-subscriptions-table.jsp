@@ -93,7 +93,7 @@
             <td option>
               <c:choose>
                 <c:when test="${!emptyrow.EXPIRATIONDATE}">
-                  <button class='save-btn' value='Cancel' onclick='cancelSubscription (${row.SUBSCRIPTIONID});'>Cancel</button>
+                  <button type="button" class='save-btn' value='Cancel' onclick='cancelSubscription (${row.SUBSCRIPTIONID});'>Cancel</button>
                 </c:when>
                 <c:otherwise>
                   Cancelled
